@@ -213,7 +213,7 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
 /* ==========================================================================
    S5 · Porter
    ========================================================================== */
-.radial{position:relative;height:700px;margin-top:34px}
+.radial{position:relative;height:596px;margin-top:26px}
 .radial svg.conectores{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .nodo{position:absolute;transform:translate3d(-50%,-50%,0);text-align:center;width:346px}
 .nodo .caja{background:#fff;border:1px solid rgba(26,26,26,.14);padding:24px 26px}
@@ -396,6 +396,28 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
 .slide--cierre .bloque-rayado{left:0;bottom:0;width:340px;height:120px;
   background:repeating-linear-gradient(90deg,var(--crema) 0 16px,var(--rojo-profundo) 16px 32px);opacity:.9}
 
+
+/* S3 · códigos CIIU */
+.ciiu{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px 40px;font-size:19px;line-height:1.5}
+.ciiu span{opacity:.72}
+.ciiu b{color:var(--rojo-susi);font-weight:700}
+.ciiu .pend{opacity:.45;font-style:italic}
+
+/* S5 · tipo de competencia y competidores */
+.porter-pie{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:8px;
+  border-top:1px solid rgba(26,26,26,.15);padding-top:24px}
+.porter-pie .e{font-size:14px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--rojo-susi);margin-bottom:10px}
+.porter-pie p{font-size:20px;line-height:1.45}
+.porter-pie b{font-weight:700}
+
+/* S9 · hallazgo de maquila */
+.maquila{margin-top:48px;border-left:4px solid rgba(247,243,236,.55);padding:4px 0 4px 26px;max-width:1520px}
+.maquila .e{font-size:14px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  opacity:.7;margin-bottom:12px}
+.maquila p{font-size:25px;line-height:1.42}
+.maquila b{font-weight:400;box-shadow:inset 0 -8px 0 rgba(247,243,236,.25)}
+
 /* ==========================================================================
    HUD · progreso, contador, cronómetro
    ========================================================================== */
@@ -518,7 +540,7 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
             <dd>María Camila Jiménez Ramírez<br>Santiago Duque Restrepo<br>Juan David Escobar</dd>
             <dt>Docente</dt><dd>Carlos Alberto Rincón</dd>
             <dt>Curso</dt><dd>Prospectiva 1<br>ESIC Business and Marketing School</dd>
-            <dt>Horizonte · Fecha</dt><dd>2030 · Septiembre de 2026</dd>
+            <dt>Horizonte · Fecha</dt><dd>2030 · 31 de agosto de 2026</dd>
           </dl>
         </div>
         <template class="notas">
@@ -540,7 +562,7 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
           <div class="dato anim" style="--i:3"><div class="n">30+</div><div class="t">años de trayectoria; constituida formalmente en 2001</div></div>
           <div class="dato anim" style="--i:4"><div class="n">Itagüí</div><div class="t">Antioquia; planta reconstruida tras el incendio de 2016</div></div>
           <div class="dato anim" style="--i:5"><div class="n">Alemania</div><div class="t">origen del oficio: Susanne Helga Seifert, formada en repostería</div></div>
-          <div class="dato anim" style="--i:6"><div class="n">2 líneas</div><div class="t">panadería artesanal y snacks saludables</div></div>
+          <div class="dato anim" style="--i:6"><div class="n">2 negocios</div><div class="t">panadería artesanal y snacks saludables</div></div>
         </div>
         <div class="retos">
           <div class="reto anim" style="--i:7">
@@ -554,6 +576,8 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
             <div class="preg">¿Dónde puede crecer SUSI sin depender de quien hoy controla su acceso al consumidor?</div>
           </div>
         </div>
+        <p class="apoyo anim" style="--i:9;margin-top:38px">Caso asignado por <b>Solvers Lab</b>,
+          programa de consultoría del CEIPA, institución aliada de ESIC.</p>
         <template class="notas">
           <li>Cuatro datos, no más: trayectoria, lugar, origen alemán, portafolio.</li>
           <li>Mencionar el incendio de 2016 como prueba de resiliencia, sin detenerse.</li>
@@ -567,13 +591,13 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
         <div class="franja-top"></div>
         <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
         <div class="kicker anim" style="--i:0">Trayectoria</div>
-        <div class="cabecera"><h2 class="titulo anim" style="--i:1">De la cocina de la casa a ocho líneas de producto</h2></div>
+        <div class="cabecera"><h2 class="titulo anim" style="--i:1">De la cocina de la casa a ocho categorías de producto</h2></div>
         <div class="linea">
           <div class="hitos">
             <div class="hito anim" style="--i:2"><div class="a">Origen</div><div class="d">Producción casera con recetas alemanas de repostería.</div></div>
             <div class="hito anim" style="--i:3"><div class="a">2001</div><div class="d">Constitución formal de SUSI S.A.S.</div></div>
             <div class="hito anim" style="--i:4"><div class="a">2016</div><div class="d">Un incendio destruye la planta; la empresa la reconstruye.</div></div>
-            <div class="hito anim" style="--i:5"><div class="a">Hoy</div><div class="d">Portafolio de ocho líneas en 12 cadenas y canal propio.</div></div>
+            <div class="hito anim" style="--i:5"><div class="a">Hoy</div><div class="d">Ocho categorías de producto en 12 cadenas y canal propio.</div></div>
           </div>
         </div>
         <div class="portafolio">
@@ -587,6 +611,11 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
             <div class="pieza anim" style="--i:12"><b>Cereales de desayuno</b><small>Granolas y mezclas</small></div>
             <div class="pieza anim" style="--i:13"><b>Congelados</b><small>Masas y producto semielaborado</small></div>
             <div class="pieza anim" style="--i:14"><b>Merengues</b><small>Repostería alemana</small></div>
+          </div>
+          <div class="ciiu anim" style="--i:15">
+            <span><b>CIIU 1081</b> · Elaboración de productos de panadería</span>
+            <span><b>CIIU 1089</b> · Otros productos alimenticios n.c.p.</span>
+            <span class="pend">Código principal pendiente de confirmar con el RUT</span>
           </div>
         </div>
         <template class="notas">
@@ -621,12 +650,13 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
             </div>
           </div>
         </div>
-        <p class="lectura anim" style="--i:12">Cuatro de cada cinco puntos de contacto de SUSI son de un tercero:
-          <b>quien controla el acceso al consumidor no es la empresa.</b></p>
+        <p class="lectura anim" style="--i:12"><b>12 de los 15 puntos de contacto de SUSI son de terceros.</b>
+          La participación de cada canal en las ventas es un dato interno pendiente de medir.</p>
         <template class="notas">
           <li>Dejar que entren las 12 cadenas y que se vea el bloque grande frente al pequeño.</li>
           <li>El contraste visual ES el mensaje: no hace falta explicarlo dos veces.</li>
-          <li>12 vs 3: 80% de los puntos de contacto son intermediados.</li>
+          <li>Contar puntos de contacto, no ventas: son cosas distintas.</li>
+          <li>SI PREGUNTAN qué porcentaje de las ventas viene de cadenas: es un dato interno que la empresa no entregó y que el trabajo declara como línea base pendiente, con propuesta de empezar a medirlo en 2026.</li>
           <li>Entregar a Juan David: «veamos qué tan fuerte es ese intermediario».</li>
         </template>
       </section>
@@ -646,7 +676,20 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
             <svg viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
           </div>
         </div>
+        <div class="porter-pie">
+          <div class="anim" style="--i:9">
+            <div class="e">Tipo de competencia</div>
+            <p>Competencia <b>monopolística</b>: muchos oferentes, productos diferenciados
+               y barreras de entrada moderadas.</p>
+          </div>
+          <div class="anim" style="--i:10">
+            <div class="e">Competidores identificados</div>
+            <p><b>Directo:</b> Susanita. <b>Escala:</b> Popetas (Quala), Tosh (Nutresa).
+               <b>Marca propia:</b> Taeq (Grupo Éxito), cliente y competidor a la vez.</p>
+          </div>
+        </div>
         <template class="notas">
+          <li>Taeq es el dato que vale: el mismo canal que la distribuye compite con ella.</li>
           <li>No leer las cinco: nombrar las dos que mandan.</li>
           <li>Compradores alto + rivalidad alta = la prima de precio está bajo presión permanente.</li>
           <li>Nuevos entrantes media es la única fuerza que juega a favor.</li>
@@ -709,17 +752,17 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
           </div>
           <div class="niveles">
             <div class="nivel anim" style="--i:5">
-              <div class="e">Micro · 1 a 3 años</div>
+              <div class="e">Micro · alcance de la empresa y su categoría</div>
               <div class="n">La nostalgia como gatillo de compra</div>
               <div class="d">El sabor de infancia sigue vendiendo, pero cada generación trae el suyo.</div>
             </div>
             <div class="nivel macro anim" style="--i:6">
-              <div class="e">Macro · 3 a 7 años</div>
-              <div class="n">Reformulación y etiquetado en América Latina</div>
+              <div class="e">Macro · alcance del sector y el país</div>
+              <div class="n">Reformulación y etiquetado en Colombia</div>
               <div class="d">Menos azúcar, sellos frontales y presión regulatoria sobre el snack procesado.</div>
             </div>
             <div class="nivel mega anim" style="--i:7">
-              <div class="e">Mega · una década o más</div>
+              <div class="e">Mega · alcance estructural y global</div>
               <div class="n">Transición alimentaria y economía circular</div>
               <div class="d">Alimento más saludable, cadena más corta y empaque que debe volver al ciclo.</div>
             </div>
@@ -727,7 +770,7 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
         </div>
         <template class="notas">
           <li>Slide rápido: 35 segundos, es una escala de zoom.</li>
-          <li>Micro es lo que se siente hoy; mega es lo que ya está decidido.</li>
+          <li>Son escalas de alcance, no de plazo: el horizonte del trabajo es único, 2030.</li>
           <li>Lo importante: las tres escalas apuntan en la misma dirección.</li>
         </template>
       </section>
@@ -755,8 +798,15 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
             <div class="mixleg"><span>Cadenas como volumen</span><span>Directo como margen</span></div>
           </div>
         </div>
+        <div class="maquila anim" style="--i:5">
+          <div class="e">Hallazgo · reto 4</div>
+          <p>La maquila no es una oportunidad por explorar: <b>ya opera</b> —entre otros, las crispetas
+             de la marca UAU de MonteRojo—. Lo que falta es medir su margen por kilo frente al de marca
+             propia y cuánta capacidad de planta consume.</p>
+        </div>
         <template class="notas">
           <li>Esta es la tesis del trabajo. Decirla despacio y una sola vez.</li>
+          <li>La maquila es el hallazgo más fuerte del reto 4: el tercer canal ya existe y nadie lo ha medido.</li>
           <li>Insistir: no es salir de las cadenas, es dejar de depender de ellas.</li>
           <li>Las cadenas dan volumen; el canal directo da margen y datos del cliente.</li>
           <li>Entregar a Santiago: «¿de dónde sale esta conclusión? De 20 variables».</li>
@@ -799,22 +849,24 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
         <div class="kicker anim" style="--i:0">Formulación</div>
         <div class="cabecera"><h2 class="titulo anim" style="--i:1">Ejemplo de hipótesis a 2030</h2></div>
         <div class="hipo anim" style="--i:2">
-          <p>Para <mark>2030</mark>, el canal directo de SUSI —tienda virtual, WhatsApp y domicilios—
-             representará <mark>el 25 % de sus ventas</mark> en el <mark>Valle de Aburrá</mark>.</p>
+          <p>Para <mark>2030</mark>, las ventas reales del comercio electrónico en <mark>Colombia</mark>
+             superarán los <mark>$140 billones de pesos constantes</mark>.</p>
         </div>
+        <p class="apoyo anim" style="--i:3;margin-top:16px">Fuente de la serie histórica: CCCE, Informe de cierre eCommerce 2025.</p>
         <div class="criterios">
-          <div class="crit anim" style="--i:3"><div class="n">01</div><div class="t">Afirmación simple</div>
-            <div class="d">Una sola idea verificable; sin condicionales ni matices.</div></div>
-          <div class="crit anim" style="--i:4"><div class="n">02</div><div class="t">Cuantificada</div>
-            <div class="d">25 % de las ventas: se puede medir y, por tanto, refutar.</div></div>
-          <div class="crit anim" style="--i:5"><div class="n">03</div><div class="t">Alcance geográfico</div>
-            <div class="d">Valle de Aburrá, no «el mercado» ni «Colombia».</div></div>
-          <div class="crit anim" style="--i:6"><div class="n">04</div><div class="t">Horizonte definido</div>
+          <div class="crit anim" style="--i:4"><div class="n">01</div><div class="t">Afirmación simple</div>
+            <div class="d">Una sola idea verificable: supera el umbral o no lo supera.</div></div>
+          <div class="crit anim" style="--i:5"><div class="n">02</div><div class="t">Cuantificada</div>
+            <div class="d">$140 billones constantes: umbral medible contra una serie pública.</div></div>
+          <div class="crit anim" style="--i:6"><div class="n">03</div><div class="t">Alcance geográfico</div>
+            <div class="d">Colombia, el mismo alcance de todo el análisis.</div></div>
+          <div class="crit anim" style="--i:7"><div class="n">04</div><div class="t">Horizonte definido</div>
             <div class="d">2030: fecha de corte explícita para la verificación.</div></div>
         </div>
         <template class="notas">
           <li>Leer la hipótesis completa una vez, en voz alta y pausada.</li>
           <li>Señalar los cuatro criterios sobre el propio texto resaltado.</li>
+          <li>Quinto criterio implícito: hay serie histórica pública (CCCE) contra la cual verificarla.</li>
           <li>Aclarar que las 20 variables se formulan con este mismo molde.</li>
           <li>40 segundos: no extenderse.</li>
         </template>
@@ -849,6 +901,7 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
           </div>
         </div>
         <template class="notas">
+          <li>⚠ VERIFICAR ANTES DE EXPONER: el rótulo dice «escala 0 a 100». Confirmar qué escala usa el Excel de la Parte C; si califica de 0 a 5, hay que cambiar el rótulo y reexpresar las coordenadas.</li>
           <li>Dejar que caigan los 20 puntos en silencio; son 2 segundos bien invertidos.</li>
           <li>Lo primero que hay que decir: la esquina de crisis está llena de variables de canal.</li>
           <li>8 en liderazgo, 7 en crisis, 5 sin incidencia relevante.</li>
@@ -883,11 +936,11 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
                 <li>Última milla y etiquetado</li><li>Relevo de talento artesanal</li></ul>
           </div>
         </div>
-        <p class="lectura anim" style="--i:6">Seis de las siete variables en crisis son de <b>canal</b>, no de producto:
+        <p class="lectura anim" style="--i:6">La mayoría de las variables en crisis son de <b>canal</b>, no de producto:
           el problema de SUSI no es qué fabrica, es cómo llega.</p>
         <template class="notas">
           <li>No repetir el gráfico: interpretarlo.</li>
-          <li>El hallazgo: la zona de crisis es casi toda de canal.</li>
+          <li>El hallazgo: la zona de crisis es mayoritariamente de canal. No dar una cifra exacta: costo de insumos y norma de empaques no son de canal.</li>
           <li>La zona «ninguna» sirve para decir qué NO hay que priorizar.</li>
           <li>Entregar el cierre.</li>
         </template>
@@ -969,8 +1022,8 @@ var CADENAS = ["Éxito","Carulla","Euro","Olímpica","Cañaveral","Colsubsidio",
 var FUERZAS = [
   {f:"Rivalidad entre competidores", i:"Alta",        c:"alta",      x:848,  y:72},
   {f:"Poder de los compradores",     i:"Alto",        c:"alta",      x:1462, y:268},
-  {f:"Amenaza de sustitutos",        i:"Alta",        c:"alta",      x:1256, y:624},
-  {f:"Poder de los proveedores",     i:"Medio-alto",  c:"medioalta", x:440,  y:624},
+  {f:"Amenaza de sustitutos",        i:"Alta",        c:"alta",      x:1304, y:624},
+  {f:"Poder de los proveedores",     i:"Medio-alto",  c:"medioalta", x:392,  y:624},
   {f:"Amenaza de nuevos entrantes",  i:"Media",       c:"media",     x:234,  y:268}
 ];
 
