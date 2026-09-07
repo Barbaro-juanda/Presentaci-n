@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SUSI S.A.S. — Análisis del entorno, incidencia y favorabilidad · 2030</title>
+<style>
+/* ==========================================================================
+   SUSI S.A.S. · Prospectiva 1 · ESIC
+   Presentación autocontenida. Sin CDN, sin dependencias externas.
+   ========================================================================== */
+:root{
+  --rojo-susi:#D83624; --rojo-profundo:#B41212; --naranja-maiz:#C06030;
+  --terracota:#B05030; --coral:#EA4836; --negro-sello:#1A1A1A;
+  --gris-empaque:#D8D8D8; --crema:#F7F3EC;
+
+  --font-display:Didot,"Bodoni 72","Bodoni MT","Hoefler Text",Garamond,"Times New Roman",serif;
+  --font-body:"Avenir Next",Avenir,"Segoe UI","Lucida Grande","Helvetica Neue",Helvetica,sans-serif;
+
+  --fs-portada:92px; --fs-titulo:58px; --fs-kicker:19px;
+  --fs-cifra:68px; --fs-cuerpo:26px; --fs-apoyo:18px; --fs-grafico:21px;
+
+  --margen:112px; --seguro:88px; --util:1696px; --gap:28px;
+  --stagger:80ms; --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#141210;font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* ==========================================================================
+   CHROME TIPO CANVA  ·  barra superior + panel de miniaturas + lienzo
+   ========================================================================== */
+#app{position:fixed;inset:0;display:grid;
+  grid-template-columns:248px 1fr;grid-template-rows:60px 1fr;
+  transition:grid-template-columns .28s var(--ease),grid-template-rows .28s var(--ease)}
+body.presentando #app{grid-template-columns:0 1fr;grid-template-rows:0 1fr}
+
+#barra{grid-column:1 / -1;grid-row:1;display:flex;align-items:center;gap:18px;
+  padding:0 18px;background:#1F1C19;color:#EDE7DE;border-bottom:1px solid #2E2A26;overflow:hidden}
+body.presentando #barra{opacity:0;pointer-events:none}
+#barra .marca{display:flex;align-items:center;gap:12px;min-width:0;flex:0 1 auto;overflow:hidden}
+#barra .marca svg{width:52px;height:auto;color:#EDE7DE;opacity:.85;flex:none}
+#barra .tit{font-size:13px;line-height:1.25;min-width:0}
+#barra .tit b{display:block;font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#barra .tit span{opacity:.45;font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#barra .sep{flex:1}
+.btn{font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:.04em;
+  color:#EDE7DE;background:#2A2622;border:1px solid #3A342E;border-radius:3px;
+  padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.btn:hover{background:#37312B}
+.btn.activo{background:var(--rojo-susi);border-color:var(--rojo-susi)}
+.btn--primario{background:var(--rojo-susi);border-color:var(--rojo-susi)}
+.btn--primario:hover{background:var(--coral);border-color:var(--coral)}
+.btn kbd{font-family:inherit;font-size:10px;opacity:.55;border:1px solid currentColor;
+  border-radius:2px;padding:0 4px;line-height:14px}
+#reloj-barra{font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:.06em;opacity:.6;
+  padding-right:6px}
+#reloj-barra.excedido{color:var(--coral);opacity:1;font-weight:700}
+
+/* ---- Panel de miniaturas ---- */
+#panel{grid-column:1;grid-row:2;background:#1F1C19;border-right:1px solid #2E2A26;
+  overflow-y:auto;overflow-x:hidden;padding:14px 0 40px}
+body.presentando #panel{opacity:0;pointer-events:none}
+#panel::-webkit-scrollbar{width:8px}
+#panel::-webkit-scrollbar-thumb{background:#3A342E;border-radius:4px}
+.mini{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;
+  padding:6px 14px 6px 8px;cursor:pointer}
+.mini .num{font-size:12px;color:#8C837A;text-align:right;padding-top:4px;font-variant-numeric:tabular-nums}
+.mini .marco{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;
+  background:var(--crema);border:1px solid #3A342E;border-radius:2px}
+.mini:hover .marco{border-color:#6B615A}
+.mini.actual .marco{border-color:var(--rojo-susi);box-shadow:0 0 0 2px rgba(216,54,36,.35)}
+.mini.actual .num{color:var(--rojo-susi);font-weight:700}
+.lienzo-mini{position:absolute;left:0;top:0;width:1920px;height:1080px;
+  transform-origin:top left;pointer-events:none}
+.mini .rol{grid-column:2;font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:#8C837A;margin-top:5px;display:flex;justify-content:space-between;gap:6px}
+
+/* ---- Lienzo ---- */
+#viewport{grid-column:2;grid-row:2;position:relative;overflow:hidden;background:#141210}
+body.presentando #viewport{background:#000}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;
+  transform-origin:center center;background:var(--crema);overflow:hidden;
+  box-shadow:0 18px 60px rgba(0,0,0,.55)}
+body.presentando #stage{box-shadow:none}
+
+/* ==========================================================================
+   SLIDES
+   ========================================================================== */
+.slide{position:absolute;inset:0;padding:var(--seguro) var(--margen);display:none;
+  background:var(--crema);color:var(--negro-sello)}
+.slide.is-active{display:block}
+.slide--oscuro{background:var(--rojo-profundo);color:var(--crema)}
+
+.franja-top{position:absolute;top:0;left:0;right:0;height:10px;
+  background:repeating-linear-gradient(90deg,var(--rojo-susi) 0 14px,var(--crema) 14px 28px)}
+.slide--oscuro .franja-top{background:repeating-linear-gradient(90deg,var(--crema) 0 14px,var(--rojo-profundo) 14px 28px)}
+.bloque-rayado{position:absolute;background:repeating-linear-gradient(90deg,var(--rojo-susi) 0 16px,var(--crema) 16px 32px)}
+.divisor{height:1px;background:rgba(26,26,26,.15);position:relative}
+.divisor::before{content:"";position:absolute;left:0;top:0;width:40px;height:1px;background:var(--rojo-susi)}
+.slide--oscuro .divisor{background:rgba(247,243,236,.22)}
+.slide--oscuro .divisor::before{background:var(--crema)}
+
+.kicker{font-size:var(--fs-kicker);font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rojo-susi);display:flex;align-items:center;gap:16px}
+.kicker::before{content:"";width:3px;height:22px;background:var(--rojo-susi);flex:none}
+.slide--oscuro .kicker{color:var(--crema)}
+.slide--oscuro .kicker::before{background:var(--crema)}
+
+h1.portada{font-family:var(--font-display);font-size:var(--fs-portada);font-weight:400;
+  letter-spacing:-.025em;line-height:1.02}
+h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight:400;
+  letter-spacing:-.015em;line-height:1.08}
+.slide--oscuro h1.portada,.slide--oscuro h2.titulo{font-synthesis:none;-webkit-text-stroke:.35px currentColor}
+.cuerpo{font-size:var(--fs-cuerpo);line-height:1.5}
+.apoyo{font-size:var(--fs-apoyo);line-height:1.5;opacity:.6}
+.cifra{font-family:var(--font-display);font-size:var(--fs-cifra);font-variant-numeric:tabular-nums;line-height:1}
+
+.logo-portada{width:460px;height:auto;display:block;color:var(--negro-sello)}
+.marca-agua{position:absolute;right:var(--margen);bottom:52px;width:96px;height:auto;
+  opacity:.14;color:var(--negro-sello);pointer-events:none}
+.slide--oscuro .marca-agua{color:var(--crema);opacity:.2}
+
+/* Cabecera estándar de slide de contenido */
+.cabecera{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:18px}
+.unidad{font-size:var(--fs-apoyo);letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  opacity:.55;white-space:nowrap;padding-bottom:10px}
+
+/* ---- Animación de entrada ---- */
+.anim{opacity:0;transform:translate3d(0,24px,0);
+  transition:opacity .52s var(--ease),transform .52s var(--ease);
+  transition-delay:calc(var(--i,0) * var(--stagger))}
+.slide.is-in .anim{opacity:1;transform:translate3d(0,0,0)}
+/* variante para elementos centrados por transform */
+.anim-c{opacity:0;transform:translate3d(-50%,calc(-50% + 22px),0);
+  transition:opacity .52s var(--ease),transform .52s var(--ease);
+  transition-delay:calc(var(--i,0) * var(--stagger))}
+.slide.is-in .anim-c{opacity:1;transform:translate3d(-50%,-50%,0)}
+/* Las miniaturas y la cuadrícula muestran siempre el estado final */
+.es-mini .anim,.es-mini .anim-c{opacity:1 !important;transform:none !important;transition:none !important}
+.es-mini .anim-c{transform:translate3d(-50%,-50%,0) !important}
+.es-mini .fill{transform:scaleX(1) !important;transition:none !important}
+.es-mini .val,.es-mini .punto{opacity:1 !important;transition:none !important}
+.es-mini .zona{opacity:.18 !important}
+
+/* ==========================================================================
+   S1 · Portada
+   ========================================================================== */
+.slide--portada.is-active{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gap);align-content:center}
+.portada-izq{grid-column:1 / span 7}
+.portada-der{grid-column:9 / span 4;align-self:end;padding-bottom:6px}
+.portada-meta{margin-top:14px;font-size:20px;line-height:1.65}
+.portada-meta dt{font-size:14px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--rojo-susi);margin-bottom:6px}
+.portada-meta dd{margin-bottom:26px}
+.portada-empresa{font-size:20px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-top:36px}
+.portada-sub{font-size:23px;line-height:1.5;margin-top:34px;max-width:660px;opacity:.72}
+.slide--portada .bloque-rayado{right:0;top:10px;width:196px;height:330px}
+
+/* ==========================================================================
+   S2 · El caso
+   ========================================================================== */
+.datos4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-top:66px}
+.dato{border-top:2px solid var(--rojo-susi);padding-top:22px}
+.dato .n{font-family:var(--font-display);font-size:68px;line-height:1;font-variant-numeric:tabular-nums}
+.dato .t{font-size:21px;line-height:1.35;margin-top:14px;opacity:.75}
+.retos{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:78px}
+.reto{background:#fff;border:1px solid rgba(26,26,26,.12);padding:44px 46px 48px;position:relative}
+.reto::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--rojo-susi)}
+.reto .et{font-size:15px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo-susi)}
+.reto .nom{font-family:var(--font-display);font-size:38px;margin:12px 0 18px;line-height:1.15}
+.reto .preg{font-size:23px;line-height:1.45;opacity:.78}
+
+/* ==========================================================================
+   S3 · Historia y portafolio
+   ========================================================================== */
+.linea{position:relative;margin-top:70px;padding-top:48px}
+.linea::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--gris-empaque)}
+.linea .hitos{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.hito{position:relative}
+.hito::before{content:"";position:absolute;top:-43px;left:0;width:14px;height:14px;
+  background:var(--rojo-susi);border-radius:50%}
+.hito .a{font-family:var(--font-display);font-size:46px;line-height:1;font-variant-numeric:tabular-nums}
+.hito .d{font-size:22px;line-height:1.45;margin-top:16px;opacity:.72;max-width:330px}
+.portafolio{margin-top:84px}
+.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px var(--gap);margin-top:30px}
+.pieza{border-left:3px solid var(--terracota);padding:14px 0 14px 18px}
+.pieza b{display:block;font-size:25px;font-weight:600}
+.pieza small{font-size:17px;opacity:.55}
+.pieza.destacada{border-left-color:var(--rojo-susi)}
+.pieza.destacada b{color:var(--rojo-susi)}
+
+/* ==========================================================================
+   S4 · Canales
+   ========================================================================== */
+.canales{display:grid;grid-template-columns:1fr 340px;gap:56px;margin-top:44px;align-items:start}
+.bloque-canal{border:1px solid rgba(26,26,26,.14);background:#fff;padding:32px 34px 36px;position:relative}
+.bloque-canal .et{font-size:15px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px}
+.bloque-canal.indirecto{border-top:6px solid var(--rojo-susi)}
+.bloque-canal.indirecto .et{color:var(--rojo-susi)}
+.bloque-canal.directo{border-top:6px solid var(--terracota)}
+.bloque-canal.directo .et{color:var(--terracota)}
+.bloque-canal .peso{font-family:var(--font-display);font-size:30px;font-variant-numeric:tabular-nums}
+.cadenas{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cadena{background:var(--crema);border:1px solid rgba(26,26,26,.1);padding:24px 18px;
+  font-size:23px;font-weight:600}
+.directos{display:grid;gap:12px}
+.directo{background:var(--crema);border:1px solid rgba(26,26,26,.1);padding:24px 18px;font-size:23px;font-weight:600}
+.lectura{margin-top:48px;font-size:26px;line-height:1.4;max-width:1400px}
+.lectura b{color:var(--rojo-susi);font-weight:600}
+
+/* ==========================================================================
+   S5 · Porter
+   ========================================================================== */
+.radial{position:relative;height:700px;margin-top:34px}
+.radial svg.conectores{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.nodo{position:absolute;transform:translate3d(-50%,-50%,0);text-align:center;width:346px}
+.nodo .caja{background:#fff;border:1px solid rgba(26,26,26,.14);padding:24px 26px}
+.nodo .f{font-size:24px;font-weight:600;line-height:1.25}
+.nodo .i{margin-top:14px;font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  display:inline-block;padding:5px 12px;color:#fff}
+.i--alta{background:var(--rojo-susi)} .i--medioalta{background:var(--naranja-maiz)}
+.i--media{background:var(--terracota);opacity:.75}
+.centro{position:absolute;left:50%;top:50%;transform:translate3d(-50%,-50%,0);
+  width:290px;height:184px;display:grid;place-items:center;background:var(--negro-sello);color:var(--crema)}
+.centro svg{width:186px;height:auto;color:var(--crema)}
+
+/* ==========================================================================
+   S6 · Precio
+   ========================================================================== */
+.grafico{margin-top:40px;position:relative}
+.barra{display:grid;grid-template-columns:352px 1fr 92px;align-items:center;column-gap:22px;
+  height:56px;margin-bottom:20px;position:relative}
+.barra .etq{font-size:var(--fs-grafico);font-weight:600;text-align:right;line-height:1.15}
+.barra .etq small{display:block;font-size:15px;font-weight:400;opacity:.55;letter-spacing:.04em}
+.barra .track{height:40px;position:relative}
+.barra .fill{height:100%;transform:scaleX(0);transform-origin:left center;
+  transition:transform .72s var(--ease);transition-delay:calc(var(--d,0) * 1ms)}
+.slide.is-in .barra .fill{transform:scaleX(1)}
+.barra .val{font-family:var(--font-display);font-size:32px;text-align:right;
+  font-variant-numeric:tabular-nums;opacity:0;transition:opacity .4s linear;
+  transition-delay:calc((var(--d,0) + 420) * 1ms)}
+.slide.is-in .barra .val{opacity:1}
+.barra.is-susi .val{color:var(--rojo-susi);font-weight:700}
+.barra.is-susi .etq{color:var(--rojo-susi)}
+.fill--susi{background:var(--rojo-susi)}
+.fill--susanita{background:var(--terracota)}
+.fill--masivo{background:var(--gris-empaque)}
+.referencia{position:absolute;top:-6px;bottom:34px;width:1px;
+  border-left:1px dashed rgba(26,26,26,.42);pointer-events:none}
+.referencia span{position:absolute;top:-26px;left:10px;font-size:14px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;opacity:.5;white-space:nowrap}
+.remate{margin-top:34px;padding-top:30px;border-top:1px solid rgba(26,26,26,.15);
+  display:flex;align-items:baseline;gap:26px}
+.remate .frase{font-family:var(--font-display);font-size:50px;line-height:1.12;
+  letter-spacing:-.015em;max-width:1180px}
+.remate .frase b{color:var(--rojo-susi);font-weight:400}
+
+/* ==========================================================================
+   S7 · PESTEL
+   ========================================================================== */
+.pestel{display:grid;grid-template-columns:repeat(3,1fr);gap:48px var(--gap);margin-top:58px}
+.dim{border-top:2px solid var(--gris-empaque);padding-top:24px;position:relative;min-height:236px}
+.dim::after{content:"";position:absolute;top:-2px;left:0;width:56px;height:2px;background:var(--rojo-susi)}
+.dim .l{font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--rojo-susi);font-family:var(--font-body)}
+.dim .h{font-size:24px;line-height:1.45;margin-top:16px}
+.dim .h em{font-style:normal;font-weight:700;color:var(--negro-sello);
+  box-shadow:inset 0 -8px 0 rgba(216,54,36,.16)}
+
+/* ==========================================================================
+   S8 · Tendencias
+   ========================================================================== */
+.tendencias{display:grid;grid-template-columns:760px 1fr;gap:60px;margin-top:24px;align-items:center}
+.anillos{position:relative;height:640px}
+.anillo{position:absolute;left:50%;top:50%;transform:translate3d(-50%,-50%,0);
+  border-radius:50%;border:2px solid var(--rojo-susi);display:grid;place-items:start center;padding-top:14px}
+.anillo span{font-size:14px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  background:var(--crema);padding:0 12px;color:var(--rojo-susi)}
+.a-mega{width:600px;height:600px;opacity:.35}
+.a-macro{width:410px;height:410px;opacity:.6}
+.a-micro{width:230px;height:230px}
+.niveles{display:grid;gap:34px}
+.nivel{border-left:3px solid var(--rojo-susi);padding-left:24px}
+.nivel .e{font-size:15px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo-susi)}
+.nivel .n{font-family:var(--font-display);font-size:32px;margin:8px 0 10px;line-height:1.15}
+.nivel .d{font-size:21px;line-height:1.45;opacity:.72;max-width:640px}
+.nivel.macro{border-left-color:var(--naranja-maiz)} .nivel.macro .e{color:var(--naranja-maiz)}
+.nivel.mega{border-left-color:var(--terracota)} .nivel.mega .e{color:var(--terracota)}
+
+/* ==========================================================================
+   S9 · Implicaciones (oscuro)
+   ========================================================================== */
+.tesis{font-family:var(--font-display);font-size:58px;line-height:1.16;letter-spacing:-.015em;
+  max-width:1500px;margin-top:34px}
+.tesis b{font-weight:400;box-shadow:inset 0 -10px 0 rgba(247,243,236,.22)}
+.contraste{display:grid;grid-template-columns:1fr 90px 1fr;gap:0;align-items:center;margin-top:78px}
+.col-c{border:1px solid rgba(247,243,236,.3);padding:30px 34px 34px}
+.col-c .e{font-size:15px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.col-c .n{font-family:var(--font-display);font-size:34px;margin:12px 0 20px}
+.mixbar{display:flex;height:46px;border:1px solid rgba(247,243,236,.4)}
+.mixbar i{display:block;height:100%}
+.mixbar .ind{background:var(--crema)} .mixbar .dir{background:rgba(247,243,236,.28)}
+.mixleg{display:flex;justify-content:space-between;font-size:17px;margin-top:12px;opacity:.8}
+.flecha{text-align:center;font-family:var(--font-display);font-size:44px;opacity:.8}
+
+/* ==========================================================================
+   S10 · 20 variables
+   ========================================================================== */
+.clusters{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:54px}
+.cluster{border:1px solid rgba(26,26,26,.14);background:#fff;padding:36px 38px 42px}
+.cluster.r1{border-top:6px solid var(--rojo-susi)}
+.cluster.r4{border-top:6px solid var(--terracota)}
+.cluster .ct{font-size:15px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rojo-susi)}
+.cluster.r4 .ct{color:var(--terracota)}
+.cluster .cn{font-family:var(--font-display);font-size:34px;margin:10px 0 28px}
+.vars{display:grid;grid-template-columns:1fr 1fr;gap:17px 22px}
+.var{display:flex;gap:10px;font-size:20px;line-height:1.3;align-items:baseline}
+.var i{font-style:normal;font-size:13px;font-weight:700;color:var(--rojo-susi);
+  font-variant-numeric:tabular-nums;flex:none;width:22px}
+.cluster.r4 .var i{color:var(--terracota)}
+
+/* ==========================================================================
+   S11 · Hipótesis
+   ========================================================================== */
+.hipo{background:#fff;border:1px solid rgba(26,26,26,.14);border-left:6px solid var(--rojo-susi);
+  padding:58px 62px;margin-top:78px}
+.hipo p{font-family:var(--font-display);font-size:50px;line-height:1.24;letter-spacing:-.01em}
+.hipo mark{background:none;padding:0 2px;box-shadow:inset 0 -10px 0 rgba(216,54,36,.18)}
+.criterios{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-top:112px}
+.crit{border-top:2px solid var(--rojo-susi);padding-top:26px}
+.crit .n{font-family:var(--font-display);font-size:34px;color:var(--rojo-susi);line-height:1}
+.crit .t{font-size:24px;font-weight:600;margin-top:14px}
+.crit .d{font-size:19px;line-height:1.45;opacity:.62;margin-top:10px}
+
+/* ==========================================================================
+   S12 · Plano de incidencia y favorabilidad
+   ========================================================================== */
+.plano-wrap{display:grid;grid-template-columns:1fr 330px;gap:44px;margin-top:22px;align-items:center}
+.plano{position:relative;height:680px;border-left:2px solid var(--negro-sello);
+  border-bottom:2px solid var(--negro-sello)}
+.zona{position:absolute;opacity:.07;transition:opacity .5s linear}
+.plano.encendido .zona{opacity:.17}
+.z-crisis{left:0;top:0;width:50%;height:52%;background:var(--negro-sello)}
+.z-lider{right:0;top:0;width:50%;height:52%;background:var(--rojo-susi)}
+.z-ninguna{left:0;bottom:0;width:100%;height:48%;background:var(--gris-empaque);opacity:.34}
+.plano.encendido .z-ninguna{opacity:.55}
+.zrot{position:absolute;font-size:15px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;opacity:.55}
+.punto{position:absolute;width:26px;height:26px;border-radius:50%;
+  transform:translate3d(-50%,50%,0) scale(.2);opacity:0;
+  display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;
+  font-variant-numeric:tabular-nums;
+  transition:opacity .3s linear,transform .45s var(--ease);
+  transition-delay:calc(var(--d,0) * 1ms)}
+.slide.is-in .punto{opacity:1;transform:translate3d(-50%,50%,0) scale(1)}
+.punto.r1{background:var(--rojo-susi)} .punto.r4{background:var(--terracota)}
+.eje-x,.eje-y{position:absolute;font-size:16px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.eje-x{bottom:-42px;left:50%;transform:translateX(-50%)}
+.eje-y{left:-42px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:center}
+.conteos{display:grid;gap:20px}
+.conteo{border-left:4px solid var(--rojo-susi);padding:14px 0 14px 20px}
+.conteo .c{font-family:var(--font-display);font-size:54px;line-height:1}
+.conteo .z{font-size:16px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-top:4px}
+.conteo .d{font-size:17px;opacity:.6;margin-top:6px;line-height:1.35}
+.conteo.crisis{border-left-color:var(--rojo-profundo)}
+.conteo.ninguna{border-left-color:var(--gris-empaque)}
+.leyenda{display:flex;gap:22px;font-size:16px;margin-top:22px}
+.leyenda i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px}
+
+/* ==========================================================================
+   S13 · Síntesis
+   ========================================================================== */
+.sintesis{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:58px}
+.zbloque{border-top:6px solid var(--rojo-susi);padding-top:34px}
+.zbloque.crisis{border-top-color:var(--rojo-profundo)}
+.zbloque.ninguna{border-top-color:var(--gris-empaque)}
+.zbloque .h{display:flex;align-items:baseline;gap:14px}
+.zbloque .h .c{font-family:var(--font-display);font-size:56px;line-height:1}
+.zbloque .h .z{font-size:16px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.zbloque .q{font-size:24px;line-height:1.45;margin-top:26px}
+.zbloque .q b{font-weight:600;color:var(--rojo-susi)}
+.zbloque ul{list-style:none;margin-top:28px;display:grid;gap:15px}
+.zbloque li{font-size:20px;line-height:1.35;padding-left:18px;position:relative;opacity:.72}
+.zbloque li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:2px;background:var(--rojo-susi)}
+
+/* ==========================================================================
+   S14 · Cierre (oscuro)
+   ========================================================================== */
+.slide--centrado.is-active{display:grid;align-content:center}
+.cierre{font-family:var(--font-display);font-size:64px;line-height:1.18;letter-spacing:-.02em;max-width:1420px}
+.cierre b{font-weight:400;box-shadow:inset 0 -12px 0 rgba(247,243,236,.25)}
+.gracias{margin-top:70px;display:flex;align-items:baseline;gap:34px}
+.gracias .g{font-family:var(--font-display);font-size:46px}
+.gracias .p{font-size:22px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.65}
+.slide--cierre .bloque-rayado{left:0;bottom:0;width:340px;height:120px;
+  background:repeating-linear-gradient(90deg,var(--crema) 0 16px,var(--rojo-profundo) 16px 32px);opacity:.9}
+
+/* ==========================================================================
+   HUD · progreso, contador, cronómetro
+   ========================================================================== */
+#hud{position:absolute;left:0;right:0;bottom:0;height:0;pointer-events:none;z-index:20}
+#progreso{position:absolute;bottom:0;left:0;height:4px;background:var(--gris-empaque);width:100%}
+#progreso i{display:block;height:100%;background:var(--rojo-susi);transform-origin:left center;
+  transform:scaleX(0);transition:transform .4s var(--ease)}
+#timer,#contador{position:absolute;bottom:22px;font-size:18px;font-variant-numeric:tabular-nums;
+  letter-spacing:.06em;opacity:.42;color:var(--negro-sello)}
+#timer{left:var(--margen)} #contador{right:var(--margen)}
+#timer.excedido{color:var(--rojo-susi);opacity:1;font-weight:700}
+#hud.sobre-oscuro #timer,#hud.sobre-oscuro #contador{color:var(--crema)}
+#hud.sobre-oscuro #progreso{background:rgba(247,243,236,.25)}
+#hud.sobre-oscuro #progreso i{background:var(--crema)}
+
+/* ==========================================================================
+   Notas del orador
+   ========================================================================== */
+#notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(26,26,26,.94);
+  color:var(--crema);padding:26px var(--margen) 34px;
+  transform:translate3d(0,100%,0);transition:transform .34s var(--ease)}
+#notas.abierto{transform:translate3d(0,0,0)}
+#notas .cab{font-size:15px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rojo-susi);margin-bottom:16px;display:flex;gap:14px;align-items:center}
+#notas .cab em{font-style:normal;opacity:.55;color:var(--crema)}
+#notas ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:12px 44px}
+#notas li{font-size:21px;line-height:1.4;padding-left:20px;position:relative}
+#notas li::before{content:"";position:absolute;left:0;top:12px;width:9px;height:2px;background:var(--rojo-susi)}
+
+/* ==========================================================================
+   Vista de cuadrícula
+   ========================================================================== */
+#rejilla{position:fixed;inset:0;z-index:60;background:#141210;display:none;
+  overflow-y:auto;padding:26px 34px 60px}
+#rejilla.abierto{display:block}
+#rejilla .rcab{display:flex;align-items:center;justify-content:space-between;
+  color:#EDE7DE;margin-bottom:22px;position:sticky;top:-26px;background:#141210;padding:14px 0}
+#rejilla .rcab h3{font-family:var(--font-display);font-size:26px;font-weight:400}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.rcelda{cursor:pointer}
+.rcelda .marco{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--crema);
+  border:1px solid #3A342E;border-radius:2px}
+.rcelda:hover .marco{border-color:var(--rojo-susi)}
+.rcelda.actual .marco{border-color:var(--rojo-susi);box-shadow:0 0 0 2px rgba(216,54,36,.4)}
+.rcelda .pie{display:flex;justify-content:space-between;gap:8px;color:#8C837A;font-size:12px;
+  margin-top:8px;letter-spacing:.1em;text-transform:uppercase}
+
+/* ==========================================================================
+   Ayuda
+   ========================================================================== */
+@media (max-width:1180px){#barra .tit{display:none}}
+@media (max-width:960px){#barra .btn kbd{display:none}}
+#ayuda{position:fixed;inset:0;z-index:70;background:rgba(20,18,16,.97);color:#EDE7DE;
+  display:none;place-content:center;justify-items:center;text-align:center}
+#ayuda.abierto{display:grid}
+#ayuda h3{font-family:var(--font-display);font-size:44px;font-weight:400;margin-bottom:32px}
+#ayuda table{border-collapse:collapse;font-size:22px}
+#ayuda td{padding:9px 26px}
+#ayuda td:first-child{text-align:right;color:var(--rojo-susi);font-weight:700;letter-spacing:.08em}
+#ayuda p{margin-top:32px;font-size:16px;opacity:.5}
+
+/* ==========================================================================
+   Movimiento reducido
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce){
+  .anim,.anim-c{transform:none !important;transition:opacity .2s linear;transition-delay:0s !important}
+  .slide.is-in .anim,.slide.is-in .anim-c{transform:none !important}
+  .anim-c,.slide.is-in .anim-c{transform:translate3d(-50%,-50%,0) !important}
+  .barra .fill{transition:opacity .2s linear;transition-delay:0s !important;transform:scaleX(1);opacity:0}
+  .slide.is-in .barra .fill{opacity:1}
+  .barra .val{transition-delay:0s !important}
+  .punto{transform:translate3d(-50%,50%,0) !important;transition:opacity .2s linear;transition-delay:0s !important}
+  .slide.is-in .punto{transform:translate3d(-50%,50%,0) !important}
+  #notas,#progreso i,#app{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <header id="barra">
+    <div class="marca">
+      <svg viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+      <div class="tit">
+        <b>Análisis del entorno, incidencia y favorabilidad</b>
+        <span>SUSI S.A.S. · Prospectiva 1 · ESIC · Horizonte 2030</span>
+      </div>
+    </div>
+    <div class="sep"></div>
+    <div id="reloj-barra">00:00 / 10:00</div>
+    <button class="btn" id="btn-rejilla" title="Vista de cuadrícula">Cuadrícula <kbd>O</kbd></button>
+    <button class="btn" id="btn-notas" title="Notas del orador">Notas <kbd>N</kbd></button>
+    <button class="btn" id="btn-ayuda" title="Atajos">Atajos <kbd>?</kbd></button>
+    <button class="btn btn--primario" id="btn-presentar">Presentar <kbd>P</kbd></button>
+  </header>
+
+  <aside id="panel"></aside>
+
+  <div id="viewport">
+    <div id="stage">
+
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="susi-logo" viewBox="0 0 222 101.539"><g transform="translate(2.355 -0.133)"><g transform="translate(70.189 72.506)"><path d="M456.16,505.472l.123,7.157a2.614,2.614,0,0,0,.33,1.592,1.547,1.547,0,0,0,1.22.436l.563-.01.007.375-6.148.106-.007-.375.54-.009a1.447,1.447,0,0,0,1.289-.6,3.081,3.081,0,0,0,.192-1.477l-.206-12.034a2.906,2.906,0,0,0-.31-1.614,1.621,1.621,0,0,0-1.242-.414l-.54.009-.007-.372,5.26-.09a9.5,9.5,0,0,1,3.037.331,4.23,4.23,0,0,1,1.883,1.244,3.19,3.19,0,0,1,.794,2.125,3.545,3.545,0,0,1-1.111,2.76,4.659,4.659,0,0,1-3.239,1.111,9.709,9.709,0,0,1-1.128-.053C457.058,505.624,456.625,505.562,456.16,505.472Zm-.01-.581c.376.061.709.108,1,.138a6.381,6.381,0,0,0,.758.039,2.55,2.55,0,0,0,1.87-.851,2.892,2.892,0,0,0,.763-2.12,3.7,3.7,0,0,0-.406-1.653,2.555,2.555,0,0,0-1.1-1.134,3.292,3.292,0,0,0-1.6-.356,6.225,6.225,0,0,0-1.382.233Z" transform="translate(-451.966 -490.998)"></path><path d="M523.854,530.972a20.536,20.536,0,0,1-1.84,1.319,3.117,3.117,0,0,1-1.229.271,2.208,2.208,0,0,1-1.657-.637,2.357,2.357,0,0,1-.678-1.711,2.975,2.975,0,0,1,.486-1.979,4.962,4.962,0,0,1,1.578-1.355,19.133,19.133,0,0,1,3.247-1.321l-.006-.352a1.918,1.918,0,0,0-.477-1.3,1.686,1.686,0,0,0-1.351-.5,1.537,1.537,0,0,0-1.055.37,1.017,1.017,0,0,0-.377.8l.033.581a.991.991,0,0,1-.237.719.869.869,0,0,1-.656.272.826.826,0,0,1-.642-.26,1.02,1.02,0,0,1-.262-.722,2.041,2.041,0,0,1,.9-1.614,4.166,4.166,0,0,1,2.608-.77,4.636,4.636,0,0,1,2.105.379,1.95,1.95,0,0,1,.949.978,5.184,5.184,0,0,1,.224,1.762l.053,3.151c.015.885.04,1.43.071,1.628a.623.623,0,0,0,.181.4.434.434,0,0,0,.283.1.533.533,0,0,0,.3-.089,6.016,6.016,0,0,0,.832-.741l.01.561a3.124,3.124,0,0,1-2.227,1.555,1.05,1.05,0,0,1-.828-.329A1.857,1.857,0,0,1,523.854,530.972Zm-.011-.663-.071-4.131a16.717,16.717,0,0,0-2.041.907,4.251,4.251,0,0,0-1.4,1.4,2.49,2.49,0,0,0-.281,1.239,2.549,2.549,0,0,0,.648,1.172,1.394,1.394,0,0,0,1.047.461A3.945,3.945,0,0,0,523.843,530.309Z" transform="translate(-507.821 -511.702)"></path><path d="M570.065,524.3q1.654-1.98,3.213-2.008a2.421,2.421,0,0,1,1.36.352,2.551,2.551,0,0,1,.942,1.23,5.924,5.924,0,0,1,.249,1.86l.142,8.3a3.281,3.281,0,0,0,.171,1.2.9.9,0,0,0,.4.377,5.574,5.574,0,0,0,1.153.3q-3.519.725-3.453-1.852l-.14-8.135a3.679,3.679,0,0,0-.378-1.829,1.258,1.258,0,0,0-1.179-.549,3.5,3.5,0,0,0-2.466,1.349l.084,4.9a3.589,3.589,0,0,0,.128,1.161.97.97,0,0,0,.417.416,2.674,2.674,0,0,0,1.064.116l.005.375-4.805.083-.005-.374.216,0a1.171,1.171,0,0,0,.99-.369,2.486,2.486,0,0,0,.237-1.373l-.059-3.445a15.077,15.077,0,0,0-.111-2.042.869.869,0,0,0-.246-.494.674.674,0,0,0-.447-.126,1.942,1.942,0,0,0-.711.178l-.159-.372,2.9-1.171.454-.008Z" transform="translate(-548.357 -511.293)"></path><path d="M633.259,529.1a20.97,20.97,0,0,1-1.841,1.319,3.1,3.1,0,0,1-1.228.27,2.2,2.2,0,0,1-1.657-.637,2.354,2.354,0,0,1-.679-1.711,2.976,2.976,0,0,1,.486-1.979A4.967,4.967,0,0,1,629.919,525a19.106,19.106,0,0,1,3.247-1.32l-.006-.352a1.91,1.91,0,0,0-.478-1.3,1.682,1.682,0,0,0-1.35-.5,1.528,1.528,0,0,0-1.055.37,1.016,1.016,0,0,0-.377.8l.033.58a.989.989,0,0,1-.237.719.865.865,0,0,1-.656.272.83.83,0,0,1-.642-.259,1.02,1.02,0,0,1-.262-.722,2.044,2.044,0,0,1,.9-1.615,4.164,4.164,0,0,1,2.607-.77,4.654,4.654,0,0,1,2.106.379,1.952,1.952,0,0,1,.949.978,5.165,5.165,0,0,1,.224,1.763l.054,3.15c.015.885.04,1.43.072,1.63a.623.623,0,0,0,.18.4.437.437,0,0,0,.283.1.536.536,0,0,0,.3-.09,6,6,0,0,0,.832-.74l.01.561a3.122,3.122,0,0,1-2.227,1.554,1.045,1.045,0,0,1-.828-.328A1.855,1.855,0,0,1,633.259,529.1Zm-.011-.663-.072-4.131a16.525,16.525,0,0,0-2.042.907,4.256,4.256,0,0,0-1.4,1.4,2.5,2.5,0,0,0-.282,1.24,2.549,2.549,0,0,0,.648,1.171,1.389,1.389,0,0,0,1.045.462A3.958,3.958,0,0,0,633.248,528.434Z" transform="translate(-599.756 -510.125)"></path><path d="M689.89,482.133a5.106,5.106,0,0,1-1.368,1.041,3.419,3.419,0,0,1-1.445.336,3.668,3.668,0,0,1-2.8-1.228,4.62,4.62,0,0,1-1.236-3.248,5.376,5.376,0,0,1,1.207-3.547,4.093,4.093,0,0,1,3.3-1.593,4.324,4.324,0,0,1,2.218.5l-.1-5.686a13.845,13.845,0,0,0-.11-1.96.826.826,0,0,0-.257-.495.693.693,0,0,0-.436-.126,2.229,2.229,0,0,0-.711.177l-.158-.351,2.883-1.189.475-.008.274,16.018a3.359,3.359,0,0,0,.356,1.737,3.028,3.028,0,0,0,1.242.5l.007.395-2.835.049-.477.008Zm-.011-.706L689.8,476.7a3.1,3.1,0,0,0-.4-1.239,2.093,2.093,0,0,0-3.524-.271,4.265,4.265,0,0,0-.923,3.043,4.643,4.643,0,0,0,.984,3.1,2.714,2.714,0,0,0,2.1,1.042A2.649,2.649,0,0,0,689.878,481.427Z" transform="translate(-646.141 -462.942)"></path><path d="M742.366,524.352a11.831,11.831,0,0,0,.572,1.8,3.446,3.446,0,0,0,3.368,1.916,2.737,2.737,0,0,0,1.636-.528,3.706,3.706,0,0,0,1.138-1.743l.351.2a4.906,4.906,0,0,1-1.254,2.553,3.515,3.515,0,0,1-2.666,1.187,4.765,4.765,0,0,1-3.655-2.242,5.811,5.811,0,0,1-.795-3.474,5.136,5.136,0,0,1,1.213-3.734,4.26,4.26,0,0,1,3.181-1.382,4.018,4.018,0,0,1,2.644.783,3.124,3.124,0,0,1,1.05,2.534Zm.027-.936,4.634-1.362a3.946,3.946,0,0,0-.26-1.242,2.053,2.053,0,0,0-.8-.878,1.966,1.966,0,0,0-1.088-.313,2.241,2.241,0,0,0-1.568.681A5.463,5.463,0,0,0,742.394,523.416Z" transform="translate(-694.885 -508.442)"></path><path d="M795.208,518.567l.035,2.077q1.18-2.1,2.455-2.12a1.392,1.392,0,0,1,.968.318,1.013,1.013,0,0,1,.393.781.923.923,0,0,1-.914.951,1.431,1.431,0,0,1-.84-.341,1.425,1.425,0,0,0-.689-.339.613.613,0,0,0-.406.213,4.754,4.754,0,0,0-.952,1.388l.112,6.555a2.729,2.729,0,0,0,.216,1.159,1.006,1.006,0,0,0,.494.436,2.3,2.3,0,0,0,1.01.16l.007.372-4.957.085-.007-.372a2.3,2.3,0,0,0,1.1-.228.894.894,0,0,0,.359-.523,6.319,6.319,0,0,0,.026-1l-.1-5.686a15.26,15.26,0,0,0-.1-1.926.741.741,0,0,0-.257-.452.726.726,0,0,0-.468-.137,1.98,1.98,0,0,0-.732.178l-.116-.372,2.9-1.171Z" transform="translate(-737.578 -508.122)"></path><path d="M840.227,496.131l.127,7.447a3.353,3.353,0,0,0,.151,1.16.889.889,0,0,0,.4.429,2.127,2.127,0,0,0,.956.129l.006.375-4.7.081-.006-.374a2.2,2.2,0,0,0,.95-.15.953.953,0,0,0,.371-.443,3.194,3.194,0,0,0,.12-1.176l-.06-3.568a13.1,13.1,0,0,0-.12-1.946.869.869,0,0,0-.246-.454.669.669,0,0,0-.436-.116,2.161,2.161,0,0,0-.71.158l-.159-.352,2.9-1.192Zm1.963-4.308-3.059,3.56-.369.006,1.045-3.526Z" transform="translate(-775.409 -485.685)"></path><path d="M872.125,525.008a20.788,20.788,0,0,1-1.841,1.319,3.129,3.129,0,0,1-1.228.271,2.208,2.208,0,0,1-1.657-.637,2.36,2.36,0,0,1-.679-1.711,2.976,2.976,0,0,1,.486-1.979,4.967,4.967,0,0,1,1.579-1.355,19.039,19.039,0,0,1,3.247-1.321l-.006-.352a1.913,1.913,0,0,0-.478-1.3,1.689,1.689,0,0,0-1.351-.5,1.53,1.53,0,0,0-1.055.37,1.017,1.017,0,0,0-.375.8l.033.581a.992.992,0,0,1-.237.72.869.869,0,0,1-.656.272.828.828,0,0,1-.642-.26A1.019,1.019,0,0,1,867,519.2a2.039,2.039,0,0,1,.9-1.614,4.154,4.154,0,0,1,2.607-.771,4.645,4.645,0,0,1,2.106.379,1.95,1.95,0,0,1,.949.978,5.156,5.156,0,0,1,.224,1.763l.055,3.151c.015.885.039,1.43.071,1.629a.624.624,0,0,0,.18.4.435.435,0,0,0,.283.1.534.534,0,0,0,.3-.089,6.047,6.047,0,0,0,.832-.741l.01.561a3.123,3.123,0,0,1-2.227,1.555,1.049,1.049,0,0,1-.828-.329A1.856,1.856,0,0,1,872.125,525.008Zm-.011-.663-.071-4.131a16.58,16.58,0,0,0-2.042.907,4.246,4.246,0,0,0-1.4,1.405,2.492,2.492,0,0,0-.281,1.239,2.548,2.548,0,0,0,.648,1.172,1.388,1.388,0,0,0,1.045.461A3.951,3.951,0,0,0,872.114,524.345Z" transform="translate(-800.481 -506.69)"></path><path d="M954.456,498.861l-5.445-1.776-.807,2.194a3.711,3.711,0,0,0-.282,1.188.757.757,0,0,0,.27.567,2.109,2.109,0,0,0,1.174.279l.007.374-3.875.067-.006-.375a1.952,1.952,0,0,0,.989-.41,7.1,7.1,0,0,0,1.005-1.991l.831-2.028-3.137-1.129,1.228-.312,2.09.63,3.1-8.542.325-.006,4.46,11.36a5.315,5.315,0,0,0,.971,1.758,1.874,1.874,0,0,0,1.189.446l0,.374-4.848.083,0-.374a1.713,1.713,0,0,0,.989-.285.743.743,0,0,0,.252-.586,4.593,4.593,0,0,0-.392-1.386Zm-.207-.7-2.944-7.4-2.027,5.575Z" transform="translate(-866.424 -482.131)"></path><path d="M1029.475,514.557l.034,2.077q1.181-2.1,2.456-2.119a1.4,1.4,0,0,1,.969.317,1.009,1.009,0,0,1,.392.781.921.921,0,0,1-.915.951,1.438,1.438,0,0,1-.84-.339,1.437,1.437,0,0,0-.69-.341.615.615,0,0,0-.406.215,4.726,4.726,0,0,0-.951,1.387l.111,6.555a2.689,2.689,0,0,0,.218,1.159.989.989,0,0,0,.493.437,2.331,2.331,0,0,0,1.01.16l.006.372-4.957.085-.007-.372a2.311,2.311,0,0,0,1.1-.228.9.9,0,0,0,.359-.524,6.6,6.6,0,0,0,.025-1l-.1-5.686a14.8,14.8,0,0,0-.1-1.926.747.747,0,0,0-.254-.453.737.737,0,0,0-.47-.137,1.994,1.994,0,0,0-.733.179l-.114-.374,2.9-1.171Z" transform="translate(-934.44 -504.753)"></path><path d="M1068.984,462.391l.113,6.8,2.252-.039.013.706-2.252.038.2,11.93a1.919,1.919,0,0,0,.291,1.2.872.872,0,0,0,.688.3,1.286,1.286,0,0,0,.678-.221,1.319,1.319,0,0,0,.5-.609l.409-.008a3.094,3.094,0,0,1-1.021,1.512,2.338,2.338,0,0,1-1.389.523,1.909,1.909,0,0,1-.944-.242,1.648,1.648,0,0,1-.708-.726,3.719,3.719,0,0,1-.252-1.49l-.207-12.139-1.579.027.009-.726,1.47-.045-.066-3.736a3.976,3.976,0,0,0,.892-1.135A9.855,9.855,0,0,0,1068.984,462.391Z" transform="translate(-967.768 -460.953)"></path><path d="M1097.819,518.267a11.817,11.817,0,0,0,.57,1.8,3.447,3.447,0,0,0,3.369,1.915,2.74,2.74,0,0,0,1.636-.527,3.716,3.716,0,0,0,1.139-1.743l.349.2a4.878,4.878,0,0,1-1.253,2.552,3.519,3.519,0,0,1-2.667,1.188,4.765,4.765,0,0,1-3.655-2.243,5.821,5.821,0,0,1-.794-3.474,5.128,5.128,0,0,1,1.214-3.732,4.252,4.252,0,0,1,3.178-1.382,4.008,4.008,0,0,1,2.647.783,3.12,3.12,0,0,1,1.049,2.534Zm.027-.936,4.63-1.362a3.942,3.942,0,0,0-.259-1.242,2.077,2.077,0,0,0-.795-.879,1.979,1.979,0,0,0-1.089-.312,2.234,2.234,0,0,0-1.566.68A5.43,5.43,0,0,0,1097.847,517.331Z" transform="translate(-993.58 -503.329)"></path><path d="M1155.84,509.03l.055,3.092-.348.006a3.835,3.835,0,0,0-1.042-1.5,2.373,2.373,0,0,0-1.612-.513,1.792,1.792,0,0,0-1.185.4,1.1,1.1,0,0,0-.44.848,1.464,1.464,0,0,0,.343.95,24.633,24.633,0,0,0,2.022,1.893l2,1.6a3.082,3.082,0,0,1,1.3,2.573,2.474,2.474,0,0,1-.96,2.063,3.53,3.53,0,0,1-2.217.816,7.851,7.851,0,0,1-2.038-.278,2.1,2.1,0,0,0-.585-.092c-.159,0-.27.211-.336.628l-.347.006-.054-3.216.347-.006a2.96,2.96,0,0,0,1.146,1.785,3.112,3.112,0,0,0,1.88.57,1.726,1.726,0,0,0,1.176-.434,1.3,1.3,0,0,0,.447-1,1.517,1.517,0,0,0-.54-1.153q-.528-.468-1.627-1.457a28.411,28.411,0,0,1-2.692-2.912,2.172,2.172,0,0,1-.5-1.443,2.511,2.511,0,0,1,.792-1.922,2.982,2.982,0,0,1,2.106-.8,5.3,5.3,0,0,1,1.389.2,3.582,3.582,0,0,0,.717.133.433.433,0,0,0,.27-.077,1.762,1.762,0,0,0,.193-.759Z" transform="translate(-1038.563 -500.145)"></path><path d="M1200.6,519.381a20.732,20.732,0,0,1-1.841,1.318,3.105,3.105,0,0,1-1.225.271,2.215,2.215,0,0,1-1.659-.637,2.379,2.379,0,0,1-.678-1.712,2.992,2.992,0,0,1,.485-1.979,5.015,5.015,0,0,1,1.58-1.355,19.2,19.2,0,0,1,3.246-1.32l0-.352a1.908,1.908,0,0,0-.476-1.3,1.685,1.685,0,0,0-1.353-.5,1.528,1.528,0,0,0-1.053.37,1.012,1.012,0,0,0-.377.8l.032.581a.987.987,0,0,1-.236.719.867.867,0,0,1-.656.272.828.828,0,0,1-.642-.259,1.02,1.02,0,0,1-.263-.722,2.043,2.043,0,0,1,.9-1.614,4.167,4.167,0,0,1,2.608-.772,4.664,4.664,0,0,1,2.106.379,1.951,1.951,0,0,1,.948.978,5.135,5.135,0,0,1,.223,1.764l.057,3.151c.014.885.039,1.429.07,1.628a.632.632,0,0,0,.179.4.432.432,0,0,0,.283.1.536.536,0,0,0,.3-.09,5.907,5.907,0,0,0,.831-.74l.011.561a3.128,3.128,0,0,1-2.227,1.555,1.052,1.052,0,0,1-.828-.329A1.858,1.858,0,0,1,1200.6,519.381Zm-.011-.663-.071-4.131a16.384,16.384,0,0,0-2.041.907,4.249,4.249,0,0,0-1.4,1.405,2.5,2.5,0,0,0-.282,1.239,2.56,2.56,0,0,0,.647,1.172,1.4,1.4,0,0,0,1.046.461A3.959,3.959,0,0,0,1200.588,518.718Z" transform="translate(-1076.506 -501.96)"></path><path d="M1249.528,512.67q1.655-1.98,3.214-2.008a2.421,2.421,0,0,1,1.359.352,2.548,2.548,0,0,1,.942,1.23,5.868,5.868,0,0,1,.248,1.86l.143,8.3a3.255,3.255,0,0,0,.172,1.2.917.917,0,0,0,.4.378,5.683,5.683,0,0,0,1.153.3q-3.517.725-3.452-1.852l-.138-8.135a3.69,3.69,0,0,0-.379-1.828,1.261,1.261,0,0,0-1.178-.549,3.5,3.5,0,0,0-2.469,1.349l.086,4.9a3.58,3.58,0,0,0,.127,1.161.967.967,0,0,0,.418.417,2.668,2.668,0,0,0,1.062.116l.009.374-4.807.083,0-.374.216,0a1.169,1.169,0,0,0,.99-.369,2.509,2.509,0,0,0,.239-1.373l-.059-3.445a15.2,15.2,0,0,0-.113-2.042.883.883,0,0,0-.245-.494.677.677,0,0,0-.447-.126,1.937,1.937,0,0,0-.71.178l-.159-.372,2.9-1.171.454-.008Z" transform="translate(-1119.327 -501.516)"></path><path d="M1312.723,517.462a21.294,21.294,0,0,1-1.841,1.319,3.12,3.12,0,0,1-1.23.271,2.2,2.2,0,0,1-1.657-.638,2.361,2.361,0,0,1-.677-1.711,2.976,2.976,0,0,1,.485-1.979,4.944,4.944,0,0,1,1.577-1.355,19.221,19.221,0,0,1,3.248-1.32l0-.352a1.909,1.909,0,0,0-.479-1.3,1.679,1.679,0,0,0-1.35-.5,1.527,1.527,0,0,0-1.055.37,1.012,1.012,0,0,0-.377.8l.034.581a1,1,0,0,1-.238.718.865.865,0,0,1-.656.272.831.831,0,0,1-.642-.259,1.009,1.009,0,0,1-.261-.722,2.039,2.039,0,0,1,.9-1.614,4.159,4.159,0,0,1,2.608-.772,4.652,4.652,0,0,1,2.106.379,1.95,1.95,0,0,1,.949.978,5.123,5.123,0,0,1,.225,1.763l.054,3.15c.014.885.039,1.43.07,1.63a.635.635,0,0,0,.182.4.43.43,0,0,0,.281.1.53.53,0,0,0,.3-.089,6.047,6.047,0,0,0,.833-.74l.009.561a3.125,3.125,0,0,1-2.225,1.555,1.057,1.057,0,0,1-.831-.329A1.868,1.868,0,0,1,1312.723,517.462Zm-.012-.662-.073-4.131a16.614,16.614,0,0,0-2.041.907,4.239,4.239,0,0,0-1.4,1.4,2.487,2.487,0,0,0-.282,1.24,2.563,2.563,0,0,0,.649,1.172,1.388,1.388,0,0,0,1.044.461A3.958,3.958,0,0,0,1312.712,516.8Z" transform="translate(-1170.726 -500.348)"></path><path d="M1358.331,453.385l.354,20.626a3.375,3.375,0,0,0,.15,1.16,1.7,1.7,0,0,0,.311.471,2.586,2.586,0,0,0,.831.443l.281.12q-3.156.242-3.328-2.164l-.288-16.744a12.9,12.9,0,0,0-.109-1.918.853.853,0,0,0-.245-.494.606.606,0,0,0-.4-.129,2.16,2.16,0,0,0-.713.178l-.179-.348,2.862-1.192Z" transform="translate(-1210.802 -453.385)"></path></g><path d="M35.927,101.115c-7.753,1.16-17.209.335-24.995-.9-3.807-.6-7.136-1.2-9.874-2.617C-.131,86.954-1.22,76.213-2.355,65.558c.8-.3,1.568-.9,2.392-.78,2.152.283,1.641,4.294,3.087,5.551.59,2.673,1.984,4.964,3.314,7.636a30.367,30.367,0,0,0,1.9,2.711c.644.99,1.012,2.078,1.6,2.973a57.167,57.167,0,0,0,6.412,7.606,28.311,28.311,0,0,0,6.589,5.054A14.872,14.872,0,0,0,29.9,98.443,27.607,27.607,0,0,0,43.88,95.99a15.631,15.631,0,0,0,2.079-1.074c4.292-2.874,7.695-8.273,8.911-14.491,1.657-8.6-1.757-13.918-6.446-17.4-5.543-4.114-13.172-6.451-20.365-9.183-1.294-.5-2.592-.708-4.035-1.374-.345-.156-.576-.566-.949-.713-.511-.212-1.194-.114-1.689-.336-.994-.393-2.015-1.1-3.037-1.609A69.714,69.714,0,0,1,12.262,46.3a27.184,27.184,0,0,0-2.887-2.179c-.919-1.763-2.533-2.746-3.536-4.282A23.321,23.321,0,0,1,2.3,29.945,24.555,24.555,0,0,1,6.647,12.8c3.589-4.737,7.776-7.724,13.714-10.163A43.548,43.548,0,0,1,30.073.349c4.823-.629,10.1.261,14.974.788a35.91,35.91,0,0,0,5.316.285c2.506-.137,5.988-.1,8.162-.915A1.566,1.566,0,0,1,60.066.394c.3,4.968,1.112,10.25,1.732,15.312.486,4.232,1.144,8.5,1.221,12.634-2.837,2.67-3.74-2.25-4.943-4.306a90.1,90.1,0,0,0-5.933-9.4,38.244,38.244,0,0,0-3.4-4.294A25.849,25.849,0,0,0,42.564,5.57,22.2,22.2,0,0,0,27.89,3.664,20.254,20.254,0,0,0,20.236,7.4a14.962,14.962,0,0,0-4.955,13.468A15.709,15.709,0,0,0,21.75,31.258c.733.516,1.747.8,2.624,1.328a65.634,65.634,0,0,0,12.892,5.643c.767.242,1.53.142,2.09.33C40.712,39,42.039,39.7,43.395,40.2c5.788,2.171,11.215,4.268,15.5,7.944.5.428,1,.944,1.5,1.44a33.6,33.6,0,0,1,5.543,7.7c.15,1.8,1.062,3.373,1.416,5.209,1.439,7.452-.545,16.369-3.482,21.924a29.04,29.04,0,0,1-7.638,8.65,30.522,30.522,0,0,1-4.982,3.1,17.128,17.128,0,0,1-5.23,2.287A26.211,26.211,0,0,1,35.927,101.115Z" transform="translate(0 0)"></path><path d="M472.381,64.471a27.41,27.41,0,0,1-12.123,3.2c-7.316.374-12.913-1.8-16.713-4.754a24.709,24.709,0,0,1-9.37-18.038c-.4-4.948.184-10.518.118-15.822-.025-2.262-.413-4.448-.395-6.595.009-3.214.824-6.908.245-10.079-.406-2.27-2.982-3.949-5.357-4.484-1.326-.289-2.751.074-2.916-.909-.32-1.786,3.107-1,4.356-1.015,7.131-.107,13.446-.49,20.75-.329,1.312.033,3.518.17,3.332,1.335-.2,1.288-4.44.822-5.5,1.273-2.177.928-3.18,3.076-3.225,6.367-.114,6.514-.091,13.642.318,20.881.25,4.793-.785,10.229-.086,14.58a21.879,21.879,0,0,0,1.711,4.817C449.969,59.588,458,65.3,466.38,63.6c6.469-1.286,11.09-6.049,13.46-11.839,3.114-7.647,1.63-18.478,1.659-27.861.009-1.8.441-3.711.143-5.458-.24-1.411-1.675-3.5-2.556-4.684-1.616-2.2-4.512-5.127-7.277-5.779-1.639-.389-4.687,1.3-4.864-1.949,1.591-.83,3.461-.308,5.2-.285,3.754.034,7.681-.214,11.63-.274,2.7-.043,5.763.1,8.693.069.9-.016,2.542-.353,2.642.9.122,1.609-3.586,1.733-4.975,2.54-2.424,1.411-5.858,6.42-6.394,9.388-.438,2.4.052,5.175.111,7.279.229,10.752.876,22.843-3.427,30.741C478.453,60.008,475.613,62.12,472.381,64.471Z" transform="translate(-359.831 -4.483)"></path><path d="M923.437,18.253c-2.275.433-1.907-1.646-2.742-2.588a50.365,50.365,0,0,0-6.365-9.4c-1.55-.882-3.2-2.726-5.357-3.36-3.282-.965-6.539-.238-9.42.747-2.715,1.637-5.684,4.575-5.125,9.406.64,5.826,7.059,8.275,12.357,10.112,1.4.488,2.81.727,4.444,1.362.386.15.694.573,1.094.733.7.252,1.543.194,2.24.479a30.419,30.419,0,0,1,8.686,5.823c1.5,2.42,3.146,4.8,3.436,8.059a24.414,24.414,0,0,1-1.53,11.174c-1.786,4.341-5.842,7.844-10.2,9.713-5.271,2.236-14.749,3.383-22.607,1.951a26.946,26.946,0,0,1-6.943-2.128c-.658-6.589-1.75-13.471-1.9-20.085a3.323,3.323,0,0,1,2.106-.091c1.68,4.526,3.459,8.975,6.544,13.051a22.8,22.8,0,0,0,8.237,6.95c3.128,1.294,8.439.708,11.372-.722,4.322-2.1,8.2-8.794,6.555-15.53-.672-2.686-4.2-5.453-6.723-6.6-11.494-5.3-29.966-7.389-24.423-26.4,1.648-3.713,4.7-5.973,7.767-8.206C897.815,1.815,900.439.5,903.98.265c3.586-.251,7.313.624,10.908.82,1.839.1,5-.868,6.314-.54,1.6.369,1.092,3.793,1.266,5.634.073.743.493,1.727.631,2.958.123,1.017-.061,2.268.059,3.236C923.362,14.013,924.562,16.87,923.437,18.253Z" transform="translate(-744.418 -0.073)"></path><path d="M1229.125,3.373c-.009.355-.014.742-.021,1.116-.935.967-2.333.479-3.391.746-4.26,1.132-3.888,5.086-3.886,9.859,0,6.787.49,14.27.316,21.447-.086,4.143-.4,8.981-.2,13.594.118,2.222-.111,5.742.391,7.432a8.671,8.671,0,0,0,3.273,3.872c1.366.665,4.276.528,4.431,1.495.361,1.929-3.743,1.285-6.052,1.262-5.261-.081-9.243.153-14.154.058-2.3-.035-5.57.713-7.132-.445-.308-2.4,3.005-1.511,4.537-2.272a6.665,6.665,0,0,0,3.04-3.854,27.047,27.047,0,0,0-.032-4.484c-.115-6.363.136-14.806-.3-21.582-.338-5.253-.118-10.8-.045-15.418a43.286,43.286,0,0,0,.152-6.019c-.329-2.3-3.007-3.943-4.512-5.014-.708-.216-4.108.731-3.729-1.347.211-1.219,2.179-.616,3.366-.614.81-.017,1.773-.322,2.8-.365,3.67-.185,8.643.294,12.615.171,2.088-.054,4.38-.194,5.892-.28C1227.659,2.683,1228.886,2.834,1229.125,3.373Z" transform="translate(-1011.856 -2.176)"></path><path d="M44.182,545.328c-1.355.835-3.836-.181-5.18-.548-1.957-.535-4.392-.184-5.994-1.133.384-1.079,1.4-1.5,2.7-1.613-1.2-.9-7.027.405-5.416-2.234.486-.829,2.052-.134,2.828-.913-.579-.457-1.934-.177-2.658-.483-.978-1.045-1.178-4.415-.272-5.615,2.195,1.373,3.548,3.54,5.048,5.589,2.3,1.406,4.145,3.251,6.317,4.785C42.67,543.563,44.173,544.3,44.182,545.328Z" transform="translate(-26.863 -447.604)" fill="#fff"></path><path d="M363.643,509.695a19.14,19.14,0,0,1-2.354,5.126c-.441.63-1.239,1.567-2.161,1.488.354-.992,1.2-6.244,2.417-6.944A1.707,1.707,0,0,1,363.643,509.695Z" transform="translate(-303.764 -427.739)" fill="#fff"></path><path d="M84.138,59.627c.761,1.088-.842,1.8-.908,2.922a2.077,2.077,0,0,1-1.83.656C80.708,61.3,82.79,60.307,84.138,59.627Z" transform="translate(-70.266 -49.994)" fill="#fff"></path><path d="M312.507,25.342c.032.505-.268.676-.3,1.117,1.285,1.516,1.789,4.491,1.652,6.911-1.3-.481-2.143-1.65-3.155-2.887-1.357-1.62-1.952-2.257-.318-3.927-.994-.04-4.14.066-5.012-1.245-.063-.438.182-.567.445-.7C307.713,24.639,311.492,24.027,312.507,25.342Z" transform="translate(-258.581 -20.47)" fill="#fff"></path><path d="M67.455,87.131c-.259.842-.318,2.052-1.039,2.495a1.621,1.621,0,0,1-2.361-.89C63.923,87.5,66.184,86.055,67.455,87.131Z" transform="translate(-55.801 -72.79)" fill="#fff"></path><path d="M48.809,111.977c-.061.611.313.792.386,1.273-.636,1.454.059,2.4.195,3.792a17.006,17.006,0,0,0,.735,3.935c.359.935,1.519,1.468,1.339,2.56,1.13.8,1.834,2.21,3.01,3.162,2.828,2.3,6.787,3.874,10.509,5.436.413.177.708.593,1.108.735,3.291,1.134,6.732,1.976,10.146,3.191.406.145.7.571,1.108.719,2.174.839,4.508,1.3,6.664,2.272.49.217.885.659,1.391.877.565.234,1.228.2,1.8.459.658.314,1.223,1.1,1.934,1.456A22.038,22.038,0,0,1,101.35,157.56c.2,1.037.336,2.489-.49,2.925,1.353.758.71,3.032-.375,3.642a2.1,2.1,0,0,1,.96,1c.1,1.2-.511,1.652-.894,2.353.887,1.655-.334,3.162-.8,4.611a2.088,2.088,0,0,1-2.787-.77,14.162,14.162,0,0,1,.2-2.8c.586-.4,1.6-.328,2.124-.789-.5-1.045-2.12-.371-2.347-1.456-.32-1.459,1.848-1.813,3.4-2.017-1.507-.657-3.995-.369-3.854-2.061.114-1.615,2.456-.854,3.809-1.585-1.026-.713-3.536-.008-4.6-.682-.513-.76-.747-2.021.061-2.652a20.321,20.321,0,0,0,2.808-.361c-1.519-.97-5.738.658-5.547-2.236a6.177,6.177,0,0,1,2.4-.775c-1.988-1.294-6.169-.033-6.65-3.252a2.978,2.978,0,0,1,1.839-.512c-1.925-.82-6.028.454-5.979-2.257.658-.7,2.488-.172,3.387-.617-1.916-.73-5.37-.16-7.849-.471-1.139-.142-2.964-.385-2.751-1.888,1.015-.574,2.771-.346,4.085-.6-3.768-1.191-8.825.421-11.875-1.417a3.967,3.967,0,0,1,3.4-1.454c-1.475-.807-10.114.985-9.771-1.5.107-.865,1.228-.621,2.118-.925-2.406-.99-7.572.656-8.217-2.035.531-1.119,2.86-.337,3.94-.877-2.538-1.049-8.148.826-8.48-2.315.906-.517,2.5-.326,3.655-.613-1.846-.972-6.46.691-6.537-1.977.851-.737,2.56-.565,3.8-.883-1.627-.717-4.608.138-6-.851a2.336,2.336,0,0,1,.034-1.687c.64-.459,1.684.062,2.529-.348-1.5-.691-4.53.373-4.276-2.212.577-.583,1.857-.431,2.81-.633-.631-.95-3.01-.222-3.6-1.209.007-.37.011-.748.025-1.123.415-.406,1.264-.395,1.961-.507-.742-.375-2.095-.182-2.494-.9.014-.471.023-.931.036-1.4a3.346,3.346,0,0,1,1.7-.519c-2.07-.309-2.6-2.611-.763-3.518a1.956,1.956,0,0,1-.359-2.394c.517-.466,1.739-.194,2.251-.646-1.053-.792-2.129-2.106-.608-3.238C49.553,108.2,50.429,110,48.809,111.977Z" transform="translate(-39.266 -91.383)" fill="#fff"></path><g transform="translate(2.734 48.787)"><path d="M33.106,311.44l.583.316,2.56,4.343a15.918,15.918,0,0,0-6.737-11.258,15.282,15.282,0,0,0,6.147,11.5Z" transform="translate(-29.513 -304.841)"></path><path d="M37.723,364.794l.574.166,3.184,3.661c-2.692-7.583-8.33-9.451-8.33-9.451A14.729,14.729,0,0,0,41.015,369Z" transform="translate(-32.571 -350.495)"></path><path d="M66.528,418.359l.574.16,3.187,3.664c-2.69-7.586-8.323-9.45-8.323-9.45a14.72,14.72,0,0,0,7.858,9.831Z" transform="translate(-56.784 -395.504)"></path><path d="M88.822,470.036l.558.172,3.073,3.453c-2.651-7.014-8.055-8.919-8.055-8.919a14.627,14.627,0,0,0,7.62,9.249Z" transform="translate(-75.634 -439.21)"></path><path d="M75.768,352.943l.479.612,1.409,5.093c.831-7.159-3.738-13.252-3.738-13.252-1.31,5.394,1.82,11.047,3.123,13.087Z" transform="translate(-66.564 -338.92)"></path><path d="M102.338,388.659l.39.713.565,5.108c2.1-6.229-1.559-13.306-1.559-13.306-2.3,4.457-.043,10.653.946,12.947Z" transform="translate(-89.364 -368.985)"></path><path d="M122.876,437.757l.263.622.082,4.456c2.111-5.4-.279-11.61-.279-11.61-2.14,3.859-.8,9.281-.184,11.29Z" transform="translate(-107.042 -411.044)"></path><path d="M142.7,434.267a25.335,25.335,0,0,0-2.392,13.785s-.189,2.105,1.679,5.989c0,0-.881-14.043.713-19.774" transform="translate(-122.465 -413.601)"></path><path d="M73.581,494.075s7.99,1.55,12.8,10.9c0,0-8.06-9.113-12.8-10.9" transform="translate(-66.544 -463.859)"></path><path d="M138.713,543.1s12.075,20.729,46.031,5.655c0,0-29.825,10.044-44.637-4.346Z" transform="translate(-121.276 -505.052)"></path></g><path d="M911.563,342.6c-.127-.006-.1.167-.141.275a1.7,1.7,0,0,1-2.072-.747c-1.319-.324-3.334.06-4.047-.806-.077-.553.207-.72.44-.973a2.685,2.685,0,0,1-1.058-2.682c.55-2.251,3.169.828,3.573,2.192C909.915,340.247,910.714,341.452,911.563,342.6Z" transform="translate(-762.156 -282.964)" fill="#fff"></path><path d="M917.782,65.425c-.606,1.528.1,2.828-.652,3.912.166.326.692,1.045.238,1.536.822,1.556.7,3.99,2.547,4.551a11.718,11.718,0,0,1,.8,1.424,22.555,22.555,0,0,1,5.121,3.207c5.18.777,10.332,3.343,14.722,5.127a19.557,19.557,0,0,1,6.618,4.638c.213,1.263,1.155,1.825,1.741,2.727a20.1,20.1,0,0,0,.878,4.64c.036.529-.309.647-.463.956.908,1.022-.2,2.436.045,4.076a5.4,5.4,0,0,1-.985.527c.386.756.513,2.075-.465,2.376-1.033-.389-.581-1.763.034-2.248a1.576,1.576,0,0,1,.2-2.085c-.014-.818-.794-.885-.661-1.853.193-.471.661-.648,1.278-.659-.474-.369-1.5-.2-1.943-.608.454-1.741-1.176-1.851-1.171-3.541-.036-.367.3-.347.57-.395-.679-.636-2.488-.179-2.765-1.186-.116-.6.379-.548.57-.838-.635-.609-2.263-.307-2.778-1.05.013-.325.013-.648.018-.976-1.455-.428-3.7-.121-4.158-1.5-1.58-.657-3.246-.4-4.589-1.248-.281-.182-.495-.687-.826-.851-.738-.368-1.711-.186-2.506-.482-.522-.192-.908-.809-1.375-1.008-1.215-.514-3.1-.164-3.893-1.085-.052-.665.769-.436.987-.823-1.139-.823-4.206.189-4.013-1.92-1.807-.358-2.229-2.069-3.713-2.741a2.316,2.316,0,0,0-1.207-2.125c-.041-.6.3-.737.585-.978-1.779-1.736-1.294-4.255-1.1-6.761.041-.57.694-.519.862-.959a6.683,6.683,0,0,0-.1-1.674C916.552,65.178,917.424,64.915,917.782,65.425Z" transform="translate(-771.095 -54.627)" fill="#fff"></path><path d="M929.691,53.834a.51.51,0,0,1,.545.555c-.13.015-.114.169-.136.283-.241,0-.474,0-.7,0C929.291,54.169,929.555,54.068,929.691,53.834Z" transform="translate(-782.953 -45.126)" fill="#fff"></path><path d="M490.215,20.392c-.318,1.19-1.267,1.73-2.147,2.337-.69,6.194.418,13.772.036,20.891-.182,3.288-.363,7.352-.263,11.184.063,3.209.567,6.292.456,9.265.479.826,1.273,1.6.91,2.826a31.109,31.109,0,0,0,6.832,7.731c-1.657,1.181-2.835-1.337-4.308-1.642-1.205-1.328-2.542-2.509-3.7-3.869a2.5,2.5,0,0,1-.107-1.131c-.531-.734-1.491-1.045-1.927-1.864.068-.555-.091-1.351.186-1.687-.631-.676-1.652-.967-1.766-2.145a.881.881,0,0,1,.717-.818c-1.076-.763-2.106-2.341-.608-3.384-.145-.732-.981-.787-1.233-1.42a2.061,2.061,0,0,1,1.591-1.784c-.7-.477-1.591-.77-1.5-2a2.047,2.047,0,0,1,1.283-.811c-.958-.863-1.745-2.547-.336-3.5-.94-.713-1.319-2.4-.066-3.086a3.923,3.923,0,0,1-.933-1.991c.3-.5.7-.9,1.028-1.38-1-.649-1.378-2.609.2-2.939-1.021-.6-1.784-2.315-.341-3.08-1.126-.9-1.189-2.972.366-3.508-1.528-.373-1.464-2.084-.354-2.946-.136-.689-.713-.964-.933-1.555.17-.983.508-1.745,1.591-1.786-.032-.711-1.11-.412-1.248-1,.261-.933,1.16-1.191,1.6-1.94-1.071-1.037-2.637-1.581-3.284-3.025.783-.943,3.5-.28,5.613-.416C488.862,19.836,489.965,19.412,490.215,20.392Z" transform="translate(-406.981 -16.489)" fill="#fff"></path><path d="M757.215,18.476a2.24,2.24,0,0,1-1.037,2.363c.007,1.21-.034,2.347-.631,2.919-.425-.011-.835,0-1.264-.033-.2-.531-.6-.879-.8-1.406.027-.544.481-.637.449-1.256-1.294-.681-3.5-.507-3.446-2.475C752.167,17.6,755.358,17.863,757.215,18.476Z" transform="translate(-632.631 -14.955)" fill="#fff"></path><path d="M1083.133,18.072a6.326,6.326,0,0,1,.629,2.678c-.4.108-.377.674-.988.543-.306-.806-2.79-1.865-2.458-2.871C1080.593,17.606,1081.941,17.843,1083.133,18.072Z" transform="translate(-909.769 -14.891)" fill="#fff"></path><path d="M1265.8,16.3c.758,1.665-1.475,2.024-1.9,3.313-.248,2.216.543,4.256-.284,5.888.876,3.666.045,7.642.536,12.05.1.554-.359.5-.436.832.708.848.188,1.934.2,2.953.066,3.212.445,6.884-.1,9.96.415.635.665,2.375-.075,2.935.3.72.94,2.188.084,2.8.885,4,.039,9.13.393,12.614.114,1.289,2.413,1.894,2.145,3.154-.313,1.455-7.316.574-8.258.068.043-1.669,1.662-1.713,2.59-2.459-.856-.547-1.907-1.536-.917-2.7a5.4,5.4,0,0,0,2.1-.492c-.652-.519-2.241-.179-2.633-.913a1.675,1.675,0,0,1,1.455-1.926c-.329-.92-1.328-.908-1.364-1.865-.023-1.222,1.335-1.7,2.851-1.734-.586-.629-2.456-.046-2.782-.925a2.533,2.533,0,0,1,.34-1.665c.554-.062,1.087-.17,1.662-.238-.785-.8-2.215-.68-2.188-1.883.023-.985,1.176-1.3,2.152-1.763-.794-.287-1.748-.436-2.226-1.043.152-1.173.926-1.7,2.17-1.76-2.569-.627-2.4-2.467-.493-3.664-.342-.339-1.076-.354-1.382-.731-.608-1.533.9-2.013,2.161-2.045-.2-.772-1.568-.43-2.081-.892-.05-.505-.35-.751-.252-1.411a9.545,9.545,0,0,1,1.7-.663c-.209-.946-1.493-.847-1.786-1.733.252-1.162,1.142-1.658,2.431-1.744-.486-.512-1.675-.325-2.238-.761-.25-.536.009-1.068.055-1.681a5.434,5.434,0,0,1,1.543-.514c-2.043-.321-2.347-3.563.1-3.649-1.187-.2-2.356-.672-1.784-2.151.463-.531,1.541-.4,2.138-.784-1.071-.316-2.29-.476-2.351-1.734.191-.758,1.359-.958,1.312-1.512-.182-.614-1.1-.513-1.244-1.157-.027-1.615,1.455-1.624,2.579-2.04-.69-.267-1.737-.149-1.952-.889.13-1.026.849-1.421.908-2.483-1.142-.693-2.844-.849-2.878-2.6C1259.8,15.581,1263.354,16.383,1265.8,16.3Z" transform="translate(-1058.932 -13.412)" fill="#fff"></path></g></symbol></defs></svg>
+
+      <!-- ============ 1 · PORTADA ============ -->
+      <section class="slide slide--portada" id="s1" data-presenter="María Camila Jiménez" data-time="0:20" data-rotulo="Portada">
+        <div class="franja-top"></div>
+        <div class="bloque-rayado anim" style="--i:6"></div>
+        <div class="portada-izq">
+          <svg class="logo-portada anim" style="--i:0" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+          <div class="portada-empresa anim" style="--i:1">SUSI S.A.S. · Itagüí, Antioquia</div>
+          <div class="divisor anim" style="--i:2;margin:30px 0"></div>
+          <h1 class="portada anim" style="--i:3">Análisis del entorno,<br>incidencia y favorabilidad</h1>
+          <p class="portada-sub anim" style="--i:4">Ejercicio de prospectiva empresarial con horizonte 2030 sobre los retos
+            <em>«Las mezclas nostálgicas»</em> y <em>«Dónde están las oportunidades»</em>.</p>
+        </div>
+        <div class="portada-der">
+          <dl class="portada-meta anim" style="--i:5">
+            <dt>Integrantes</dt>
+            <dd>María Camila Jiménez Ramírez<br>Santiago Duque Restrepo<br>Juan David Escobar</dd>
+            <dt>Docente</dt><dd>Carlos Alberto Rincón</dd>
+            <dt>Curso</dt><dd>Prospectiva 1<br>ESIC Business and Marketing School</dd>
+            <dt>Horizonte · Fecha</dt><dd>2030 · Septiembre de 2026</dd>
+          </dl>
+        </div>
+        <template class="notas">
+          <li>Saludo y presentación de los tres integrantes.</li>
+          <li>Objeto de estudio: SUSI S.A.S., panadería artesanal de Itagüí.</li>
+          <li>Anunciar horizonte 2030 y los dos retos trabajados.</li>
+          <li>No leer la portada: 20 segundos y avanzar.</li>
+        </template>
+      </section>
+
+      <!-- ============ 2 · EL CASO ============ -->
+      <section class="slide" id="s2" data-presenter="María Camila Jiménez" data-time="0:50" data-rotulo="El caso">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">El caso</div>
+        <div class="cabecera"><h2 class="titulo anim" style="--i:1">SUSI S.A.S. en cuatro datos</h2></div>
+        <div class="divisor anim" style="--i:2;margin-top:26px"></div>
+        <div class="datos4">
+          <div class="dato anim" style="--i:3"><div class="n">30+</div><div class="t">años de trayectoria; constituida formalmente en 2001</div></div>
+          <div class="dato anim" style="--i:4"><div class="n">Itagüí</div><div class="t">Antioquia; planta reconstruida tras el incendio de 2016</div></div>
+          <div class="dato anim" style="--i:5"><div class="n">Alemania</div><div class="t">origen del oficio: Susanne Helga Seifert, formada en repostería</div></div>
+          <div class="dato anim" style="--i:6"><div class="n">2 líneas</div><div class="t">panadería artesanal y snacks saludables</div></div>
+        </div>
+        <div class="retos">
+          <div class="reto anim" style="--i:7">
+            <div class="et">Reto 1</div>
+            <div class="nom">Las mezclas nostálgicas</div>
+            <div class="preg">¿Sigue vendiendo la nostalgia cuando quien compra ya no es la generación que la recuerda?</div>
+          </div>
+          <div class="reto anim" style="--i:8">
+            <div class="et">Reto 4</div>
+            <div class="nom">Dónde están las oportunidades</div>
+            <div class="preg">¿Dónde puede crecer SUSI sin depender de quien hoy controla su acceso al consumidor?</div>
+          </div>
+        </div>
+        <template class="notas">
+          <li>Cuatro datos, no más: trayectoria, lugar, origen alemán, portafolio.</li>
+          <li>Mencionar el incendio de 2016 como prueba de resiliencia, sin detenerse.</li>
+          <li>Plantear los retos como preguntas: son el hilo de toda la presentación.</li>
+          <li>Cerrar: «estas dos preguntas son las que vamos a responder».</li>
+        </template>
+      </section>
+
+      <!-- ============ 3 · HISTORIA Y PORTAFOLIO ============ -->
+      <section class="slide" id="s3" data-presenter="María Camila Jiménez" data-time="0:50" data-rotulo="Historia y portafolio">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Trayectoria</div>
+        <div class="cabecera"><h2 class="titulo anim" style="--i:1">De la cocina de la casa a ocho líneas de producto</h2></div>
+        <div class="linea">
+          <div class="hitos">
+            <div class="hito anim" style="--i:2"><div class="a">Origen</div><div class="d">Producción casera con recetas alemanas de repostería.</div></div>
+            <div class="hito anim" style="--i:3"><div class="a">2001</div><div class="d">Constitución formal de SUSI S.A.S.</div></div>
+            <div class="hito anim" style="--i:4"><div class="a">2016</div><div class="d">Un incendio destruye la planta; la empresa la reconstruye.</div></div>
+            <div class="hito anim" style="--i:5"><div class="a">Hoy</div><div class="d">Portafolio de ocho líneas en 12 cadenas y canal propio.</div></div>
+          </div>
+        </div>
+        <div class="portafolio">
+          <div class="kicker anim" style="--i:6">Portafolio actual</div>
+          <div class="port-grid">
+            <div class="pieza anim" style="--i:7"><b>Panadería</b><small>Producto fresco de base</small></div>
+            <div class="pieza anim" style="--i:8"><b>Panes saludables</b><small>Integrales y bajos en azúcar</small></div>
+            <div class="pieza destacada anim" style="--i:9"><b>Crocantes</b><small>Teja · grissini · knacke</small></div>
+            <div class="pieza destacada anim" style="--i:10"><b>Snacks soplados</b><small>Maíz y arroz · línea en análisis</small></div>
+            <div class="pieza anim" style="--i:11"><b>Tortas</b><small>Repostería de tradición</small></div>
+            <div class="pieza anim" style="--i:12"><b>Cereales de desayuno</b><small>Granolas y mezclas</small></div>
+            <div class="pieza anim" style="--i:13"><b>Congelados</b><small>Masas y producto semielaborado</small></div>
+            <div class="pieza anim" style="--i:14"><b>Merengues</b><small>Repostería alemana</small></div>
+          </div>
+        </div>
+        <template class="notas">
+          <li>La línea de tiempo en 15 segundos: origen casero, 2001, 2016, hoy.</li>
+          <li>El incendio explica por qué la empresa es conservadora con la inversión.</li>
+          <li>Señalar crocantes y soplados: son la línea que analizamos en el slide de precio.</li>
+          <li>Ocho líneas es mucho portafolio para una empresa de este tamaño: guardar ese dato.</li>
+        </template>
+      </section>
+
+      <!-- ============ 4 · CANALES ============ -->
+      <section class="slide" id="s4" data-presenter="María Camila Jiménez" data-time="1:00" data-rotulo="Canales actuales">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Reto 4 · Dónde están las oportunidades</div>
+        <div class="cabecera">
+          <h2 class="titulo anim" style="--i:1">Cómo llega SUSI hoy al consumidor</h2>
+          <div class="unidad anim" style="--i:2">15 puntos de contacto</div>
+        </div>
+        <div class="divisor anim" style="--i:3;margin-top:24px"></div>
+        <div class="canales">
+          <div class="bloque-canal indirecto anim" style="--i:4">
+            <div class="et"><span>Canal indirecto</span><span class="peso">12 cadenas</span></div>
+            <div class="cadenas" id="grid-cadenas"></div>
+          </div>
+          <div class="bloque-canal directo anim" style="--i:11">
+            <div class="et"><span>Canal directo</span><span class="peso">3</span></div>
+            <div class="directos">
+              <div class="directo">Tienda virtual</div>
+              <div class="directo">WhatsApp</div>
+              <div class="directo">Domicilios</div>
+            </div>
+          </div>
+        </div>
+        <p class="lectura anim" style="--i:12">Cuatro de cada cinco puntos de contacto de SUSI son de un tercero:
+          <b>quien controla el acceso al consumidor no es la empresa.</b></p>
+        <template class="notas">
+          <li>Dejar que entren las 12 cadenas y que se vea el bloque grande frente al pequeño.</li>
+          <li>El contraste visual ES el mensaje: no hace falta explicarlo dos veces.</li>
+          <li>12 vs 3: 80% de los puntos de contacto son intermediados.</li>
+          <li>Entregar a Juan David: «veamos qué tan fuerte es ese intermediario».</li>
+        </template>
+      </section>
+
+      <!-- ============ 5 · PORTER ============ -->
+      <section class="slide" id="s5" data-presenter="Juan David Escobar" data-time="0:45" data-rotulo="Cinco fuerzas">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Entorno competitivo</div>
+        <div class="cabecera">
+          <h2 class="titulo anim" style="--i:1">Cinco fuerzas de Porter</h2>
+          <div class="unidad anim" style="--i:2">Intensidad · alta · media-alta · media</div>
+        </div>
+        <div class="radial" id="radial-porter">
+          <svg class="conectores" viewBox="0 0 1696 700" preserveAspectRatio="none" id="conectores-porter"></svg>
+          <div class="centro anim" style="--i:3">
+            <svg viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+          </div>
+        </div>
+        <template class="notas">
+          <li>No leer las cinco: nombrar las dos que mandan.</li>
+          <li>Compradores alto + rivalidad alta = la prima de precio está bajo presión permanente.</li>
+          <li>Nuevos entrantes media es la única fuerza que juega a favor.</li>
+          <li>Enlazar: «y esa presión se ve en el precio».</li>
+        </template>
+      </section>
+
+      <!-- ============ 6 · PRECIO ============ -->
+      <section class="slide" id="s6" data-presenter="Juan David Escobar" data-time="0:50" data-rotulo="Posición por precio">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Reto 4 · Dónde están las oportunidades</div>
+        <div class="cabecera">
+          <h2 class="titulo anim" style="--i:1">Posición competitiva por precio</h2>
+          <div class="unidad anim" style="--i:2">Precio por 100 g · pesos colombianos</div>
+        </div>
+        <div class="divisor anim" style="--i:3;margin-top:26px"></div>
+        <div class="grafico" id="grafico-precio"></div>
+        <div class="remate">
+          <p class="frase anim" style="--i:12">SUSI cobra <b>hasta 3 veces</b> el precio del snack masivo.</p>
+        </div>
+        <template class="notas">
+          <li>Este es el dato duro del reto 4: la brecha de precio es real y es enorme.</li>
+          <li>Dejar crecer las barras antes de hablar; el contraste se explica solo.</li>
+          <li>$129 frente a un promedio masivo de $42: factor 3,07.</li>
+          <li>No es un problema de costos: es una posición de valor que hay que sostener.</li>
+        </template>
+      </section>
+
+      <!-- ============ 7 · PESTEL ============ -->
+      <section class="slide" id="s7" data-presenter="Juan David Escobar" data-time="0:50" data-rotulo="PESTEL 2030">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Entorno general</div>
+        <div class="cabecera">
+          <h2 class="titulo anim" style="--i:1">PESTEL hacia 2030</h2>
+          <div class="unidad anim" style="--i:2">Un hallazgo prospectivo por dimensión</div>
+        </div>
+        <div class="divisor anim" style="--i:3;margin-top:26px"></div>
+        <div class="pestel" id="grid-pestel"></div>
+        <template class="notas">
+          <li>No leer las seis líneas: leer dos y comentar el resto.</li>
+          <li>Las dos que importan: económico (cambio de signo del IPP) y ambiental (empaques 2030).</li>
+          <li>El político no es la tarifa, es qué productos quedan gravados.</li>
+          <li>El tecnológico explica el comportamiento real: más compras, tiquete más pequeño.</li>
+        </template>
+      </section>
+
+      <!-- ============ 8 · TENDENCIAS ============ -->
+      <section class="slide" id="s8" data-presenter="Juan David Escobar" data-time="0:35" data-rotulo="Tendencias">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Lectura de tendencias</div>
+        <div class="cabecera"><h2 class="titulo anim" style="--i:1">Tres escalas de cambio</h2></div>
+        <div class="tendencias">
+          <div class="anillos">
+            <div class="anillo a-mega anim-c" style="--i:4"><span>Mega</span></div>
+            <div class="anillo a-macro anim-c" style="--i:3"><span>Macro</span></div>
+            <div class="anillo a-micro anim-c" style="--i:2"><span>Micro</span></div>
+          </div>
+          <div class="niveles">
+            <div class="nivel anim" style="--i:5">
+              <div class="e">Micro · 1 a 3 años</div>
+              <div class="n">La nostalgia como gatillo de compra</div>
+              <div class="d">El sabor de infancia sigue vendiendo, pero cada generación trae el suyo.</div>
+            </div>
+            <div class="nivel macro anim" style="--i:6">
+              <div class="e">Macro · 3 a 7 años</div>
+              <div class="n">Reformulación y etiquetado en América Latina</div>
+              <div class="d">Menos azúcar, sellos frontales y presión regulatoria sobre el snack procesado.</div>
+            </div>
+            <div class="nivel mega anim" style="--i:7">
+              <div class="e">Mega · una década o más</div>
+              <div class="n">Transición alimentaria y economía circular</div>
+              <div class="d">Alimento más saludable, cadena más corta y empaque que debe volver al ciclo.</div>
+            </div>
+          </div>
+        </div>
+        <template class="notas">
+          <li>Slide rápido: 35 segundos, es una escala de zoom.</li>
+          <li>Micro es lo que se siente hoy; mega es lo que ya está decidido.</li>
+          <li>Lo importante: las tres escalas apuntan en la misma dirección.</li>
+        </template>
+      </section>
+
+      <!-- ============ 9 · IMPLICACIONES ============ -->
+      <section class="slide slide--oscuro slide--centrado" id="s9" data-presenter="Juan David Escobar" data-time="0:30" data-rotulo="Implicaciones 2030">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Implicaciones 2030 · tesis del trabajo</div>
+        <p class="tesis anim" style="--i:1">La mayor vulnerabilidad de SUSI no es el precio ni el producto:
+          es <b>la dependencia de las grandes cadenas</b>. Y la salida no es abandonarlas,
+          sino <b>equilibrar la mezcla de canales</b>.</p>
+        <div class="contraste">
+          <div class="col-c anim" style="--i:2">
+            <div class="e">Hoy</div>
+            <div class="n">Dependencia</div>
+            <div class="mixbar"><i class="ind" style="width:80%"></i><i class="dir" style="width:20%"></i></div>
+            <div class="mixleg"><span>Indirecto 12 puntos</span><span>Directo 3</span></div>
+          </div>
+          <div class="flecha anim" style="--i:3">→</div>
+          <div class="col-c anim" style="--i:4">
+            <div class="e">2030</div>
+            <div class="n">Mezcla equilibrada</div>
+            <div class="mixbar"><i class="ind" style="width:60%"></i><i class="dir" style="width:40%"></i></div>
+            <div class="mixleg"><span>Cadenas como volumen</span><span>Directo como margen</span></div>
+          </div>
+        </div>
+        <template class="notas">
+          <li>Esta es la tesis del trabajo. Decirla despacio y una sola vez.</li>
+          <li>Insistir: no es salir de las cadenas, es dejar de depender de ellas.</li>
+          <li>Las cadenas dan volumen; el canal directo da margen y datos del cliente.</li>
+          <li>Entregar a Santiago: «¿de dónde sale esta conclusión? De 20 variables».</li>
+        </template>
+      </section>
+
+      <!-- ============ 10 · 20 VARIABLES ============ -->
+      <section class="slide" id="s10" data-presenter="Santiago Duque" data-time="0:45" data-rotulo="20 variables críticas">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Método</div>
+        <div class="cabecera">
+          <h2 class="titulo anim" style="--i:1">Las 20 variables críticas</h2>
+          <div class="unidad anim" style="--i:2">10 por reto · insumo del plano</div>
+        </div>
+        <div class="divisor anim" style="--i:3;margin-top:24px"></div>
+        <div class="clusters">
+          <div class="cluster r1 anim" style="--i:4">
+            <div class="ct">Reto 1</div><div class="cn">Las mezclas nostálgicas</div>
+            <div class="vars" id="vars-r1"></div>
+          </div>
+          <div class="cluster r4 anim" style="--i:5">
+            <div class="ct">Reto 4</div><div class="cn">Dónde están las oportunidades</div>
+            <div class="vars" id="vars-r4"></div>
+          </div>
+        </div>
+        <p class="lectura anim" style="--i:6">Cada variable se calificó por <b>incidencia</b> (cuánto mueve el futuro de SUSI)
+          y por <b>favorabilidad</b> (si juega a favor o en contra).</p>
+        <template class="notas">
+          <li>No leer las 20. Nombrar dos de cada reto y explicar el criterio.</li>
+          <li>La numeración es la misma que aparece en el plano del slide siguiente.</li>
+          <li>Explicar los dos ejes en 10 segundos: incidencia y favorabilidad.</li>
+        </template>
+      </section>
+
+      <!-- ============ 11 · HIPÓTESIS ============ -->
+      <section class="slide" id="s11" data-presenter="Santiago Duque" data-time="0:40" data-rotulo="Ejemplo de hipótesis">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Formulación</div>
+        <div class="cabecera"><h2 class="titulo anim" style="--i:1">Ejemplo de hipótesis a 2030</h2></div>
+        <div class="hipo anim" style="--i:2">
+          <p>Para <mark>2030</mark>, el canal directo de SUSI —tienda virtual, WhatsApp y domicilios—
+             representará <mark>el 25 % de sus ventas</mark> en el <mark>Valle de Aburrá</mark>.</p>
+        </div>
+        <div class="criterios">
+          <div class="crit anim" style="--i:3"><div class="n">01</div><div class="t">Afirmación simple</div>
+            <div class="d">Una sola idea verificable; sin condicionales ni matices.</div></div>
+          <div class="crit anim" style="--i:4"><div class="n">02</div><div class="t">Cuantificada</div>
+            <div class="d">25 % de las ventas: se puede medir y, por tanto, refutar.</div></div>
+          <div class="crit anim" style="--i:5"><div class="n">03</div><div class="t">Alcance geográfico</div>
+            <div class="d">Valle de Aburrá, no «el mercado» ni «Colombia».</div></div>
+          <div class="crit anim" style="--i:6"><div class="n">04</div><div class="t">Horizonte definido</div>
+            <div class="d">2030: fecha de corte explícita para la verificación.</div></div>
+        </div>
+        <template class="notas">
+          <li>Leer la hipótesis completa una vez, en voz alta y pausada.</li>
+          <li>Señalar los cuatro criterios sobre el propio texto resaltado.</li>
+          <li>Aclarar que las 20 variables se formulan con este mismo molde.</li>
+          <li>40 segundos: no extenderse.</li>
+        </template>
+      </section>
+
+      <!-- ============ 12 · PLANO ============ -->
+      <section class="slide" id="s12" data-presenter="Santiago Duque" data-time="1:00" data-rotulo="Plano incidencia · favorabilidad">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Resultado del análisis</div>
+        <div class="cabecera">
+          <h2 class="titulo anim" style="--i:1">Plano de incidencia y favorabilidad</h2>
+          <div class="unidad anim" style="--i:2">20 variables · escala 0 a 100</div>
+        </div>
+        <div class="plano-wrap">
+          <div class="plano" id="plano">
+            <div class="zona z-crisis"></div>
+            <div class="zona z-lider"></div>
+            <div class="zona z-ninguna"></div>
+            <div class="zrot" style="left:26px;top:22px">Crisis</div>
+            <div class="zrot" style="right:26px;top:22px;color:var(--rojo-susi);opacity:.8">Liderazgo</div>
+            <div class="zrot" style="left:26px;bottom:22px">Ninguna</div>
+            <div class="eje-x">Grado de favorabilidad →</div>
+            <div class="eje-y">Nivel de incidencia →</div>
+          </div>
+          <div>
+            <div class="conteos" id="conteos-plano"></div>
+            <div class="leyenda">
+              <span><i style="background:var(--rojo-susi)"></i>Reto 1</span>
+              <span><i style="background:var(--terracota)"></i>Reto 4</span>
+            </div>
+          </div>
+        </div>
+        <template class="notas">
+          <li>Dejar que caigan los 20 puntos en silencio; son 2 segundos bien invertidos.</li>
+          <li>Lo primero que hay que decir: la esquina de crisis está llena de variables de canal.</li>
+          <li>8 en liderazgo, 7 en crisis, 5 sin incidencia relevante.</li>
+          <li>Punto 11 (dependencia del canal indirecto) es el de mayor incidencia del mapa.</li>
+        </template>
+      </section>
+
+      <!-- ============ 13 · SÍNTESIS ============ -->
+      <section class="slide" id="s13" data-presenter="Santiago Duque" data-time="0:35" data-rotulo="Síntesis por zonas">
+        <div class="franja-top"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Interpretación</div>
+        <div class="cabecera"><h2 class="titulo anim" style="--i:1">Qué significa para SUSI</h2></div>
+        <div class="divisor anim" style="--i:2;margin-top:24px"></div>
+        <div class="sintesis">
+          <div class="zbloque anim" style="--i:3">
+            <div class="h"><span class="c">8</span><span class="z">Liderazgo</span></div>
+            <p class="q">Lo que SUSI <b>ya controla</b> y debe convertir en ventaja.</p>
+            <ul><li>Autenticidad artesanal y memoria de marca</li><li>Canal directo digital propio</li>
+                <li>Reformulación con menos azúcar</li><li>Nichos saludables y exportación</li></ul>
+          </div>
+          <div class="zbloque crisis anim" style="--i:4">
+            <div class="h"><span class="c">7</span><span class="z">Crisis</span></div>
+            <p class="q">Alta incidencia y <b>en contra</b>: aquí está la agenda urgente.</p>
+            <ul><li>Dependencia del canal indirecto</li><li>Poder de negociación de las cadenas</li>
+                <li>Marcas propias y sensibilidad al precio</li><li>Costo de insumos y norma de empaques</li></ul>
+          </div>
+          <div class="zbloque ninguna anim" style="--i:5">
+            <div class="h"><span class="c">5</span><span class="z">Ninguna</span></div>
+            <p class="q">Importan operativamente, pero <b>no deciden</b> el futuro.</p>
+            <ul><li>Vida útil y estabilidad</li><li>Capacidad instalada de planta</li>
+                <li>Última milla y etiquetado</li><li>Relevo de talento artesanal</li></ul>
+          </div>
+        </div>
+        <p class="lectura anim" style="--i:6">Seis de las siete variables en crisis son de <b>canal</b>, no de producto:
+          el problema de SUSI no es qué fabrica, es cómo llega.</p>
+        <template class="notas">
+          <li>No repetir el gráfico: interpretarlo.</li>
+          <li>El hallazgo: la zona de crisis es casi toda de canal.</li>
+          <li>La zona «ninguna» sirve para decir qué NO hay que priorizar.</li>
+          <li>Entregar el cierre.</li>
+        </template>
+      </section>
+
+      <!-- ============ 14 · CIERRE ============ -->
+      <section class="slide slide--oscuro slide--centrado slide--cierre" id="s14" data-presenter="Cierre · los tres" data-time="0:30" data-rotulo="Cierre">
+        <div class="franja-top"></div>
+        <div class="bloque-rayado anim" style="--i:4"></div>
+        <svg class="marca-agua" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
+        <div class="kicker anim" style="--i:0">Conclusión</div>
+        <p class="cierre anim" style="--i:1;margin-top:44px">El futuro de SUSI no depende de vender menos en las grandes cadenas,
+          sino de <b>depender menos de ellas</b>.</p>
+        <div class="gracias">
+          <div class="g anim" style="--i:2">Gracias</div>
+          <div class="p anim" style="--i:3">Preguntas</div>
+        </div>
+        <template class="notas">
+          <li>Una sola frase. Decirla y callar dos segundos.</li>
+          <li>No agregar resumen ni agradecimientos largos.</li>
+          <li>Abrir preguntas mirando al docente. 30 segundos máximo.</li>
+        </template>
+      </section>
+
+      <div id="hud">
+        <div id="timer">00:00 / 10:00</div>
+        <div id="contador">01 / 14</div>
+        <div id="progreso"><i></i></div>
+      </div>
+
+      <aside id="notas" aria-hidden="true">
+        <div class="cab"><span id="notas-presenter">—</span> <em id="notas-meta">—</em></div>
+        <ul id="notas-lista"></ul>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<div id="rejilla">
+  <div class="rcab">
+    <h3>Vista general · 14 slides</h3>
+    <button class="btn" id="btn-cerrar-rejilla">Cerrar <kbd>Esc</kbd></button>
+  </div>
+  <div class="rgrid" id="rejilla-grid"></div>
+</div>
+
+<div id="ayuda">
+  <div>
+    <h3>Atajos</h3>
+    <table>
+      <tr><td>→ · Espacio</td><td>Siguiente slide</td></tr>
+      <tr><td>←</td><td>Slide anterior</td></tr>
+      <tr><td>Inicio · Fin</td><td>Primero · último</td></tr>
+      <tr><td>P</td><td>Entrar o salir del modo presentación</td></tr>
+      <tr><td>O</td><td>Vista de cuadrícula</td></tr>
+      <tr><td>N</td><td>Notas del orador</td></tr>
+      <tr><td>F</td><td>Pantalla completa</td></tr>
+      <tr><td>R</td><td>Reiniciar el cronómetro</td></tr>
+      <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
+    </table>
+    <p>El cronómetro arranca en el primer avance de slide. Límite: 10:00.</p>
+  </div>
+</div>
+<script>
+(function(){
+"use strict";
+
+/* ==========================================================================
+   DATOS
+   ========================================================================== */
+
+/* --- S4 · cadenas del canal indirecto --- */
+var CADENAS = ["Éxito","Carulla","Euro","Olímpica","Cañaveral","Colsubsidio",
+               "Farmatodo","La Montaña","Mercacentro","Merkaorganico",
+               "Surtifamiliar","Surtiplaza"];
+
+/* --- S5 · cinco fuerzas (x,y en el lienzo 1696x640) --- */
+var FUERZAS = [
+  {f:"Rivalidad entre competidores", i:"Alta",        c:"alta",      x:848,  y:72},
+  {f:"Poder de los compradores",     i:"Alto",        c:"alta",      x:1462, y:268},
+  {f:"Amenaza de sustitutos",        i:"Alta",        c:"alta",      x:1256, y:624},
+  {f:"Poder de los proveedores",     i:"Medio-alto",  c:"medioalta", x:440,  y:624},
+  {f:"Amenaza de nuevos entrantes",  i:"Media",       c:"media",     x:234,  y:268}
+];
+
+/* --- S6 · precio por 100 g. El orden del arreglo es el orden visual. --- */
+var PRECIOS = [
+  {n:"Yupi",              s:"Snack masivo",  v:36,  t:"masivo"},
+  {n:"Crispetas Ramo",    s:"Snack masivo",  v:39,  t:"masivo"},
+  {n:"Doritos",           s:"Snack masivo",  v:46,  t:"masivo"},
+  {n:"Popetas",           s:"Quala",         v:47,  t:"masivo"},
+  {n:"Susanita",          s:"Arroz soplado", v:105, t:"susanita"},
+  {n:"SUSI Menos Azúcar", s:"6 × 25 g",      v:104, t:"susi"},
+  {n:"SUSI Maíz Soplado", s:"6 × 25 g",      v:119, t:"susi"},
+  {n:"SUSI Maíz Soplado", s:"100 g",         v:129, t:"susi"}
+];
+var MAXIMO = 140, PROMEDIO_MASIVO = 42;
+
+/* --- S7 · PESTEL --- */
+var PESTEL = [
+  {l:"Político",     h:"La tarifa del impuesto <em>ya topó en 20 %</em>; lo que puede cambiar es qué productos quedan gravados."},
+  {l:"Económico",    h:"El IPP pasó de <em>-4,07 % a 4,88 %</em> en un año: no es volatilidad, es cambio de signo."},
+  {l:"Social",       h:"La nostalgia <em>no es estable</em>: se desplaza por generación."},
+  {l:"Tecnológico",  h:"Las transacciones online crecen <em>19,9 %</em> pero las ventas reales solo <em>5,9 %</em>: se compra más veces por menos plata."},
+  {l:"Ambiental",    h:"Para 2030 los plásticos de un solo uso deben ser <em>reciclables o compostables</em>."},
+  {l:"Legal",        h:"La norma <em>se revisará más de una vez</em> antes de 2030."}
+];
+
+/* --- S10 y S12 · las 20 variables.
+       x = favorabilidad (0-100), y = incidencia (0-100).
+       Zonas: incidencia > 55 → Liderazgo (fav > 50) o Crisis (fav < 50);
+              incidencia ≤ 55 → Ninguna.                                    --- */
+var VARIABLES = [
+  {id:1,  r:"r1", n:"Memoria de sabor de la marca",        x:74, y:79},
+  {id:2,  r:"r1", n:"Recambio generacional del consumidor",x:36, y:71},
+  {id:3,  r:"r1", n:"Autenticidad artesanal percibida",    x:78, y:82},
+  {id:4,  r:"r1", n:"Reformulación con menos azúcar",      x:72, y:68},
+  {id:5,  r:"r1", n:"Narrativa de origen alemán",          x:70, y:62},
+  {id:6,  r:"r1", n:"Ediciones de temporada",              x:64, y:60},
+  {id:7,  r:"r1", n:"Sensibilidad al precio del hogar",    x:30, y:78},
+  {id:8,  r:"r1", n:"Marcas propias de las cadenas",       x:22, y:74},
+  {id:9,  r:"r1", n:"Vida útil y estabilidad",             x:52, y:34},
+  {id:10, r:"r1", n:"Capacidad de innovar el portafolio",  x:66, y:75},
+  {id:11, r:"r4", n:"Dependencia del canal indirecto",     x:18, y:92},
+  {id:12, r:"r4", n:"Canal directo digital propio",        x:82, y:88},
+  {id:13, r:"r4", n:"Poder de negociación de las cadenas", x:24, y:85},
+  {id:14, r:"r4", n:"Costos logísticos de última milla",   x:44, y:40},
+  {id:15, r:"r4", n:"Etiquetado y sellos frontales",       x:58, y:30},
+  {id:16, r:"r4", n:"Norma de empaques a 2030",            x:34, y:66},
+  {id:17, r:"r4", n:"Volatilidad del IPP de insumos",      x:28, y:68},
+  {id:18, r:"r4", n:"Exportación a nichos saludables",     x:68, y:72},
+  {id:19, r:"r4", n:"Capacidad instalada de planta",       x:46, y:26},
+  {id:20, r:"r4", n:"Relevo del talento artesanal",        x:40, y:32}
+];
+function zonaDe(v){ return v.y <= 55 ? "ninguna" : (v.x >= 50 ? "lider" : "crisis"); }
+
+/* ==========================================================================
+   RENDER DE LOS SLIDES CON CONTENIDO GENERADO
+   Se ejecuta una sola vez al cargar, para que las miniaturas y la
+   cuadrícula muestren el contenido real.
+   ========================================================================== */
+function h(html){ var d=document.createElement("div"); d.innerHTML=html; return d; }
+
+function renderCadenas(){
+  document.getElementById("grid-cadenas").innerHTML =
+    CADENAS.map(function(c){ return '<div class="cadena">'+c+'</div>'; }).join("");
+}
+
+function renderPorter(){
+  var cont = document.getElementById("radial-porter");
+  var svg  = document.getElementById("conectores-porter");
+  var cx = 848, cy = 350, lineas = "";
+  FUERZAS.forEach(function(f,i){
+    var w = f.c==="alta" ? 6 : (f.c==="medioalta" ? 4 : 2.5);
+    var col = f.c==="alta" ? "#D83624" : (f.c==="medioalta" ? "#C06030" : "#B05030");
+    lineas += '<line x1="'+cx+'" y1="'+cy+'" x2="'+f.x+'" y2="'+f.y+'" stroke="'+col+
+              '" stroke-width="'+w+'" opacity="'+(f.c==="media"?.45:.75)+'"/>';
+  });
+  svg.innerHTML = lineas;
+  FUERZAS.forEach(function(f,i){
+    var el = h('<div class="nodo anim-c" style="--i:'+(4+i)+';left:'+(f.x/1696*100)+'%;top:'+(f.y/700*100)+'%">'
+      + '<div class="caja"><div class="f">'+f.f+'</div>'
+      + '<div class="i i--'+f.c+'">'+f.i+'</div></div></div>').firstChild;
+    cont.appendChild(el);
+  });
+}
+
+function renderPrecios(){
+  var cont = document.getElementById("grafico-precio"), html = "";
+  PRECIOS.forEach(function(p,i){
+    var pct = (p.v / MAXIMO * 100).toFixed(2), d = 400 + i*80;
+    html += '<div class="barra'+(p.t==="susi"?" is-susi":"")+'" style="--d:'+d+'">'
+         +   '<div class="etq">'+p.n+'<small>'+p.s+'</small></div>'
+         +   '<div class="track"><div class="fill fill--'+p.t+'" style="width:'+pct+'%"></div></div>'
+         +   '<div class="val">$'+p.v+'</div></div>';
+  });
+  cont.innerHTML = html;
+  var ref = h('<div class="referencia anim" style="--i:11"><span>Promedio masivo $42</span></div>').firstChild;
+  ref.style.left = "calc(352px + 22px + (100% - 352px - 22px - 92px - 22px) * " + (PROMEDIO_MASIVO/MAXIMO) + ")";
+  cont.appendChild(ref);
+}
+
+function renderPestel(){
+  document.getElementById("grid-pestel").innerHTML = PESTEL.map(function(p,i){
+    return '<div class="dim anim" style="--i:'+(4+i)+'"><div class="l">'+p.l+'</div>'
+         + '<div class="h">'+p.h+'</div></div>';
+  }).join("");
+}
+
+function renderVariables(){
+  ["r1","r4"].forEach(function(r){
+    document.getElementById("vars-"+r).innerHTML = VARIABLES.filter(function(v){return v.r===r;})
+      .map(function(v){ return '<div class="var"><i>'+("0"+v.id).slice(-2)+'</i><span>'+v.n+'</span></div>'; }).join("");
+  });
+}
+
+function renderPlano(){
+  var plano = document.getElementById("plano");
+  VARIABLES.forEach(function(v,i){
+    var el = h('<div class="punto '+v.r+'" style="--d:'+(500+i*80)+';left:'+v.x+'%;bottom:'+v.y+'%" '
+      + 'title="'+v.n+'">'+v.id+'</div>').firstChild;
+    plano.appendChild(el);
+  });
+  var cuenta = {lider:0, crisis:0, ninguna:0};
+  VARIABLES.forEach(function(v){ cuenta[zonaDe(v)]++; });
+  document.getElementById("conteos-plano").innerHTML =
+      '<div class="conteo anim" style="--i:3"><div class="c">'+cuenta.lider+'</div>'
+    + '<div class="z">Liderazgo</div><div class="d">Alta incidencia y a favor: la palanca de crecimiento.</div></div>'
+    + '<div class="conteo crisis anim" style="--i:4"><div class="c">'+cuenta.crisis+'</div>'
+    + '<div class="z">Crisis</div><div class="d">Alta incidencia y en contra: la agenda urgente.</div></div>'
+    + '<div class="conteo ninguna anim" style="--i:5"><div class="c">'+cuenta.ninguna+'</div>'
+    + '<div class="z">Ninguna</div><div class="d">Baja incidencia: no deciden el futuro de la empresa.</div></div>';
+}
+
+renderCadenas(); renderPorter(); renderPrecios();
+renderPestel(); renderVariables(); renderPlano();
+
+/* ==========================================================================
+   ESTADO Y ELEMENTOS
+   ========================================================================== */
+var slides   = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+var TOTAL    = slides.length;
+var actual   = 0;
+var stage    = document.getElementById("stage");
+var viewport = document.getElementById("viewport");
+var hud      = document.getElementById("hud");
+var notas    = document.getElementById("notas");
+var rejilla  = document.getElementById("rejilla");
+var ayuda    = document.getElementById("ayuda");
+
+/* ==========================================================================
+   ESCALADO DEL LIENZO AL ÁREA DISPONIBLE
+   ========================================================================== */
+function escalar(){
+  var w = viewport.clientWidth, hgt = viewport.clientHeight;
+  var margen = document.body.classList.contains("presentando") ? 0 : 28;
+  var k = Math.min((w-margen*2)/1920, (hgt-margen*2)/1080);
+  stage.style.transform = "translate3d(-50%,-50%,0) scale(" + k + ")";
+}
+window.addEventListener("resize", function(){ escalar(); ajustarMinis(); });
+
+/* ==========================================================================
+   MINIATURAS (panel lateral) Y CUADRÍCULA
+   ========================================================================== */
+function clonarSlide(sl){
+  var c = sl.cloneNode(true);
+  c.removeAttribute("id");
+  c.classList.add("is-active","is-in","es-mini");
+  var t = c.querySelector("template.notas"); if(t) t.remove();
+  var p = c.querySelector(".plano"); if(p) p.classList.add("encendido");
+  return c;
+}
+function montarMini(marco, sl){
+  var lienzo = document.createElement("div");
+  lienzo.className = "lienzo-mini";
+  lienzo.appendChild(clonarSlide(sl));
+  marco.appendChild(lienzo);
+}
+/* El ancho real del marco lo decide el layout: se mide y se escala después. */
+function ajustarMinis(){
+  document.querySelectorAll(".marco > .lienzo-mini").forEach(function(l){
+    var w = l.parentNode.clientWidth;
+    if(w) l.style.transform = "scale(" + (w/1920) + ")";
+  });
+}
+function construirPanel(){
+  var panel = document.getElementById("panel");
+  slides.forEach(function(sl,i){
+    var it = h('<div class="mini" data-i="'+i+'"><div class="num">'+(i+1)+'</div>'
+      + '<div><div class="marco"></div><div class="rol"><span>'+(sl.dataset.presenter||"").split(" ")[0]
+      + '</span><span>'+(sl.dataset.time||"")+'</span></div></div></div>').firstChild;
+    panel.appendChild(it);
+    montarMini(it.querySelector(".marco"), sl);
+    it.addEventListener("click", function(){ ir(i); });
+  });
+}
+var rejillaLista = false;
+function construirRejilla(){
+  if(rejillaLista){ ajustarMinis(); return; }
+  var g = document.getElementById("rejilla-grid");
+  slides.forEach(function(sl,i){
+    var it = h('<div class="rcelda" data-i="'+i+'"><div class="marco"></div>'
+      + '<div class="pie"><span>'+(i+1)+' · '+(sl.dataset.rotulo||"")+'</span>'
+      + '<span>'+(sl.dataset.time||"")+'</span></div></div>').firstChild;
+    g.appendChild(it);
+    montarMini(it.querySelector(".marco"), sl);
+    it.addEventListener("click", function(){ cerrarRejilla(); ir(i); });
+  });
+  rejillaLista = true;
+  ajustarMinis();
+}
+function marcarActual(){
+  document.querySelectorAll("#panel .mini").forEach(function(m,i){
+    m.classList.toggle("actual", i===actual);
+    if(i===actual && !document.body.classList.contains("presentando")){
+      m.scrollIntoView({block:"nearest"});
+    }
+  });
+  document.querySelectorAll("#rejilla .rcelda").forEach(function(m,i){
+    m.classList.toggle("actual", i===actual);
+  });
+}
+
+/* ==========================================================================
+   ROUTER DE SLIDES
+   ========================================================================== */
+function entrar(sl){
+  sl.classList.remove("is-in");
+  var plano = sl.querySelector(".plano");
+  if(plano) plano.classList.remove("encendido");
+  void sl.offsetWidth;
+  requestAnimationFrame(function(){
+    sl.classList.add("is-in");
+    if(plano) setTimeout(function(){
+      if(sl.classList.contains("is-active")) plano.classList.add("encendido");
+    }, 500 + VARIABLES.length*80 + 400);
+  });
+}
+function ir(i){
+  i = Math.max(0, Math.min(TOTAL-1, i));
+  slides.forEach(function(s){ s.classList.remove("is-active","is-in"); });
+  var sl = slides[i];
+  sl.classList.add("is-active");
+  actual = i;
+  hud.classList.toggle("sobre-oscuro", sl.classList.contains("slide--oscuro"));
+  entrar(sl);
+  document.getElementById("contador").textContent =
+    ("0"+(i+1)).slice(-2) + " / " + ("0"+TOTAL).slice(-2);
+  document.querySelector("#progreso i").style.transform = "scaleX(" + ((i+1)/TOTAL) + ")";
+  actualizarNotas();
+  marcarActual();
+}
+
+/* ==========================================================================
+   NOTAS
+   ========================================================================== */
+function actualizarNotas(){
+  var sl = slides[actual], tpl = sl.querySelector("template.notas");
+  document.getElementById("notas-presenter").textContent = sl.dataset.presenter || "—";
+  document.getElementById("notas-meta").textContent =
+    "Objetivo " + (sl.dataset.time || "—") + " · slide " + (actual+1) + " de " + TOTAL;
+  document.getElementById("notas-lista").innerHTML = tpl ? tpl.innerHTML : "";
+}
+function alternarNotas(){
+  var ab = notas.classList.toggle("abierto");
+  notas.setAttribute("aria-hidden", ab ? "false" : "true");
+  document.getElementById("btn-notas").classList.toggle("activo", ab);
+}
+
+/* ==========================================================================
+   CRONÓMETRO
+   ========================================================================== */
+var t0=null, tick=null;
+var elTimer = document.getElementById("timer"), elReloj = document.getElementById("reloj-barra");
+function pintarTimer(){
+  var s = t0 ? Math.floor((Date.now()-t0)/1000) : 0;
+  var txt = ("0"+Math.floor(s/60)).slice(-2) + ":" + ("0"+(s%60)).slice(-2) + " / 10:00";
+  elTimer.textContent = txt; elReloj.textContent = txt;
+  elTimer.classList.toggle("excedido", s>=600);
+  elReloj.classList.toggle("excedido", s>=600);
+}
+function arrancarTimer(){ if(t0) return; t0=Date.now(); tick=setInterval(pintarTimer,500); pintarTimer(); }
+function reiniciarTimer(){ clearInterval(tick); t0=null; tick=null;
+  elTimer.classList.remove("excedido"); elReloj.classList.remove("excedido"); pintarTimer(); }
+
+/* ==========================================================================
+   MODO PRESENTACIÓN · CUADRÍCULA · AYUDA
+   ========================================================================== */
+function presentar(entrarModo){
+  var on = (entrarModo === undefined) ? !document.body.classList.contains("presentando") : entrarModo;
+  document.body.classList.toggle("presentando", on);
+  document.getElementById("btn-presentar").textContent = on ? "Salir" : "Presentar";
+  if(on && !document.fullscreenElement && document.documentElement.requestFullscreen){
+    document.documentElement.requestFullscreen().catch(function(){});
+  }
+  if(!on && document.fullscreenElement && document.exitFullscreen){ document.exitFullscreen().catch(function(){}); }
+  setTimeout(escalar, 320);
+  escalar();
+}
+function abrirRejilla(){ rejilla.classList.add("abierto"); construirRejilla(); ajustarMinis(); marcarActual(); }
+function cerrarRejilla(){ rejilla.classList.remove("abierto"); }
+function alternarRejilla(){ rejilla.classList.contains("abierto") ? cerrarRejilla() : abrirRejilla(); }
+
+/* ==========================================================================
+   NAVEGACIÓN
+   ========================================================================== */
+function siguiente(){ arrancarTimer(); if(actual < TOTAL-1) ir(actual+1); }
+function anterior(){ if(actual > 0) ir(actual-1); }
+
+document.addEventListener("keydown", function(e){
+  if(e.metaKey || e.ctrlKey || e.altKey) return;
+  var k = e.key;
+  if(k==="ArrowRight" || k===" " || k==="PageDown"){ e.preventDefault(); siguiente(); }
+  else if(k==="ArrowLeft" || k==="PageUp"){ e.preventDefault(); anterior(); }
+  else if(k==="Home"){ e.preventDefault(); ir(0); }
+  else if(k==="End"){ e.preventDefault(); ir(TOTAL-1); }
+  else if(k==="n"||k==="N"){ alternarNotas(); }
+  else if(k==="o"||k==="O"){ alternarRejilla(); }
+  else if(k==="p"||k==="P"){ presentar(); }
+  else if(k==="r"||k==="R"){ reiniciarTimer(); }
+  else if(k==="f"||k==="F"){
+    if(document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen().catch(function(){});
+  }
+  else if(k==="?" || (k==="/" && e.shiftKey)){ ayuda.classList.toggle("abierto"); }
+  else if(k==="Escape"){
+    if(ayuda.classList.contains("abierto")) ayuda.classList.remove("abierto");
+    else if(rejilla.classList.contains("abierto")) cerrarRejilla();
+    else if(notas.classList.contains("abierto")) alternarNotas();
+    else if(document.body.classList.contains("presentando")) presentar(false);
+  }
+});
+
+document.getElementById("btn-presentar").addEventListener("click", function(){ presentar(); });
+document.getElementById("btn-rejilla").addEventListener("click", alternarRejilla);
+document.getElementById("btn-cerrar-rejilla").addEventListener("click", cerrarRejilla);
+document.getElementById("btn-notas").addEventListener("click", alternarNotas);
+document.getElementById("btn-ayuda").addEventListener("click", function(){ ayuda.classList.toggle("abierto"); });
+ayuda.addEventListener("click", function(){ ayuda.classList.remove("abierto"); });
+
+/* Clic para avanzar: solo en modo presentación, para no estorbar al preparar */
+stage.addEventListener("click", function(e){
+  if(!document.body.classList.contains("presentando")) return;
+  if(e.target.closest("#notas")) return;
+  var x = e.clientX / window.innerWidth;
+  if(x > .66) siguiente(); else if(x < .34) anterior();
+});
+
+/* Swipe táctil */
+var tx=0, ty=0;
+viewport.addEventListener("touchstart", function(e){
+  tx=e.changedTouches[0].clientX; ty=e.changedTouches[0].clientY;
+}, {passive:true});
+viewport.addEventListener("touchend", function(e){
+  var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)){ dx<0 ? siguiente() : anterior(); }
+}, {passive:true});
+
+/* Evita el scroll accidental sobre el lienzo */
+viewport.addEventListener("wheel", function(e){ e.preventDefault(); }, {passive:false});
+document.addEventListener("fullscreenchange", escalar);
+
+/* ==========================================================================
+   ARRANQUE
+   ========================================================================== */
+construirPanel();
+ajustarMinis();
+escalar();
+ir(0);
+pintarTimer();
+})();
+</script>
+</body>
+</html>
