@@ -230,7 +230,7 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
    S6 · Precio
    ========================================================================== */
 .grafico{margin-top:40px;position:relative}
-.barra{display:grid;grid-template-columns:352px 1fr 92px;align-items:center;column-gap:22px;
+.barra{display:grid;grid-template-columns:352px 1fr 156px;align-items:center;column-gap:22px;
   height:56px;margin-bottom:20px;position:relative}
 .barra .etq{font-size:var(--fs-grafico);font-weight:600;text-align:right;line-height:1.15}
 .barra .etq small{display:block;font-size:15px;font-weight:400;opacity:.55;letter-spacing:.04em}
@@ -254,7 +254,7 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
 .remate{margin-top:34px;padding-top:30px;border-top:1px solid rgba(26,26,26,.15);
   display:flex;align-items:baseline;gap:26px}
 .remate .frase{font-family:var(--font-display);font-size:50px;line-height:1.12;
-  letter-spacing:-.015em;max-width:1180px}
+  letter-spacing:-.015em;max-width:1420px}
 .remate .frase b{color:var(--rojo-susi);font-weight:400}
 
 /* ==========================================================================
@@ -666,12 +666,12 @@ h2.titulo{font-family:var(--font-display);font-size:var(--fs-titulo);font-weight
         <div class="divisor anim" style="--i:3;margin-top:26px"></div>
         <div class="grafico" id="grafico-precio"></div>
         <div class="remate">
-          <p class="frase anim" style="--i:12">SUSI cobra <b>hasta 3 veces</b> el precio del snack masivo.</p>
+          <p class="frase anim" style="--i:12">SUSI cobra <b>más de 3 veces</b> el precio del snack masivo.</p>
         </div>
         <template class="notas">
           <li>Este es el dato duro del reto 4: la brecha de precio es real y es enorme.</li>
           <li>Dejar crecer las barras antes de hablar; el contraste se explica solo.</li>
-          <li>$129 frente a un promedio masivo de $42: factor 3,07.</li>
+          <li>$12.900 frente a un promedio masivo de $4.200: factor 3,58.</li>
           <li>No es un problema de costos: es una posición de valor que hay que sostener.</li>
         </template>
       </section>
@@ -976,16 +976,18 @@ var FUERZAS = [
 
 /* --- S6 · precio por 100 g. El orden del arreglo es el orden visual. --- */
 var PRECIOS = [
-  {n:"Yupi",              s:"Snack masivo",  v:36,  t:"masivo"},
-  {n:"Crispetas Ramo",    s:"Snack masivo",  v:39,  t:"masivo"},
-  {n:"Doritos",           s:"Snack masivo",  v:46,  t:"masivo"},
-  {n:"Popetas",           s:"Quala",         v:47,  t:"masivo"},
-  {n:"Susanita",          s:"Arroz soplado", v:105, t:"susanita"},
-  {n:"SUSI Menos Azúcar", s:"6 × 25 g",      v:104, t:"susi"},
-  {n:"SUSI Maíz Soplado", s:"6 × 25 g",      v:119, t:"susi"},
-  {n:"SUSI Maíz Soplado", s:"100 g",         v:129, t:"susi"}
+  {n:"Yupi",              s:"Snack masivo",  v:3600,  t:"masivo"},
+  {n:"Crispetas Ramo",    s:"Snack masivo",  v:3900,  t:"masivo"},
+  {n:"Doritos",           s:"Snack masivo",  v:4600,  t:"masivo"},
+  {n:"Popetas",           s:"Quala",         v:4700,  t:"masivo"},
+  {n:"Susanita",          s:"Arroz soplado", v:10500, t:"susanita"},
+  {n:"SUSI Menos Azúcar", s:"6 × 25 g",      v:10400, t:"susi"},
+  {n:"SUSI Maíz Soplado", s:"6 × 25 g",      v:11867, t:"susi"},
+  {n:"SUSI Maíz Soplado", s:"100 g",         v:12900, t:"susi"}
 ];
-var MAXIMO = 140, PROMEDIO_MASIVO = 42;
+var MAXIMO = 14000, PROMEDIO_MASIVO = 4200;   /* (3600+3900+4600+4700)/4 */
+/* Separador de miles con punto, sin decimales: 12900 -> $12.900 */
+function pesos(n){ return "$" + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
 
 /* --- S7 · PESTEL --- */
 var PESTEL = [
@@ -1063,11 +1065,11 @@ function renderPrecios(){
     html += '<div class="barra'+(p.t==="susi"?" is-susi":"")+'" style="--d:'+d+'">'
          +   '<div class="etq">'+p.n+'<small>'+p.s+'</small></div>'
          +   '<div class="track"><div class="fill fill--'+p.t+'" style="width:'+pct+'%"></div></div>'
-         +   '<div class="val">$'+p.v+'</div></div>';
+         +   '<div class="val">'+pesos(p.v)+'</div></div>';
   });
   cont.innerHTML = html;
-  var ref = h('<div class="referencia anim" style="--i:11"><span>Promedio masivo $42</span></div>').firstChild;
-  ref.style.left = "calc(352px + 22px + (100% - 352px - 22px - 92px - 22px) * " + (PROMEDIO_MASIVO/MAXIMO) + ")";
+  var ref = h('<div class="referencia anim" style="--i:11"><span>Promedio masivo '+pesos(PROMEDIO_MASIVO)+'</span></div>').firstChild;
+  ref.style.left = "calc(352px + 22px + (100% - 352px - 22px - 156px - 22px) * " + (PROMEDIO_MASIVO/MAXIMO) + ")";
   cont.appendChild(ref);
 }
 
