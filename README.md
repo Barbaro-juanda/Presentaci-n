@@ -10,9 +10,13 @@ panadería artesanal y snacks saludables de Itagüí, Antioquia.
 
 ---
 
+**En línea:** https://presentaci-n-five.vercel.app
+
 ## Cómo se abre
 
 Descarga `SUSI-Prospectiva-2030.html` y ábrelo con doble clic en cualquier navegador.
+(`index.html` en la raíz solo redirige a ese archivo, para que funcione el despliegue en Vercel / GitHub Pages.)
+
 Es **un solo archivo autocontenido**: no necesita internet, servidor, CDN ni dependencias.
 El logo va incrustado como SVG dentro del propio HTML.
 
