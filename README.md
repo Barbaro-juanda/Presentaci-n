@@ -1,4 +1,19 @@
-# Análisis del entorno, incidencia y favorabilidad — SUSI S.A.S.
+# Presentaciones de Prospectiva I — SUSI S.A.S.
+
+Dos presentaciones autocontenidas en HTML para sustentar el trabajo de aplicación
+de Prospectiva I sobre SUSI S.A.S. `index.html` es la portada que enlaza a ambas.
+
+| Archivo | Entrega | Contenido |
+|---|---|---|
+| `SUSI-Prospectiva-2030.html` | 1 | Análisis del entorno, incidencia y favorabilidad |
+| `SUSI-MICMAC-2030.html` | 2 | Análisis de impacto cruzado (MICMAC): matriz relacional, cuatro planos, desplazamientos y seis variables críticas |
+
+Ambas comparten la misma infraestructura (panel de miniaturas, vista de cuadrícula, modo
+presentación, notas del orador con `N`, cronómetro de 10 minutos) y los mismos atajos.
+
+---
+
+# Entrega 1 · Análisis del entorno, incidencia y favorabilidad
 
 Presentación de prospectiva empresarial con horizonte **2030** sobre SUSI S.A.S.,
 panadería artesanal y snacks saludables de Itagüí, Antioquia.
@@ -15,8 +30,6 @@ panadería artesanal y snacks saludables de Itagüí, Antioquia.
 ## Cómo se abre
 
 Descarga `SUSI-Prospectiva-2030.html` y ábrelo con doble clic en cualquier navegador.
-(`index.html` en la raíz solo redirige a ese archivo, para que funcione el despliegue en Vercel / GitHub Pages.)
-
 Es **un solo archivo autocontenido**: no necesita internet, servidor, CDN ni dependencias.
 El logo va incrustado como SVG dentro del propio HTML.
 
@@ -85,4 +98,48 @@ contraste (Didot / Bodoni) para títulos y sans humanista (Avenir / Segoe UI)
 para el cuerpo.
 
 Animaciones solo con `opacity`, `translate3d` y `scaleX`; respeta
+`prefers-reduced-motion`.
+
+---
+
+# Entrega 2 · Análisis de impacto cruzado (MICMAC)
+
+Archivo: `SUSI-MICMAC-2030.html`. Equipo 2: María Camila Jiménez Ramírez, Santiago Duque
+Restrepo, Juan David Escobar y Thomas Quintero. Reparto: María Camila 1–4 (2:30) ·
+Thomas 5–7 (2:25) · Juan David 8–10 (2:30) · Santiago 11–14 (2:35).
+
+1. Portada
+2. El método — de calificar variables a leer el sistema
+3. Las 20 variables con nombre corto (V01–V20)
+4. La matriz relacional 20 × 20 con los cinco cruces resaltados
+5. Cinco cruces, cinco argumentos (uno por integrante + el colectivo)
+6. Estabilidad de la matriz (convergencia por iteración)
+7. Plano de influencias directas (MDI)
+8. Top 3 motrices y top 3 dependientes
+9. Ranking MDI → MII (gráfico de pendientes)
+10. Mapa de desplazamientos entre los cuatro planos
+11. Comparación con incidencia / favorabilidad (2 × 2)
+12. Las seis variables críticas
+13. El orden de la estrategia
+14. Cierre
+
+## Datos editables
+
+Al inicio del `<script>`: `VARS` (las 20 variables), `CRUCES` (los cinco cruces de la
+matriz), `MDI` (posición relativa de cada variable en el plano directo), `DESP`
+(trayectoria por los cuatro planos), `BUMP` (rankings MDI → MII) y `ESTAB` (estabilidad
+por iteración).
+
+**Nota:** las coordenadas de `MDI` y `DESP` son posiciones *relativas* construidas a
+partir de los rankings y cuadrantes descritos en el documento, no las coordenadas
+exactas que exporta MICMAC. Si se quiere fidelidad total, reemplazarlas con los valores
+de las figuras 1, 3, 5 y 6 del documento.
+
+## Diseño
+
+Misma identidad SUSI que la Entrega 1 (paleta del empaque, sello original, serif de alto
+contraste + sans humanista) con una decoración distinta: riel rayado vertical en el borde
+izquierdo, cuadrícula fina como textura (la matriz), portada y conclusión en rojo profundo
+y cierre en negro. Animaciones con CSS y Web Animations API: onda de la matriz, vuelo de
+los puntos al plano, trazado de líneas y recorrido de trayectorias. Respeta
 `prefers-reduced-motion`.
