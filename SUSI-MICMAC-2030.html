@@ -628,9 +628,9 @@ h2.titulo{font-family:var(--font-display);font-size:60px;font-weight:400;letter-
             <div class="eje-x">Dependencia →</div><div class="eje-y">Influencia →</div>
           </div>
           <div class="leyenda-pl">
-            <div class="it anim" style="--i:20"><i style="background:var(--rojo-susi)"></i><div><b>Motrices</b><span>Costos, Sellos, Impuesto, Innovación y Nostalgia. Mueven al sistema sin que casi nada las mueva.</span></div></div>
-            <div class="it foco anim" style="--i:21"><i style="background:var(--crema)"></i><div><b>Enlace: Cadenas</b><span>Alta influencia y alta dependencia a la vez. Mueve y es movida: es la bisagra del sistema.</span></div></div>
-            <div class="it anim" style="--i:22"><i style="background:var(--terracota)"></i><div><b>Dependientes</b><span>Precio, Directo, Tiendas, Maquila, Alianzas. Reciben más influencia de la que ejercen.</span></div></div>
+            <div class="it anim" style="--i:20"><i style="background:var(--rojo-susi)"></i><div><b>Más motrices</b><span>Costos (MDI 1); Innovación (MDI 2 / MII 2); Sellos (MDI 3 / MII 1); Impuesto (MDI 4 / MII 4); Nostalgia (MDI 6 / MII 5).</span></div></div>
+            <div class="it foco anim" style="--i:21"><i style="background:var(--crema)"></i><div><b>Enlace: Cadenas</b><span>MDI 5 / MII 7. Alta influencia y alta dependencia: bisagra, no motriz pura.</span></div></div>
+            <div class="it anim" style="--i:22"><i style="background:var(--terracota)"></i><div><b>Más dependientes</b><span>Precio, Directo, Tiendas, Maquila, Alianzas: alta dependencia y baja influencia. Directo es la más dependiente.</span></div></div>
             <div class="it anim" style="--i:23"><i style="background:var(--gris-empaque)"></i><div><b>Autónomas</b><span>Merma, Internet, Empaques, Compras. Se monitorean, no se priorizan.</span></div></div>
           </div>
         </div>
@@ -739,18 +739,18 @@ h2.titulo{font-family:var(--font-display);font-size:60px;font-weight:400;letter-
           <div class="cab-x"><div class="motriz">Motriz o enlace en MICMAC</div><div>Dependiente en MICMAC</div></div>
           <div class="cab-y crisis">Crisis en I/F</div>
           <div class="cuadro foco"><div class="t">Problemáticas y, además, mueven todo<small>El diagnóstico se refuerza</small></div>
-            <div class="chips"><span class="chip rojo" style="--d:500">Costos · motriz nº 1</span><span class="chip negro" style="--d:620">Cadenas · enlace</span></div></div>
+            <div class="chips"><span class="chip rojo" style="--d:500">Costos · motriz nº 1</span><span class="chip negro" style="--d:620">Cadenas · enlace</span><span class="chip" style="--d:1120">Sellos</span><span class="chip" style="--d:1180">Impuesto</span></div></div>
           <div class="cuadro"><div class="t">Vulnerables: dependen del sistema<small>Se mueven cuando se mueven las motrices</small></div>
-            <div class="chips"><span class="chip" style="--d:740">Directo</span><span class="chip" style="--d:800">Tiendas</span><span class="chip" style="--d:860">Exportar</span><span class="chip" style="--d:920">Merma</span></div></div>
+            <div class="chips"><span class="chip" style="--d:800">Tiendas</span><span class="chip" style="--d:860">Exportar</span><span class="chip" style="--d:920">Merma</span></div></div>
           <div class="cab-y">Liderazgo en I/F</div>
           <div class="cuadro"><div class="t">Favorables y motrices<small>Palancas confirmadas por los dos métodos</small></div>
-            <div class="chips"><span class="chip rojo" style="--d:1000">Innovación</span><span class="chip rojo" style="--d:1060">Nostalgia</span><span class="chip" style="--d:1120">Sellos</span><span class="chip" style="--d:1180">Impuesto</span><span class="chip" style="--d:1240">Sabor</span></div></div>
+            <div class="chips"><span class="chip rojo" style="--d:1000">Innovación</span><span class="chip rojo" style="--d:1060">Nostalgia</span><span class="chip" style="--d:1240">Sabor</span></div></div>
           <div class="cuadro foco2"><div class="t">Atractivas, pero no son motores<small>El hallazgo central del ejercicio</small></div>
-            <div class="chips"><span class="chip terra" style="--d:1320">Ecommerce</span><span class="chip terra" style="--d:1380">Maquila</span><span class="chip terra" style="--d:1440">Alianzas</span><span class="chip terra" style="--d:1500">Compras</span></div></div>
+            <div class="chips"><span class="chip" style="--d:740">Directo</span><span class="chip terra" style="--d:1320">Ecommerce</span><span class="chip terra" style="--d:1380">Maquila</span><span class="chip terra" style="--d:1440">Alianzas</span><span class="chip terra" style="--d:1500">Compras</span></div></div>
         </div>
         <template class="notas">
           <li>Dos métodos distintos: I/F dice si una variable ayuda o estorba; MICMAC dice si mueve o es movida.</li>
-          <li>Esquina superior izquierda: Costos y Cadenas. Los dos métodos señalan lo mismo. Ese es el diagnóstico.</li>
+          <li>Esquina superior izquierda: Costos, Cadenas, Sellos e Impuesto (I/F 5/2). Innovación y Directo son favorables (5/4), pero Directo sigue siendo la más dependiente.</li>
           <li>Esquina inferior derecha: lo que parecía oportunidad clara resultó dependiente. «Atractiva» no es «motriz».</li>
         </template>
       </section>
@@ -766,28 +766,28 @@ h2.titulo{font-family:var(--font-display);font-size:60px;font-weight:400;letter-
         </div>
         <div class="seis">
           <div class="crit" style="--i:0"><div class="v">V07</div><div class="n">Innovación</div><div class="zona">Liderazgo</div>
-            <div class="datos"><div><b>2 / 2</b><span>MDI / MII</span></div><div><b>4 / 4</b><span>Inc / Fav</span></div></div>
+            <div class="datos"><div><b>2 / 2</b><span>MDI / MII</span></div><div><b>5 / 4</b><span>Inc / Fav</span></div></div>
             <div class="por">La única capacidad interna del núcleo: SUSI puede intervenirla con prueba, desarrollo y validación.</div></div>
           <div class="crit" style="--i:1"><div class="v">V04</div><div class="n">Sellos</div><div class="zona crisis">Crisis</div>
             <div class="datos"><div><b>3 / 1</b><span>MDI / MII</span></div><div><b>5 / 2</b><span>Inc / Fav</span></div></div>
             <div class="por">Gana influencia en cadena: condiciona formulación, empaque, precio y canal. Se anticipa desde el diseño del producto.</div></div>
           <div class="crit" style="--i:2"><div class="v">V06</div><div class="n">Costos</div><div class="zona crisis">Crisis</div>
-            <div class="datos"><div><b>1 / 3</b><span>MDI / MII</span></div><div><b>4 / 1</b><span>Inc / Fav</span></div></div>
+            <div class="datos"><div><b>1 / 3</b><span>MDI / MII</span></div><div><b>5 / 2</b><span>Inc / Fav</span></div></div>
             <div class="por">Máxima motricidad del sistema. Modifica precio, margen, formulación, empaque, escala y viabilidad.</div></div>
           <div class="crit enlace" style="--i:3"><div class="v">V16</div><div class="n">Cadenas</div><div class="zona crisis">Crisis · enlace</div>
-            <div class="datos"><div><b>5 / 7</b><span>MDI / MII</span></div><div><b>4 / 2</b><span>Inc / Fav</span></div></div>
+            <div class="datos"><div><b>5 / 7</b><span>MDI / MII</span></div><div><b>5 / 2</b><span>Inc / Fav</span></div></div>
             <div class="por">Mueve y es movida. El punto de palanca de toda la estrategia de canal.</div></div>
-          <div class="crit" style="--i:4"><div class="v">V05</div><div class="n">Impuesto</div><div class="zona">Liderazgo</div>
-            <div class="datos"><div><b>4 / 4</b><span>MDI / MII</span></div><div><b>4 / 3</b><span>Inc / Fav</span></div></div>
+          <div class="crit" style="--i:4"><div class="v">V05</div><div class="n">Impuesto</div><div class="zona">Crisis</div>
+            <div class="datos"><div><b>4 / 4</b><span>MDI / MII</span></div><div><b>5 / 2</b><span>Inc / Fav</span></div></div>
             <div class="por">Motriz externa: traslada efectos a precio, margen y viabilidad comercial.</div></div>
-          <div class="crit" style="--i:5"><div class="v">V01</div><div class="n">Nostalgia</div><div class="zona">Liderazgo</div>
-            <div class="datos"><div><b>6 / 5</b><span>MDI / MII</span></div><div><b>4 / 4</b><span>Inc / Fav</span></div></div>
-            <div class="por">Influencia estable y baja dependencia. Conecta la propuesta de producto con la aceptación del mercado.</div></div>
+          <div class="crit" style="--i:5"><div class="v">V14</div><div class="n">Canal directo</div><div class="zona">Liderazgo</div>
+            <div class="datos"><div><b>12 / 8</b><span>MDI / MII</span></div><div><b>5 / 4</b><span>Inc / Fav</span></div></div>
+            <div class="por">La más dependiente del sistema. Canal estratégico que responde a las motrices y a la concentración en cadenas.</div></div>
         </div>
         <template class="notas">
           <li>No es el top 3 motriz ni el top 3 dependiente: es un cruce de motricidad, dependencia, desplazamiento y zona I/F.</li>
-          <li>Cuatro externas (Sellos, Costos, Impuesto, Nostalgia), una interna (Innovación) y una bisagra (Cadenas).</li>
-          <li>Innovación es la única que SUSI controla. Decirlo.</li>
+          <li>Seis críticas: Innovación, Sellos, Costos, Impuesto, Cadenas y Canal directo. Cadenas es enlace; Directo, la más dependiente.</li>
+          <li>Innovación es la capacidad interna del núcleo motriz; Canal directo es una prioridad estratégica dependiente.</li>
         </template>
       </section>
 
@@ -817,7 +817,7 @@ h2.titulo{font-family:var(--font-display);font-size:60px;font-weight:400;letter-
         <div class="riel"></div>
         <div class="kicker anim" style="--i:0">Cierre</div>
         <p class="cierre anim" style="--i:1;margin-top:40px">Una oportunidad atractiva no es lo mismo que una variable crítica.
-          El futuro de SUSI lo mueven <b>seis</b>, y solo una de ellas está dentro de la empresa.</p>
+          El futuro de SUSI depende de <b>seis</b> variables críticas: cuatro motrices, una de enlace y una dependiente.</p>
         <div class="gracias"><div class="g anim" style="--i:2">Gracias</div><div class="p anim" style="--i:3">Preguntas</div></div>
         <svg class="sello" viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg>
         <template class="notas">
@@ -848,7 +848,7 @@ h2.titulo{font-family:var(--font-display);font-size:60px;font-weight:400;letter-
    DATOS · tomados de la Entrega 2 (MICMAC)
    ========================================================================== */
 var VARS = [
-  {id:1, c:"Nostalgia",  l:"Atractivo de las mezclas nostálgicas",          r:"r1", crit:true},
+  {id:1, c:"Nostalgia",  l:"Atractivo de las mezclas nostálgicas",          r:"r1"},
   {id:2, c:"Sabor",      l:"Aceptación sensorial de las mezclas nostálgicas", r:"r1"},
   {id:3, c:"Precio",     l:"Disposición a pagar por una propuesta tradicional",r:"r1"},
   {id:4, c:"Sellos",     l:"Exposición a sellos frontales de advertencia",     r:"r1", crit:true},
@@ -861,7 +861,7 @@ var VARS = [
   {id:11,c:"Ecommerce",  l:"Crecimiento del valor del comercio electrónico",   r:"r4"},
   {id:12,c:"Compras",    l:"Crecimiento del número de transacciones en línea", r:"r4"},
   {id:13,c:"Internet",   l:"Penetración de Internet en Colombia",              r:"r4"},
-  {id:14,c:"Directo",    l:"Participación del canal directo de SUSI",          r:"r4"},
+  {id:14,c:"Directo",    l:"Participación del canal directo de SUSI",          r:"r4", crit:true},
   {id:15,c:"Tiendas",    l:"Cobertura y ventas en tiendas pequeñas",           r:"r4"},
   {id:16,c:"Cadenas",    l:"Concentración de ventas en grandes cadenas",       r:"r4", crit:true},
   {id:17,c:"Minorista",  l:"Crecimiento real del comercio minorista",          r:"r4"},
