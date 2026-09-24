@@ -143,3 +143,38 @@ izquierdo, cuadrícula fina como textura (la matriz), portada y conclusión en r
 y cierre en negro. Animaciones con CSS y Web Animations API: onda de la matriz, vuelo de
 los puntos al plano, trazado de líneas y recorrido de trayectorias. Respeta
 `prefers-reduced-motion`.
+
+---
+
+# Actividad aparte · Juan Valdez
+
+Archivo: `JUAN-VALDEZ-4MIN.html`. No tiene relación con SUSI: es un reto universitario
+de 4 minutos sobre Juan Valdez, con la misma interfaz que los deck anteriores pero con
+la identidad de esa marca.
+
+**Un clic por persona.** No hay sub-pasos manuales: cada bloque reproduce solo su
+secuencia coreografiada en menos de 10 segundos y después queda en micro-animación
+ambiental. Los avances a menos de 1,5 s se ignoran para evitar el doble clic.
+
+| Bloque | Quién | Objetivo |
+|---|---|---|
+| 0 | — | Pantalla de espera con el logo |
+| 1 | Jerónimo Bolívar | El gancho: el tracker de café se estira y revela el origen perdido |
+| 2 | Jerónimo González | 675 tiendas, ventas 2025, margen de 2,5 % y las dos fugas |
+| 3 | Samuel Uribe | Capa 1: inteligencia artificial |
+| 4 | Persona 4 | Capa 2: blockchain, del grano a la taza |
+| 5 | Persona 5 | España, EUDR, curva de valor y cierre |
+
+Teclas: `espacio` `→` o clic = siguiente persona · `←` bloque anterior · `R` repetir ·
+`T` panel de presentador · `P` modo presentación · `F` pantalla completa · `?` atajos.
+
+## Identidad y assets
+
+Paleta vinotinto (`#762432`), crema (`#FDEAC7`), vinotinto oscuro (`#4A1520`),
+café (`#3B2314`) y dorado (`#C8963E`) solo como acento. Tipografías **Kalam** (títulos)
+y **Nunito** (texto y cifras), servidas desde `/fonts` y además incrustadas en el propio
+HTML, así que funciona sin internet aunque se mueva el archivo solo.
+
+El logo es `logo-juan-valdez.png` (recortado para quitar una franja de bandera del borde
+izquierdo). Va una sola vez en el archivo, como variable CSS `--logo`, y se apoya sobre
+un halo del mismo vinotinto para que no se note el recuadro del PNG.
