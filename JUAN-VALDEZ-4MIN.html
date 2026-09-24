@@ -413,7 +413,7 @@ h2{font-family:var(--f-tit);font-size:86px;font-weight:700;line-height:1.04;lett
   <header id="barra">
     <div class="marca">
       <span class="logo-img" role="img" aria-label="Juan Valdez Café"></span>
-      <div class="tit"><b>JV Tracker · del grano a tu taza</b><span>Juan Valdez · reto de 4 minutos · 5 bloques</span></div>
+      <div class="tit"><b>JV Tracker · del grano a tu taza</b><span>Juan Valdez · reto de 4 minutos · 6 bloques</span></div>
     </div>
     <div class="sep"></div>
     <div id="reloj-barra">0:00 / 4:00</div>
@@ -661,7 +661,7 @@ h2{font-family:var(--f-tit);font-size:86px;font-weight:700;line-height:1.04;lett
       <div class="notas" id="pNotas">—</div>
     </div>
 
-    <div id="hud"><div id="contador">0 / 5</div><div id="progreso"><i></i></div></div>
+    <div id="hud"><div id="contador">0 / 6</div><div id="progreso"><i></i></div></div>
   </div></div>
 </div>
 
@@ -689,16 +689,18 @@ var $$ = function(s,c){ return [].slice.call((c||document).querySelectorAll(s));
 var BLOQUES = [
   {t:"Pantalla de espera", quien:"—", rol:"Antes de empezar", seg:0, esc:"espera",
    nota:"Deja el logo en pantalla mientras se acomoda el salón. Un clic arranca."},
-  {t:"¿Dónde está tu café?", quien:"Jerónimo Bolívar", rol:"Persona 1 · el gancho", seg:30, esc:"e1",
-   nota:"Deja correr el tracker de la pizza y calla. Cuando tiemble y se vuelva café, pregunta."},
-  {t:"La fuga de dinero", quien:"Jerónimo González", rol:"Persona 2 · el diagnóstico", seg:50, esc:"e2",
+  {t:"¿Dónde está tu café?", quien:"Juan David Escobar", rol:"Persona 1 · el gancho", seg:30, esc:"e1",
+   nota:"Deja correr el tracker y calla. Cuando la barra se estire y aparezcan los interrogantes, pregunta."},
+  {t:"La fuga de dinero", quien:"Samuel Uribe", rol:"Persona 2 · el diagnóstico", seg:50, esc:"e2",
    nota:"675 tiendas, $863.453 millones… y solo 2,5 % de margen. Las dos fugas son el cierre."},
-  {t:"Capa 1 · inteligencia artificial", quien:"Samuel Uribe", rol:"Persona 3 · capa IA", seg:45, esc:"e34",
+  {t:"Capa 1 · inteligencia artificial", quien:"Andrés Gaviria", rol:"Persona 3 · capa IA", seg:45, esc:"e34",
    nota:"El tracker ya no sigue al repartidor: te sigue a ti. Remata con la recomendación."},
-  {t:"Capa 2 · blockchain", quien:"Persona 4", rol:"Persona 4 · blockchain", seg:50, esc:"e34",
+  {t:"Capa 2 · blockchain", quien:"Antonella", rol:"Persona 4 · blockchain", seg:50, esc:"e34",
    nota:"El QR abre el viaje del grano. Cada hito es un bloque que nadie puede alterar."},
-  {t:"Crecimiento y cierre", quien:"Persona 5", rol:"Persona 5 · crecimiento", seg:50, esc:"e5",
-   nota:"España, la fecha del EUDR y la curva de valor. Cierra con la frase y el logo."}
+  {t:"Crecimiento", quien:"Thomas Quintero", rol:"Persona 5 · crecimiento", seg:40, esc:"e5",
+   nota:"España con Grupo Trinity, la fecha del EUDR y la curva de valor del cliente."},
+  {t:"Cierre", quien:"Juan Pablo", rol:"Persona 6 · el cierre", seg:25, esc:"e5",
+   nota:"La barra se completa de la finca a la taza. Di la frase, deja dos segundos y abre preguntas."}
 ];
 var TOTAL_SEG = 240, FECHA_EUDR = new Date(2026,11,30,0,0,0), ESPERA_CLIC = 1500;
 var actual = -1, ultimo = 0, relojes = [];
@@ -856,7 +858,7 @@ function(){
   ambiente(9200);
 },
 
-/* ---------- 5 · crecimiento y cierre ---------- */
+/* ---------- 5 · crecimiento ---------- */
 function(){
   escena("e5"); $("#logo-esquina").classList.add("on");
   tk("final",false); tkReset(); tkVista("completo"); tkTaza(0,true);
@@ -868,10 +870,17 @@ function(){
   T(3000,function(){ $("#mundo").style.opacity=0; on('#rotCo',false); on('#rotEs',false); });
   T(3300,function(){ on('#reloj .b'); pintarCuenta(); });
   T(5200,function(){ on('#ltv'); $("#ltv").classList.add("va"); });
-  T(7300,function(){ on('#reloj .b',false); on('#ltv',false); $("#mundo").style.opacity=0; });
-  T(7800,function(){ on('#cierre .b'); tk("final",true); });
-  T(8200,function(){ tkFill("todo",100); tkTaza(6); tkHechos(7); });
-  ambiente(9600);
+  ambiente(7000);
+},
+
+/* ---------- 6 · el cierre ---------- */
+function(){
+  escena("e5"); $("#logo-esquina").classList.add("on");
+  $("#mundo").style.opacity=0; on('#reloj .b',false); on('#ltv',false);
+  tkReset(); tkVista("completo"); tkTaza(0,true); tk("final",false);
+  T(220, function(){ on('#cierre .b'); tk("final",true); });
+  T(750, function(){ tkFill("todo",100); tkTaza(6); tkHechos(7); });
+  ambiente(3400);
 }];
 
 /* ==========================================================================
@@ -883,7 +892,7 @@ function pintarCuenta(){
   $("#cdH").textContent=("0"+(Math.floor(ms/3600000)%24)).slice(-2);
   $("#cdM").textContent=("0"+(Math.floor(ms/60000)%60)).slice(-2);
 }
-setInterval(function(){ if(actual===5) pintarCuenta(); },1000);
+setInterval(function(){ if(actual>=5) pintarCuenta(); },1000);
 
 /* ==========================================================================
    Cronómetros
@@ -913,9 +922,8 @@ function ir(b, forzar){
   CORO[b]();
   var B=BLOQUES[b];
   $("#pRol").textContent=B.rol; $("#pQuien").textContent=B.quien; $("#pNotas").textContent=B.nota;
-  $("#contador").textContent=b+" / 5";
-  $(".b:first-child",$("#progreso")) ;
-  $("#progreso").firstElementChild.style.transform="scaleX("+(b/5)+")";
+  $("#contador").textContent=b+" / "+(BLOQUES.length-1);
+  $("#progreso").firstElementChild.style.transform="scaleX("+(b/(BLOQUES.length-1))+")";
   $$("#panel .mini").forEach(function(m,i){ m.classList.toggle("actual", i===b);
     if(i===b && !document.body.classList.contains("presentando")) m.scrollIntoView({block:"nearest"}); });
   tb=Date.now(); tic();
