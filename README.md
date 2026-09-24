@@ -162,7 +162,7 @@ ambiental. Los avances a menos de 1,5 s se ignoran para evitar el doble clic.
 | 1 | Juan David Escobar | El gancho: el tracker de café se estira y revela el origen perdido (0:30) |
 | 2 | Samuel Uribe | 675 tiendas, ventas 2025, margen de 2,5 % y las dos fugas (0:50) |
 | 3 | Andrés Gaviria | Capa 1: inteligencia artificial (0:45) |
-| 4 | Antonella | Capa 2: blockchain, del grano a la taza (0:50) |
+| 4 | Antonia | Capa 2: blockchain, del grano a la taza (0:50) |
 | 5 | Thomas Quintero | España, EUDR y curva de valor del cliente (0:40) |
 | 6 | Juan Pablo | Cierre: la barra se completa y aparece el logo (0:25) |
 
