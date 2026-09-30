@@ -776,9 +776,9 @@ h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px
 </div>
 
 <div id="atajos"><div><h3>Atajos</h3><table>
-  <tr><td>→ ↓ espacio · clic</td><td>Siguiente paso</td></tr>
-  <tr><td>← ↑</td><td>Paso anterior</td></tr>
-  <tr><td>Inicio · Fin</td><td>Primero · último</td></tr>
+  <tr><td>→ ↓ espacio · clic</td><td>Diapositiva siguiente</td></tr>
+  <tr><td>← ↑</td><td>Diapositiva anterior</td></tr>
+  <tr><td>Inicio · Fin</td><td>Primera · última</td></tr>
   <tr><td>O</td><td>Vista de cuadrícula</td></tr>
   <tr><td>N</td><td>Notas del orador</td></tr>
   <tr><td>P</td><td>Modo presentación</td></tr>
@@ -787,7 +787,7 @@ h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px
   <tr><td>R</td><td>Reiniciar el cronómetro</td></tr>
   <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
 </table>
-<p>Cada escena avanza por pasos. Al agotarlos, pasa a la siguiente. La rueda del ratón también avanza de a un paso.</p></div></div>
+<p>Un clic por diapositiva: cada escena entra completa, con su contenido escalonado. La rueda del ratón también avanza de una en una.</p></div></div>
 <script>/*!
  * GSAP 3.12.5
  * https://gsap.com
@@ -831,12 +831,7 @@ var escenas=$$("#nb > .nb-esc");
 var TOTAL=escenas.length;
 var dos=function(n){return ("0"+n).slice(-2);};
 
-/* ---- lista plana de pasos: [{e, p}] ---- */
-var PASOS=[];
-escenas.forEach(function(s,i){
-  var n=Math.max(1,+(s.dataset.pasos||1));
-  for(var p=1;p<=n;p++) PASOS.push({e:i,p:p});
-});
+/* ---- un clic por diapositiva: cada escena entra completa, escalonada ---- */
 var idx=0;
 
 /* ==========================================================================
@@ -902,10 +897,10 @@ var idx=0;
    ========================================================================== */
 var hechos={};
 function unaVez(clave,fn){ if(hechos[clave]) return; hechos[clave]=1; fn(); }
-function efectos(e,p){
+function efectos(e){
   var esc=escenas[e];
   /* 03 · contadores */
-  if(e===2&&p>=2) unaVez("cifras",function(){
+  if(e===2) unaVez("cifras",function(){
     $$("[data-n]",esc).forEach(function(el){
       var fin=+el.dataset.n, dec=+(el.dataset.dec||0);
       if(!animar){ el.textContent=dec?(fin/Math.pow(10,dec)).toFixed(dec).replace(".",","):fin.toLocaleString("es-CO"); return; }
@@ -915,26 +910,38 @@ function efectos(e,p){
       }});
     });
   });
-  /* 04 · tachado */
+  /* 04 · el tachado entra después de que se lean los cinco elementos */
   var v=$(".nb-viejo",esc);
-  if(v) v.classList.toggle("tachado", e>2 || (e===3&&p>=2));
-  /* 10 · territorios */
+  if(v){ v.classList.remove("tachado");
+    relojes.push(setTimeout(function(){ v.classList.add("tachado"); }, animar?900:0)); }
+  /* 10 · los territorios se asignan después de presentar a los cuatro */
   var c4=$(".nb-cuatro",esc);
-  if(c4) c4.classList.toggle("terr-on", e>9 || (e===9&&p>=2));
-  /* 11 · palabras maestras */
+  if(c4){ c4.classList.remove("terr-on");
+    relojes.push(setTimeout(function(){ c4.classList.add("terr-on"); }, animar?1100:0)); }
+  /* 11 · las palabras maestras cierran la escena */
   var m=$(".nb-maestras",esc);
-  if(m) m.classList.toggle("on", e>10 || (e===10&&p>=3));
+  if(m){ m.classList.remove("on");
+    relojes.push(setTimeout(function(){ m.classList.add("on"); }, animar?800:0)); }
 }
 
 /* ==========================================================================
    Render de un paso
    ========================================================================== */
+var relojes=[];
 function pinta(){
-  var cur=PASOS[idx], e=cur.e, p=cur.p, esc=escenas[e];
+  relojes.forEach(clearTimeout); relojes=[];
+  var e=idx, esc=escenas[e];
   escenas.forEach(function(s,i){ s.classList.toggle("viva", i===e); });
-  $$(".nb-p",esc).forEach(function(el){ el.classList.toggle("on", (+el.dataset.paso||1)<=p); });
+  /* la escena entra completa, pero escalonada: sigue habiendo composición */
+  var partes=$$(".nb-p",esc);
+  partes.forEach(function(el){ el.classList.remove("on"); });
+  partes.forEach(function(el,k){
+    var orden=(+el.dataset.paso||1);
+    relojes.push(setTimeout(function(){ el.classList.add("on"); },
+      animar ? (60 + (orden-1)*260 + k*45) : 0));
+  });
   escenas.forEach(function(s,i){ if(i!==e) $$(".nb-p",s).forEach(function(el){ el.classList.toggle("on", i<e); }); });
-  efectos(e,p);
+  efectos(e);
   $("#cont").textContent=dos(e+1)+" / "+dos(TOTAL);
   $$("#pasos i").forEach(function(d,i){ d.classList.toggle("on", i<=e); });
   $("#barraprog").firstElementChild.style.transform="scaleX("+((e+1)/TOTAL)+")";
@@ -948,12 +955,10 @@ function pinta(){
   });
   $$("#rejilla .rc-item").forEach(function(m,i){ m.classList.toggle("actual", i===e); });
 }
-function ir(n){ idx=Math.max(0,Math.min(PASOS.length-1,n)); pinta(); }
-function sig(){ if(idx<PASOS.length-1) ir(idx+1); }
+function ir(n){ idx=Math.max(0,Math.min(TOTAL-1,n)); pinta(); }
+function sig(){ if(idx<TOTAL-1) ir(idx+1); }
 function ant(){ if(idx>0) ir(idx-1); }
-function irEscena(e){
-  for(var i=0;i<PASOS.length;i++){ if(PASOS[i].e===e){ ir(i); return; } }
-}
+function irEscena(e){ ir(e); }
 
 /* ==========================================================================
    Escalado del lienzo
@@ -1057,7 +1062,7 @@ document.addEventListener("keydown",function(ev){
   if(k==="ArrowRight"||k==="ArrowDown"||k===" "||k==="PageDown"||k==="Enter"){ ev.preventDefault(); sig(); }
   else if(k==="ArrowLeft"||k==="ArrowUp"||k==="PageUp"){ ev.preventDefault(); ant(); }
   else if(k==="Home"){ ev.preventDefault(); ir(0); }
-  else if(k==="End"){ ev.preventDefault(); ir(PASOS.length-1); }
+  else if(k==="End"){ ev.preventDefault(); ir(TOTAL-1); }
   else if(k==="o"||k==="O"){ alternarRejilla(); }
   else if(k==="n"||k==="N"){ alternarNotas(); }
   else if(k==="p"||k==="P"){ presentar(); }

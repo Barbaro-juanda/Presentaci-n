@@ -1,6 +1,6 @@
 # NUJEVA · Buyer Persona, mercado y arquitectura de consumidores
 
-Presentación de **12 escenas por pasos** para exponer ante un jurado en
+Presentación de **12 diapositivas** para exponer ante un jurado en
 computador o proyector. Tiempo oral objetivo: 10 minutos.
 
 Toda la información proviene del *Informe Buyer Persona Nujeva* (21 páginas,
@@ -18,15 +18,15 @@ Barra superior con el cronómetro y los botones, panel lateral con las doce
 diapositivas en miniatura, y el lienzo de 1920×1080 escalado al centro. El botón
 **Presentar** oculta todo el chrome y entra en pantalla completa.
 
-Dentro de cada escena el contenido entra **por pasos** (de 1 a 4). Avanzar revela
-el siguiente y, al agotarlos, pasa a la escena siguiente. La rueda del ratón
-avanza de a un paso, sin saltárselos.
+**Un clic por diapositiva.** Cada escena entra completa, con su contenido
+escalonado y sus efectos encadenados; no hay sub-pasos que recordar. La rueda
+del ratón avanza de una en una.
 
 | Tecla | Acción |
 |---|---|
-| `→` `↓` `espacio` · clic | Siguiente paso |
-| `←` `↑` | Paso anterior |
-| `Inicio` · `Fin` | Primer · último paso |
+| `→` `↓` `espacio` · clic | Diapositiva siguiente |
+| `←` `↑` | Diapositiva anterior |
+| `Inicio` · `Fin` | Primera · última |
 | `P` | Modo presentación |
 | `O` | Vista de cuadrícula con las 12 escenas |
 | `N` | Notas del orador |
@@ -35,7 +35,7 @@ avanza de a un paso, sin saltárselos.
 | `R` | Reinicia el cronómetro |
 | `Esc` | Cierra lo que esté abierto |
 
-El indicador muestra la escena, no el paso: `05 / 12`.
+El indicador muestra la diapositiva: `05 / 12`. Son doce clics en total.
 
 ## Las doce escenas
 
