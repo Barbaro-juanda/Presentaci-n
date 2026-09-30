@@ -12,24 +12,30 @@ competidores, certificaciones ni registros añadidos.
 Doble clic en `index.html`. No necesita servidor, internet ni instalación:
 GSAP, ScrollTrigger y las tres tipografías viajan dentro del archivo.
 
-## Navegación · por pasos, no por scroll
+## Navegación · el mismo portal que las demás presentaciones
 
-Cada escena tiene entre 1 y 4 pasos. Avanzar revela el siguiente paso y, cuando
-se acaban, pasa a la escena siguiente. La rueda del ratón también avanza de a un
-paso, sin saltárselos.
+Barra superior con el cronómetro y los botones, panel lateral con las doce
+diapositivas en miniatura, y el lienzo de 1920×1080 escalado al centro. El botón
+**Presentar** oculta todo el chrome y entra en pantalla completa.
+
+Dentro de cada escena el contenido entra **por pasos** (de 1 a 4). Avanzar revela
+el siguiente y, al agotarlos, pasa a la escena siguiente. La rueda del ratón
+avanza de a un paso, sin saltárselos.
 
 | Tecla | Acción |
 |---|---|
 | `→` `↓` `espacio` · clic | Siguiente paso |
 | `←` `↑` | Paso anterior |
 | `Inicio` · `Fin` | Primer · último paso |
-| `F` | Pantalla completa |
-| `T` | Cronómetro 00:00 → 10:00 (oculto por defecto; se pone cálido en el último minuto) |
+| `P` | Modo presentación |
+| `O` | Vista de cuadrícula con las 12 escenas |
 | `N` | Notas del orador |
+| `T` | Cronómetro 00:00 → 10:00 (cálido en el último minuto, rojo al pasarse) |
+| `F` | Pantalla completa |
 | `R` | Reinicia el cronómetro |
-| `Esc` | Cierra paneles |
+| `Esc` | Cierra lo que esté abierto |
 
-El indicador de arriba a la derecha muestra la escena, no el paso: `05 / 12`.
+El indicador muestra la escena, no el paso: `05 / 12`.
 
 ## Las doce escenas
 
@@ -62,7 +68,7 @@ siempre marcadas como hipótesis.
 nujeva-4-buyers/
 ├── index.html          la presentación, autocontenida
 ├── speaker-notes.md    guion de ~10 minutos
-├── fonts/              Fraunces · Inter · JetBrains Mono (licencia abierta)
+├── fonts/              Space Grotesk · Fraunces · JetBrains Mono (licencia abierta)
 ├── vendor/             GSAP 3.12.5 y ScrollTrigger, en local
 └── README.md
 ```
@@ -71,11 +77,21 @@ El proyecto no tiene toolchain de npm, así que las dependencias se vendorizaron
 como archivos locales: el efecto es el mismo que `npm install` para el requisito
 de no depender de un CDN durante la exposición.
 
+## Dirección visual
+
+«Noche cálida»: base azul-verde profunda (no negra), superficies de vidrio con
+profundidad, un hilo de luz que recorre la aurora de verde a arcilla, y tipografía
+**Space Grotesk** para la voz analítica con **Fraunces en cursiva** reservada
+únicamente para la voz humana de los buyers. La intención es que se sienta
+contemporáneo sin caer en estética hospitalaria, de farmacia ni de neón frío: la
+calidez y la dignidad siguen siendo el centro.
+
 ## Encapsulado
 
-Todo el CSS vive bajo `#nb` con prefijo `.nb-`, y las tipografías se registran
-como `NB Serif`, `NB Sans` y `NB Mono`. Nada de esta carpeta afecta a las otras
-presentaciones del repositorio.
+Todo el CSS usa el scope `#nb` y el prefijo `.nb-`; las tipografías se registran
+como `NB Display`, `NB Serif` y `NB Mono`. Los tokens de color viven en `:root`
+porque el lienzo envuelve al contenedor `#nb`, pero el archivo es autónomo y no
+comparte hoja de estilos con nada más del repositorio.
 
 ## Accesibilidad y robustez
 
