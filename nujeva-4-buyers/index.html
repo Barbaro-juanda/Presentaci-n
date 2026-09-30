@@ -42,7 +42,7 @@
   --disp:"NB Display",-apple-system,"Segoe UI",Helvetica,sans-serif;
   --mono:"NB Mono","SF Mono",Menlo,monospace;
   --ease:cubic-bezier(.22,1,.36,1);
-  --gut:clamp(38px,5vw,92px);
+  --gut:clamp(38px,96px,92px);
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;height:100%;overflow:hidden;background:#0A1318}
@@ -103,7 +103,7 @@ body.presentando #panel{opacity:0;pointer-events:none}
 
 #vista{grid-column:2;grid-row:2;position:relative;overflow:hidden;background:#0A1318}
 #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;
-  background:var(--noche);overflow:hidden;color:var(--crema);font-size:18px;line-height:1.55;
+  background:var(--noche);overflow:hidden;color:var(--crema);font-size:23px;line-height:1.5;
   box-shadow:0 22px 70px rgba(0,0,0,.6);border-radius:6px}
 body.presentando #stage{box-shadow:none;border-radius:0}
 
@@ -119,11 +119,11 @@ body.presentando #stage{box-shadow:none;border-radius:0}
 /* ==========================================================================
    Escenas
    ========================================================================== */
-.nb-esc{position:absolute;inset:0;display:none;align-items:flex-start;
-  padding:clamp(96px,12vh,150px) var(--gut) clamp(62px,7vh,92px);z-index:2}
+.nb-esc{position:absolute;inset:0;display:none;align-items:center;
+  padding:clamp(96px,130px,150px) var(--gut) clamp(62px,76px,92px);z-index:2}
 .nb-esc.viva{display:flex;z-index:3}
-.nb-esc--centro{align-items:center;padding-top:clamp(76px,8vh,110px)}
-.nb-wrap{width:100%;max-width:1460px;margin:0 auto}
+
+.nb-wrap{width:100%;max-width:1580px;margin:0 auto}
 
 /* Superficie de vidrio: la pieza futurista, usada con medida */
 .nb-glass{background:var(--superficie);border:1px solid var(--borde);border-radius:14px;
@@ -135,24 +135,24 @@ body.presentando #stage{box-shadow:none;border-radius:0}
 .nb-p.on{opacity:1;transform:none}
 #nb.nb-plano .nb-p{opacity:1 !important;transform:none !important;transition:none !important}
 
-.nb-kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;
+.nb-kicker{font-family:var(--mono);font-size:14px;letter-spacing:.26em;text-transform:uppercase;
   color:var(--crema-45);display:flex;align-items:center;gap:11px}
 .nb-kicker::before{content:"";width:22px;height:1px;background:var(--arcilla);flex:none}
-h1.nb-h1{font-family:var(--disp);font-weight:300;font-size:clamp(52px,7.6vw,124px);line-height:.98;letter-spacing:-.04em}
-h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px);line-height:1.04;
+h1.nb-h1{font-family:var(--disp);font-weight:300;font-size:150px;line-height:.98;letter-spacing:-.04em}
+h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:80px;line-height:1.04;
   letter-spacing:-.03em;max-width:21ch}
-.nb-grande{font-family:var(--disp);font-weight:300;font-size:clamp(32px,5vw,76px);line-height:1.04;letter-spacing:-.035em}
-.nb-lead{font-size:clamp(16.5px,1.35vw,21px);line-height:1.55;color:var(--crema-70);max-width:62ch}
-.nb-mini{font-size:14px;line-height:1.45;color:var(--crema-45)}
+.nb-grande{font-family:var(--disp);font-weight:300;font-size:92px;line-height:1.04;letter-spacing:-.035em}
+.nb-lead{font-size:27px;line-height:1.55;color:var(--crema-70);max-width:62ch}
+.nb-mini{font-size:17.5px;line-height:1.45;color:var(--crema-45)}
 /* La serif queda reservada para la voz humana de los buyers */
 .nb-voz{font-family:var(--serif);font-style:italic;font-weight:300}
 .nb-ref{font-family:var(--mono);font-size:.58em;vertical-align:super;color:var(--arcilla);letter-spacing:0}
 
 /* Etiquetas epistemológicas · color + forma */
-.nb-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;
+.nb-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;
   letter-spacing:.18em;text-transform:uppercase;padding:5px 11px 5px 9px;border:1px solid currentColor;
   border-radius:20px;line-height:1;white-space:nowrap}
-.nb-tag i{width:8px;height:8px;flex:none;background:currentColor}
+.nb-tag i{width:10px;height:10px;flex:none;background:currentColor}
 .nb-tag--dato{color:var(--azul)} .nb-tag--dato{border-radius:4px}
 .nb-tag--hall{color:var(--verde)} .nb-tag--hall i{border-radius:50%}
 .nb-tag--int{color:var(--crema-70);border-radius:4px} .nb-tag--int i{transform:rotate(45deg)}
@@ -164,8 +164,8 @@ h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px
    Piezas por escena
    ========================================================================== */
 /* 01 portada */
-.nb-portada .meta{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:34px;padding-top:20px;
-  border-top:1px solid var(--borde);font-size:15px;color:var(--crema-45)}
+.nb-portada .meta{display:flex;flex-wrap:wrap;gap:14px 40px;margin-top:40px;padding-top:24px;
+  border-top:1px solid var(--borde);font-size:19px;color:var(--crema-45)}
 .nb-portada .meta b{color:var(--crema);font-weight:500}
 .nb-hilo{position:absolute;left:0;right:0;top:0;height:1px;
   background:linear-gradient(90deg,transparent,var(--verde),var(--azul),var(--arcilla),transparent);
@@ -173,26 +173,26 @@ h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px
 .nb-p.on .nb-hilo{transform:scaleX(1);transition:transform 1.2s var(--ease)}
 
 /* 02 preguntas */
-.nb-preg{display:grid;gap:clamp(6px,1.2vh,16px);margin-top:24px}
-.nb-preg .q{font-family:var(--disp);font-weight:300;font-size:clamp(24px,3.4vw,52px);line-height:1.08;
+.nb-preg{display:grid;gap:clamp(6px,13px,16px);margin-top:24px}
+.nb-preg .q{font-family:var(--disp);font-weight:300;font-size:66px;line-height:1.08;
   letter-spacing:-.03em;color:rgba(241,235,224,.34)}
 .nb-preg .q.foco{color:var(--crema)}
 
 /* 03 contexto */
-.nb-cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,34px);margin-top:28px}
+.nb-cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,46px,34px);margin-top:28px}
 .nb-cifra{padding:22px 24px 24px;border-radius:14px}
-.nb-cifra .n{font-family:var(--disp);font-weight:300;font-size:clamp(34px,4.8vw,72px);line-height:.96;
+.nb-cifra .n{font-family:var(--disp);font-weight:300;font-size:92px;line-height:.96;
   letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.nb-cifra .d{font-size:14px;line-height:1.42;color:var(--crema-70);margin-top:11px;max-width:27ch}
+.nb-cifra .d{font-size:18px;line-height:1.42;color:var(--crema-70);margin-top:11px;max-width:27ch}
 .nb-cifra.acento .n{color:var(--arcilla)}
 .nb-zonas{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}
-.nb-zonas span{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+.nb-zonas span{font-family:var(--mono);font-size:14px;letter-spacing:.16em;text-transform:uppercase;
   border:1px solid var(--borde);border-radius:20px;padding:7px 14px;color:var(--crema-70)}
 .nb-zonas span.on{border-color:var(--arcilla);color:var(--arcilla)}
 
 /* 04 error del buyer */
 .nb-viejo{display:flex;flex-wrap:wrap;gap:12px 16px;margin-top:26px;max-width:1150px}
-.nb-viejo span{position:relative;font-family:var(--disp);font-size:clamp(20px,2.5vw,38px);
+.nb-viejo span{position:relative;font-family:var(--disp);font-size:48px;
   font-weight:300;color:rgba(241,235,224,.42);padding:2px 0;letter-spacing:-.02em}
 .nb-viejo span::after{content:"";position:absolute;left:-3px;right:-3px;top:54%;height:2px;
   background:var(--arcilla);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
@@ -202,106 +202,106 @@ h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px
 .nb-viejo.tachado span:nth-child(4)::after{transition-delay:.3s}
 .nb-viejo.tachado span:nth-child(5)::after{transition-delay:.4s}
 #nb.nb-plano .nb-viejo span::after{transform:scaleX(1)}
-.nb-golpe{font-family:var(--disp);font-weight:300;font-size:clamp(30px,4.6vw,72px);line-height:1.04;
+.nb-golpe{font-family:var(--disp);font-weight:300;font-size:88px;line-height:1.04;
   letter-spacing:-.035em}
 .nb-golpe em{font-style:normal;color:var(--arcilla)}
 
 /* 05 ecosistema */
-.nb-eco{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,3.6vw,64px);align-items:center;margin-top:14px}
+.nb-eco{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,69px,64px);align-items:center;margin-top:14px}
 .nb-eco svg{width:100%;max-width:520px;height:auto;display:block;margin:0 auto;overflow:visible}
 .nb-eco .li{stroke:var(--borde-2);stroke-width:1.2;fill:none}
 .nb-eco .nodo circle{fill:rgba(11,20,24,.86);stroke:var(--azul);stroke-width:1.4}
-.nb-eco .nodo text{font-family:var(--disp);font-size:13px;font-weight:500;fill:var(--crema);text-anchor:middle}
+.nb-eco .nodo text{font-family:var(--disp);font-size:16px;font-weight:500;fill:var(--crema);text-anchor:middle}
 .nb-eco .nodo.marta circle{stroke:var(--bruma)} .nb-eco .nodo.mateo circle{stroke:var(--verde)}
 .nb-eco .cen circle{fill:rgba(237,230,217,.1);stroke:var(--crema);stroke-width:1.2}
-.nb-eco .cen text{fill:var(--crema);font-family:var(--disp);font-size:14px;letter-spacing:.16em;text-anchor:middle}
-.nb-eco-lista li{padding:10px 0;border-bottom:1px solid var(--borde);font-size:15px;display:grid;
-  grid-template-columns:100px 1fr;gap:12px;color:var(--crema-70)}
-.nb-eco-lista b{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+.nb-eco .cen text{fill:var(--crema);font-family:var(--disp);font-size:17px;letter-spacing:.16em;text-anchor:middle}
+.nb-eco-lista li{padding:13px 0;border-bottom:1px solid var(--borde);font-size:19px;display:grid;
+  grid-template-columns:130px 1fr;gap:14px;color:var(--crema-70)}
+.nb-eco-lista b{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--azul);padding-top:4px}
 
 /* 06 split */
-.nb-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px);margin-top:14px}
-.nb-lado{padding:26px clamp(20px,2.2vw,34px) 26px;border-radius:14px;position:relative;overflow:hidden}
+.nb-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,38px,28px);margin-top:14px}
+.nb-lado{padding:26px clamp(20px,42px,34px) 26px;border-radius:14px;position:relative;overflow:hidden}
 .nb-lado::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--verde)}
 .nb-lado.marta::before{background:var(--bruma)}
-.nb-lado .rol{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--verde)}
+.nb-lado .rol{font-family:var(--mono);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--verde)}
 .nb-lado.marta .rol{color:var(--bruma)}
-.nb-lado .nom{font-family:var(--disp);font-size:clamp(26px,3.1vw,46px);font-weight:300;line-height:1;
+.nb-lado .nom{font-family:var(--disp);font-size:58px;font-weight:300;line-height:1;
   margin:9px 0 3px;letter-spacing:-.03em}
-.nb-lado .edad{font-family:var(--mono);font-size:11.5px;color:var(--crema-45);letter-spacing:.1em}
-.nb-lado .cita{font-size:clamp(18px,1.8vw,26px);line-height:1.22;margin:16px 0 18px;max-width:21ch;color:var(--crema)}
-.nb-lado ul li{padding:6px 0;border-bottom:1px solid var(--borde);font-size:14.5px;line-height:1.35;color:var(--crema-70)}
-.nb-remate{font-family:var(--disp);font-weight:300;font-size:clamp(22px,2.8vw,42px);line-height:1.1;
+.nb-lado .edad{font-family:var(--mono);font-size:14px;color:var(--crema-45);letter-spacing:.1em}
+.nb-lado .cita{font-size:33px;line-height:1.22;margin:16px 0 18px;max-width:21ch;color:var(--crema)}
+.nb-lado ul li{padding:9px 0;border-bottom:1px solid var(--borde);font-size:18px;line-height:1.35;color:var(--crema-70)}
+.nb-remate{font-family:var(--disp);font-weight:300;font-size:54px;line-height:1.1;
   letter-spacing:-.03em;margin-top:22px}
 .nb-remate b{font-weight:300;color:var(--arcilla)}
 
 /* 07 · 08 personas */
-.nb-persona{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(24px,4vw,72px);align-items:center}
+.nb-persona{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(24px,77px,72px);align-items:center}
 .nb-fig{width:100%;max-width:250px}
 .nb-fig path,.nb-fig circle,.nb-fig line{fill:none;stroke-width:1.2}
 .nb-motivos{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
-.nb-motivos span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+.nb-motivos span{font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;
   border:1px solid var(--borde);border-radius:20px;padding:8px 14px;color:var(--crema-70)}
 .nb-frasegrande{font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:clamp(26px,3.9vw,58px);line-height:1.06;letter-spacing:-.02em;margin-top:22px}
-.nb-cadena{display:flex;align-items:center;gap:clamp(8px,1.3vw,20px);flex-wrap:wrap;margin-top:24px}
-.nb-cadena .et{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  font-size:72px;line-height:1.06;letter-spacing:-.02em;margin-top:22px}
+.nb-cadena{display:flex;align-items:center;gap:clamp(8px,25px,20px);flex-wrap:wrap;margin-top:24px}
+.nb-cadena .et{font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;
   border:1px solid var(--borde);border-radius:20px;padding:11px 16px;color:var(--crema-70)}
 .nb-cadena .fl{color:var(--arcilla);font-size:17px}
 .nb-cadena .et.fin{background:var(--arcilla);color:#160D07;border-color:var(--arcilla);font-weight:700}
 
 /* 09 bifurcación */
 .nb-bifurca{position:relative;margin-top:6px}
-.nb-bifurca svg{width:100%;height:auto;overflow:visible;max-height:42vh;display:block}
+.nb-bifurca svg{width:100%;height:auto;overflow:visible;max-height:454px;display:block}
 .nb-bifurca .cam{fill:none;stroke-width:1.8;stroke-dasharray:1200;stroke-dashoffset:1200;
   transition:stroke-dashoffset .95s var(--ease)}
 .nb-p.on .nb-bifurca .cam{stroke-dashoffset:0}
 #nb.nb-plano .nb-bifurca .cam{stroke-dashoffset:0}
 .nb-bifurca .cam-m{stroke:var(--verde)} .nb-bifurca .cam-a{stroke:var(--arcilla);transition-delay:.15s}
 .nb-bifurca .sil{fill:none;stroke-width:1.3}
-.nb-bifurca text{font-family:var(--disp);font-size:14px;fill:var(--crema)}
-.nb-bifurca .et{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;fill:var(--crema-45)}
-.nb-bifurca .nom{font-family:var(--disp);font-size:21px;font-weight:500}
+.nb-bifurca text{font-family:var(--disp);font-size:16px;fill:var(--crema)}
+.nb-bifurca .et{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;fill:var(--crema-45)}
+.nb-bifurca .nom{font-family:var(--disp);font-size:25px;font-weight:500}
 .nb-tabla2{width:100%;border-collapse:collapse;margin-top:4px}
-.nb-tabla2 th{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+.nb-tabla2 th{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--crema-45);text-align:left;font-weight:400;padding:0 14px 8px 0;border-bottom:1px solid var(--borde)}
-.nb-tabla2 td{padding:8px 14px 8px 0;border-bottom:1px solid var(--borde);font-size:14px;line-height:1.35;
+.nb-tabla2 td{padding:9px 14px 9px 0;border-bottom:1px solid var(--borde);font-size:17px;line-height:1.35;
   vertical-align:top;color:var(--crema-70)}
-.nb-tabla2 td:first-child{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--crema-45);width:168px}
+  .nb-tabla2 td:first-child{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--crema-45);width:205px}
 
 /* 10 los cuatro */
-.nb-cuatro{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.7vw,24px);margin-top:22px}
+.nb-cuatro{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,33px,24px);margin-top:22px}
 .nb-buyer{padding:22px 22px 24px;border-radius:14px;position:relative;overflow:hidden}
 .nb-buyer::before{content:"";position:absolute;left:0;right:0;top:0;height:2px}
-.nb-buyer .nom{font-family:var(--disp);font-size:clamp(22px,2.4vw,34px);font-weight:300;line-height:1;letter-spacing:-.03em}
-.nb-buyer .ed{font-family:var(--mono);font-size:10.5px;color:var(--crema-45);letter-spacing:.1em;margin-top:6px}
-.nb-buyer .cita{font-family:var(--serif);font-style:italic;font-size:clamp(15px,1.4vw,20px);
+.nb-buyer .nom{font-family:var(--disp);font-size:43px;font-weight:300;line-height:1;letter-spacing:-.03em}
+.nb-buyer .ed{font-family:var(--mono);font-size:13px;color:var(--crema-45);letter-spacing:.1em;margin-top:6px}
+.nb-buyer .cita{font-family:var(--serif);font-style:italic;font-size:25px;
   line-height:1.24;margin:14px 0;min-height:2.5em;color:var(--crema)}
-.nb-buyer .terr{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+.nb-buyer .terr{font-family:var(--mono);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
   padding:6px 12px;border-radius:20px;display:inline-block;opacity:0;transform:translate3d(0,6px,0);
   transition:opacity .35s,transform .35s var(--ease)}
 .nb-cuatro.terr-on .terr{opacity:1;transform:none}
 #nb.nb-plano .nb-buyer .terr{opacity:1;transform:none}
-.nb-buyer .preg{font-size:13px;color:var(--crema-45);line-height:1.4;margin-top:12px}
+.nb-buyer .preg{font-size:16px;color:var(--crema-45);line-height:1.4;margin-top:12px}
 .nb-b-and::before{background:var(--arcilla)} .nb-b-and .terr{background:var(--arcilla);color:#160D07}
 .nb-b-mat::before{background:var(--verde)}   .nb-b-mat .terr{background:var(--verde);color:#07130E}
 .nb-b-mig::before{background:var(--azul)}    .nb-b-mig .terr{background:var(--azul);color:#06161D}
 .nb-b-mar::before{background:var(--bruma)}   .nb-b-mar .terr{background:var(--bruma);color:#150E19}
 .nb-confianza{margin-top:22px;border:1px dashed var(--borde-2);border-radius:14px;padding:16px 22px;
   display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.nb-confianza .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ocre)}
+.nb-confianza .t{font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--ocre)}
 
 /* 11 universo */
-.nb-uni{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,3.6vw,60px);margin-top:12px;align-items:start}
-.nb-uni h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+.nb-uni{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,69px,60px);margin-top:12px;align-items:start}
+.nb-uni h3{font-family:var(--mono);font-size:13px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--crema-45);font-weight:400;margin-bottom:14px}
 .nb-terr{border-left:2px solid var(--borde-2);padding:2px 0 2px 14px;margin-bottom:12px}
-.nb-terr b{font-family:var(--disp);font-size:19px;font-weight:500;display:block;letter-spacing:-.01em}
-.nb-terr span{font-size:12.5px;color:var(--crema-45);line-height:1.4}
+.nb-terr b{font-family:var(--disp);font-size:24px;font-weight:500;display:block;letter-spacing:-.01em}
+.nb-terr span{font-size:15.5px;color:var(--crema-45);line-height:1.4}
 .nb-maestras{display:grid;gap:8px}
-.nb-maestras div{font-family:var(--disp);font-weight:300;font-size:clamp(22px,2.9vw,44px);line-height:1.04;
+.nb-maestras div{font-family:var(--disp);font-weight:300;font-size:56px;line-height:1.04;
   letter-spacing:-.035em;opacity:0;transform:translate3d(0,10px,0);
   transition:opacity .4s,transform .4s var(--ease)}
 .nb-maestras.on div{opacity:1;transform:none}
@@ -309,29 +309,29 @@ h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px
 .nb-maestras.on div:nth-child(3){transition-delay:.16s}
 .nb-maestras.on div:nth-child(4){transition-delay:.24s}
 #nb.nb-plano .nb-maestras div{opacity:1;transform:none}
-.nb-cierre{font-family:var(--disp);font-weight:300;font-size:clamp(24px,3.4vw,50px);line-height:1.08;
+.nb-cierre{font-family:var(--disp);font-weight:300;font-size:64px;line-height:1.08;
   letter-spacing:-.035em;margin-top:4px}
 .nb-cierre em{font-style:normal;color:var(--ocre)}
 
 /* 12 próximos pasos */
-.nb-pasos4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,22px);margin-top:26px}
+.nb-pasos4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,31px,22px);margin-top:26px}
 .nb-pasos4 .f{padding:20px 20px 22px;border-radius:14px;position:relative;overflow:hidden}
 .nb-pasos4 .f::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--azul)}
-.nb-pasos4 .n{font-family:var(--disp);font-size:clamp(20px,2.2vw,32px);font-weight:300;margin-bottom:9px;letter-spacing:-.03em}
-.nb-pasos4 p{font-size:13.5px;line-height:1.45;color:var(--crema-70)}
+.nb-pasos4 .n{font-family:var(--disp);font-size:40px;font-weight:300;margin-bottom:9px;letter-spacing:-.03em}
+.nb-pasos4 p{font-size:17px;line-height:1.45;color:var(--crema-70)}
 
 /* ==========================================================================
    HUD dentro del lienzo
    ========================================================================== */
 #hud{position:absolute;inset:0;z-index:20;pointer-events:none}
-#hud .mk{position:absolute;left:var(--gut);top:28px;font-family:var(--disp);font-size:15px;
+#hud .mk{position:absolute;left:var(--gut);top:28px;font-family:var(--disp);font-size:18px;
   letter-spacing:.24em;text-transform:uppercase;color:var(--crema-45)}
-#cont{position:absolute;right:var(--gut);top:28px;font-family:var(--mono);font-size:12px;
+#cont{position:absolute;right:var(--gut);top:28px;font-family:var(--mono);font-size:15px;
   letter-spacing:.16em;color:var(--crema-45);font-variant-numeric:tabular-nums}
 #pasos{position:absolute;left:var(--gut);bottom:28px;display:flex;gap:4px}
 #pasos i{width:14px;height:2px;background:rgba(237,230,217,.2);transition:background .3s}
 #pasos i.on{background:var(--arcilla)}
-#ayudita{position:absolute;right:var(--gut);bottom:28px;font-family:var(--mono);font-size:10px;
+#ayudita{position:absolute;right:var(--gut);bottom:28px;font-family:var(--mono);font-size:12.5px;
   letter-spacing:.12em;color:var(--crema-45);transition:opacity .5s}
 #ayudita.mudo{opacity:0}
 #barraprog{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(237,230,217,.12)}
@@ -344,10 +344,10 @@ h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px
   color:var(--crema);padding:20px var(--gut) 24px;transform:translate3d(0,101%,0);
   transition:transform .32s var(--ease)}
 #notas.on{transform:none}
-#notas .cab{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+#notas .cab{font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;
   color:var(--arcilla);margin-bottom:9px}
-#notas p{font-size:18px;line-height:1.45;max-width:104ch}
-#notas p + p{margin-top:6px;color:var(--crema-70);font-size:16px}
+#notas p{font-size:22px;line-height:1.45;max-width:104ch}
+#notas p + p{margin-top:7px;color:var(--crema-70);font-size:19px}
 
 /* Cuadrícula */
 #rejilla{position:fixed;inset:0;z-index:60;background:#0A1318;display:none;overflow-y:auto;padding:24px 32px 56px}
@@ -379,28 +379,39 @@ h2.nb-h2{font-family:var(--disp);font-weight:300;font-size:clamp(32px,4.4vw,62px
 .es-mini .nb-buyer .terr,.es-mini .nb-maestras div{opacity:1 !important;transform:none !important}
 .es-mini .nb-hilo{transform:scaleX(1) !important}
 
+
+
+
 /* ==========================================================================
-   Pantallas bajas
+   Ajuste fino por escena · que cada diapositiva llene el lienzo sin pasarse
    ========================================================================== */
-@media (max-height:850px){
-  #stage{font-size:16.5px}
-  .nb-esc{padding:84px var(--gut) 52px}
-  .nb-esc--centro{padding-top:64px}
-  h2.nb-h2{font-size:clamp(27px,3.4vw,46px)}
-  .nb-lead{font-size:15.5px}
-  .nb-lado{padding:20px 22px}
-  .nb-lado ul li{padding:4px 0;font-size:13.5px}
-  .nb-lado .cita{margin:12px 0 13px}
-  .nb-eco-lista li{padding:7px 0;font-size:14px}
-  .nb-tabla2 td{padding:6px 12px 6px 0;font-size:13px}
-  .nb-buyer{padding:18px 18px 20px} .nb-buyer .cita{margin:11px 0;font-size:15.5px}
-  .nb-terr{margin-bottom:9px} .nb-terr b{font-size:17px} .nb-terr span{font-size:12px}
-  .nb-pasos4 .f{padding:16px 16px 18px} .nb-pasos4 p{font-size:12.5px}
-  .nb-bifurca svg{max-height:35vh}
-  .nb-cifra{padding:16px 18px 18px} .nb-cifra .d{font-size:13px}
-  .nb-motivos span{font-size:10.5px;padding:6px 12px}
-  .nb-confianza{margin-top:14px;padding:12px 18px}
-}
+/* 01 · portada */
+#nb > .nb-esc:nth-of-type(1) h1.nb-h1{font-size:176px}
+#nb > .nb-esc:nth-of-type(1) .nb-grande{font-size:76px}
+
+/* 03 · contexto: tarjetas más altas */
+#nb > .nb-esc:nth-of-type(3) .nb-cifra{padding:32px 30px 34px}
+#nb > .nb-esc:nth-of-type(3) .nb-cifra .d{margin-top:16px}
+#nb > .nb-esc:nth-of-type(3) .nb-zonas{margin-top:22px}
+#nb > .nb-esc:nth-of-type(3) .nb-zonas span{padding:10px 20px}
+
+/* 08 · Andrés */
+#nb > .nb-esc:nth-of-type(8) .nb-cadena .et{padding:15px 20px}
+#nb > .nb-esc:nth-of-type(8) .nb-motivos span{padding:11px 18px}
+
+/* 09 · la escena más densa del deck: se compacta para que quepa entera */
+#nb > .nb-esc:nth-of-type(9) .nb-bifurca svg{max-height:326px}
+#nb > .nb-esc:nth-of-type(9) .nb-tabla2 td{padding:6px 14px 6px 0;font-size:16px}
+#nb > .nb-esc:nth-of-type(9) .nb-tabla2 th{padding-bottom:6px}
+#nb > .nb-esc:nth-of-type(9) .nb-golpe{font-size:62px}
+#nb > .nb-esc:nth-of-type(9) .nb-lead{font-size:21px}
+
+/* 12 · cierre: las cuatro fases respiran */
+#nb > .nb-esc:nth-of-type(12) .nb-pasos4{margin-top:40px}
+#nb > .nb-esc:nth-of-type(12) .nb-pasos4 .f{padding:34px 30px 38px}
+#nb > .nb-esc:nth-of-type(12) .nb-pasos4 .n{font-size:50px;margin-bottom:16px}
+#nb > .nb-esc:nth-of-type(12) .nb-pasos4 p{font-size:20px}
+#nb > .nb-esc:nth-of-type(12) .nb-golpe{font-size:72px}
 
 /* ==========================================================================
    Movimiento reducido
