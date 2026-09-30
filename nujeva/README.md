@@ -10,18 +10,30 @@ no hay dato, competidor, certificación ni registro añadido.
 Doble clic en `index.html`. No necesita servidor, internet ni instalación.
 GSAP, ScrollTrigger y las tres tipografías viajan dentro del archivo.
 
-## Navegación
+## Navegación · el mismo portal que las demás presentaciones
+
+Barra superior con cronómetro y botones, panel lateral con las veinte escenas en
+miniatura real, y el lienzo de 1920×1080 escalado al centro. **Presentar** oculta
+todo el chrome y entra en pantalla completa. Ya no se navega por scroll: cada
+escena ocupa el lienzo completo y se avanza de una en una.
 
 | Tecla | Acción |
 |---|---|
-| `→` `↓` `espacio` | Escena siguiente |
+| `→` `↓` `espacio` · clic | Escena siguiente |
 | `←` `↑` | Escena anterior |
 | `Inicio` · `Fin` | Primera · última |
-| `I` | Índice de las 20 escenas |
-| `Esc` | Cerrar el índice |
+| `P` | Modo presentación |
+| `O` | Vista de cuadrícula con las 20 escenas |
+| `N` | Notas del orador (dos frases guía por escena) |
+| `T` | Cronómetro 00:00 → 10:00 |
+| `F` | Pantalla completa |
+| `R` | Reinicia el cronómetro |
+| `Esc` | Cierra lo que esté abierto |
 
-También funciona con scroll normal. Arriba a la derecha hay un contador `05 / 20`
-y una barra de progreso en el borde superior.
+La rueda del ratón también avanza de escena en escena. Los elementos
+interactivos —los nodos del ecosistema, las objeciones desplegables y el
+recorrido de nueve etapas— siguen respondiendo al ratón sin hacer avanzar la
+presentación.
 
 ## Etiquetas epistemológicas
 
@@ -63,7 +75,8 @@ afecta a las demás presentaciones del repositorio.
 - Si el JavaScript falla, `#nj` conserva la clase `.nj-no-js` y el contenido
   completo queda legible.
 - Solo se animan `opacity`, `transform` y `stroke-dashoffset`.
-- Probada sin desbordes ni scroll horizontal en 1920×1080, 1440×900 y 1366×768.
+- El lienzo mide siempre 1920×1080 y se escala a la ventana, así que la
+  composición es idéntica en cualquier resolución. Sin desbordes ni scroll.
 
 ## Nota de contenido
 

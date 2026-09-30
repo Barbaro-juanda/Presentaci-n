@@ -916,13 +916,13 @@ function efectos(e,p){
     });
   });
   /* 04 · tachado */
-  var v=$("#nb-viejo");
+  var v=$(".nb-viejo",esc);
   if(v) v.classList.toggle("tachado", e>2 || (e===3&&p>=2));
   /* 10 · territorios */
-  var c4=$("#nb-cuatro");
+  var c4=$(".nb-cuatro",esc);
   if(c4) c4.classList.toggle("terr-on", e>9 || (e===9&&p>=2));
   /* 11 · palabras maestras */
-  var m=$("#nb-maestras");
+  var m=$(".nb-maestras",esc);
   if(m) m.classList.toggle("on", e>10 || (e===10&&p>=3));
 }
 
@@ -973,6 +973,9 @@ function clonar(esc){
   var c=esc.cloneNode(true);
   c.classList.add("viva","es-mini");
   c.removeAttribute("id");
+  /* Sin esto los clones duplican los id y querySelector("#...") devolvería
+     la miniatura en vez de la escena viva. */
+  c.querySelectorAll("[id]").forEach(function(e){ e.removeAttribute("id"); });
   return c;
 }
 function montar(marco,esc){
