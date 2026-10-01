@@ -6,7 +6,7 @@ Presentación final de **Prospectiva 1** (ESIC, Digital Business & Administratio
 - **Equipo:** Juan David Escobar Guiral · Santiago Duque Restrepo · María Camila Jiménez Ramírez · Thomas Quintero Gallego
 - **Profesor:** Carlos Alberto Rincón
 - **Fecha:** 30 de septiembre de 2026
-- **Duración objetivo:** 12–15 minutos hablados · 18 diapositivas
+- **Duración objetivo:** 12–15 minutos hablados · 19 diapositivas
 
 ## Cómo se abre
 
@@ -39,17 +39,18 @@ archivo, y además quedan como copia legible en `fonts/` y `vendor/`.
 5. Microentorno · cinco fuerzas de Porter
 6. Seis variables críticas (MICMAC)
 7. Cómo construimos los escenarios
-8. Validación con experta
-9. Qué cambió por la validación
-10. Tres futuros posibles
-11. Optimista · «El pan que se deja leer»
-12. Pesimista · «La góndola sin nombre»
-13. Tendencial · «Buen pan, poca voz»
-14. Hoja de ruta 2026–2030
-15. Recomendaciones 1 a 4
-16. Recomendaciones 5 a 8
-17. Los próximos seis meses
-18. Referencias (APA 7)
+8. Las seis hipótesis (H1 a H6)
+9. Validación con experta
+10. Qué cambió por la validación
+11. Tres futuros posibles
+12. Optimista · «El pan que se deja leer»
+13. Pesimista · «La góndola sin nombre»
+14. Tendencial · «Buen pan, poca voz»
+15. Hoja de ruta 2026–2030
+16. Recomendaciones 1 a 4
+17. Recomendaciones 5 a 8
+18. Los próximos seis meses
+19. Referencias (APA 7)
 
 ## Dirección de arte
 
@@ -71,3 +72,8 @@ Todo el contenido proviene del informe `Informe_prospectiva_SUSI_APA7_12p`. No s
 añadieron cifras, citas ni datos que no estén en él. Las dos metas marcadas con la
 etiqueta punteada **«Meta propuesta por el equipo»** (recomendaciones 7 y 8) se señalan
 así porque son estimaciones nuestras y no cifras del informe.
+
+**Las seis hipótesis.** El informe nombra H1 a H6 y las empareja con cada escenario, pero no
+transcribe su enunciado: solo desarrolla los tres relatos. Los textos de la lámina 8 están
+redactados por el equipo a partir de esos relatos, sin añadir nada que no esté en el informe,
+y la lámina lo declara al pie.

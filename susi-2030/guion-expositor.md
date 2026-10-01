@@ -8,9 +8,9 @@ También están dentro de la presentación: tecla `N`.
 | Bloque | Diapositivas | Quién habla | Tiempo aprox. |
 |---|---|---|---|
 | El reto y el entorno | 1–5 | Juan David Escobar Guiral | 4 min |
-| Variables, método y validación | 6–9 | Santiago Duque Restrepo | 3 min 30 s |
-| Los tres escenarios | 10–13 | María Camila Jiménez Ramírez | 3 min 30 s |
-| Decisiones y cierre | 14–18 | Thomas Quintero Gallego | 4 min |
+| Variables, método, hipótesis y validación | 6–10 | Santiago Duque Restrepo | 4 min |
+| Los tres escenarios | 11–14 | María Camila Jiménez Ramírez | 3 min |
+| Decisiones y cierre | 15–19 | Thomas Quintero Gallego | 4 min |
 
 Cada relevo cae en un corte natural del argumento, así que quien entra no tiene que
 retomar una idea a medias. Quien termina su bloque deja la última frase como puente.
@@ -57,67 +57,73 @@ Con el MICMAC priorizamos seis variables. Fíjense en la lectura del mapa: las t
 
 Este es el método, en tres pasos. Primero descomponemos el futuro en las seis variables y le damos a cada una tres estados posibles a 2030: optimista, pesimista y tendencial. Eso es la matriz morfológica. Segundo, un experto le asigna probabilidad a cada estado. Y tercero, de esas combinaciones salen seis hipótesis y, agrupándolas, tres escenarios. No es adivinar: es ordenar lo que puede pasar y decidir para qué nos preparamos.
 
-## 08 · Validación con experta
+## 08 · Las seis hipótesis
+
+**Habla:** Santiago Duque Restrepo
+
+Estas son las seis hipótesis que salieron de la matriz. Van de a dos por escenario y cada par sostiene un relato distinto. Las cuatro que están marcadas, H1, H2, H5 y H6, son las que la experta respaldó; las dos del escenario pesimista no las respaldó, y en la siguiente diapositiva explicamos por qué las mantuvimos igual. Fíjense en que cada hipótesis se apoya en variables concretas: no son opiniones, son combinaciones de estados que ya priorizamos.
+
+## 09 · Validación con experta
 
 **Habla:** Santiago Duque Restrepo
 
 Validamos con Kelly Hernández, administradora de Panem Sabaneta, una panadería artesanal con quince años en el mercado donde ella lleva once. Es importante decir qué es y qué no es su visión: conoce muy bien el sector panadero, pero no conoce a SUSI ni el canal retail, y vende directo. Por eso la tomamos como la mirada de una panadería de venta directa, y además es una sola entrevista: orienta, pero no concluye. Coincidió con el peso de las variables y estuvo de acuerdo con cuatro de nuestras seis hipótesis.
 
-## 09 · Qué cambió por la validación
+## 10 · Qué cambió por la validación
 
 **Habla:** Santiago Duque Restrepo
 
 La validación no fue un trámite: cambió el trabajo en tres direcciones. Confirmamos los escenarios optimista y tendencial, con ejemplos concretos que ella nos dio. Mantuvimos el pesimista aunque ella no lo respaldó, y es importante explicar por qué: su desacuerdo viene de un negocio que vende directo y no depende de cadenas, mientras que SUSI sí depende. Y agregamos cosas que no teníamos: la atención al cliente, el refuerzo del domicilio propio y dos recomendaciones nuevas, la panadería-laboratorio y la inteligencia artificial.
 
-## 10 · Tres futuros posibles
+## 11 · Tres futuros posibles
 
 **Habla:** María Camila Jiménez Ramírez
 
 Estos son los tres futuros. A la izquierda, el optimista: SUSI aprende a contar lo que ya hace bien y construye canal propio. En el centro, el pesimista: las marcas propias se quedan con su góndola y con su discurso. A la derecha, el tendencial, que para nosotros es el más probable: nada se rompe, pero nada mejora. Guarden ese último, porque es el que más nos preocupa.
 
-## 11 · Optimista · El pan que se deja leer
+## 12 · Optimista · El pan que se deja leer
 
 **Habla:** María Camila Jiménez Ramírez
 
 Así se construye el escenario optimista, en cuatro movimientos. Primero, SUSI deja de lanzar por intuición y valida cada referencia antes de producirla. Segundo, usa su formulación limpia como argumento de venta frente a una regulación que castiga a los demás. Tercero, construye canal propio con tienda e información nutricional. Y cuarto, cuando llega a negociar con las cadenas, llega con datos propios: ya no depende de ellas para existir.
 
-## 12 · Pesimista · La góndola sin nombre
+## 13 · Pesimista · La góndola sin nombre
 
 **Habla:** María Camila Jiménez Ramírez
 
 El pesimista es un efecto dominó, y conviene verlo como tal. Si SUSI pierde espacio en góndola frente a las marcas propias, vende menos. Si vende menos, tiene menos caja para invertir. Si invierte menos, no innova. Y si no innova, pierde todavía más góndola. La pieza clave es que su principal cliente se convierte en su competidor: las cadenas lanzan marcas propias con el mismo discurso natural y mejor precio.
 
-## 13 · Tendencial · Buen pan, poca voz
+## 14 · Tendencial · Buen pan, poca voz
 
 **Habla:** María Camila Jiménez Ramírez
 
 Este es el escenario que nos parece más probable y, por eso mismo, el más peligroso. No hay crisis: hay erosión lenta. El canal digital crece, pero más despacio que el mercado. La dependencia de las cadenas se mantiene. El margen se estrecha un poco cada año. La frase que resume el riesgo es esta: nada obliga a cambiar hasta que cambiar sale caro. Un escenario sin dolor agudo no genera urgencia, y eso es justamente lo que lo hace peligroso.
 
-## 14 · Hoja de ruta 2026–2030
+## 15 · Hoja de ruta 2026–2030
 
 **Habla:** Thomas Quintero Gallego
 
 De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo barato y rápido: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después vienen la expansión del canal directo y la panadería-laboratorio, a nueve meses. Y al final lo estructural: cobertura de insumos y renegociación con las cadenas a doce meses, y empaques sostenibles a dieciocho. Ninguna acción pasa de año y medio.
 
-## 15 · Recomendaciones 1 a 4
+## 16 · Recomendaciones 1 a 4
 
 **Habla:** Thomas Quintero Gallego
 
 Las primeras cuatro recomendaciones atacan la dependencia. La uno renueva la tienda digital con información nutricional: seis meses, más veinticinco por ciento de conversión. La dos lleva el canal directo a otras ciudades por marketplaces, con productos que resisten el transporte: nueve meses, para pasar el canal propio del diez al veinticinco por ciento hacia 2028. La tres cubre insumos y diversifica la formulación con harinas locales y dos proveedores homologados. Y la cuatro renegocia con las doce cadenas para conservar góndola con una rentabilidad mínima del doce por ciento.
 
-## 16 · Recomendaciones 5 a 8
+## 17 · Recomendaciones 5 a 8
 
 **Habla:** Thomas Quintero Gallego
 
 Las últimas cuatro construyen capacidad. La cinco pasa a empaques sostenibles para cumplir el cien por ciento de la norma antes de 2030. La seis lanza formatos individuales por debajo de nueve mil pesos, que es la respuesta al consumidor que gasta menos. Y las dos últimas nacieron de la entrevista: la panadería-laboratorio para validar producto con el cliente, y la inteligencia artificial con un asistente en WhatsApp y pronóstico de demanda. En estas dos las metas son propuestas nuestras, no cifras del informe, y las marcamos como tal.
 
-## 17 · Los próximos seis meses
+## 18 · Los próximos seis meses
 
 **Habla:** Thomas Quintero Gallego
 
 Si de toda la presentación hay que llevarse una sola cosa, es esta diapositiva. Hay tres cosas que SUSI puede empezar este mismo trimestre, porque son las más rápidas y las más baratas: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Las tres atacan directamente la dependencia del canal moderno. El cierre es el siguiente: el escenario tendencial no duele, y por eso nadie actúa; empezar en 2026 cuesta mucho menos que reaccionar en 2030.
 
-## 18 · Referencias
+## 19 · Referencias
 
 **Habla:** Thomas Quintero Gallego
 
