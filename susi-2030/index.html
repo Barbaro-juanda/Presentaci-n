@@ -331,6 +331,25 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
 /* 15-16 recomendaciones */
 .sb-recs{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:30px}
 .sb-recs--tres{grid-template-columns:repeat(3,1fr);gap:20px}
+/* Recomendaciones · dos por lámina, con acción/plazo e impacto destacados */
+.sb-recs--dos{grid-template-columns:repeat(2,1fr);gap:28px;margin-top:26px}
+.sb-recs--dos .sb-rec{padding:30px 32px 30px;display:flex;flex-direction:column}
+.sb-recs--dos .sb-rec .num{font-size:52px}
+.sb-recs--dos .sb-rec .t{font-size:29px;line-height:1.14}
+.sb-recs--dos .sb-rec .d{font-size:17px;line-height:1.44;margin-top:15px}
+.sb-rec .campos{display:grid;grid-template-columns:.78fr 1.22fr;gap:26px;
+  margin-top:20px;padding-top:20px;border-top:1px solid var(--borde)}
+.sb-rec .campo .et{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--c45)}
+.sb-rec .campo .big{font-family:var(--disp);font-weight:300;line-height:.98;
+  letter-spacing:-.045em;font-size:52px;margin:10px 0 9px;color:var(--coral);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.sb-rec .campo .big small{font-size:21px;letter-spacing:-.01em;color:var(--c70)}
+.sb-rec .campo.plazo .big{color:var(--crema)}
+.sb-rec .campo .txt{font-size:15px;line-height:1.4;color:var(--c70)}
+.sb-rec .campo.plazo{border-right:1px solid var(--borde);padding-right:24px}
+.sb-rec.nueva .campo .big{color:var(--coral)}
+.sb-rec .pie{margin-top:auto}
 .sb-recs--tres .sb-rec .num{font-size:40px}
 .sb-recs--tres .sb-rec .t{font-size:23px}
 .sb-rec{padding:26px 28px 28px;border-radius:14px;position:relative}
@@ -828,88 +847,145 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
 
 <!-- ═════════ 15 · hoja de ruta ═════════ -->
 <section class="sb-l" data-exp="Thomas" data-t="Hoja de ruta 2026–2030" data-y="2030"
- data-n="De los tres escenarios salen seis recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la tienda digital a seis meses y los formatos individuales a ocho. Después viene la expansión del canal directo, a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce meses, y los empaques sostenibles a dieciocho. Ninguna acción pasa de año y medio, así que todo el plan cabe cómodamente antes de 2030.">
+ data-n="De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después vienen la expansión del canal directo y la panadería-laboratorio, las dos a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Ninguna acción pasa de año y medio, así que todo el plan cabe cómodamente antes de 2030.">
   <div class="sb-wrap">
     <div class="sb-kick sb-p">Hoja de ruta</div>
-    <h2 class="sb-h2 sb-p" style="margin-top:14px;font-size:52px;max-width:38ch">Seis decisiones, <em>dieciocho meses</em> como horizonte máximo</h2>
-    <div class="sb-ruta">
+    <h2 class="sb-h2 sb-p" style="margin-top:12px;font-size:50px;max-width:40ch">Ocho decisiones, <em>dieciocho meses</em> como horizonte máximo</h2>
+    <div class="sb-ruta" style="margin-top:22px">
       <div class="ejes sb-p"><div>Recomendación</div><div>3</div><div>6</div><div>9</div><div>12</div><div>15</div><div>18 meses</div></div>
+      <div class="sb-fila sb-p"><div class="nom">Usar inteligencia artificial<i>R8 · los tres escenarios</i></div>
+        <div class="pista"><div class="barra tod" style="left:0;width:22.2%">4 meses</div></div></div>
       <div class="sb-fila sb-p"><div class="nom">Reestructurar la tienda digital<i>R1 · optimista y tendencial</i></div>
         <div class="pista"><div class="barra opt" style="left:0;width:33.3%">6 meses</div></div></div>
       <div class="sb-fila sb-p"><div class="nom">Lanzar «micro recompensas» saludables<i>R6 · pesimista y tendencial</i></div>
         <div class="pista"><div class="barra ten" style="left:0;width:44.4%">8 meses</div></div></div>
       <div class="sb-fila sb-p"><div class="nom">Expandir el canal directo a otras ciudades<i>R2 · optimista y pesimista</i></div>
-        <div class="pista"><div class="barra opt" style="left:0;width:50%">9 meses</div></div></div>
+        <div class="pista"><div class="barra opt" style="left:0;width:50.0%">9 meses</div></div></div>
+      <div class="sb-fila sb-p"><div class="nom">Abrir una panadería-laboratorio<i>R7 · optimista y tendencial</i></div>
+        <div class="pista"><div class="barra opt" style="left:0;width:50.0%">9 meses</div></div></div>
       <div class="sb-fila sb-p"><div class="nom">Cubrir insumos e ingeniería de costos<i>R3 · los tres escenarios</i></div>
-        <div class="pista"><div class="barra tod" style="left:0;width:66.6%">12 meses</div></div></div>
+        <div class="pista"><div class="barra tod" style="left:0;width:66.7%">12 meses</div></div></div>
       <div class="sb-fila sb-p"><div class="nom">Defender el margen en el canal moderno<i>R4 · pesimista y tendencial</i></div>
-        <div class="pista"><div class="barra pes" style="left:0;width:66.6%">12 meses</div></div></div>
+        <div class="pista"><div class="barra pes" style="left:0;width:66.7%">12 meses</div></div></div>
       <div class="sb-fila sb-p" style="border-bottom:0"><div class="nom">Transicionar a empaques eco-sostenibles<i>R5 · optimista y pesimista</i></div>
-        <div class="pista"><div class="barra opt" style="left:0;width:100%">18 meses</div></div></div>
+        <div class="pista"><div class="barra opt" style="left:0;width:100.0%">18 meses</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- ═════════ 16 · recomendaciones 1-4 ═════════ -->
-<section class="sb-l" data-exp="Thomas" data-t="Recomendaciones 1 a 3" data-y="2030"
- data-n="Las primeras tres atacan la dependencia. La uno reestructura la tienda digital con fichas nutricionales interactivas y el sello de libre de aditivos: seis meses, más veinticinco por ciento de conversión. La dos rompe la barrera geográfica del Área Metropolitana con última milla y marketplaces, empezando por las líneas que más duran: nueve meses, para pasar el canal propio del diez al veinticinco por ciento hacia 2028. Y la tres cubre el trigo con compras anticipadas y contratos a término, y diversifica hacia harinas locales.">
+<section class="sb-l" data-exp="Thomas" data-t="Recomendaciones 1 y 2" data-y="2030"
+ data-n="La uno reestructura la tienda digital con fichas nutricionales interactivas por referencia. Acción y plazo: rediseñar e implementar la plataforma propia con catálogo enriquecido y el sello cien por ciento libre de aditivos y sellos, en seis meses. Impacto esperado: más veinticinco por ciento en la tasa de conversión de la tienda en línea y más quince por ciento en ventas del canal digital durante el primer año. Es la más barata y la que más rápido se nota. La dos rompe la barrera geográfica del Área Metropolitana. Acción y plazo: cerrar alianzas logísticas para entregas nacionales e integrarse a dos marketplaces, en nueve meses, empezando por crocantes, Happy Mix y cereales soplados, que son las líneas que resisten el transporte. Impacto esperado: subir la participación del canal propio en la facturación del diez al veinticinco por ciento hacia 2028, que es la cifra que de verdad reduce la dependencia de las cadenas.">
   <div class="sb-wrap">
-    <div class="sb-kick sb-p">Recomendaciones 1 a 3 · atacar la dependencia</div>
-    <div class="sb-recs sb-recs--tres">
+    <div class="sb-kick sb-p">Recomendaciones 1 y 2 · atacar la dependencia</div>
+    <div class="sb-recs sb-recs--dos">
       <article class="sb-rec sb-glass sb-p">
         <div class="cab"><span class="num">01</span><span class="t">Reestructurar la tienda digital y desplegar transparencia nutricional</span></div>
         <div class="d">Rediseñar el e-commerce propio con fichas nutricionales interactivas por referencia, visibilizando que el portafolio está exento de sellos e impuesto y enmarcándolo en la herencia artesanal de la receta de 1985.</div>
-        <div class="im"><b style="color:var(--crema);font-weight:500">Impacto esperado:</b> +25 % en la tasa de conversión y +15 % en ventas del canal digital el primer año.</div>
-        <div class="pie"><span class="pz">6 meses</span><span class="vr">Sellos · Innovación</span><span class="pz">Optimista · tendencial</span></div></article>
+        <div class="campos">
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">6 <small>meses</small></div><div class="txt">Rediseñar e implementar la plataforma web propia con catálogo enriquecido y sello «100 % libre de aditivos y sellos».</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">+25 %</div><div class="txt">en la tasa de conversión dentro de la tienda en línea, y +15 % en ventas del canal digital durante el primer año.</div></div>
+        </div>
+        <div class="pie"><span class="vr">Sellos · Innovación</span><span class="pz">Optimista · tendencial</span></div></article>
       <article class="sb-rec sb-glass sb-p">
-        <div class="cab"><span class="num">02</span><span class="t">Expandir el canal directo a ciudades intermedias y capitales</span></div>
+        <div class="cab"><span class="num">02</span><span class="t">Expandir el canal directo a ciudades intermedias y capitales clave</span></div>
         <div class="d">Romper la barrera del Área Metropolitana con operadores de última milla y marketplaces nacionales —Rappi Turbo, Mercado Libre Alimentos— despachando las líneas de mayor vida útil: crocantes, Happy Mix y cereales soplados.</div>
-        <div class="im"><b style="color:var(--crema);font-weight:500">Impacto esperado:</b> Subir el canal propio del 10 % al 25 % de la facturación hacia 2028.</div>
-        <div class="pie"><span class="pz">9 meses · 2 marketplaces</span><span class="vr">Cadenas</span><span class="pz">Optimista · pesimista</span></div></article>
-      <article class="sb-rec sb-glass sb-p">
-        <div class="cab"><span class="num">03</span><span class="t">Cubrir insumos clave y hacer ingeniería de costos</span></div>
-        <div class="d">Compras anticipadas y contratos a término para el trigo importado, combinados con harinas alternativas locales —yuca, cereales ancestrales— para mitigar la volatilidad cambiaria y de fletes.</div>
-        <div class="im"><b style="color:var(--crema);font-weight:500">Impacto esperado:</b> Estabilizar el margen bruto y reducir hasta 8 % el impacto del trigo importado en el costo operativo.</div>
-        <div class="pie"><span class="pz">12 meses</span><span class="vr">Costos</span><span class="pz">Los tres escenarios</span></div></article>
+        <div class="campos">
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">9 <small>meses</small></div><div class="txt">Cerrar alianzas logísticas para entregas nacionales e integrarse a 2 marketplaces.</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">10 → 25 %</div><div class="txt">de participación del canal propio en la facturación total hacia 2028, reduciendo la dependencia de las cadenas tradicionales.</div></div>
+        </div>
+        <div class="pie"><span class="vr">Cadenas</span><span class="pz">Optimista · pesimista</span></div></article>
     </div>
   </div>
 </section>
 
-<!-- ═════════ 17 · recomendaciones 5-8 ═════════ -->
-<section class="sb-l" data-exp="Thomas" data-t="Recomendaciones 4 a 6" data-y="2030"
- data-n="Las últimas tres defienden el margen y construyen capacidad. La cuatro reorganiza la negociación con las doce cadenas con formatos exclusivos que no compitan por precio con el descuento duro, para conservar góndola con una rentabilidad mínima del doce por ciento. La cinco transiciona a empaques compostables o reciclados certificados, convirtiendo el costo normativo en ventaja comunicacional. Y la seis lanza presentaciones individuales por debajo de nueve mil pesos, que es la respuesta directa al consumidor que hoy gasta menos.">
+<section class="sb-l" data-exp="Thomas" data-t="Recomendaciones 3 y 4" data-y="2030"
+ data-n="La tres ataca el costo donde más duele. Acción y plazo: establecer un comité de compras de materias primas con contratos de cobertura trimestrales y lanzar dos líneas con harinas locales, en doce meses. Impacto esperado: reducir hasta ocho por ciento el impacto del trigo importado en el costo operativo y estabilizar el margen bruto frente a la inflación. Es la única que aplica a los tres escenarios por igual. La cuatro defiende lo que ya tiene. Acción y plazo: negociar la reestructuración de exhibiciones y referencias exclusivas de Happy Mix y repostería en las cadenas clave, en doce meses. Impacto esperado: mantener una rentabilidad mínima del doce por ciento en el canal moderno y proteger el espacio en góndola frente al avance de las marcas propias. La clave es no competir por precio con el descuento duro.">
   <div class="sb-wrap">
-    <div class="sb-kick sb-p">Recomendaciones 4 a 6 · defender el margen y construir capacidad</div>
-    <div class="sb-recs sb-recs--tres">
+    <div class="sb-kick sb-p">Recomendaciones 3 y 4 · proteger el margen</div>
+    <div class="sb-recs sb-recs--dos">
+      <article class="sb-rec sb-glass sb-p">
+        <div class="cab"><span class="num">03</span><span class="t">Cubrir insumos clave e ingeniería de formulación de costos</span></div>
+        <div class="d">Compras anticipadas y contratos a término para el trigo importado, combinados con harinas alternativas locales —yuca, cereales ancestrales— para mitigar la volatilidad cambiaria y de fletes.</div>
+        <div class="campos">
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">12 <small>meses</small></div><div class="txt">Establecer un comité de compras de materias primas con contratos de cobertura trimestrales y lanzar 2 líneas con harinas locales.</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">−8 %</div><div class="txt">de impacto del costo del trigo importado en el costo operativo, estabilizando el margen bruto frente a la inflación.</div></div>
+        </div>
+        <div class="pie"><span class="vr">Costos</span><span class="pz">Los tres escenarios</span></div></article>
       <article class="sb-rec sb-glass sb-p">
         <div class="cab"><span class="num">04</span><span class="t">Diferenciar y defender el margen en el canal moderno</span></div>
-        <div class="d">Reorganizar la negociación con las 12 cadenas con formatos exclusivos y paquetes de valor que no compitan por precio bajo con las marcas propias del descuento duro.</div>
-        <div class="im"><b style="color:var(--crema);font-weight:500">Impacto esperado:</b> Proteger el espacio en góndola y mantener una rentabilidad mínima del 12 % en el canal moderno.</div>
-        <div class="pie"><span class="pz">12 meses</span><span class="vr">Cadenas · Impuesto</span><span class="pz">Pesimista · tendencial</span></div></article>
+        <div class="d">Reorganizar la negociación con las 12 cadenas introduciendo formatos exclusivos y paquetes de valor que no compitan por precio bajo con las marcas propias del descuento duro.</div>
+        <div class="campos">
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">12 <small>meses</small></div><div class="txt">Negociar la reestructuración de exhibiciones y referencias exclusivas de la línea Happy Mix y repostería en las cadenas clave.</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">12 %</div><div class="txt">de rentabilidad mínima en el canal moderno, protegiendo el espacio en góndola frente al avance de las marcas propias.</div></div>
+        </div>
+        <div class="pie"><span class="vr">Cadenas · Impuesto</span><span class="pz">Pesimista · tendencial</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sb-l" data-exp="Thomas" data-t="Recomendaciones 5 y 6" data-y="2030"
+ data-n="La cinco convierte una obligación en argumento. Acción y plazo: rediseñar los empaques del cien por ciento de la línea de crocantes y snacks cumpliendo la fase prioritaria de la ley, en dieciocho meses. Impacto esperado: cumplimiento normativo del cien por ciento antes de los plazos legales de 2030 y quince por ciento más de favorabilidad de marca por atributos de sostenibilidad. Es la más larga del plan y por eso hay que arrancarla pronto. La seis responde al consumidor que hoy gasta menos. Acción y plazo: formular, probar e introducir al mercado tres referencias en formato pocket, en ocho meses. Impacto esperado: capturar un diez por ciento adicional de participación en snacks saludables e ingresar a dos cadenas de conveniencia o droguerías de alta rotación. El precio de entrada por debajo de nueve mil pesos es el que abre esa puerta.">
+  <div class="sb-wrap">
+    <div class="sb-kick sb-p">Recomendaciones 5 y 6 · cumplir y captar</div>
+    <div class="sb-recs sb-recs--dos">
       <article class="sb-rec sb-glass sb-p">
-        <div class="cab"><span class="num">05</span><span class="t">Transicionar a empaques eco-sostenibles</span></div>
-        <div class="d">Reemplazar el plástico de un solo uso por películas compostables o plásticos reciclados certificados, convirtiendo el costo normativo en ventaja comunicacional.</div>
-        <div class="im"><b style="color:var(--crema);font-weight:500">Impacto esperado:</b> Cumplimiento del 100 % antes de los plazos de 2030 y +15 % en favorabilidad de marca por sostenibilidad.</div>
-        <div class="pie"><span class="pz">18 meses</span><span class="vr">Innovación · Costos</span><span class="pz">Optimista · pesimista</span></div></article>
+        <div class="cab"><span class="num">05</span><span class="t">Transicionar a empaques eco-sostenibles y cumplir la Ley 2232</span></div>
+        <div class="d">Reemplazar el plástico de un solo uso por películas compostables o plásticos reciclados certificados, convirtiendo el costo normativo en una ventaja comunicacional de la propuesta de valor.</div>
+        <div class="campos">
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">18 <small>meses</small></div><div class="txt">Rediseñar los empaques del 100 % de la línea de crocantes y snacks, cumpliendo la fase prioritaria de la ley.</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">100 %</div><div class="txt">de cumplimiento normativo antes de los plazos legales de 2030, y +15 % en favorabilidad de marca por sostenibilidad.</div></div>
+        </div>
+        <div class="pie"><span class="vr">Innovación · Costos</span><span class="pz">Optimista · pesimista</span></div></article>
       <article class="sb-rec sb-glass sb-p">
-        <div class="cab"><span class="num">06</span><span class="t">Lanzar «micro recompensas» saludables</span></div>
-        <div class="d">Presentaciones individuales —mini snacks, galletas y crocantes de un solo servicio— con precio de entrada menor a $9.000 COP para droguerías y tiendas de conveniencia.</div>
-        <div class="im"><b style="color:var(--crema);font-weight:500">Impacto esperado:</b> +10 % de participación en snacks saludables y entrada a 2 cadenas de conveniencia o droguerías.</div>
-        <div class="pie"><span class="pz">8 meses · 3 referencias</span><span class="vr">Innovación · Impuesto</span><span class="pz">Pesimista · tendencial</span></div></article>
+        <div class="cab"><span class="num">06</span><span class="t">Lanzar el portafolio de «micro recompensas» saludables</span></div>
+        <div class="d">Presentaciones individuales —mini snacks, galletas y crocantes de un solo servicio— con precio de entrada menor a $9.000 COP para captar el consumo rápido en droguerías y tiendas de conveniencia.</div>
+        <div class="campos">
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">8 <small>meses</small></div><div class="txt">Formular, probar e introducir al mercado 3 referencias en formato pocket.</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">+10 %</div><div class="txt">de participación en la categoría de snacks saludables, e ingreso a 2 cadenas de conveniencia o droguerías de alta rotación.</div></div>
+        </div>
+        <div class="pie"><span class="vr">Innovación · Impuesto</span><span class="pz">Pesimista · tendencial</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sb-l" data-exp="Thomas" data-t="Recomendaciones 7 y 8" data-y="2030"
+ data-n="La siete nació de la entrevista. Acción y plazo: abrir un piloto de panadería-laboratorio en el Valle de Aburrá en nueve meses y evaluarlo a los seis meses de operación. Impacto esperado: validar seis referencias nuevas el primer año y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.">
+  <div class="sb-wrap">
+    <div class="sb-kick sb-p">Recomendaciones 7 y 8 · lo que nació de la entrevista</div>
+    <div class="sb-recs sb-recs--dos">
+      <article class="sb-rec sb-glass sb-p nueva">
+        <span class="flag">Meta propuesta por el equipo</span>
+        <div class="cab"><span class="num">07</span><span class="t">Abrir una panadería-laboratorio</span></div>
+        <div class="d">Un punto propio con producto recién hecho y degustaciones, donde se prueba cada referencia nueva con clientes reales antes de producirla en planta. También refuerza la atención al cliente que señaló la experta.</div>
+        <div class="campos">
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">9 <small>meses</small></div><div class="txt">Abrir un piloto en el Valle de Aburrá y evaluarlo a los 6 meses de operación.</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">6 <small>referencias</small></div><div class="txt">validadas el primer año, y que el punto aporte 10 % de las ventas directas.</div></div>
+        </div>
+        <div class="pie"><span class="vr">Innovar V1 · Digital V6</span><span class="pz">Optimista · tendencial</span></div></article>
+      <article class="sb-rec sb-glass sb-p nueva">
+        <span class="flag">Meta propuesta por el equipo</span>
+        <div class="cab"><span class="num">08</span><span class="t">Usar inteligencia artificial</span></div>
+        <div class="d">Un asistente de IA en WhatsApp Business que tome pedidos sin comisión de apps, y un modelo que pronostique la demanda semanal para planear producción e insumos.</div>
+        <div class="campos">
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">4 <small>meses</small></div><div class="txt">Hacer un piloto con 3 referencias, midiendo el error del pronóstico, la merma y los pedidos directos.</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">−15 %</div><div class="txt">de merma y +20 % de pedidos directos por WhatsApp el primer año.</div></div>
+        </div>
+        <div class="pie"><span class="vr">Digital V6 · Costos V2 · Alianzas V5</span><span class="pz">Los tres · más peso en el tendencial</span></div></article>
     </div>
   </div>
 </section>
 
 <!-- ═════════ 18 · próximos seis meses ═════════ -->
 <section class="sb-l" data-exp="Thomas" data-t="Los próximos seis meses" data-y="2030"
- data-n="Si de toda la presentación hay que llevarse una sola cosa, es esta diapositiva. Hay tres cosas que SUSI puede empezar este mismo trimestre, porque son las más rápidas y las más baratas: la tienda digital a seis meses, los formatos individuales a ocho y la expansión del canal directo a nueve. Las tres atacan directamente la dependencia del canal moderno. El cierre es el siguiente: el escenario tendencial es cómodo de habitar y por eso nadie actúa; empezar en 2026 cuesta mucho menos que reaccionar en 2030.">
+ data-n="Si de toda la presentación hay que llevarse una sola cosa, es esta diapositiva. Hay tres cosas que SUSI puede empezar este mismo trimestre, porque son las más rápidas y las más baratas: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Las tres atacan directamente la dependencia del canal moderno. El cierre es el siguiente: el escenario tendencial es cómodo de habitar y por eso nadie actúa; empezar en 2026 cuesta mucho menos que reaccionar en 2030.">
   <div class="sb-wrap">
     <div class="sb-kick sb-p">Lo que puede empezar este trimestre</div>
-    <h2 class="sb-h2 sb-p" style="margin-top:12px;font-size:54px">Tres movimientos en los <em>próximos nueve meses</em></h2>
+    <h2 class="sb-h2 sb-p" style="margin-top:12px;font-size:54px">Tres movimientos en los <em>próximos ocho meses</em></h2>
     <div class="sb-seis">
-      <div class="c sb-glass sb-p"><div class="pz">6 meses · R1</div><div class="t">Tienda digital con transparencia</div><div class="d">Fichas nutricionales interactivas por referencia y el sello «100 % libre de aditivos y sellos», enmarcado en la receta de 1985.</div></div>
-      <div class="c sb-glass sb-p"><div class="pz">8 meses · R6</div><div class="t">Micro recompensas saludables</div><div class="d">Tres referencias individuales por debajo de $9.000 COP para droguerías y tiendas de conveniencia.</div></div>
-      <div class="c sb-glass sb-p"><div class="pz">9 meses · R2</div><div class="t">Canal directo fuera del Valle</div><div class="d">Última milla y dos marketplaces nacionales, con crocantes, Happy Mix y cereales soplados.</div></div>
+      <div class="c sb-glass sb-p"><div class="pz">4 meses · R8</div><div class="t">Inteligencia artificial</div><div class="d">Piloto con tres referencias: asistente de pedidos en WhatsApp Business y pronóstico de demanda semanal. −15 % de merma.</div></div>
+      <div class="c sb-glass sb-p"><div class="pz">6 meses · R1</div><div class="t">Tienda digital con transparencia</div><div class="d">Fichas nutricionales interactivas y el sello «100 % libre de aditivos y sellos». +25 % de conversión.</div></div>
+      <div class="c sb-glass sb-p"><div class="pz">8 meses · R6</div><div class="t">Micro recompensas saludables</div><div class="d">Tres referencias individuales por debajo de $9.000 COP para conveniencia y droguerías. +10 % de participación.</div></div>
     </div>
     <p class="sb-cierre sb-p">El escenario tendencial es cómodo de habitar, y por eso nadie actúa. <em>Empezar en 2026 cuesta mucho menos que reaccionar en 2030.</em></p>
   </div>

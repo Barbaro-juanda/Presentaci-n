@@ -8,9 +8,9 @@ También están dentro de la presentación: tecla `N`.
 | Bloque | Diapositivas | Quién habla | Tiempo aprox. |
 |---|---|---|---|
 | El reto y el entorno | 1–5 | Juan David Escobar Guiral | 4 min |
-| Variables, método, hipótesis y validación | 6–10 | Santiago Duque Restrepo | 4 min |
+| Variables, método, hipótesis y validación | 6–10 | Santiago Duque Restrepo | 3 min 30 s |
 | Los tres escenarios | 11–14 | María Camila Jiménez Ramírez | 3 min |
-| Decisiones y cierre | 15–19 | Thomas Quintero Gallego | 4 min |
+| Hoja de ruta, recomendaciones y cierre | 15–21 | Thomas Quintero Gallego | 5 min |
 
 ## 01 · Portada
 
@@ -100,27 +100,39 @@ Este es el más probable y, por eso mismo, el más peligroso. No hay crisis: hay
 
 **Habla:** Thomas Quintero Gallego
 
-De los tres escenarios salen seis recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la tienda digital a seis meses y los formatos individuales a ocho. Después viene la expansión del canal directo, a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce meses, y los empaques sostenibles a dieciocho. Ninguna acción pasa de año y medio, así que todo el plan cabe cómodamente antes de 2030.
+De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después vienen la expansión del canal directo y la panadería-laboratorio, las dos a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Ninguna acción pasa de año y medio, así que todo el plan cabe cómodamente antes de 2030.
 
-## 16 · Recomendaciones 1 a 3
-
-**Habla:** Thomas Quintero Gallego
-
-Las primeras tres atacan la dependencia. La uno reestructura la tienda digital con fichas nutricionales interactivas y el sello de libre de aditivos: seis meses, más veinticinco por ciento de conversión. La dos rompe la barrera geográfica del Área Metropolitana con última milla y marketplaces, empezando por las líneas que más duran: nueve meses, para pasar el canal propio del diez al veinticinco por ciento hacia 2028. Y la tres cubre el trigo con compras anticipadas y contratos a término, y diversifica hacia harinas locales.
-
-## 17 · Recomendaciones 4 a 6
+## 16 · Recomendaciones 1 y 2
 
 **Habla:** Thomas Quintero Gallego
 
-Las últimas tres defienden el margen y construyen capacidad. La cuatro reorganiza la negociación con las doce cadenas con formatos exclusivos que no compitan por precio con el descuento duro, para conservar góndola con una rentabilidad mínima del doce por ciento. La cinco transiciona a empaques compostables o reciclados certificados, convirtiendo el costo normativo en ventaja comunicacional. Y la seis lanza presentaciones individuales por debajo de nueve mil pesos, que es la respuesta directa al consumidor que hoy gasta menos.
+La uno reestructura la tienda digital con fichas nutricionales interactivas por referencia. Acción y plazo: rediseñar e implementar la plataforma propia con catálogo enriquecido y el sello cien por ciento libre de aditivos y sellos, en seis meses. Impacto esperado: más veinticinco por ciento en la tasa de conversión de la tienda en línea y más quince por ciento en ventas del canal digital durante el primer año. Es la más barata y la que más rápido se nota. La dos rompe la barrera geográfica del Área Metropolitana. Acción y plazo: cerrar alianzas logísticas para entregas nacionales e integrarse a dos marketplaces, en nueve meses, empezando por crocantes, Happy Mix y cereales soplados, que son las líneas que resisten el transporte. Impacto esperado: subir la participación del canal propio en la facturación del diez al veinticinco por ciento hacia 2028, que es la cifra que de verdad reduce la dependencia de las cadenas.
 
-## 18 · Los próximos seis meses
+## 17 · Recomendaciones 3 y 4
 
 **Habla:** Thomas Quintero Gallego
 
-Si de toda la presentación hay que llevarse una sola cosa, es esta diapositiva. Hay tres cosas que SUSI puede empezar este mismo trimestre, porque son las más rápidas y las más baratas: la tienda digital a seis meses, los formatos individuales a ocho y la expansión del canal directo a nueve. Las tres atacan directamente la dependencia del canal moderno. El cierre es el siguiente: el escenario tendencial es cómodo de habitar y por eso nadie actúa; empezar en 2026 cuesta mucho menos que reaccionar en 2030.
+La tres ataca el costo donde más duele. Acción y plazo: establecer un comité de compras de materias primas con contratos de cobertura trimestrales y lanzar dos líneas con harinas locales, en doce meses. Impacto esperado: reducir hasta ocho por ciento el impacto del trigo importado en el costo operativo y estabilizar el margen bruto frente a la inflación. Es la única que aplica a los tres escenarios por igual. La cuatro defiende lo que ya tiene. Acción y plazo: negociar la reestructuración de exhibiciones y referencias exclusivas de Happy Mix y repostería en las cadenas clave, en doce meses. Impacto esperado: mantener una rentabilidad mínima del doce por ciento en el canal moderno y proteger el espacio en góndola frente al avance de las marcas propias. La clave es no competir por precio con el descuento duro.
 
-## 19 · Cierre
+## 18 · Recomendaciones 5 y 6
+
+**Habla:** Thomas Quintero Gallego
+
+La cinco convierte una obligación en argumento. Acción y plazo: rediseñar los empaques del cien por ciento de la línea de crocantes y snacks cumpliendo la fase prioritaria de la ley, en dieciocho meses. Impacto esperado: cumplimiento normativo del cien por ciento antes de los plazos legales de 2030 y quince por ciento más de favorabilidad de marca por atributos de sostenibilidad. Es la más larga del plan y por eso hay que arrancarla pronto. La seis responde al consumidor que hoy gasta menos. Acción y plazo: formular, probar e introducir al mercado tres referencias en formato pocket, en ocho meses. Impacto esperado: capturar un diez por ciento adicional de participación en snacks saludables e ingresar a dos cadenas de conveniencia o droguerías de alta rotación. El precio de entrada por debajo de nueve mil pesos es el que abre esa puerta.
+
+## 19 · Recomendaciones 7 y 8
+
+**Habla:** Thomas Quintero Gallego
+
+La siete nació de la entrevista. Acción y plazo: abrir un piloto de panadería-laboratorio en el Valle de Aburrá en nueve meses y evaluarlo a los seis meses de operación. Impacto esperado: validar seis referencias nuevas el primer año y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.
+
+## 20 · Los próximos seis meses
+
+**Habla:** Thomas Quintero Gallego
+
+Si de toda la presentación hay que llevarse una sola cosa, es esta diapositiva. Hay tres cosas que SUSI puede empezar este mismo trimestre, porque son las más rápidas y las más baratas: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Las tres atacan directamente la dependencia del canal moderno. El cierre es el siguiente: el escenario tendencial es cómodo de habitar y por eso nadie actúa; empezar en 2026 cuesta mucho menos que reaccionar en 2030.
+
+## 21 · Cierre
 
 **Habla:** Thomas Quintero Gallego
 

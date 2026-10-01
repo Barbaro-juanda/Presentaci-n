@@ -6,7 +6,7 @@ Presentación final de **Prospectiva 1** (ESIC, Digital Business & Administratio
 - **Equipo:** Juan David Escobar Guiral · Santiago Duque Restrepo · María Camila Jiménez Ramírez · Thomas Quintero Gallego
 - **Profesor:** Carlos Alberto Rincón
 - **Fecha:** 30 de septiembre de 2026
-- **Duración objetivo:** 12–15 minutos hablados · 19 diapositivas
+- **Duración objetivo:** 15 minutos hablados · 21 diapositivas
 
 ## Cómo se abre
 
@@ -47,10 +47,12 @@ archivo, y además quedan como copia legible en `fonts/` y `vendor/`.
 13. Pesimista · «La góndola sin nombre»
 14. Tendencial · «Buen pan, poca voz»
 15. Hoja de ruta 2026–2030
-16. Recomendaciones 1 a 3
-17. Recomendaciones 4 a 6
-18. Los próximos seis meses
-19. Cierre y normativa citada
+16. Recomendaciones 1 y 2
+17. Recomendaciones 3 y 4
+18. Recomendaciones 5 y 6
+19. Recomendaciones 7 y 8
+20. Los próximos seis meses
+21. Cierre y normativa citada
 
 ## Dirección de arte
 
@@ -82,7 +84,10 @@ informe final. No se añadieron cifras, citas ni datos que no estén en él.
    el informe las etiqueta.
 3. La **sección 3.2** dice que se sumaron dos recomendaciones (panadería-laboratorio e
    inteligencia artificial), pero la **sección 5 solo lista seis** y ninguna es esa. El deck
-   sigue la sección 5.
+   presenta las ocho: las seis de la sección 5 del informe final y las dos adicionales con
+   el texto del informe anterior, marcadas con la etiqueta «Meta propuesta por el equipo».
+   **Hay que agregar esas dos fichas a la sección 5 del informe** para que documento y
+   presentación coincidan.
 4. El informe **nombra H1 a H6 sin transcribir su enunciado**. Los textos de la lámina 8
    están redactados por el equipo a partir de los tres relatos de escenario, y la lámina lo
    declara al pie.
