@@ -1012,6 +1012,13 @@ function escalar(){
   stage.style.transform="translate3d(-50%,-50%,0) scale("+k+")";
 }
 addEventListener("resize",function(){escalar();ajustarMinis();});
+/* El lienzo se remide cuando #vista cambia de tamaño: al entrar y salir del modo
+   presentación la rejilla de #app se anima durante .3s, así que medir una sola vez
+   justo después del clic deja la lámina más pequeña que la pantalla. */
+if(window.ResizeObserver) new ResizeObserver(escalar).observe(vista);
+D.getElementById("app").addEventListener("transitionend",function(e){
+  if(e.propertyName.indexOf("grid-template")===0){escalar();ajustarMinis()}
+});
 
 /* ── miniaturas con clones vivos ─────────────────────────────────────── */
 function clonar(n){
@@ -1190,13 +1197,23 @@ function presentar(){
   D.getElementById("bPresentar").classList.toggle("activo",on);
   if(on && D.documentElement.requestFullscreen) D.documentElement.requestFullscreen().catch(function(){});
   if(!on && D.fullscreenElement && D.exitFullscreen) D.exitFullscreen().catch(function(){});
-  requestAnimationFrame(function(){escalar();ajustarMinis()});
+  var t0=Date.now(), seguir=function(){
+    escalar();
+    if(Date.now()-t0<460) requestAnimationFrame(seguir); else ajustarMinis();
+  };
+  requestAnimationFrame(seguir);
 }
 function pantalla(){
   if(D.fullscreenElement){D.exitFullscreen&&D.exitFullscreen()}
   else{D.documentElement.requestFullscreen&&D.documentElement.requestFullscreen().catch(function(){})}
 }
-D.addEventListener("fullscreenchange",function(){requestAnimationFrame(escalar)});
+D.addEventListener("fullscreenchange",function(){
+  var t0=Date.now(), seguir=function(){
+    escalar();
+    if(Date.now()-t0<460) requestAnimationFrame(seguir);
+  };
+  requestAnimationFrame(seguir);
+});
 
 D.getElementById("bNotas").addEventListener("click",alternarNotas);
 D.getElementById("bRejilla").addEventListener("click",alternarRejilla);
