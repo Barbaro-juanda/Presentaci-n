@@ -64,7 +64,7 @@ Estas son las seis hipótesis que salieron de la matriz. Van de a dos por escena
 
 **Habla:** Santiago Duque Restrepo
 
-Validamos con una sesión cualitativa de matriz morfológica, en entrevista semiestructurada de impacto cruzado. La experta es Kelly Hernández, administradora general de Pané, con once años en la gestión comercial y operativa de esa firma y más de una década en el sector panificador del Valle de Aburrá. Conoce de primera mano la compra de insumos, el personal, la atención al cliente, los domicilios y las plataformas digitales. Es importante decir qué no es: su mirada es la de la venta directa, no la del canal retail, y es una sola entrevista: orienta, pero no concluye.
+Validamos con una sesión cualitativa de matriz morfológica, en entrevista semiestructurada de impacto cruzado. La experta es Kelly Hernández, administradora general de Panem, con once años en la gestión comercial y operativa de esa firma y más de una década en el sector panificador del Valle de Aburrá. Conoce de primera mano la compra de insumos, el personal, la atención al cliente, los domicilios y las plataformas digitales. Es importante decir qué no es: su mirada es la de la venta directa, no la del canal retail, y es una sola entrevista: orienta, pero no concluye.
 
 ## 10 · Qué cambió por la validación
 

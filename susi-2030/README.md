@@ -86,6 +86,8 @@ informe final. No se añadieron cifras, citas ni datos que no estén en él.
 4. El informe **nombra H1 a H6 sin transcribir su enunciado**. Los textos de la lámina 8
    están redactados por el equipo a partir de los tres relatos de escenario, y la lámina lo
    declara al pie.
+5. El informe escribe el nombre de la panadería de la experta como «Pané». El nombre correcto
+   es **Panem**, y así aparece en el deck. Hay que corregirlo en el informe.
 
 **Las seis hipótesis.** El informe nombra H1 a H6 y las empareja con cada escenario, pero no
 transcribe su enunciado: solo desarrolla los tres relatos. Los textos de la lámina 8 están
