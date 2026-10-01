@@ -47,10 +47,10 @@ archivo, y además quedan como copia legible en `fonts/` y `vendor/`.
 13. Pesimista · «La góndola sin nombre»
 14. Tendencial · «Buen pan, poca voz»
 15. Hoja de ruta 2026–2030
-16. Recomendaciones 1 a 4
-17. Recomendaciones 5 a 8
+16. Recomendaciones 1 a 3
+17. Recomendaciones 4 a 6
 18. Los próximos seis meses
-19. Referencias (APA 7)
+19. Cierre y normativa citada
 
 ## Dirección de arte
 
@@ -68,10 +68,24 @@ archivo, y además quedan como copia legible en `fonts/` y `vendor/`.
 
 ## Fuente del contenido
 
-Todo el contenido proviene del informe `Informe_prospectiva_SUSI_APA7_12p`. No se
-añadieron cifras, citas ni datos que no estén en él. Las dos metas marcadas con la
-etiqueta punteada **«Meta propuesta por el equipo»** (recomendaciones 7 y 8) se señalan
-así porque son estimaciones nuestras y no cifras del informe.
+Todo el contenido proviene de **`Informe de prospectiva estratégica Grupo 2.docx`**, el
+informe final. No se añadieron cifras, citas ni datos que no estén en él.
+
+**Pendientes y contradicciones del informe, señalados en el deck:**
+
+1. El informe final **no incluye lista de referencias en APA 7**. La lámina 19 muestra la
+   normativa citada dentro del texto y marca el faltante con la etiqueta «Pendiente».
+2. El **resumen ejecutivo** nombra como variables críticas «sellos, innovación, costos,
+   cadenas, impuesto y nostalgia», mientras la **sección 2.3** define V1 Innovar, V2 Costos,
+   V3 Cadenas, V4 Competir, V5 Alianzas y V6 Digital. El deck usa las de la sección 2.3,
+   que es el análisis MICMAC formal; las recomendaciones conservan los nombres con los que
+   el informe las etiqueta.
+3. La **sección 3.2** dice que se sumaron dos recomendaciones (panadería-laboratorio e
+   inteligencia artificial), pero la **sección 5 solo lista seis** y ninguna es esa. El deck
+   sigue la sección 5.
+4. El informe **nombra H1 a H6 sin transcribir su enunciado**. Los textos de la lámina 8
+   están redactados por el equipo a partir de los tres relatos de escenario, y la lámina lo
+   declara al pie.
 
 **Las seis hipótesis.** El informe nombra H1 a H6 y las empareja con cada escenario, pero no
 transcribe su enunciado: solo desarrolla los tres relatos. Los textos de la lámina 8 están
