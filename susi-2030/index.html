@@ -318,7 +318,7 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
   padding-bottom:12px;border-bottom:1px solid var(--borde)}
 .sb-ruta .ejes div{text-align:right;padding-right:4px}
 .sb-ruta .ejes div:first-child{text-align:left}
-.sb-fila{display:grid;grid-template-columns:330px 1fr;gap:0;align-items:center;padding:11px 0;border-bottom:1px solid var(--borde)}
+.sb-fila{display:grid;grid-template-columns:330px 1fr;gap:0;align-items:center;padding:9px 0;border-bottom:1px solid var(--borde)}
 .sb-fila .nom{font-size:17px;line-height:1.3;padding-right:20px}
 .sb-fila .nom i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--c45);display:block;margin-top:4px}
 .sb-fila .pista{position:relative;height:30px}
@@ -327,6 +327,11 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
   transform:scaleX(0);transform-origin:left;white-space:nowrap}
 .sb-fila .barra.opt{background:var(--coral)} .sb-fila .barra.pes{background:var(--rojo-profundo);color:var(--crema)}
 .sb-fila .barra.ten{background:var(--naranja-maiz)} .sb-fila .barra.tod{background:var(--terracota);color:var(--crema)}
+.sb-fila.horizonte{border-top:1px dashed var(--borde-2);border-bottom:0;margin-top:8px;padding-top:13px}
+.sb-fila.horizonte .nom i{color:var(--coral)}
+.sb-fila .barra.abierta{justify-content:flex-start;padding-left:14px;padding-right:0;
+  background:linear-gradient(90deg,var(--coral) 0%,rgba(234,72,54,.5) 62%,rgba(234,72,54,0) 100%);color:#1A0C09}
+.sb-fila .barra.abierta::after{content:"\2192";position:absolute;right:4px;top:-1px;color:var(--coral);font-size:15px}
 
 /* 15-16 recomendaciones */
 .sb-recs{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:30px}
@@ -847,10 +852,10 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
 
 <!-- ═════════ 15 · hoja de ruta ═════════ -->
 <section class="sb-l" data-exp="Thomas" data-t="Hoja de ruta 2026–2030" data-y="2030"
- data-n="De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después vienen la expansión del canal directo y la panadería-laboratorio, las dos a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Ninguna acción pasa de año y medio, así que todo el plan cabe cómodamente antes de 2030.">
+ data-n="De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después viene la expansión del canal directo, a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Siete de las ocho caben en año y medio. La octava, la panadería-laboratorio, va aparte abajo: es una apuesta de tres a cuatro años, que aterriza justo en 2030.">
   <div class="sb-wrap">
     <div class="sb-kick sb-p">Hoja de ruta</div>
-    <h2 class="sb-h2 sb-p" style="margin-top:12px;font-size:50px;max-width:40ch">Ocho decisiones, <em>dieciocho meses</em> como horizonte máximo</h2>
+    <h2 class="sb-h2 sb-p" style="margin-top:10px;font-size:45px;max-width:44ch">Siete decisiones en <em>dieciocho meses</em>, y una a tres o cuatro años</h2>
     <div class="sb-ruta" style="margin-top:22px">
       <div class="ejes sb-p"><div>Recomendación</div><div>3</div><div>6</div><div>9</div><div>12</div><div>15</div><div>18 meses</div></div>
       <div class="sb-fila sb-p"><div class="nom">Usar inteligencia artificial<i>R8 · los tres escenarios</i></div>
@@ -861,14 +866,14 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
         <div class="pista"><div class="barra ten" style="left:0;width:44.4%">8 meses</div></div></div>
       <div class="sb-fila sb-p"><div class="nom">Expandir el canal directo a otras ciudades<i>R2 · optimista y pesimista</i></div>
         <div class="pista"><div class="barra opt" style="left:0;width:50.0%">9 meses</div></div></div>
-      <div class="sb-fila sb-p"><div class="nom">Abrir una panadería-laboratorio<i>R7 · optimista y tendencial</i></div>
-        <div class="pista"><div class="barra opt" style="left:0;width:50.0%">9 meses</div></div></div>
       <div class="sb-fila sb-p"><div class="nom">Cubrir insumos e ingeniería de costos<i>R3 · los tres escenarios</i></div>
         <div class="pista"><div class="barra tod" style="left:0;width:66.7%">12 meses</div></div></div>
       <div class="sb-fila sb-p"><div class="nom">Defender el margen en el canal moderno<i>R4 · pesimista y tendencial</i></div>
         <div class="pista"><div class="barra pes" style="left:0;width:66.7%">12 meses</div></div></div>
       <div class="sb-fila sb-p" style="border-bottom:0"><div class="nom">Transicionar a empaques eco-sostenibles<i>R5 · optimista y pesimista</i></div>
         <div class="pista"><div class="barra opt" style="left:0;width:100.0%">18 meses</div></div></div>
+      <div class="sb-fila sb-p horizonte"><div class="nom">Abrir una panadería-laboratorio<i>R7 · horizonte largo, más allá del eje</i></div>
+        <div class="pista"><div class="barra abierta" style="left:0;width:100%">3 a 4 años · hacia 2029–2030</div></div></div>
     </div>
   </div>
 </section>
@@ -950,7 +955,7 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
 </section>
 
 <section class="sb-l" data-exp="Thomas" data-t="Recomendaciones 7 y 8" data-y="2030"
- data-n="La siete nació de la entrevista. Acción y plazo: abrir un piloto de panadería-laboratorio en el Valle de Aburrá en nueve meses y evaluarlo a los seis meses de operación. Impacto esperado: validar seis referencias nuevas el primer año y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.">
+ data-n="La siete nació de la entrevista y es la única de horizonte largo. Acción y plazo: abrir el punto propio en el Valle de Aburrá en tres o cuatro años, hacia 2029 o 2030, cuando el canal digital y los formatos individuales ya estén consolidados y lo puedan sostener. Impacto esperado: validar seis referencias nuevas el primer año de operación y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.">
   <div class="sb-wrap">
     <div class="sb-kick sb-p">Recomendaciones 7 y 8 · lo que nació de la entrevista</div>
     <div class="sb-recs sb-recs--dos">
@@ -959,8 +964,8 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
         <div class="cab"><span class="num">07</span><span class="t">Abrir una panadería-laboratorio</span></div>
         <div class="d">Un punto propio con producto recién hecho y degustaciones, donde se prueba cada referencia nueva con clientes reales antes de producirla en planta. También refuerza la atención al cliente que señaló la experta.</div>
         <div class="campos">
-          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">9 <small>meses</small></div><div class="txt">Abrir un piloto en el Valle de Aburrá y evaluarlo a los 6 meses de operación.</div></div>
-          <div class="campo"><div class="et">Impacto esperado</div><div class="big">6 <small>referencias</small></div><div class="txt">validadas el primer año, y que el punto aporte 10 % de las ventas directas.</div></div>
+          <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">3–4 <small>años</small></div><div class="txt">Abrir el punto propio en el Valle de Aburrá hacia 2029 o 2030, una vez el canal digital y los formatos individuales estén consolidados.</div></div>
+          <div class="campo"><div class="et">Impacto esperado</div><div class="big">6 <small>referencias</small></div><div class="txt">validadas el primer año de operación, y que el punto aporte 10 % de las ventas directas.</div></div>
         </div>
         <div class="pie"><span class="vr">Innovar V1 · Digital V6</span><span class="pz">Optimista · tendencial</span></div></article>
       <article class="sb-rec sb-glass sb-p nueva">

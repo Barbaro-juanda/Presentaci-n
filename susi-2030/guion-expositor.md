@@ -100,7 +100,7 @@ Este es el más probable y, por eso mismo, el más peligroso. No hay crisis: hay
 
 **Habla:** Thomas Quintero Gallego
 
-De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después vienen la expansión del canal directo y la panadería-laboratorio, las dos a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Ninguna acción pasa de año y medio, así que todo el plan cabe cómodamente antes de 2030.
+De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después viene la expansión del canal directo, a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Siete de las ocho caben en año y medio. La octava, la panadería-laboratorio, va aparte abajo: es una apuesta de tres a cuatro años, que aterriza justo en 2030.
 
 ## 16 · Recomendaciones 1 y 2
 
@@ -124,7 +124,7 @@ La cinco convierte una obligación en argumento. Acción y plazo: rediseñar los
 
 **Habla:** Thomas Quintero Gallego
 
-La siete nació de la entrevista. Acción y plazo: abrir un piloto de panadería-laboratorio en el Valle de Aburrá en nueve meses y evaluarlo a los seis meses de operación. Impacto esperado: validar seis referencias nuevas el primer año y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.
+La siete nació de la entrevista y es la única de horizonte largo. Acción y plazo: abrir el punto propio en el Valle de Aburrá en tres o cuatro años, hacia 2029 o 2030, cuando el canal digital y los formatos individuales ya estén consolidados y lo puedan sostener. Impacto esperado: validar seis referencias nuevas el primer año de operación y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.
 
 ## 20 · Los próximos seis meses
 
