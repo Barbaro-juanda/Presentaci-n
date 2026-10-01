@@ -93,6 +93,12 @@ informe final. No se añadieron cifras, citas ni datos que no estén en él.
    declara al pie.
 5. El informe escribe el nombre de la panadería de la experta como «Pané». El nombre correcto
    es **Panem**, y así aparece en el deck. Hay que corregirlo en el informe.
+6. En la recomendación 3 el informe propone «harinas de yuca o cereales ancestrales». El deck
+   las reemplaza por **plátano verde, leguminosas y salvado de avena**, más fermentación larga
+   con masa madre, porque son las que de verdad bajan el índice glucémico. Hay que actualizarlo
+   en el informe.
+7. La recomendación 7 pasa de 9 meses a un horizonte de **3 a 4 años** por decisión del equipo.
+   El informe anterior decía 9 meses.
 
 **Las seis hipótesis.** El informe nombra H1 a H6 y las empareja con cada escenario, pero no
 transcribe su enunciado: solo desarrolla los tres relatos. Los textos de la lámina 8 están
