@@ -422,21 +422,24 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
 
 
 /* 08 · las seis hipótesis */
-.sb-esc .sb-hx{margin-top:16px;display:grid;gap:14px}
-.sb-hx .hx{position:relative;padding:16px 18px 16px 17px;border-radius:11px;
-  border:1px solid var(--borde);background:rgba(247,243,236,.03)}
-.sb-hx .hx .id{font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.08em}
-.sb-hx .hx .mk{float:right;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;border-radius:20px;padding:3px 9px}
+.sb-esc .sb-hx{margin-top:18px;display:grid;gap:15px}
+.sb-hx .hx{position:relative;padding:19px 20px 20px;border-radius:12px;
+  border:1px solid var(--borde);background:rgba(247,243,236,.035)}
+.sb-hx .hx .enc{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sb-hx .hx .id{font-family:var(--mono);font-size:19px;font-weight:700;letter-spacing:.04em;line-height:1}
+.sb-hx .hx .mk{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;border-radius:20px;padding:4px 10px;white-space:nowrap}
 .sb-hx .hx.si .mk{background:rgba(234,72,54,.16);color:var(--coral);border:1px solid var(--coral)}
 .sb-hx .hx.no .mk{color:var(--c45);border:1px dashed var(--borde-2)}
-.sb-hx .hx p{font-size:15.5px;line-height:1.4;color:var(--c70);margin-top:10px}
-.sb-hx .hx .vv{display:inline-block;margin-top:11px;font-family:var(--mono);font-size:10.5px;
-  letter-spacing:.12em;color:var(--c45);border:1px solid var(--borde);border-radius:20px;padding:4px 10px}
+.sb-hx .hx .ti{font-family:var(--disp);font-weight:500;font-size:23px;line-height:1.16;
+  letter-spacing:-.02em;color:var(--crema)}
+.sb-hx .hx p{font-size:18px;line-height:1.42;color:var(--c70)}
+.sb-hx .hx .vv{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.12em;color:var(--c45);border:1px solid var(--borde);border-radius:20px;padding:5px 11px}
 .sb-esc.opt .sb-hx .hx .id{color:var(--coral)}
 .sb-esc.pes .sb-hx .hx .id{color:#E0675A}
 .sb-esc.ten .sb-hx .hx .id{color:var(--naranja-maiz)}
-.sb-esc .ttl{font-family:var(--disp);font-weight:300;font-size:30px;line-height:1.08;
+.sb-esc .ttl{font-family:var(--disp);font-weight:300;font-size:31px;line-height:1.08;
   letter-spacing:-.025em;margin:10px 0 2px}
 .sb-esc.opt .ttl{color:var(--coral)} .sb-esc.pes .ttl{color:#E0675A} .sb-esc.ten .ttl{color:var(--naranja-maiz)}
 
@@ -629,40 +632,46 @@ h2.sb-h2 em{font-style:normal;color:var(--coral)}
  data-n="Estas son las seis hipótesis que salieron de la matriz. Van de a dos por escenario y cada par sostiene un relato distinto. Las cuatro que están marcadas, H1, H2, H5 y H6, son las que la experta respaldó; las dos del escenario pesimista no las respaldó, y en la siguiente diapositiva explicamos por qué las mantuvimos igual. Fíjense en que cada hipótesis se apoya en variables concretas: no son opiniones, son combinaciones de estados que ya priorizamos.">
   <div class="sb-wrap">
     <div class="sb-kick sb-p">Las seis hipótesis · H1 a H6</div>
-    <h2 class="sb-h2 sb-p" style="margin-top:12px;font-size:50px;max-width:40ch">Dos hipótesis por escenario. <em>La experta respaldó cuatro.</em></h2>
-    <div class="sb-tres" style="margin-top:22px">
+    <h2 class="sb-h2 sb-p" style="margin-top:10px;font-size:44px;max-width:44ch">Dos hipótesis por escenario. <em>La experta respaldó cuatro.</em></h2>
+    <div class="sb-tres" style="margin-top:20px">
       <div class="sb-esc opt sb-glass sb-p"><div class="e">Escenario optimista</div>
         <div class="ttl">El pan que se deja leer</div>
         <div class="sb-hx">
-          <div class="hx si"><span class="id">H1</span><span class="mk">De acuerdo</span>
-            <p>SUSI prueba cada referencia con consumidores antes de producirla y la formula por debajo de los umbrales de sellos e impuesto, y se diferencia en lo que las marcas grandes no copian: su origen, su receta y sus mezclas nostálgicas.</p>
+          <div class="hx si"><div class="enc"><span class="id">H1</span><span class="mk">De acuerdo</span></div>
+            <div class="ti">Valida antes de producir</div>
+            <p>Prueba cada referencia con el consumidor y formula por debajo de los umbrales de sellos: se diferencia en lo que las marcas grandes no copian.</p>
             <span class="vv">V1 · V4</span></div>
-          <div class="hx si"><span class="id">H2</span><span class="mk">De acuerdo</span>
-            <p>El hábito de comprar en línea y pedir domicilio, sumado a alianzas de distribución, maquila y exportación, construye un canal directo que baja la dependencia de las cadenas y le permite negociar con datos propios.</p>
+          <div class="hx si"><div class="enc"><span class="id">H2</span><span class="mk">De acuerdo</span></div>
+            <div class="ti">Canal propio que pesa</div>
+            <p>El hábito digital y las alianzas de distribución construyen un canal directo: baja la dependencia de las cadenas y negocia con datos propios.</p>
             <span class="vv">V6 · V5 · V3</span></div>
         </div></div>
       <div class="sb-esc pes sb-glass sb-p"><div class="e">Escenario pesimista</div>
         <div class="ttl">La góndola sin nombre</div>
         <div class="sb-hx">
-          <div class="hx no"><span class="id">H3</span><span class="mk">En desacuerdo</span>
-            <p>Las cadenas y el descuento duro amplían sus marcas propias de snacks naturales en la misma góndola: el principal cliente de SUSI se vuelve su competidor y se queda con el espacio, el margen y el discurso natural a menor precio.</p>
+          <div class="hx no"><div class="enc"><span class="id">H3</span><span class="mk">En desacuerdo</span></div>
+            <div class="ti">Su cliente se vuelve su competidor</div>
+            <p>Las marcas propias del descuento duro ocupan su misma góndola y se quedan con el espacio, el margen y el discurso natural.</p>
             <span class="vv">V3 · V4</span></div>
-          <div class="hx no"><span class="id">H4</span><span class="mk">En desacuerdo</span>
-            <p>El canal digital no es la salida: lo capturan las grandes marcas y las apps, y las comisiones hacen poco rentable el pedido pequeño, mientras los insumos importados y los empaques suben sin que las cadenas acepten alzas.</p>
+          <div class="hx no"><div class="enc"><span class="id">H4</span><span class="mk">En desacuerdo</span></div>
+            <div class="ti">Lo digital tampoco la salva</div>
+            <p>Las apps capturan el canal y la comisión mata el pedido pequeño, mientras insumos y empaques suben sin que las cadenas acepten alzas.</p>
             <span class="vv">V6 · V2</span></div>
         </div></div>
       <div class="sb-esc ten sb-glass sb-p"><div class="e">Escenario tendencial</div>
         <div class="ttl">Buen pan, poca voz</div>
         <div class="sb-hx">
-          <div class="hx si"><span class="id">H5</span><span class="mk">De acuerdo</span>
-            <p>El comercio electrónico crece, pero SUSI participa solo con su web y WhatsApp y sin un modelo de despacho definido, así que el canal digital no reduce el peso de las cadenas y cada año negocia desde una posición algo más débil.</p>
+          <div class="hx si"><div class="enc"><span class="id">H5</span><span class="mk">De acuerdo</span></div>
+            <div class="ti">Crece el comercio digital, no SUSI</div>
+            <p>Participa solo con web y WhatsApp, sin modelo de despacho: lo digital no reduce el peso de las cadenas y cada año negocia más débil.</p>
             <span class="vv">V6 · V3</span></div>
-          <div class="hx si"><span class="id">H6</span><span class="mk">De acuerdo</span>
-            <p>Ante la presión de las marcas grandes y de las marcas propias, SUSI acepta más contratos de maquila y marca privada con esos mismos actores: le dan ingresos y uso de planta, pero a veces fabrica productos que compiten con su propia marca.</p>
+          <div class="hx si"><div class="enc"><span class="id">H6</span><span class="mk">De acuerdo</span></div>
+            <div class="ti">Maquila para quien la presiona</div>
+            <p>Acepta más marca privada con las mismas cadenas que le aprietan el margen: le da ingresos y uso de planta, pero fabrica lo que la compite.</p>
             <span class="vv">V4 · V5</span></div>
         </div></div>
     </div>
-    <p class="sb-mini sb-p" style="margin-top:16px">Enunciados redactados por el equipo a partir de los escenarios del informe, que nombra H1 a H6 sin transcribirlas.</p>
+    <p class="sb-mini sb-p" style="margin-top:14px;font-size:15px">Enunciados redactados por el equipo a partir de los escenarios del informe, que nombra H1 a H6 sin transcribirlas.</p>
   </div>
 </section>
 
