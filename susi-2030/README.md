@@ -63,9 +63,17 @@ uno tiene su historia en la panadería: ciruela `#6E2544` (la mermelada, la cere
 de la Selva Negra), vino `#8E2B3A`, ladrillo `#B23A28` (el sello), ámbar `#E0912B`
 (la brasa), mostaza `#C9A227` (el grano) y oliva `#6B7A4F` (la harina sin refinar).
 
-**Nueve láminas oscuras y doce claras, alternadas** con el patrón
-`OO··O··O··O·O·O····OO`: nunca más de cuatro claras seguidas, y la única tirada
-larga es el bloque de recomendaciones, donde la consistencia es correcta.
+**El negro es el registro principal: quince oscuras y seis claras,** con el
+patrón `OOOOOOOO·OOOOO·····OO`. Las claras quedan reservadas a lo más denso de
+leer —la validación, la hoja de ruta y las cuatro de recomendaciones—, donde el
+papel ayuda a sostener la vista.
+
+**Contraste verificado:** los 172 bloques de texto del deck superan 4,5:1 contra
+su propio fondo, con un mínimo de 4,87:1. Toda tarjeta en registro oscuro lleva
+fondo sólido propio, así que el texto nunca depende de lo que haya detrás, y el
+velo sobre el gradiente es uniforme: no oscurece un lado más que el otro. La
+ciruela tiene una variante de texto, `#C4607F`, porque la de relleno `#6E2544`
+solo alcanza 1,91:1 sobre negro.
 
 En las oscuras el color lo pone un **gradiente de malla** de cinco lóbulos
 difusos que derivan lento sobre negro `#0B0808`. Donde hay foto, la foto va en
