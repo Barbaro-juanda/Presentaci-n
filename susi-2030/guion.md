@@ -5,21 +5,21 @@ También están dentro de la presentación: tecla `N`.
 
 ## Reparto
 
-| Bloque | Diapositivas | Quién habla | Tiempo |
+| Quién habla | Diapositivas | Qué cuenta | Tiempo |
 |---|---|---|---|
-| Apertura y diagnóstico del entorno | 1–5 | Juan David Escobar Guiral | 3:25 |
-| El método y la validación | 6–10 | Santiago Duque Restrepo | 4:15 |
-| Los escenarios y la hoja de ruta | 11–15 | María Camila Jiménez Ramírez | 3:45 |
-| Las recomendaciones y el cierre | 16–21 | Thomas Quintero Gallego | 3:30 |
+| Juan David Escobar Guiral | 1–5 · 18 · 19 · 21 | Apertura, entorno, las dos últimas recomendaciones y el cierre | 5:00 |
+| Santiago Duque Restrepo | 6–10 | El método, las hipótesis y la validación | 4:15 |
+| María Camila Jiménez Ramírez | 11–15 | Los tres escenarios y la hoja de ruta | 3:45 |
+| Thomas Quintero Gallego | 16 · 17 · 20 | Las primeras recomendaciones y los próximos seis meses | 1:55 |
 
-**Total: 14:55.** El reparto está balanceado por minutos, no por número de
-láminas: las de recomendaciones son rápidas (dos tarjetas cada una) y las del
-método son densas, así que seis láminas de Thomas duran menos que cinco de
-Santiago.
+**Total: 14:55.**
 
-**Los tres relevos** están escritos en las notas de las láminas 5, 10 y 15.
+Secuencia de voces: `JU JU JU JU JU · SA SA SA SA SA · MA MA MA MA MA · TH TH · JU JU · TH · JU`
+
+**Seis relevos**, escritos en las notas de las láminas 5, 10, 15, 17, 19 y 20.
 Quien entrega dice la frase mirando al que entra; quien recibe arranca con su
-kicker, sin volver a saludar.
+kicker, sin volver a saludar. Los tres últimos van seguidos, así que conviene
+ensayarlos: son el tramo con más cambios de voz de toda la presentación.
 
 ## 01 · Portada
 
@@ -49,7 +49,7 @@ Cuatro frentes mueven el tablero. El etiquetado frontal y el impuesto a ultrapro
 
 **Habla:** Juan David Escobar Guiral · **0:45**
 
-RELEVO → Santiago. Cierra así: «Ese es el tablero. Ahora Santiago les cuenta cómo medimos cuál de todas estas fuerzas manda de verdad». En el microentorno, la mayor vulnerabilidad no es la competencia: son los proveedores. Colombia importa cerca del noventa y nueve por ciento del trigo que consume y la molienda nacional está concentrada en pocas plantas. Eso expone a SUSI al precio internacional del grano, a la tasa de cambio y a los fletes marítimos, tres variables totalmente ajenas a su gestión. A eso se suman doce cadenas con control sobre pagos, márgenes y góndola, y un descuento duro que se expande con marcas propias.
+RELEVO → Santiago. Cierra así: «Ese es el tablero. Ahora Santiago les cuenta cómo medimos cuál de todas estas fuerzas manda de verdad». Cierra así: «Ese es el tablero. Ahora Santiago les cuenta cómo medimos cuál de todas estas fuerzas manda de verdad». En el microentorno, la mayor vulnerabilidad no es la competencia: son los proveedores. Colombia importa cerca del noventa y nueve por ciento del trigo que consume y la molienda nacional está concentrada en pocas plantas. Eso expone a SUSI al precio internacional del grano, a la tasa de cambio y a los fletes marítimos, tres variables totalmente ajenas a su gestión. A eso se suman doce cadenas con control sobre pagos, márgenes y góndola, y un descuento duro que se expande con marcas propias.
 
 ## 06 · Seis variables críticas
 
@@ -79,7 +79,7 @@ Validamos con una sesión cualitativa de matriz morfológica, en entrevista semi
 
 **Habla:** Santiago Duque Restrepo · **0:45**
 
-RELEVO → María Camila. Cierra así: «Con las hipótesis ya contrastadas, María Camila les muestra los tres futuros que salen de ahí». La validación no fue un trámite: cambió el trabajo en tres direcciones. Confirmamos los escenarios optimista y tendencial, con ejemplos concretos que ella nos dio. Mantuvimos el pesimista aunque ella no lo respaldó, y es importante explicar por qué: su desacuerdo viene de un negocio que vende directo y no depende de cadenas, mientras que SUSI sí depende. Y agregamos cosas que no teníamos: la atención al cliente como variable y el refuerzo del domicilio propio frente a las comisiones de las apps.
+RELEVO → María Camila. Cierra así: «Con las hipótesis ya contrastadas, María Camila les muestra los tres futuros que salen de ahí». Cierra así: «Con las hipótesis ya contrastadas, María Camila les muestra los tres futuros que salen de ahí». La validación no fue un trámite: cambió el trabajo en tres direcciones. Confirmamos los escenarios optimista y tendencial, con ejemplos concretos que ella nos dio. Mantuvimos el pesimista aunque ella no lo respaldó, y es importante explicar por qué: su desacuerdo viene de un negocio que vende directo y no depende de cadenas, mientras que SUSI sí depende. Y agregamos cosas que no teníamos: la atención al cliente como variable y el refuerzo del domicilio propio frente a las comisiones de las apps.
 
 ## 11 · Tres futuros posibles
 
@@ -109,7 +109,7 @@ Este es el más probable y, por eso mismo, el más peligroso. No hay crisis: hay
 
 **Habla:** María Camila Jiménez Ramírez · **0:50**
 
-RELEVO → Thomas. Cierra así: «Esa es la secuencia en el tiempo. Thomas entra en qué es cada una de las ocho decisiones». De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después viene la expansión del canal directo, a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Siete de las ocho caben en año y medio. La octava, la panadería-laboratorio, va aparte abajo: es una apuesta de tres a cuatro años, que aterriza justo en 2030.
+RELEVO → Thomas. Cierra así: «Esa es la secuencia en el tiempo. Thomas entra en qué es cada una de las ocho decisiones». Cierra así: «Esa es la secuencia en el tiempo. Thomas entra en qué es cada una de las ocho decisiones». De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después viene la expansión del canal directo, a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Siete de las ocho caben en año y medio. La octava, la panadería-laboratorio, va aparte abajo: es una apuesta de tres a cuatro años, que aterriza justo en 2030.
 
 ## 16 · Recomendaciones 1 y 2
 
@@ -121,28 +121,28 @@ La uno reestructura la tienda digital con fichas nutricionales interactivas por 
 
 **Habla:** Thomas Quintero Gallego · **0:35**
 
-La tres ataca el costo donde más duele y, de paso, abre mercado. Acción y plazo: un comité de compras con contratos de cobertura trimestrales y dos líneas con harinas locales, en doce meses. No son harinas cualquiera: plátano verde, leguminosas y salvado de avena tienen menor índice glucémico que el trigo, y la fermentación larga con masa madre baja el azúcar disponible y la sal que el pan necesita. Eso le abre la puerta a quien debe cuidar el azúcar y el sodio. Impacto esperado: reducir hasta ocho por ciento el impacto del trigo importado en el costo operativo y estabilizar el margen bruto. Es la única recomendación que aplica a los tres escenarios por igual. La cuatro defiende lo que ya tiene. Acción y plazo: negociar la reestructuración de exhibiciones y referencias exclusivas de Happy Mix y repostería en las cadenas clave, en doce meses. Impacto esperado: mantener una rentabilidad mínima del doce por ciento en el canal moderno y proteger el espacio en góndola frente al avance de las marcas propias. La clave es no competir por precio con el descuento duro.
+RELEVO → Juan David. Cierra así: «Las cuatro primeras atacan la dependencia y el margen. Juan David sigue con las que faltan». La tres ataca el costo donde más duele y, de paso, abre mercado. Acción y plazo: un comité de compras con contratos de cobertura trimestrales y dos líneas con harinas locales, en doce meses. No son harinas cualquiera: plátano verde, leguminosas y salvado de avena tienen menor índice glucémico que el trigo, y la fermentación larga con masa madre baja el azúcar disponible y la sal que el pan necesita. Eso le abre la puerta a quien debe cuidar el azúcar y el sodio. Impacto esperado: reducir hasta ocho por ciento el impacto del trigo importado en el costo operativo y estabilizar el margen bruto. Es la única recomendación que aplica a los tres escenarios por igual. La cuatro defiende lo que ya tiene. Acción y plazo: negociar la reestructuración de exhibiciones y referencias exclusivas de Happy Mix y repostería en las cadenas clave, en doce meses. Impacto esperado: mantener una rentabilidad mínima del doce por ciento en el canal moderno y proteger el espacio en góndola frente al avance de las marcas propias. La clave es no competir por precio con el descuento duro.
 
 ## 18 · Recomendaciones 5 y 6
 
-**Habla:** Thomas Quintero Gallego · **0:35**
+**Habla:** Juan David Escobar Guiral · **0:35**
 
 La cinco convierte una obligación en argumento. Acción y plazo: rediseñar los empaques del cien por ciento de la línea de crocantes y snacks cumpliendo la fase prioritaria de la ley, en dieciocho meses. Impacto esperado: cumplimiento normativo del cien por ciento antes de los plazos legales de 2030 y quince por ciento más de favorabilidad de marca por atributos de sostenibilidad. Es la más larga del plan y por eso hay que arrancarla pronto. La seis responde al consumidor que hoy gasta menos. Acción y plazo: formular, probar e introducir al mercado tres referencias en formato pocket, en ocho meses. Impacto esperado: capturar un diez por ciento adicional de participación en snacks saludables e ingresar a dos cadenas de conveniencia o droguerías de alta rotación. El precio de entrada por debajo de nueve mil pesos es el que abre esa puerta.
 
 ## 19 · Recomendaciones 7 y 8
 
-**Habla:** Thomas Quintero Gallego · **0:35**
+**Habla:** Juan David Escobar Guiral · **0:35**
 
-La siete nació de la entrevista y es la única de horizonte largo. Acción y plazo: abrir el punto propio en el Valle de Aburrá en tres o cuatro años, hacia 2029 o 2030, cuando el canal digital y los formatos individuales ya estén consolidados y lo puedan sostener. Impacto esperado: validar seis referencias nuevas el primer año de operación y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.
+RELEVO → Thomas. Cierra así: «Esas son las ocho. Thomas les dice cuáles se pueden arrancar ya». La siete nació de la entrevista y es la única de horizonte largo. Acción y plazo: abrir el punto propio en el Valle de Aburrá en tres o cuatro años, hacia 2029 o 2030, cuando el canal digital y los formatos individuales ya estén consolidados y lo puedan sostener. Impacto esperado: validar seis referencias nuevas el primer año de operación y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.
 
 ## 20 · Los próximos seis meses
 
 **Habla:** Thomas Quintero Gallego · **0:45**
 
-Si de toda la presentación hay que llevarse una sola cosa, es esta diapositiva. Hay tres cosas que SUSI puede empezar este mismo trimestre, porque son las más rápidas y las más baratas: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Las tres atacan directamente la dependencia del canal moderno. El cierre es el siguiente: el escenario tendencial es cómodo de habitar y por eso nadie actúa; empezar en 2026 cuesta mucho menos que reaccionar en 2030.
+RELEVO → Juan David, que cierra. Si de toda la presentación hay que llevarse una sola cosa, es esta diapositiva. Hay tres cosas que SUSI puede empezar este mismo trimestre, porque son las más rápidas y las más baratas: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Las tres atacan directamente la dependencia del canal moderno. El cierre es el siguiente: el escenario tendencial es cómodo de habitar y por eso nadie actúa; empezar en 2026 cuesta mucho menos que reaccionar en 2030.
 
 ## 21 · Cierre
 
-**Habla:** Thomas Quintero Gallego · **0:25**
+**Habla:** Juan David Escobar Guiral · **0:25**
 
 Para cerrar, estas son las normas y los datos de entorno sobre los que se apoya todo el análisis: la Resolución 810 de 2021 de etiquetado frontal, la Ley 2277 de 2022 del impuesto a ultraprocesados, la Ley 2232 de plásticos de un solo uso y la dependencia del trigo importado. Muchas gracias, y quedamos atentos a sus preguntas.
