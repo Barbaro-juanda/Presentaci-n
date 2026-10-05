@@ -39,7 +39,8 @@ Cada lámina lleva en `data-quien` quién la dice, y el guion abre con el repart
 
 ## Dirección de arte
 
-**Los colores salen de los empaques,** muestreados de las fotos de producto:
+**Los colores salen de los empaques,** muestreados de las fotos de producto
+(solo la paleta: el deck no usa fotografías):
 el naranja `#E43018` de las bolsas «70 % menos azúcar», el azul `#0078CC` de la
 banda, el ámbar `#E4A80C` del arroz soplado y el kraft del cereal.
 
