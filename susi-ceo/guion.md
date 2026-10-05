@@ -13,9 +13,6 @@ También están dentro de la presentación: tecla `N`.
 | Hoja de ruta y lo que pedimos | 10–11 | María Camila Jiménez Ramírez | 2 min |
 | Cierre | 12 | Juan David Escobar Guiral | 1 min |
 
-Si van largos, la lámina 6 (el método) es la que mejor aguanta recortarse:
-con nombrar los 400 cruces basta.
-
 ## 01 · Portada
 
 **Habla:** Juan David Escobar Guiral
@@ -26,13 +23,13 @@ Susanne, gracias por el tiempo. Durante este semestre analizamos a SUSI con herr
 
 **Habla:** Juan David Escobar Guiral
 
-Empiezo por el dato que organiza todo lo demás. SUSI tiene quince puntos de contacto con el consumidor, y doce de ellos son de terceros: góndolas de cadenas, aplicaciones de domicilio, intermediarios. Solo tres son nuestros, los azules. Eso significa que casi todo lo que el cliente ve, el precio al que lo ve y el momento en que lo ve lo decide alguien más. No es un problema de producto: el producto está bien. Es un problema de por dónde pasa.
+Empiezo por el dato que organiza todo lo demás. SUSI tiene quince puntos de contacto con el consumidor, y doce de ellos son de terceros: góndolas de cadenas, aplicaciones de domicilio, intermediarios. Solo tres son nuestros, los ámbar que quedan al frente. Los otros doce se nos van al fondo: son los que no controlamos. Eso significa que casi todo lo que el cliente ve, el precio al que lo ve y el momento en que lo ve lo decide alguien más. No es un problema de producto: el producto está bien. Es un problema de por dónde pasa.
 
 ## 03 · Lo que somos hoy
 
 **Habla:** Juan David Escobar Guiral
 
-Un recordatorio rápido de la base, porque es desde donde se juega. Cuarenta años de oficio desde 1985, planta propia en Itagüí, seis líneas y una formulación sin conservantes, colorantes ni grasas trans. Esa formulación limpia, que durante años fue solo una convicción, hoy vale dinero: la regulación de etiquetado y el impuesto a ultraprocesados castigan a los industriales y a nosotros no nos tocan. Fíjate en el empaque del setenta por ciento menos azúcar: ahí ya está dicho. Tenemos una ventaja regulatoria que todavía no estamos cobrando.
+Un recordatorio rápido de la base, porque es desde donde se juega. Cuarenta años de oficio desde 1985, planta propia en Itagüí, seis líneas y una formulación sin conservantes, colorantes ni grasas trans. Esa formulación limpia, que durante años fue solo una convicción, hoy vale dinero: la regulación de etiquetado y el impuesto a ultraprocesados castigan a los industriales y a nosotros no nos tocan. Tenemos una ventaja regulatoria que todavía no estamos cobrando.
 
 ## 04 · Por qué no competimos por precio
 
@@ -50,13 +47,13 @@ Y el costo tampoco lo controlamos nosotros. Colombia importa cerca del noventa y
 
 **Habla:** Santiago Duque Restrepo
 
-En treinta segundos, cómo llegamos a lo que sigue. Listamos veinte variables que mueven el negocio, desde el costo del trigo hasta el canal digital. Luego cruzamos cada una contra todas las demás: cuatrocientos cruces, preguntando cuánto influye cada variable sobre cada otra. Ese ejercicio separa lo que parece importante de lo que de verdad mueve el sistema, y el ordenamiento se estabilizó al cien por ciento, así que el resultado es confiable. De ahí salieron seis palancas.
+En treinta segundos, cómo llegamos a lo que sigue. Listamos veinte variables que mueven el negocio, desde el costo del trigo hasta el canal digital. Luego cruzamos cada una contra todas las demás: cuatrocientos cruces, que son los que ves a la derecha. Cada celda es cuánto influye una variable sobre otra, y entre más oscura, más influencia. Ese ejercicio separa lo que parece importante de lo que de verdad mueve el sistema, y el ordenamiento se estabilizó al cien por ciento, así que el resultado es confiable. De ahí salieron seis palancas.
 
 ## 07 · Lo que controlamos y lo que no
 
 **Habla:** Santiago Duque Restrepo
 
-Este es el hallazgo central del trabajo, y cabe en una frase: controlamos nuestras palancas de crecimiento, pero no controlamos nuestro margen. A la izquierda, en azul, innovación, alianzas y canal digital: dependen de decisiones nuestras. A la derecha, en naranja, costos, cadenas y competencia: nos presionan desde afuera. La conclusión práctica es que no vale la pena pelear la columna naranja de frente. Lo que sí funciona es usar la azul para reducir cuánto nos afecta la naranja.
+Este es el hallazgo central del trabajo, y cabe en una frase: controlamos nuestras palancas de crecimiento, pero no controlamos nuestro margen. A la izquierda, en ámbar, innovación, alianzas y canal digital: dependen de decisiones nuestras. A la derecha, en terracota, costos, cadenas y competencia: nos presionan desde afuera. La conclusión práctica es que no vale la pena pelear la columna de la derecha de frente. Lo que sí funciona es usar la izquierda para reducir cuánto nos afecta la derecha.
 
 ## 08 · Tres futuros al 2030
 

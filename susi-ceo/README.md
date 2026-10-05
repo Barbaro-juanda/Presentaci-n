@@ -39,36 +39,36 @@ Cada lámina lleva en `data-quien` quién la dice, y el guion abre con el repart
 
 ## Dirección de arte
 
-**Los colores salen de los empaques,** muestreados de las fotos de producto
-(solo la paleta: el deck no usa fotografías):
-el naranja `#E43018` de las bolsas «70 % menos azúcar», el azul `#0078CC` de la
-banda, el ámbar `#E4A80C` del arroz soplado y el kraft del cereal.
+**Papel, ámbar líder, rojo mínimo.** Fondo `#FAF3E4`, tinta `#201A12`, ámbar de
+sistema `#E0912B` (profundo `#B9711A`). El terracota `#B23A28` queda reservado a
+las variables críticas y al hallazgo principal; el azul marino `#223B5B` tiene un
+solo uso, lo estructural y el futuro. Banda superior tipo ticket con franjas
+verticales crema/ámbar, como el toldo del empaque.
 
-**Cinco registros, cada uno atado a una función del relato,** para que el deck
-respire en lugar de ser un solo bloque de color:
+**Datos.** Matriz 20 × 20 en escala de calor crema → ámbar → tinta, con terracota
+solo en el cruce más fuerte, rotulado para que no dependa del color. La paleta de
+marcas (`#E0912B`, `#B23A28`, `#3A6FA5`) pasa las seis comprobaciones del
+validador: banda de luminosidad, piso de croma, separación para daltonismo,
+piso de visión normal y contraste. El azul de marcas es un paso más claro que el
+azul estructural, porque el original no alcanzaba el piso de croma.
 
-| Registro | Fondo | Para qué |
-|---|---|---|
-| `r-papel` | kraft cálido | quiénes somos, la marca, los escenarios |
-| `r-claro` | casi blanco | los datos y el método |
-| `r-sello` | negro | la tensión: el costo y el escenario que preocupa |
-| `r-senal` | azul profundo | la acción: lo que pedimos |
-| `r-marca` | rojo SUSI | el cierre |
+**Movimiento: profundidad.** Cada lámina es una escena con capas a distinta
+distancia de la cámara. Al entrar, el plano más lejano llega lento y desenfocado,
+y los cercanos llegan antes: la sensación es de cámara que avanza. El cursor
+inclina el mundo unos pocos grados, con amortiguación. Los datos nunca se mueven
+hasta volverse ilegibles: las barras crecen desde su eje y las 400 celdas solo
+aparecen en barrido. Solo se animan `transform`, `opacity` y `filter`.
 
-**Tipografía:** Fraunces (serif con carácter) para los titulares y las cifras,
-porque el logotipo de SUSI es serif y la marca es de oficio; Inter para el cuerpo;
-JetBrains Mono para datos y etiquetas.
+**Grano de papel generativo.** El fondo no es una foto: es ruido sembrado
+dibujado una vez en un canvas, con fibra de baja amplitud y motas ocasionales.
+Mismo resultado en cada apertura, coste cero por cuadro.
 
-**El ensamblaje.** Cada cifra y cada titular se arma solo: las letras entran desde
-posiciones dispersas en el espacio 3D, desenfocadas, se pasan de largo y encajan.
-Viene del reveal de logo que sirvió de referencia.
+**Imágenes.** El logotipo y la espiga de trigo son vectores dentro del archivo.
+`img/textura-kraft.jpg` y `img/grabado-horno.png` son opcionales: si faltan, ese
+plano de profundidad no se dibuja y el resto queda intacto.
 
-**El anillo de dependencia.** En la lámina 2, quince puntos orbitan el núcleo de la
-marca; luego doce se desprenden hacia afuera del aro. La tesis hecha literal, no
-ilustrada. Es el elemento por el que se recuerda el deck.
-
-Solo se animan `opacity`, `transform` y `filter`. Respeta `prefers-reduced-motion`
-y, sin JavaScript, el contenido se ve completo y estático.
+**Tipografía:** Fraunces para titulares y cifras, Inter para cuerpo, JetBrains
+Mono para datos y etiquetas.
 
 ## Diferencias con el deck académico
 
