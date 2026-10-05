@@ -1,7 +1,0 @@
-Imágenes de marca. El deck funciona sin ellas: si falta un archivo, ese plano
-de profundidad simplemente no se dibuja y el resto queda intacto.
-
-  textura-kraft.jpg   plano más lejano, textura de papel   (opcional: hay grano generativo)
-  grabado-horno.png   capa profunda, grabado del horno     (opcional)
-
-El logotipo y la espiga de trigo son vectores dibujados dentro del archivo.
