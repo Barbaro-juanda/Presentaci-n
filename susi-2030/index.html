@@ -101,7 +101,12 @@ body.presentando #panel{opacity:0;pointer-events:none}
 .mini.actual .num{color:var(--o-ember);font-weight:700}
 .lienzo{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:top left;pointer-events:none}
 .mini .rot{grid-column:2;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(242,231,212,.44);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  color:rgba(242,231,212,.44);margin-top:5px;overflow:hidden}
+.mini .rot b{display:block;font-weight:700;font-size:8.5px;letter-spacing:.14em;color:var(--o-ember);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .rot span{display:block;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini.actual .rot b{color:#FFC56B}
+.rc-item .pie i{font-style:normal;font-weight:700;color:var(--o-ember);letter-spacing:.14em}
 
 #vista{grid-column:2;grid-row:2;position:relative;overflow:hidden;background:#0D0B08}
 #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;
@@ -1352,7 +1357,8 @@ function construirMinis(){
   L.forEach(function(s,n){
     var w=D.createElement("div"); w.className="mini"; w.setAttribute("role","button"); w.tabIndex=0;
     w.innerHTML='<div class="num">'+dos(n+1)+'</div><div class="marco"></div><div class="rot"></div>';
-    w.querySelector(".rot").textContent=s.dataset.t;
+    w.querySelector(".rot").innerHTML='<b>'+(s.dataset.exp||'')+'</b>'+
+      '<span>'+s.dataset.t+'</span>';
     w.querySelector(".marco").appendChild(clonar(n));
     w.addEventListener("click",function(){ir(n)});
     w.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();ir(n)}});
@@ -1365,7 +1371,8 @@ function construirRejilla(){
   L.forEach(function(s,n){
     var w=D.createElement("div"); w.className="rc-item";
     w.innerHTML='<div class="marco"></div><div class="pie"><span>'+dos(n+1)+'</span><span></span></div>';
-    w.querySelector(".pie span:last-child").textContent=s.dataset.t;
+    w.querySelector(".pie span:last-child").innerHTML=
+      '<i>'+(s.dataset.exp||'')+'</i> '+s.dataset.t;
     w.querySelector(".marco").appendChild(clonar(n));
     w.addEventListener("click",function(){cerrarRejilla();ir(n)});
     rg.appendChild(w); rcs.push(w);
