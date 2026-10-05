@@ -32,10 +32,31 @@ Fuentes y GSAP van incrustados, y quedan además como copia legible en `fonts/` 
 | `F` | Pantalla completa |
 | `Esc` | Cerrar |
 
+## Expositores
+
+María Camila Jiménez Ramírez · Santiago Duque Restrepo · Juan David Escobar Guiral.
+Cada lámina lleva en `data-quien` quién la dice, y el guion abre con el reparto.
+
 ## Dirección de arte
 
-Paleta SUSI intacta sobre negro pleno, en continuidad con la entrega 3.
-El riesgo se gasta entero en el movimiento, no en cambiar la identidad.
+**Los colores salen de los empaques,** muestreados de las fotos de producto:
+el naranja `#E43018` de las bolsas «70 % menos azúcar», el azul `#0078CC` de la
+banda, el ámbar `#E4A80C` del arroz soplado y el kraft del cereal.
+
+**Cinco registros, cada uno atado a una función del relato,** para que el deck
+respire en lugar de ser un solo bloque de color:
+
+| Registro | Fondo | Para qué |
+|---|---|---|
+| `r-papel` | kraft cálido | quiénes somos, la marca, los escenarios |
+| `r-claro` | casi blanco | los datos y el método |
+| `r-sello` | negro | la tensión: el costo y el escenario que preocupa |
+| `r-senal` | azul profundo | la acción: lo que pedimos |
+| `r-marca` | rojo SUSI | el cierre |
+
+**Tipografía:** Fraunces (serif con carácter) para los titulares y las cifras,
+porque el logotipo de SUSI es serif y la marca es de oficio; Inter para el cuerpo;
+JetBrains Mono para datos y etiquetas.
 
 **El ensamblaje.** Cada cifra y cada titular se arma solo: las letras entran desde
 posiciones dispersas en el espacio 3D, desenfocadas, se pasan de largo y encajan.
