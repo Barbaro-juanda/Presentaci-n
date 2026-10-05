@@ -56,17 +56,38 @@ archivo, y además quedan como copia legible en `fonts/` y `vendor/`.
 
 ## Dirección de arte
 
-- Paleta SUSI **sin alterar**: `#D83624`, `#B41212`, `#C06030`, `#B05030`, `#EA4836`,
-  `#1A1A1A`, `#D8D8D8`, `#F7F3EC`. El registro oscuro se construye con derivados de
-  opacidad sobre `--crema`, no con colores nuevos.
-- Futurismo sobrio: fondo profundo, rejilla HUD con máscara radial, halos cálidos de la
-  propia paleta, tarjetas de vidrio y grano sutil. Sin neón, sin azules de ciencia ficción.
-- Space Grotesk (geométrica moderna) para títulos y cifras; JetBrains Mono para etiquetas,
-  números técnicos y la interfaz.
-- **Hilo conductor:** la línea de tiempo 2026 → 2030 al pie de todas las diapositivas avanza
-  según la etapa del argumento.
-- Animación con GSAP: solo `opacity`, `transform` y `scaleX`. Respeta
-  `prefers-reduced-motion`, y sin JavaScript el contenido se ve completo y estático.
+**Brutalismo técnico sobre el esquema del empaque.** Dos registros intercalados:
+**oscuras** en portada, «El reto», «Tres futuros», «Los próximos seis meses» y el
+cierre —fondo `#16130F`, texto `#F2E7D4`, brasa `#F0A23C`, crítico `#EC6A3A`—; y
+**claras** en todas las de datos —kraft `#F3E9D6`, tinta `#201A12`, ladrillo
+`#B23A28`, ámbar `#C7601E`—. Ladrillo, ámbar, negro y crema: nada de azul.
+
+**Tipografía:** Saira Condensed itálica 700 para titulares y cifras, Inter para
+cuerpo, Space Mono para el HUD.
+
+**Kit HUD:** miras en las cuatro esquinas, etiqueta de marca, etiqueta de lámina
+que se tipea con cursor, asteriscos, timestamp vivo, anillos que giran y banda
+tipo ticket arriba y abajo, que es el motivo del toldo del empaque.
+
+**Las imágenes son planos vivos.** Duotono ámbar/charcoal por CSS, Ken Burns
+continuo de 13 s, barrido de luz en bucle lento, reveal cinemático con máscara
+`clip-path` al entrar la lámina, y la espiga que se mece. Solo en portada,
+divisores y cierre; las láminas de datos van limpias.
+
+**Chispas de brasa** en canvas sobre las láminas oscuras: 26 partículas, solo
+transform, se apagan al pasar a una lámina clara. Grano de papel sembrado que
+tiembla en pasos. Glitch de scanline brevísimo solo entre dos láminas oscuras.
+
+**Profundidad.** Cada lámina es una escena de tres planos —fondo a −640 px,
+contenido a 0, borde a +170— inyectados sin tocar el marcado. Al entrar, el plano
+lejano llega lento y desenfocado; el cursor inclina el mundo unos grados con
+amortiguación.
+
+**Los datos nunca se vuelven ilegibles.** Las barras crecen desde su eje, las seis
+variables del plano aterrizan con pulso —ámbar las que SUSI controla, terracota
+las críticas— y una línea de escaneo cruza el bloque una sola vez al entrar.
+Solo se animan `transform` y `opacity`. Con `prefers-reduced-motion` se apagan
+Ken Burns, chispas, glitch y parallax, y quedan fundidos simples.
 
 ## Fuente del contenido
 
