@@ -56,11 +56,27 @@ archivo, y además quedan como copia legible en `fonts/` y `vendor/`.
 
 ## Dirección de arte
 
-**Brutalismo técnico sobre el esquema del empaque.** Dos registros intercalados:
-**oscuras** en portada, «El reto», «Tres futuros», «Los próximos seis meses» y el
-cierre —fondo `#16130F`, texto `#F2E7D4`, brasa `#F0A23C`, crítico `#EC6A3A`—; y
-**claras** en todas las de datos —kraft `#F3E9D6`, tinta `#201A12`, ladrillo
-`#B23A28`, ámbar `#C7601E`—. Ladrillo, ámbar, negro y crema: nada de azul.
+**Brutalismo técnico sobre el esquema del empaque,** con la gama estirada.
+
+**La gama cubre 106° del círculo** —antes eran 33— y ningún tono es azul. Cada
+uno tiene su historia en la panadería: ciruela `#6E2544` (la mermelada, la cereza
+de la Selva Negra), vino `#8E2B3A`, ladrillo `#B23A28` (el sello), ámbar `#E0912B`
+(la brasa), mostaza `#C9A227` (el grano) y oliva `#6B7A4F` (la harina sin refinar).
+
+**Nueve láminas oscuras y doce claras, alternadas** con el patrón
+`OO··O··O··O·O·O····OO`: nunca más de cuatro claras seguidas, y la única tirada
+larga es el bloque de recomendaciones, donde la consistencia es correcta.
+
+En las oscuras el color lo pone un **gradiente de malla** de cinco lóbulos
+difusos que derivan lento sobre negro `#0B0808`. Donde hay foto, la foto va en
+gris y la malla la colorea por mezcla aditiva. En las claras el fondo es kraft
+`#F3E9D6` con tinta `#201A12`.
+
+**El color codifica.** Los tres escenarios llevan tres tonos distintos —ámbar el
+optimista, ciruela el pesimista, mostaza el tendencial—; el dominó degrada de
+mostaza a ciruela ficha por ficha; las barras de la hoja de ruta usan cuatro
+tonos según el escenario; y en el plano MICMAC lo que SUSI controla va en brasa y
+lo crítico en ciruela.
 
 **Tipografía:** Saira Condensed itálica 700 para titulares y cifras, Inter para
 cuerpo, Space Mono para el HUD.
@@ -69,7 +85,13 @@ cuerpo, Space Mono para el HUD.
 que se tipea con cursor, asteriscos, timestamp vivo, anillos que giran y banda
 tipo ticket arriba y abajo, que es el motivo del toldo del empaque.
 
-**Las imágenes son planos vivos.** Duotono ámbar/charcoal por CSS, Ken Burns
+**El sello extruido.** El logotipo de SUSI apilado en 22 capas a distinta
+profundidad, con la cara frontal en un degradado de caramelo —dorado, ámbar,
+ladrillo, ciruela— y un lustre especular que lo barre cada 6,5 s, recortado con
+la silueta del propio logo. Sin librería 3D: son capas en `translateZ`, y gira
+con el parallax del cursor.
+
+**Las imágenes son planos vivos.** Ken Burns
 continuo de 13 s, barrido de luz en bucle lento, reveal cinemático con máscara
 `clip-path` al entrar la lámina, y la espiga que se mece. Solo en portada,
 divisores y cierre; las láminas de datos van limpias.

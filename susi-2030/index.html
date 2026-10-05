@@ -26,8 +26,11 @@
   --body:"SX Body",-apple-system,"Segoe UI",Helvetica,sans-serif;
   --mono:"SX Mono","SF Mono",Menlo,monospace;
   --ease:cubic-bezier(.22,1,.36,1); --gut:104px;
-  --o-bg:#16130F; --o-ink:#F2E7D4; --o-ember:#F0A23C; --o-crit:#EC6A3A;
+  --o-bg:#0B0808; --o-ink:#F7EFE0; --o-ember:#F0A23C; --o-crit:#EC6A3A;
   --c-bg:#F3E9D6; --c-ink:#201A12; --c-ladrillo:#B23A28; --c-ember:#C7601E;
+  /* la gama estirada · 106° del círculo, sin un solo azul */
+  --ciruela:#6E2544; --vino:#8E2B3A; --mostaza:#C9A227; --oliva:#6B7A4F;
+  --ciruela-cl:#8E3457; --oliva-cl:#8A9A6B;
   /* rampa de calor: una sola familia cálida, clara → tinta */
   --h0:#F6EEDC; --h1:#EFD6A6; --h2:#E3A851; --h3:#C7601E; --h4:#201A12;
   /* alias que el marcado heredado sigue usando */
@@ -48,7 +51,7 @@ img{display:block;max-width:100%}
   --i90:rgba(32,26,18,.9);--i70:rgba(32,26,18,.66);--i45:rgba(32,26,18,.44);
   --i25:rgba(32,26,18,.22);--ln:rgba(32,26,18,.15);--ln2:rgba(32,26,18,.33);
   --panel:rgba(32,26,18,.045)}
-.sb-l.oscura{--bg:var(--o-bg);--ink:var(--o-ink);--acc:var(--o-ember);--crit:var(--o-crit);
+.sb-l.oscura{--bg:var(--o-bg);--ink:var(--o-ink);--acc:var(--o-ember);--crit:#E8577A;
   --i90:rgba(242,231,212,.92);--i70:rgba(242,231,212,.68);--i45:rgba(242,231,212,.45);
   --i25:rgba(242,231,212,.22);--ln:rgba(242,231,212,.16);--ln2:rgba(242,231,212,.35);
   --panel:rgba(242,231,212,.055)}
@@ -120,7 +123,7 @@ body.presentando #stage{box-shadow:none}
 
 /* la foto como plano vivo: duotono + Ken Burns + barrido de luz */
 .capa.fondo .foto{position:absolute;inset:-6%;background-size:cover;background-position:center;
-  filter:grayscale(1) contrast(1.24) brightness(.6);opacity:.52;
+  filter:grayscale(1) contrast(1.3) brightness(.52);opacity:.78;
   animation:kenburns 13s ease-in-out infinite alternate;will-change:transform}
 @keyframes kenburns{
   0%{transform:scale(1.06) translate3d(-1.2%,.6%,0)}
@@ -208,7 +211,7 @@ body.presentando #stage{box-shadow:none}
 .sb-kick{font-family:var(--mono);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;
   color:var(--acc);display:flex;align-items:center;gap:14px}
 .sb-kick::before{content:"";width:38px;height:2px;background:var(--acc);flex:none}
-h1.sb-h1{font-family:var(--disp);font-weight:700;font-style:italic;font-size:112px;line-height:.98;letter-spacing:-.012em}
+h1.sb-h1{font-family:var(--disp);font-weight:700;font-style:italic;font-size:98px;line-height:1.0;letter-spacing:-.012em}
 h2.sb-h2{font-family:var(--disp);font-weight:700;font-style:italic;font-size:68px;line-height:1.04;
   letter-spacing:-.012em;max-width:24ch}
 h2.sb-h2 em{font-style:italic;color:var(--acc)}
@@ -244,10 +247,10 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
 .sb-port{display:grid;grid-template-columns:1.25fr .75fr;gap:72px;align-items:center}
 .sb-port .logo{width:290px;height:auto;color:var(--ink)}
 .sb-port .ano-grande{font-family:var(--mono);font-size:19px;letter-spacing:.42em;color:var(--acc);margin-top:24px}
-.sb-port dl{border-left:2px solid var(--acc);padding-left:34px;display:grid;gap:22px}
+.sb-port dl{border-left:2px solid var(--acc);padding-left:30px;display:grid;gap:16px}
 .sb-port dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--i45);margin-bottom:6px}
-.sb-port dd{margin:0;font-size:16.5px;line-height:1.5;font-weight:300}
-.sb-port dd.sb-reparto span{display:block;margin-bottom:12px}
+.sb-port dd{margin:0;font-size:15.5px;line-height:1.46;font-weight:300}
+.sb-port dd.sb-reparto span{display:block;margin-bottom:9px}
 .sb-port dd.sb-reparto i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;
   letter-spacing:.1em;color:var(--acc);margin-top:2px}
 .sb-reto{font-family:var(--disp);font-weight:700;font-style:italic;font-size:86px;line-height:1.04;
@@ -492,6 +495,88 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
 #atajos td{padding:8px 24px}
 #atajos td:first-child{text-align:right;color:var(--o-ember);font-family:var(--mono);font-size:12.5px;letter-spacing:.1em}
 #atajos p{margin-top:24px;font-size:13.5px;color:rgba(242,231,212,.44);max-width:62ch;line-height:1.5;font-weight:300}
+
+
+/* ══ EL MOTOR DE COLOR · gradiente de malla en las oscuras ═══════════ */
+.malla{position:absolute;inset:-22%;filter:blur(74px) saturate(1.3);z-index:0;
+  will-change:transform;pointer-events:none}
+.malla i{position:absolute;border-radius:50%;display:block;mix-blend-mode:screen}
+.malla .m1{width:40%;height:46%;left:2%;top:-4%; background:var(--ciruela);opacity:.78;animation:der1 19s ease-in-out infinite alternate}
+.malla .m2{width:42%;height:42%;left:34%;top:30%;background:var(--c-ladrillo);opacity:.66;animation:der2 23s ease-in-out infinite alternate}
+.malla .m3{width:36%;height:40%;left:62%;top:0%; background:var(--o-ember);opacity:.9; animation:der3 17s ease-in-out infinite alternate}
+.malla .m4{width:30%;height:34%;left:72%;top:56%;background:var(--mostaza);opacity:.72;animation:der1 21s ease-in-out infinite alternate-reverse}
+.malla .m5{width:34%;height:36%;left:6%;top:62%; background:var(--oliva);opacity:.6;  animation:der2 25s ease-in-out infinite alternate-reverse}
+@keyframes der1{to{transform:translate3d(9%,-7%,0) scale(1.18)}}
+@keyframes der2{to{transform:translate3d(-11%,8%,0) scale(1.12)}}
+@keyframes der3{to{transform:translate3d(6%,10%,0) scale(1.22)}}
+.velo{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(94deg,rgba(11,8,8,.78) 2%,rgba(11,8,8,.5) 30%,rgba(11,8,8,.1) 62%,transparent 86%),
+    radial-gradient(135% 105% at 60% 44%,transparent 26%,rgba(11,8,8,.36) 70%,rgba(11,8,8,.84) 100%)}
+/* la columna de texto siempre lleva su propio respaldo */
+.sb-l.oscura .sb-wrap{position:relative}
+.sb-l.oscura .sb-wrap::before{content:"";position:absolute;left:-58px;right:34%;top:-50px;bottom:-50px;
+  background:radial-gradient(74% 82% at 34% 50%,rgba(8,6,5,.84),rgba(8,6,5,.46) 60%,transparent 88%);
+  z-index:-1;pointer-events:none}
+
+/* ══ EL SELLO EXTRUIDO · caramelo, no cromo ══════════════════════════ */
+.sello{position:absolute;transform-style:preserve-3d;will-change:transform;
+  animation:flotar 9s ease-in-out infinite alternate}
+@keyframes flotar{
+  0%{transform:translate3d(0,0,0) rotateX(12deg) rotateY(-16deg) rotateZ(-5deg)}
+  100%{transform:translate3d(0,-22px,0) rotateX(6deg) rotateY(-8deg) rotateZ(-2deg)}}
+.sello .cara{position:absolute;inset:0;transform-style:preserve-3d}
+.sello svg{width:100%;height:auto;display:block}
+.sello .cara.frontal svg{filter:drop-shadow(0 0 30px rgba(224,145,43,.52))}
+.sello .lustre{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  -webkit-mask-image:var(--mk);mask-image:var(--mk);-webkit-mask-size:contain;mask-size:contain;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.sello .lustre i{position:absolute;top:-40%;bottom:-40%;width:34%;
+  background:linear-gradient(100deg,transparent,rgba(255,243,214,.86),transparent);
+  transform:translateX(-200%) skewX(-18deg);animation:lustrar 6.5s ease-in-out infinite}
+@keyframes lustrar{0%,55%{transform:translateX(-200%) skewX(-18deg)}
+  100%{transform:translateX(420%) skewX(-18deg)}}
+
+/* ══ las tarjetas de las oscuras no dependen del fondo ═══════════════ */
+.sb-l.oscura .sb-glass,.sb-l.oscura .sb-esc,.sb-l.oscura .sb-rec,.sb-l.oscura .sb-domino .d,
+.sb-l.oscura .sb-seis .c,.sb-l.oscura .sb-cambio .c,.sb-l.oscura .sb-id .c,.sb-l.oscura .sb-f{
+  background:rgba(12,9,8,.74);border-color:rgba(247,239,224,.3);
+  backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2)}
+.sb-l.oscura .sb-hitos .c,.sb-l.oscura .sb-macro,.sb-l.oscura .sb-id,.sb-l.oscura .sb-cambio{background:transparent}
+
+/* ══ un tono por serie · se acabaron las barras todas iguales ════════ */
+.sb-fila .barra.opt,.sb-fila .barra.ya{background:var(--o-ember);color:#1A1008}
+.sb-fila .barra.ten,.sb-fila .barra.med{background:var(--mostaza);color:#231A04}
+.sb-fila .barra.pes{background:var(--ciruela);color:#fff}
+.sb-fila .barra.tod,.sb-fila .barra.est{background:var(--oliva);color:#10140A;border:0}
+.sb-l.oscura .sb-fila .barra.est{color:#0B0F06}
+/* los tres escenarios, tres tonos distintos */
+.sb-esc.opt{--tono:var(--c-ember)} .sb-esc.pes{--tono:var(--ciruela)} .sb-esc.ten{--tono:var(--mostaza)}
+.sb-l.oscura .sb-esc.opt{--tono:var(--o-ember)}
+.sb-l.oscura .sb-esc.pes{--tono:var(--ciruela-cl)}
+.sb-esc::before{background:var(--tono) !important}
+.sb-esc .t,.sb-esc .ttl,.sb-esc .marca{color:var(--tono) !important}
+.sb-esc.ten{border-color:var(--mostaza)}
+.sb-esc.pes{border-color:var(--ciruela)}
+/* el dominó: cada ficha con su tono, en degradé hacia la ciruela */
+.sb-domino .d:nth-child(1){--tono:var(--mostaza)} .sb-domino .d:nth-child(2){--tono:var(--c-ember)}
+.sb-domino .d:nth-child(3){--tono:var(--c-ladrillo)} .sb-domino .d:nth-child(4){--tono:var(--ciruela)}
+.sb-domino .d{border-top:3px solid var(--tono,var(--crit))}
+.sb-domino .d .n{color:var(--tono,var(--crit))}
+.sb-l.oscura .sb-domino .d:nth-child(4){--tono:var(--ciruela-cl)}
+/* el plano MICMAC: lo que SUSI controla en brasa, lo crítico en ciruela */
+.sb-v.cri i{background:var(--ciruela);color:#fff} .sb-v.cri b{color:var(--ciruela)}
+.sb-mic-lista .k.cri{color:var(--ciruela)}
+.sb-l.oscura .sb-v.cri i{background:var(--ciruela-cl)}
+.sb-l.oscura .sb-v.cri b,.sb-l.oscura .sb-mic-lista .k.cri{color:var(--ciruela-cl)}
+/* las cuatro fuerzas del macroentorno, cuatro tonos */
+.sb-f:nth-child(1)::before{background:var(--o-ember)}
+.sb-f:nth-child(2)::before{background:var(--ciruela)}
+.sb-f:nth-child(3)::before{background:var(--oliva)}
+.sb-f:nth-child(4)::before{background:var(--mostaza)}
+.es-mini .malla i,.es-mini .sello{animation:none !important}
+@media (prefers-reduced-motion: reduce){
+  .malla i,.sello,.sello .lustre i{animation:none !important}}
 
 .es-mini .sb-p{opacity:1 !important;transform:none !important}
 .es-mini .capa{opacity:1 !important;transform:none !important;filter:none !important}
@@ -1114,7 +1199,9 @@ var i=0, tl=null, minis=[], rcs=[];
 function dos(n){return (n<10?"0":"")+n}
 
 /* ══ ESCENOGRAFÍA · se inyecta, el marcado de las láminas no se toca ══ */
-var OSCURAS={0:"pan-horno",1:"amasado",10:"pan-horno",19:"amasado",20:"pan-horno"};
+/* 9 oscuras repartidas: nunca más de cuatro claras seguidas.
+   Las fotos quedan solo en portada, el divisor de escenarios y el cierre. */
+var OSCURAS={0:"pan-horno",1:null,4:null,7:null,10:"amasado",12:null,14:null,19:null,20:"pan-horno"};
 var camara=D.createElement("div"); camara.id="camara";
 var mundo=D.createElement("div"); mundo.id="mundo";
 sb.parentNode.insertBefore(camara,sb); camara.appendChild(mundo); mundo.appendChild(sb);
@@ -1129,13 +1216,17 @@ L.forEach(function(s,n){
   var fondo=D.createElement("div"); fondo.className="capa fondo";
   var h='<div class="kraft"></div>';
   if(osc){
-    h='<div class="foto" style="background-image:url(\'img/'+OSCURAS[n]+'.jpg\')"></div>'+
-      '<div class="duo"></div><div class="vel"></div><div class="brillo"></div>'+h+
+    /* el gradiente de malla es el motor de color; la foto solo donde la hay */
+    /* la foto va en gris debajo; la malla la colorea por mezcla aditiva */
+    h = OSCURAS[n] ? '<div class="foto" style="background-image:url(\'img/'+OSCURAS[n]+'.jpg\')"></div>' : '';
+    h+='<div class="malla"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i><i class="m5"></i></div>';
+    if(OSCURAS[n]) h+='<div class="brillo"></div>';
+    h+='<div class="velo"></div>'+
       '<div class="agua"><svg viewBox="0 0 222 101.539" fill="currentColor"><use href="#susi-logo"></use></svg></div>';
   }
   fondo.innerHTML=h;
   s.appendChild(fondo); s.appendChild(frente);
-  if(osc){
+  if(osc && OSCURAS[n]){
     var borde=D.createElement("div"); borde.className="capa borde";
     borde.innerHTML='<div class="trigo"><img src="img/trigo.png" alt="" onerror="this.parentNode.style.display=\'none\'"></div>';
     s.appendChild(borde);
@@ -1460,6 +1551,35 @@ addEventListener("keydown",function(e){
   if(m==="f"){e.preventDefault();return pantalla()}
   if(k==="?"||k==="/"){e.preventDefault();return alternarAtajos()}
 });
+
+/* ══ EL SELLO EXTRUIDO · 22 capas de caramelo sobre la portada ══ */
+(function(){
+  var port=L[0] && L[0].querySelector(".sb-port");
+  if(!port) return;
+  var col=port.children[1]; if(!col) return;        /* la columna de la ficha */
+  var caja=D.createElement("div");
+  caja.style.cssText="position:relative;height:196px;margin-bottom:18px";
+  var h=D.createElement("div");
+  h.className="sello"; h.style.cssText="width:286px;left:50%;top:50%;margin:-108px 0 0 -143px";
+  function mez(a,b,x){return a.map(function(v,k){return Math.round(v+(b[k]-v)*x)}).join(",")}
+  var s="";
+  for(var k=22;k>=1;k--){
+    var x=k/22, cl=mez([110,37,20],[52,17,10],x);
+    s+='<div class="cara" style="transform:translateZ('+(-k*3.2)+'px)">'+
+       '<svg viewBox="0 0 222 101.539" fill="rgb('+cl+')"><use href="#susi-logo"></use></svg></div>';
+  }
+  s+='<div class="cara frontal" style="transform:translateZ(2px)">'+
+     '<svg viewBox="0 0 222 101.539"><defs><linearGradient id="caramelo" x1="0" y1="0" x2="1" y2="1">'+
+     '<stop offset="0" stop-color="#FFD88A"/><stop offset=".32" stop-color="#E0912B"/>'+
+     '<stop offset=".58" stop-color="#B23A28"/><stop offset=".82" stop-color="#6E2544"/>'+
+     '<stop offset="1" stop-color="#FFC56B"/></linearGradient></defs>'+
+     '<use href="#susi-logo" fill="url(#caramelo)"/></svg></div><div class="lustre"><i></i></div>';
+  h.innerHTML=s;
+  caja.appendChild(h); col.insertBefore(caja, col.firstChild);
+  var lu=h.querySelector(".lustre");
+  var svg=h.querySelector(".cara.frontal svg").outerHTML.replace(/"/g,"'");
+  lu.style.setProperty("--mk","url(\"data:image/svg+xml;utf8,"+encodeURIComponent(svg)+"\")");
+})();
 
 sb.classList.remove("sb-llano");
 L.forEach(function(s){s.classList.remove("viva")});
