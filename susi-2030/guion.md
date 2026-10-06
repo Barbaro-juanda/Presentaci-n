@@ -41,6 +41,10 @@ salen hay que poder decirlo:
   natural del canal propio, no una meta del informe. El dato de las 5,57 millones de
   salidas de 2024 (El Tiempo) va **siempre con su matiz**: son viajes, no personas
   radicadas afuera. Mide el flujo y su perfil de edad, no el tamaño del mercado.
+- **El dato como activo** (lámina 19, recomendación 8). El valor de la IA no es el
+  asistente sino la base propia de consumidor final que deja cada pedido directo.
+  Hoy SUSI pronostica con facturación a cadenas, que dice cuánto se despachó pero no
+  quién lo comió. Es una lectura del equipo, no una cifra del informe.
 - **Cumplir aquí es cumplir afuera** (lámina 18, recomendación 5). Empaque
   reciclable y formulación limpia son requisitos de los mercados de destino. **No
   son aranceles** —esos van por partida arancelaria—: son barreras no arancelarias.
@@ -175,7 +179,13 @@ Respaldo: en la entrega 2 el equipo argumentó el cruce Empaques → Exportar co
 
 **Habla:** Juan David Escobar Guiral · **0:35**
 
-Cierra así: «Esas son las ocho. Thomas les dice cuáles se pueden arrancar ya». La siete nació de la entrevista y es la única de horizonte largo. Acción y plazo: abrir el punto propio en el Valle de Aburrá en tres o cuatro años, hacia 2029 o 2030, cuando el canal digital y los formatos individuales ya estén consolidados y lo puedan sostener. Impacto esperado: validar seis referencias nuevas el primer año de operación y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista. Acción y plazo: un piloto con tres referencias en cuatro meses, midiendo el error del pronóstico, la merma y los pedidos directos. Impacto esperado: reducir quince por ciento la merma y aumentar veinte por ciento los pedidos directos por WhatsApp el primer año. Es la más rápida de las ocho y también va marcada como meta propuesta por el equipo.
+Cierra así: «Esas son las ocho. Thomas les dice cuáles se pueden arrancar ya». La siete nació de la entrevista y es la única de horizonte largo. Acción y plazo: abrir el punto propio en el Valle de Aburrá en tres o cuatro años, hacia 2029 o 2030, cuando el canal digital y los formatos individuales ya estén consolidados y lo puedan sostener. Impacto esperado: validar seis referencias nuevas el primer año de operación y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista, y es la más rápida: cuatro meses, piloto con tres referencias. Acción y plazo: medir el error del pronóstico, la merma y los pedidos directos. Impacto esperado: quince por ciento menos de merma y veinte por ciento más de pedidos directos el primer año. Va marcada como meta propuesta por el equipo.
+
+El argumento de fondo, que es lo que hay que subrayar: el valor no está en el asistente, está en el dato que deja. Hoy la empresa más valiosa es la que entiende a su consumidor final, y para entenderlo hay que poder medirlo. SUSI hoy no puede: pronostica con facturación a cadenas, que dice cuánto se despachó, no quién lo comió ni cada cuánto vuelve. Ese dato se queda en la cadena y en la app.
+
+Cada pedido directo por WhatsApp construye la primera base propia de consumidor final en cuarenta años: quién compra, qué compra, cada cuánto. Con eso se puede decidir qué producir, a qué precio y para quién. Sin eso se produce a ciegas y uno se entera en la góndola, cuando ya es tarde.
+
+Cerrar atando con la recomendación 1 y la 2: la tienda digital y el canal directo son los que generan ese dato; la IA es la que lo convierte en decisiones. Las tres se sostienen entre sí.
 
 ## 20 · Los próximos seis meses
 
