@@ -34,7 +34,7 @@ archivo, y además quedan como copia legible en `fonts/` y `vendor/`.
 
 1. Portada
 2. El reto en una frase
-3. Quién es SUSI
+3. Quién es SUSI · el porqué de la marca
 4. Macroentorno
 5. Microentorno · cinco fuerzas de Porter
 6. Seis variables críticas (MICMAC)
@@ -53,6 +53,19 @@ archivo, y además quedan como copia legible en `fonts/` y `vendor/`.
 19. Recomendaciones 7 y 8
 20. Los próximos seis meses
 21. Cierre y normativa citada
+
+## El porqué de SUSI
+
+La lámina 3 abre con el propósito de la marca antes que con sus datos. En pantalla
+va la versión corta —«Cuidarse no tiene por qué saber a castigo»— y debajo el
+enunciado completo: existir para devolverle la emoción y el disfrute a la nutrición
+cotidiana, demostrando que cuidar la salud y consentir el paladar conviven en
+armonía. El texto largo queda en las notas del orador.
+
+Está ahí, y no en la portada, porque explica la decisión que sostiene todo el
+argumento del deck: en cuarenta años nunca entraron conservantes, colorantes ni
+grasas trans. Lo que era una terquedad es hoy la ventaja regulatoria que el resto
+de las láminas reclama.
 
 ## Dirección de arte
 
