@@ -24,6 +24,14 @@ de pie y listos: una pausa ahí se nota mucho.
 **El cierre es una sola frase.** Dejarla leer dos segundos en silencio antes de
 hablar, y no agregar nada después.
 
+## El porqué de SUSI
+
+La lámina 3 abre con el propósito, no con los datos: **«Cuidarse no tiene por qué
+saber a castigo»**. Es la versión corta del porqué que SUSI tiene escrito, y está
+puesta ahí porque explica la decisión que sostiene todo el argumento: en cuarenta
+años nunca entraron conservantes, colorantes ni grasas trans. Lo que era una
+terquedad hoy es la ventaja regulatoria que el deck entero reclama.
+
 ## Dos argumentos que no están en el informe
 
 Van señalados en las notas de sus láminas, porque si el jurado pregunta de dónde
@@ -55,7 +63,13 @@ Empecemos por la tensión que organiza todo el trabajo. SUSI hace bien lo difíc
 
 **Habla:** Juan David Escobar Guiral · **0:50**
 
-RELEVO → Santiago. Cierra así: «Esa es la casa. Santiago sigue con lo que la empuja desde afuera». SUSI nace en 1985 en Medellín, de la mano de Susanne Seifert, colombiana de ascendencia alemana con formación técnica en panadería en Europa y Estados Unidos. De ahí vienen el pan de doble centeno, el brezel y la torta Selva Negra. Produce en Itagüí y vende por dos caminos: un canal directo limitado al Valle de Aburrá y un canal moderno con doce cadenas. El problema no es el producto: es que donde más vende no controla nada, y donde controla todo, su alcance es apenas metropolitano.
+Antes de los números, el porqué. SUSI existe porque alimentarse bien no tiene por qué sentirse como un castigo: su propósito es devolverle la emoción y el disfrute a la nutrición de todos los días, y demostrar que cuidar la salud y consentir el paladar conviven en armonía. Eso no es una frase de marca: es lo que explica por qué nunca metió conservantes, colorantes ni grasas trans aunque fuera más barato hacerlo.
+
+Y hoy esa convicción vale dinero. La regulación de etiquetado y el impuesto a ultraprocesados castigan a los competidores industriales; a SUSI no la tocan. Lo que durante cuarenta años fue una terquedad, hoy es una ventaja regulatoria que todavía no estamos cobrando.
+
+Los cuatro datos, rápido: 1985 en Medellín, doce cadenas, seis líneas, cero sellos de advertencia. Y la vulnerabilidad de siempre, que es por dónde pasa todo eso.
+
+RELEVO → Santiago. Cierra así: «Esa es la casa. Santiago sigue con lo que la empuja desde afuera».
 
 ## 04 · Macroentorno
 

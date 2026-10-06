@@ -611,6 +611,18 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
   color:var(--i45);border-top:1px solid var(--ln);padding-top:9px}
 .sb-rec .dato .ojo b{color:var(--crit);font-weight:400}
 
+
+/* ── 03 · el porqué ──────────────────────────────────────────────────── */
+.sb-porque{display:grid;grid-template-columns:.98fr 1.02fr;gap:58px;align-items:center}
+.pq-frase{font-family:var(--disp);font-weight:700;font-style:italic;font-size:74px;line-height:1.05;
+  letter-spacing:-.016em;margin-top:22px;color:var(--ink)}
+.pq-frase em{font-style:italic;color:var(--acc);display:block}
+.pq-datos .sb-id{grid-template-columns:1fr 1fr;margin-top:0}
+.pq-datos .sb-id .n{font-size:54px}
+.pq-datos .sb-id .t{font-size:14px;line-height:1.44;margin-top:11px}
+.pq-datos .sb-id .c{padding:23px 22px 25px}
+.pq-datos .sb-vuln{margin-top:22px;padding:18px 22px}
+
 .es-mini .sb-p{opacity:1 !important;transform:none !important}
 .es-mini .capa{opacity:1 !important;transform:none !important;filter:none !important}
 .es-mini .capa.fondo{transform:scale(1.06) !important}
@@ -678,20 +690,26 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
 </section>
 
 <!-- ═════════ 03 · quién es SUSI ═════════ -->
-<section class="sb-l" data-exp="Juan David" data-seg="50" data-t="Quién es SUSI" data-y="2026"
- data-n="RELEVO → Santiago. Cierra así: «Esa es la casa. Santiago sigue con lo que la empuja desde afuera». SUSI nace en 1985 en Medellín, de la mano de Susanne Seifert, colombiana de ascendencia alemana con formación técnica en panadería en Europa y Estados Unidos. De ahí vienen el pan de doble centeno, el brezel y la torta Selva Negra. Produce en Itagüí y vende por dos caminos: un canal directo limitado al Valle de Aburrá y un canal moderno con doce cadenas. El problema no es el producto: es que donde más vende no controla nada, y donde controla todo, su alcance es apenas metropolitano.">
-  <div class="sb-wrap">
-    <div class="sb-kick sb-p">La empresa</div>
-    <h2 class="sb-h2 sb-p" style="margin-top:18px;max-width:32ch">Cuarenta años de oficio, concentrados en la <em>góndola de otros</em></h2>
-    <div class="sb-id">
-      <div class="c sb-glass sb-p"><div class="n sb-cifra"><span data-num="1985">0</span></div><div class="t">Susanne Seifert, colombiana de ascendencia alemana con formación técnica en Europa y Estados Unidos, la funda en Medellín.</div></div>
-      <div class="c sb-glass sb-p"><div class="n sb-cifra"><span data-num="12">0</span> <small>cadenas</small></div><div class="t">Éxito, Carulla, Euro, Olímpica, Colsubsidio y Farmatodo, entre otras. Planta centralizada en Itagüí.</div></div>
-      <div class="c sb-glass sb-p"><div class="n sb-cifra"><span data-num="6">0</span> <small>líneas</small></div><div class="t">Panadería, crocantes, tortas, cereales de desayuno Happy&nbsp;Mix, snacks de cereales soplados y congelados.</div></div>
-      <div class="c sb-glass sb-p"><div class="n sb-cifra"><span data-num="0">0</span> <small>aditivos</small></div><div class="t">Sin químicos, conservantes, colorantes artificiales ni grasas trans. Recetas europeas: doble centeno, brezel, Selva Negra.</div></div>
+<section class="sb-l oscura" data-exp="Juan David" data-seg="50" data-t="Quién es SUSI" data-y="2026"
+ data-n="Antes de los números, el porqué. SUSI existe porque alimentarse bien no tiene por qué sentirse como un castigo: su propósito es devolverle la emoción y el disfrute a la nutrición de todos los días, y demostrar que cuidar la salud y consentir el paladar conviven en armonía. Eso no es una frase de marca: es lo que explica por qué nunca metió conservantes, colorantes ni grasas trans aunque fuera más barato hacerlo. | Y hoy esa convicción vale dinero. La regulación de etiquetado y el impuesto a ultraprocesados castigan a los competidores industriales; a SUSI no la tocan. Lo que durante cuarenta años fue una terquedad, hoy es una ventaja regulatoria que todavía no estamos cobrando. | Los cuatro datos, rápido: 1985 en Medellín, doce cadenas, seis líneas, cero sellos de advertencia. Y la vulnerabilidad de siempre, que es por dónde pasa todo eso. | RELEVO → Santiago. Cierra así: «Esa es la casa. Santiago sigue con lo que la empuja desde afuera».">
+  <div class="sb-wrap sb-porque">
+    <div class="pq-texto">
+      <div class="sb-kick sb-p">La empresa · nuestro porqué</div>
+      <p class="pq-frase sb-p">Cuidarse no tiene por qué <em>saber a castigo.</em></p>
+      <p class="sb-lead sb-p" style="margin-top:24px;max-width:46ch">Existimos para devolverle la emoción y el disfrute a la nutrición cotidiana: demostrar que <b>cuidar la salud y consentir el paladar</b> conviven en armonía.</p>
+      <p class="sb-mini sb-p" style="margin-top:18px;max-width:46ch">Por eso, en cuarenta años, nunca entraron conservantes, colorantes artificiales ni grasas trans. Era una terquedad. Hoy es una ventaja que todavía no cobramos.</p>
     </div>
-    <div class="sb-vuln sb-p">
-      <div class="e">Vulnerabilidad</div>
-      <p style="font-size:21px;line-height:1.42">Depende del canal moderno para masificar, donde no controla ni la negociación ni la exhibición. Su canal propio, el único que controla, está limitado a Antioquia y con un ecosistema digital subutilizado: sin información nutricional por producto y sin integración con marketplaces nacionales.</p>
+    <div class="pq-datos">
+      <div class="sb-id">
+        <div class="c sb-glass sb-p"><div class="n sb-cifra"><span data-num="1985">0</span></div><div class="t">Susanne Seifert, colombiana de ascendencia alemana con formación técnica en Europa y Estados Unidos, la funda en Medellín.</div></div>
+        <div class="c sb-glass sb-p"><div class="n sb-cifra"><span data-num="12">0</span> <small>cadenas</small></div><div class="t">Éxito, Carulla, Euro, Olímpica, Colsubsidio y Farmatodo, entre otras. Planta propia en Itagüí.</div></div>
+        <div class="c sb-glass sb-p"><div class="n sb-cifra"><span data-num="6">0</span> <small>líneas</small></div><div class="t">Panadería, crocantes, tortas, cereales de desayuno Happy&nbsp;Mix, snacks de cereales soplados y congelados.</div></div>
+        <div class="c sb-glass sb-p"><div class="n sb-cifra"><span data-num="0">0</span> <small>sellos</small></div><div class="t">Sin conservantes, colorantes ni grasas trans. La norma castiga a los industriales, no a nosotros.</div></div>
+      </div>
+      <div class="sb-vuln sb-p">
+        <div class="e">Vulnerabilidad</div>
+        <p style="font-size:17px;line-height:1.46">Depende del canal moderno para masificar, donde no controla ni la negociación ni la exhibición. Su canal propio, el único que controla, está limitado a Antioquia.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1237,7 +1255,7 @@ function dos(n){return (n<10?"0":"")+n}
    de ruta y las cuatro de recomendaciones—, donde el papel ayuda.
    Las fotos van solo en portada, el divisor de escenarios y el cierre. */
 var CLARAS={8:1, 14:1, 15:1, 16:1, 17:1, 18:1};
-var FOTOS={0:"pan-horno", 10:"amasado", 20:"pan-horno"};
+var FOTOS={0:"pan-horno", 2:"amasado", 10:"amasado", 20:"pan-horno"};
 var OSCURAS={};
 for(var q=0;q<21;q++) if(!CLARAS[q]) OSCURAS[q]=FOTOS[q]||null;
 var camara=D.createElement("div"); camara.id="camara";
