@@ -589,6 +589,16 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
 @media (prefers-reduced-motion: reduce){
   .malla i,.sello,.sello .lustre i{animation:none !important}}
 
+
+/* ── 21 · el cierre: una frase y nada más ────────────────────────────── */
+.sb-final{text-align:center;display:grid;justify-items:center}
+.sello-cierre{position:relative;width:210px;height:116px;transform-style:preserve-3d;margin-bottom:46px}
+.frase-final{font-family:var(--disp);font-weight:700;font-style:italic;font-size:76px;line-height:1.14;
+  letter-spacing:-.014em;max-width:19ch;color:var(--ink)}
+.frase-final em{font-style:italic;color:var(--acc);display:inline-block}
+.firma-final{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:60px}
+.firma-final span{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--i45)}
+
 .es-mini .sb-p{opacity:1 !important;transform:none !important}
 .es-mini .capa{opacity:1 !important;transform:none !important;filter:none !important}
 .es-mini .capa.fondo{transform:scale(1.06) !important}
@@ -1121,19 +1131,17 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
 </section>
 
 <!-- ═════════ 19 · referencias ═════════ -->
-<section class="sb-l" data-exp="Juan David" data-seg="25" data-t="Cierre" data-y="2030"
- data-n="Para cerrar, estas son las normas y los datos de entorno sobre los que se apoya todo el análisis: la Resolución 810 de 2021 de etiquetado frontal, la Ley 2277 de 2022 del impuesto a ultraprocesados, la Ley 2232 de plásticos de un solo uso y la dependencia del trigo importado. Muchas gracias, y quedamos atentos a sus preguntas.">
-  <div class="sb-wrap">
-    <div class="sb-kick sb-p">Normativa y datos de entorno citados en el informe</div>
-    <h2 class="sb-h2 sb-p" style="margin-top:14px;font-size:50px">Sobre qué se apoya el análisis</h2>
-    <ol class="sb-refs">
-      <li class="sb-p" data-n="01"><b style="color:var(--crema);font-weight:500">Resolución 810 de 2021.</b> Etiquetado frontal de advertencia. Es la norma que pone sellos a los competidores industriales y deja a SUSI sin ellos.</li>
-      <li class="sb-p" data-n="02"><b style="color:var(--crema);font-weight:500">Ley 2277 de 2022.</b> Impuesto a los alimentos ultraprocesados. Encarece a quien formula con aditivos; el portafolio de SUSI queda por fuera.</li>
-      <li class="sb-p" data-n="03"><b style="color:var(--crema);font-weight:500">Ley 2232.</b> Eliminación gradual de los plásticos de un solo uso hacia 2030. Obliga a rediseñar los empaques de la marca.</li>
-      <li class="sb-p" data-n="04" style="border-bottom:0"><b style="color:var(--crema);font-weight:500">Dependencia del trigo importado.</b> Colombia importa cerca del 99 % del que consume, con la molienda concentrada en pocas plantas.</li>
-    </ol>
-    <p class="sb-mini sb-p" style="margin-top:20px"><span class="sb-meta-eq">Pendiente</span> El informe final no incluye lista de referencias en APA 7. Hay que redactarla antes de la entrega y reflejarla en esta lámina.</p>
-    <p class="sb-remate sb-p" style="font-size:40px;max-width:46ch;margin-top:22px">Gracias. <em>Quedamos atentos a sus preguntas.</em></p>
+<section class="sb-l oscura" data-exp="Juan David" data-seg="25" data-t="Cierre" data-y="2030"
+ data-n="Una sola frase y ya. Dejar que se lea en silencio dos segundos antes de hablar: «Cuarenta años perfeccionando el pan. Los que vienen, para decidir por dónde pasa». Después, abrir preguntas mirando al jurado, sin agregar nada nuevo. | Si preguntan en qué se apoya el análisis: Resolución 810 de 2021, etiquetado frontal de advertencia, que pone sellos a los competidores industriales y deja a SUSI sin ellos. Ley 2277 de 2022, impuesto a los ultraprocesados, que encarece a quien formula con aditivos. Ley 2232, eliminación gradual de los plásticos de un solo uso hacia 2030. Y la dependencia del trigo importado: Colombia trae cerca del 99 % del que consume, con la molienda concentrada en pocas plantas. | PENDIENTE: el informe final no incluye lista de referencias en APA 7. Hay que redactarla antes de la entrega.">
+  <div class="sb-wrap sb-final">
+    <div class="sello-cierre sb-p" id="selloCierre"></div>
+    <p class="frase-final sb-p">Cuarenta años perfeccionando el pan.<br><em>Los que vienen, para decidir por dónde pasa.</em></p>
+    <div class="firma-final sb-p">
+      <span>Juan David Escobar Guiral</span>
+      <span>Santiago Duque Restrepo</span>
+      <span>María Camila Jiménez Ramírez</span>
+      <span>Thomas Quintero Gallego</span>
+    </div>
   </div>
 </section>
 
@@ -1594,9 +1602,19 @@ addEventListener("keydown",function(e){
      '<use href="#susi-logo" fill="url(#caramelo)"/></svg></div><div class="lustre"><i></i></div>';
   h.innerHTML=s;
   caja.appendChild(h); col.insertBefore(caja, col.firstChild);
-  var lu=h.querySelector(".lustre");
-  var svg=h.querySelector(".cara.frontal svg").outerHTML.replace(/"/g,"'");
-  lu.style.setProperty("--mk","url(\"data:image/svg+xml;utf8,"+encodeURIComponent(svg)+"\")");
+  marcar(h);
+  /* el mismo sello, más pequeño, corona el cierre */
+  var fin=D.getElementById("selloCierre");
+  if(fin){
+    var h2=D.createElement("div");
+    h2.className="sello"; h2.style.cssText="width:210px;left:50%;top:50%;margin:-48px 0 0 -105px";
+    h2.innerHTML=s; fin.appendChild(h2); marcar(h2);
+  }
+  function marcar(nodo){
+    var lu=nodo.querySelector(".lustre");
+    var svg=nodo.querySelector(".cara.frontal svg").outerHTML.replace(/"/g,"'");
+    lu.style.setProperty("--mk","url(\"data:image/svg+xml;utf8,"+encodeURIComponent(svg)+"\")");
+  }
 })();
 
 sb.classList.remove("sb-llano");

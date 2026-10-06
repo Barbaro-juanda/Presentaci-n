@@ -17,14 +17,15 @@ Thomas Quintero Gallego figura como **coautor del informe**, sin láminas asigna
 
 Secuencia de voces: `JU JU JU · SA · MA · SA SA SA SA SA · MA MA MA MA MA MA MA · JU JU JU JU`
 
-**Cinco relevos**, en las notas de las láminas 3, 4, 5, 10 y 17. Quien entrega
-dice la frase mirando al que entra; quien recibe arranca con su kicker, sin
-volver a saludar.
+**Cinco relevos**, en las notas de las láminas 3, 4, 5, 10 y 17.
 
-**Ojo con el tramo 3 → 6.** Hay tres cambios de voz en tres láminas seguidas:
-Juan David entrega a Santiago en la 3, Santiago a María Camila en la 4, y María
-Camila devuelve a Santiago en la 5. Es la parte que más hay que ensayar: los tres
-tienen que estar de pie y listos, porque una pausa ahí se nota mucho.
+**Ojo con el tramo 3 → 6.** Tres cambios de voz en tres láminas seguidas. Es la
+parte que más hay que ensayar: los tres de pie y listos, porque una pausa ahí se
+nota mucho.
+
+**El cierre es una sola frase.** Dejarla leer dos segundos en silencio antes de
+hablar, y no agregar nada nuevo después. Las fuentes normativas quedaron en las
+notas de esa lámina por si preguntan.
 
 ## 01 · Portada
 
@@ -150,4 +151,8 @@ Si de toda la presentación hay que llevarse una sola cosa, es esta diapositiva.
 
 **Habla:** Juan David Escobar Guiral · **0:25**
 
-Para cerrar, estas son las normas y los datos de entorno sobre los que se apoya todo el análisis: la Resolución 810 de 2021 de etiquetado frontal, la Ley 2277 de 2022 del impuesto a ultraprocesados, la Ley 2232 de plásticos de un solo uso y la dependencia del trigo importado. Muchas gracias, y quedamos atentos a sus preguntas.
+Una sola frase y ya. Dejar que se lea en silencio dos segundos antes de hablar: «Cuarenta años perfeccionando el pan. Los que vienen, para decidir por dónde pasa». Después, abrir preguntas mirando al jurado, sin agregar nada nuevo.
+
+Si preguntan en qué se apoya el análisis: Resolución 810 de 2021, etiquetado frontal de advertencia, que pone sellos a los competidores industriales y deja a SUSI sin ellos. Ley 2277 de 2022, impuesto a los ultraprocesados, que encarece a quien formula con aditivos. Ley 2232, eliminación gradual de los plásticos de un solo uso hacia 2030. Y la dependencia del trigo importado: Colombia trae cerca del 99 % del que consume, con la molienda concentrada en pocas plantas.
+
+PENDIENTE: el informe final no incluye lista de referencias en APA 7. Hay que redactarla antes de la entrega.
