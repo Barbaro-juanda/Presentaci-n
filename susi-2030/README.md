@@ -5,7 +5,7 @@ Presentación final de **Prospectiva 1** (ESIC, Digital Business & Administratio
 
 - **Equipo:** Juan David Escobar Guiral · Santiago Duque Restrepo · María Camila Jiménez Ramírez · Thomas Quintero Gallego
 - **Profesor:** Carlos Alberto Rincón
-- **Fecha:** 30 de septiembre de 2026
+- **Fecha:** 6 de octubre de 2026
 - **Duración objetivo:** 15 minutos hablados · 21 diapositivas
 
 ## Cómo se abre
