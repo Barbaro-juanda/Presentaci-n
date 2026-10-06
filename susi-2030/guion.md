@@ -11,8 +11,6 @@ También están dentro de la presentación: tecla `N`.
 | Santiago Duque Restrepo | 4 · 6 a 10 | Macroentorno, las variables, el método, las hipótesis y la validación | 5:05 |
 | María Camila Jiménez Ramírez | 5 · 11 a 17 | Porter, los tres escenarios, la hoja de ruta y las primeras recomendaciones | 5:40 |
 
-Thomas Quintero Gallego figura como **coautor del informe**, sin láminas asignadas.
-
 **Total: 14:55.** Secuencia de voces:
 `JU JU JU · SA · MA · SA SA SA SA SA · MA MA MA MA MA MA MA · JU JU JU JU`
 
@@ -145,7 +143,7 @@ Este es el más probable y, por eso mismo, el más peligroso. No hay crisis: hay
 
 **Habla:** María Camila Jiménez Ramírez · **0:50**
 
-Cierra así: «Esa es la secuencia en el tiempo. Thomas entra en qué es cada una de las ocho decisiones». Cierra así: «Esa es la secuencia en el tiempo. Thomas entra en qué es cada una de las ocho decisiones». De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después viene la expansión del canal directo, a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Siete de las ocho caben en año y medio. La octava, la panadería-laboratorio, va aparte abajo: es una apuesta de tres a cuatro años, que aterriza justo en 2030.
+De los tres escenarios salen ocho recomendaciones, y esta es su secuencia en el tiempo. Lo primero es lo más rápido y lo más barato: la inteligencia artificial a cuatro meses, la tienda digital a seis y los formatos individuales a ocho. Después viene la expansión del canal directo, a nueve meses. Y al final lo estructural: la cobertura de insumos y la renegociación con las cadenas a doce, y los empaques sostenibles a dieciocho. Siete de las ocho caben en año y medio. La octava, la panadería-laboratorio, va aparte abajo: es una apuesta de tres a cuatro años, que aterriza justo en 2030.
 
 ## 16 · Recomendaciones 1 y 2
 
@@ -179,7 +177,7 @@ Respaldo: en la entrega 2 el equipo argumentó el cruce Empaques → Exportar co
 
 **Habla:** Juan David Escobar Guiral · **0:35**
 
-Cierra así: «Esas son las ocho. Thomas les dice cuáles se pueden arrancar ya». La siete nació de la entrevista y es la única de horizonte largo. Acción y plazo: abrir el punto propio en el Valle de Aburrá en tres o cuatro años, hacia 2029 o 2030, cuando el canal digital y los formatos individuales ya estén consolidados y lo puedan sostener. Impacto esperado: validar seis referencias nuevas el primer año de operación y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista, y es la más rápida: cuatro meses, piloto con tres referencias. Acción y plazo: medir el error del pronóstico, la merma y los pedidos directos. Impacto esperado: quince por ciento menos de merma y veinte por ciento más de pedidos directos el primer año. Va marcada como meta propuesta por el equipo.
+La siete nació de la entrevista y es la única de horizonte largo. Acción y plazo: abrir el punto propio en el Valle de Aburrá en tres o cuatro años, hacia 2029 o 2030, cuando el canal digital y los formatos individuales ya estén consolidados y lo puedan sostener. Impacto esperado: validar seis referencias nuevas el primer año de operación y que el punto aporte diez por ciento de las ventas directas. Importante aclararlo: esa meta es una propuesta nuestra, no una cifra del informe, y por eso va marcada. La ocho también salió de la entrevista, y es la más rápida: cuatro meses, piloto con tres referencias. Acción y plazo: medir el error del pronóstico, la merma y los pedidos directos. Impacto esperado: quince por ciento menos de merma y veinte por ciento más de pedidos directos el primer año. Va marcada como meta propuesta por el equipo.
 
 El argumento de fondo, que es lo que hay que subrayar: el valor no está en el asistente, está en el dato que deja. Hoy la empresa más valiosa es la que entiende a su consumidor final, y para entenderlo hay que poder medirlo. SUSI hoy no puede: pronostica con facturación a cadenas, que dice cuánto se despachó, no quién lo comió ni cada cuánto vuelve. Ese dato se queda en la cadena y en la app.
 

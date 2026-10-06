@@ -3,7 +3,7 @@
 Presentación final de **Prospectiva 1** (ESIC, Digital Business & Administration) sobre
 **SUSI S.A.S.**, panadería y repostería artesanal.
 
-- **Equipo:** Juan David Escobar Guiral · Santiago Duque Restrepo · María Camila Jiménez Ramírez · Thomas Quintero Gallego
+- **Equipo:** Juan David Escobar Guiral · Santiago Duque Restrepo · María Camila Jiménez Ramírez
 - **Profesor:** Carlos Alberto Rincón
 - **Fecha:** 6 de octubre de 2026
 - **Duración objetivo:** 15 minutos hablados · 21 diapositivas
