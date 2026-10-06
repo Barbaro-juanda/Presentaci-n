@@ -13,19 +13,29 @@ También están dentro de la presentación: tecla `N`.
 
 Thomas Quintero Gallego figura como **coautor del informe**, sin láminas asignadas.
 
-**Total: 14:55.**
-
-Secuencia de voces: `JU JU JU · SA · MA · SA SA SA SA SA · MA MA MA MA MA MA MA · JU JU JU JU`
+**Total: 14:55.** Secuencia de voces:
+`JU JU JU · SA · MA · SA SA SA SA SA · MA MA MA MA MA MA MA · JU JU JU JU`
 
 **Cinco relevos**, en las notas de las láminas 3, 4, 5, 10 y 17.
 
-**Ojo con el tramo 3 → 6.** Tres cambios de voz en tres láminas seguidas. Es la
-parte que más hay que ensayar: los tres de pie y listos, porque una pausa ahí se
-nota mucho.
+**Ojo con el tramo 3 → 6.** Tres cambios de voz en tres láminas seguidas. Los tres
+de pie y listos: una pausa ahí se nota mucho.
 
 **El cierre es una sola frase.** Dejarla leer dos segundos en silencio antes de
-hablar, y no agregar nada nuevo después. Las fuentes normativas quedaron en las
-notas de esa lámina por si preguntan.
+hablar, y no agregar nada después.
+
+## Dos argumentos que no están en el informe
+
+Van señalados en las notas de sus láminas, porque si el jurado pregunta de dónde
+salen hay que poder decirlo:
+
+- **Los colombianos en el exterior** (lámina 16, recomendación 2). Es la extensión
+  natural del canal propio, no una meta del informe. No prometer cifras.
+- **Cumplir aquí es cumplir afuera** (lámina 18, recomendación 5). Empaque
+  reciclable y formulación limpia son requisitos de los mercados de destino. **No
+  son aranceles** —esos van por partida arancelaria—: son barreras no arancelarias.
+  El respaldo está en la entrega 2, en el cruce Empaques → Exportar que el propio
+  equipo argumentó.
 
 ## 01 · Portada
 
@@ -123,6 +133,8 @@ Cierra así: «Esa es la secuencia en el tiempo. Thomas entra en qué es cada un
 
 La uno reestructura la tienda digital con fichas nutricionales interactivas por referencia. Acción y plazo: rediseñar e implementar la plataforma propia con catálogo enriquecido y el sello cien por ciento libre de aditivos y sellos, en seis meses. Impacto esperado: más veinticinco por ciento en la tasa de conversión de la tienda en línea y más quince por ciento en ventas del canal digital durante el primer año. Es la más barata y la que más rápido se nota. La dos rompe la barrera geográfica del Área Metropolitana. Acción y plazo: cerrar alianzas logísticas para entregas nacionales e integrarse a dos marketplaces, en nueve meses, empezando por crocantes, Happy Mix y cereales soplados, que son las líneas que resisten el transporte. Impacto esperado: subir la participación del canal propio en la facturación del diez al veinticinco por ciento hacia 2028, que es la cifra que de verdad reduce la dependencia de las cadenas.
 
+Al llegar a la dos, agregar: «y el mismo despacho que nos lleva a Barranquilla nos lleva a Madrid. Los colombianos en el exterior son el primer mercado natural fuera del país, porque no hay que explicarles la marca: compran la receta que recuerdan». No prometer cifras de exportación: es el siguiente paso lógico del canal propio, no una meta del informe.
+
 ## 17 · Recomendaciones 3 y 4
 
 **Habla:** María Camila Jiménez Ramírez · **0:35**
@@ -134,6 +146,12 @@ RELEVO → Juan David. Cierra así: «Esas son las cuatro primeras. Juan David s
 **Habla:** Juan David Escobar Guiral · **0:35**
 
 La cinco convierte una obligación en argumento. Acción y plazo: rediseñar los empaques del cien por ciento de la línea de crocantes y snacks cumpliendo la fase prioritaria de la ley, en dieciocho meses. Impacto esperado: cumplimiento normativo del cien por ciento antes de los plazos legales de 2030 y quince por ciento más de favorabilidad de marca por atributos de sostenibilidad. Es la más larga del plan y por eso hay que arrancarla pronto. La seis responde al consumidor que hoy gasta menos. Acción y plazo: formular, probar e introducir al mercado tres referencias en formato pocket, en ocho meses. Impacto esperado: capturar un diez por ciento adicional de participación en snacks saludables e ingresar a dos cadenas de conveniencia o droguerías de alta rotación. El precio de entrada por debajo de nueve mil pesos es el que abre esa puerta.
+
+En la cinco, el remate es: «cumplir aquí es cumplir afuera». Los mercados de destino exigen empaque reciclable y formulación sin aditivos, así que el gasto normativo de hoy deja el portafolio listo para salir sin reformular.
+
+SI PREGUNTAN POR ARANCELES: aclarar que no bajan. Los aranceles van por partida arancelaria y no dependen de la fórmula. Lo que se evita son las barreras no arancelarias —requisitos sanitarios, aditivos prohibidos, exigencias de etiquetado—, que son las que de verdad cierran mercados.
+
+Respaldo: en la entrega 2 el equipo argumentó el cruce Empaques → Exportar con esta misma lógica.
 
 ## 19 · Recomendaciones 7 y 8
 

@@ -150,6 +150,13 @@ informe final. No se añadieron cifras, citas ni datos que no estén en él.
    en el informe.
 7. La recomendación 7 pasa de 9 meses a un horizonte de **3 a 4 años** por decisión del equipo.
    El informe anterior decía 9 meses.
+8. **Dos argumentos de exportación que el informe no trae**, añadidos por el equipo y
+   señalados en las notas del orador: los colombianos en el exterior como primer mercado
+   fuera del país (recomendación 2) y el cumplimiento normativo como llave de acceso
+   (recomendación 5). Este último se apoya en el cruce Empaques → Exportar que el propio
+   equipo argumentó en la entrega 2. **Son barreras no arancelarias, no aranceles:** una
+   formulación limpia no cambia la partida arancelaria, pero sí evita requisitos
+   sanitarios, aditivos prohibidos y exigencias de etiquetado.
 
 **Las seis hipótesis.** El informe nombra H1 a H6 y las empareja con cada escenario, pero no
 transcribe su enunciado: solo desarrolla los tres relatos. Los textos de la lámina 8 están
