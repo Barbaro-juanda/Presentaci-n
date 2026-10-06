@@ -157,6 +157,10 @@ informe final. No se añadieron cifras, citas ni datos que no estén en él.
    equipo argumentó en la entrega 2. **Son barreras no arancelarias, no aranceles:** una
    formulación limpia no cambia la partida arancelaria, pero sí evita requisitos
    sanitarios, aditivos prohibidos y exigencias de etiquetado.
+9. El dato de **5,57 millones de salidas de colombianos en 2024** (El Tiempo), con el
+   grupo de 30 a 39 años a la cabeza con 1.282.357, aparece en la recomendación 2 con
+   su matiz a la vista: **son viajes, no personas radicadas afuera.** Sirve para mostrar
+   el flujo y su perfil de edad, no para dimensionar un mercado.
 
 **Las seis hipótesis.** El informe nombra H1 a H6 y las empareja con cada escenario, pero no
 transcribe su enunciado: solo desarrolla los tres relatos. Los textos de la lámina 8 están

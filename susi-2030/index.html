@@ -599,6 +599,18 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
 .firma-final{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:60px}
 .firma-final span{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--i45)}
 
+
+/* dato con fuente dentro de una recomendación */
+.sb-rec .dato{margin-top:15px;padding:13px 15px;border-left:3px solid var(--acc);
+  background:var(--panel);display:grid;gap:9px}
+.sb-rec .dato .f{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:baseline}
+.sb-rec .dato .n{font-family:var(--disp);font-weight:700;font-style:italic;font-size:30px;
+  line-height:1;letter-spacing:-.02em;color:var(--acc);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sb-rec .dato .q{font-size:14px;line-height:1.36;color:var(--i70);font-weight:300}
+.sb-rec .dato .ojo{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;line-height:1.44;
+  color:var(--i45);border-top:1px solid var(--ln);padding-top:9px}
+.sb-rec .dato .ojo b{color:var(--crit);font-weight:400}
+
 .es-mini .sb-p{opacity:1 !important;transform:none !important}
 .es-mini .capa{opacity:1 !important;transform:none !important;filter:none !important}
 .es-mini .capa.fondo{transform:scale(1.06) !important}
@@ -1014,7 +1026,7 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
 
 <!-- ═════════ 16 · recomendaciones 1-4 ═════════ -->
 <section class="sb-l" data-exp="María Camila" data-seg="35" data-t="Recomendaciones 1 y 2" data-y="2030"
- data-n="La uno reestructura la tienda digital con fichas nutricionales interactivas por referencia. Acción y plazo: rediseñar e implementar la plataforma propia con catálogo enriquecido y el sello cien por ciento libre de aditivos y sellos, en seis meses. Impacto esperado: más veinticinco por ciento en la tasa de conversión de la tienda en línea y más quince por ciento en ventas del canal digital durante el primer año. Es la más barata y la que más rápido se nota. La dos rompe la barrera geográfica del Área Metropolitana. Acción y plazo: cerrar alianzas logísticas para entregas nacionales e integrarse a dos marketplaces, en nueve meses, empezando por crocantes, Happy Mix y cereales soplados, que son las líneas que resisten el transporte. Impacto esperado: subir la participación del canal propio en la facturación del diez al veinticinco por ciento hacia 2028, que es la cifra que de verdad reduce la dependencia de las cadenas. | Al llegar a la dos, agregar: «y el mismo despacho que nos lleva a Barranquilla nos lleva a Madrid. Los colombianos en el exterior son el primer mercado natural fuera del país, porque no hay que explicarles la marca: compran la receta que recuerdan». No prometer cifras de exportación: es el siguiente paso lógico del canal propio, no una meta del informe.">
+ data-n="La uno reestructura la tienda digital con fichas nutricionales interactivas por referencia. Acción y plazo: rediseñar e implementar la plataforma propia con catálogo enriquecido y el sello cien por ciento libre de aditivos y sellos, en seis meses. Impacto esperado: más veinticinco por ciento en la tasa de conversión de la tienda en línea y más quince por ciento en ventas del canal digital durante el primer año. Es la más barata y la que más rápido se nota. La dos rompe la barrera geográfica del Área Metropolitana. Acción y plazo: cerrar alianzas logísticas para entregas nacionales e integrarse a dos marketplaces, en nueve meses, empezando por crocantes, Happy Mix y cereales soplados, que son las líneas que resisten el transporte. Impacto esperado: subir la participación del canal propio en la facturación del diez al veinticinco por ciento hacia 2028, que es la cifra que de verdad reduce la dependencia de las cadenas. | Al llegar a la dos, agregar: «y el mismo despacho que nos lleva a Barranquilla nos lleva a Madrid. Los colombianos en el exterior son el primer mercado natural fuera del país, porque no hay que explicarles la marca: compran la receta que recuerdan». No prometer cifras de exportación: es el siguiente paso lógico del canal propio, no una meta del informe. | El dato de la tarjeta: en 2024 salieron de forma regular 5,57 millones de colombianos, y el grupo más grande fue el de 30 a 39 años, con 1.282.357 salidas. Decirlo con el matiz, no sin él: son viajes —turismo, trabajo y residencia—, no personas radicadas afuera. Sirve para mostrar que el flujo existe y que se concentra justo en la franja de edad que compra en línea, no para calcular un tamaño de mercado. Si alguien pregunta cuántos colombianos viven afuera, la respuesta honesta es que este dato no lo dice.">
   <div class="sb-wrap">
     <div class="sb-kick sb-p">Recomendaciones 1 y 2 · atacar la dependencia</div>
     <div class="sb-recs sb-recs--dos">
@@ -1029,6 +1041,7 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
       <article class="sb-rec sb-glass sb-p">
         <div class="cab"><span class="num">02</span><span class="t">Expandir el canal directo a ciudades intermedias y capitales clave</span></div>
         <div class="d">Romper la barrera del Área Metropolitana con operadores de última milla y marketplaces nacionales —Rappi Turbo, Mercado Libre Alimentos— despachando las líneas de mayor vida útil: crocantes, Happy Mix y cereales soplados. <b style="color:var(--acc);font-weight:600">Y el mismo despacho abre la puerta de afuera:</b> los colombianos en el exterior compran justo la receta que recuerdan, y son el primer mercado natural fuera del país porque no hay que explicarles la marca.</div>
+        <div class="dato"><div class="f"><span class="n">5,57 M</span><span class="q">salidas regulares de colombianos en 2024. El grupo más grande, el de <b style="color:var(--ink);font-weight:600">30 a 39 años</b>, con 1.282.357.</span></div><div class="ojo"><b>Ojo:</b> son viajes —turismo, trabajo y residencia—, no personas radicadas afuera. Mide el flujo y su perfil de edad, no el tamaño del mercado.</div></div>
         <div class="campos">
           <div class="campo plazo"><div class="et">Acción y plazo</div><div class="big">9 <small>meses</small></div><div class="txt">Cerrar alianzas logísticas para entregas nacionales e integrarse a 2 marketplaces.</div></div>
           <div class="campo"><div class="et">Impacto esperado</div><div class="big">10 → 25 %</div><div class="txt">de participación del canal propio en la facturación total hacia 2028, reduciendo la dependencia de las cadenas tradicionales.</div></div>
@@ -1036,6 +1049,7 @@ h2.sb-h2 .cri{font-style:italic;color:var(--crit)}
         <div class="pie"><span class="vr">Cadenas</span><span class="pz">Optimista · pesimista</span></div></article>
     </div>
   </div>
+  <div class="sb-fuente">Salidas de colombianos al exterior, 2024 · El Tiempo</div>
 </section>
 
 <section class="sb-l" data-exp="María Camila" data-seg="35" data-t="Recomendaciones 3 y 4" data-y="2030"

@@ -30,7 +30,9 @@ Van señalados en las notas de sus láminas, porque si el jurado pregunta de dó
 salen hay que poder decirlo:
 
 - **Los colombianos en el exterior** (lámina 16, recomendación 2). Es la extensión
-  natural del canal propio, no una meta del informe. No prometer cifras.
+  natural del canal propio, no una meta del informe. El dato de las 5,57 millones de
+  salidas de 2024 (El Tiempo) va **siempre con su matiz**: son viajes, no personas
+  radicadas afuera. Mide el flujo y su perfil de edad, no el tamaño del mercado.
 - **Cumplir aquí es cumplir afuera** (lámina 18, recomendación 5). Empaque
   reciclable y formulación limpia son requisitos de los mercados de destino. **No
   son aranceles** —esos van por partida arancelaria—: son barreras no arancelarias.
@@ -134,6 +136,8 @@ Cierra así: «Esa es la secuencia en el tiempo. Thomas entra en qué es cada un
 La uno reestructura la tienda digital con fichas nutricionales interactivas por referencia. Acción y plazo: rediseñar e implementar la plataforma propia con catálogo enriquecido y el sello cien por ciento libre de aditivos y sellos, en seis meses. Impacto esperado: más veinticinco por ciento en la tasa de conversión de la tienda en línea y más quince por ciento en ventas del canal digital durante el primer año. Es la más barata y la que más rápido se nota. La dos rompe la barrera geográfica del Área Metropolitana. Acción y plazo: cerrar alianzas logísticas para entregas nacionales e integrarse a dos marketplaces, en nueve meses, empezando por crocantes, Happy Mix y cereales soplados, que son las líneas que resisten el transporte. Impacto esperado: subir la participación del canal propio en la facturación del diez al veinticinco por ciento hacia 2028, que es la cifra que de verdad reduce la dependencia de las cadenas.
 
 Al llegar a la dos, agregar: «y el mismo despacho que nos lleva a Barranquilla nos lleva a Madrid. Los colombianos en el exterior son el primer mercado natural fuera del país, porque no hay que explicarles la marca: compran la receta que recuerdan». No prometer cifras de exportación: es el siguiente paso lógico del canal propio, no una meta del informe.
+
+El dato de la tarjeta: en 2024 salieron de forma regular 5,57 millones de colombianos, y el grupo más grande fue el de 30 a 39 años, con 1.282.357 salidas. Decirlo con el matiz, no sin él: son viajes —turismo, trabajo y residencia—, no personas radicadas afuera. Sirve para mostrar que el flujo existe y que se concentra justo en la franja de edad que compra en línea, no para calcular un tamaño de mercado. Si alguien pregunta cuántos colombianos viven afuera, la respuesta honesta es que este dato no lo dice.
 
 ## 17 · Recomendaciones 3 y 4
 
