@@ -181,3 +181,14 @@ HTML, así que funciona sin internet aunque se mueva el archivo solo.
 El logo es `logo-juan-valdez.png` (recortado para quitar una franja de bandera del borde
 izquierdo). Va una sola vez en el archivo, como variable CSS `--logo`, y se apoya sobre
 un halo del mismo vinotinto para que no se note el recuadro del PNG.
+
+---
+
+# Otra materia · Chickenmart
+
+Carpeta `chickenmart-pitch/`. No tiene relación con SUSI: es el pitch ejecutivo final de un
+proyecto académico de transformación digital para Chickenmart S.A.S., expuesto por cinco
+personas (Santiago, Juan David, Carolina, Nataly y Orozco). Mismo portal, cámara 3D, HUD y
+sello extruido que `susi-2030`, con la identidad de Chicken Mart (vino, crema, casi negro y
+blanco hueso). Detalle en `chickenmart-pitch/README.md` y guion completo en
+`chickenmart-pitch/guion.md`.
