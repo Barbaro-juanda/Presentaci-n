@@ -169,7 +169,7 @@ body.presentando #stage{box-shadow:none}
 #h-marca{left:76px;top:42px} #h-tema{right:76px;top:42px}
 #h-ts{left:76px;bottom:42px} #h-exp{left:50%;bottom:42px;transform:translateX(-50%)}
 #h-exp b{font-weight:700;color:var(--hudx,currentColor)}
-#h-ast{left:50%;top:40px;transform:translateX(-50%);letter-spacing:.5em;font-size:13px;color:var(--hudx,currentColor);opacity:.7}
+#h-ast{left:50%;top:42px;transform:translateX(-50%);letter-spacing:.5em}
 #h-tema::after{content:"▍";animation:cursor 1s steps(2) infinite;margin-left:3px}
 @keyframes cursor{0%,50%{opacity:1}51%,100%{opacity:0}}
 /* el dial de la báscula gira lento en la esquina */
@@ -307,7 +307,6 @@ h2.cm-h2 .alt{color:var(--alt)}
 .cm-port dd{margin:0;font-size:16px;line-height:1.46;font-weight:300;color:var(--i90)}
 .cm-port .rep{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:baseline}
 .cm-port .rep b{font-weight:600;color:var(--ink)}
-.cm-port .rep.sin{grid-template-columns:1fr 1fr;gap:8px 28px}
 .cm-port .rep i{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--acc)}
 .leyenda{display:flex;gap:10px;flex-wrap:wrap}
 
@@ -1011,9 +1010,14 @@ Una aclaración antes de empezar, y miren la leyenda de abajo: en pantalla separ
     </div>
     <dl>
       <dt class="cm-p">Pitch ejecutivo final</dt><dd class="cm-p">Proyecto académico de transformación digital</dd>
-      <dt class="cm-p">Equipo</dt>
-      <dd class="cm-p"><div class="rep sin">
-        <b>Santiago</b><b>Juan David</b><b>Carolina</b><b>Nataly</b><b>Orozco</b><b>María Camila Jiménez</b>
+      <dt class="cm-p">Equipo y orden de exposición</dt>
+      <dd class="cm-p"><div class="rep">
+        <b>Santiago</b><i>01 · 02 · 03 · 24</i>
+        <b>Juan David</b><i>04 · 05 · 24</i>
+        <b>Carolina</b><i>06 · 07 · 21</i>
+        <b>Nataly</b><i>08 · 09 · 14 · 15 · 19 · 20</i>
+        <b>Orozco</b><i>10 · 11 · 12 · 13 · 22</i>
+        <b>María Camila Jiménez</b><i>16 · 17 · 18 · 23</i>
       </div></dd>
       <dt class="cm-p">Cómo leer esta presentación</dt>
       <dd class="cm-p"><div class="leyenda">
@@ -1915,7 +1919,6 @@ SANTIAGO: Chickenmart conectado: del peso recibido a la disponibilidad de venta.
       <tr><td>F</td><td>Pantalla completa</td></tr>
       <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
     </tbody></table>
-    <p style="color:#FFE6C1;font-family:var(--mono);letter-spacing:.08em">Clave del equipo (arriba al centro de cada lámina): ● Santiago · ■ Juan David · ▲ Carolina · ◆ Nataly · ✚ Orozco · ★ María Camila · ✳ todos</p>
     <p>Una diapositiva por clic. El cronómetro avisa en crema a los 24 minutos y en rojo al pasar de 25.</p>
     <button class="cm-btn cm-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
   </div></section>
@@ -2105,19 +2108,8 @@ function clonar(n){
   var h=D.createElement("div"); h.className="lienzo es-mini"; h.appendChild(c);
   return h;
 }
-/* clave del equipo: cada expositor tiene un símbolo; en pantalla solo se ve el símbolo */
-var CLAVE=[["Santiago","●"],["Juan David","■"],["Carolina","▲"],["Nataly","◆"],["Orozco","✚"],["María Camila","★"]];
-function glifos(exp){
-  exp=exp||""; var hay=[];
-  CLAVE.forEach(function(c){ var k=exp.indexOf(c[0]); if(k>=0) hay.push([k,c[1]]) });
-  hay.sort(function(a,b){return a[0]-b[0]});
-  var g=hay.map(function(h){return h[1]});
-  if(/todos/i.test(exp)) g=g.concat(["✳"]);
-  if(g.length===1) g=[g[0],g[0],g[0]];
-  return g.join(" ");
-}
 function rotulo(s){
-  return '<b>'+glifos(s.dataset.exp)+'&nbsp; '+(s.dataset.exp||'')+'</b><span>'+s.dataset.t+(s.dataset.pend?' <em>· pendiente</em>':'')+'</span>';
+  return '<b>'+(s.dataset.exp||'')+'</b><span>'+s.dataset.t+(s.dataset.pend?' <em>· pendiente</em>':'')+'</span>';
 }
 function construirMinis(){
   panel.innerHTML=""; minis=[];
@@ -2419,11 +2411,11 @@ function ir(n){
   ["--i25","--i45","--i70","--ln","--ln2","--acc","--alt","--bg"].forEach(function(v){stage.style.setProperty(v,cs.getPropertyValue(v).trim())});
   gr.style.mixBlendMode=osc?"overlay":"multiply";
   hudT.textContent=L[i].dataset.t;
-  hExp.textContent=""; D.getElementById("h-ast").textContent=glifos(L[i].dataset.exp);
+  hExp.innerHTML="Expone // <b>"+(L[i].dataset.exp||"").toUpperCase()+"</b>";
   tipear("PITCH // "+(L[i].dataset.t||"").toUpperCase());
   cont.textContent=dos(i+1)+" / "+dos(N);
   prog.style.transform="scaleX("+((i+1)/N)+")";
-  notasT.textContent=dos(i+1)+" · "+L[i].dataset.t+" · "+glifos(L[i].dataset.exp)+" "+(L[i].dataset.exp||"")+" · "+(L[i].dataset.seg||"")+" s";
+  notasT.textContent=dos(i+1)+" · "+L[i].dataset.t+" · "+(L[i].dataset.exp||"")+" · "+(L[i].dataset.seg||"")+" s";
   notasC.textContent=L[i].dataset.n||"";
   minis.forEach(function(m,k){m.classList.toggle("actual",k===i)});
   rcs.forEach(function(m,k){m.classList.toggle("actual",k===i)});
