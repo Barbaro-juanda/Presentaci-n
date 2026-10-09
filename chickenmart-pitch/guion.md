@@ -5,6 +5,8 @@ También están dentro de la presentación: tecla `N`.
 
 ## Reparto
 
+En pantalla solo se ve el símbolo del expositor, arriba al centro: ● Santiago · ■ Juan David · ▲ Carolina · ◆ Nataly · ✚ Orozco · ★ María Camila Jiménez · ✳ todos.
+
 | Expositor | Diapositivas | Tiempo aprox. |
 |---|---|---|
 | Santiago | 1, 2, 3 y mitad de la 24 | 2:50 |
