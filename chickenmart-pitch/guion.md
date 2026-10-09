@@ -1,18 +1,18 @@
 # Guion completo · Chickenmart conectado
 
-Pitch ejecutivo final · 22 diapositivas (2 con video) · 6 expositores · ~22:15 con videos (cronómetro a 23:00).
+Pitch ejecutivo final · 24 diapositivas (3 de video) · 6 expositores · ~24:15 con videos (cronómetro a 25:00).
 También están dentro de la presentación: tecla `N`.
 
 ## Reparto
 
 | Expositor | Diapositivas | Tiempo aprox. |
 |---|---|---|
-| Santiago | 1, 2, 3 y mitad de la 22 | 2:50 |
-| Juan David | 4, 5 y mitad de la 22 | 2:30 |
-| Carolina | 6, 7 y 19 | 2:40 |
-| Nataly | 8, 9 (video), 17, 18 y coordina 12 y 13 (video) | 2:40 + 1:00 de demo + 4:25 de videos |
-| Orozco | 10, 11 y 20 | 2:30 |
-| María Camila Jiménez | 14, 15, 16 y 21 | 3:40 |
+| Santiago | 1, 2, 3 y mitad de la 24 | 2:50 |
+| Juan David | 4, 5 y mitad de la 24 | 2:30 |
+| Carolina | 6, 7 y 21 | 2:40 |
+| Nataly | 8, 9 (video), 19, 20 y coordina 14 y 15 (video) | 2:40 + 1:00 de demo + 4:25 de videos |
+| Orozco | 10, 11, 12, 13 (video) y 22 | 3:15 + 1:15 de video |
+| María Camila Jiménez | 16, 17, 18 y 23 | 3:40 |
 
 Etiquetas: **[HECHO]** del diagnóstico · **[PROPUESTA]** del equipo · **[PENDIENTE]** por completar · **[VALIDACIÓN REAL]** confirmado por gerencia · **✳ ficticio/supuesto/preliminar**.
 
@@ -221,56 +221,91 @@ Recuadro 16:9 con borde crema que se abre desde el centro; el video arranca solo
 > 1:24 · Saldo final ficticio: 25 kilos físicos, 15 reservados, 10 vendibles. La IA propone, coordina y hace seguimiento; la persona decide.
 > RELEVO → Orozco. Cierra así: «Todo eso deja rastro. Orozco les muestra dónde».
 
-## 10 · Data Hub y Power BI
+## 10 · Data Hub
 
 **Expone:** Orozco · **Tiempo:** 50 s
 
 **Contenido en pantalla**
 
-- Titular: «Una fuente común para entender el inventario.» [PROPUESTA · ✳ datos sintéticos]
-- El sistema operativo confirma recepciones, reservas y ventas; el Data Hub reúne esos eventos para analizar. El tablero no autoriza ventas.
-- Modelo de 4 tablas: Productos (SKU) → Lotes (vencimiento) → Movimientos (cada evento con ID único) y Pedidos.
-- Corte 8 oct 2026, 18:00 ✳ sintético: 43 kg físicos − 7 reservados − 2 bloqueados = 34 kg disponibles. P001 20/4/1/15 kg (vence 11-oct) · P002 14/2/0/12 kg (10-oct) · P003 9/1/1/7 kg (9-oct).
-- Controles: reservas eventos = pedidos (Δ 0 kg); ventas eventos = pedidos (Δ 0 kg); evento repetido rechazado.
-- Indicadores: ventas por canal (WhatsApp 5 · punto 4 · web 2 kg), merma 1 kg (calidad; 0 por vencimiento), pedidos sin stock 12,5 % (1 de 8, solo en la muestra), 2 lotes vencen en ≤ 2 días.
-- Nota: carga por cortes con hora visible, no tiempo real. Kit de Power BI incluido.
+- Titular: «Data Hub: cuatro tablas, una sola verdad analítica.» [PROPUESTA · ✳ datos ficticios]
+- Subtítulo: el sistema operativo (Siigo en el piloto) confirma reservas y ventas; el Data Hub las reúne por cortes para analizar.
+- Modelo: Productos (una fila por SKU: SKU, Producto, Unidad kg) → Lotes (una fila por lote: LoteID, SKU, Proveedor, Vencimiento) → Movimientos (un evento con ID único: EventoID, LoteID, Tipo, Δ físico, Δ reserva, Δ bloqueo, fecha, última carga) y Pedidos (uno por pedido: PedidoID, LoteID, Canal, Estado, solicitado, reserva vigente, vendido). Relaciones 1 → N.
+- Corte 8-oct 18:00: 43 físico · 7 reservado · 2 bloqueado · 34 disponible.
+- Carga por cortes con hora visible, no tiempo real. Un evento repetido se rechaza; reservas y ventas concilian con pedidos (diferencia 0 kg).
 
 **Visual y animación**
 
-Izquierda: modelo de cuatro tablas con relaciones 1:N que se trazan, y tres controles que se marcan con check. Derecha: mini-tablero con cuatro tarjetas (43 − 7 − 2 = 34 kg, la disponible en vino) cuyas cifras cuentan al entrar, tabla por producto que entra fila a fila y barras de ventas por canal que crecen.
+A la izquierda (2/3), el modelo de datos construido con tarjetas: Productos y Lotes con encabezado vino, Movimientos y Pedidos con encabezado casi negro, cada una con su lista de campos y la clave en negrita. Las líneas vino rotuladas «1 → N» se trazan solas. A la derecha (1/3), el recuadro con borde vino «Corte 8-oct 18:00» con cuatro tarjetas (34 disponible en vino, texto blanco) cuyas cifras cuentan al entrar, y dos viñetas.
 
 **Notas del orador**
 
-> Gracias, Nataly. El diseño separa dos funciones: el sistema operativo confirma reservas y ventas, y el Data Hub reúne los movimientos para analizarlos.
-> Con productos, lotes, movimientos y pedidos obtenemos 43 kilos físicos, 7 reservados y 2 bloqueados: quedan 34 disponibles.
-> Reservar no es vender; al despachar se reduce el físico y se elimina la reserva una sola vez.
-> Los controles de reservas y ventas dan cero, lo que muestra que los datos concilian.
+> Gracias, Nataly. Separamos dos funciones. El sistema operativo confirma; el Data Hub analiza. Con productos, lotes, movimientos y pedidos obtenemos 43 kilos físicos, 7 reservados y 2 bloqueados: quedan 34 disponibles, y los controles dan cero.
 
-## 11 · Gemelo digital
+## 11 · Tablero de inventario
+
+**Expone:** Orozco · **Tiempo:** 45 s
+
+**Contenido en pantalla**
+
+- Titular: «Tablero de inventario: estado, canales y control.» Etiqueta: «Prototipo con los mismos datos y medidas del kit de Power BI» · ✳ datos ficticios.
+- KPI: físico 43 · reservado 7 · bloqueado 2 · disponible 34 kg.
+- Inventario por producto y lote: P001 Pechuga L001 20/4/1/15 (11-oct) · P002 Muslo L002 14/2/0/12 (10-oct) · P003 Alas L003 9/1/1/7 (09-oct).
+- Ventas por canal (kg): WhatsApp 5 · Punto 4 · Web 2.
+- Control de datos: pedidos registrados 8 · rechazados por stock 1 · tasa 12,5 % · ventas 11 kg · merma 1 kg · merma por vencimiento 0 kg · diferencia reservas–pedidos 0 kg.
+- Nota: disponible = físico − reservado − bloqueado. 2 lotes vencen en 2 días o menos.
+
+**Visual y animación**
+
+Simulación de tablero a toda la lámina: cuatro tarjetas KPI (disponible en vino), la tabla por producto y lote (los vencimientos cercanos resaltados), barras horizontales vino de ventas por canal con el valor al final, y la tabla de control con la diferencia de 0 kg resaltada en crema. Las tarjetas, las filas y las barras entran en secuencia.
+
+**Notas del orador**
+
+> El tablero muestra existencias por lote, ventas por canal y controles. Al filtrar pechuga vemos 20 físicos, 4 reservados, 1 bloqueado y 15 libres. El tablero no autoriza ventas; muestra la última carga.
+
+## 12 · Gemelo digital
 
 **Expone:** Orozco · **Tiempo:** 55 s
 
 **Contenido en pantalla**
 
-- Titular: «Probar la compra antes de hacerla.» [PROPUESTA · ✳ datos sintéticos]
-- Modelo P001 (pechuga): 15 kg libres, 5 días (8–12 oct), demanda base 8 kg/día, compra base 30 kg que llega el día 2. Un cambio a la vez.
-- Faltante · merma (kg): caso base 1 · 6; demanda +50 % 15 · 0; proveedor 2 días tarde 17 · 22; compra 50 kg 1 · 26; compra 20 kg 5 · 0; alternativa 25 kg el día 1: 0 · 0.
-- Idea clave: comprar más no recupera la demanda perdida antes de que llegue; importa cuánto, cuándo y cuánto queda para vender.
-- Cinco pasos: datos del estado → representación → conectividad → análisis → decisión humana.
+- Titular: «Probar la compra antes de hacerla.» · Subtítulo: Pechuga P001 · 15 kg libres · 5 días · resultados en kg · ✳ datos ficticios.
+- Faltante · merma (kg): caso base (8 kg/día, llega día 2, 30 kg) 1 · 6; demanda +50 % 15 · 0; proveedor 2 días tarde 17 · 22; compra de 50 kg (20 adicionales) 1 · 26; compra de 20 kg (10 menos) 5 · 0; 25 kg el día 1 (alternativa) 0 · 0.
+- Frase: «Comprar más no recupera la demanda que se perdió antes de que llegue el producto.»
+- Recuadro: «Resultado del modelo, no garantía: Gerencia valida proveedor, costo y vencimientos.»
 
 **Visual y animación**
 
-Gráfico de barras agrupadas (faltante en crema, merma potencial en rayado vino claro) por escenario; las barras crecen desde el eje y la alternativa se enciende sobre un bloque vino. A la derecha, la ficha del modelo y la idea clave. Abajo, los cinco pasos del gemelo, con la decisión humana en crema.
+Gráfico de barras agrupadas construido en la lámina (2/3): faltante en #A3161A y merma potencial en #B8801F, eje Y de 0 a 30, valor encima de cada barra y leyenda arriba. La alternativa (25 kg el día 1) va sobre un fondo vino suave con el rótulo «Cantidad + fecha correctas». Las barras crecen desde el eje. A la derecha, la frase grande y el recuadro.
 
 **Notas del orador**
 
-> El simulador permite cambiar condiciones antes de aplicarlas. En el caso base falta 1 kilo y quedan 6 de merma potencial.
-> Si la demanda sube 50 %, faltan 15. Si el proveedor se retrasa dos días, faltan 17 y se pierden 22.
-> Si compramos 20 kilos más con la misma fecha, sigue faltando 1 kilo y la merma sube a 26, porque la mercancía llega después de la necesidad.
-> Recibir 25 kilos el día 1 atiende la demanda sin faltantes ni merma, pero es un resultado del modelo, no una garantía: gerencia debe validar proveedor, costo y vencimientos.
-> RELEVO → Nataly. Cierra así: «Eso es lo que proponemos. Nataly les muestra lo que ya funciona».
+> Caso base: 1 kilo de faltante y 6 de merma. Si la demanda sube 50 %, faltan 15. Si el proveedor llega dos días tarde, faltan 17 y se pierden 22. Comprar 20 kilos más con la misma fecha deja el faltante y sube la merma a 26. Recibir 25 kilos el día 1 da cero y cero.
 
-## 12 · Implementación: demo integrada
+## 13 · Video: tablero y simulación
+
+**Expone:** Orozco · **Tiempo:** 75 s
+
+**Contenido en pantalla**
+
+- Titular: «Demostración: tablero y simulación.» [✳ datos ficticios]
+- Recuadro 16:9 vacío: «Video: Chickenmart_orozco_datahub_gemelo.mp4 (1:11)» (espacio para insertar el video).
+- Pie: «Simulador HTML · datos ficticios · 64 pruebas de cálculo superadas».
+
+**Visual y animación**
+
+Recuadro 16:9 con borde punteado y botón de reproducir, que se abre desde el centro. Cuando llegue el archivo, se incrusta igual que los otros dos videos.
+
+**Notas del orador**
+
+> [Video de 1:11: narrar mientras corre.]
+> Fuente común: productos, lotes, movimientos y pedidos cargados en el mismo Data Hub, con la hora del corte visible.
+> Filtro de pechuga: 20 físicos, 4 reservados, 1 bloqueado, 15 disponibles.
+> Control en cero: las reservas y las ventas de los movimientos coinciden con los pedidos.
+> Cuatro escenarios en el simulador: demanda más alta, proveedor tarde, comprar más con la misma fecha y comprar menos.
+> Decisión: la alternativa de 25 kilos el día 1 da cero faltante y cero merma; Gerencia valida antes de comprar.
+> RELEVO → Nataly. Cierra así: «Eso es lo que proponemos. Nataly les muestra cómo funciona todo junto».
+
+## 14 · Implementación: demo integrada
 
 **Expone:** Nataly coordina · todos · **Tiempo:** 60 s
 
@@ -292,7 +327,7 @@ Línea de flujo horizontal de 8 pasos con un ícono circular por responsable (JD
 > [Turno de 10 segundos para cada uno: Juan David, recepción y reservas; Nataly, agentes; Orozco, Data Hub y gemelo.]
 > Todo es un prototipo con datos ficticios, no instalado en Chickenmart.
 
-## 13 · Video: demostración integrada
+## 15 · Video: demostración integrada
 
 **Expone:** Nataly coordina · todos · **Tiempo:** 165 s
 
@@ -321,7 +356,7 @@ Igual a la lámina del video de agentes: recuadro 16:9 que se abre desde el cent
 > 2:30 · Cierre: un registro fiable como base para automatizaciones, IA, agentes y simulación.
 > RELEVO → María Camila. Cierra así: «Eso es lo que probamos con datos ficticios. María Camila les cuenta qué encontramos en la operación real».
 
-## 14 · Lo que hoy es real en Chickenmart
+## 16 · Lo que hoy es real en Chickenmart
 
 **Expone:** María Camila · **Tiempo:** 55 s
 
@@ -342,7 +377,7 @@ Flujo actual de recepción en 7 pasos sobre una vía punteada: orden de compra (
 > Gracias. Contrastamos la propuesta académica con la operación real. Chickenmart ya registra compras e inventario en Siigo y tiene dos básculas, pero ninguna muestra todavía una salida de datos. Por eso ajustamos el piloto: no prometemos una conexión que no está comprobada.
 > [Apoyo si hay tiempo: la recepción de hoy son siete pasos y todos son manuales, desde la orden en Siigo hasta que se actualiza el inventario. Las facturas mezclan unidades y kilos, así que conservamos las dos medidas. Y en la web el cliente no paga hasta que la tienda valida el pedido.]
 
-## 15 · Piloto ajustado con el desarrollador
+## 17 · Piloto ajustado con el desarrollador
 
 **Expone:** María Camila · **Tiempo:** 60 s
 
@@ -366,7 +401,7 @@ Línea de tiempo por etapas: cada etapa tiene una barra con el mínimo sólido y
 > Con el desarrollador definimos un piloto viable: primero un registro digital de recepción con captura manual y Siigo como referencia, y solo después conectar la báscula o integrar la API, cuando las pruebas lo confirmen.
 > [Apoyo: las etapas 0 y 1 toman entre 8 y 15 días hábiles; llegar a la etapa 3 toma entre 23 y 40. Son estimaciones preliminares, no una cotización. La etapa 2 solo ocurre si la báscula tiene salida compatible. Lo de la derecha, como la foto del visor, es una alternativa a evaluar, y la sincronización web, la IA y los agentes se cotizan aparte.]
 
-## 16 · Venta web por peso con bolsas cerradas
+## 18 · Venta web por peso con bolsas cerradas
 
 **Expone:** María Camila · **Tiempo:** 45 s
 
@@ -389,7 +424,7 @@ Flujo de seis estados en chevrones que entran en secuencia: pendiente de validac
 > [Apoyo con el ejemplo ficticio: pide 2 kilos a 20.000 pesos el kilo, estimado 40.000; la tienda encuentra una bolsa de 1,95 kilos, son 39.000; el cliente acepta y paga. Al despachar se entregan esas bolsas y la venta se registra una sola vez en Siigo.]
 > RELEVO → Nataly. Cierra así: «Ese es el piloto real. Nataly les muestra el roadmap».
 
-## 17 · Roadmap
+## 19 · Roadmap
 
 **Expone:** Nataly · **Tiempo:** 50 s
 
@@ -409,7 +444,7 @@ Ocho chevrones que entran en secuencia: fases 0–1 en vino (lo que se pide), 2�
 > Gracias, María Camila. Empezamos sin comprar hardware: primero un registro confiable de recepción con Siigo como referencia; solo conectamos la báscula o la API cuando una prueba lo confirma.
 > [Apoyo: fase 0, validar el flujo y la compatibilidad, de 3 a 5 días hábiles. Fase 1, piloto digital con peso digitado y registro manual en Siigo, de 5 a 10. Fase 2, pesaje conectado, solo si la báscula tiene salida compatible. Fase 3, registro asistido con la API de Siigo. Las fases 0 y 1 suman de 8 a 15 días hábiles; hasta la 3, de 23 a 40. Es una estimación preliminar, no una cotización. De la 4 a la 7 —canales, tablero, IA y agentes, y gemelo con datos reales— se cotizan después, y cada fase avanza solo si cumple su criterio.]
 
-## 18 · Riesgos y controles
+## 20 · Riesgos y controles
 
 **Expone:** Nataly · **Tiempo:** 60 s
 
@@ -432,7 +467,7 @@ Matriz de calor (hueso → crema → vino) con los riesgos como fichas dentro de
 > Los riesgos medios y el bajo quedan vigilados con los mismos controles.
 > RELEVO → Carolina. Cierra así: «Con los riesgos sobre la mesa, Carolina les muestra cuánto cuesta y cómo lo medimos».
 
-## 19 · Costos, KPIs y ROI
+## 21 · Costos, KPIs y ROI
 
 **Expone:** Carolina · **Tiempo:** 60 s
 
@@ -455,17 +490,17 @@ Tres columnas: chips de costos con la ecuación en una caja negra con espacios �
 > Y el retorno se calcula con estas dos fórmulas: ROI y periodo de recuperación. Las dos se pueden resolver solo con datos reales, y eso es justamente lo que deja la fase uno.
 > RELEVO → Orozco. Cierra así: «Eso es lo que cuesta. Orozco les muestra hacia dónde lleva».
 
-## 20 · Industria 5.0 y visión a 5 años
+## 22 · Industria 5.0 y visión a 5 años
 
 **Expone:** Orozco · **Tiempo:** 45 s
 
 **Contenido en pantalla**
 
-- Titular: «Tecnología al servicio de las personas.» [PROPUESTA, NO PREDICCIÓN]
-- Personas: el trabajador identifica el producto y valida peso y lote; gerencia aprueba compras, descuentos y ajustes.
-- Sostenibilidad: seguimiento por lote y merma por causa; el simulador muestra que comprar más puede aumentar el desperdicio.
-- Resiliencia: operar ante cortes o retrasos con captura pendiente y conciliación posterior.
-- Visión a 5 años (cada etapa avanza solo si se cumple su condición): A1 estabilizar catálogo, recepción y reservas → A2 integrar canales y tableros → A3 evaluar pronósticos y agentes → A4 validar simulaciones con datos reales → A5 ajustar la operación al portafolio y la demanda reales.
+- Titular: «Tecnología al servicio de las personas.» [PROPUESTA, NO PREDICCIÓN · ✳ datos ficticios]
+- Personas: el trabajador valida peso y lote; Gerencia aprueba compras y ajustes.
+- Sostenibilidad: merma medida por causa y por lote; comprar más puede aumentar el desperdicio.
+- Resiliencia: operar y conciliar ante cortes de internet o retrasos del proveedor.
+- Año 1 estabilizar registros → Año 2 integrar canales y tableros → Año 3 evaluar pronósticos y agentes → Año 4 validar simulaciones con datos reales → Año 5 ajustar la operación al portafolio y la demanda reales. Cada etapa avanza solo si cumple su condición.
 
 **Visual y animación**
 
@@ -473,11 +508,10 @@ Tres pilares con icono lineal (persona, hoja, escudo). Línea de cinco años con
 
 **Notas del orador**
 
-> Gracias, Carolina. Industria 5.0 orienta la propuesta hacia las personas, la sostenibilidad y la continuidad. El trabajador verifica la recepción, la gerencia aprueba decisiones, se mide la merma y se prepara la respuesta ante retrasos o cortes.
-> La visión a cinco años propone estabilizar registros, integrar canales y validar análisis antes de crecer. La recomendación es iniciar con datos confiables y un piloto verificable, y medir el valor antes de ampliar la inversión.
+> Gracias, Carolina. Industria 5.0 pone a las personas en el centro: el trabajador verifica, Gerencia decide, medimos el desperdicio y preparamos la continuidad. La visión es crecer solo sobre registros confiables.
 > RELEVO → María Camila. Cierra así: «Esa es la visión. María Camila cierra con las conclusiones».
 
-## 21 · Conclusiones
+## 23 · Conclusiones
 
 **Expone:** María Camila · **Tiempo:** 60 s
 
@@ -501,7 +535,7 @@ Cuatro conclusiones numeradas a la izquierda; a la derecha, los cuatro criterios
 > Por eso pedimos aprobar las etapas 0 y 1, entre 8 y 15 días hábiles según una estimación preliminar, y medir tiempo de recepción, diferencias detectadas y demora hasta el registro en Siigo antes de ampliar la inversión.
 > RELEVO → Santiago. Cierra así: «Santiago y Juan David cierran con la decisión».
 
-## 22 · Decisión de inversión
+## 24 · Decisión de inversión
 
 **Expone:** Santiago y Juan David · **Tiempo:** 60 s
 
