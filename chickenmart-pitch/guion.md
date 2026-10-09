@@ -1,19 +1,20 @@
 # Guion completo · Chickenmart conectado
 
-Pitch ejecutivo final · 16 diapositivas · 5 expositores · ~13:35 hablados (cronómetro a 15:00).
+Pitch ejecutivo final · 20 diapositivas · 6 expositores · ~17:30 hablados (cronómetro a 18:00).
 También están dentro de la presentación: tecla `N`.
 
 ## Reparto
 
 | Expositor | Diapositivas | Tiempo aprox. |
 |---|---|---|
-| Santiago | 1, 2, 3 y mitad de la 16 | 2:50 |
-| Juan David | 4, 5 y mitad de la 16 | 2:30 |
-| Carolina | 6, 7 y 14 | 2:40 |
-| Nataly | 8, 12, 13 y coordina la 11 | 2:20 + 1:00 de demo |
-| Orozco | 9, 10 y 15 | 2:15 |
+| Santiago | 1, 2, 3 y mitad de la 20 | 2:50 |
+| Juan David | 4, 5 y mitad de la 20 | 2:30 |
+| Carolina | 6, 7 y 17 | 2:40 |
+| Nataly | 8, 15, 16 y coordina la 11 | 2:20 + 1:00 de demo |
+| Orozco | 9, 10 y 18 | 2:30 |
+| María Camila Jiménez | 12, 13, 14 y 19 | 3:40 |
 
-Etiquetas: **[HECHO]** del diagnóstico · **[PROPUESTA]** del equipo · **[PENDIENTE]** por completar · **✳ ficticio/supuesto**.
+Etiquetas: **[HECHO]** del diagnóstico · **[PROPUESTA]** del equipo · **[PENDIENTE]** por completar · **[VALIDACIÓN REAL]** confirmado por gerencia · **✳ ficticio/supuesto/preliminar**.
 
 ## 01 · Portada
 
@@ -23,8 +24,8 @@ Etiquetas: **[HECHO]** del diagnóstico · **[PROPUESTA]** del equipo · **[PEND
 
 - Logo de Chicken Mart (gallo integrado a la «C»).
 - Lema: «Chickenmart conectado: del peso recibido a la disponibilidad de venta».
-- Equipo y orden de exposición: Santiago, Juan David, Carolina, Nataly, Orozco.
-- Leyenda: HECHO · PROPUESTA · PENDIENTE · ✳ FICTICIO/SUPUESTO.
+- Equipo y orden de exposición: Santiago, Juan David, Carolina, Nataly, Orozco y María Camila Jiménez.
+- Leyenda: HECHO · PROPUESTA · PENDIENTE · VALIDACIÓN REAL · ✳ FICTICIO/SUPUESTO.
 - «Nada de lo propuesto está instalado hoy en Chickenmart».
 
 **Visual y animación**
@@ -33,7 +34,7 @@ Registro oscuro con malla vino. Sello del gallo extruido en 3D (20 capas vino ba
 
 **Notas del orador**
 
-> Buenas tardes. Somos Santiago, Juan David, Carolina, Nataly y Orozco, y durante el semestre trabajamos con Chickenmart S.A.S., en el Alto de Las Palmas, en Envigado: vende derivados del pollo en su punto físico, por WhatsApp, por su sitio web y con domicilios en moto propia.
+> Buenas tardes. Somos Santiago, Juan David, Carolina, Nataly, Orozco y María Camila Jiménez, y durante el semestre trabajamos con Chickenmart S.A.S., en el Alto de Las Palmas, en Envigado: vende derivados del pollo en su punto físico, por WhatsApp, por su sitio web y con domicilios en moto propia.
 > Hoy no venimos a mostrar tecnología por mostrarla. Venimos a pedir una decisión de inversión, y nuestro lema la resume: Chickenmart conectado, del peso recibido a la disponibilidad de venta.
 > Una aclaración antes de empezar, y miren la leyenda de abajo: en pantalla separamos lo que es un hecho del diagnóstico, lo que es propuesta nuestra y lo que todavía está pendiente. Nada de lo que proponemos está instalado hoy en Chickenmart, y cada número de ejemplo está marcado como ficticio.
 
@@ -91,6 +92,7 @@ Dos flujos lado a lado. AS IS en cuadros grises con vía punteada; el paso 4 «d
 - Regla de oro: se vende solo desde el inventario central; Data Hub y Power BI nunca deciden un saldo.
 - Báscula [PENDIENTE · por verificar]: celda de carga, no identifica el producto; la persona selecciona o escanea; tara y peso estable; salida USB · RS-232 · Bluetooth · red; sin conexión, cola local con ID único.
 - «Tener wifi no garantiza integración».
+- Nota pequeña: en el piloto real, Siigo actúa como inventario de referencia; la conexión directa de la báscula depende de una prueba de salida de datos.
 
 **Visual y animación**
 
@@ -194,48 +196,51 @@ Tabla de tres agentes con anillos orbitales que giran. Columna «quién aprueba�
 
 ## 09 · Data Hub y Power BI
 
-**Expone:** Orozco · **Tiempo:** 45 s · **PENDIENTE**
+**Expone:** Orozco · **Tiempo:** 50 s
 
 **Contenido en pantalla**
 
-- Titular: «Cada movimiento deja rastro. El tablero lo vuelve visible.» [PROPUESTA · PENDIENTE]
-- Modelo: productos, lotes, movimientos, pedidos.
-- Tablero: existencias, disponibilidad, reservas, movimientos, merma por vencimiento, alertas, fecha de última actualización.
-- ✳ Datos de prueba ficticios, del prototipo de Juan David.
-- Recuadro: «Contenido pendiente de Orozco».
+- Titular: «Una fuente común para entender el inventario.» [PROPUESTA · ✳ datos sintéticos]
+- El sistema operativo confirma recepciones, reservas y ventas; el Data Hub reúne esos eventos para analizar. El tablero no autoriza ventas.
+- Modelo de 4 tablas: Productos (SKU) → Lotes (vencimiento) → Movimientos (cada evento con ID único) y Pedidos.
+- Corte 8 oct 2026, 18:00 ✳ sintético: 43 kg físicos − 7 reservados − 2 bloqueados = 34 kg disponibles. P001 20/4/1/15 kg (vence 11-oct) · P002 14/2/0/12 kg (10-oct) · P003 9/1/1/7 kg (9-oct).
+- Controles: reservas eventos = pedidos (Δ 0 kg); ventas eventos = pedidos (Δ 0 kg); evento repetido rechazado.
+- Indicadores: ventas por canal (WhatsApp 5 · punto 4 · web 2 kg), merma 1 kg (calidad; 0 por vencimiento), pedidos sin stock 12,5 % (1 de 8, solo en la muestra), 2 lotes vencen en ≤ 2 días.
+- Nota: carga por cortes con hora visible, no tiempo real. Kit de Power BI incluido.
 
 **Visual y animación**
 
-Modelo entidad-relación de cuatro bloques (movimientos en vino) con relaciones que se trazan. Tablero de Power BI en esqueleto: seis tiles con brillo de «cargando» y la fecha de última actualización vacía.
+Izquierda: modelo de cuatro tablas con relaciones 1:N que se trazan, y tres controles que se marcan con check. Derecha: mini-tablero con cuatro tarjetas (43 − 7 − 2 = 34 kg, la disponible en vino) cuyas cifras cuentan al entrar, tabla por producto que entra fila a fila y barras de ventas por canal que crecen.
 
 **Notas del orador**
 
-> [PENDIENTE · Orozco completa el contenido final de esta lámina.]
-> Gracias, Nataly. Todo lo que hemos visto deja rastro, y aquí se ordena. El modelo de datos tiene cuatro piezas: productos, lotes, movimientos y pedidos. El movimiento es el corazón: cada entrada, reserva, salida, merma o corrección es una fila con su lote y su pedido.
-> Sobre ese modelo va el tablero de Power BI: existencias, disponibilidad, reservas, movimientos, merma por vencimiento y alertas. Y arriba, siempre visible, la fecha de la última actualización, porque un tablero sin fecha invita a decidir con datos viejos.
-> Los datos de prueba son ficticios y vienen del prototipo de Juan David. El tablero lee copias: nunca decide un saldo.
+> Gracias, Nataly. El diseño separa dos funciones: el sistema operativo confirma reservas y ventas, y el Data Hub reúne los movimientos para analizarlos.
+> Con productos, lotes, movimientos y pedidos obtenemos 43 kilos físicos, 7 reservados y 2 bloqueados: quedan 34 disponibles.
+> Reservar no es vender; al despachar se reduce el físico y se elimina la reserva una sola vez.
+> Los controles de reservas y ventas dan cero, lo que muestra que los datos concilian.
 
 ## 10 · Gemelo digital
 
-**Expone:** Orozco · **Tiempo:** 45 s · **PENDIENTE**
+**Expone:** Orozco · **Tiempo:** 55 s
 
 **Contenido en pantalla**
 
-- Titular: «Ensayar la decisión antes de tomarla.» [PROPUESTA · PENDIENTE]
-- E1 Aumento de demanda · E2 Retraso de proveedor · E3 Compra adicional vs. vencimiento.
-- Columnas: situación base → cambio → resultado → decisión (celdas «por simular»).
-- Recuadro: «Contenido pendiente de Orozco».
+- Titular: «Probar la compra antes de hacerla.» [PROPUESTA · ✳ datos sintéticos]
+- Modelo P001 (pechuga): 15 kg libres, 5 días (8–12 oct), demanda base 8 kg/día, compra base 30 kg que llega el día 2. Un cambio a la vez.
+- Faltante · merma (kg): caso base 1 · 6; demanda +50 % 15 · 0; proveedor 2 días tarde 17 · 22; compra 50 kg 1 · 26; compra 20 kg 5 · 0; alternativa 25 kg el día 1: 0 · 0.
+- Idea clave: comprar más no recupera la demanda perdida antes de que llegue; importa cuánto, cuándo y cuánto queda para vender.
+- Cinco pasos: datos del estado → representación → conectividad → análisis → decisión humana.
 
 **Visual y animación**
 
-Matriz de 3 escenarios × 4 columnas que se arma por filas; las celdas «por simular» son esqueletos que cargan. Icono de gemelo (dos cuadros, uno sólido y otro punteado que se desplaza).
+Gráfico de barras agrupadas (faltante en crema, merma potencial en rayado vino claro) por escenario; las barras crecen desde el eje y la alternativa se enciende sobre un bloque vino. A la derecha, la ficha del modelo y la idea clave. Abajo, los cinco pasos del gemelo, con la decisión humana en crema.
 
 **Notas del orador**
 
-> [PENDIENTE · Orozco completa los resultados de las simulaciones.]
-> El gemelo digital es una copia del inventario donde se puede ensayar sin tocar el real. Preparamos tres escenarios, y los tres se leen igual: situación base, qué cambia, qué resulta y qué decisión sugiere.
-> Uno: aumenta la demanda. Dos: el proveedor se retrasa. Tres: comprar más para aprovechar un precio, contra el riesgo de que se venza.
-> Las celdas grises están pendientes porque los resultados todavía no están simulados, y no vamos a inventarlos. Lo que sí queda claro es para qué sirve: decidir antes de que pase, no después.
+> El simulador permite cambiar condiciones antes de aplicarlas. En el caso base falta 1 kilo y quedan 6 de merma potencial.
+> Si la demanda sube 50 %, faltan 15. Si el proveedor se retrasa dos días, faltan 17 y se pierden 22.
+> Si compramos 20 kilos más con la misma fecha, sigue faltando 1 kilo y la merma sube a 26, porque la mercancía llega después de la necesidad.
+> Recibir 25 kilos el día 1 atiende la demanda sin faltantes ni merma, pero es un resultado del modelo, no una garantía: gerencia debe validar proveedor, costo y vencimientos.
 > RELEVO → Nataly. Cierra así: «Eso es lo que proponemos. Nataly les muestra lo que ya funciona».
 
 ## 11 · Implementación: demo integrada
@@ -247,20 +252,92 @@ Matriz de 3 escenarios × 4 columnas que se arma por filas; las celdas «por sim
 - Titular: «Un caso, de punta a punta. Lo probado y lo que falta.»
 - Caso común (9 pasos): recepción pesada → comprobar saldo → reservar pedido → registrar salida → actualizar tablero → detectar riesgo → agente propone → persona valida → simular escenario.
 - Prototipo de Juan David (Python + SQLite, ✳ datos ficticios), 12 pasos verificados: recepción de 20 kg, rechazo de duplicados, reservas con 15 kg vendibles, venta simultánea con un solo ganador, despachos con peso real, cancelación, merma, corrección autorizada, alertas. No instalado en Chickenmart.
-- [PENDIENTE] Evidencias de IA (Carolina), agentes (Nataly), tablero y gemelo (Orozco).
+- Data Hub de Orozco (SQLite + CSV, ✳ sintético): 43 / 34 kg conciliados; tablero y simulador en HTML; 64 pruebas de cálculo y datos + 16 verificaciones del tablero; kit de Power BI (relaciones, medidas DAX, Power Query).
+- [PENDIENTE] Evidencias de IA (Carolina) y agentes (Nataly).
+- Nota: la demo de Juan David (PECH-001) y la de Orozco (P001) usan datos sintéticos con la misma lógica de saldo.
 
 **Visual y animación**
 
-Riel de nueve pasos que se llena de izquierda a derecha mientras los círculos aparecen; el paso 8 (persona valida) va relleno. Lista de checks del prototipo que se marcan uno a uno.
+Riel de nueve pasos que se llena de izquierda a derecha; el paso 8 (persona valida) va relleno. Dos tarjetas de evidencia con checks que se marcan uno a uno: el prototipo de Juan David y el Data Hub de Orozco. Debajo, el recuadro de pendientes (Carolina y Nataly) y la nota de datos sintéticos.
 
 **Notas del orador**
 
 > Gracias, Orozco. Ahora, un caso de punta a punta, el mismo para todos. Arriba están los nueve pasos: registrar una recepción pesada, comprobar el saldo, reservar un pedido, registrar la salida, actualizar el tablero, detectar un riesgo, que el agente proponga una acción, que una persona la valide y simular un escenario.
 > ¿Qué está probado hoy? El prototipo de Juan David, en Python con SQLite y con datos ficticios, verificó doce pasos: entre ellos la recepción de veinte kilos, el rechazo de duplicados, quince kilos vendibles con reservas, una venta simultánea con un solo ganador, despachos con peso real, una cancelación, una merma, una corrección autorizada y las alertas.
-> [Turno de cada uno, 10 segundos: Juan David muestra la recepción; Carolina, Nataly y Orozco, su parte cuando la tengan.]
+> Orozco suma su parte: un Data Hub local en SQLite y CSV que concilia 43 kilos físicos y 34 disponibles, el tablero y el simulador en HTML, 64 pruebas de cálculo y datos más 16 verificaciones del tablero, y un kit de Power BI con relaciones, medidas DAX y Power Query. Las dos demos usan datos sintéticos con la misma lógica de saldo.
+> [Turno de cada uno, 10 segundos: Juan David muestra la recepción; Orozco, el corte conciliado y el simulador; Carolina y Nataly, su parte cuando la tengan.]
 > Las demás evidencias están pendientes, y lo decimos así. Y recuerden: es un prototipo del equipo, no está instalado en Chickenmart.
+> RELEVO → María Camila. Cierra así: «Eso es lo que probamos con datos sintéticos. María Camila les cuenta qué encontramos en la operación real».
 
-## 12 · Roadmap
+## 12 · Lo que hoy es real en Chickenmart
+
+**Expone:** María Camila · **Tiempo:** 55 s
+
+**Contenido en pantalla**
+
+- Sello: VALIDACIÓN REAL · confirmado por gerencia. [PENDIENTE: báscula por verificar]
+- Las compras recibidas se registran en Siigo y así se actualiza el inventario.
+- Dos básculas: piso en recepción (visor kg/lb, e = d = 50 g) y mostrador. En las fotos no se identifica salida de datos (los cables vistos son de alimentación); falta revisar placa, manual y conectores. La de piso tiene una etiqueta de advertencia que debe aclararse con el proveedor antes del piloto.
+- Las facturas combinan cobro por unidad (UND) y por kilogramo (KG): conservar ambas medidas, sin convertir paquetes en kg.
+- En la web, el cliente no paga hasta que la tienda valida el pedido.
+
+**Visual y animación**
+
+Flujo actual de recepción en 7 pasos sobre una vía punteada: orden de compra (Siigo) → llega camión y factura → comparar pedido, factura y entrega → pesar y contar → reportar diferencias (WhatsApp y hoja) → digitar la compra en Siigo → se actualiza el inventario. Cada paso lleva la marca «✋ manual», que aparece con rebote. Debajo, cuatro tarjetas con los hechos. El sello «Validación real» cae girado sobre el encabezado.
+
+**Notas del orador**
+
+> Gracias. Contrastamos la propuesta académica con la operación real. Chickenmart ya registra compras e inventario en Siigo y tiene dos básculas, pero ninguna muestra todavía una salida de datos. Por eso ajustamos el piloto: no prometemos una conexión que no está comprobada.
+> [Apoyo si hay tiempo: la recepción de hoy son siete pasos y todos son manuales, desde la orden en Siigo hasta que se actualiza el inventario. Las facturas mezclan unidades y kilos, así que conservamos las dos medidas. Y en la web el cliente no paga hasta que la tienda valida el pedido.]
+
+## 13 · Piloto ajustado con el desarrollador
+
+**Expone:** María Camila · **Tiempo:** 60 s
+
+**Contenido en pantalla**
+
+- Sello: VALIDACIÓN REAL · ✳ estimación preliminar, no cotización (días hábiles).
+- Etapa 0 · Validación del flujo y compatibilidad: 3–5 días. Recepción real, catálogo y unidades en Siigo, modelo de báscula y permisos de integración.
+- Etapa 1 · Piloto digital con captura manual: 5–10 días. Registro que une orden, factura y verificación física (pedido, facturado, contado, peso, tara, neto aceptado, diferencia, responsable); peso escrito desde la báscula actual; compra manual en Siigo, que sigue siendo el inventario de referencia.
+- Etapa 2 · Pesaje conectado: 5–10 días, solo si la báscula tiene salida compatible; si no, cotizar adaptador o reemplazo.
+- Etapa 3 · Registro asistido con la API de Siigo (POST /v1/purchases): 10–15 días, con aprobación humana y envío una sola vez.
+- Total: etapas 0 y 1 entre 8 y 15 días hábiles; hasta la etapa 3 entre 23 y 40.
+- Alternativa a evaluar: foto del visor con lectura automática y confirmación obligatoria del operador (no sustituye el conteo ni identifica el producto).
+- Se cotiza aparte: sincronización web y reservas multicanal, lectura automática de facturas, mensajes al proveedor, IA, agentes y simulación.
+
+**Visual y animación**
+
+Línea de tiempo por etapas: cada etapa tiene una barra con el mínimo sólido y la extensión hasta el máximo rayada (escala 0–15 días hábiles); la etapa 2 va punteada porque es condicional. Las barras crecen al entrar. A la derecha, dos totales (8–15 en vino, lo que se pide; 23–40) y los recuadros «Alternativa a evaluar» y «Se cotiza aparte».
+
+**Notas del orador**
+
+> Con el desarrollador definimos un piloto viable: primero un registro digital de recepción con captura manual y Siigo como referencia, y solo después conectar la báscula o integrar la API, cuando las pruebas lo confirmen.
+> [Apoyo: las etapas 0 y 1 toman entre 8 y 15 días hábiles; llegar a la etapa 3 toma entre 23 y 40. Son estimaciones preliminares, no una cotización. La etapa 2 solo ocurre si la báscula tiene salida compatible. Lo de la derecha, como la foto del visor, es una alternativa a evaluar, y la sincronización web, la IA y los agentes se cotizan aparte.]
+
+## 14 · Venta web por peso con bolsas cerradas
+
+**Expone:** María Camila · **Tiempo:** 45 s
+
+**Contenido en pantalla**
+
+- Sello: VALIDACIÓN REAL (la web cobra después de validar) · ✳ ejemplo ficticio.
+- El cliente pide un peso aproximado y ve un total estimado, sin cobro.
+- La tienda elige una bolsa cerrada o combinación cercana, la pesa y la reserva.
+- El cliente acepta peso y precio final; recién ahí paga.
+- Al despachar se entregan las bolsas reservadas y la venta se registra una sola vez en Siigo.
+- Ejemplo ficticio: pide 2 kg a $20.000/kg (estimado $40.000); bolsa de 1,95 kg → $39.000; acepta y paga.
+
+**Visual y animación**
+
+Flujo de seis estados en chevrones que entran en secuencia: pendiente de validación → validado → aceptado → pagado (resaltado en crema: el cobro solo ocurre aquí) → preparado → despachado. Debajo, la cinta del ejemplo ficticio con cifras que cuentan ($40.000 → 1,95 kg → $39.000).
+
+**Notas del orador**
+
+> Como la web cobra después de validar, podemos vender por peso sin abrir bolsas: el cliente siempre aprueba el peso y el precio final antes de pagar.
+> [Apoyo con el ejemplo ficticio: pide 2 kilos a 20.000 pesos el kilo, estimado 40.000; la tienda encuentra una bolsa de 1,95 kilos, son 39.000; el cliente acepta y paga. Al despachar se entregan esas bolsas y la venta se registra una sola vez en Siigo.]
+> RELEVO → Nataly. Cierra así: «Ese es el piloto real. Nataly les muestra el roadmap».
+
+## 15 · Roadmap
 
 **Expone:** Nataly · **Tiempo:** 45 s · **PENDIENTE**
 
@@ -281,7 +358,7 @@ Cinco chevrones que entran en secuencia; la fase 2 (piloto) en vino. Barra de Ga
 > El roadmap tiene cinco fases y el orden no es casual. Primero se valida: el proceso real, el catálogo y la calidad de los datos. Segundo, el piloto de pesaje e inventario central, que es lo que pedimos aprobar. Tercero, se integran los canales y el tablero. Cuarto, entran la IA, los agentes y el gemelo, que solo sirven cuando ya hay histórico confiable. Y quinto, se mide y se ajusta.
 > Como referencia, un piloto así podría tomar de ocho a doce semanas. Es un supuesto, no un compromiso: el tiempo real sale de la fase uno.
 
-## 13 · Riesgos y controles
+## 16 · Riesgos y controles
 
 **Expone:** Nataly · **Tiempo:** 50 s · **PENDIENTE**
 
@@ -304,7 +381,7 @@ Matriz 3×3 de probabilidad × impacto que se calienta en diagonal (hueso → cr
 > Lo que sí está definido son los controles: un ID único por registro, confirmación humana, cola sin conexión, permisos por rol y revisión humana de lo que sugiera la IA.
 > RELEVO → Carolina. Cierra así: «Con los riesgos sobre la mesa, Carolina les muestra cuánto cuesta y cómo lo medimos».
 
-## 14 · Costos, KPIs y ROI
+## 17 · Costos, KPIs y ROI
 
 **Expone:** Carolina · **Tiempo:** 60 s
 
@@ -327,29 +404,53 @@ Tres columnas: chips de costos con la ecuación en una caja negra con espacios �
 > Y el retorno se calcula con estas dos fórmulas: ROI y periodo de recuperación. Las dos se pueden resolver solo con datos reales, y eso es justamente lo que deja la fase uno.
 > RELEVO → Orozco. Cierra así: «Eso es lo que cuesta. Orozco les muestra hacia dónde lleva».
 
-## 15 · Industria 5.0 y visión a 5 años
+## 18 · Industria 5.0 y visión a 5 años
 
-**Expone:** Orozco · **Tiempo:** 45 s · **PENDIENTE**
+**Expone:** Orozco · **Tiempo:** 45 s
 
 **Contenido en pantalla**
 
-- Titular: «Tecnología al servicio de quien trabaja.» [PROPUESTA · PENDIENTE]
-- Personas: el trabajador verifica y aprueba · Sostenibilidad: medir y reducir desperdicio · Resiliencia: operar ante cortes.
-- Visión a 5 años: inventario común → canales coordinados → trazabilidad por lote → compras con datos → crecimiento con control. Sin prometer nuevas sedes.
-- Recuadro: «Contenido pendiente de Orozco».
+- Titular: «Tecnología al servicio de las personas.» [PROPUESTA, NO PREDICCIÓN]
+- Personas: el trabajador identifica el producto y valida peso y lote; gerencia aprueba compras, descuentos y ajustes.
+- Sostenibilidad: seguimiento por lote y merma por causa; el simulador muestra que comprar más puede aumentar el desperdicio.
+- Resiliencia: operar ante cortes o retrasos con captura pendiente y conciliación posterior.
+- Visión a 5 años (cada etapa avanza solo si se cumple su condición): A1 estabilizar catálogo, recepción y reservas → A2 integrar canales y tableros → A3 evaluar pronósticos y agentes → A4 validar simulaciones con datos reales → A5 ajustar la operación al portafolio y la demanda reales.
 
 **Visual y animación**
 
-Tres pilares con icono lineal (persona, hoja, escudo). Ruta de cinco hitos que se encienden en secuencia hasta «crecimiento con control».
+Tres pilares con icono lineal (persona, hoja, escudo). Línea de cinco años con rombos de condición entre etapas; los hitos A1–A5 se encienden en secuencia.
 
 **Notas del orador**
 
-> [PENDIENTE · Orozco completa el contenido final de esta lámina.]
-> Gracias, Carolina. La Industria 5.0 pone a la persona en el centro, y en Chickenmart eso se traduce en tres cosas. Personas: el trabajador verifica y aprueba; la tecnología le quita la tarea repetitiva, no la decisión. Sostenibilidad: medir el desperdicio por vencimiento para poder reducirlo. Y resiliencia: seguir operando aunque se caiga la conexión.
-> Hacia cinco años, la visión es: un inventario común, canales coordinados, trazabilidad por lote, compras con datos y crecimiento con control. No prometemos nuevas sedes: prometemos que, si Chickenmart decide crecer, lo haga sobre una base que aguanta.
-> RELEVO → Santiago. Cierra así: «Esa es la visión. Santiago y Juan David les dicen qué necesitamos hoy».
+> Gracias, Carolina. Industria 5.0 orienta la propuesta hacia las personas, la sostenibilidad y la continuidad. El trabajador verifica la recepción, la gerencia aprueba decisiones, se mide la merma y se prepara la respuesta ante retrasos o cortes.
+> La visión a cinco años propone estabilizar registros, integrar canales y validar análisis antes de crecer. La recomendación es iniciar con datos confiables y un piloto verificable, y medir el valor antes de ampliar la inversión.
+> RELEVO → María Camila. Cierra así: «Esa es la visión. María Camila cierra con las conclusiones».
 
-## 16 · Decisión de inversión
+## 19 · Conclusiones
+
+**Expone:** María Camila · **Tiempo:** 60 s
+
+**Contenido en pantalla**
+
+- La propuesta académica se contrastó con la operación real de Chickenmart (Siigo, básculas, facturas, web).
+- La prioridad sigue siendo un registro confiable de lo recibido; el primer paso no requiere comprar hardware.
+- El piloto se valida por etapas con criterios de aceptación: una sola compra por recepción, reintento sin duplicados, diferencias documentadas y saldo verificado en Siigo.
+- IA, agentes, tablero y simulación se incorporan cuando los datos y la operación estén estables.
+- Decisión solicitada: aprobar las etapas 0 y 1 (8 a 15 días hábiles, ✳ preliminar) y medir tiempo de recepción, diferencias detectadas y demora hasta el registro en Siigo antes de ampliar la inversión.
+
+**Visual y animación**
+
+Cuatro conclusiones numeradas a la izquierda; a la derecha, los cuatro criterios de aceptación con check y un bloque crema con la decisión solicitada y las tres métricas. Sello «Contrastado con la operación real».
+
+**Notas del orador**
+
+> Gracias, Orozco. Cierro con lo que aprendimos al contrastar la propuesta con Chickenmart.
+> [ESPACIO DE MARÍA CAMILA: explicar al profesor qué se está haciendo hoy en Chickenmart (recepción en Siigo, básculas, facturas por unidad y kilo, validación de pedidos web) y cómo se conecta con el trabajo del equipo.]
+> La prioridad sigue siendo un registro confiable de lo recibido, y el primer paso no requiere comprar hardware. El piloto se valida por etapas, con criterios claros: una sola compra por recepción, reintento sin duplicados, diferencias documentadas y saldo verificado en Siigo. La IA, los agentes, el tablero y la simulación entran cuando los datos y la operación estén estables.
+> Por eso pedimos aprobar las etapas 0 y 1, entre 8 y 15 días hábiles según una estimación preliminar, y medir tiempo de recepción, diferencias detectadas y demora hasta el registro en Siigo antes de ampliar la inversión.
+> RELEVO → Santiago. Cierra así: «Santiago y Juan David cierran con la decisión».
+
+## 20 · Decisión de inversión
 
 **Expone:** Santiago y Juan David · **Tiempo:** 60 s
 
