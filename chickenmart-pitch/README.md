@@ -6,7 +6,7 @@ decisión de inversión defendida con problema, evidencia, viabilidad y resultad
 
 - **Lema:** «Chickenmart conectado: del peso recibido a la disponibilidad de venta».
 - **Equipo, en orden de exposición:** Santiago → Juan David → Carolina → Nataly → Orozco → María Camila Jiménez.
-- **Duración:** 20 diapositivas · ~17:30 hablados · cronómetro a 18:00 (aviso en crema a los 17 minutos).
+- **Duración:** 22 diapositivas (2 con video) · ~22:15 con los videos · cronómetro a 23:00 (aviso en crema a los 22 minutos).
 - **Guion completo** (título, contenido, visual y notas por diapositiva): `guion.md`.
 
 ## Cómo se abre
@@ -36,12 +36,12 @@ sub-pasos. Se puede abrir directo en una lámina con `index.html#11`.
 
 | Expositor | Diapositivas | Tiempo |
 |---|---|---|
-| Santiago | 1 Portada · 2 Problema · 3 AS IS → TO BE · 20 (mitad) | 2:50 |
-| Juan David | 4 Arquitectura e IoT · 5 Automatizaciones · 20 (mitad) | 2:30 |
-| Carolina | 6 Cloud · 7 IA · 17 Costos, KPIs y ROI | 2:40 |
-| Nataly | 8 Agentes · 15 Roadmap · 16 Riesgos · coordina la 11 | 2:20 + demo |
-| Orozco | 9 Data Hub y Power BI · 10 Gemelo digital · 18 Industria 5.0 | 2:30 |
-| María Camila Jiménez | 12 Lo que hoy es real · 13 Piloto ajustado · 14 Venta web por peso · 19 Conclusiones | 3:40 |
+| Santiago | 1 Portada · 2 Problema · 3 AS IS → TO BE · 22 (mitad) | 2:50 |
+| Juan David | 4 Arquitectura e IoT · 5 Automatizaciones · 22 (mitad) | 2:30 |
+| Carolina | 6 Cloud · 7 IA · 19 Costos, KPIs y ROI | 2:40 |
+| Nataly | 8 Agentes · 9 Video agentes · 17 Roadmap · 18 Riesgos · coordina 12 y 13 (video) | 2:40 + 1:00 demo + 4:25 videos |
+| Orozco | 10 Data Hub y Power BI · 11 Gemelo digital · 20 Industria 5.0 | 2:30 |
+| María Camila Jiménez | 14 Lo que hoy es real · 15 Piloto ajustado · 16 Venta web por peso · 21 Conclusiones | 3:40 |
 
 En escena, el HUD de abajo dice siempre quién expone (`EXPONE // NATALY`) y el panel de
 miniaturas marca las láminas pendientes. Cada cambio de expositor tiene su frase de relevo en
@@ -69,25 +69,24 @@ las notas (`RELEVO →`).
 
 ## Láminas pendientes
 
-Se diseñaron con estructura, títulos y un recuadro visible «Contenido pendiente de [nombre]»
-con cinta de obra animada:
+Ya no queda ninguna lámina con recuadro de pendiente. Lo que falta por completar se marca
+dentro de cada lámina (por ejemplo, umbrales X e Y en A3, plataforma cloud por elegir, valores
+reales de costos y la celda exacta de los riesgos de nivel 3 y 2).
 
-| Lámina | Quién | Qué falta |
-|---|---|---|
-| 8 Agentes G1–G3 | Nataly | Objetivo final, quién aprueba en G2 y G3, evidencia |
-| 11 Demo integrada | Carolina, Nataly | Evidencias de IA y agentes |
-| 15 Roadmap | Nataly | Duración, responsables y entregable de cada fase |
-| 16 Riesgos | Nataly | Ubicación de R1–R9 en la matriz |
+## Videos
 
-Las láminas de Orozco (9, 10 y 18) ya están completas con datos sintéticos, y su evidencia
-(Data Hub local, tablero, simulador, 64 + 16 verificaciones y kit de Power BI) está en la 11.
+`video/Chickenmart_agentes.mp4` (1:37) y `video/Chickenmart_demo_integrada.mp4` (2:41) van
+incrustados en las láminas 9 y 13. No tienen audio: arrancan solos al llegar a la lámina, se
+pausan al salir y tienen controles; un clic sobre el video no cambia de lámina. Las miniaturas
+usan los fotogramas `video/*-poster.jpg`. Los videos son archivos aparte: para abrir la
+presentación sin internet hay que llevar la carpeta `video/` junto a `index.html`.
 
 ## Validación real con el desarrollador
 
-Las láminas 12, 13 y 14 (María Camila Jiménez) recogen lo que gerencia confirmó de la operación
+Las láminas 14, 15 y 16 (María Camila Jiménez) recogen lo que gerencia confirmó de la operación
 real: Siigo como registro de compras e inventario, dos básculas sin salida de datos comprobada,
 facturas en UND y KG, y cobro web después de validar. Llevan el sello «Validación real» y sus
-tiempos están marcados como estimación preliminar, no cotización. La 19 son las conclusiones y
+tiempos están marcados como estimación preliminar, no cotización. La 21 son las conclusiones y
 pide aprobar las etapas 0 y 1 (8 a 15 días hábiles).
 
 Cuando llegue el contenido: se borra el `.pend-box`, se quita `data-pend="1"` de la

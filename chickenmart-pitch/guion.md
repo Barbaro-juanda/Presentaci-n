@@ -1,18 +1,18 @@
 # Guion completo · Chickenmart conectado
 
-Pitch ejecutivo final · 20 diapositivas · 6 expositores · ~17:30 hablados (cronómetro a 18:00).
+Pitch ejecutivo final · 22 diapositivas (2 con video) · 6 expositores · ~22:15 con videos (cronómetro a 23:00).
 También están dentro de la presentación: tecla `N`.
 
 ## Reparto
 
 | Expositor | Diapositivas | Tiempo aprox. |
 |---|---|---|
-| Santiago | 1, 2, 3 y mitad de la 20 | 2:50 |
-| Juan David | 4, 5 y mitad de la 20 | 2:30 |
-| Carolina | 6, 7 y 17 | 2:40 |
-| Nataly | 8, 15, 16 y coordina la 11 | 2:20 + 1:00 de demo |
-| Orozco | 9, 10 y 18 | 2:30 |
-| María Camila Jiménez | 12, 13, 14 y 19 | 3:40 |
+| Santiago | 1, 2, 3 y mitad de la 22 | 2:50 |
+| Juan David | 4, 5 y mitad de la 22 | 2:30 |
+| Carolina | 6, 7 y 19 | 2:40 |
+| Nataly | 8, 9 (video), 17, 18 y coordina 12 y 13 (video) | 2:40 + 1:00 de demo + 4:25 de videos |
+| Orozco | 10, 11 y 20 | 2:30 |
+| María Camila Jiménez | 14, 15, 16 y 21 | 3:40 |
 
 Etiquetas: **[HECHO]** del diagnóstico · **[PROPUESTA]** del equipo · **[PENDIENTE]** por completar · **[VALIDACIÓN REAL]** confirmado por gerencia · **✳ ficticio/supuesto/preliminar**.
 
@@ -173,28 +173,55 @@ Tres mini-gráficos ilustrativos (sin datos): IA1 la línea se dibuja y aparece 
 
 ## 08 · Agentes G1–G3
 
-**Expone:** Nataly · **Tiempo:** 45 s · **PENDIENTE**
+**Expone:** Nataly · **Tiempo:** 50 s
 
 **Contenido en pantalla**
 
-- Titular: «Los agentes preparan. Las personas aprueban.» [PROPUESTA · PENDIENTE]
-- Tabla objetivo · acción · quién aprueba: G1 Abastecimiento (propuesta de compra → gerencia aprueba); G2 Atención y pedidos (consulta stock, arma pedido, reserva, escala casos especiales → rol por definir); G3 Control operativo (sigue incidencias hasta cerrarlas → rol por definir).
-- Recuadro: «Contenido pendiente de Nataly».
+- Titular: «Tres agentes coordinados. La persona decide.» [PROPUESTA · ✳ ejemplo ficticio]
+- G2 Atención y pedidos: consulta el inventario vendible antes de confirmar; si no alcanza, reserva lo disponible y escala el faltante. Nunca promete lo que no hay.
+- G1 Abastecimiento: detecta la necesidad (faltante + stock mínimo), compara proveedores por precio, disponibilidad y entrega, y prepara la propuesta de compra.
+- G3 Control operativo: verifica orden, proveedor, peso neto, lote, vencimiento y registro en Siigo; cierra la incidencia con evidencia.
+- Franja destacada: «Aprobación humana: María Camila Jiménez (Gerencia) aprueba o rechaza. Sin aprobación no se emite la orden ni se gasta dinero.»
+- Ejemplo ficticio: pedido de 10 kg de alitas con 7 kg vendibles → reserva 7 kg → propone 13 kg (3 faltantes + 10 mínimo) → Gerencia aprueba → recepción → 25 kg físicos, 15 reservados, 10 vendibles.
 
 **Visual y animación**
 
-Tabla de tres agentes con anillos orbitales que giran. Columna «quién aprueba» con check sólido (gerencia) o círculo punteado (por definir). Recuadro pendiente con cinta de obra animada.
+Tres columnas (G2, G1, G3) con anillos orbitales que giran alrededor del código; entran en secuencia. Debajo, la franja crema de aprobación humana con check vino, que se despliega, y la cadena del ejemplo ficticio, que aparece paso a paso con «Gerencia aprueba» resaltado.
 
 **Notas del orador**
 
-> [PENDIENTE · Nataly completa el contenido final de esta lámina.]
-> Gracias, Carolina. Un agente es un asistente que, además de avisar, prepara una acción. Proponemos tres, y lo que más importa es la última columna: quién aprueba.
-> G1, abastecimiento: con el stock y las alertas, prepara una propuesta de compra; la gerencia la aprueba o la ajusta.
-> G2, atención y pedidos: consulta el stock disponible, arma el pedido y lo reserva; cuando el caso es especial, lo escala a una persona.
-> G3, control operativo: sigue cada incidencia, como una diferencia de peso o una alerta, hasta que alguien la cierra.
-> Ningún agente compra, cobra ni corrige inventario por su cuenta.
+> Gracias, Carolina. Los agentes no deciden solos: consultan el inventario, proponen, coordinan y hacen seguimiento. Las compras, descuentos y ajustes requieren aprobación de Gerencia.
+> [Apoyo: G2, atención y pedidos, consulta lo vendible antes de confirmar; si no alcanza, reserva lo disponible y escala el faltante, nunca promete lo que no hay. G1, abastecimiento, detecta la necesidad, compara proveedores y prepara la propuesta. G3, control operativo, verifica orden, peso, lote, vencimiento y Siigo, y cierra con evidencia. Ejemplo ficticio: piden 10 kilos de alitas, hay 7 vendibles; se reservan 7, se proponen 13, María Camila aprueba y al final quedan 25 físicos, 15 reservados y 10 vendibles.]
+> RELEVO → video. Cierra así: «Mírenlos trabajar».
 
-## 09 · Data Hub y Power BI
+## 09 · Video: tres agentes en acción
+
+**Expone:** Nataly · **Tiempo:** 100 s
+
+**Contenido en pantalla**
+
+- Titular: «Demostración: tres agentes en acción.» [✳ datos ficticios]
+- Video incrustado Chickenmart_agentes.mp4 (1:37, sin audio) en un recuadro 16:9.
+- Pie: «Pedido ficticio de 10 kg de alitas · aprobación de María Camila · saldo final 25 / 15 / 10 kg».
+
+**Visual y animación**
+
+Recuadro 16:9 con borde crema que se abre desde el centro; el video arranca solo al llegar a la lámina, sin sonido, y se pausa al salir. Tiene controles para pausar o adelantar; hacer clic sobre el video no cambia de lámina.
+
+**Notas del orador**
+
+> [Video de 1:37, sin audio: narrar encima.]
+> 0:00 · Llega el pedido: Casa Eterna pide 10 kilos de alitas.
+> 0:12 · Atención y pedidos consulta el inventario vendible: hay 7. No permite confirmar más de lo disponible.
+> 0:24 · Reserva parcial: se apartan los 7 kilos y quedan 3 pendientes.
+> 0:36 · Abastecimiento compara proveedores por precio, disponibilidad y entrega, y propone 13 kilos: 3 faltantes más 10 de mínimo.
+> 0:48 · Gerencia decide: María Camila confirma la aprobación. Sin ese clic no hay orden.
+> 1:00 · Recepción: el operador lee el peso en el visor de la báscula de piso y lo confirma; bruto menos tara da el neto.
+> 1:12 · Control operativo verifica orden, proveedor, peso, lote, vencimiento y el registro en Siigo, y cierra.
+> 1:24 · Saldo final ficticio: 25 kilos físicos, 15 reservados, 10 vendibles. La IA propone, coordina y hace seguimiento; la persona decide.
+> RELEVO → Orozco. Cierra así: «Todo eso deja rastro. Orozco les muestra dónde».
+
+## 10 · Data Hub y Power BI
 
 **Expone:** Orozco · **Tiempo:** 50 s
 
@@ -219,7 +246,7 @@ Izquierda: modelo de cuatro tablas con relaciones 1:N que se trazan, y tres cont
 > Reservar no es vender; al despachar se reduce el físico y se elimina la reserva una sola vez.
 > Los controles de reservas y ventas dan cero, lo que muestra que los datos concilian.
 
-## 10 · Gemelo digital
+## 11 · Gemelo digital
 
 **Expone:** Orozco · **Tiempo:** 55 s
 
@@ -243,33 +270,58 @@ Gráfico de barras agrupadas (faltante en crema, merma potencial en rayado vino 
 > Recibir 25 kilos el día 1 atiende la demanda sin faltantes ni merma, pero es un resultado del modelo, no una garantía: gerencia debe validar proveedor, costo y vencimientos.
 > RELEVO → Nataly. Cierra así: «Eso es lo que proponemos. Nataly les muestra lo que ya funciona».
 
-## 11 · Implementación: demo integrada
+## 12 · Implementación: demo integrada
 
-**Expone:** Todos · coordina Nataly · **Tiempo:** 60 s
+**Expone:** Nataly coordina · todos · **Tiempo:** 60 s
 
 **Contenido en pantalla**
 
-- Titular: «Un caso, de punta a punta. Lo probado y lo que falta.»
-- Caso común (9 pasos): recepción pesada → comprobar saldo → reservar pedido → registrar salida → actualizar tablero → detectar riesgo → agente propone → persona valida → simular escenario.
-- Prototipo de Juan David (Python + SQLite, ✳ datos ficticios), 12 pasos verificados: recepción de 20 kg, rechazo de duplicados, reservas con 15 kg vendibles, venta simultánea con un solo ganador, despachos con peso real, cancelación, merma, corrección autorizada, alertas. No instalado en Chickenmart.
-- Data Hub de Orozco (SQLite + CSV, ✳ sintético): 43 / 34 kg conciliados; tablero y simulador en HTML; 64 pruebas de cálculo y datos + 16 verificaciones del tablero; kit de Power BI (relaciones, medidas DAX, Power Query).
-- [PENDIENTE] Evidencias de IA (Carolina) y agentes (Nataly).
-- Nota: la demo de Juan David (PECH-001) y la de Orozco (P001) usan datos sintéticos con la misma lógica de saldo.
+- Titular: «Una sola demostración, un solo registro.» [PROTOTIPO DEL EQUIPO · ✳ datos ficticios]
+- Une las demos de Juan David (recepción y reservas), Nataly (agentes) y Orozco (Data Hub y gemelo) sobre el mismo libro de movimientos.
+- Caso de pechuga ficticio en 8 pasos: 1 recepción 21,62 − 1,62 = 20 kg · 2 reservas 20 − 4 − 1 = 15 kg vendibles, dos canales a la vez y gana uno · 3 pedido de 18 kg: reserva 15, faltan 3 · 4 el agente propone 11 kg y María Camila aprueba · 5 recepción de la compra y reserva completa · 6 despacho con peso real 17,8 kg sin doble descuento · 7 control: diferencia 0 kg · 8 gemelo: ¿cuándo comprar?
+- Evidencias: demo integrada en HTML, prototipo Python con 12 pasos verificados, Data Hub de Orozco con 64 pruebas, agentes de Nataly, libro de movimientos exportable a CSV.
 
 **Visual y animación**
 
-Riel de nueve pasos que se llena de izquierda a derecha; el paso 8 (persona valida) va relleno. Dos tarjetas de evidencia con checks que se marcan uno a uno: el prototipo de Juan David y el Data Hub de Orozco. Debajo, el recuadro de pendientes (Carolina y Nataly) y la nota de datos sintéticos.
+Línea de flujo horizontal de 8 pasos con un ícono circular por responsable (JD Juan David en vino, NA Nataly con contorno, OR Orozco en negro; la aprobación de María Camila resaltada en crema). El riel se llena de izquierda a derecha y los íconos aparecen con rebote. Debajo, la leyenda y una franja de cinco evidencias con check.
 
 **Notas del orador**
 
-> Gracias, Orozco. Ahora, un caso de punta a punta, el mismo para todos. Arriba están los nueve pasos: registrar una recepción pesada, comprobar el saldo, reservar un pedido, registrar la salida, actualizar el tablero, detectar un riesgo, que el agente proponga una acción, que una persona la valide y simular un escenario.
-> ¿Qué está probado hoy? El prototipo de Juan David, en Python con SQLite y con datos ficticios, verificó doce pasos: entre ellos la recepción de veinte kilos, el rechazo de duplicados, quince kilos vendibles con reservas, una venta simultánea con un solo ganador, despachos con peso real, una cancelación, una merma, una corrección autorizada y las alertas.
-> Orozco suma su parte: un Data Hub local en SQLite y CSV que concilia 43 kilos físicos y 34 disponibles, el tablero y el simulador en HTML, 64 pruebas de cálculo y datos más 16 verificaciones del tablero, y un kit de Power BI con relaciones, medidas DAX y Power Query. Las dos demos usan datos sintéticos con la misma lógica de saldo.
-> [Turno de cada uno, 10 segundos: Juan David muestra la recepción; Orozco, el corte conciliado y el simulador; Carolina y Nataly, su parte cuando la tengan.]
-> Las demás evidencias están pendientes, y lo decimos así. Y recuerden: es un prototipo del equipo, no está instalado en Chickenmart.
-> RELEVO → María Camila. Cierra así: «Eso es lo que probamos con datos sintéticos. María Camila les cuenta qué encontramos en la operación real».
+> Gracias, Orozco. Unimos las tres demos en una sola: la recepción y las reservas de Juan David, los agentes de Nataly y el Data Hub y el gemelo de Orozco escriben sobre el mismo libro de movimientos.
+> El caso es de pechuga y es ficticio. Se reciben 21,62 kilos menos 1,62 de tara: 20 netos. Con 4 reservados y 1 bloqueado quedan 15 vendibles, y si dos canales piden a la vez, solo uno gana. Llega un pedido de 18 kilos: se reservan 15 y faltan 3. El agente propone comprar 11, María Camila aprueba, se recibe la compra y se completa la reserva. Se despacha con el peso real, 17,8 kilos, sin doble descuento. El control da diferencia cero, y el gemelo responde cuándo comprar.
+> [Turno de 10 segundos para cada uno: Juan David, recepción y reservas; Nataly, agentes; Orozco, Data Hub y gemelo.]
+> Todo es un prototipo con datos ficticios, no instalado en Chickenmart.
 
-## 12 · Lo que hoy es real en Chickenmart
+## 13 · Video: demostración integrada
+
+**Expone:** Nataly coordina · todos · **Tiempo:** 165 s
+
+**Contenido en pantalla**
+
+- Titular: «Demostración integrada: del peso recibido a la decisión de compra.» [✳ datos ficticios · VALIDACIÓN REAL]
+- Video incrustado Chickenmart_demo_integrada.mp4 (2:41, sin audio) en un recuadro 16:9.
+- Pie: «Datos ficticios · validación real: peso leído en el visor y compra registrada en Siigo».
+
+**Visual y animación**
+
+Igual a la lámina del video de agentes: recuadro 16:9 que se abre desde el centro, el video arranca solo y se pausa al salir. En el pie, el sello «Validación real».
+
+**Notas del orador**
+
+> [Video de 2:41, sin audio: narrar encima, cada uno en su tramo.]
+> 0:00 · Un solo registro: recepción, reservas, agentes, Data Hub y gemelo trabajan sobre el mismo libro de movimientos; a la derecha se ven el saldo y el Data Hub.
+> 0:14 · Recepción (Juan David): 21,62 menos 1,62 son 20 kilos. Se crea una sola entrada.
+> 0:28 · Reservas (Juan David): la web reserva 2,5, WhatsApp 1,5 y se bloquea 1 kilo por empaque dañado; quedan 15 vendibles. Dos canales piden 10 a la vez: solo uno gana.
+> 0:56 · Agente de atención (Nataly): un restaurante pide 18 kilos; se reservan 15 y faltan 3.
+> 1:10 · Agente de abastecimiento (Nataly): propone 3 faltantes más 8 de mínimo, 11 kilos, y compara proveedores. María Camila aprueba.
+> 1:24 · Recepción de la compra: se pesa, se confirma y se completa la reserva. La compra se registra en Siigo una sola vez.
+> 1:38 · Despacho: peso real 17,8 kilos. Un solo movimiento descuenta el físico y consume la reserva.
+> 1:52 · Control (Nataly): reservas en movimientos igual a pedidos abiertos, diferencia cero; se cierra la incidencia.
+> 2:06 · Gemelo (Orozco): ¿cuándo comprar? Si la demanda sube 50 %, faltan 15; recibiendo antes, no falta nada.
+> 2:30 · Cierre: un registro fiable como base para automatizaciones, IA, agentes y simulación.
+> RELEVO → María Camila. Cierra así: «Eso es lo que probamos con datos ficticios. María Camila les cuenta qué encontramos en la operación real».
+
+## 14 · Lo que hoy es real en Chickenmart
 
 **Expone:** María Camila · **Tiempo:** 55 s
 
@@ -290,7 +342,7 @@ Flujo actual de recepción en 7 pasos sobre una vía punteada: orden de compra (
 > Gracias. Contrastamos la propuesta académica con la operación real. Chickenmart ya registra compras e inventario en Siigo y tiene dos básculas, pero ninguna muestra todavía una salida de datos. Por eso ajustamos el piloto: no prometemos una conexión que no está comprobada.
 > [Apoyo si hay tiempo: la recepción de hoy son siete pasos y todos son manuales, desde la orden en Siigo hasta que se actualiza el inventario. Las facturas mezclan unidades y kilos, así que conservamos las dos medidas. Y en la web el cliente no paga hasta que la tienda valida el pedido.]
 
-## 13 · Piloto ajustado con el desarrollador
+## 15 · Piloto ajustado con el desarrollador
 
 **Expone:** María Camila · **Tiempo:** 60 s
 
@@ -314,7 +366,7 @@ Línea de tiempo por etapas: cada etapa tiene una barra con el mínimo sólido y
 > Con el desarrollador definimos un piloto viable: primero un registro digital de recepción con captura manual y Siigo como referencia, y solo después conectar la báscula o integrar la API, cuando las pruebas lo confirmen.
 > [Apoyo: las etapas 0 y 1 toman entre 8 y 15 días hábiles; llegar a la etapa 3 toma entre 23 y 40. Son estimaciones preliminares, no una cotización. La etapa 2 solo ocurre si la báscula tiene salida compatible. Lo de la derecha, como la foto del visor, es una alternativa a evaluar, y la sincronización web, la IA y los agentes se cotizan aparte.]
 
-## 14 · Venta web por peso con bolsas cerradas
+## 16 · Venta web por peso con bolsas cerradas
 
 **Expone:** María Camila · **Tiempo:** 45 s
 
@@ -337,51 +389,50 @@ Flujo de seis estados en chevrones que entran en secuencia: pendiente de validac
 > [Apoyo con el ejemplo ficticio: pide 2 kilos a 20.000 pesos el kilo, estimado 40.000; la tienda encuentra una bolsa de 1,95 kilos, son 39.000; el cliente acepta y paga. Al despachar se entregan esas bolsas y la venta se registra una sola vez en Siigo.]
 > RELEVO → Nataly. Cierra así: «Ese es el piloto real. Nataly les muestra el roadmap».
 
-## 15 · Roadmap
+## 17 · Roadmap
 
-**Expone:** Nataly · **Tiempo:** 45 s · **PENDIENTE**
-
-**Contenido en pantalla**
-
-- Titular: «Primero la base. Después la inteligencia.» [FASES SUGERIDAS · PENDIENTE]
-- 1 Validar proceso, catálogo y datos · 2 Piloto de pesaje e inventario central · 3 Integrar canales y tablero · 4 IA, agentes y gemelo · 5 Medir y ajustar.
-- Piloto (fases 1–2): 8–12 semanas ✳ supuesto, no compromiso.
-- Recuadro: «Contenido pendiente de Nataly».
-
-**Visual y animación**
-
-Cinco chevrones que entran en secuencia; la fase 2 (piloto) en vino. Barra de Gantt: piloto sólido con «8–12 semanas ✳ supuesto», resto punteado «por definir».
-
-**Notas del orador**
-
-> [PENDIENTE · Nataly completa el roadmap final.]
-> El roadmap tiene cinco fases y el orden no es casual. Primero se valida: el proceso real, el catálogo y la calidad de los datos. Segundo, el piloto de pesaje e inventario central, que es lo que pedimos aprobar. Tercero, se integran los canales y el tablero. Cuarto, entran la IA, los agentes y el gemelo, que solo sirven cuando ya hay histórico confiable. Y quinto, se mide y se ajusta.
-> Como referencia, un piloto así podría tomar de ocho a doce semanas. Es un supuesto, no un compromiso: el tiempo real sale de la fase uno.
-
-## 16 · Riesgos y controles
-
-**Expone:** Nataly · **Tiempo:** 50 s · **PENDIENTE**
+**Expone:** Nataly · **Tiempo:** 50 s
 
 **Contenido en pantalla**
 
-- Titular: «Cada riesgo, con su control.» [CONTROLES · PENDIENTE matriz final]
-- Riesgos R1–R9: báscula sin salida de datos, tara o referencia incorrecta, registros duplicados, ventas no registradas, desconexión, datos antiguos, IA errónea o falsas alertas, accesos indebidos, poca información histórica.
-- Controles: ID único, confirmación humana, cola offline, permisos por rol, revisión humana.
-- Escala: probabilidad e impacto de 1 a 3; celda = P × I (1–2 bajo, 3–4 medio, 6–9 alto). Ubicación pendiente de Nataly.
+- Titular: «Roadmap por fases: cada fase avanza solo si cumple su criterio.» [✳ estimación preliminar · no cotización]
+- 0 Validación del flujo y compatibilidad (3–5 días hábiles) → 1 Piloto digital con peso digitado y registro manual en Siigo (5–10) → 2 Pesaje conectado, solo si la báscula tiene salida compatible (5–10) → 3 Registro asistido con la API de Siigo (10–15) → 4 Canales, reservas y alertas → 5 Data Hub y tablero → 6 IA y agentes → 7 Gemelo validado con datos reales (4 a 7 por cotizar).
+- Recuadro: «Fases 0–1: 8 a 15 días hábiles · hasta fase 3: 23 a 40 días hábiles (estimación preliminar, no cotización)».
+- Nota: opción de capturar el peso con foto del visor, por cotizar aparte.
 
 **Visual y animación**
 
-Matriz 3×3 de probabilidad × impacto que se calienta en diagonal (hueso → crema → vino) con el sello «Ubicación pendiente» que cae encima. Las fichas R1–R9 caen con rebote en una bandeja «sin ubicar». Cinco controles en bloques vino.
+Ocho chevrones que entran en secuencia: fases 0–1 en vino (lo que se pide), 2–3 en crema (la 2 rayada porque es condicional) y 4–7 en blanco con «por cotizar». Debajo, llaves que se dibujan y agrupan 0–1 (8–15 días), 0–3 (23–40) y 4–7 (por cotizar), y el recuadro de totales.
 
 **Notas del orador**
 
-> [PENDIENTE · Nataly ubica cada riesgo en la matriz final.]
-> Ya identificamos nueve riesgos. Algunos son técnicos: que la báscula no tenga salida de datos, una tara o una referencia mal elegida, registros duplicados o una desconexión. Otros son de operación: ventas que no se registran o datos viejos. Y otros, de la parte inteligente: que la IA se equivoque o dé falsas alertas, accesos indebidos y poca información histórica.
-> La matriz cruza probabilidad e impacto, de uno a tres cada uno, y el color sube con el producto de ambos. La ubicación final de cada riesgo está pendiente.
-> Lo que sí está definido son los controles: un ID único por registro, confirmación humana, cola sin conexión, permisos por rol y revisión humana de lo que sugiera la IA.
+> Gracias, María Camila. Empezamos sin comprar hardware: primero un registro confiable de recepción con Siigo como referencia; solo conectamos la báscula o la API cuando una prueba lo confirma.
+> [Apoyo: fase 0, validar el flujo y la compatibilidad, de 3 a 5 días hábiles. Fase 1, piloto digital con peso digitado y registro manual en Siigo, de 5 a 10. Fase 2, pesaje conectado, solo si la báscula tiene salida compatible. Fase 3, registro asistido con la API de Siigo. Las fases 0 y 1 suman de 8 a 15 días hábiles; hasta la 3, de 23 a 40. Es una estimación preliminar, no una cotización. De la 4 a la 7 —canales, tablero, IA y agentes, y gemelo con datos reales— se cotizan después, y cada fase avanza solo si cumple su criterio.]
+
+## 18 · Riesgos y controles
+
+**Expone:** Nataly · **Tiempo:** 60 s
+
+**Contenido en pantalla**
+
+- Titular: «Riesgos priorizados y cómo los controlamos.» [✳ calificaciones estimadas por el equipo, no mediciones]
+- Matriz 3×3, probabilidad × impacto, escala 1–3. Nivel 6: báscula sin salida de datos (P3, I2); ventas no registradas (P3, I2); doble entrada recepción–Siigo (P2, I3); unidad equivocada UND/KG (P2, I3); sobreventa entre canales (P2, I3).
+- Nivel 4: tara o producto incorrecto, corte de internet, compra tardía o lote corto, pago web tardío tras vencer la reserva, costos o plazos mayores. Nivel 3: IA con poco histórico, agente sin permiso. Nivel 2: tablero desactualizado.
+- Tabla de los 5 altos (control → contingencia): báscula, piloto con peso digitado y prueba real antes de comprar → foto del visor o reemplazo cotizado; doble entrada, Siigo como referencia e ID único por recepción → conciliación y ajuste autorizado; ventas no registradas, sin registro no hay reserva ni salida → conteo físico y conciliación; unidades, unidad configurada por SKU con peso y conteo separados → evento compensatorio; sobreventa, reserva que valida y escribe a la vez → contactar al cliente y ajustar.
+
+**Visual y animación**
+
+Matriz de calor (hueso → crema → vino) con los riesgos como fichas dentro de su celda: las fichas de nivel 6 en negro sobre vino. Las celdas aparecen y las fichas caen con rebote; la tabla de control y contingencia entra fila a fila. Los niveles 3 y 2 se nombran debajo de la matriz porque su celda exacta (P × I) no está asignada.
+
+**Notas del orador**
+
+> La matriz cruza probabilidad e impacto, de 1 a 3, y el número de cada celda es el nivel. Las calificaciones son estimadas por el equipo para priorizar, no mediciones.
+> Cinco riesgos quedan en nivel 6. Dos son muy probables y de impacto medio: que la báscula no tenga salida de datos y que haya ventas no registradas. Tres son de probabilidad media pero alto impacto: la doble entrada entre la recepción y Siigo, confundir unidad y kilo, y vender lo mismo por dos canales.
+> Para cada uno hay control y contingencia. La báscula: piloto con peso digitado y prueba real antes de comprar; si falla, foto del visor o reemplazo cotizado. La doble entrada: Siigo es la referencia y cada recepción lleva un ID único. Las ventas no registradas: sin registro no hay reserva ni salida. Las unidades: unidad configurada por SKU. Y la sobreventa: una reserva que valida y escribe a la vez.
+> Los riesgos medios y el bajo quedan vigilados con los mismos controles.
 > RELEVO → Carolina. Cierra así: «Con los riesgos sobre la mesa, Carolina les muestra cuánto cuesta y cómo lo medimos».
 
-## 17 · Costos, KPIs y ROI
+## 19 · Costos, KPIs y ROI
 
 **Expone:** Carolina · **Tiempo:** 60 s
 
@@ -404,7 +455,7 @@ Tres columnas: chips de costos con la ecuación en una caja negra con espacios �
 > Y el retorno se calcula con estas dos fórmulas: ROI y periodo de recuperación. Las dos se pueden resolver solo con datos reales, y eso es justamente lo que deja la fase uno.
 > RELEVO → Orozco. Cierra así: «Eso es lo que cuesta. Orozco les muestra hacia dónde lleva».
 
-## 18 · Industria 5.0 y visión a 5 años
+## 20 · Industria 5.0 y visión a 5 años
 
 **Expone:** Orozco · **Tiempo:** 45 s
 
@@ -426,7 +477,7 @@ Tres pilares con icono lineal (persona, hoja, escudo). Línea de cinco años con
 > La visión a cinco años propone estabilizar registros, integrar canales y validar análisis antes de crecer. La recomendación es iniciar con datos confiables y un piloto verificable, y medir el valor antes de ampliar la inversión.
 > RELEVO → María Camila. Cierra así: «Esa es la visión. María Camila cierra con las conclusiones».
 
-## 19 · Conclusiones
+## 21 · Conclusiones
 
 **Expone:** María Camila · **Tiempo:** 60 s
 
@@ -450,7 +501,7 @@ Cuatro conclusiones numeradas a la izquierda; a la derecha, los cuatro criterios
 > Por eso pedimos aprobar las etapas 0 y 1, entre 8 y 15 días hábiles según una estimación preliminar, y medir tiempo de recepción, diferencias detectadas y demora hasta el registro en Siigo antes de ampliar la inversión.
 > RELEVO → Santiago. Cierra así: «Santiago y Juan David cierran con la decisión».
 
-## 20 · Decisión de inversión
+## 22 · Decisión de inversión
 
 **Expone:** Santiago y Juan David · **Tiempo:** 60 s
 
