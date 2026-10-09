@@ -6,7 +6,7 @@ decisión de inversión defendida con problema, evidencia, viabilidad y resultad
 
 - **Lema:** «Chickenmart conectado: del peso recibido a la disponibilidad de venta».
 - **Equipo, en orden de exposición:** Santiago → Juan David → Carolina → Nataly → Orozco → María Camila Jiménez.
-- **Duración:** 22 diapositivas (2 con video) · ~22:15 con los videos · cronómetro a 23:00 (aviso en crema a los 22 minutos).
+- **Duración:** 24 diapositivas (3 de video) · ~24:15 con los videos · cronómetro a 25:00 (aviso en crema a los 24 minutos).
 - **Guion completo** (título, contenido, visual y notas por diapositiva): `guion.md`.
 
 ## Cómo se abre
@@ -36,12 +36,12 @@ sub-pasos. Se puede abrir directo en una lámina con `index.html#11`.
 
 | Expositor | Diapositivas | Tiempo |
 |---|---|---|
-| Santiago | 1 Portada · 2 Problema · 3 AS IS → TO BE · 22 (mitad) | 2:50 |
-| Juan David | 4 Arquitectura e IoT · 5 Automatizaciones · 22 (mitad) | 2:30 |
-| Carolina | 6 Cloud · 7 IA · 19 Costos, KPIs y ROI | 2:40 |
-| Nataly | 8 Agentes · 9 Video agentes · 17 Roadmap · 18 Riesgos · coordina 12 y 13 (video) | 2:40 + 1:00 demo + 4:25 videos |
-| Orozco | 10 Data Hub y Power BI · 11 Gemelo digital · 20 Industria 5.0 | 2:30 |
-| María Camila Jiménez | 14 Lo que hoy es real · 15 Piloto ajustado · 16 Venta web por peso · 21 Conclusiones | 3:40 |
+| Santiago | 1 Portada · 2 Problema · 3 AS IS → TO BE · 24 (mitad) | 2:50 |
+| Juan David | 4 Arquitectura e IoT · 5 Automatizaciones · 24 (mitad) | 2:30 |
+| Carolina | 6 Cloud · 7 IA · 21 Costos, KPIs y ROI | 2:40 |
+| Nataly | 8 Agentes · 9 Video agentes · 19 Roadmap · 20 Riesgos · coordina 14 y 15 (video) | 2:40 + 1:00 demo + 4:25 videos |
+| Orozco | 10 Data Hub · 11 Tablero · 12 Gemelo digital · 13 Video (por insertar) · 22 Industria 5.0 | 3:15 + 1:15 video |
+| María Camila Jiménez | 16 Lo que hoy es real · 17 Piloto ajustado · 18 Venta web por peso · 23 Conclusiones | 3:40 |
 
 En escena, el HUD de abajo dice siempre quién expone (`EXPONE // NATALY`) y el panel de
 miniaturas marca las láminas pendientes. Cada cambio de expositor tiene su frase de relevo en
@@ -76,17 +76,17 @@ reales de costos y la celda exacta de los riesgos de nivel 3 y 2).
 ## Videos
 
 `video/Chickenmart_agentes.mp4` (1:37) y `video/Chickenmart_demo_integrada.mp4` (2:41) van
-incrustados en las láminas 9 y 13. No tienen audio: arrancan solos al llegar a la lámina, se
+incrustados en las láminas 9 y 15. La 13 deja un recuadro reservado para `Chickenmart_orozco_datahub_gemelo.mp4` (1:11): al agregar el archivo en `video/` se incrusta igual. No tienen audio: arrancan solos al llegar a la lámina, se
 pausan al salir y tienen controles; un clic sobre el video no cambia de lámina. Las miniaturas
 usan los fotogramas `video/*-poster.jpg`. Los videos son archivos aparte: para abrir la
 presentación sin internet hay que llevar la carpeta `video/` junto a `index.html`.
 
 ## Validación real con el desarrollador
 
-Las láminas 14, 15 y 16 (María Camila Jiménez) recogen lo que gerencia confirmó de la operación
+Las láminas 16, 17 y 18 (María Camila Jiménez) recogen lo que gerencia confirmó de la operación
 real: Siigo como registro de compras e inventario, dos básculas sin salida de datos comprobada,
 facturas en UND y KG, y cobro web después de validar. Llevan el sello «Validación real» y sus
-tiempos están marcados como estimación preliminar, no cotización. La 21 son las conclusiones y
+tiempos están marcados como estimación preliminar, no cotización. La 23 son las conclusiones y
 pide aprobar las etapas 0 y 1 (8 a 15 días hábiles).
 
 Cuando llegue el contenido: se borra el `.pend-box`, se quita `data-pend="1"` de la

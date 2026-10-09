@@ -858,6 +858,59 @@ h2.cm-h2 .alt{color:var(--alt)}
 .rtab td:first-child{font-weight:600;color:var(--ink);width:30%}
 .rtab td:last-child{color:var(--alt);font-weight:500}
 
+/* ══ Orozco · modelo de datos ═════════════════════════════════════════ */
+.dh{display:grid;grid-template-columns:2fr 1fr;gap:36px;margin-top:20px;align-items:start}
+.er{position:relative;height:480px}
+.er svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.rel2{fill:none;stroke:var(--vino);stroke-width:2.5}
+.card1n rect{fill:var(--vino)} .card1n text{fill:var(--hueso);font-family:"CM Mono",monospace;font-size:11px;font-weight:700;text-anchor:middle}
+.ent2{position:absolute;width:300px;background:var(--panel);border:1.5px solid var(--ink);box-shadow:0 10px 26px rgba(7,10,17,.08)}
+.ent2 .h{padding:9px 14px 8px;font-family:var(--disp);font-weight:900;font-size:21px;line-height:1.05;color:var(--hueso)}
+.ent2.v .h{background:var(--vino)} .ent2.n .h{background:var(--negro)} .ent2.v{border-color:var(--vino)}
+.ent2 .h small{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.08em;color:rgba(252,247,245,.75);margin-top:3px}
+.ent2 ul{padding:8px 14px 10px !important}
+.ent2 li{font-family:var(--mono);font-size:12.5px;line-height:1.75;color:var(--i90);border-bottom:1px dashed var(--ln)}
+.ent2 li:last-child{border-bottom:0} .ent2 li b{color:var(--vino)}
+.cortebox{border:2px solid var(--vino);background:var(--panel);padding:16px 16px 18px}
+.cortebox .t{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--vino);margin-bottom:12px}
+.cortebox .g4{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cortebox .g4 > div{border:1px solid var(--ln2);padding:12px 14px;background:var(--bg)}
+.cortebox .g4 b{display:block;font-family:var(--disp);font-weight:900;font-size:44px;line-height:1;color:var(--ink)}
+.cortebox .g4 small{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--i45)}
+.cortebox .g4 .disp{background:var(--vino);border-color:var(--vino)} .cortebox .g4 .disp b,.cortebox .g4 .disp small{color:#fff}
+/* ══ Orozco · tablero ═════════════════════════════════════════════════ */
+.tb{margin-top:18px;display:grid;gap:12px}
+.kpi4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi4 > div{border:1px solid var(--ln2);background:var(--panel);padding:12px 18px;border-top:4px solid var(--ink)}
+.kpi4 small{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--i45)}
+.kpi4 b{display:block;font-family:var(--disp);font-weight:900;font-size:46px;line-height:1.05;color:var(--ink)}
+.kpi4 .disp{background:var(--vino);border-color:var(--vino)} .kpi4 .disp small,.kpi4 .disp b{color:#fff}
+.tbl{border:1px solid var(--ln2);background:var(--panel);padding:12px 16px 12px}
+.tbl .tt{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--vino);margin-bottom:6px}
+.tbl table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13.5px}
+.tbl th{text-align:right;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;color:var(--i45);padding:5px 10px;border-bottom:1.5px solid var(--ink)}
+.tbl td{text-align:right;padding:6px 10px;border-bottom:1px solid var(--ln);color:var(--ink);font-variant-numeric:tabular-nums}
+.tbl th:first-child,.tbl td:first-child{text-align:left} .tbl td:first-child{font-weight:700}
+.tbl td b{color:var(--vino)} .tbl td.pr{color:var(--alt);font-weight:700}
+.tb2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hb{display:grid;grid-template-columns:90px 1fr 34px;gap:12px;align-items:center;margin-top:9px;font-family:var(--mono);font-size:13px;color:var(--ink)}
+.hb p{height:24px;background:var(--panel2)} .hb p i{display:block;height:100%;background:var(--vino)}
+.hb b{font-family:var(--disp);font-weight:900;font-size:22px;color:var(--vino)}
+.tbl .ctl2 td{text-align:left;font-size:12.5px;padding:5px 8px} .tbl .ctl2 td:nth-child(2),.tbl .ctl2 td:nth-child(4){text-align:right;font-weight:700}
+.tbl .ctl2 td:nth-child(3){font-weight:400;padding-left:18px;border-left:1px solid var(--ln)}
+.tbl .ctl2 tr.ok td{background:var(--crema);color:var(--vino);font-weight:700;border-left:0}
+/* ══ Orozco · gemelo ══════════════════════════════════════════════════ */
+.cm-gem2{display:grid;grid-template-columns:2fr 1fr;gap:36px;margin-top:16px;align-items:center}
+.gfrase{font-family:var(--disp);font-weight:900;font-size:34px;line-height:1.18;color:var(--ink)} .gfrase em{font-style:normal;color:var(--acc)}
+.gnota{margin-top:22px;padding:14px 16px;border:1.5px dashed var(--ln2);background:rgba(9,12,20,.88);font-size:15px;line-height:1.42;color:var(--i90);font-weight:300}
+.gnota b{color:var(--acc);font-weight:600}
+/* ══ video por insertar ═══════════════════════════════════════════════ */
+.vmarco.vacio{border-style:dashed;background:rgba(9,12,20,.7);display:grid;place-items:center;width:1040px}
+.vph{text-align:center;display:grid;gap:10px;justify-items:center}
+.vph b{width:86px;height:86px;border-radius:50%;border:2px solid var(--acc);display:grid;place-items:center;font-size:32px;color:var(--acc)}
+.vph span{font-family:var(--mono);font-size:17px;letter-spacing:.06em;color:var(--ink)}
+.vph small{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--i45)}
+
 /* ══ EL SELLO EXTRUIDO · el gallo en vino y crema ════════════════════ */
 .sello{position:absolute;transform-style:preserve-3d;will-change:transform;animation:flotar 9s ease-in-out infinite alternate}
 @keyframes flotar{0%{transform:translate3d(0,0,0) rotateX(12deg) rotateY(-18deg) rotateZ(-4deg)}
@@ -929,7 +982,7 @@ h2.cm-h2 .alt{color:var(--alt)}
     <div class="marca"><svg viewBox="0 0 120 120" fill="currentColor"><use href="#cm-logo"></use></svg>
       <span>Chickenmart conectado · Pitch ejecutivo final · Transformación digital</span></div>
     <div class="sep"></div>
-    <div id="reloj">00:00 / 23:00</div>
+    <div id="reloj">00:00 / 25:00</div>
     <button class="cm-btn" id="bRejilla">Cuadrícula <kbd>O</kbd></button>
     <button class="cm-btn" id="bNotas">Notas <kbd>N</kbd></button>
     <button class="cm-btn" id="bAtajos">Atajos <kbd>?</kbd></button>
@@ -959,12 +1012,12 @@ Una aclaración antes de empezar, y miren la leyenda de abajo: en pantalla separ
       <dt class="cm-p">Pitch ejecutivo final</dt><dd class="cm-p">Proyecto académico de transformación digital</dd>
       <dt class="cm-p">Equipo y orden de exposición</dt>
       <dd class="cm-p"><div class="rep">
-        <b>Santiago</b><i>01 · 02 · 03 · 22</i>
-        <b>Juan David</b><i>04 · 05 · 22</i>
-        <b>Carolina</b><i>06 · 07 · 19</i>
-        <b>Nataly</b><i>08 · 09 · 12 · 13 · 17 · 18</i>
-        <b>Orozco</b><i>10 · 11 · 20</i>
-        <b>María Camila Jiménez</b><i>14 · 15 · 16 · 21</i>
+        <b>Santiago</b><i>01 · 02 · 03 · 24</i>
+        <b>Juan David</b><i>04 · 05 · 24</i>
+        <b>Carolina</b><i>06 · 07 · 21</i>
+        <b>Nataly</b><i>08 · 09 · 14 · 15 · 19 · 20</i>
+        <b>Orozco</b><i>10 · 11 · 12 · 13 · 22</i>
+        <b>María Camila Jiménez</b><i>16 · 17 · 18 · 23</i>
       </div></dd>
       <dt class="cm-p">Cómo leer esta presentación</dt>
       <dd class="cm-p"><div class="leyenda">
@@ -1321,123 +1374,165 @@ RELEVO → Orozco. Cierra así: «Todo eso deja rastro. Orozco les muestra dónd
 </section>
 
 <!-- ═════════ 09 · data hub y power bi ═════════ -->
-<section class="cm-l" data-exp="Orozco" data-seg="50" data-t="Data Hub y Power BI" data-y="2"
- data-n="Gracias, Nataly. El diseño separa dos funciones: el sistema operativo confirma reservas y ventas, y el Data Hub reúne los movimientos para analizarlos.
-Con productos, lotes, movimientos y pedidos obtenemos 43 kilos físicos, 7 reservados y 2 bloqueados: quedan 34 disponibles.
-Reservar no es vender; al despachar se reduce el físico y se elimina la reserva una sola vez.
-Los controles de reservas y ventas dan cero, lo que muestra que los datos concilian.">
+<section class="cm-l" data-exp="Orozco" data-seg="50" data-t="Data Hub" data-y="2"
+ data-n="Gracias, Nataly. Separamos dos funciones. El sistema operativo confirma; el Data Hub analiza. Con productos, lotes, movimientos y pedidos obtenemos 43 kilos físicos, 7 reservados y 2 bloqueados: quedan 34 disponibles, y los controles dan cero.">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">08 · Data Hub y Power BI</div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="fic">Datos sintéticos</span></div></div>
-    <h2 class="cm-h2 cm-p" style="max-width:40ch">Una fuente común <em>para entender el inventario.</em></h2>
-    <p class="cm-lead cm-p" style="font-size:19px;margin-top:10px;max-width:none">El sistema operativo <b>confirma</b> recepciones, reservas y ventas; el Data Hub <b>reúne</b> esos eventos para analizar. <b>El tablero no autoriza ventas.</b></p>
-    <div class="cm-hub2">
+    <div class="cm-cab cm-p"><div class="cm-kick">08 · Data Hub</div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="fic">Datos ficticios</span></div></div>
+    <h2 class="cm-h2 cm-p" style="font-size:56px;max-width:40ch">Data Hub: cuatro tablas, <em>una sola verdad analítica.</em></h2>
+    <p class="cm-lead cm-p" style="font-size:19px;margin-top:10px;max-width:none">El sistema operativo (<b>Siigo en el piloto</b>) confirma reservas y ventas; el Data Hub las reúne <b>por cortes</b> para analizar.</p>
+    <div class="dh">
+      <div class="er cm-p">
+        <svg viewBox="0 0 1100 480" preserveAspectRatio="none">
+          <path class="rel2" d="M300,240 L390,240"/>
+          <path class="rel2" d="M690,240 C740,240 740,118 790,118"/>
+          <path class="rel2" d="M690,240 C740,240 740,368 790,368"/>
+          <g class="card1n"><rect x="318" y="224" width="54" height="22" rx="0"/><text x="345" y="239">1 → N</text></g>
+          <g class="card1n"><rect x="713" y="150" width="54" height="22"/><text x="740" y="165">1 → N</text></g>
+          <g class="card1n"><rect x="713" y="308" width="54" height="22"/><text x="740" y="323">1 → N</text></g>
+        </svg>
+        <div class="ent2 v" style="left:0;top:168px"><div class="h">Productos<small>una fila por SKU</small></div><ul><li><b>SKU</b> 🔑</li><li>Producto</li><li>Unidad (kg)</li></ul></div>
+        <div class="ent2 v" style="left:390px;top:150px"><div class="h">Lotes<small>una fila por lote</small></div><ul><li><b>LoteID</b> 🔑</li><li>SKU</li><li>Proveedor</li><li>Vencimiento</li></ul></div>
+        <div class="ent2 n" style="left:790px;top:0"><div class="h">Movimientos<small>un evento con ID único</small></div><ul><li><b>EventoID</b> 🔑</li><li>LoteID</li><li>Tipo</li><li>Δ físico · Δ reserva · Δ bloqueo</li><li>fecha · última carga</li></ul></div>
+        <div class="ent2 n" style="left:790px;top:250px"><div class="h">Pedidos<small>uno por pedido</small></div><ul><li><b>PedidoID</b> 🔑</li><li>LoteID · Canal</li><li>Estado</li><li>solicitado · reserva vigente</li><li>vendido</li></ul></div>
+      </div>
       <div>
-        <div class="modelo cm-p" style="height:300px">
-          <svg><path class="rel" d="M119,124 L119,170"/><path class="rel" d="M214,226 L466,226"/><path class="rel" d="M561,124 L561,170"/>
-            <g font-family="CM Mono,monospace" font-size="10" fill="currentColor" opacity=".55"><text x="127" y="152">1:N</text><text x="320" y="218">1:N</text><text x="569" y="152">1:N</text></g></svg>
-          <div class="ent" style="left:24px;top:20px"><div class="h">Productos</div><ul><li>SKU · presentación</li><li>precio · proveedor</li></ul></div>
-          <div class="ent" style="left:466px;top:20px"><div class="h">Pedidos</div><ul><li>canal · estado</li><li>reserva · venta</li></ul></div>
-          <div class="ent" style="left:24px;top:170px"><div class="h">Lotes</div><ul><li>lote · proveedor</li><li>vencimiento</li></ul></div>
-          <div class="ent mov" style="left:466px;top:170px"><div class="h">Movimientos</div><ul><li>cada evento · ID único</li><li>entrada · reserva · salida</li></ul></div>
+        <div class="cortebox cm-p">
+          <div class="t">Corte 8-oct 18:00</div>
+          <div class="g4">
+            <div><b><span data-num="43">43</span></b><small>físico kg</small></div>
+            <div><b><span data-num="7">7</span></b><small>reservado kg</small></div>
+            <div><b><span data-num="2">2</span></b><small>bloqueado kg</small></div>
+            <div class="disp"><b><span data-num="34">34</span></b><small>disponible kg</small></div>
+          </div>
         </div>
-        <ul class="ctl cm-p">
-          <li><i>✓</i><span>Reservas en eventos = reservas en pedidos</span><b>Δ 0 kg</b></li>
-          <li><i>✓</i><span>Ventas en eventos = ventas en pedidos</span><b>Δ 0 kg</b></li>
-          <li><i>✓</i><span>Evento repetido</span><b>rechazado</b></li>
+        <ul class="cm-vin cm-p" style="margin-top:18px;gap:10px">
+          <li><span>Carga <b>por cortes con hora visible</b>, no tiempo real.</span></li>
+          <li><span>Un evento repetido <b>se rechaza</b>; reservas y ventas concilian con pedidos (<b>diferencia 0 kg</b>).</span></li>
         </ul>
       </div>
-      <div class="tablero cm-p">
-        <div class="top"><b>Tablero · Chickenmart</b><span>Corte 8 oct 2026 · 18:00 · ✳ sintético</span></div>
-        <div class="kc">
-          <div><small>Físico</small><b><span data-num="43">43</span> kg</b></div><em>−</em>
-          <div><small>Reservado</small><b><span data-num="7">7</span> kg</b></div><em>−</em>
-          <div><small>Bloqueado</small><b><span data-num="2">2</span> kg</b></div><em>=</em>
-          <div class="disp"><small>Disponible</small><b><span data-num="34">34</span> kg</b></div>
-        </div>
-        <table class="tp">
-          <tr><th>Producto</th><th>Físico</th><th>Reserv.</th><th>Bloq.</th><th>Disp.</th><th>Vence</th></tr>
-          <tr><td>P001</td><td>20</td><td>4</td><td>1</td><td><b>15</b></td><td>11-oct</td></tr>
-          <tr><td>P002</td><td>14</td><td>2</td><td>0</td><td><b>12</b></td><td>10-oct</td></tr>
-          <tr><td>P003</td><td>9</td><td>1</td><td>1</td><td><b>7</b></td><td class="pr">9-oct</td></tr>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 09b · tablero ═════════ -->
+<section class="cm-l" data-exp="Orozco" data-seg="45" data-t="Tablero de inventario" data-y="2"
+ data-n="El tablero muestra existencias por lote, ventas por canal y controles. Al filtrar pechuga vemos 20 físicos, 4 reservados, 1 bloqueado y 15 libres. El tablero no autoriza ventas; muestra la última carga.">
+  <div class="cm-wrap">
+    <div class="cm-cab cm-p"><div class="cm-kick">08 · Tablero de inventario</div><div class="cm-tags"><span class="tag prop"><i></i><span>Prototipo con los mismos datos y medidas del kit de Power BI</span></span><span class="fic">Datos ficticios</span></div></div>
+    <h2 class="cm-h2 cm-p" style="font-size:52px;max-width:44ch">Tablero de inventario: <em>estado, canales y control.</em></h2>
+    <div class="tb">
+      <div class="kpi4 cm-p">
+        <div><small>Físico kg</small><b><span data-num="43">43</span></b></div>
+        <div><small>Reservado kg</small><b><span data-num="7">7</span></b></div>
+        <div><small>Bloqueado kg</small><b><span data-num="2">2</span></b></div>
+        <div class="disp"><small>Disponible kg</small><b><span data-num="34">34</span></b></div>
+      </div>
+      <div class="tbl cm-p">
+        <div class="tt">Inventario por producto y lote</div>
+        <table>
+          <tr><th>SKU</th><th>Lote</th><th>Físico</th><th>Reserva</th><th>Bloqueo</th><th>Disponible</th><th>Vence</th></tr>
+          <tr><td>P001 Pechuga</td><td>L001</td><td>20</td><td>4</td><td>1</td><td><b>15</b></td><td>11-oct</td></tr>
+          <tr><td>P002 Muslo</td><td>L002</td><td>14</td><td>2</td><td>0</td><td><b>12</b></td><td class="pr">10-oct</td></tr>
+          <tr><td>P003 Alas</td><td>L003</td><td>9</td><td>1</td><td>1</td><td><b>7</b></td><td class="pr">09-oct</td></tr>
         </table>
-        <div class="ind">
-          <div><small>Ventas por canal</small>
-            <p class="cb"><span>WhatsApp</span><i style="--w:100%"></i><b>5 kg</b></p>
-            <p class="cb"><span>Punto</span><i style="--w:80%"></i><b>4 kg</b></p>
-            <p class="cb"><span>Web</span><i style="--w:40%"></i><b>2 kg</b></p></div>
-          <div><small>Merma</small><b>1 kg</b><p>calidad · 0 kg por vencimiento</p></div>
-          <div><small>Pedidos sin stock</small><b>12,5 %</b><p>1 de 8 · solo en la muestra</p></div>
-          <div><small>Lotes por vencer</small><b>2</b><p>vencen en ≤ 2 días</p></div>
+      </div>
+      <div class="tb2">
+        <div class="tbl cm-p">
+          <div class="tt">Ventas por canal (kg)</div>
+          <div class="hb"><span>WhatsApp</span><p><i style="width:100%"></i></p><b>5</b></div>
+          <div class="hb"><span>Punto</span><p><i style="width:80%"></i></p><b>4</b></div>
+          <div class="hb"><span>Web</span><p><i style="width:40%"></i></p><b>2</b></div>
+        </div>
+        <div class="tbl cm-p">
+          <div class="tt">Control de datos</div>
+          <table class="ctl2">
+            <tr><td>Pedidos registrados</td><td>8</td><td>Ventas</td><td>11 kg</td></tr>
+            <tr><td>Rechazados por stock</td><td>1</td><td>Merma</td><td>1 kg</td></tr>
+            <tr><td>Tasa</td><td>12,5 %</td><td>Merma por vencimiento</td><td>0 kg</td></tr>
+            <tr class="ok"><td colspan="3">Diferencia reservas – pedidos</td><td>0 kg ✓</td></tr>
+          </table>
         </div>
       </div>
     </div>
   </div>
-  <div class="cm-fuente">Carga por cortes con hora visible, no tiempo real. Kit de Power BI incluido. ✳ Todos los datos son sintéticos.</div>
+  <div class="cm-fuente">Disponible = físico − reservado − bloqueado. 2 lotes vencen en 2 días o menos. ✳ Datos ficticios.</div>
 </section>
 
 <!-- ═════════ 10 · gemelo digital ═════════ -->
 <section class="cm-l" data-exp="Orozco" data-seg="55" data-t="Gemelo digital" data-y="2"
- data-n="El simulador permite cambiar condiciones antes de aplicarlas. En el caso base falta 1 kilo y quedan 6 de merma potencial.
-Si la demanda sube 50 %, faltan 15. Si el proveedor se retrasa dos días, faltan 17 y se pierden 22.
-Si compramos 20 kilos más con la misma fecha, sigue faltando 1 kilo y la merma sube a 26, porque la mercancía llega después de la necesidad.
-Recibir 25 kilos el día 1 atiende la demanda sin faltantes ni merma, pero es un resultado del modelo, no una garantía: gerencia debe validar proveedor, costo y vencimientos.
-RELEVO → Nataly. Cierra así: «Eso es lo que proponemos. Nataly les muestra lo que ya funciona».">
+ data-n="Caso base: 1 kilo de faltante y 6 de merma. Si la demanda sube 50 %, faltan 15. Si el proveedor llega dos días tarde, faltan 17 y se pierden 22. Comprar 20 kilos más con la misma fecha deja el faltante y sube la merma a 26. Recibir 25 kilos el día 1 da cero y cero.">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">09 · Gemelo digital<span class="espejo"><i></i><i></i></span></div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="fic">Datos sintéticos</span></div></div>
+    <div class="cm-cab cm-p"><div class="cm-kick">09 · Gemelo digital<span class="espejo"><i></i><i></i></span></div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="fic">Datos ficticios</span></div></div>
     <h2 class="cm-h2 cm-p">Probar la compra <em>antes de hacerla.</em></h2>
-    <div class="cm-gem">
+    <p class="cm-lead cm-p" style="font-size:18px;margin-top:8px;max-width:none;font-family:var(--mono);letter-spacing:.04em">Pechuga P001 · 15 kg libres · 5 días · resultados en kg</p>
+    <div class="cm-gem2">
       <div class="gem-chart cm-p">
-        <div class="gley"><span><i class="f"></i>Faltante</span><span><i class="m"></i>Merma potencial</span><span class="u">kg · ✳ sintético</span></div>
-        <svg viewBox="0 0 1060 380">
-          <defs><pattern id="rayaMerma" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#FF8E92"/><rect width="3" height="8" fill="#C9545A"/></pattern></defs>
-          <rect class="alt-band" x="886" y="232" width="168" height="140" fill="#7D0608"/>
-          <g stroke="rgba(252,247,245,.14)"><line x1="0" y1="300" x2="1060" y2="300"/><line x1="0" y1="220" x2="1060" y2="220" stroke-dasharray="3 6"/><line x1="0" y1="140" x2="1060" y2="140" stroke-dasharray="3 6"/><line x1="0" y1="60" x2="1060" y2="60" stroke-dasharray="3 6"/></g>
-          <g font-family="CM Mono,monospace" font-size="11" fill="rgba(252,247,245,.5)"><text x="4" y="216">10</text><text x="4" y="136">20</text><text x="4" y="56">30</text></g>
-          <rect class="gb" x="40" y="292" width="48" height="8" fill="#FFE6C1"/>
-          <text x="64" y="282" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">1</text>
-          <rect class="gb" x="96" y="252" width="48" height="48" fill="url(#rayaMerma)"/>
-          <text x="120" y="242" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">6</text>
-          <text x="92" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Caso base<tspan x="92" dy="20"></tspan></text>
-          <rect class="gb" x="210" y="180" width="48" height="120" fill="#FFE6C1"/>
-          <text x="234" y="170" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">15</text>
-          <rect x="266" y="298" width="48" height="2" fill="url(#rayaMerma)"/>
-          <text x="290" y="290" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">0</text>
-          <text x="262" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Demanda<tspan x="262" dy="20">+50 %</tspan></text>
-          <rect class="gb" x="380" y="164" width="48" height="136" fill="#FFE6C1"/>
-          <text x="404" y="154" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">17</text>
-          <rect class="gb" x="436" y="124" width="48" height="176" fill="url(#rayaMerma)"/>
-          <text x="460" y="114" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">22</text>
-          <text x="432" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Proveedor<tspan x="432" dy="20">2 días tarde</tspan></text>
-          <rect class="gb" x="550" y="292" width="48" height="8" fill="#FFE6C1"/>
-          <text x="574" y="282" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">1</text>
-          <rect class="gb" x="606" y="92" width="48" height="208" fill="url(#rayaMerma)"/>
-          <text x="630" y="82" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">26</text>
-          <text x="602" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Compra 50 kg<tspan x="602" dy="20">(+20)</tspan></text>
-          <rect class="gb" x="720" y="260" width="48" height="40" fill="#FFE6C1"/>
-          <text x="744" y="250" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">5</text>
-          <rect x="776" y="298" width="48" height="2" fill="url(#rayaMerma)"/>
-          <text x="800" y="290" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">0</text>
-          <text x="772" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Compra 20 kg<tspan x="772" dy="20">(−10)</tspan></text>
-          <rect x="890" y="298" width="48" height="2" fill="#FFE6C1"/>
-          <text x="914" y="290" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">0</text>
-          <rect x="946" y="298" width="48" height="2" fill="url(#rayaMerma)"/>
-          <text x="970" y="290" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">0</text>
-          <text x="942" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="#FFE6C1">Alternativa<tspan x="942" dy="20">25 kg el día 1</tspan></text>
+        <div class="gley"><span><i style="background:#A3161A"></i>Faltante kg</span><span><i style="background:#B8801F"></i>Merma potencial kg</span><span class="u">✳ Datos ficticios</span></div>
+        <svg viewBox="0 0 1100 420">
+          <rect class="alt-band" x="918" y="0" width="178" height="400" fill="rgba(125,6,8,.42)"/>
+          <text x="1007" y="22" text-anchor="middle" font-family="CM Mono,monospace" font-size="11.5" font-weight="700" letter-spacing="1.2" fill="#FFE6C1">CANTIDAD + FECHA<tspan x="1007" dy="16">CORRECTAS</tspan></text>
+          <line x1="44" y1="330" x2="1100" y2="330" stroke="rgba(252,247,245,.35)"/>
+          <text x="34" y="334" text-anchor="end" font-family="CM Mono,monospace" font-size="12" fill="rgba(252,247,245,.6)">0</text>
+          <line x1="44" y1="230" x2="1100" y2="230" stroke="rgba(252,247,245,.12)" stroke-dasharray="3 6"/>
+          <text x="34" y="234" text-anchor="end" font-family="CM Mono,monospace" font-size="12" fill="rgba(252,247,245,.6)">10</text>
+          <line x1="44" y1="130" x2="1100" y2="130" stroke="rgba(252,247,245,.12)" stroke-dasharray="3 6"/>
+          <text x="34" y="134" text-anchor="end" font-family="CM Mono,monospace" font-size="12" fill="rgba(252,247,245,.6)">20</text>
+          <line x1="44" y1="30" x2="1100" y2="30" stroke="rgba(252,247,245,.12)" stroke-dasharray="3 6"/>
+          <text x="34" y="34" text-anchor="end" font-family="CM Mono,monospace" font-size="12" fill="rgba(252,247,245,.6)">30</text>
+          <rect class="gb" x="78" y="320" width="56" height="10" fill="#A3161A"/>
+          <text x="106" y="311" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">1</text>
+          <rect class="gb" x="142" y="270" width="56" height="60" fill="#B8801F"/>
+          <text x="170" y="261" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">6</text>
+          <text x="138" y="358" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="15.5" fill="#FCF7F5">Caso base<tspan x="138" dy="19" font-weight="300" font-size="12.5" fill="rgba(252,247,245,.75)">(8 kg/día, llega día 2, 30 kg)</tspan></text>
+          <rect class="gb" x="256" y="180" width="56" height="150" fill="#A3161A"/>
+          <text x="284" y="171" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">15</text>
+          <rect x="320" y="328" width="56" height="2" fill="#B8801F"/>
+          <text x="348" y="321" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">0</text>
+          <text x="316" y="358" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="15.5" fill="#FCF7F5">Demanda +50 %<tspan x="316" dy="19" font-weight="300" font-size="12.5" fill="rgba(252,247,245,.75)"></tspan></text>
+          <rect class="gb" x="434" y="160" width="56" height="170" fill="#A3161A"/>
+          <text x="462" y="151" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">17</text>
+          <rect class="gb" x="498" y="110" width="56" height="220" fill="#B8801F"/>
+          <text x="526" y="101" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">22</text>
+          <text x="494" y="358" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="15.5" fill="#FCF7F5">Proveedor<tspan x="494" dy="19" font-weight="300" font-size="12.5" fill="rgba(252,247,245,.75)">2 días tarde</tspan></text>
+          <rect class="gb" x="612" y="320" width="56" height="10" fill="#A3161A"/>
+          <text x="640" y="311" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">1</text>
+          <rect class="gb" x="676" y="70" width="56" height="260" fill="#B8801F"/>
+          <text x="704" y="61" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">26</text>
+          <text x="672" y="358" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="15.5" fill="#FCF7F5">Compra de 50 kg<tspan x="672" dy="19" font-weight="300" font-size="12.5" fill="rgba(252,247,245,.75)">(20 adicionales)</tspan></text>
+          <rect class="gb" x="790" y="280" width="56" height="50" fill="#A3161A"/>
+          <text x="818" y="271" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">5</text>
+          <rect x="854" y="328" width="56" height="2" fill="#B8801F"/>
+          <text x="882" y="321" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">0</text>
+          <text x="850" y="358" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="15.5" fill="#FCF7F5">Compra de 20 kg<tspan x="850" dy="19" font-weight="300" font-size="12.5" fill="rgba(252,247,245,.75)">(10 menos)</tspan></text>
+          <rect x="968" y="328" width="56" height="2" fill="#A3161A"/>
+          <text x="996" y="321" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">0</text>
+          <rect x="1032" y="328" width="56" height="2" fill="#B8801F"/>
+          <text x="1060" y="321" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FCF7F5">0</text>
+          <text x="1028" y="358" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="15.5" fill="#FCF7F5">25 kg el día 1<tspan x="1028" dy="19" font-weight="300" font-size="12.5" fill="rgba(252,247,245,.75)">(alternativa)</tspan></text>
         </svg>
       </div>
       <div>
-        <div class="oro cm-p"><div class="e">El modelo · P001 pechuga</div>
-          <ul class="cm-vin" style="margin-top:10px;gap:7px">
-            <li><span><b>15 kg</b> libres al inicio</span></li>
-            <li><span>Horizonte de <b>5 días</b> (8 al 12 oct)</span></li>
-            <li><span>Demanda base <b>8 kg/día</b></span></li>
-            <li><span>Compra base <b>30 kg</b>, llega el día 2</span></li>
-            <li><span><b>Un cambio a la vez</b></span></li>
-          </ul></div>
-        <p class="cm-frase cm-p" style="font-size:21px;margin-top:18px">Comprar más no recupera la demanda perdida antes de que llegue. Importa <em>cuánto, cuándo</em> y cuánto queda para vender.</p>
+        <p class="gfrase cm-p">Comprar más no recupera la demanda que se perdió <em>antes de que llegue el producto.</em></p>
+        <div class="gnota cm-p"><b>Resultado del modelo, no garantía:</b> Gerencia valida proveedor, costo y vencimientos.</div>
       </div>
     </div>
-    <div class="pasos5 cm-p"><span>Datos del estado</span><em>→</em><span>Representación</span><em>→</em><span>Conectividad</span><em>→</em><span>Análisis</span><em>→</em><span class="hum">Decisión humana</span></div>
+  </div>
+</section>
+
+<!-- ═════════ 10b · video orozco ═════════ -->
+<section class="cm-l" data-exp="Orozco" data-seg="75" data-t="Video: tablero y simulación" data-y="2"
+ data-n="[Video de 1:11: narrar mientras corre.]
+Fuente común: productos, lotes, movimientos y pedidos cargados en el mismo Data Hub, con la hora del corte visible.
+Filtro de pechuga: 20 físicos, 4 reservados, 1 bloqueado, 15 disponibles.
+Control en cero: las reservas y las ventas de los movimientos coinciden con los pedidos.
+Cuatro escenarios en el simulador: demanda más alta, proveedor tarde, comprar más con la misma fecha y comprar menos.
+Decisión: la alternativa de 25 kilos el día 1 da cero faltante y cero merma; Gerencia valida antes de comprar.
+RELEVO → Nataly. Cierra así: «Eso es lo que proponemos. Nataly les muestra cómo funciona todo junto».">
+  <div class="cm-wrap">
+    <div class="cm-cab cm-p"><div class="cm-kick">▶ Demostración · Data Hub y gemelo</div><div class="cm-tags"><span class="fic">Datos ficticios</span></div></div>
+    <h2 class="cm-h2 cm-p" style="font-size:52px">Demostración: <em>tablero y simulación.</em></h2>
+    <div class="vmarco vacio cm-p"><div class="vph"><b>▶</b><span>Video: Chickenmart_orozco_datahub_gemelo.mp4 (1:11)</span><small>Espacio reservado para insertar el video</small></div><span class="vdur">1:11</span></div>
+    <p class="vpie cm-p">Simulador HTML · <span class="fic">Datos ficticios</span> · 64 pruebas de cálculo superadas</p>
   </div>
 </section>
 
@@ -1697,29 +1792,29 @@ RELEVO → Orozco. Cierra así: «Eso es lo que cuesta. Orozco les muestra hacia
 
 <!-- ═════════ 15 · industria 5.0 y visión ═════════ -->
 <section class="cm-l" data-exp="Orozco" data-seg="45" data-t="Industria 5.0 y visión a 5 años" data-y="4"
- data-n="Gracias, Carolina. Industria 5.0 orienta la propuesta hacia las personas, la sostenibilidad y la continuidad. El trabajador verifica la recepción, la gerencia aprueba decisiones, se mide la merma y se prepara la respuesta ante retrasos o cortes.
-La visión a cinco años propone estabilizar registros, integrar canales y validar análisis antes de crecer. La recomendación es iniciar con datos confiables y un piloto verificable, y medir el valor antes de ampliar la inversión.
+ data-n="Gracias, Carolina. Industria 5.0 pone a las personas en el centro: el trabajador verifica, Gerencia decide, medimos el desperdicio y preparamos la continuidad. La visión es crecer solo sobre registros confiables.
 RELEVO → María Camila. Cierra así: «Esa es la visión. María Camila cierra con las conclusiones».">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">17 · Industria 5.0 y visión a 5 años</div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta, no predicción</span></span></div></div>
+    <div class="cm-cab cm-p"><div class="cm-kick">17 · Industria 5.0 y visión a 5 años</div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta, no predicción</span></span><span class="fic">Datos ficticios</span></div></div>
     <h2 class="cm-h2 cm-p">Tecnología al servicio <em>de las personas.</em></h2>
     <div class="pilares">
       <div class="pilar cm-p"><svg viewBox="0 0 62 62" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="31" cy="20" r="10"/><path d="M12,56 C12,42 20,35 31,35 C42,35 50,42 50,56"/><path d="M23,20 l5,5 l10,-10" stroke-width="3"/></svg>
-        <div><div class="t">Personas</div><p class="d">El trabajador identifica el producto y valida peso y lote; gerencia aprueba compras, descuentos y ajustes.</p></div></div>
+        <div><div class="t">Personas</div><p class="d">El trabajador valida peso y lote; Gerencia aprueba compras y ajustes.</p></div></div>
       <div class="pilar cm-p"><svg viewBox="0 0 62 62" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M31,6 C46,18 52,30 46,44 C42,52 34,56 31,56 C28,56 20,52 16,44 C10,30 16,18 31,6 Z"/><path d="M31,56 L31,24"/></svg>
-        <div><div class="t">Sostenibilidad</div><p class="d">Seguimiento por lote y merma por causa; el simulador muestra que comprar más puede aumentar el desperdicio.</p></div></div>
+        <div><div class="t">Sostenibilidad</div><p class="d">Merma medida por causa y por lote; comprar más puede aumentar el desperdicio.</p></div></div>
       <div class="pilar cm-p"><svg viewBox="0 0 62 62" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M31,6 L52,14 L52,30 C52,44 42,52 31,57 C20,52 10,44 10,30 L10,14 Z"/><path d="M22,32 L28,38 L41,24"/></svg>
-        <div><div class="t">Resiliencia</div><p class="d">Operar ante cortes o retrasos con captura pendiente y conciliación posterior.</p></div></div>
+        <div><div class="t">Resiliencia</div><p class="d">Operar y conciliar ante cortes de internet o retrasos del proveedor.</p></div></div>
     </div>
     <div class="vision cm-p">
-      <div class="cm-et">Visión a 5 años · propuesta, no predicción · ◆ cada etapa avanza solo si se cumple su condición</div>
+      <div class="cm-et">Visión a 5 años · ◆ cada etapa avanza solo si cumple su condición</div>
       <div class="ruta gates">
-        <div><i>A1</i><small>Año 1</small><b>Estabilizar catálogo, recepción y reservas</b></div>
+        <div><i>A1</i><small>Año 1</small><b>Estabilizar registros</b></div>
         <div><i>A2</i><small>Año 2</small><b>Integrar canales y tableros</b></div>
         <div><i>A3</i><small>Año 3</small><b>Evaluar pronósticos y agentes</b></div>
         <div><i>A4</i><small>Año 4</small><b>Validar simulaciones con datos reales</b></div>
         <div><i>A5</i><small>Año 5</small><b>Ajustar la operación al portafolio y la demanda reales</b></div>
       </div>
+      <p class="cm-mini" style="margin-top:16px">Cada etapa avanza solo si cumple su condición.</p>
     </div>
   </div>
 </section>
@@ -1824,7 +1919,7 @@ SANTIAGO: Chickenmart conectado: del peso recibido a la disponibilidad de venta.
       <tr><td>F</td><td>Pantalla completa</td></tr>
       <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
     </tbody></table>
-    <p>Una diapositiva por clic. El cronómetro avisa en crema a los 22 minutos y en rojo al pasar de 23.</p>
+    <p>Una diapositiva por clic. El cronómetro avisa en crema a los 24 minutos y en rojo al pasar de 25.</p>
     <button class="cm-btn cm-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
   </div></section>
 </div>
@@ -1861,7 +1956,7 @@ function dos(n){return (n<10?"0":"")+n}
 /* Siete oscuras, ocho claras y una vino. Las claras son las más densas de
    leer (proceso, automatizaciones, IA, Data Hub, demo, roadmap, riesgos,
    costos); la vino queda reservada a la decisión. */
-var OSCURAS={0:1,1:1,3:1,5:1,7:1,8:1,10:1,12:1,13:1,15:1,19:1,20:1}, VINO={21:1};
+var OSCURAS={0:1,1:1,3:1,5:1,7:1,8:1,11:1,12:1,14:1,15:1,17:1,21:1,22:1}, VINO={23:1};
 var camara=D.createElement("div"); camara.id="camara";
 var mundo=D.createElement("div"); mundo.id="mundo";
 cm.parentNode.insertBefore(camara,cm); camara.appendChild(mundo); mundo.appendChild(cm);
@@ -2228,6 +2323,18 @@ function entrar(n){
     tl.fromTo(qa(s,".matriz2 .c2 span"),{opacity:0,y:-18},{opacity:1,y:0,duration:.4,stagger:.06,ease:"bounce.out"},1.1);
     tl.fromTo(qa(s,".rtab tr"),{opacity:0,x:20},{opacity:1,x:0,duration:.35,stagger:.08},1.4) }
 
+
+  /* Orozco · modelo, corte, tablero */
+  var e2=qa(s,".er .ent2");
+  if(e2.length){ tl.fromTo(e2,{opacity:0,scale:.85},{opacity:1,scale:1,duration:.5,stagger:.14,ease:"back.out(2)"},.7);
+    trazar(tl,qa(s,".er .rel2"),1.2,.6,.15);
+    tl.fromTo(qa(s,".er .card1n"),{opacity:0},{opacity:1,duration:.3,stagger:.15},1.6);
+    tl.fromTo(qa(s,".cortebox .g4 > div"),{opacity:0,y:16},{opacity:1,y:0,duration:.4,stagger:.1},1.0) }
+  var k4=qa(s,".kpi4 > div");
+  if(k4.length){ tl.fromTo(k4,{opacity:0,y:18},{opacity:1,y:0,duration:.4,stagger:.08},.7);
+    tl.fromTo(qa(s,".tb .tbl tr"),{opacity:0,x:16},{opacity:1,x:0,duration:.3,stagger:.05},1.0);
+    tl.fromTo(qa(s,".hb p i"),{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:.7,stagger:.12},1.3) }
+
   /* 11 · el caso corre de punta a punta; los checks se marcan */
   var rielC=s.querySelector(".caso .riel i");
   if(rielC){ tl.fromTo(rielC,{scaleX:0},{scaleX:1,duration:2,ease:"power1.inOut"},.6);
@@ -2325,9 +2432,9 @@ function sig(){ir(i+1)} function ant(){ir(i-1)}
 var t0=0, va=false, acum=0;
 function pintarReloj(){
   var s=Math.floor((acum+(va?Date.now()-t0:0))/1000);
-  reloj.textContent=dos(Math.floor(s/60))+":"+dos(s%60)+" / 23:00";
-  reloj.classList.toggle("ultimo",s>=1320&&s<1380);
-  reloj.classList.toggle("pasado",s>=1380);
+  reloj.textContent=dos(Math.floor(s/60))+":"+dos(s%60)+" / 25:00";
+  reloj.classList.toggle("ultimo",s>=1440&&s<1500);
+  reloj.classList.toggle("pasado",s>=1500);
   var d=new Date();
   hTs.textContent=dos(d.getHours())+":"+dos(d.getMinutes())+":"+dos(d.getSeconds())+" · "+dos(d.getDate())+"."+dos(d.getMonth()+1)+"."+d.getFullYear();
 }
