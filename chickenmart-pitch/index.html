@@ -932,6 +932,16 @@ h2.cm-h2 .alt{color:var(--alt)}
 .cm-l.oscura .pend-box,.cm-l.oscura .pulso .ext{background:rgba(9,12,20,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .cm-l.vino .cuatro > div,.cm-l.vino .pend-box{background:rgba(58,2,4,.78)}
 
+/* ══ modo plano (Safari): sin cámara 3D ═══════════════════════════════ */
+html.plano #camara{perspective:none}
+html.plano #mundo,html.plano .cm-l,html.plano .capa.frente,html.plano .cm-wrap{transform-style:flat}
+html.plano .capa.fondo{transform:scale(1.06)}
+html.plano .capa.frente{transform:none}
+html.plano .malla{filter:blur(60px);inset:-10%}
+html.plano .sello{animation:none;transform:none}
+html.plano .sello .cara:not(.frontal){display:none}
+html.plano .sb-glass,html.plano [style*="backdrop"]{backdrop-filter:none}
+
 /* ══ notas, cuadrícula, atajos ═══════════════════════════════════════ */
 #notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(8,10,18,.97);backdrop-filter:blur(14px);
   border-top:2px solid var(--vino-vivo);color:var(--hueso);padding:20px var(--gut) 24px;transform:translate3d(0,101%,0);transition:transform .32s var(--ease)}
@@ -1943,6 +1953,10 @@ SANTIAGO: Chickenmart conectado: del peso recibido a la disponibilidad de venta.
 var D=document, g=window.gsap;
 var QUIETO=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var SUAVE=!QUIETO && !!g;
+/* Safari (Mac, iPhone, iPad) se traba con la cámara 3D y los desenfoques: ahí va en modo plano */
+var UA=navigator.userAgent, PLANO=/Safari/.test(UA) && !/Chrome|Chromium|CriOS|FxiOS|EdgiOS|Edg\/|OPR\//.test(UA);
+if(location.search.indexOf("plano")>=0) PLANO=true;
+if(PLANO) D.documentElement.classList.add("plano");
 var cm=D.getElementById("cm"), L=[].slice.call(cm.querySelectorAll(".cm-l")), N=L.length;
 var stage=D.getElementById("stage"), vista=D.getElementById("vista");
 var panel=D.getElementById("panel"), rg=D.getElementById("rg");
@@ -2062,7 +2076,7 @@ D.getElementById("app").addEventListener("transitionend",function(e){
 
 /* ══ PARALLAX DE CURSOR ═══════════════════════════════════════════════ */
 var pA={rx:0,ry:0}, pB={rx:0,ry:0};
-if(SUAVE){
+if(SUAVE && !PLANO){
   vista.addEventListener("mousemove",function(e){
     var r=vista.getBoundingClientRect();
     pB.ry=((e.clientX-r.left)/r.width-.5)*4.4;
@@ -2187,6 +2201,11 @@ function entrar(n){
   }
   tl=g.timeline({defaults:{ease:"power3.out"}});
   /* fondo: llega lejos y desenfocado, con máscara */
+  if(PLANO){
+    /* modo plano: mismas entradas, sin profundidad ni desenfoques */
+    tl.fromTo(fondo,{opacity:0},{opacity:1,duration:1.2,ease:"power2.out"},0);
+    tl.fromTo(piezas,{opacity:0,y:24},{opacity:1,y:0,duration:.8,stagger:.05,ease:"expo.out"},.1);
+  } else {
   g.set(fondo,{opacity:0,z:-940,filter:"blur(11px)",clipPath:"inset(0 100% 0 0)"});
   tl.to(fondo,{opacity:1,z:-640,filter:"blur(0px)",clipPath:"inset(0 0% 0 0)",duration:2.1,ease:"expo.out"},0);
   piezas.forEach(function(e){
@@ -2194,6 +2213,7 @@ function entrar(n){
     g.set(e,{opacity:0,z:z+(hondo?-300:180),filter:hondo?"blur(7px)":"blur(2px)"});
     tl.to(e,{opacity:1,z:z,filter:"blur(0px)",duration:hondo?1.45:1.0,ease:"expo.out"},hondo?.1:.26);
   });
+  }
   g.set(ps,{opacity:0,y:16});
   tl.to(ps,{opacity:1,y:0,duration:.66,stagger:.04},.3);
   qa(s,"[data-num]").forEach(function(e){cifra(e,tl,.9)});
@@ -2457,13 +2477,18 @@ function presentar(){
   D.body.classList.toggle("presentando");
   var on=D.body.classList.contains("presentando");
   D.getElementById("bPresentar").classList.toggle("activo",on);
-  if(on && D.documentElement.requestFullscreen) D.documentElement.requestFullscreen().catch(function(){});
-  if(!on && D.fullscreenElement && D.exitFullscreen) D.exitFullscreen().catch(function(){});
+  if(on) entrarPantalla();
+  if(!on && enPantalla()) salirPantalla();
   var m0=Date.now(), seguir=function(){ escalar(); if(Date.now()-m0<460) requestAnimationFrame(seguir); else ajustarMinis() };
   requestAnimationFrame(seguir);
 }
-function pantalla(){ D.fullscreenElement ? (D.exitFullscreen&&D.exitFullscreen())
-  : (D.documentElement.requestFullscreen&&D.documentElement.requestFullscreen().catch(function(){})) }
+function enPantalla(){ return D.fullscreenElement||D.webkitFullscreenElement }
+function entrarPantalla(){ var e=D.documentElement, f=e.requestFullscreen||e.webkitRequestFullscreen;
+  if(!f) return; try{ var r=f.call(e); if(r&&r.catch) r.catch(function(){}) }catch(x){} }
+function salirPantalla(){ var f=D.exitFullscreen||D.webkitExitFullscreen;
+  if(!f) return; try{ var r=f.call(D); if(r&&r.catch) r.catch(function(){}) }catch(x){} }
+function pantalla(){ enPantalla() ? salirPantalla() : entrarPantalla() }
+D.addEventListener("webkitfullscreenchange",function(){ escalar() });
 D.addEventListener("fullscreenchange",function(){
   var m0=Date.now(), seguir=function(){escalar(); if(Date.now()-m0<460) requestAnimationFrame(seguir)};
   requestAnimationFrame(seguir);

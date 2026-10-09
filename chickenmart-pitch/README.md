@@ -29,6 +29,8 @@ copia legible en `fonts/` y `vendor/`.
 | `F` | Pantalla completa |
 | `Esc` | Cerrar lo que esté abierto |
 
+**Safari (Mac, iPhone, iPad):** entra solo en *modo plano*, sin la cámara 3D ni los desenfoques, que Safari no maneja bien. Se puede forzar en cualquier navegador con `index.html?plano`.
+
 **Una diapositiva por clic.** Cada escena entra completa con su coreografía; no hay
 sub-pasos. Se puede abrir directo en una lámina con `index.html#11`.
 
