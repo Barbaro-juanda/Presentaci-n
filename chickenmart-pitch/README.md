@@ -5,8 +5,8 @@ Presentación final del proyecto académico de **transformación digital para Ch
 decisión de inversión defendida con problema, evidencia, viabilidad y resultado.
 
 - **Lema:** «Chickenmart conectado: del peso recibido a la disponibilidad de venta».
-- **Equipo, en orden de exposición:** Santiago → Juan David → Carolina → Nataly → Orozco.
-- **Duración:** 16 diapositivas · ~13:35 hablados · cronómetro a 15:00.
+- **Equipo, en orden de exposición:** Santiago → Juan David → Carolina → Nataly → Orozco → María Camila Jiménez.
+- **Duración:** 20 diapositivas · ~17:30 hablados · cronómetro a 18:00 (aviso en crema a los 17 minutos).
 - **Guion completo** (título, contenido, visual y notas por diapositiva): `guion.md`.
 
 ## Cómo se abre
@@ -36,11 +36,12 @@ sub-pasos. Se puede abrir directo en una lámina con `index.html#11`.
 
 | Expositor | Diapositivas | Tiempo |
 |---|---|---|
-| Santiago | 1 Portada · 2 Problema · 3 AS IS → TO BE · 16 (mitad) | 2:50 |
-| Juan David | 4 Arquitectura e IoT · 5 Automatizaciones · 16 (mitad) | 2:30 |
-| Carolina | 6 Cloud · 7 IA · 14 Costos, KPIs y ROI | 2:40 |
-| Nataly | 8 Agentes · 12 Roadmap · 13 Riesgos · coordina la 11 | 2:20 + demo |
-| Orozco | 9 Data Hub y Power BI · 10 Gemelo digital · 15 Industria 5.0 | 2:15 |
+| Santiago | 1 Portada · 2 Problema · 3 AS IS → TO BE · 20 (mitad) | 2:50 |
+| Juan David | 4 Arquitectura e IoT · 5 Automatizaciones · 20 (mitad) | 2:30 |
+| Carolina | 6 Cloud · 7 IA · 17 Costos, KPIs y ROI | 2:40 |
+| Nataly | 8 Agentes · 15 Roadmap · 16 Riesgos · coordina la 11 | 2:20 + demo |
+| Orozco | 9 Data Hub y Power BI · 10 Gemelo digital · 18 Industria 5.0 | 2:30 |
+| María Camila Jiménez | 12 Lo que hoy es real · 13 Piloto ajustado · 14 Venta web por peso · 19 Conclusiones | 3:40 |
 
 En escena, el HUD de abajo dice siempre quién expone (`EXPONE // NATALY`) y el panel de
 miniaturas marca las láminas pendientes. Cada cambio de expositor tiene su frase de relevo en
@@ -63,7 +64,8 @@ las notas (`RELEVO →`).
 | HECHO | cuadrado lleno, borde sólido, en tinta | Sale del diagnóstico |
 | PROPUESTA | círculo, en el acento de la marca | Lo propone el equipo |
 | PENDIENTE | triángulo, borde punteado y rayado de obra | Falta contenido o validación |
-| ✳ FICTICIO · SUPUESTO | asterisco subrayado | Número de ejemplo, no real |
+| VALIDACIÓN REAL | sello girado con check y doble borde | Confirmado por gerencia en la operación real |
+| ✳ FICTICIO · SUPUESTO · PRELIMINAR | asterisco subrayado | Número de ejemplo o estimación, no real |
 
 ## Láminas pendientes
 
@@ -73,12 +75,20 @@ con cinta de obra animada:
 | Lámina | Quién | Qué falta |
 |---|---|---|
 | 8 Agentes G1–G3 | Nataly | Objetivo final, quién aprueba en G2 y G3, evidencia |
-| 9 Data Hub y Power BI | Orozco | Modelo final y captura del tablero (datos ficticios del prototipo) |
-| 10 Gemelo digital | Orozco | Base, cambio, resultado y decisión de los tres escenarios |
-| 11 Demo integrada | Carolina, Nataly, Orozco | Evidencias de IA, agentes, tablero y gemelo |
-| 12 Roadmap | Nataly | Duración, responsables y entregable de cada fase |
-| 13 Riesgos | Nataly | Ubicación de R1–R9 en la matriz |
-| 15 Industria 5.0 | Orozco | Desarrollo final de pilares y visión |
+| 11 Demo integrada | Carolina, Nataly | Evidencias de IA y agentes |
+| 15 Roadmap | Nataly | Duración, responsables y entregable de cada fase |
+| 16 Riesgos | Nataly | Ubicación de R1–R9 en la matriz |
+
+Las láminas de Orozco (9, 10 y 18) ya están completas con datos sintéticos, y su evidencia
+(Data Hub local, tablero, simulador, 64 + 16 verificaciones y kit de Power BI) está en la 11.
+
+## Validación real con el desarrollador
+
+Las láminas 12, 13 y 14 (María Camila Jiménez) recogen lo que gerencia confirmó de la operación
+real: Siigo como registro de compras e inventario, dos básculas sin salida de datos comprobada,
+facturas en UND y KG, y cobro web después de validar. Llevan el sello «Validación real» y sus
+tiempos están marcados como estimación preliminar, no cotización. La 19 son las conclusiones y
+pide aprobar las etapas 0 y 1 (8 a 15 días hábiles).
 
 Cuando llegue el contenido: se borra el `.pend-box`, se quita `data-pend="1"` de la
 `<section>` y la etiqueta `tag pend` del encabezado, y se reemplaza el `[PENDIENTE …]` de

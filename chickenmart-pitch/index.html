@@ -648,6 +648,135 @@ h2.cm-h2 .alt{color:var(--alt)}
 .lema-final p{font-family:var(--disp);font-weight:900;font-size:40px;line-height:1.1;color:var(--ink)}
 .lema-final p em{font-style:normal;color:var(--acc)}
 
+/* ══ 09 · Data Hub con datos sintéticos ═══════════════════════════════ */
+.cm-hub2{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;margin-top:20px;align-items:start}
+.ctl{display:grid;gap:6px;margin-top:12px}
+.ctl li{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--ln);background:var(--panel);font-size:14.5px;color:var(--ink)}
+.ctl li i{width:22px;height:22px;display:grid;place-items:center;background:var(--acc);color:var(--on-acc);font-style:normal;font-size:12px;font-weight:700}
+.ctl li b{font-family:var(--mono);font-size:12px;color:var(--acc);letter-spacing:.06em}
+.kc{display:grid;grid-template-columns:1fr 18px 1fr 18px 1fr 18px 1fr;align-items:center;gap:6px;padding:14px 14px 4px}
+.kc div{border:1px solid var(--ln);background:var(--bg);padding:10px 12px}
+.kc small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--i45)}
+.kc b{font-family:var(--disp);font-weight:900;font-size:36px;line-height:1.05;color:var(--ink);font-variant-numeric:tabular-nums}
+.kc .disp{background:var(--acc);border-color:var(--acc)} .kc .disp small,.kc .disp b{color:var(--on-acc)}
+.kc em{font-style:normal;font-family:var(--disp);font-weight:900;font-size:26px;color:var(--acc);text-align:center}
+.tp{width:calc(100% - 28px);margin:10px 14px 0;border-collapse:collapse;font-family:var(--mono);font-size:12.5px}
+.tp th{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--i45);text-align:right;padding:5px 8px;border-bottom:1.5px solid var(--ink);font-weight:400}
+.tp td{text-align:right;padding:6px 8px;border-bottom:1px solid var(--ln);color:var(--ink);font-variant-numeric:tabular-nums}
+.tp th:first-child,.tp td:first-child{text-align:left;font-weight:700}
+.tp td b{color:var(--acc)} .tp td.pr{color:var(--alt);font-weight:700}
+.ind{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:8px;padding:12px 14px 14px}
+.ind > div{border:1px solid var(--ln);background:var(--bg);padding:10px 12px}
+.ind small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--i45);margin-bottom:5px}
+.ind > div > b{font-family:var(--disp);font-weight:900;font-size:26px;line-height:1.05;color:var(--ink)}
+.ind > div > p{font-size:12px;line-height:1.3;color:var(--i70);margin-top:3px}
+.cb{display:grid;grid-template-columns:62px 1fr 34px;gap:6px;align-items:center;font-family:var(--mono);font-size:10.5px;color:var(--i70);margin-top:3px}
+.cb i{height:9px;background:var(--acc);width:var(--w);transform-origin:left} .cb b{color:var(--ink);text-align:right}
+
+/* ══ 10 · gemelo con resultados ═══════════════════════════════════════ */
+.cm-gem{display:grid;grid-template-columns:1.42fr .58fr;gap:36px;margin-top:22px;align-items:start}
+.gem-chart{border:1px solid var(--ln2);background:rgba(9,12,20,.88);padding:16px 20px 10px}
+.gem-chart svg{width:100%;height:auto;display:block;overflow:visible}
+.gley{display:flex;gap:22px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--i70);margin-bottom:8px}
+.gley i{display:inline-block;width:13px;height:13px;margin-right:8px;vertical-align:-2px}
+.gley i.f{background:#FFE6C1} .gley i.m{background:repeating-linear-gradient(45deg,#FF8E92 0 5px,#C9545A 5px 8px)}
+.gley .u{margin-left:auto;color:var(--alt)}
+.pasos5{display:flex;align-items:center;gap:10px;margin-top:20px}
+.pasos5 span{flex:1;text-align:center;padding:11px 8px;border:1px solid var(--ln2);background:rgba(9,12,20,.88);font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--i90)}
+.pasos5 span.hum{background:var(--crema);color:var(--negro);border-color:var(--crema);font-weight:700}
+.pasos5 em{font-style:normal;color:var(--acc)}
+
+/* ══ 15 · ruta con condiciones ════════════════════════════════════════ */
+.vision .ruta div small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-top:12px}
+.vision .ruta div small + b{margin-top:4px;font-size:18px}
+.vision .ruta.gates div:not(:last-child)::after{content:"◆";position:absolute;top:9px;right:calc(50% - 6px);font-size:14px;line-height:1;color:var(--acc)}
+.pilar .d{font-size:15.5px}
+
+/* ══ 11 · dos evidencias ══════════════════════════════════════════════ */
+.cm-demo{grid-template-columns:1.12fr .88fr}
+.checks.uno{grid-template-columns:1fr}
+.demo-pie{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center;margin-top:16px}
+.demo-pie .pend-box{padding:12px 20px 14px 70px}
+.demo-pie .pend-box .t{font-size:22px}
+
+/* ══ VALIDACIÓN REAL · sello confirmado por gerencia ══════════════════ */
+.sello-real{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;padding:6px 12px 6px 8px;border:3px double currentColor;color:var(--bg);background:var(--ink);transform:rotate(-3deg);white-space:nowrap}
+.sello-real i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--bg);color:var(--ink);font-style:normal;font-size:12px}
+.sello-real small{font-size:9.5px;letter-spacing:.12em;font-weight:400;opacity:.8;margin-left:4px;border-left:1px solid currentColor;padding-left:9px}
+.sello-real.mini{transform:none;font-size:11px;padding:3px 10px 3px 6px} .sello-real.mini i{width:16px;height:16px;font-size:10px}
+.flujo7{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:26px;position:relative}
+.flujo7 .riel{position:absolute;left:3%;right:3%;top:24px;height:2px;background:repeating-linear-gradient(90deg,var(--alt) 0 7px,transparent 7px 13px)}
+.flujo7 .st{position:relative;text-align:center}
+.flujo7 .st b{width:48px;height:48px;margin:0 auto;display:grid;place-items:center;border:2px dashed var(--alt);background:var(--bg);font-family:var(--mono);font-size:15px;color:var(--alt);position:relative;z-index:1}
+.flujo7 .st span{display:block;font-size:15.5px;line-height:1.3;margin-top:10px;color:var(--ink);font-weight:500}
+.flujo7 .st span small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--i45);margin-top:3px;font-weight:400}
+.flujo7 .st em{display:inline-block;margin-top:8px;font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--alt);border:1px dashed var(--alt);padding:3px 7px}
+.flujo7 .st.fin b{border-style:solid;background:var(--alt);color:var(--bg)}
+.hechos4{display:grid;grid-template-columns:.8fr 1.5fr 1fr .8fr;gap:14px;margin-top:28px}
+.hechos4 > div{border:1px solid var(--ln2);background:var(--panel);padding:16px 18px;border-top:3px solid var(--acc)}
+.hechos4 small{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
+.hechos4 p{font-size:15.5px;line-height:1.42;color:var(--i90);font-weight:300;margin-top:7px}
+.hechos4 p b{font-weight:600;color:var(--ink)}
+.cm-piloto{display:grid;grid-template-columns:1.32fr .68fr;gap:34px;margin-top:22px;align-items:start}
+.etapas{border:1px solid var(--ln);background:var(--panel);padding:16px 22px 14px}
+.etapas .eje,.etapas .et{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;align-items:center}
+.etapas .eje{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--i45);padding-bottom:8px;border-bottom:1px solid var(--ln2)}
+.etapas .eje{grid-template-columns:1.05fr repeat(4,.25fr)} .etapas .eje span:not(:first-child){text-align:left}
+.etapas .et{padding:11px 0;border-bottom:1px solid var(--ln)}
+.etapas .n{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.etapas .n > b{font-family:var(--disp);font-weight:900;font-size:28px;line-height:1;color:var(--acc)}
+.etapas .n span{font-family:var(--disp);font-weight:800;font-size:18px;line-height:1.18;color:var(--ink)}
+.etapas .n span i{font-style:normal;font-family:var(--mono);font-weight:700;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--alt);border:1px dashed var(--alt);padding:2px 6px;margin-left:6px;vertical-align:2px}
+.etapas .n small{display:block;font-family:var(--body);font-weight:300;font-size:13.5px;line-height:1.36;color:var(--i70);margin-top:4px}
+.pista{position:relative;height:22px;background:repeating-linear-gradient(90deg,var(--ln) 0 1px,transparent 1px 20%)}
+.pista i{position:absolute;top:3px;height:16px}
+.pista i.min,.leyp i.min{background:var(--acc)} .pista i.ext,.leyp i.ext{background:repeating-linear-gradient(-45deg,var(--acc) 0 3px,transparent 3px 7px);border:1px solid var(--acc)}
+.et.cond .pista i.min{background:transparent;border:1.5px dashed var(--acc)}
+.pista em{position:absolute;right:0;top:-16px;font-style:normal;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink)}
+.leyp{display:flex;gap:18px;margin-top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--i45)}
+.leyp i{display:inline-block;width:18px;height:10px;margin-right:6px;vertical-align:-1px;position:static}
+.leyp span:last-child{color:var(--alt);margin-left:auto}
+.lado{display:grid;gap:12px}
+.totales{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.totales > div{border:1.5px solid var(--ink);padding:12px 14px;background:var(--panel)}
+.totales .pide{background:var(--acc);border-color:var(--acc)} .totales .pide *{color:var(--on-acc) !important}
+.totales small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--i45)}
+.totales b{display:block;font-family:var(--disp);font-weight:900;font-size:40px;line-height:1.05;color:var(--ink);margin-top:4px}
+.totales span{font-family:var(--mono);font-size:10.5px;color:var(--i70)}
+.caja{border:1px solid var(--ln2);background:var(--panel);padding:13px 16px}
+.caja .e{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
+.caja p{font-size:14.5px;line-height:1.42;color:var(--i90);font-weight:300;margin-top:5px} .caja p b{font-weight:600;color:var(--ink)}
+.caja.aparte{border-style:dashed} .caja.aparte .e{color:var(--alt)}
+.estados6{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:30px}
+.estados6 .es{position:relative;padding:16px 16px 18px;border:1px solid var(--ln2);background:rgba(9,12,20,.88);clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%,12px 50%)}
+.estados6 .es:first-child{clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%)}
+.estados6 .es b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);padding-left:8px}
+.estados6 .es p{font-size:15px;line-height:1.38;color:var(--i90);font-weight:300;margin-top:8px;padding:0 10px 0 8px}
+.estados6 .es p b{display:inline;font-family:var(--body);font-size:inherit;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:600;padding:0}
+.estados6 .es.pago{background:var(--crema)} .estados6 .es.pago b,.estados6 .es.pago p,.estados6 .es.pago p b{color:var(--negro)}
+.ejemplo{display:flex;align-items:center;gap:16px;margin-top:30px;padding:18px 22px;border:1.5px dashed var(--ln2);background:rgba(9,12,20,.88)}
+.ejemplo > div small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--i45)}
+.ejemplo > div b{font-family:var(--disp);font-weight:900;font-size:30px;color:var(--ink);font-variant-numeric:tabular-nums}
+.ejemplo > div.fin b{color:var(--acc)}
+.ejemplo em{font-style:normal;color:var(--acc);font-size:22px}
+.ejemplo .fic{margin-right:10px}
+.cm-concl{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;margin-top:24px;align-items:start}
+.concl{display:grid;gap:10px}
+.concl li{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:baseline;padding:14px 18px;border:1px solid var(--ln2);background:rgba(9,12,20,.88)}
+.concl li > b{font-family:var(--disp);font-weight:900;font-size:28px;color:var(--acc)}
+.concl li p{font-size:17.5px;line-height:1.4;color:var(--i90);font-weight:300} .concl li p b{font-weight:600;color:var(--ink)}
+.criterios{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.criterios li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--ln2);background:rgba(9,12,20,.88);font-size:15px;color:var(--ink)}
+.criterios li i{width:22px;height:22px;display:grid;place-items:center;background:var(--acc);color:var(--on-acc);font-style:normal;font-size:12px;font-weight:700}
+.pedido{margin-top:14px;background:var(--crema);color:var(--negro);padding:18px 22px}
+.pedido small{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--vino)}
+.pedido b{display:block;font-family:var(--disp);font-weight:900;font-size:36px;line-height:1.08;color:var(--vino);margin-top:4px}
+.pedido > span{font-family:var(--mono);font-size:12px;color:var(--negro)}
+.pedido p{font-size:14.5px;margin-top:10px;color:var(--negro)}
+.pedido .met{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pedido .met em{font-style:normal;font-family:var(--mono);font-size:11px;padding:5px 9px;border:1px solid var(--vino);color:var(--vino)}
+
 /* ══ EL SELLO EXTRUIDO · el gallo en vino y crema ════════════════════ */
 .sello{position:absolute;transform-style:preserve-3d;will-change:transform;animation:flotar 9s ease-in-out infinite alternate}
 @keyframes flotar{0%{transform:translate3d(0,0,0) rotateX(12deg) rotateY(-18deg) rotateZ(-4deg)}
@@ -719,7 +848,7 @@ h2.cm-h2 .alt{color:var(--alt)}
     <div class="marca"><svg viewBox="0 0 120 120" fill="currentColor"><use href="#cm-logo"></use></svg>
       <span>Chickenmart conectado · Pitch ejecutivo final · Transformación digital</span></div>
     <div class="sep"></div>
-    <div id="reloj">00:00 / 15:00</div>
+    <div id="reloj">00:00 / 18:00</div>
     <button class="cm-btn" id="bRejilla">Cuadrícula <kbd>O</kbd></button>
     <button class="cm-btn" id="bNotas">Notas <kbd>N</kbd></button>
     <button class="cm-btn" id="bAtajos">Atajos <kbd>?</kbd></button>
@@ -731,7 +860,7 @@ h2.cm-h2 .alt{color:var(--alt)}
 
 <!-- ═════════ 01 · portada ═════════ -->
 <section class="cm-l" data-exp="Santiago" data-seg="30" data-t="Portada" data-y="0"
- data-n="Buenas tardes. Somos Santiago, Juan David, Carolina, Nataly y Orozco, y durante el semestre trabajamos con Chickenmart S.A.S., en el Alto de Las Palmas, en Envigado: vende derivados del pollo en su punto físico, por WhatsApp, por su sitio web y con domicilios en moto propia.
+ data-n="Buenas tardes. Somos Santiago, Juan David, Carolina, Nataly, Orozco y María Camila Jiménez, y durante el semestre trabajamos con Chickenmart S.A.S., en el Alto de Las Palmas, en Envigado: vende derivados del pollo en su punto físico, por WhatsApp, por su sitio web y con domicilios en moto propia.
 Hoy no venimos a mostrar tecnología por mostrarla. Venimos a pedir una decisión de inversión, y nuestro lema la resume: Chickenmart conectado, del peso recibido a la disponibilidad de venta.
 Una aclaración antes de empezar, y miren la leyenda de abajo: en pantalla separamos lo que es un hecho del diagnóstico, lo que es propuesta nuestra y lo que todavía está pendiente. Nada de lo que proponemos está instalado hoy en Chickenmart, y cada número de ejemplo está marcado como ficticio.">
   <div class="cm-wrap cm-port">
@@ -749,17 +878,19 @@ Una aclaración antes de empezar, y miren la leyenda de abajo: en pantalla separ
       <dt class="cm-p">Pitch ejecutivo final</dt><dd class="cm-p">Proyecto académico de transformación digital</dd>
       <dt class="cm-p">Equipo y orden de exposición</dt>
       <dd class="cm-p"><div class="rep">
-        <b>Santiago</b><i>01 · 02 · 03 · 16</i>
-        <b>Juan David</b><i>04 · 05 · 16</i>
-        <b>Carolina</b><i>06 · 07 · 14</i>
-        <b>Nataly</b><i>08 · 11 · 12 · 13</i>
-        <b>Orozco</b><i>09 · 10 · 15</i>
+        <b>Santiago</b><i>01 · 02 · 03 · 20</i>
+        <b>Juan David</b><i>04 · 05 · 20</i>
+        <b>Carolina</b><i>06 · 07 · 17</i>
+        <b>Nataly</b><i>08 · 11 · 15 · 16</i>
+        <b>Orozco</b><i>09 · 10 · 18</i>
+        <b>María Camila Jiménez</b><i>12 · 13 · 14 · 19</i>
       </div></dd>
       <dt class="cm-p">Cómo leer esta presentación</dt>
       <dd class="cm-p"><div class="leyenda">
         <span class="tag hecho"><i></i><span>Hecho</span></span>
         <span class="tag prop"><i></i><span>Propuesta</span></span>
         <span class="tag pend"><i></i><span>Pendiente</span></span>
+        <span class="sello-real mini"><i>✓</i>Validación real</span>
         <span class="fic">Ficticio · supuesto</span>
       </div>
       <p class="cm-mini" style="margin-top:12px">Nada de lo propuesto está instalado hoy en Chickenmart.</p></dd>
@@ -906,6 +1037,7 @@ Sobre la báscula, seamos precisos: pesa con una celda de carga, pero no sabe qu
       </div>
     </div>
   </div>
+  <div class="cm-fuente">En el piloto real, Siigo actúa como inventario de referencia; la conexión directa de la báscula depende de una prueba de salida de datos.</div>
 </section>
 
 <!-- ═════════ 05 · automatizaciones ═════════ -->
@@ -1099,64 +1231,123 @@ Ningún agente compra, cobra ni corrige inventario por su cuenta.">
 </section>
 
 <!-- ═════════ 09 · data hub y power bi ═════════ -->
-<section class="cm-l" data-exp="Orozco" data-seg="45" data-t="Data Hub y Power BI" data-pend="1" data-y="2"
- data-n="[PENDIENTE · Orozco completa el contenido final de esta lámina.]
-Gracias, Nataly. Todo lo que hemos visto deja rastro, y aquí se ordena. El modelo de datos tiene cuatro piezas: productos, lotes, movimientos y pedidos. El movimiento es el corazón: cada entrada, reserva, salida, merma o corrección es una fila con su lote y su pedido.
-Sobre ese modelo va el tablero de Power BI: existencias, disponibilidad, reservas, movimientos, merma por vencimiento y alertas. Y arriba, siempre visible, la fecha de la última actualización, porque un tablero sin fecha invita a decidir con datos viejos.
-Los datos de prueba son ficticios y vienen del prototipo de Juan David. El tablero lee copias: nunca decide un saldo.">
+<section class="cm-l" data-exp="Orozco" data-seg="50" data-t="Data Hub y Power BI" data-y="2"
+ data-n="Gracias, Nataly. El diseño separa dos funciones: el sistema operativo confirma reservas y ventas, y el Data Hub reúne los movimientos para analizarlos.
+Con productos, lotes, movimientos y pedidos obtenemos 43 kilos físicos, 7 reservados y 2 bloqueados: quedan 34 disponibles.
+Reservar no es vender; al despachar se reduce el físico y se elimina la reserva una sola vez.
+Los controles de reservas y ventas dan cero, lo que muestra que los datos concilian.">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">08 · Data Hub y Power BI</div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="tag pend"><i></i><span>Pendiente</span></span></div></div>
-    <h2 class="cm-h2 cm-p">Cada movimiento deja rastro. <em>El tablero lo vuelve visible.</em></h2>
-    <div class="cm-hub">
+    <div class="cm-cab cm-p"><div class="cm-kick">08 · Data Hub y Power BI</div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="fic">Datos sintéticos</span></div></div>
+    <h2 class="cm-h2 cm-p" style="max-width:40ch">Una fuente común <em>para entender el inventario.</em></h2>
+    <p class="cm-lead cm-p" style="font-size:19px;margin-top:10px;max-width:none">El sistema operativo <b>confirma</b> recepciones, reservas y ventas; el Data Hub <b>reúne</b> esos eventos para analizar. <b>El tablero no autoriza ventas.</b></p>
+    <div class="cm-hub2">
       <div>
-        <div class="modelo cm-p">
-          <svg><path class="rel" d="M119,152 L119,222"/><path class="rel" d="M214,80 L500,80"/><path class="rel" d="M214,288 L500,288"/><path class="rel" d="M595,152 L595,222"/></svg>
-          <div class="ent" style="left:24px;top:24px"><div class="h">Productos</div><ul><li>SKU · presentación</li><li>precio · proveedor</li></ul></div>
-          <div class="ent" style="left:500px;top:24px"><div class="h">Pedidos</div><ul><li>canal · estado</li><li>reserva · entrega</li></ul></div>
-          <div class="ent" style="left:24px;top:224px"><div class="h">Lotes</div><ul><li>proveedor · lote</li><li>vencimiento</li></ul></div>
-          <div class="ent mov" style="left:500px;top:224px"><div class="h">Movimientos</div><ul><li>entrada · reserva</li><li>salida · merma · ajuste</li></ul></div>
+        <div class="modelo cm-p" style="height:300px">
+          <svg><path class="rel" d="M119,124 L119,170"/><path class="rel" d="M214,226 L466,226"/><path class="rel" d="M561,124 L561,170"/>
+            <g font-family="CM Mono,monospace" font-size="10" fill="currentColor" opacity=".55"><text x="127" y="152">1:N</text><text x="320" y="218">1:N</text><text x="569" y="152">1:N</text></g></svg>
+          <div class="ent" style="left:24px;top:20px"><div class="h">Productos</div><ul><li>SKU · presentación</li><li>precio · proveedor</li></ul></div>
+          <div class="ent" style="left:466px;top:20px"><div class="h">Pedidos</div><ul><li>canal · estado</li><li>reserva · venta</li></ul></div>
+          <div class="ent" style="left:24px;top:170px"><div class="h">Lotes</div><ul><li>lote · proveedor</li><li>vencimiento</li></ul></div>
+          <div class="ent mov" style="left:466px;top:170px"><div class="h">Movimientos</div><ul><li>cada evento · ID único</li><li>entrada · reserva · salida</li></ul></div>
         </div>
-        <p class="cm-mini cm-p" style="margin-top:12px"><span class="fic">Datos de prueba ficticios</span> · vienen del prototipo de Juan David.</p>
+        <ul class="ctl cm-p">
+          <li><i>✓</i><span>Reservas en eventos = reservas en pedidos</span><b>Δ 0 kg</b></li>
+          <li><i>✓</i><span>Ventas en eventos = ventas en pedidos</span><b>Δ 0 kg</b></li>
+          <li><i>✓</i><span>Evento repetido</span><b>rechazado</b></li>
+        </ul>
       </div>
-      <div>
-        <div class="tablero cm-p">
-          <div class="top"><b>Tablero · Chickenmart</b><span>Última actualización<i></i></span></div>
-          <div class="tiles">
-            <div class="tile"><div class="e">Existencias</div><div class="sk"></div></div>
-            <div class="tile"><div class="e">Disponibilidad</div><div class="sk"></div></div>
-            <div class="tile"><div class="e">Reservas</div><div class="sk"></div></div>
-            <div class="tile"><div class="e">Movimientos</div><div class="sk"></div></div>
-            <div class="tile"><div class="e">Merma por vencimiento</div><div class="sk"></div></div>
-            <div class="tile"><div class="e">Alertas</div><div class="sk"></div></div>
-          </div>
+      <div class="tablero cm-p">
+        <div class="top"><b>Tablero · Chickenmart</b><span>Corte 8 oct 2026 · 18:00 · ✳ sintético</span></div>
+        <div class="kc">
+          <div><small>Físico</small><b><span data-num="43">43</span> kg</b></div><em>−</em>
+          <div><small>Reservado</small><b><span data-num="7">7</span> kg</b></div><em>−</em>
+          <div><small>Bloqueado</small><b><span data-num="2">2</span> kg</b></div><em>=</em>
+          <div class="disp"><small>Disponible</small><b><span data-num="34">34</span> kg</b></div>
         </div>
-        <div class="pend-box cm-p" style="margin-top:16px"><div class="cinta"></div>
-          <div class="t">Contenido pendiente de <b>Orozco</b></div>
-          <p class="d">Falta: el <b>modelo final</b> y la <b>captura del tablero</b> con los datos ficticios del prototipo.</p></div>
+        <table class="tp">
+          <tr><th>Producto</th><th>Físico</th><th>Reserv.</th><th>Bloq.</th><th>Disp.</th><th>Vence</th></tr>
+          <tr><td>P001</td><td>20</td><td>4</td><td>1</td><td><b>15</b></td><td>11-oct</td></tr>
+          <tr><td>P002</td><td>14</td><td>2</td><td>0</td><td><b>12</b></td><td>10-oct</td></tr>
+          <tr><td>P003</td><td>9</td><td>1</td><td>1</td><td><b>7</b></td><td class="pr">9-oct</td></tr>
+        </table>
+        <div class="ind">
+          <div><small>Ventas por canal</small>
+            <p class="cb"><span>WhatsApp</span><i style="--w:100%"></i><b>5 kg</b></p>
+            <p class="cb"><span>Punto</span><i style="--w:80%"></i><b>4 kg</b></p>
+            <p class="cb"><span>Web</span><i style="--w:40%"></i><b>2 kg</b></p></div>
+          <div><small>Merma</small><b>1 kg</b><p>calidad · 0 kg por vencimiento</p></div>
+          <div><small>Pedidos sin stock</small><b>12,5 %</b><p>1 de 8 · solo en la muestra</p></div>
+          <div><small>Lotes por vencer</small><b>2</b><p>vencen en ≤ 2 días</p></div>
+        </div>
       </div>
     </div>
   </div>
+  <div class="cm-fuente">Carga por cortes con hora visible, no tiempo real. Kit de Power BI incluido. ✳ Todos los datos son sintéticos.</div>
 </section>
 
 <!-- ═════════ 10 · gemelo digital ═════════ -->
-<section class="cm-l" data-exp="Orozco" data-seg="45" data-t="Gemelo digital" data-pend="1" data-y="2"
- data-n="[PENDIENTE · Orozco completa los resultados de las simulaciones.]
-El gemelo digital es una copia del inventario donde se puede ensayar sin tocar el real. Preparamos tres escenarios, y los tres se leen igual: situación base, qué cambia, qué resulta y qué decisión sugiere.
-Uno: aumenta la demanda. Dos: el proveedor se retrasa. Tres: comprar más para aprovechar un precio, contra el riesgo de que se venza.
-Las celdas grises están pendientes porque los resultados todavía no están simulados, y no vamos a inventarlos. Lo que sí queda claro es para qué sirve: decidir antes de que pase, no después.
+<section class="cm-l" data-exp="Orozco" data-seg="55" data-t="Gemelo digital" data-y="2"
+ data-n="El simulador permite cambiar condiciones antes de aplicarlas. En el caso base falta 1 kilo y quedan 6 de merma potencial.
+Si la demanda sube 50 %, faltan 15. Si el proveedor se retrasa dos días, faltan 17 y se pierden 22.
+Si compramos 20 kilos más con la misma fecha, sigue faltando 1 kilo y la merma sube a 26, porque la mercancía llega después de la necesidad.
+Recibir 25 kilos el día 1 atiende la demanda sin faltantes ni merma, pero es un resultado del modelo, no una garantía: gerencia debe validar proveedor, costo y vencimientos.
 RELEVO → Nataly. Cierra así: «Eso es lo que proponemos. Nataly les muestra lo que ya funciona».">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">09 · Gemelo digital<span class="espejo"><i></i><i></i></span></div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="tag pend"><i></i><span>Pendiente</span></span></div></div>
-    <h2 class="cm-h2 cm-p">Ensayar la decisión <em>antes de tomarla.</em></h2>
-    <div class="esc-t">
-      <div class="esc-f cab cm-p"><div>Escenario simulado</div><div>Situación base</div><div>Cambio</div><div>Resultado</div><div>Decisión</div></div>
-      <div class="esc-f cm-p"><div class="esc-n"><b>E1</b><span>Aumento de demanda</span></div><div class="sk">por simular</div><div class="sk">por simular</div><div class="sk">por simular</div><div class="sk dec">por definir</div></div>
-      <div class="esc-f cm-p"><div class="esc-n"><b>E2</b><span>Retraso de proveedor</span></div><div class="sk">por simular</div><div class="sk">por simular</div><div class="sk">por simular</div><div class="sk dec">por definir</div></div>
-      <div class="esc-f cm-p"><div class="esc-n"><b>E3</b><span>Compra adicional vs. vencimiento</span></div><div class="sk">por simular</div><div class="sk">por simular</div><div class="sk">por simular</div><div class="sk dec">por definir</div></div>
+    <div class="cm-cab cm-p"><div class="cm-kick">09 · Gemelo digital<span class="espejo"><i></i><i></i></span></div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="fic">Datos sintéticos</span></div></div>
+    <h2 class="cm-h2 cm-p">Probar la compra <em>antes de hacerla.</em></h2>
+    <div class="cm-gem">
+      <div class="gem-chart cm-p">
+        <div class="gley"><span><i class="f"></i>Faltante</span><span><i class="m"></i>Merma potencial</span><span class="u">kg · ✳ sintético</span></div>
+        <svg viewBox="0 0 1060 380">
+          <defs><pattern id="rayaMerma" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#FF8E92"/><rect width="3" height="8" fill="#C9545A"/></pattern></defs>
+          <rect class="alt-band" x="886" y="232" width="168" height="140" fill="#7D0608"/>
+          <g stroke="rgba(252,247,245,.14)"><line x1="0" y1="300" x2="1060" y2="300"/><line x1="0" y1="220" x2="1060" y2="220" stroke-dasharray="3 6"/><line x1="0" y1="140" x2="1060" y2="140" stroke-dasharray="3 6"/><line x1="0" y1="60" x2="1060" y2="60" stroke-dasharray="3 6"/></g>
+          <g font-family="CM Mono,monospace" font-size="11" fill="rgba(252,247,245,.5)"><text x="4" y="216">10</text><text x="4" y="136">20</text><text x="4" y="56">30</text></g>
+          <rect class="gb" x="40" y="292" width="48" height="8" fill="#FFE6C1"/>
+          <text x="64" y="282" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">1</text>
+          <rect class="gb" x="96" y="252" width="48" height="48" fill="url(#rayaMerma)"/>
+          <text x="120" y="242" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">6</text>
+          <text x="92" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Caso base<tspan x="92" dy="20"></tspan></text>
+          <rect class="gb" x="210" y="180" width="48" height="120" fill="#FFE6C1"/>
+          <text x="234" y="170" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">15</text>
+          <rect x="266" y="298" width="48" height="2" fill="url(#rayaMerma)"/>
+          <text x="290" y="290" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">0</text>
+          <text x="262" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Demanda<tspan x="262" dy="20">+50 %</tspan></text>
+          <rect class="gb" x="380" y="164" width="48" height="136" fill="#FFE6C1"/>
+          <text x="404" y="154" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">17</text>
+          <rect class="gb" x="436" y="124" width="48" height="176" fill="url(#rayaMerma)"/>
+          <text x="460" y="114" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">22</text>
+          <text x="432" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Proveedor<tspan x="432" dy="20">2 días tarde</tspan></text>
+          <rect class="gb" x="550" y="292" width="48" height="8" fill="#FFE6C1"/>
+          <text x="574" y="282" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">1</text>
+          <rect class="gb" x="606" y="92" width="48" height="208" fill="url(#rayaMerma)"/>
+          <text x="630" y="82" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">26</text>
+          <text x="602" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Compra 50 kg<tspan x="602" dy="20">(+20)</tspan></text>
+          <rect class="gb" x="720" y="260" width="48" height="40" fill="#FFE6C1"/>
+          <text x="744" y="250" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">5</text>
+          <rect x="776" y="298" width="48" height="2" fill="url(#rayaMerma)"/>
+          <text x="800" y="290" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FF8E92">0</text>
+          <text x="772" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="rgba(252,247,245,.84)">Compra 20 kg<tspan x="772" dy="20">(−10)</tspan></text>
+          <rect x="890" y="298" width="48" height="2" fill="#FFE6C1"/>
+          <text x="914" y="290" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">0</text>
+          <rect x="946" y="298" width="48" height="2" fill="url(#rayaMerma)"/>
+          <text x="970" y="290" text-anchor="middle" font-family="CM Display,sans-serif" font-weight="900" font-size="24" fill="#FFE6C1">0</text>
+          <text x="942" y="330" text-anchor="middle" font-family="CM Body,sans-serif" font-weight="600" font-size="16" fill="#FFE6C1">Alternativa<tspan x="942" dy="20">25 kg el día 1</tspan></text>
+        </svg>
+      </div>
+      <div>
+        <div class="oro cm-p"><div class="e">El modelo · P001 pechuga</div>
+          <ul class="cm-vin" style="margin-top:10px;gap:7px">
+            <li><span><b>15 kg</b> libres al inicio</span></li>
+            <li><span>Horizonte de <b>5 días</b> (8 al 12 oct)</span></li>
+            <li><span>Demanda base <b>8 kg/día</b></span></li>
+            <li><span>Compra base <b>30 kg</b>, llega el día 2</span></li>
+            <li><span><b>Un cambio a la vez</b></span></li>
+          </ul></div>
+        <p class="cm-frase cm-p" style="font-size:21px;margin-top:18px">Comprar más no recupera la demanda perdida antes de que llegue. Importa <em>cuánto, cuándo</em> y cuánto queda para vender.</p>
+      </div>
     </div>
-    <div class="pend-box cm-p" style="margin-top:12px;max-width:980px"><div class="cinta"></div>
-      <div class="t">Contenido pendiente de <b>Orozco</b></div>
-      <p class="d">Falta: situación base, cambio, resultado y decisión de cada escenario, sobre los datos ficticios del prototipo.</p></div>
+    <div class="pasos5 cm-p"><span>Datos del estado</span><em>→</em><span>Representación</span><em>→</em><span>Conectividad</span><em>→</em><span>Análisis</span><em>→</em><span class="hum">Decisión humana</span></div>
   </div>
 </section>
 
@@ -1164,8 +1355,10 @@ RELEVO → Nataly. Cierra así: «Eso es lo que proponemos. Nataly les muestra l
 <section class="cm-l" data-exp="Todos · coordina Nataly" data-seg="60" data-t="Implementación: demo integrada" data-y="3"
  data-n="Gracias, Orozco. Ahora, un caso de punta a punta, el mismo para todos. Arriba están los nueve pasos: registrar una recepción pesada, comprobar el saldo, reservar un pedido, registrar la salida, actualizar el tablero, detectar un riesgo, que el agente proponga una acción, que una persona la valide y simular un escenario.
 ¿Qué está probado hoy? El prototipo de Juan David, en Python con SQLite y con datos ficticios, verificó doce pasos: entre ellos la recepción de veinte kilos, el rechazo de duplicados, quince kilos vendibles con reservas, una venta simultánea con un solo ganador, despachos con peso real, una cancelación, una merma, una corrección autorizada y las alertas.
-[Turno de cada uno, 10 segundos: Juan David muestra la recepción; Carolina, Nataly y Orozco, su parte cuando la tengan.]
-Las demás evidencias están pendientes, y lo decimos así. Y recuerden: es un prototipo del equipo, no está instalado en Chickenmart.">
+Orozco suma su parte: un Data Hub local en SQLite y CSV que concilia 43 kilos físicos y 34 disponibles, el tablero y el simulador en HTML, 64 pruebas de cálculo y datos más 16 verificaciones del tablero, y un kit de Power BI con relaciones, medidas DAX y Power Query. Las dos demos usan datos sintéticos con la misma lógica de saldo.
+[Turno de cada uno, 10 segundos: Juan David muestra la recepción; Orozco, el corte conciliado y el simulador; Carolina y Nataly, su parte cuando la tengan.]
+Las demás evidencias están pendientes, y lo decimos así. Y recuerden: es un prototipo del equipo, no está instalado en Chickenmart.
+RELEVO → María Camila. Cierra así: «Eso es lo que probamos con datos sintéticos. María Camila les cuenta qué encontramos en la operación real».">
   <div class="cm-wrap">
     <div class="cm-cab cm-p"><div class="cm-kick">10 · Implementación · demo integrada</div><div class="cm-tags"><span class="tag prop"><i></i><span>Prototipo del equipo</span></span><span class="fic">Datos ficticios</span></div></div>
     <h2 class="cm-h2 cm-p" style="max-width:36ch">Un caso, de punta a punta. <em>Lo probado y lo que falta.</em></h2>
@@ -1196,11 +1389,104 @@ Las demás evidencias están pendientes, y lo decimos así. Y recuerden: es un p
           <li style="color:var(--i45)"><span></span><span class="cm-mini">No instalado en Chickenmart.</span></li>
         </ul>
       </div>
-      <div class="pend-lista">
-        <div class="pend-box cm-p"><div class="cinta"></div>
-          <div class="t">Evidencias pendientes</div>
-          <p class="d">IA → <b>Carolina</b> · agentes → <b>Nataly</b> · tablero y gemelo → <b>Orozco</b>.</p></div>
+      <div class="evid cm-p">
+        <div class="cab2"><div class="tt">Data Hub de Orozco<small>SQLITE + CSV · HTML</small></div><span class="tag prop"><i></i><span>80 verificaciones</span></span></div>
+        <ul class="checks uno">
+          <li><i>✓</i><span>Data Hub local: <b>43 / 34 kg</b> conciliados <small>✳ sintético</small></span></li>
+          <li><i>✓</i><span>Tablero y simulador en HTML</span></li>
+          <li><i>✓</i><span>64 pruebas de cálculo y datos + 16 del tablero</span></li>
+          <li><i>✓</i><span>Kit de Power BI: relaciones, medidas DAX, Power Query</span></li>
+        </ul>
       </div>
+    </div>
+    <div class="demo-pie">
+      <div class="pend-box cm-p"><div class="cinta"></div>
+        <div class="t">Evidencias pendientes</div>
+        <p class="d">IA → <b>Carolina</b> · agentes → <b>Nataly</b>.</p></div>
+      <p class="cm-mini cm-p">✳ La demo de Juan David (PECH-001) y la de Orozco (P001) usan <b>datos sintéticos</b> con la <b>misma lógica de saldo</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 12 · validación real · lo que hoy es real ═════════ -->
+<section class="cm-l" data-exp="María Camila" data-seg="55" data-t="Lo que hoy es real en Chickenmart" data-y="3"
+ data-n="Gracias. Contrastamos la propuesta académica con la operación real. Chickenmart ya registra compras e inventario en Siigo y tiene dos básculas, pero ninguna muestra todavía una salida de datos. Por eso ajustamos el piloto: no prometemos una conexión que no está comprobada.
+[Apoyo si hay tiempo: la recepción de hoy son siete pasos y todos son manuales, desde la orden en Siigo hasta que se actualiza el inventario. Las facturas mezclan unidades y kilos, así que conservamos las dos medidas. Y en la web el cliente no paga hasta que la tienda valida el pedido.]">
+  <div class="cm-wrap">
+    <div class="cm-cab cm-p"><div class="cm-kick">11 · Validación real</div><div class="cm-tags"><span class="sello-real"><i>✓</i>Validación real<small>confirmado por gerencia</small></span><span class="tag pend"><i></i><span>Báscula por verificar</span></span></div></div>
+    <h2 class="cm-h2 cm-p">Lo que hoy es real <em>en Chickenmart.</em></h2>
+    <div class="flujo7 cm-p"><div class="riel"></div>
+      <div class="st"><b>1</b><span>Orden de compra <small>Siigo</small></span><em>✋ manual</em></div>
+      <div class="st"><b>2</b><span>Llega camión y factura</span><em>✋ manual</em></div>
+      <div class="st"><b>3</b><span>Comparar pedido, factura y entrega</span><em>✋ manual</em></div>
+      <div class="st"><b>4</b><span>Pesar y contar</span><em>✋ manual</em></div>
+      <div class="st"><b>5</b><span>Reportar diferencias <small>WhatsApp + hoja</small></span><em>✋ manual</em></div>
+      <div class="st"><b>6</b><span>Digitar la compra en Siigo</span><em>✋ manual</em></div>
+      <div class="st fin"><b>7</b><span>Se actualiza el inventario</span><em>✋ manual</em></div>
+    </div>
+    <div class="hechos4">
+      <div class="cm-p"><small>Siigo</small><p>Las compras recibidas se registran en <b>Siigo</b> y así se actualiza el inventario.</p></div>
+      <div class="cm-p"><small>Dos básculas</small><p>Piso en recepción (visor kg/lb, <b>e = d = 50 g</b>) y mostrador. En las fotos <b>no se ve salida de datos</b>: solo cables de alimentación. Falta revisar placa, manual y conectores; aclarar con el proveedor la etiqueta de advertencia de la de piso.</p></div>
+      <div class="cm-p"><small>Facturas UND + KG</small><p>Combinan cobro por unidad y por kilogramo: <b>conservar ambas medidas</b>, sin convertir paquetes en kg.</p></div>
+      <div class="cm-p"><small>Web</small><p>El cliente <b>no paga</b> hasta que la tienda valida el pedido.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 13 · validación real · piloto ajustado ═════════ -->
+<section class="cm-l" data-exp="María Camila" data-seg="60" data-t="Piloto ajustado con el desarrollador" data-y="3"
+ data-n="Con el desarrollador definimos un piloto viable: primero un registro digital de recepción con captura manual y Siigo como referencia, y solo después conectar la báscula o integrar la API, cuando las pruebas lo confirmen.
+[Apoyo: las etapas 0 y 1 toman entre 8 y 15 días hábiles; llegar a la etapa 3 toma entre 23 y 40. Son estimaciones preliminares, no una cotización. La etapa 2 solo ocurre si la báscula tiene salida compatible. Lo de la derecha, como la foto del visor, es una alternativa a evaluar, y la sincronización web, la IA y los agentes se cotizan aparte.]">
+  <div class="cm-wrap">
+    <div class="cm-cab cm-p"><div class="cm-kick">12 · Piloto ajustado</div><div class="cm-tags"><span class="sello-real"><i>✓</i>Validación real<small>confirmado por gerencia</small></span><span class="fic">Estimación preliminar · no cotización</span></div></div>
+    <h2 class="cm-h2 cm-p">Piloto ajustado <em>con el desarrollador.</em></h2>
+    <div class="cm-piloto">
+      <div class="etapas cm-p">
+        <div class="eje"><span>Días hábiles</span><span>0</span><span>5</span><span>10</span><span>15</span></div>
+        <div class="et"><div class="n"><b>E0</b><span>Validación del flujo y compatibilidad<small>Recepción real, catálogo y unidades en Siigo, modelo de báscula y permisos.</small></span></div>
+          <div class="pista"><i class="min" style="width:20%"></i><i class="ext" style="left:20%;width:13.3%"></i><em>3–5 d</em></div></div>
+        <div class="et"><div class="n"><b>E1</b><span>Piloto digital con captura manual<small>Une orden, factura y verificación física; peso escrito desde la báscula actual; compra manual en Siigo, que sigue siendo la referencia.</small></span></div>
+          <div class="pista"><i class="min" style="width:33.3%"></i><i class="ext" style="left:33.3%;width:33.3%"></i><em>5–10 d</em></div></div>
+        <div class="et cond"><div class="n"><b>E2</b><span>Pesaje conectado <i>solo si hay salida compatible</i><small>Si no, cotizar adaptador o reemplazo.</small></span></div>
+          <div class="pista"><i class="min" style="width:33.3%"></i><i class="ext" style="left:33.3%;width:33.3%"></i><em>5–10 d</em></div></div>
+        <div class="et"><div class="n"><b>E3</b><span>Registro asistido con la API de Siigo<small>POST /v1/purchases · aprobación humana · envío una sola vez.</small></span></div>
+          <div class="pista"><i class="min" style="width:66.6%"></i><i class="ext" style="left:66.6%;width:33.4%"></i><em>10–15 d</em></div></div>
+        <div class="leyp"><span><i class="min"></i>mínimo</span><span><i class="ext"></i>hasta el máximo</span><span>✳ preliminar</span></div>
+      </div>
+      <div class="lado">
+        <div class="totales cm-p">
+          <div class="pide"><small>Etapas 0 + 1 · lo que se pide</small><b>8–15</b><span>días hábiles ✳</span></div>
+          <div><small>Hasta etapa 3</small><b>23–40</b><span>días hábiles ✳</span></div>
+        </div>
+        <div class="caja cm-p"><div class="e">Alternativa a evaluar</div><p>Foto del visor de la báscula con lectura automática y <b>confirmación obligatoria del operador</b>. No sustituye el conteo ni identifica el producto.</p></div>
+        <div class="caja aparte cm-p"><div class="e">Se cotiza aparte</div><p>Sincronización web y reservas multicanal · lectura automática de facturas · mensajes al proveedor · IA · agentes · simulación.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 14 · validación real · venta web por peso ═════════ -->
+<section class="cm-l" data-exp="María Camila" data-seg="45" data-t="Venta web por peso con bolsas cerradas" data-y="3"
+ data-n="Como la web cobra después de validar, podemos vender por peso sin abrir bolsas: el cliente siempre aprueba el peso y el precio final antes de pagar.
+[Apoyo con el ejemplo ficticio: pide 2 kilos a 20.000 pesos el kilo, estimado 40.000; la tienda encuentra una bolsa de 1,95 kilos, son 39.000; el cliente acepta y paga. Al despachar se entregan esas bolsas y la venta se registra una sola vez en Siigo.]
+RELEVO → Nataly. Cierra así: «Ese es el piloto real. Nataly les muestra el roadmap».">
+  <div class="cm-wrap">
+    <div class="cm-cab cm-p"><div class="cm-kick">13 · Venta web por peso</div><div class="cm-tags"><span class="sello-real"><i>✓</i>Validación real<small>la web cobra después de validar</small></span><span class="fic">Ejemplo ficticio</span></div></div>
+    <h2 class="cm-h2 cm-p">Venta web por peso <em>con bolsas cerradas.</em></h2>
+    <div class="estados6 cm-p">
+      <div class="es"><b>Pendiente de validación</b><p>El cliente pide un peso aproximado y ve un <b>total estimado</b>, sin cobro.</p></div>
+      <div class="es"><b>Validado</b><p>La tienda elige una bolsa cerrada o combinación cercana, la <b>pesa y la reserva</b>.</p></div>
+      <div class="es"><b>Aceptado</b><p>El cliente <b>acepta peso y precio final</b>.</p></div>
+      <div class="es pago"><b>Pagado</b><p>Recién aquí <b>paga</b>.</p></div>
+      <div class="es"><b>Preparado</b><p>Se alistan las bolsas reservadas.</p></div>
+      <div class="es"><b>Despachado</b><p>Venta registrada <b>una sola vez en Siigo</b>.</p></div>
+    </div>
+    <div class="ejemplo cm-p">
+      <span class="fic">Ejemplo ficticio</span>
+      <div><small>Pide</small><b>2 kg × $20.000</b></div><em>→</em>
+      <div><small>Estimado</small><b>$<span data-num="40000" data-miles="1">40.000</span></b></div><em>→</em>
+      <div><small>Bolsa cerrada</small><b><span data-num="1.95" data-dec="2">1,95</span> kg</b></div><em>→</em>
+      <div class="fin"><small>Acepta y paga</small><b>$<span data-num="39000" data-miles="1">39.000</span></b></div>
     </div>
   </div>
 </section>
@@ -1211,7 +1497,7 @@ Las demás evidencias están pendientes, y lo decimos así. Y recuerden: es un p
 El roadmap tiene cinco fases y el orden no es casual. Primero se valida: el proceso real, el catálogo y la calidad de los datos. Segundo, el piloto de pesaje e inventario central, que es lo que pedimos aprobar. Tercero, se integran los canales y el tablero. Cuarto, entran la IA, los agentes y el gemelo, que solo sirven cuando ya hay histórico confiable. Y quinto, se mide y se ajusta.
 Como referencia, un piloto así podría tomar de ocho a doce semanas. Es un supuesto, no un compromiso: el tiempo real sale de la fase uno.">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">11 · Roadmap</div><div class="cm-tags"><span class="tag prop"><i></i><span>Fases sugeridas</span></span><span class="tag pend"><i></i><span>Pendiente</span></span></div></div>
+    <div class="cm-cab cm-p"><div class="cm-kick">14 · Roadmap</div><div class="cm-tags"><span class="tag prop"><i></i><span>Fases sugeridas</span></span><span class="tag pend"><i></i><span>Pendiente</span></span></div></div>
     <h2 class="cm-h2 cm-p">Primero la base. <em>Después la inteligencia.</em></h2>
     <div class="fases">
       <div class="fase cm-p"><div class="n">1</div><div class="t">Validar proceso, catálogo y datos</div></div>
@@ -1241,7 +1527,7 @@ La matriz cruza probabilidad e impacto, de uno a tres cada uno, y el color sube 
 Lo que sí está definido son los controles: un ID único por registro, confirmación humana, cola sin conexión, permisos por rol y revisión humana de lo que sugiera la IA.
 RELEVO → Carolina. Cierra así: «Con los riesgos sobre la mesa, Carolina les muestra cuánto cuesta y cómo lo medimos».">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">12 · Riesgos y controles</div><div class="cm-tags"><span class="tag prop"><i></i><span>Controles</span></span><span class="tag pend"><i></i><span>Matriz final</span></span></div></div>
+    <div class="cm-cab cm-p"><div class="cm-kick">15 · Riesgos y controles</div><div class="cm-tags"><span class="tag prop"><i></i><span>Controles</span></span><span class="tag pend"><i></i><span>Matriz final</span></span></div></div>
     <h2 class="cm-h2 cm-p">Cada riesgo, <em>con su control.</em></h2>
     <div class="cm-ries">
       <div class="cm-p">
@@ -1282,7 +1568,7 @@ Para saber si funcionó, seis indicadores: diferencia entre lo físico y lo regi
 Y el retorno se calcula con estas dos fórmulas: ROI y periodo de recuperación. Las dos se pueden resolver solo con datos reales, y eso es justamente lo que deja la fase uno.
 RELEVO → Orozco. Cierra así: «Eso es lo que cuesta. Orozco les muestra hacia dónde lleva».">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">13 · Costos, KPIs y ROI</div><div class="cm-tags"><span class="tag prop"><i></i><span>Estructura</span></span><span class="tag pend"><i></i><span>Valores reales</span></span></div></div>
+    <div class="cm-cab cm-p"><div class="cm-kick">16 · Costos, KPIs y ROI</div><div class="cm-tags"><span class="tag prop"><i></i><span>Estructura</span></span><span class="tag pend"><i></i><span>Valores reales</span></span></div></div>
     <h2 class="cm-h2 cm-p" style="max-width:36ch">Sin precios inventados. <em>Con la fórmula lista para los reales.</em></h2>
     <div class="cm-cost">
       <div class="cc cm-p">
@@ -1319,31 +1605,65 @@ RELEVO → Orozco. Cierra así: «Eso es lo que cuesta. Orozco les muestra hacia
 </section>
 
 <!-- ═════════ 15 · industria 5.0 y visión ═════════ -->
-<section class="cm-l" data-exp="Orozco" data-seg="45" data-t="Industria 5.0 y visión a 5 años" data-pend="1" data-y="4"
- data-n="[PENDIENTE · Orozco completa el contenido final de esta lámina.]
-Gracias, Carolina. La Industria 5.0 pone a la persona en el centro, y en Chickenmart eso se traduce en tres cosas. Personas: el trabajador verifica y aprueba; la tecnología le quita la tarea repetitiva, no la decisión. Sostenibilidad: medir el desperdicio por vencimiento para poder reducirlo. Y resiliencia: seguir operando aunque se caiga la conexión.
-Hacia cinco años, la visión es: un inventario común, canales coordinados, trazabilidad por lote, compras con datos y crecimiento con control. No prometemos nuevas sedes: prometemos que, si Chickenmart decide crecer, lo haga sobre una base que aguanta.
-RELEVO → Santiago. Cierra así: «Esa es la visión. Santiago y Juan David les dicen qué necesitamos hoy».">
+<section class="cm-l" data-exp="Orozco" data-seg="45" data-t="Industria 5.0 y visión a 5 años" data-y="4"
+ data-n="Gracias, Carolina. Industria 5.0 orienta la propuesta hacia las personas, la sostenibilidad y la continuidad. El trabajador verifica la recepción, la gerencia aprueba decisiones, se mide la merma y se prepara la respuesta ante retrasos o cortes.
+La visión a cinco años propone estabilizar registros, integrar canales y validar análisis antes de crecer. La recomendación es iniciar con datos confiables y un piloto verificable, y medir el valor antes de ampliar la inversión.
+RELEVO → María Camila. Cierra así: «Esa es la visión. María Camila cierra con las conclusiones».">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">14 · Industria 5.0 y visión a 5 años</div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta</span></span><span class="tag pend"><i></i><span>Pendiente</span></span></div></div>
-    <h2 class="cm-h2 cm-p">Tecnología al servicio <em>de quien trabaja.</em></h2>
+    <div class="cm-cab cm-p"><div class="cm-kick">17 · Industria 5.0 y visión a 5 años</div><div class="cm-tags"><span class="tag prop"><i></i><span>Propuesta, no predicción</span></span></div></div>
+    <h2 class="cm-h2 cm-p">Tecnología al servicio <em>de las personas.</em></h2>
     <div class="pilares">
       <div class="pilar cm-p"><svg viewBox="0 0 62 62" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="31" cy="20" r="10"/><path d="M12,56 C12,42 20,35 31,35 C42,35 50,42 50,56"/><path d="M23,20 l5,5 l10,-10" stroke-width="3"/></svg>
-        <div><div class="t">Personas</div><p class="d">El trabajador verifica y aprueba.</p></div></div>
+        <div><div class="t">Personas</div><p class="d">El trabajador identifica el producto y valida peso y lote; gerencia aprueba compras, descuentos y ajustes.</p></div></div>
       <div class="pilar cm-p"><svg viewBox="0 0 62 62" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M31,6 C46,18 52,30 46,44 C42,52 34,56 31,56 C28,56 20,52 16,44 C10,30 16,18 31,6 Z"/><path d="M31,56 L31,24"/></svg>
-        <div><div class="t">Sostenibilidad</div><p class="d">Medir y reducir el desperdicio por vencimiento.</p></div></div>
+        <div><div class="t">Sostenibilidad</div><p class="d">Seguimiento por lote y merma por causa; el simulador muestra que comprar más puede aumentar el desperdicio.</p></div></div>
       <div class="pilar cm-p"><svg viewBox="0 0 62 62" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M31,6 L52,14 L52,30 C52,44 42,52 31,57 C20,52 10,44 10,30 L10,14 Z"/><path d="M22,32 L28,38 L41,24"/></svg>
-        <div><div class="t">Resiliencia</div><p class="d">Seguir operando ante cortes de conexión.</p></div></div>
+        <div><div class="t">Resiliencia</div><p class="d">Operar ante cortes o retrasos con captura pendiente y conciliación posterior.</p></div></div>
     </div>
     <div class="vision cm-p">
-      <div class="cm-et">Visión propuesta a 5 años · sin prometer nuevas sedes</div>
-      <div class="ruta">
-        <div><i>1</i><b>Inventario común</b></div><div><i>2</i><b>Canales coordinados</b></div><div><i>3</i><b>Trazabilidad por lote</b></div><div><i>4</i><b>Compras con datos</b></div><div><i>5</i><b>Crecimiento con control</b></div>
+      <div class="cm-et">Visión a 5 años · propuesta, no predicción · ◆ cada etapa avanza solo si se cumple su condición</div>
+      <div class="ruta gates">
+        <div><i>A1</i><small>Año 1</small><b>Estabilizar catálogo, recepción y reservas</b></div>
+        <div><i>A2</i><small>Año 2</small><b>Integrar canales y tableros</b></div>
+        <div><i>A3</i><small>Año 3</small><b>Evaluar pronósticos y agentes</b></div>
+        <div><i>A4</i><small>Año 4</small><b>Validar simulaciones con datos reales</b></div>
+        <div><i>A5</i><small>Año 5</small><b>Ajustar la operación al portafolio y la demanda reales</b></div>
       </div>
     </div>
-    <div class="pend-box cm-p" style="margin-top:24px;max-width:980px"><div class="cinta"></div>
-      <div class="t">Contenido pendiente de <b>Orozco</b></div>
-      <p class="d">Falta: el desarrollo final de los tres pilares y de la visión a cinco años.</p></div>
+  </div>
+</section>
+
+<!-- ═════════ 19 · conclusiones ═════════ -->
+<section class="cm-l" data-exp="María Camila" data-seg="60" data-t="Conclusiones" data-y="4"
+ data-n="Gracias, Orozco. Cierro con lo que aprendimos al contrastar la propuesta con Chickenmart.
+[ESPACIO DE MARÍA CAMILA: explicar al profesor qué se está haciendo hoy en Chickenmart (recepción en Siigo, básculas, facturas por unidad y kilo, validación de pedidos web) y cómo se conecta con el trabajo del equipo.]
+La prioridad sigue siendo un registro confiable de lo recibido, y el primer paso no requiere comprar hardware. El piloto se valida por etapas, con criterios claros: una sola compra por recepción, reintento sin duplicados, diferencias documentadas y saldo verificado en Siigo. La IA, los agentes, el tablero y la simulación entran cuando los datos y la operación estén estables.
+Por eso pedimos aprobar las etapas 0 y 1, entre 8 y 15 días hábiles según una estimación preliminar, y medir tiempo de recepción, diferencias detectadas y demora hasta el registro en Siigo antes de ampliar la inversión.
+RELEVO → Santiago. Cierra así: «Santiago y Juan David cierran con la decisión».">
+  <div class="cm-wrap">
+    <div class="cm-cab cm-p"><div class="cm-kick">18 · Conclusiones</div><div class="cm-tags"><span class="sello-real"><i>✓</i>Contrastado con la operación real<small>Siigo · básculas · facturas · web</small></span></div></div>
+    <h2 class="cm-h2 cm-p">Primero un registro confiable. <em>Después, lo demás.</em></h2>
+    <div class="cm-concl">
+      <ol class="concl cm-p">
+        <li><b>01</b><p>La propuesta se <b>contrastó con la operación real</b>: Siigo, básculas, facturas y web.</p></li>
+        <li><b>02</b><p>La prioridad es un <b>registro confiable de lo recibido</b>; el primer paso <b>no requiere comprar hardware</b>.</p></li>
+        <li><b>03</b><p>El piloto se valida <b>por etapas</b> con criterios de aceptación.</p></li>
+        <li><b>04</b><p>IA, agentes, tablero y simulación entran cuando <b>datos y operación estén estables</b>.</p></li>
+      </ol>
+      <div>
+        <ul class="criterios cm-p">
+          <li><i>✓</i>Una sola compra por recepción</li><li><i>✓</i>Reintento sin duplicados</li>
+          <li><i>✓</i>Diferencias documentadas</li><li><i>✓</i>Saldo verificado en Siigo</li>
+        </ul>
+        <div class="pedido cm-p">
+          <small>Decisión solicitada</small>
+          <b>Aprobar las etapas 0 y 1</b>
+          <span>8–15 días hábiles · ✳ estimación preliminar</span>
+          <p>Medir antes de ampliar la inversión:</p>
+          <div class="met"><em>Tiempo de recepción</em><em>Diferencias detectadas</em><em>Demora hasta el registro en Siigo</em></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1353,7 +1673,7 @@ RELEVO → Santiago. Cierra así: «Esa es la visión. Santiago y Juan David les
 JUAN DAVID: En cuatro bloques. El problema: la información está fragmentada y la conectan personas a mano. La evidencia: un prototipo con doce pasos verificados, con datos ficticios. La viabilidad: por fases, con confirmación humana, controles definidos y costos que se cotizan antes de comprometer más. Y el resultado esperado: una disponibilidad de venta confiable en todos los canales, medida contra una línea base.
 SANTIAGO: Chickenmart conectado: del peso recibido a la disponibilidad de venta. Muchas gracias. [Pausa de dos segundos y abrir preguntas.]">
   <div class="cm-wrap">
-    <div class="cm-cab cm-p"><div class="cm-kick">15 · La decisión que pedimos</div><div class="cm-tags"><span class="tag prop"><i></i><span>Recomendación</span></span></div></div>
+    <div class="cm-cab cm-p"><div class="cm-kick">19 · La decisión que pedimos</div><div class="cm-tags"><span class="tag prop"><i></i><span>Recomendación</span></span></div></div>
     <h2 class="cm-h2 cm-p" style="font-size:58px;max-width:34ch">Aprobar un piloto por fases que empiece por <em>pesaje conectado e inventario central.</em></h2>
     <div class="cm-dec">
       <div class="cuatro cm-p">
@@ -1413,7 +1733,7 @@ SANTIAGO: Chickenmart conectado: del peso recibido a la disponibilidad de venta.
       <tr><td>F</td><td>Pantalla completa</td></tr>
       <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
     </tbody></table>
-    <p>Una diapositiva por clic. El cronómetro avisa en crema a los 13 minutos y en rojo al pasar de 15.</p>
+    <p>Una diapositiva por clic. El cronómetro avisa en crema a los 17 minutos y en rojo al pasar de 18.</p>
     <button class="cm-btn cm-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
   </div></section>
 </div>
@@ -1450,7 +1770,7 @@ function dos(n){return (n<10?"0":"")+n}
 /* Siete oscuras, ocho claras y una vino. Las claras son las más densas de
    leer (proceso, automatizaciones, IA, Data Hub, demo, roadmap, riesgos,
    costos); la vino queda reservada a la decisión. */
-var OSCURAS={0:1,1:1,3:1,5:1,7:1,9:1,14:1}, VINO={15:1};
+var OSCURAS={0:1,1:1,3:1,5:1,7:1,9:1,11:1,13:1,17:1,18:1}, VINO={19:1};
 var camara=D.createElement("div"); camara.id="camara";
 var mundo=D.createElement("div"); mundo.id="mundo";
 cm.parentNode.insertBefore(camara,cm); camara.appendChild(mundo); mundo.appendChild(cm);
@@ -1651,7 +1971,7 @@ function pintarLinea(n){
 function cifra(el,t,desde){
   var fin=parseFloat(el.dataset.num), dec=parseInt(el.dataset.dec||"0",10), o={v:0};
   t.to(o,{v:fin,duration:1.15,ease:"power2.out",onUpdate:function(){
-    el.textContent=dec?o.v.toFixed(dec).replace(".",","):Math.round(o.v).toString();
+    el.textContent=dec?o.v.toFixed(dec).replace(".",","):(el.dataset.miles?Math.round(o.v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,"."):Math.round(o.v).toString());
   }},desde);
 }
 function trazar(t,paths,desde,dur,stag){
@@ -1766,6 +2086,36 @@ function entrar(n){
   var filas=qa(s,".esc-f:not(.cab)");
   filas.forEach(function(f,k){ tl.fromTo(f.children,{opacity:0,x:-18},{opacity:1,x:0,duration:.4,stagger:.09},.7+k*.18) });
 
+
+  /* 09 · Data Hub: tarjetas, filas y barras por canal */
+  var kc=qa(s,".kc > div, .kc em");
+  if(kc.length){ tl.fromTo(kc,{opacity:0,y:18},{opacity:1,y:0,duration:.45,stagger:.08},.8);
+    tl.fromTo(qa(s,".tp tr"),{opacity:0,x:20},{opacity:1,x:0,duration:.35,stagger:.08},1.2);
+    tl.fromTo(qa(s,".cb i"),{scaleX:0},{scaleX:1,duration:.7,stagger:.1},1.5);
+    tl.fromTo(qa(s,".ctl li i"),{scale:0,rotation:-40},{scale:1,rotation:0,duration:.35,stagger:.12,ease:"back.out(3)"},1.4) }
+  /* 10 · gemelo: las barras crecen desde el eje; la alternativa se enciende */
+  var gb=qa(s,".gem-chart .gb");
+  if(gb.length){ tl.fromTo(gb,{scaleY:0,transformOrigin:"50% 100%"},{scaleY:1,duration:.7,stagger:.07,ease:"power3.out"},.8);
+    tl.fromTo(qa(s,".alt-band"),{opacity:0},{opacity:1,duration:.6},1.7);
+    tl.fromTo(qa(s,".pasos5 span"),{opacity:0,y:14},{opacity:1,y:0,duration:.4,stagger:.1},1.2) }
+
+
+  /* 12–14 · validación real: el sello cae, el flujo manual se arma, las etapas crecen */
+  var sr=qa(s,".cm-cab .sello-real");
+  if(sr.length) tl.fromTo(sr,{scale:2.2,rotation:-14,opacity:0},{scale:1,rotation:-3,opacity:1,duration:.5,ease:"back.out(2.4)"},.9);
+  var f7=qa(s,".flujo7 .st");
+  if(f7.length){ tl.fromTo(f7,{opacity:0,y:24},{opacity:1,y:0,duration:.45,stagger:.1},.7);
+    tl.fromTo(qa(s,".flujo7 .st em"),{opacity:0,scale:.6},{opacity:1,scale:1,duration:.3,stagger:.1,ease:"back.out(3)"},1.3);
+    tl.fromTo(qa(s,".hechos4 > div"),{opacity:0,y:20},{opacity:1,y:0,duration:.45,stagger:.1},1.5) }
+  var pi=qa(s,".pista i");
+  if(pi.length){ tl.fromTo(pi,{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:.6,stagger:.12},.9);
+    tl.fromTo(qa(s,".totales > div"),{opacity:0,scale:.9},{opacity:1,scale:1,duration:.45,stagger:.15,ease:"back.out(2)"},1.6) }
+  var e6=qa(s,".estados6 .es");
+  if(e6.length){ tl.fromTo(e6,{opacity:0,x:-24},{opacity:1,x:0,duration:.45,stagger:.12},.7);
+    tl.fromTo(qa(s,".ejemplo > div, .ejemplo > em"),{opacity:0,y:12},{opacity:1,y:0,duration:.35,stagger:.08},1.5) }
+  var cc=qa(s,".concl li, .criterios li");
+  if(cc.length) tl.fromTo(cc,{opacity:0,x:-20},{opacity:1,x:0,duration:.4,stagger:.08},.7);
+
   /* 11 · el caso corre de punta a punta; los checks se marcan */
   var rielC=s.querySelector(".caso .riel i");
   if(rielC){ tl.fromTo(rielC,{scaleX:0},{scaleX:1,duration:2,ease:"power1.inOut"},.6);
@@ -1813,7 +2163,7 @@ function entrar(n){
   if(pb.length) tl.fromTo(pb,{scale:1.06},{scale:1,duration:.5,ease:"back.out(3)"},1.3);
 
   /* línea de escaneo: cruza el bloque de datos una vez */
-  var dato=s.querySelector(".dia,.tubo,.medidores,.tablero,.matriz .g,.esc-t,.cm-cost,.cm-auto,.cm-ia,.cm-flujos");
+  var dato=s.querySelector(".dia,.tubo,.medidores,.gem-chart,.tablero,.matriz .g,.esc-t,.cm-cost,.cm-auto,.cm-ia,.cm-flujos");
   if(dato){
     var ln=dato.querySelector(":scope > .escaneo");
     if(!ln){ ln=D.createElement("div"); ln.className="escaneo"; if(getComputedStyle(dato).position==="static") dato.style.position="relative"; dato.appendChild(ln) }
@@ -1861,9 +2211,9 @@ function sig(){ir(i+1)} function ant(){ir(i-1)}
 var t0=0, va=false, acum=0;
 function pintarReloj(){
   var s=Math.floor((acum+(va?Date.now()-t0:0))/1000);
-  reloj.textContent=dos(Math.floor(s/60))+":"+dos(s%60)+" / 15:00";
-  reloj.classList.toggle("ultimo",s>=780&&s<900);
-  reloj.classList.toggle("pasado",s>=900);
+  reloj.textContent=dos(Math.floor(s/60))+":"+dos(s%60)+" / 18:00";
+  reloj.classList.toggle("ultimo",s>=1020&&s<1080);
+  reloj.classList.toggle("pasado",s>=1080);
   var d=new Date();
   hTs.textContent=dos(d.getHours())+":"+dos(d.getMinutes())+":"+dos(d.getSeconds())+" · "+dos(d.getDate())+"."+dos(d.getMonth()+1)+"."+d.getFullYear();
 }
