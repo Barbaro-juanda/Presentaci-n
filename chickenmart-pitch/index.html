@@ -793,6 +793,8 @@ h2.cm-h2 .alt{color:var(--alt)}
 .ejag .ok{background:var(--crema) !important;color:var(--negro);border-color:var(--crema) !important}
 /* ══ láminas de video ═════════════════════════════════════════════════ */
 .vmarco{position:relative;width:1088px;aspect-ratio:16/9;margin:22px auto 0;border:2px solid var(--acc);background:#000;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.cm-wrap{pointer-events:none} .cm-wrap > *{pointer-events:auto}
+.vmarco{z-index:5} .vmarco video{position:relative;z-index:2;pointer-events:auto}
 .vmarco video,.vmarco img{display:block;width:100%;height:100%;object-fit:contain;background:#000}
 .vmarco::before{content:"▶ VIDEO";position:absolute;left:-2px;top:-26px;font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--acc)}
 .vdur{position:absolute;right:-2px;top:-26px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--i70)}
@@ -1368,7 +1370,7 @@ RELEVO → Orozco. Cierra así: «Todo eso deja rastro. Orozco les muestra dónd
   <div class="cm-wrap">
     <div class="cm-cab cm-p"><div class="cm-kick">▶ Demostración · agentes</div><div class="cm-tags"><span class="fic">Datos ficticios</span></div></div>
     <h2 class="cm-h2 cm-p" style="font-size:52px">Demostración: <em>tres agentes en acción.</em></h2>
-    <div class="vmarco cm-p"><video src="video/Chickenmart_agentes.mp4" poster="video/agentes-poster.jpg" muted playsinline controls preload="metadata"></video><span class="vdur">1:37</span></div>
+    <div class="vmarco cm-p"><video poster="video/agentes-poster.jpg" muted playsinline controls preload="auto"><source src="video/Chickenmart_agentes.mp4" type="video/mp4"><source src="video/Chickenmart_agentes.webm" type="video/webm"></video><span class="vdur">1:37</span></div>
     <p class="vpie cm-p"><span class="fic">Ficticio</span> Pedido de 10 kg de alitas · aprobación de María Camila · saldo final 25 / 15 / 10 kg</p>
   </div>
 </section>
@@ -1581,7 +1583,7 @@ RELEVO → María Camila. Cierra así: «Eso es lo que probamos con datos fictic
   <div class="cm-wrap">
     <div class="cm-cab cm-p"><div class="cm-kick">▶ Demostración · demo integrada</div><div class="cm-tags"><span class="fic">Datos ficticios</span><span class="sello-real mini"><i>✓</i>Validación real</span></div></div>
     <h2 class="cm-h2 cm-p" style="font-size:48px;max-width:44ch">Demostración integrada: <em>del peso recibido a la decisión de compra.</em></h2>
-    <div class="vmarco cm-p"><video src="video/Chickenmart_demo_integrada.mp4" poster="video/demo-integrada-poster.jpg" muted playsinline controls preload="metadata"></video><span class="vdur">2:41</span></div>
+    <div class="vmarco cm-p"><video poster="video/demo-integrada-poster.jpg" muted playsinline controls preload="auto"><source src="video/Chickenmart_demo_integrada.mp4" type="video/mp4"><source src="video/Chickenmart_demo_integrada.webm" type="video/webm"></video><span class="vdur">2:41</span></div>
     <p class="vpie cm-p"><span class="fic">Datos ficticios</span> · <span class="sello-real mini"><i>✓</i>Validación real</span> peso leído en el visor y compra registrada en Siigo</p>
   </div>
 </section>
@@ -1979,6 +1981,8 @@ L.forEach(function(s,n){
     e.dataset.z = e.matches(".cm-cab,h1,h2,.cm-lead,.cm-mini") ? "30" : "-45";
   });
   if(w.matches(".cm-port")) [].slice.call(w.children).forEach(function(e,k){ e.dataset.z = k===0 ? "25" : "-45" });
+  /* el video va al frente: si queda detrás del plano de la composición, no recibe los clics */
+  [].slice.call(w.querySelectorAll(".vmarco")).forEach(function(e){ e.dataset.z="40" });
 });
 
 /* estados finales en el marcado, para que miniaturas y modo quieto se vean completos */

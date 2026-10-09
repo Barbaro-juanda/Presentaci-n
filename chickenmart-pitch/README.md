@@ -76,7 +76,7 @@ reales de costos y la celda exacta de los riesgos de nivel 3 y 2).
 ## Videos
 
 `video/Chickenmart_agentes.mp4` (1:37) y `video/Chickenmart_demo_integrada.mp4` (2:41) van
-incrustados en las láminas 9 y 15. La 13 deja un recuadro reservado para `Chickenmart_orozco_datahub_gemelo.mp4` (1:11): al agregar el archivo en `video/` se incrusta igual. No tienen audio: arrancan solos al llegar a la lámina, se
+incrustados en las láminas 9 y 15. Cada uno va en MP4 y en WebM (`video/*.webm`): el navegador usa el primero que pueda reproducir. La 13 deja un recuadro reservado para `Chickenmart_orozco_datahub_gemelo.mp4` (1:11): al agregar el archivo en `video/` se incrusta igual. No tienen audio: arrancan solos al llegar a la lámina, se
 pausan al salir y tienen controles; un clic sobre el video no cambia de lámina. Las miniaturas
 usan los fotogramas `video/*-poster.jpg`. Los videos son archivos aparte: para abrir la
 presentación sin internet hay que llevar la carpeta `video/` junto a `index.html`.
