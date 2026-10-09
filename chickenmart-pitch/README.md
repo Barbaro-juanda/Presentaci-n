@@ -43,8 +43,22 @@ sub-pasos. Se puede abrir directo en una lámina con `index.html#11`.
 | Orozco | 10 Data Hub · 11 Tablero · 12 Gemelo digital · 13 Video (por insertar) · 22 Industria 5.0 | 3:15 + 1:15 video |
 | María Camila Jiménez | 16 Lo que hoy es real · 17 Piloto ajustado · 18 Venta web por peso · 23 Conclusiones | 3:40 |
 
-En escena, el HUD de abajo dice siempre quién expone (`EXPONE // NATALY`) y el panel de
-miniaturas marca las láminas pendientes. Cada cambio de expositor tiene su frase de relevo en
+**En pantalla no aparece quién expone.** Cada lámina lleva arriba al centro el símbolo de su
+expositor, que solo el equipo conoce:
+
+| Símbolo | Expositor |
+|---|---|
+| ● ● ● | Santiago |
+| ■ ■ ■ | Juan David |
+| ▲ ▲ ▲ | Carolina |
+| ◆ ◆ ◆ | Nataly |
+| ✚ ✚ ✚ | Orozco |
+| ★ ★ ★ | María Camila Jiménez |
+| ● ■ | Santiago y Juan David (cierre) |
+| ◆ ✳ | Nataly coordina, todos participan |
+
+La portada muestra al equipo sin números de lámina. El nombre completo sí aparece en el
+panel de miniaturas, en las notas (`N`) y en la ayuda (`?`), que no se ven en modo presentación. Cada cambio de expositor tiene su frase de relevo en
 las notas (`RELEVO →`).
 
 ## Reglas de contenido
