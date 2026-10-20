@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simón Borrero · Rappi</title>
+<style>
+/* fuentes y GSAP se comparten con el pitch de Chickenmart */
+@font-face{font-family:"Nunito";src:url(../chickenmart-pitch/fonts/Nunito.woff2) format("woff2");font-weight:200 1000;font-display:block}
+@font-face{font-family:"Inter";src:url(../chickenmart-pitch/fonts/Inter-300-700.woff2) format("woff2");font-weight:300 700;font-display:block}
+@font-face{font-family:"Space Mono";src:url(../chickenmart-pitch/fonts/SpaceMono-400.woff2) format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"Space Mono";src:url(../chickenmart-pitch/fonts/SpaceMono-700.woff2) format("woff2");font-weight:700;font-display:block}
+img.falta{visibility:hidden}
+
+:root{
+  --crema:#FFF1DF;      /* el fondo de la pieza «Estamos en Rappi» */
+  --crema2:#FFE4CC;
+  --naranja:#FF4B2B;    /* titulares y bloques grandes */
+  --naranja-t:#C2361A;  /* texto pequeño sobre crema · 5,0:1 */
+  --tinta:#22140F;
+  --gris:#6E5A50;       /* 5,9:1 sobre crema */
+  --linea:rgba(34,20,15,.14);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#120A07;overflow:hidden}
+body{font-family:"Inter",system-ui,sans-serif;color:var(--tinta);-webkit-font-smoothing:antialiased}
+
+/* ── escenario 1920×1080 escalado a la ventana ── */
+#vista{position:fixed;inset:0;display:grid;place-items:center;cursor:pointer}
+#stage{position:relative;width:1920px;height:1080px;transform-origin:center;background:var(--crema);overflow:hidden;flex:none}
+.lam{position:absolute;inset:0;visibility:hidden}
+.lam.on{visibility:visible}
+
+/* ── HUD ── */
+.hud{position:absolute;left:96px;right:96px;top:46px;display:flex;justify-content:space-between;align-items:center;
+  font:700 17px/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);z-index:5}
+.hud .marca{display:flex;align-items:center;gap:18px}
+.hud .marca img{height:34px;mix-blend-mode:multiply}
+.hud .pag b{color:var(--naranja-t)}
+.pie{position:absolute;left:96px;right:96px;bottom:40px;display:flex;justify-content:space-between;align-items:center;
+  font:400 15px/1.3 "Space Mono",monospace;letter-spacing:.06em;color:var(--gris);z-index:5}
+/* en la 2 la foto ocupa la izquierda: el HUD arranca después de ella */
+#stage.foto-izq .hud,#stage.foto-izq .pie{left:696px}
+#prog{position:absolute;left:0;bottom:0;height:8px;width:100%;background:var(--crema2);z-index:6}
+#prog i{display:block;height:100%;width:50%;background:var(--naranja);transform-origin:left}
+
+/* ── tipografía ── */
+.kick{font:700 18px/1 "Space Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--naranja-t);display:flex;align-items:center;gap:14px}
+.kick::before{content:"";width:46px;height:4px;border-radius:2px;background:var(--naranja)}
+h1{font:900 88px/.98 "Nunito",sans-serif;letter-spacing:-.025em;margin:22px 0 0;color:var(--tinta)}
+h1 em{font-style:normal;color:var(--naranja)}
+h1 .w{display:inline-block}
+b,strong{font-weight:700}
+.t{font-family:"Space Mono",monospace;font-size:15px;letter-spacing:.06em;color:var(--gris)}
+
+/* ══ LÁMINA 1 · el origen ══ */
+.l1 .izq{position:absolute;left:96px;top:128px;width:1010px}
+.filas{margin-top:46px;display:grid;gap:30px}
+.fila{display:grid;grid-template-columns:76px 1fr;gap:26px;align-items:start}
+.num{width:76px;height:76px;border-radius:50%;background:var(--naranja);color:#fff;display:grid;place-items:center;
+  font:900 38px/1 "Nunito",sans-serif;box-shadow:0 10px 24px -10px rgba(255,75,43,.7)}
+.fila .rot{font:700 17px/1 "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--naranja-t);margin:6px 0 10px}
+.fila p{margin:0;font-size:29px;line-height:1.36}
+.fila .t{display:block;margin-top:8px}
+
+.l1 .der{position:absolute;left:1200px;top:118px;width:624px;height:860px}
+.cel{position:absolute;left:30px;top:0;width:560px;mix-blend-mode:multiply;
+  -webkit-mask-image:radial-gradient(ellipse 72% 70% at 55% 50%,#000 70%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 55% 50%,#000 70%,transparent 100%)}
+.reloj{position:absolute;left:0;right:0;top:560px;background:#fff;border-radius:28px;padding:30px 34px 32px;
+  box-shadow:0 24px 50px -28px rgba(120,40,10,.45),0 0 0 1px var(--linea)}
+.reloj .rot{font:700 16px/1 "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--gris)}
+.barra{margin-top:22px}
+.barra .et{display:flex;justify-content:space-between;align-items:baseline;font-size:22px;margin-bottom:10px}
+.barra .et b{font:900 34px/1 "Nunito",sans-serif}
+.pista{height:26px;border-radius:13px;background:var(--crema);overflow:hidden;position:relative}
+.pista i{position:absolute;inset:0;border-radius:13px;transform-origin:left}
+.antes .pista i{background:#B9A79D}
+.antes .et b{color:var(--gris)}
+.despues .pista i{background:var(--naranja);right:auto;width:9%}
+.despues .et b{color:var(--naranja-t)}
+.despues .pista .vel{position:absolute;left:9%;top:5px;height:16px;width:220px;border-radius:8px;transform-origin:left;
+  background:linear-gradient(90deg,rgba(255,75,43,.45),rgba(255,75,43,0))}
+
+/* ══ LÁMINA 2 · el emprendedor ══ */
+.foto{position:absolute;left:0;top:0;bottom:0;width:600px;overflow:hidden;background:#3A1308}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.foto::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(34,10,4,0) 34%,rgba(34,10,4,.55) 58%,rgba(34,10,4,.94) 100%)}
+.cita{position:absolute;left:64px;right:56px;bottom:92px;z-index:2;color:#fff}
+.cita q{display:block;font:900 52px/1.04 "Nunito",sans-serif;letter-spacing:-.02em;quotes:"«" "»"}
+.cita q em{font-style:normal;color:#FFB19F}
+.cita .t{display:block;margin-top:22px;color:#F2D9CD}
+.l2 .der{position:absolute;left:696px;right:96px;top:128px}
+.cuatro{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card{background:#fff;border-radius:26px;padding:24px 28px 22px;position:relative;
+  box-shadow:0 22px 44px -30px rgba(120,40,10,.5),0 0 0 1px var(--linea);display:flex;flex-direction:column}
+.card .cab{display:flex;align-items:center;gap:16px}
+.ico{width:58px;height:58px;border-radius:16px;background:var(--crema);display:grid;place-items:center;flex:none}
+.ico svg{width:32px;height:32px;stroke:var(--naranja);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.card .rot{font:700 17px/1.2 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--naranja-t)}
+.card .gran{font:900 36px/1.05 "Nunito",sans-serif;letter-spacing:-.015em;margin:16px 0 8px}
+.card p{margin:0;font-size:24px;line-height:1.36;flex:1}
+.card .t{margin-top:12px}
+
+/* ── guion, cronómetro y ayuda ── */
+#notas{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(1100px,94vw);max-height:44vh;overflow:auto;
+  background:rgba(18,10,7,.94);color:#F6E7DD;border-radius:16px;padding:20px 26px;font:400 17px/1.55 "Inter",sans-serif;
+  display:none;z-index:20;box-shadow:0 20px 50px rgba(0,0,0,.5);cursor:auto}
+#notas.on{display:block}
+#notas h4{margin:0 0 10px;font:700 13px/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#FF9C86}
+#notas p{margin:0 0 10px}
+#reloj{position:fixed;right:18px;top:16px;z-index:21;font:700 16px/1 "Space Mono",monospace;color:#F6E7DD;
+  background:rgba(18,10,7,.85);padding:10px 14px;border-radius:10px;display:none}
+#reloj.on{display:block}
+#reloj.av{color:#FFB19F}
+#reloj.fin{color:#fff;background:#C2361A}
+#ayuda{position:fixed;left:18px;bottom:16px;z-index:21;font:400 13px/1.5 "Space Mono",monospace;color:rgba(246,231,221,.6);
+  transition:opacity .4s}
+.pres #ayuda{opacity:0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="vista">
+<div id="stage">
+
+  <!-- ══════════ 1 · EL ORIGEN ══════════ -->
+  <section class="lam l1" data-n="1"
+    data-notas="Simón Borrero es el fundador y CEO de Rappi. Rappi arrancó como una app de domicilios y con los años se volvió una super app: en América Latina hoy ofrece mercado, restaurantes, servicios financieros y otras verticales.|¿En qué etapa de su vida arrancó? No empezó de cero. Antes había fundado Grability, un estudio de software que diseñaba interfaces para hacer el mercado por internet, y las vendió a cadenas grandes como El Corte Inglés y Reliance Industries. Esa etapa le dio dos cosas: experiencia técnica y credibilidad internacional. Con eso dio el salto.|¿Y qué problema resolvió? La app de mercado de Grability era excelente, pero el usuario seguía sufriendo: compraba y su mercado tardaba hasta 24 horas en llegar. El cuello de botella no era la pantalla, era la logística. Rappi nace para eso: acortar drásticamente el tiempo de entrega y atender lo inmediato. Un proceso lento se volvió rápido.|RELEVO → Eso explica el negocio. Ahora, ¿qué lo movió a sostenerlo cuando estuvo a punto de quebrar?">
+    <div class="izq">
+      <div class="kick">01 · El origen</div>
+      <h1><span class="w">Rappi</span> <span class="w">nació</span> <span class="w">para</span> <span class="w">acabar</span><br><span class="w">con</span> <span class="w">la</span> <em class="w">espera</em></h1>
+      <div class="filas">
+        <div class="fila"><div class="num">1</div><div><div class="rot">El negocio</div>
+          <p>Una app de domicilios que se volvió <b>super app</b> en América Latina: mercado, restaurantes, servicios financieros y más.</p></div></div>
+        <div class="fila"><div class="num">2</div><div><div class="rot">La etapa vital</div>
+          <p>No arrancó de cero: venía de fundar <b>Grability</b>, software de mercado en línea vendido a El Corte Inglés y Reliance. Llegó con experiencia y credibilidad.</p></div></div>
+        <div class="fila"><div class="num">3</div><div><div class="rot">El problema</div>
+          <p>La app era buena, pero el mercado tardaba <b>hasta 24 horas</b> en llegar. La falla no era la pantalla: era la logística.</p></div></div>
+      </div>
+    </div>
+    <div class="der">
+      <img class="cel" src="img/rappi-celular.png" alt="Ilustración de Rappi: una mano sale de un celular entregando una bolsa">
+      <div class="reloj">
+        <div class="rot">Tiempo de entrega del mercado</div>
+        <div class="barra antes"><div class="et"><span>Grability · solo la app</span><b><span class="cuenta">24</span> h</b></div><div class="pista"><i></i></div></div>
+        <div class="barra despues"><div class="et"><span>Rappi · app + domiciliario</span><b>lo inmediato</b></div><div class="pista"><i></i><span class="vel"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 2 · EL EMPRENDEDOR ══════════ -->
+  <section class="lam l2" data-n="2"
+    data-notas="Más allá del dinero, a Simón lo mueve ver crecer a su equipo. Dice que ganar es secundario frente a ver a la gente que lo rodea llegar a su mejor versión resolviendo problemas.|Su valor rector ante la dificultad es la responsabilidad. Hubo momentos en que Rappi estuvo a punto de quebrar, y lo que lo hizo seguir fue el compromiso con el equipo que confió en él: sentía que no podía fallarles.|Su fortaleza diferencial es ejecutar rápido y sin ego. En vez de debatir una idea durante semanas, la prueba de inmediato y deja que el resultado decida. Por eso hasta los más jóvenes del equipo pueden cambiar la estrategia.|¿Y qué se pierde en la zona de confort? Según él, el coraje y la prueba de lo que uno es capaz. Dice que lo mejor de su vida salió de saltar al vacío: si no te arriesgas, nunca ganas confianza en ti mismo.|CIERRE → Rappi no nació de una idea genial, sino de un problema concreto, la espera. Y se sostuvo por responsabilidad con su gente.">
+    <div class="foto">
+      <img src="img/rappi-domiciliario.jpg" alt="Domiciliario de Rappi revisando un pedido frente a una tienda naranja">
+      <div class="cita"><q>Lo mejor de mi vida salió de <em>saltar al vacío</em>.</q><span class="t">PARÁFRASIS · MIN 1:20:08 – 1:26:55</span></div>
+    </div>
+    <div class="der">
+      <div class="kick">02 · El emprendedor</div>
+      <h1><span class="w">Más</span> <span class="w">allá</span> <span class="w">del</span> <span class="w">dinero:</span><br><em class="w">su</em> <em class="w">gente</em></h1>
+      <div class="cuatro">
+        <div class="card"><div class="cab"><div class="ico"><svg viewBox="0 0 32 32"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="12" r="3"/><path d="M3 26c0-5 3.6-8 8-8s8 3 8 8"/><path d="M19 19c1-.7 2-1 3-1 3.4 0 6 2.4 6 6.5"/></svg></div><div class="rot">Pasión</div></div>
+          <div class="gran">Ver crecer a su equipo</div><p>Que su gente llegue a su mejor versión resolviendo problemas. Ganar es secundario.</p><div class="t">MIN 1:27:18</div></div>
+        <div class="card"><div class="cab"><div class="ico"><svg viewBox="0 0 32 32"><path d="M16 3l11 4v8c0 7-4.6 11.6-11 14C9.6 26.6 5 22 5 15V7z"/><path d="M11 16l3.5 3.5L21 13"/></svg></div><div class="rot">Valor rector</div></div>
+          <div class="gran">Responsabilidad</div><p>Cuando Rappi casi quiebra, siguió por no fallarle al equipo que confió en él.</p><div class="t">MIN 41:46</div></div>
+        <div class="card"><div class="cab"><div class="ico"><svg viewBox="0 0 32 32"><path d="M18 3L6 18h9l-2 11 13-16h-9z"/></svg></div><div class="rot">Fortaleza</div></div>
+          <div class="gran">Ejecutar rápido, sin ego</div><p>Prueba la idea en vez de debatirla semanas. Hasta el más joven puede cambiar la estrategia.</p><div class="t">MIN 21:24</div></div>
+        <div class="card"><div class="cab"><div class="ico"><svg viewBox="0 0 32 32"><path d="M4 12a12 9 0 0 1 24 0"/><path d="M4 12l12 13 12-13"/><path d="M16 12v13"/><path d="M10 12l6 13 6-13"/></svg></div><div class="rot">Zona de confort</div></div>
+          <div class="gran">Cuesta el coraje</div><p>Quedarse ahí te quita la prueba de lo que eres capaz de hacer.</p><div class="t">MIN 1:20:08</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hud"><div class="marca"><img src="img/rappi-logo.png" alt="Rappi"><span>Simón Borrero · fundador</span></div><div class="pag"><b id="pagN">01</b> / 02</div></div>
+  <div class="pie"><span>Fuente: entrevista a Simón Borrero, CEO de Rappi</span><span id="pieMin">min 4:48 – 12:35</span></div>
+  <div id="prog"><i></i></div>
+</div>
+</div>
+<div id="notas"><h4 id="notasT"></h4><div id="notasC"></div></div>
+<div id="reloj">00:00 / 04:00</div>
+<div id="ayuda">→ ← avanzar · N guion · T cronómetro · R reiniciar · P presentar · F pantalla completa</div>
+
+<script src="../chickenmart-pitch/vendor/gsap.min.js"></script>
+<script>
+(function(){
+"use strict";
+/* si una imagen aún no está en img/, no deja el ícono roto */
+[].slice.call(document.images).forEach(function(im){
+  function fal(){ im.classList.add("falta") }
+  if(im.complete && !im.naturalWidth) fal(); else im.addEventListener("error",fal);
+});
+var D=document, g=window.gsap, QUIETO=matchMedia("(prefers-reduced-motion: reduce)").matches, SUAVE=!!g&&!QUIETO;
+var stage=D.getElementById("stage"), L=[].slice.call(D.querySelectorAll(".lam")), N=L.length, i=-1, tl=null, bucles=[];
+var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D.getElementById("notasC");
+var PIE=["min 4:48 – 12:35","min 21:24 – 1:27:38"];
+
+function escala(){ var s=Math.min(innerWidth/1920, innerHeight/1080); stage.style.transform="scale("+s+")" }
+addEventListener("resize",escala); escala();
+
+function guion(){
+  var s=L[i]; notasT.textContent="Guion · diapositiva "+(i+1)+" de "+N+" · ~1:45";
+  notasC.innerHTML=s.dataset.notas.split("|").map(function(p){return "<p>"+p+"</p>"}).join("");
+}
+
+function entrar(n){
+  if(!SUAVE) return;
+  var s=L[n]; tl=g.timeline({defaults:{ease:"power3.out"}});
+  tl.from(s.querySelector(".kick"),{x:-40,opacity:0,duration:.5})
+    .from(s.querySelectorAll("h1 .w"),{y:60,opacity:0,rotate:4,duration:.6,stagger:.06},"-=.25");
+  if(n===0){
+    tl.from(s.querySelector(".cel"),{x:160,opacity:0,duration:.9,ease:"back.out(1.4)"},.2)
+      .from(s.querySelectorAll(".fila"),{x:-60,opacity:0,duration:.6,stagger:.18},"-=.6")
+      .from(s.querySelectorAll(".num"),{scale:0,duration:.5,stagger:.18,ease:"back.out(2.4)"},"<")
+      .from(s.querySelector(".reloj"),{y:60,opacity:0,duration:.6},"-=.5")
+      .from(s.querySelector(".antes .pista i"),{scaleX:0,duration:1.3,ease:"power1.inOut"})
+      .from(s.querySelector(".antes .cuenta"),{textContent:0,duration:1.3,ease:"power1.inOut",snap:{textContent:1}},"<")
+      .from(s.querySelector(".despues .pista i"),{scaleX:0,duration:.35,ease:"power4.out"})
+      .from(s.querySelector(".despues .vel"),{scaleX:0,opacity:0,duration:.5},"<");
+    bucles.push(g.to(s.querySelector(".cel"),{y:-14,duration:2.2,yoyo:true,repeat:-1,ease:"sine.inOut"}));
+    bucles.push(g.fromTo(s.querySelector(".despues .vel"),{x:-30,opacity:.9},{x:30,opacity:.4,duration:.7,yoyo:true,repeat:-1,ease:"sine.inOut",delay:4.5}));
+  } else {
+    tl.from(s.querySelector(".foto"),{clipPath:"inset(0 100% 0 0)",duration:1,ease:"power3.inOut"},0)
+      .from(s.querySelector(".foto img"),{scale:1.18,duration:1.6,ease:"power2.out"},0)
+      .from(s.querySelector(".cita q"),{y:40,opacity:0,duration:.7},.8)
+      .from(s.querySelector(".cita .t"),{opacity:0,duration:.5},"-=.2")
+      .from(s.querySelectorAll(".card"),{y:70,opacity:0,rotate:-2,duration:.6,stagger:.16,ease:"back.out(1.5)"},.6)
+      .from(s.querySelectorAll(".ico"),{scale:0,rotate:-30,duration:.5,stagger:.16,ease:"back.out(2.6)"},"-=.7");
+    bucles.push(g.to(s.querySelector(".foto img"),{scale:1.06,duration:7,yoyo:true,repeat:-1,ease:"sine.inOut",delay:1.6}));
+  }
+}
+
+function ir(n){
+  n=Math.max(0,Math.min(N-1,n)); if(n===i) return;
+  if(tl){tl.progress(1).kill(); tl=null}
+  bucles.forEach(function(b){b.kill()}); bucles=[];
+  if(g) g.set(stage.querySelectorAll(".lam *"),{clearProps:"transform,opacity,clipPath"});
+  L.forEach(function(s,k){s.classList.toggle("on",k===n)});
+  stage.classList.toggle("foto-izq",n===1);
+  var vuelta=i; i=n;
+  D.getElementById("pagN").textContent="0"+(n+1);
+  D.getElementById("pieMin").textContent=PIE[n];
+  var bar=D.querySelector("#prog i");
+  if(SUAVE) g.to(bar,{width:((n+1)/N*100)+"%",duration:.6,ease:"power2.out"}); else bar.style.width=((n+1)/N*100)+"%";
+  if(history.replaceState) history.replaceState(null,"","#"+(n+1));
+  guion(); entrar(n);
+}
+
+/* cronómetro de 4:00 · aviso a los 3:30 */
+var reloj=D.getElementById("reloj"), t0=0, acum=0, corre=false, tic=null;
+function pinta(){
+  var s=Math.floor((acum+(corre?Date.now()-t0:0))/1000), m=Math.floor(s/60), r=s%60;
+  reloj.textContent=(m<10?"0":"")+m+":"+(r<10?"0":"")+r+" / 04:00";
+  reloj.classList.toggle("av",s>=210&&s<240); reloj.classList.toggle("fin",s>=240);
+}
+function cron(){ reloj.classList.add("on");
+  if(corre){acum+=Date.now()-t0;corre=false;clearInterval(tic)} else {t0=Date.now();corre=true;tic=setInterval(pinta,250)} pinta() }
+function reinicia(){ acum=0; t0=Date.now(); pinta() }
+
+function pantalla(){
+  var el=D.documentElement, en=D.fullscreenElement||D.webkitFullscreenElement;
+  if(en){(D.exitFullscreen||D.webkitExitFullscreen).call(D)} else if(el.requestFullscreen||el.webkitRequestFullscreen){(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}
+}
+
+D.addEventListener("keydown",function(e){
+  var k=e.key;
+  if(k==="ArrowRight"||k==="ArrowDown"||k===" "||k==="PageDown"){e.preventDefault();ir(i+1)}
+  else if(k==="ArrowLeft"||k==="ArrowUp"||k==="PageUp"){e.preventDefault();ir(i-1)}
+  else if(k==="Home") ir(0); else if(k==="End") ir(N-1);
+  else if(k==="n"||k==="N") notas.classList.toggle("on");
+  else if(k==="t"||k==="T") cron(); else if(k==="r"||k==="R") reinicia();
+  else if(k==="f"||k==="F") pantalla();
+  else if(k==="p"||k==="P"){D.body.classList.toggle("pres"); notas.classList.remove("on"); if(!(D.fullscreenElement||D.webkitFullscreenElement)) pantalla()}
+  else if(k==="Escape") notas.classList.remove("on");
+});
+D.getElementById("vista").addEventListener("click",function(e){ if(e.target.closest("#notas")) return; ir(i<N-1?i+1:0) });
+
+var h=parseInt((location.hash||"").slice(1),10);
+function arranca(){ ir(h>=1&&h<=N?h-1:0) }
+if(D.fonts&&D.fonts.ready) D.fonts.ready.then(arranca); else arranca();
+setTimeout(function(){D.body.classList.add("pres")},6000);
+})();
+</script>
+</body>
+</html>
