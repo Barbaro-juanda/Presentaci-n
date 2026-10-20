@@ -25,9 +25,56 @@ img.falta{visibility:hidden}
 html,body{margin:0;height:100%;background:#120A07;overflow:hidden}
 body{font-family:"Inter",system-ui,sans-serif;color:var(--tinta);-webkit-font-smoothing:antialiased}
 
-/* ── escenario 1920×1080 escalado a la ventana ── */
-#vista{position:fixed;inset:0;display:grid;place-items:center;cursor:pointer}
-#stage{position:relative;width:1920px;height:1080px;transform-origin:center;background:var(--crema);overflow:hidden;flex:none}
+/* ── portal · el mismo de Chickenmart y SUSI: barra, miniaturas y escenario ── */
+:root{--chrome:#120A07;--chrome2:#1B0F0B;--hueso:#FFF6EE;--borde:rgba(255,246,238,.14);--apagado:rgba(255,246,238,.5);
+  --mono:"Space Mono",monospace;--ease:cubic-bezier(.2,.7,.2,1)}
+#app{position:fixed;inset:0;display:grid;grid-template-columns:248px 1fr;grid-template-rows:56px 1fr;
+  background:var(--chrome);transition:grid-template-columns .3s var(--ease),grid-template-rows .3s var(--ease)}
+body.presentando #app{grid-template-columns:0 1fr;grid-template-rows:0 1fr}
+#barra{grid-column:1/-1;grid-row:1;display:flex;align-items:center;gap:15px;padding:0 17px;
+  background:var(--chrome2);border-bottom:1px solid var(--borde);color:var(--hueso);overflow:hidden;z-index:5}
+body.presentando #barra{opacity:0;pointer-events:none}
+#barra .marca{display:flex;align-items:center;gap:12px;min-width:0;overflow:hidden}
+#barra .marca img{height:24px;background:#fff;border-radius:6px;padding:3px 6px;flex:none}
+#barra .marca span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--apagado);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#barra .sep{flex:1}
+.r-btn{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  background:rgba(255,246,238,.06);border:1px solid rgba(255,246,238,.18);color:rgba(255,246,238,.76);
+  border-radius:0;padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;
+  transition:background .18s,color .18s,border-color .18s}
+.r-btn:hover{background:rgba(255,246,238,.12);color:var(--hueso);border-color:rgba(255,246,238,.4)}
+.r-btn:focus-visible{outline:2px solid var(--naranja);outline-offset:2px}
+.r-btn.activo{background:var(--hueso);border-color:var(--hueso);color:var(--tinta)}
+.r-btn--pri{background:var(--naranja-t);border-color:var(--naranja-t);color:#fff}
+.r-btn--pri:hover{background:var(--naranja);border-color:var(--naranja)}
+.r-btn kbd{font-family:inherit;font-size:9px;opacity:.62;border:1px solid currentColor;padding:0 4px;line-height:13px}
+#reloj{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--apagado);
+  font-variant-numeric:tabular-nums;white-space:nowrap;transition:color .3s}
+#reloj.av{color:#FFC7B8} #reloj.fin{color:#FF7A5E;font-weight:700}
+@media (max-width:1180px){#barra .marca span{display:none}}
+@media (max-width:980px){.r-btn kbd{display:none}}
+
+#panel{grid-column:1;grid-row:2;background:#0D0705;border-right:1px solid var(--borde);
+  overflow-y:auto;overflow-x:hidden;padding:11px 0 34px;z-index:4}
+body.presentando #panel{opacity:0;pointer-events:none}
+.mini{display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:start;padding:5px 12px 5px 6px;cursor:pointer}
+.mini .num{font-family:var(--mono);font-size:10px;color:var(--apagado);text-align:right;padding-top:4px}
+.mini .marco,.rc-item .marco{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(255,246,238,.18);background:var(--crema)}
+.mini:hover .marco,.rc-item:hover .marco{border-color:rgba(255,246,238,.4)}
+.mini.actual .marco,.rc-item.actual .marco{border-color:var(--naranja);box-shadow:0 0 0 2px rgba(255,75,43,.35)}
+.mini.actual .num{color:var(--hueso);font-weight:700}
+.mini .rot{grid-column:2;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--apagado);margin-top:5px}
+.mini .rot b{display:block;font-weight:700;font-size:8.5px;letter-spacing:.14em;color:var(--hueso);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .rot span{display:block;margin-top:2px}
+.lienzo{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:top left;pointer-events:none;background:var(--crema);overflow:hidden}
+.lienzo .lam{visibility:visible}
+
+/* ── escenario 1920×1080 escalado a la vista ── */
+#vista{grid-column:2;grid-row:2;position:relative;overflow:hidden;background:#0A0504;cursor:pointer}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:var(--crema);
+  overflow:hidden;box-shadow:0 22px 66px rgba(0,0,0,.66)}
+body.presentando #stage{box-shadow:none}
 .lam{position:absolute;inset:0;visibility:hidden}
 .lam.on{visibility:visible}
 
@@ -40,7 +87,7 @@ body{font-family:"Inter",system-ui,sans-serif;color:var(--tinta);-webkit-font-sm
 .pie{position:absolute;left:96px;right:96px;bottom:40px;display:flex;justify-content:space-between;align-items:center;
   font:400 15px/1.3 "Space Mono",monospace;letter-spacing:.06em;color:var(--gris);z-index:5}
 /* en la 2 la foto ocupa la izquierda: el HUD arranca después de ella */
-#stage.foto-izq .hud,#stage.foto-izq .pie{left:696px}
+.foto-izq .hud,.foto-izq .pie{left:696px}
 #prog{position:absolute;left:0;bottom:0;height:8px;width:100%;background:var(--crema2);z-index:6}
 #prog i{display:block;height:100%;width:50%;background:var(--naranja);transform-origin:left}
 
@@ -81,7 +128,40 @@ b,strong{font-weight:700}
 .despues .pista .vel{position:absolute;left:9%;top:5px;height:16px;width:220px;border-radius:8px;transform-origin:left;
   background:linear-gradient(90deg,rgba(255,75,43,.45),rgba(255,75,43,0))}
 
-/* ══ LÁMINA 2 · el emprendedor ══ */
+/* ══ LÁMINA 2 · el hábito ══ */
+.l3 .izq{position:absolute;left:96px;top:128px;width:1060px}
+.frec{margin-top:40px;background:#fff;border-radius:26px;padding:26px 32px 24px;box-shadow:0 22px 44px -30px rgba(120,40,10,.5),0 0 0 1px var(--linea)}
+.frec .rot,.obama .rot{font:700 17px/1.2 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--naranja-t)}
+.frec ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.frec li{font-size:28px;line-height:1.32;padding-left:34px;position:relative}
+.frec li::before{content:"";position:absolute;left:0;top:.42em;width:14px;height:14px;border-radius:50%;background:var(--naranja)}
+.frec .t,.obama .t{display:block;margin-top:14px}
+.obama{margin-top:22px;border-left:6px solid var(--naranja);padding:4px 0 0 28px}
+.obama p{margin:10px 0 0;font-size:25px;line-height:1.38;max-width:1000px}
+.l3 .der{position:absolute;left:1250px;top:150px;width:580px;height:830px}
+.tel{position:absolute;left:90px;top:0;width:380px;height:760px;border-radius:56px;background:#2A1A14;padding:18px;
+  box-shadow:0 40px 70px -40px rgba(90,30,10,.7)}
+.tel::before{content:"";position:absolute;inset:18px;border-radius:40px;background:linear-gradient(170deg,#FFE7D2,#FFD2B8)}
+.isla{position:absolute;left:50%;top:30px;width:110px;height:30px;margin-left:-55px;border-radius:15px;background:#2A1A14;z-index:2}
+.apps{position:absolute;left:44px;right:44px;top:96px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px 22px;z-index:1}
+.apps i,.dock i{display:block;aspect-ratio:1;border-radius:16px;background:rgba(110,90,80,.22)}
+.apps .ap{position:relative;display:grid;place-items:center;transform-origin:center}
+.apps .ap span{position:absolute;top:100%;margin-top:6px;font:700 13px/1 "Inter",sans-serif;font-style:normal;color:var(--tinta)}
+.apps .banco{background:#3B4B6B}
+.apps .banco svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.apps .rappi{background:#fff;box-shadow:0 0 0 4px var(--naranja),0 10px 24px -6px rgba(255,75,43,.6)}
+.apps .rappi img{width:80%}
+.dock{position:absolute;left:36px;right:36px;bottom:36px;height:96px;border-radius:30px;background:rgba(255,255,255,.55);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:16px 20px;z-index:1}
+.dock i{height:64px;width:64px;margin:auto}
+.tarjeta{position:absolute;left:0;top:520px;width:380px;height:236px;border-radius:24px;padding:28px 30px;color:#fff;z-index:3;
+  background:linear-gradient(135deg,#FF6A3D,#E3330F 70%);box-shadow:0 30px 50px -24px rgba(160,40,10,.8);transform:rotate(-8deg)}
+.tarjeta b{display:block;font:900 40px/1 "Nunito",sans-serif}
+.tarjeta span{display:block;margin-top:12px;font:400 17px/1.35 "Space Mono",monospace;max-width:280px}
+.tarjeta em{position:absolute;left:30px;bottom:28px;width:52px;height:40px;border-radius:8px;background:linear-gradient(135deg,#FFE0A3,#D9A54A)}
+.ilus{position:absolute;right:0;bottom:0;font:700 14px/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
+
+/* ══ LÁMINA 3 · el emprendedor ══ */
 .foto{position:absolute;left:0;top:0;bottom:0;width:600px;overflow:hidden;background:#3A1308}
 .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .foto::after{content:"";position:absolute;inset:0;
@@ -102,31 +182,48 @@ b,strong{font-weight:700}
 .card p{margin:0;font-size:24px;line-height:1.36;flex:1}
 .card .t{margin-top:12px}
 
-/* ── guion, cronómetro y ayuda ── */
-#notas{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(1100px,94vw);max-height:44vh;overflow:auto;
-  background:rgba(18,10,7,.94);color:#F6E7DD;border-radius:16px;padding:20px 26px;font:400 17px/1.55 "Inter",sans-serif;
-  display:none;z-index:20;box-shadow:0 20px 50px rgba(0,0,0,.5);cursor:auto}
-#notas.on{display:block}
-#notas h4{margin:0 0 10px;font:700 13px/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:#FF9C86}
-#notas p{margin:0 0 10px}
-#reloj{position:fixed;right:18px;top:16px;z-index:21;font:700 16px/1 "Space Mono",monospace;color:#F6E7DD;
-  background:rgba(18,10,7,.85);padding:10px 14px;border-radius:10px;display:none}
-#reloj.on{display:block}
-#reloj.av{color:#FFB19F}
-#reloj.fin{color:#fff;background:#C2361A}
-#ayuda{position:fixed;left:18px;bottom:16px;z-index:21;font:400 13px/1.5 "Space Mono",monospace;color:rgba(246,231,221,.6);
-  transition:opacity .4s}
-.pres #ayuda{opacity:0}
+/* ── guion, cuadrícula y atajos ── */
+#notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(18,10,7,.97);border-top:3px solid var(--naranja);
+  color:var(--hueso);padding:26px 96px 32px;transform:translate3d(0,101%,0);transition:transform .32s var(--ease);cursor:auto}
+#notas.on{transform:none}
+#notas .cab{font:700 16px/1 "Space Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:#FF9C86;margin-bottom:14px}
+#notas p{margin:0 0 12px;font-size:27px;line-height:1.5;font-weight:300;color:rgba(255,246,238,.94);max-width:1650px}
+#ayudita{position:absolute;right:96px;bottom:84px;font:400 15px/1 "Space Mono",monospace;letter-spacing:.06em;color:var(--gris);z-index:5;transition:opacity .5s}
+#ayudita.mudo{opacity:0}
+#rejilla{position:fixed;inset:0;z-index:60;background:var(--chrome);display:none;overflow-y:auto;padding:22px 30px 54px}
+#rejilla.on{display:block}
+#rejilla .rc{display:flex;align-items:center;justify-content:space-between;color:var(--hueso);margin-bottom:18px}
+#rejilla .rc h3{font:900 25px/1 "Nunito",sans-serif;margin:0}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.rc-item{cursor:pointer}
+.rc-item .pie2{display:flex;justify-content:space-between;color:var(--apagado);font:400 10px/1 "Space Mono",monospace;margin-top:8px;letter-spacing:.1em;text-transform:uppercase}
+#atajos{position:fixed;inset:0;z-index:70;background:rgba(18,10,7,.98);display:none;place-content:center;justify-items:center;text-align:center;color:var(--hueso)}
+#atajos.on{display:grid}
+#atajos h3{font:900 38px/1 "Nunito",sans-serif;margin:0 0 24px}
+#atajos table{border-collapse:collapse;font-size:18px;font-weight:300}
+#atajos td{padding:8px 24px}
+#atajos td:first-child{text-align:right;color:#FF9C86;font-family:var(--mono);font-size:12.5px;letter-spacing:.1em}
+#atajos p{margin-top:24px;font-size:13.5px;color:var(--apagado);max-width:62ch;line-height:1.5}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div id="vista">
-<div id="stage">
+<div id="app">
+  <header id="barra">
+    <div class="marca"><img src="img/rappi-logo.png" alt="Rappi"><span>Simón Borrero · Rappi · Mini presentación de la entrevista</span></div>
+    <div class="sep"></div>
+    <div id="reloj">00:00 / 04:00</div>
+    <button class="r-btn" id="bRejilla">Cuadrícula <kbd>O</kbd></button>
+    <button class="r-btn" id="bNotas">Notas <kbd>N</kbd></button>
+    <button class="r-btn" id="bAtajos">Atajos <kbd>?</kbd></button>
+    <button class="r-btn r-btn--pri" id="bPresentar">Presentar <kbd>P</kbd></button>
+  </header>
+  <aside id="panel" aria-label="Diapositivas"></aside>
+  <div id="vista"><div id="stage">
 
   <!-- ══════════ 1 · EL ORIGEN ══════════ -->
   <section class="lam l1" data-n="1"
-    data-notas="Simón Borrero es el fundador y CEO de Rappi. Rappi arrancó como una app de domicilios y con los años se volvió una super app: en América Latina hoy ofrece mercado, restaurantes, servicios financieros y otras verticales.|¿En qué etapa de su vida arrancó? No empezó de cero. Antes había fundado Grability, un estudio de software que diseñaba interfaces para hacer el mercado por internet, y las vendió a cadenas grandes como El Corte Inglés y Reliance Industries. Esa etapa le dio dos cosas: experiencia técnica y credibilidad internacional. Con eso dio el salto.|¿Y qué problema resolvió? La app de mercado de Grability era excelente, pero el usuario seguía sufriendo: compraba y su mercado tardaba hasta 24 horas en llegar. El cuello de botella no era la pantalla, era la logística. Rappi nace para eso: acortar drásticamente el tiempo de entrega y atender lo inmediato. Un proceso lento se volvió rápido.|RELEVO → Eso explica el negocio. Ahora, ¿qué lo movió a sostenerlo cuando estuvo a punto de quebrar?">
+    data-notas="Simón Borrero es el fundador y CEO de Rappi: una app de domicilios que se volvió super app en América Latina, con mercado, restaurantes, servicios financieros y más.|No empezó de cero. Antes fundó Grability, un estudio de software de mercado en línea que vendió a cadenas como El Corte Inglés y Reliance Industries. De ahí sacó experiencia técnica y credibilidad internacional, y con eso dio el salto.|¿Qué problema resolvió? La app de Grability era excelente, pero el mercado tardaba hasta 24 horas en llegar. El cuello de botella no era la pantalla, era la logística. Rappi nace para acortar ese tiempo y atender lo inmediato.|RELEVO → Resolver la espera trajo usuarios. ¿Cómo hizo para que volvieran todos los días?">
     <div class="izq">
       <div class="kick">01 · El origen</div>
       <h1><span class="w">Rappi</span> <span class="w">nació</span> <span class="w">para</span> <span class="w">acabar</span><br><span class="w">con</span> <span class="w">la</span> <em class="w">espera</em></h1>
@@ -149,15 +246,47 @@ b,strong{font-weight:700}
     </div>
   </section>
 
-  <!-- ══════════ 2 · EL EMPRENDEDOR ══════════ -->
-  <section class="lam l2" data-n="2"
+  <!-- ══════════ 2 · EL HÁBITO ══════════ -->
+  <section class="lam l3" data-n="2"
+    data-notas="Para Rappi la frecuencia de uso es el centro del modelo: quieren que la app sea una constante en el home screen del usuario.|Simón explica que, junto con la banca digital, las apps de delivery son las que la gente abre con más frecuencia. Por eso lanzaron la RappiCard: además de pedir, el usuario abre Rappi para pagar, revisar su estado de cuenta y manejar sus transacciones. Más razones para abrirla, más hábito.|Un dato curioso de la entrevista: tuvo una reunión a solas de una hora con Barack Obama. Lo describe como un líder espectacular y hablaron del rumbo de la sociedad y la política; no cuenta una lección de negocio puntual, sino la experiencia de esa conversación.|RELEVO → Hasta aquí el negocio. ¿Y qué lo mueve a él, más allá del dinero?">
+    <div class="izq">
+      <div class="kick">02 · El hábito</div>
+      <h1><span class="w">Estar</span> <em class="w">todos</em> <em class="w">los</em> <em class="w">días</em><br><span class="w">en</span> <span class="w">tu</span> <span class="w">pantalla</span></h1>
+      <div class="frec">
+        <div class="rot">Por qué importa la frecuencia de uso</div>
+        <ul>
+          <li>Rappi quiere ser una app <b>fija en el home screen</b>.</li>
+          <li>Con la banca digital, el delivery es lo que <b>más se abre</b>.</li>
+          <li>La <b>RappiCard</b> suma pagos, estados de cuenta y transacciones: más razones para abrirla.</li>
+        </ul>
+        <div class="t">MIN 52:53 – 53:34</div>
+      </div>
+      <div class="obama">
+        <div class="rot">Una hora a solas con Obama</div>
+        <p>Hablaron del rumbo de la sociedad y la política. Lo llama «un líder espectacular»; la entrevista no detalla una lección de negocio puntual.</p>
+        <div class="t">MIN 1:12:37 – 1:12:55</div>
+      </div>
+    </div>
+    <div class="der">
+      <div class="tel">
+        <div class="isla"></div>
+        <div class="apps"><i></i><i></i><i></i><i></i><i></i><i class="ap banco"><svg viewBox="0 0 32 32"><path d="M4 12L16 5l12 7"/><path d="M7 13v10M12.5 13v10M19.5 13v10M25 13v10"/><path d="M4 26h24"/></svg><span>Banco</span></i><i></i><i></i><i></i><i></i><i class="ap rappi"><img src="img/rappi-logo.png" alt=""><span>Rappi</span></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="dock"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="tarjeta"><b>RappiCard</b><span>pagos · estado de cuenta<br>transacciones</span><em></em></div>
+      <div class="ilus">Ilustrativo</div>
+    </div>
+  </section>
+
+  <!-- ══════════ 3 · EL EMPRENDEDOR ══════════ -->
+  <section class="lam l2" data-n="3"
     data-notas="Más allá del dinero, a Simón lo mueve ver crecer a su equipo. Dice que ganar es secundario frente a ver a la gente que lo rodea llegar a su mejor versión resolviendo problemas.|Su valor rector ante la dificultad es la responsabilidad. Hubo momentos en que Rappi estuvo a punto de quebrar, y lo que lo hizo seguir fue el compromiso con el equipo que confió en él: sentía que no podía fallarles.|Su fortaleza diferencial es ejecutar rápido y sin ego. En vez de debatir una idea durante semanas, la prueba de inmediato y deja que el resultado decida. Por eso hasta los más jóvenes del equipo pueden cambiar la estrategia.|¿Y qué se pierde en la zona de confort? Según él, el coraje y la prueba de lo que uno es capaz. Dice que lo mejor de su vida salió de saltar al vacío: si no te arriesgas, nunca ganas confianza en ti mismo.|CIERRE → Rappi no nació de una idea genial, sino de un problema concreto, la espera. Y se sostuvo por responsabilidad con su gente.">
     <div class="foto">
       <img src="img/rappi-domiciliario.jpg" alt="Domiciliario de Rappi revisando un pedido frente a una tienda naranja">
       <div class="cita"><q>Lo mejor de mi vida salió de <em>saltar al vacío</em>.</q><span class="t">PARÁFRASIS · MIN 1:20:08 – 1:26:55</span></div>
     </div>
     <div class="der">
-      <div class="kick">02 · El emprendedor</div>
+      <div class="kick">03 · El emprendedor</div>
       <h1><span class="w">Más</span> <span class="w">allá</span> <span class="w">del</span> <span class="w">dinero:</span><br><em class="w">su</em> <em class="w">gente</em></h1>
       <div class="cuatro">
         <div class="card"><div class="cab"><div class="ico"><svg viewBox="0 0 32 32"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="12" r="3"/><path d="M3 26c0-5 3.6-8 8-8s8 3 8 8"/><path d="M19 19c1-.7 2-1 3-1 3.4 0 6 2.4 6 6.5"/></svg></div><div class="rot">Pasión</div></div>
@@ -172,14 +301,35 @@ b,strong{font-weight:700}
     </div>
   </section>
 
-  <div class="hud"><div class="marca"><img src="img/rappi-logo.png" alt="Rappi"><span>Simón Borrero · fundador</span></div><div class="pag"><b id="pagN">01</b> / 02</div></div>
+  <div class="hud"><div class="marca"><img src="img/rappi-logo.png" alt="Rappi"><span>Simón Borrero · fundador</span></div><div class="pag"><b id="pagN">01</b> / 03</div></div>
   <div class="pie"><span>Fuente: entrevista a Simón Borrero, CEO de Rappi</span><span id="pieMin">min 4:48 – 12:35</span></div>
+  <div id="ayudita">Clic o → para avanzar</div>
   <div id="prog"><i></i></div>
+  <section id="notas" aria-hidden="true"><div class="cab" id="notasT"></div><div id="notasC"></div></section>
+  </div></div>
+
+  <section id="rejilla" aria-hidden="true">
+    <div class="rc"><h3>Cuadrícula de diapositivas</h3><button class="r-btn" id="bCerrarRejilla">Cerrar <kbd>Esc</kbd></button></div>
+    <div class="rg" id="rg"></div>
+  </section>
+
+  <section id="atajos" aria-hidden="true"><div>
+    <h3>Atajos de teclado</h3>
+    <table><tbody>
+      <tr><td>→ ↓ espacio · clic</td><td>Avanzar</td></tr>
+      <tr><td>← ↑</td><td>Retroceder</td></tr>
+      <tr><td>Inicio · Fin</td><td>Primera y última diapositiva</td></tr>
+      <tr><td>P</td><td>Modo presentación</td></tr>
+      <tr><td>O</td><td>Cuadrícula</td></tr>
+      <tr><td>N</td><td>Guion del expositor</td></tr>
+      <tr><td>T · R</td><td>Cronómetro: iniciar o pausar · reiniciar</td></tr>
+      <tr><td>F</td><td>Pantalla completa</td></tr>
+      <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
+    </tbody></table>
+    <p>Una diapositiva por clic. El cronómetro avisa a los 3:30 y se pone en rojo al pasar de 4:00.</p>
+    <button class="r-btn r-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
+  </div></section>
 </div>
-</div>
-<div id="notas"><h4 id="notasT"></h4><div id="notasC"></div></div>
-<div id="reloj">00:00 / 04:00</div>
-<div id="ayuda">→ ← avanzar · N guion · T cronómetro · R reiniciar · P presentar · F pantalla completa</div>
 
 <script src="../chickenmart-pitch/vendor/gsap.min.js"></script>
 <script>
@@ -193,13 +343,48 @@ b,strong{font-weight:700}
 var D=document, g=window.gsap, QUIETO=matchMedia("(prefers-reduced-motion: reduce)").matches, SUAVE=!!g&&!QUIETO;
 var stage=D.getElementById("stage"), L=[].slice.call(D.querySelectorAll(".lam")), N=L.length, i=-1, tl=null, bucles=[];
 var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D.getElementById("notasC");
-var PIE=["min 4:48 – 12:35","min 21:24 – 1:27:38"];
+var panel=D.getElementById("panel"), rg=D.getElementById("rg"), vista=D.getElementById("vista");
+var rejilla=D.getElementById("rejilla"), atajos=D.getElementById("atajos"), ayudita=D.getElementById("ayudita"), minis=[], rcs=[];
+var TIT=["El origen","El hábito","El emprendedor"];
+var PIE=["min 4:48 – 12:35","min 52:53 – 1:12:55","min 21:24 – 1:27:38"], DUR=["~1:20","~1:15","~1:30"];
 
-function escala(){ var s=Math.min(innerWidth/1920, innerHeight/1080); stage.style.transform="scale("+s+")" }
+function escala(){
+  var w=vista.clientWidth, h=vista.clientHeight, s=Math.min(w/1920,h/1080);
+  stage.style.transform="translate(-50%,-50%) scale("+s+")";
+}
 addEventListener("resize",escala); escala();
+/* la barra y el panel animan su tamaño: se reescala mientras cambian */
+D.getElementById("app").addEventListener("transitionend",function(){ escala(); reencaja() });
+
+/* miniaturas: copia de cada lámina en su estado final, con HUD y pie */
+function lienzo(n){
+  var c=D.createElement("div"); c.className="lienzo"+(n===2?" foto-izq":"");
+  var s=L[n].cloneNode(true); s.classList.add("on"); c.appendChild(s);
+  [".hud",".pie"].forEach(function(q){ c.appendChild(stage.querySelector(q).cloneNode(true)) });
+  c.querySelector(".pag b").textContent="0"+(n+1);
+  c.querySelector(".pie span:last-child").textContent=PIE[n];
+  [].slice.call(c.querySelectorAll("[id]")).forEach(function(e){e.removeAttribute("id")});
+  return c;
+}
+L.forEach(function(s,n){
+  var w=D.createElement("div"); w.className="mini";
+  w.innerHTML='<div class="num">'+(n<9?"0":"")+(n+1)+'</div><div><div class="marco"></div><div class="rot"><b>'+TIT[n]+'</b><span>'+DUR[n]+'</span></div></div>';
+  w.querySelector(".marco").appendChild(lienzo(n));
+  w.addEventListener("click",function(){ ir(n) });
+  panel.appendChild(w); minis.push(w);
+  var r=D.createElement("div"); r.className="rc-item";
+  r.innerHTML='<div class="marco"></div><div class="pie2"><span>'+(n<9?"0":"")+(n+1)+' · '+TIT[n]+'</span><span>'+DUR[n]+'</span></div>';
+  r.querySelector(".marco").appendChild(lienzo(n));
+  r.addEventListener("click",function(){ cerrar(); ir(n) });
+  rg.appendChild(r); rcs.push(r);
+});
+function reencaja(){
+  [].slice.call(D.querySelectorAll(".marco")).forEach(function(m){ var c=m.querySelector(".lienzo"); if(c&&m.clientWidth) c.style.transform="scale("+(m.clientWidth/1920)+")" });
+}
+addEventListener("resize",reencaja); reencaja();
 
 function guion(){
-  var s=L[i]; notasT.textContent="Guion · diapositiva "+(i+1)+" de "+N+" · ~1:45";
+  var s=L[i]; notasT.textContent="Guion · "+(i+1)+" de "+N+" · "+TIT[i]+" · "+DUR[i];
   notasC.innerHTML=s.dataset.notas.split("|").map(function(p){return "<p>"+p+"</p>"}).join("");
 }
 
@@ -219,6 +404,17 @@ function entrar(n){
       .from(s.querySelector(".despues .vel"),{scaleX:0,opacity:0,duration:.5},"<");
     bucles.push(g.to(s.querySelector(".cel"),{y:-14,duration:2.2,yoyo:true,repeat:-1,ease:"sine.inOut"}));
     bucles.push(g.fromTo(s.querySelector(".despues .vel"),{x:-30,opacity:.9},{x:30,opacity:.4,duration:.7,yoyo:true,repeat:-1,ease:"sine.inOut",delay:4.5}));
+  } else if(n===1){
+    tl.from(s.querySelector(".tel"),{y:120,opacity:0,duration:.9,ease:"back.out(1.3)"},.15)
+      .from(s.querySelectorAll(".apps i:not(.ap),.dock i"),{scale:0,opacity:0,duration:.35,stagger:{each:.025,from:"random"},ease:"back.out(2)"},.5)
+      .from(s.querySelectorAll(".ap"),{scale:0,duration:.6,stagger:.25,ease:"back.out(2.6)"},"-=.2")
+      .from(s.querySelector(".frec"),{x:-60,opacity:0,duration:.6},.6)
+      .from(s.querySelectorAll(".frec li"),{x:-30,opacity:0,duration:.45,stagger:.15},"-=.3")
+      .from(s.querySelector(".tarjeta"),{x:220,y:80,rotate:18,opacity:0,duration:.9,ease:"back.out(1.4)"},"-=.4")
+      .from(s.querySelector(".obama"),{y:50,opacity:0,duration:.6},"-=.5")
+      .from(s.querySelector(".ilus"),{opacity:0,duration:.4});
+    bucles.push(g.to(s.querySelectorAll(".ap"),{scale:1.08,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:.45,delay:2.8}));
+    bucles.push(g.to(s.querySelector(".tarjeta"),{y:-12,duration:2.4,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3}));
   } else {
     tl.from(s.querySelector(".foto"),{clipPath:"inset(0 100% 0 0)",duration:1,ease:"power3.inOut"},0)
       .from(s.querySelector(".foto img"),{scale:1.18,duration:1.6,ease:"power2.out"},0)
@@ -236,13 +432,17 @@ function ir(n){
   bucles.forEach(function(b){b.kill()}); bucles=[];
   if(g) g.set(stage.querySelectorAll(".lam *"),{clearProps:"transform,opacity,clipPath"});
   L.forEach(function(s,k){s.classList.toggle("on",k===n)});
-  stage.classList.toggle("foto-izq",n===1);
+  stage.classList.toggle("foto-izq",n===2);
   var vuelta=i; i=n;
   D.getElementById("pagN").textContent="0"+(n+1);
   D.getElementById("pieMin").textContent=PIE[n];
   var bar=D.querySelector("#prog i");
   if(SUAVE) g.to(bar,{width:((n+1)/N*100)+"%",duration:.6,ease:"power2.out"}); else bar.style.width=((n+1)/N*100)+"%";
   if(history.replaceState) history.replaceState(null,"","#"+(n+1));
+  minis.forEach(function(m,k){m.classList.toggle("actual",k===n)});
+  rcs.forEach(function(r,k){r.classList.toggle("actual",k===n)});
+  if(minis[n]) minis[n].scrollIntoView({block:"nearest"});
+  if(vuelta>=0) ayudita.classList.add("mudo");
   guion(); entrar(n);
 }
 
@@ -253,7 +453,7 @@ function pinta(){
   reloj.textContent=(m<10?"0":"")+m+":"+(r<10?"0":"")+r+" / 04:00";
   reloj.classList.toggle("av",s>=210&&s<240); reloj.classList.toggle("fin",s>=240);
 }
-function cron(){ reloj.classList.add("on");
+function cron(){
   if(corre){acum+=Date.now()-t0;corre=false;clearInterval(tic)} else {t0=Date.now();corre=true;tic=setInterval(pinta,250)} pinta() }
 function reinicia(){ acum=0; t0=Date.now(); pinta() }
 
@@ -262,23 +462,43 @@ function pantalla(){
   if(en){(D.exitFullscreen||D.webkitExitFullscreen).call(D)} else if(el.requestFullscreen||el.webkitRequestFullscreen){(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}
 }
 
+function presentar(){
+  D.body.classList.toggle("presentando"); notasOn(false);
+  var en=D.fullscreenElement||D.webkitFullscreenElement;
+  if(D.body.classList.contains("presentando")&&!en) pantalla();
+  if(!D.body.classList.contains("presentando")&&en) pantalla();
+}
+function notasOn(v){ notas.classList.toggle("on",v); notas.setAttribute("aria-hidden",v?"false":"true"); D.getElementById("bNotas").classList.toggle("activo",v) }
+function abre(el,v){ el.classList.toggle("on",v); el.setAttribute("aria-hidden",v?"false":"true"); if(v) reencaja() }
+function cerrar(){ abre(rejilla,false); abre(atajos,false); notasOn(false) }
+D.getElementById("bRejilla").onclick=function(){ abre(rejilla,!rejilla.classList.contains("on")) };
+D.getElementById("bCerrarRejilla").onclick=function(){ abre(rejilla,false) };
+D.getElementById("bNotas").onclick=function(){ notasOn(!notas.classList.contains("on")) };
+D.getElementById("bAtajos").onclick=function(){ abre(atajos,true) };
+D.getElementById("bCerrarAtajos").onclick=function(){ abre(atajos,false) };
+D.getElementById("bPresentar").onclick=presentar;
+D.addEventListener("fullscreenchange",function(){ if(!(D.fullscreenElement||D.webkitFullscreenElement)) D.body.classList.remove("presentando"); setTimeout(escala,350) });
+
 D.addEventListener("keydown",function(e){
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
   var k=e.key;
+  if(k==="Escape"){ cerrar(); return }
+  if(rejilla.classList.contains("on")||atajos.classList.contains("on")) return;
   if(k==="ArrowRight"||k==="ArrowDown"||k===" "||k==="PageDown"){e.preventDefault();ir(i+1)}
   else if(k==="ArrowLeft"||k==="ArrowUp"||k==="PageUp"){e.preventDefault();ir(i-1)}
   else if(k==="Home") ir(0); else if(k==="End") ir(N-1);
-  else if(k==="n"||k==="N") notas.classList.toggle("on");
+  else if(k==="n"||k==="N") notasOn(!notas.classList.contains("on"));
+  else if(k==="o"||k==="O") abre(rejilla,true);
+  else if(k==="?") abre(atajos,true);
   else if(k==="t"||k==="T") cron(); else if(k==="r"||k==="R") reinicia();
   else if(k==="f"||k==="F") pantalla();
-  else if(k==="p"||k==="P"){D.body.classList.toggle("pres"); notas.classList.remove("on"); if(!(D.fullscreenElement||D.webkitFullscreenElement)) pantalla()}
-  else if(k==="Escape") notas.classList.remove("on");
+  else if(k==="p"||k==="P") presentar();
 });
-D.getElementById("vista").addEventListener("click",function(e){ if(e.target.closest("#notas")) return; ir(i<N-1?i+1:0) });
+vista.addEventListener("click",function(e){ if(e.target.closest("#notas")) return; ir(i<N-1?i+1:0) });
 
 var h=parseInt((location.hash||"").slice(1),10);
 function arranca(){ ir(h>=1&&h<=N?h-1:0) }
 if(D.fonts&&D.fonts.ready) D.fonts.ready.then(arranca); else arranca();
-setTimeout(function(){D.body.classList.add("pres")},6000);
 })();
 </script>
 </body>
