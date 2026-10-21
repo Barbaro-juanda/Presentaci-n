@@ -1,3 +1,16 @@
+# Estudio de presentaciones · Juan David Escobar
+
+Todas las presentaciones en un solo lugar: https://presentaci-n-five.vercel.app
+
+- `index.html` · el inicio: biblioteca con portada, filtros por materia y búsqueda (`/`).
+- `guia/` · cómo hacemos las presentaciones: principios, anatomía de una diapositiva, identidad, movimiento, datos honestos, portal, guion, flujo y checklist.
+- `CLAUDE.md` · las mismas reglas, en corto, para trabajar con Claude.
+
+**Agregar una presentación nueva:** carpeta propia (`marca-tema/index.html`), portada en
+`inicio/portadas/<id>.jpg` (diapositiva 1 a 1280×720) y una entrada en la lista `DECKS` de `index.html`.
+
+---
+
 # Presentaciones de Prospectiva I — SUSI S.A.S.
 
 Dos presentaciones autocontenidas en HTML para sustentar el trabajo de aplicación

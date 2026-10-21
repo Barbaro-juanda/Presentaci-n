@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cómo hacemos las presentaciones</title>
+<style>
+@font-face{font-family:"Inter";src:url(../fonts/Inter-300-700.woff2) format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"Nunito";src:url(../fonts/Nunito.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+@font-face{font-family:"Space Mono";src:url(../fonts/SpaceMono-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Space Mono";src:url(../fonts/SpaceMono-700.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{
+  --papel:#F4EEE6; --papel2:#EBE3D8; --blanco:#FFFCF8; --tinta:#1A1714; --suave:#5A5048; --tenue:#7A6E64;
+  --linea:rgba(26,23,20,.13); --acento:#A85A0C; --acento-v:#F2A541; --noche:#0F0E0D;
+  --mono:"Space Mono",monospace; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{background:var(--papel);scroll-behavior:smooth}
+body{margin:0;font-family:"Inter",system-ui,sans-serif;color:var(--tinta);-webkit-font-smoothing:antialiased;background:var(--papel);line-height:1.55}
+a{color:inherit}
+code,kbd{font:400 .88em var(--mono)}
+kbd{border:1px solid var(--linea);border-bottom-width:2px;border-radius:5px;padding:1px 6px;background:var(--blanco);white-space:nowrap}
+.env{max-width:1180px;margin:0 auto;padding:0 32px}
+
+header.barra{position:sticky;top:0;z-index:10;background:rgba(244,238,230,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+header.barra .env{display:flex;align-items:center;gap:12px;height:60px}
+.volver{font:700 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--suave);padding:10px 14px;border:1px solid var(--linea);border-radius:999px;white-space:nowrap}
+.volver:hover{color:var(--tinta);border-color:rgba(26,23,20,.4)}
+nav.indice{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:flex-end}
+nav.indice::-webkit-scrollbar{display:none}
+nav.indice a{font:700 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--tenue);padding:9px 10px;border-radius:999px;white-space:nowrap}
+nav.indice a:hover{color:var(--tinta);background:var(--papel2)}
+
+.hero{padding:72px 0 40px;border-bottom:1px solid var(--linea)}
+.kick{font:700 12px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:12px}
+.kick::before{content:"";width:32px;height:2px;background:currentColor;flex:none}
+h1{font:900 clamp(42px,6.6vw,96px)/.94 "Nunito",sans-serif;letter-spacing:-.035em;margin:18px 0 0}
+h1 em{font-style:normal;color:var(--acento)}
+.bajada{max-width:720px;font-size:19px;color:var(--suave);margin:22px 0 0}
+.lema{margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.lema div{background:var(--blanco);border:1px solid var(--linea);border-radius:14px;padding:16px 18px;font-size:15px;color:var(--suave)}
+.lema b{display:block;font:900 22px/1.1 "Nunito",sans-serif;color:var(--tinta);margin-bottom:6px}
+
+section.bloque{padding:72px 0;border-bottom:1px solid var(--linea);scroll-margin-top:60px}
+.cab{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:baseline;margin-bottom:34px}
+.cab .num{font:900 64px/1 "Nunito",sans-serif;color:transparent;-webkit-text-stroke:1.5px var(--acento)}
+.cab h2{font:900 clamp(30px,3.6vw,46px)/1.02 "Nunito",sans-serif;letter-spacing:-.025em;margin:0}
+.cab p{grid-column:2;margin:10px 0 0;font-size:17px;color:var(--suave);max-width:760px}
+
+/* principios */
+.prin{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.prin article{background:var(--blanco);border:1px solid var(--linea);border-radius:18px;padding:24px 24px 22px}
+.prin .ic{width:44px;height:44px;border-radius:12px;background:var(--papel);display:grid;place-items:center;margin-bottom:16px}
+.prin .ic svg{width:24px;height:24px;stroke:var(--acento);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.prin h3{margin:0 0 8px;font:800 20px/1.2 "Inter",sans-serif;letter-spacing:-.01em}
+.prin p{margin:0;color:var(--suave);font-size:15px}
+.prin ul{margin:10px 0 0;padding-left:18px;color:var(--suave);font-size:14.5px}
+.prin li{margin:3px 0}
+
+/* anatomía */
+.anat{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:34px;align-items:start}
+.lam{position:relative;aspect-ratio:16/9;background:#FFF1DF;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--linea),0 30px 60px -36px rgba(60,30,10,.6);container-type:inline-size}
+.lam *{position:absolute}
+.lam .z{border:1.5px dashed rgba(168,90,12,.55);border-radius:6px;background:rgba(242,165,65,.08)}
+.lam .et{font:700 1.15cqw/1 var(--mono);letter-spacing:.08em;color:#fff;background:var(--acento);border-radius:999px;padding:.45cqw .7cqw;white-space:nowrap}
+.lam .hud{left:5%;right:5%;top:4.5%;height:3.2%;display:flex;justify-content:space-between;font:700 1.05cqw/1 var(--mono);letter-spacing:.12em;color:#6E5A50;position:absolute}
+.lam .hud span,.lam .hud b{position:static}
+.lam .k{left:5%;top:12%;font:700 1.05cqw/1 var(--mono);letter-spacing:.16em;color:#C2361A}
+.lam .t{left:5%;top:16%;width:54%;font:900 4.4cqw/.98 "Nunito",sans-serif;letter-spacing:-.025em;color:#22140F}
+.lam .t em{position:static;font-style:normal;color:#FF4B2B}
+.lam .cuerpo{left:5%;top:44%;width:52%;display:grid;gap:1.6cqw;position:absolute}
+.lam .cuerpo i{position:static;display:block;height:1.1cqw;border-radius:1cqw;background:rgba(34,20,15,.16)}
+.lam .cuerpo i:nth-child(odd){width:92%} .lam .cuerpo i:nth-child(even){width:70%}
+.lam .vis{right:5%;top:14%;width:33%;height:68%;border-radius:1.4cqw;background:linear-gradient(160deg,#FF6A3D,#E3330F);box-shadow:0 2cqw 4cqw -2cqw rgba(160,40,10,.6)}
+.lam .vis::after{content:"";position:absolute;left:12%;right:12%;bottom:14%;height:30%;border-radius:1cqw;background:rgba(255,255,255,.85)}
+.lam .pie{left:5%;right:5%;bottom:4%;display:flex;justify-content:space-between;font:400 .95cqw/1 var(--mono);color:#6E5A50;position:absolute}
+.lam .pie span{position:static}
+.lam .prog{left:0;bottom:0;height:.8%;width:66%;background:#FF4B2B}
+.leyenda{display:grid;gap:10px;counter-reset:z}
+.leyenda div{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;font-size:15px;color:var(--suave)}
+.leyenda div::before{counter-increment:z;content:counter(z);width:26px;height:26px;border-radius:50%;background:var(--acento);color:#fff;display:grid;place-items:center;font:700 12px/1 var(--mono)}
+.leyenda b{color:var(--tinta)}
+
+/* paletas */
+.paletas{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.pal{background:var(--blanco);border:1px solid var(--linea);border-radius:16px;overflow:hidden}
+.pal .tiras{display:flex;height:84px}
+.pal .tiras i{flex:1}
+.pal div.tx{padding:14px 16px}
+.pal b{font:800 15px/1.2 "Inter",sans-serif}
+.pal span{display:block;font:400 11px/1.5 var(--mono);color:var(--tenue);margin-top:4px}
+.reglas{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:22px}
+.regla{border-left:3px solid var(--acento);padding:4px 0 4px 18px}
+.regla h4{margin:0 0 6px;font:800 17px/1.25 "Inter",sans-serif}
+.regla p{margin:0;color:var(--suave);font-size:15px}
+.tipos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:26px}
+.tipo{background:var(--blanco);border:1px solid var(--linea);border-radius:16px;padding:20px}
+.tipo .m{font:400 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tenue)}
+.tipo .e{margin-top:12px;font-size:34px;line-height:1}
+.tipo p{margin:10px 0 0;color:var(--suave);font-size:14px}
+
+/* movimiento */
+.mov{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.demo{background:var(--noche);border-radius:18px;padding:26px;color:#F4EEE6;min-height:330px;position:relative;overflow:hidden}
+.demo .k{font:700 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--acento-v)}
+.demo h5{font:900 34px/1 "Nunito",sans-serif;margin:16px 0 18px;letter-spacing:-.02em}
+.demo h5 span{display:inline-block}
+.demo .barra{height:16px;border-radius:8px;background:rgba(244,238,230,.12);margin:10px 0;overflow:hidden}
+.demo .barra i{display:block;height:100%;border-radius:8px;background:var(--acento-v);transform-origin:left}
+.demo .cifra{font:900 64px/1 "Nunito",sans-serif;color:var(--acento-v)}
+.demo button{position:absolute;right:20px;top:20px;font:700 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#F4EEE6;background:rgba(244,238,230,.08);border:1px solid rgba(244,238,230,.24);border-radius:999px;padding:9px 13px;cursor:pointer}
+.si-no{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.si-no div{background:var(--blanco);border:1px solid var(--linea);border-radius:14px;padding:16px 18px}
+.si-no h4{margin:0 0 8px;font:700 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.si-no .si h4{color:#2E7D4F} .si-no .no h4{color:#B23A28}
+.si-no ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--suave)}
+.si-no li{margin:4px 0}
+
+/* etiquetas */
+.tags{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:9px;font:700 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:9px 13px 9px 10px}
+.tag i{width:12px;height:12px;display:block}
+.tag.hecho{background:var(--tinta);color:var(--papel);border:1.5px solid var(--tinta)} .tag.hecho i{background:var(--papel)}
+.tag.prop{border:1.5px solid var(--acento);color:var(--acento)} .tag.prop i{border-radius:50%;background:var(--acento)}
+.tag.pend{border:1.5px dashed #94550A;color:#94550A;background:repeating-linear-gradient(-45deg,rgba(148,85,10,.08) 0 6px,transparent 6px 12px)}
+.tag.pend i{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #94550A}
+.tag.real{border:3px double #2E7D4F;color:#2E7D4F;transform:rotate(-3deg);border-radius:6px}
+.tag.fic{color:var(--acento);text-decoration:underline;text-underline-offset:4px;padding-left:0}
+.pendbox{margin-top:22px;border:2px dashed #94550A;border-radius:14px;padding:18px 22px;background:repeating-linear-gradient(-45deg,rgba(148,85,10,.06) 0 10px,transparent 10px 20px);font:700 14px/1.4 var(--mono);color:#94550A;max-width:560px}
+
+/* tabla de teclas */
+.teclas{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.teclas div{display:flex;gap:14px;align-items:center;background:var(--blanco);border:1px solid var(--linea);border-radius:12px;padding:12px 14px;font-size:14.5px;color:var(--suave)}
+.teclas div kbd{min-width:34px;text-align:center}
+.teclas b{color:var(--tinta);font-weight:600}
+
+/* guion */
+.nota{background:var(--noche);color:#F4EEE6;border-radius:16px;border-top:3px solid var(--acento-v);padding:22px 26px;font-size:16px;line-height:1.6;max-width:880px}
+.nota .c{font:700 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#FFC98A;margin-bottom:12px}
+.nota p{margin:0 0 10px;color:rgba(244,238,230,.9);font-weight:300}
+.nota .rel{color:#FFC98A;font-weight:600}
+.reparto{margin-top:22px;border-collapse:collapse;width:100%;max-width:880px;font-size:14.5px;background:var(--blanco);border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--linea)}
+.reparto th,.reparto td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--linea)}
+.reparto th{font:700 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);background:var(--papel2)}
+.reparto tr:last-child td{border-bottom:0}
+
+/* flujo */
+.flujo{display:grid;gap:0;counter-reset:f;max-width:920px}
+.paso{display:grid;grid-template-columns:64px 1fr;gap:20px;position:relative;padding-bottom:28px}
+.paso::before{counter-increment:f;content:counter(f,decimal-leading-zero);width:54px;height:54px;border-radius:16px;background:var(--tinta);color:var(--papel);display:grid;place-items:center;font:700 15px/1 var(--mono);z-index:1}
+.paso::after{content:"";position:absolute;left:26px;top:54px;bottom:0;width:2px;background:var(--linea)}
+.paso:last-child::after{display:none}
+.paso h4{margin:12px 0 6px;font:800 20px/1.2 "Inter",sans-serif}
+.paso p{margin:0;color:var(--suave);font-size:15.5px}
+.paso ul{margin:8px 0 0;padding-left:18px;color:var(--suave);font-size:15px}
+
+/* checklist */
+.check{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.check label{display:flex;gap:12px;align-items:flex-start;background:var(--blanco);border:1px solid var(--linea);border-radius:12px;padding:13px 15px;font-size:15px;color:var(--suave);cursor:pointer}
+.check input{margin-top:3px;accent-color:var(--acento);width:16px;height:16px;flex:none}
+.check input:checked+span{text-decoration:line-through;opacity:.6}
+
+footer{padding:44px 0 64px;color:var(--tenue);font:400 11px/1.6 var(--mono);letter-spacing:.06em}
+footer .env{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .cab{grid-template-columns:1fr} .cab p{grid-column:1} .cab .num{font-size:44px}
+  .anat,.mov{grid-template-columns:1fr} .si-no{grid-template-columns:1fr}
+  nav.indice{display:none}
+}
+@media (max-width:560px){ .env{padding:0 16px} section.bloque{padding:52px 0} }
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="barra"><div class="env">
+  <a class="volver" href="../">← Inicio</a>
+  <nav class="indice">
+    <a href="#principios">Principios</a><a href="#anatomia">Anatomía</a><a href="#identidad">Identidad</a><a href="#movimiento">Movimiento</a>
+    <a href="#etiquetas">Datos</a><a href="#portal">Portal</a><a href="#guion">Guion</a><a href="#flujo">Flujo</a><a href="#checklist">Checklist</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="env">
+  <div class="kick">Manual vivo · 7 presentaciones</div>
+  <h1>Cómo hacemos<br>las <em>presentaciones.</em></h1>
+  <p class="bajada">Lo que aprendimos con SUSI, Juan Valdez, Nujeva, Chickenmart y Rappi, en un solo lugar: cómo se piensa una presentación, cómo se ve, cómo se mueve y cómo se entrega. Toda presentación nueva sale de aquí.</p>
+  <div class="lema">
+    <div><b>Una historia</b>que termina en una decisión, no un informe.</div>
+    <div><b>Una idea</b>por diapositiva, con un solo visual.</div>
+    <div><b>Cero inventos</b>todo dato tiene fuente, o va marcado como ficticio.</div>
+    <div><b>La marca manda</b>cada presentación se viste como su cliente.</div>
+  </div>
+</div></section>
+
+<!-- 01 -->
+<section class="bloque" id="principios"><div class="env">
+  <div class="cab"><div class="num">01</div><h2>Principios</h2><p>Lo que no se negocia, sea un reto de 4 minutos o un pitch de 25.</p></div>
+  <div class="prin">
+    <article><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19h16M4 15l5-5 4 4 7-7"/></svg></div>
+      <h3>Una historia que pide algo</h3><p>Problema → evidencia → propuesta → decisión. La última diapositiva dice qué se aprueba o qué nos llevamos; nunca un «gracias» suelto.</p></article>
+    <article><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10h6M7 14h10"/></svg></div>
+      <h3>Una idea por diapositiva</h3><ul><li>El titular es una afirmación, no un tema: «Rappi nació para acabar con la espera».</li><li>Máximo 5 bullets cortos.</li><li>Un solo visual, construido a la medida.</li></ul></article>
+    <article><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <h3>Nada inventado</h3><ul><li>Cada dato lleva su fuente: página, documento o minuto de la entrevista.</li><li>Los números de ejemplo van marcados <b>✳ ficticio</b> o <b>✳ supuesto</b>.</li><li>Si falta información, se deja un recuadro de pendiente y se pregunta.</li></ul></article>
+    <article><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg></div>
+      <h3>La marca del cliente manda</h3><p>Paleta, tipografía y motivos salen del logo, el empaque o la tienda real. Nada de plantillas genéricas de consultoría.</p></article>
+    <article><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <h3>Motion graphics con sentido</h3><p>Cada escena entra completa con un clic y su coreografía cuenta algo: la barra crece porque el dato crece, la aguja cae porque el riesgo pesa.</p></article>
+    <article><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="16" r="3"/></svg></div>
+      <h3>Se expone, no se lee</h3><p>La pantalla lleva poco texto; lo demás va en el guion de cada diapositiva, con tiempo, quién expone y la frase de relevo.</p></article>
+    <article><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></div>
+      <h3>Cada detalle importa</h3><p>Al editar se mantiene exactamente el mismo diseño, colores y tipografía, y no se toca una diapositiva que no se pidió cambiar.</p></article>
+  </div>
+</div></section>
+
+<!-- 02 -->
+<section class="bloque" id="anatomia"><div class="env">
+  <div class="cab"><div class="num">02</div><h2>Anatomía de una diapositiva</h2><p>Lienzo fijo de 1920 × 1080 que se escala a la pantalla. Siempre las mismas zonas, en el mismo lugar.</p></div>
+  <div class="anat">
+    <div class="lam" aria-label="Esquema de una diapositiva">
+      <div class="hud"><span>MARCA · TEMA</span><b>02 / 12</b></div>
+      <div class="k">— 02 · SECCIÓN</div>
+      <div class="t">Un titular que <em>afirma</em> algo</div>
+      <div class="cuerpo"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="vis"></div>
+      <div class="pie"><span>Fuente: documento, pág. 12</span><span>min 4:48</span></div>
+      <div class="prog"></div>
+      <div class="z" style="left:4%;top:3%;width:92%;height:6%"></div><div class="et" style="left:44%;top:1%">1</div>
+      <div class="z" style="left:4%;top:10%;width:56%;height:28%"></div><div class="et" style="left:57%;top:10%">2 · 3</div>
+      <div class="z" style="left:4%;top:42%;width:55%;height:38%"></div><div class="et" style="left:56%;top:42%">4</div>
+      <div class="z" style="left:61%;top:12%;width:35%;height:72%"></div><div class="et" style="left:92%;top:12%">5</div>
+      <div class="z" style="left:4%;top:90%;width:92%;height:8%"></div><div class="et" style="left:46%;top:88%">6</div>
+    </div>
+    <div class="leyenda">
+      <div><span><b>HUD superior.</b> Marca, tema, número de diapositiva (<code>02 / 12</code>) y, si hay varias personas, quién expone.</span></div>
+      <div><span><b>Kicker.</b> Número y sección en mono, con una línea del color de acento.</span></div>
+      <div><span><b>Titular.</b> Display grueso, 80–96 px, 1–2 líneas. La palabra clave va en el color de la marca.</span></div>
+      <div><span><b>Cuerpo.</b> Máximo 5 bullets o filas numeradas; texto de 24–30 px para que se lea en el proyector.</span></div>
+      <div><span><b>Un visual.</b> Gráfico, diagrama, mockup o foto de la marca, construido nativo, nunca un pantallazo pegado.</span></div>
+      <div><span><b>Pie.</b> Fuente o minuto a la izquierda y barra de progreso abajo.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 03 -->
+<section class="bloque" id="identidad"><div class="env">
+  <div class="cab"><div class="num">03</div><h2>Identidad</h2><p>Cada presentación se viste con la marca de la que habla. Así se han visto hasta ahora:</p></div>
+  <div class="paletas">
+    <div class="pal"><div class="tiras"><i style="background:#F7F3EC"></i><i style="background:#D83624"></i><i style="background:#B41212"></i><i style="background:#1A1A1A"></i></div><div class="tx"><b>SUSI · Prospectiva</b><span>Empaque real · serif de alto contraste · franjas rojas</span></div></div>
+    <div class="pal"><div class="tiras"><i style="background:#0B0808"></i><i style="background:#F0A23C"></i><i style="background:#EC6A3A"></i><i style="background:#F3E9D6"></i></div><div class="tx"><b>SUSI 2030</b><span>Noche y brasa · Space Grotesk · cámara 3D</span></div></div>
+    <div class="pal"><div class="tiras"><i style="background:#762432"></i><i style="background:#FDEAC7"></i><i style="background:#3B2314"></i><i style="background:#C8963E"></i></div><div class="tx"><b>Juan Valdez</b><span>Vinotinto y crema · Kalam + Nunito</span></div></div>
+    <div class="pal"><div class="tiras"><i style="background:#101E25"></i><i style="background:#F1EBE0"></i><i style="background:#D08350"></i><i style="background:#79B598"></i></div><div class="tx"><b>Nujeva</b><span>Noche y arcilla · un color por buyer</span></div></div>
+    <div class="pal"><div class="tiras"><i style="background:#7D0608"></i><i style="background:#FFE6C1"></i><i style="background:#070A11"></i><i style="background:#FCF7F5"></i></div><div class="tx"><b>Chickenmart</b><span>Vino y crema · Nunito + Inter + Space Mono</span></div></div>
+    <div class="pal"><div class="tiras"><i style="background:#FF4B2B"></i><i style="background:#FFF1DF"></i><i style="background:#22140F"></i><i style="background:#C2361A"></i></div><div class="tx"><b>Rappi</b><span>Naranja y crema · imágenes de la marca</span></div></div>
+  </div>
+  <div class="reglas">
+    <div class="regla"><h4>Del cliente, no de la imaginación</h4><p>Los colores se sacan del logo, el empaque o la fachada. Si un color no da contraste, se deriva un tono más oscuro o más claro y se documenta.</p></div>
+    <div class="regla"><h4>Tres registros de fondo, máximo</h4><p>Claro para lo denso de leer, oscuro para impacto y portada, y un acento reservado para el momento clave (la decisión). Cinco fondos distintos se ven desordenados.</p></div>
+    <div class="regla"><h4>Contraste de 4,5 : 1 en todo el texto</h4><p>El naranja o rojo de marca va en titulares grandes; para texto pequeño se usa su versión oscura.</p></div>
+    <div class="regla"><h4>Imágenes solo si son buenas</h4><p>Fotos reales de la marca o ilustraciones bien integradas. Nada de recortes de catálogo mal hechos: mejor un visual construido.</p></div>
+  </div>
+  <div class="tipos">
+    <div class="tipo"><div class="m">Display · titulares y cifras</div><div class="e" style="font:900 34px/1 'Nunito',sans-serif">Nunito 900</div><p>Por defecto. Una serif de alto contraste si la marca es artesanal o clásica (SUSI).</p></div>
+    <div class="tipo"><div class="m">Cuerpo</div><div class="e" style="font:400 30px/1 'Inter',sans-serif">Inter</div><p>Legible en proyector, de 24 a 30 px.</p></div>
+    <div class="tipo"><div class="m">Datos · HUD · etiquetas</div><div class="e" style="font:700 26px/1 'Space Mono',monospace">Space Mono</div><p>Mayúsculas espaciadas para kickers, minutos, fuentes y contadores.</p></div>
+  </div>
+</div></section>
+
+<!-- 04 -->
+<section class="bloque" id="movimiento"><div class="env">
+  <div class="cab"><div class="num">04</div><h2>Movimiento</h2><p>Motion graphics al estilo After Effects, hechos con GSAP. Un clic, una escena completa.</p></div>
+  <div class="mov">
+    <div class="demo" id="demo">
+      <button type="button" id="otra">Repetir ↺</button>
+      <div class="k">— 03 · Ejemplo</div>
+      <h5><span>El</span> <span>mercado</span> <span>tardaba</span></h5>
+      <div class="cifra"><span id="cuenta">24</span> h</div>
+      <div class="barra"><i id="b1"></i></div>
+      <div class="barra"><i id="b2" style="width:9%"></i></div>
+    </div>
+    <div>
+      <div class="si-no">
+        <div class="si"><h4>Sí</h4><ul>
+          <li>Titulares que suben palabra por palabra.</li>
+          <li>Cifras que cuentan, barras que crecen, agujas que caen con rebote.</li>
+          <li>Trazos que se dibujan y paquetes que viajan por los cables.</li>
+          <li>Un bucle ambiental suave cuando la escena termina.</li>
+          <li>Toda la coreografía en menos de 10 segundos.</li>
+        </ul></div>
+        <div class="no"><h4>No</h4><ul>
+          <li>Sub-pasos que el expositor tiene que recordar.</li>
+          <li>Animaciones decorativas que no cuentan nada.</li>
+          <li>Animar tamaño, posición o márgenes: solo <code>transform</code>, <code>opacity</code>, <code>clip-path</code> y filtros.</li>
+          <li>Ignorar a quien pide menos movimiento (<code>prefers-reduced-motion</code>): ahí todo queda quieto y visible.</li>
+        </ul></div>
+      </div>
+      <div class="reglas" style="margin-top:16px">
+        <div class="regla"><h4>Safari</h4><p>Entra solo en <em>modo plano</em> (sin cámara 3D ni desenfoques), y se puede forzar con <code>?plano</code>.</p></div>
+        <div class="regla"><h4>Videos</h4><p>Archivos MP4 y WebM, sin audio, que arrancan solos al llegar a la diapositiva y se pausan al salir. Un clic sobre el video no cambia de diapositiva.</p></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 05 -->
+<section class="bloque" id="etiquetas"><div class="env">
+  <div class="cab"><div class="num">05</div><h2>Datos honestos</h2><p>Cuando una presentación mezcla lo que existe, lo que proponemos y lo que falta, se dice en pantalla. Con color <em>y</em> forma, nunca solo con color.</p></div>
+  <div class="tags">
+    <span class="tag hecho"><i></i>Hecho</span>
+    <span class="tag prop"><i></i>Propuesta</span>
+    <span class="tag pend"><i></i>Pendiente</span>
+    <span class="tag real">✓ Validación real</span>
+    <span class="tag fic">✳ Ficticio · supuesto · preliminar</span>
+  </div>
+  <div class="reglas">
+    <div class="regla"><h4>Hecho</h4><p>Sale del diagnóstico, del documento o de la entrevista. Lleva su fuente.</p></div>
+    <div class="regla"><h4>Propuesta</h4><p>Lo propone el equipo. Nada de lo propuesto se presenta como si ya estuviera instalado.</p></div>
+    <div class="regla"><h4>Ficticio</h4><p>Cifras de ejemplo para explicar un mecanismo. Se marcan en la misma línea donde aparecen.</p></div>
+    <div class="regla"><h4>Citas</h4><p>Si no es textual, dice «paráfrasis» y el minuto. No se le atribuye a nadie una lección que no dijo.</p></div>
+  </div>
+  <div class="pendbox">Contenido pendiente de [nombre] · se borra cuando llega el contenido real</div>
+</div></section>
+
+<!-- 06 -->
+<section class="bloque" id="portal"><div class="env">
+  <div class="cab"><div class="num">06</div><h2>El portal</h2><p>Todas las presentaciones abren igual: barra superior, miniaturas a la izquierda y el lienzo al centro. <b>Presentar</b> esconde todo y entra a pantalla completa.</p></div>
+  <div class="teclas">
+    <div><kbd>→</kbd><span><b>Avanzar</b> · también espacio, <kbd>↓</kbd> o clic</span></div>
+    <div><kbd>←</kbd><span><b>Retroceder</b> · también <kbd>↑</kbd></span></div>
+    <div><kbd>P</kbd><span><b>Modo presentación</b></span></div>
+    <div><kbd>N</kbd><span><b>Guion</b> de la diapositiva</span></div>
+    <div><kbd>O</kbd><span><b>Cuadrícula</b> de diapositivas</span></div>
+    <div><kbd>T</kbd><span><b>Cronómetro</b> · <kbd>R</kbd> reinicia</span></div>
+    <div><kbd>F</kbd><span><b>Pantalla completa</b></span></div>
+    <div><kbd>?</kbd><span><b>Atajos</b> · <kbd>Esc</kbd> cierra todo</span></div>
+    <div><kbd>#7</kbd><span><b>Enlace directo</b> a una diapositiva: <code>index.html#7</code></span></div>
+  </div>
+  <div class="reglas">
+    <div class="regla"><h4>Cronómetro con el tiempo real</h4><p>Marca el límite de la exposición, avisa en el último tramo y se pone en rojo al pasarse.</p></div>
+    <div class="regla"><h4>Funciona sin internet</h4><p>Fuentes <code>.woff2</code> y GSAP van locales. Si hay videos o imágenes, se lleva la carpeta completa.</p></div>
+  </div>
+</div></section>
+
+<!-- 07 -->
+<section class="bloque" id="guion"><div class="env">
+  <div class="cab"><div class="num">07</div><h2>Guion y reparto</h2><p>Cada diapositiva trae su guion dentro (tecla <kbd>N</kbd>), y el guion completo va también en Google Docs para el equipo.</p></div>
+  <div class="nota">
+    <div class="c">Guion · 01 de 03 · El origen · ~1:20</div>
+    <p>Simón Borrero es el fundador y CEO de Rappi: una app de domicilios que se volvió super app en América Latina…</p>
+    <p>¿Qué problema resolvió? El mercado tardaba hasta 24 horas en llegar. El cuello de botella no era la pantalla, era la logística.</p>
+    <p class="rel">RELEVO → Resolver la espera trajo usuarios. ¿Cómo hizo para que volvieran todos los días?</p>
+  </div>
+  <table class="reparto">
+    <thead><tr><th>Expositor</th><th>Diapositivas</th><th>Tiempo</th></tr></thead>
+    <tbody>
+      <tr><td>Persona A</td><td>01 · 02 · 03 · cierre (mitad)</td><td>2:50</td></tr>
+      <tr><td>Persona B</td><td>04 · 05 · cierre (mitad)</td><td>2:30</td></tr>
+      <tr><td colspan="3" style="color:var(--tenue)">El reparto va en la portada, en el README y en el HUD de cada diapositiva. Los tiempos suman el límite exacto.</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<!-- 08 -->
+<section class="bloque" id="flujo"><div class="env">
+  <div class="cab"><div class="num">08</div><h2>El flujo de trabajo</h2><p>De la instrucción del profesor a la URL lista para exponer.</p></div>
+  <div class="flujo">
+    <div class="paso"><div><h4>Brief</h4><p>Materia, rúbrica, tiempo, número de personas, marca y documento fuente. Si falta algo que cambia el resultado, se pregunta antes de construir.</p></div></div>
+    <div class="paso"><div><h4>Estructura diapositiva por diapositiva</h4><p>Para cada una: título, contenido, descripción del visual y notas del orador. Aquí se decide qué entra y qué se suprime para caber en el tiempo.</p></div></div>
+    <div class="paso"><div><h4>Identidad</h4><p>Paleta, tipografía y motivos sacados de la marca. Si el usuario manda imágenes, se integran recortadas y fundidas con el fondo.</p></div></div>
+    <div class="paso"><div><h4>Construcción</h4><ul><li>Carpeta propia: <code>marca-tema/index.html</code>, con <code>img/</code>, <code>video/</code> y, si aplica, <code>guion.md</code> y <code>README.md</code>.</li><li>El mismo portal, escenario de 1920 × 1080 y coreografía GSAP por escena.</li></ul></div></div>
+    <div class="paso"><div><h4>Verificación</h4><p>Captura de cada diapositiva, revisión de que nada se salga ni se corte, consola sin errores, contraste revisado y prueba de videos y del modo plano.</p></div></div>
+    <div class="paso"><div><h4>Publicación</h4><ul><li>Se sube a GitHub y se une a <code>main</code>; Vercel la publica sola.</li><li>Se agrega la portada (<code>inicio/portadas/&lt;id&gt;.jpg</code>) y una entrada en <code>DECKS</code> del inicio.</li><li>PDF si el profesor lo pide; guion en Google Docs para el equipo.</li></ul></div></div>
+    <div class="paso"><div><h4>Ajustes</h4><p>Se cambia solo lo que se pidió, con el mismo diseño. Cada cambio grande se verifica y se vuelve a publicar.</p></div></div>
+  </div>
+</div></section>
+
+<!-- 09 -->
+<section class="bloque" id="checklist"><div class="env">
+  <div class="cab"><div class="num">09</div><h2>Antes de exponer</h2><p>Se puede ir marcando aquí mismo.</p></div>
+  <div class="check" id="lista">
+    <label><input type="checkbox"><span>Abre desde Vercel en el computador de la exposición.</span></label>
+    <label><input type="checkbox"><span>El cronómetro está en el tiempo real de la exposición.</span></label>
+    <label><input type="checkbox"><span>Cada persona sabe sus diapositivas y su frase de relevo.</span></label>
+    <label><input type="checkbox"><span>Todos los datos tienen fuente o están marcados como ficticios.</span></label>
+    <label><input type="checkbox"><span>No queda ningún recuadro de «pendiente» que no debería estar.</span></label>
+    <label><input type="checkbox"><span>Los videos arrancan y se escuchan (o no tienen audio, a propósito).</span></label>
+    <label><input type="checkbox"><span>Probado en Safari si alguien del equipo usa Mac o iPhone.</span></label>
+    <label><input type="checkbox"><span>PDF exportado, si lo piden como entrega.</span></label>
+    <label><input type="checkbox"><span>Ensayado con <kbd>P</kbd> y el guion abierto en otra pantalla.</span></label>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="env"><span>Juan David Escobar · Estudio de presentaciones</span><a href="../">Volver al inicio →</a></div></footer>
+
+<script src="../chickenmart-pitch/vendor/gsap.min.js"></script>
+<script>
+(function(){
+"use strict";
+var D=document;
+/* checklist: se recuerda en este navegador */
+var cajas=[].slice.call(D.querySelectorAll("#lista input"));
+try{ var g=JSON.parse(localStorage.getItem("guia-checklist")||"[]"); cajas.forEach(function(c,k){ c.checked=!!g[k] }) }catch(e){}
+cajas.forEach(function(c){ c.addEventListener("change",function(){
+  try{ localStorage.setItem("guia-checklist",JSON.stringify(cajas.map(function(x){return x.checked}))) }catch(e){}
+})});
+
+/* demo de movimiento */
+var gs=window.gsap; if(!gs||matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+var tl;
+function corre(){
+  if(tl) tl.progress(1).kill();
+  var o={v:0}, c=D.getElementById("cuenta");
+  tl=gs.timeline({defaults:{ease:"power3.out"}})
+    .from("#demo .k",{x:-30,opacity:0,duration:.5})
+    .from("#demo h5 span",{y:40,opacity:0,rotate:4,duration:.55,stagger:.08},"-=.2")
+    .from("#b1",{scaleX:0,duration:1.3,ease:"power1.inOut"})
+    .to(o,{v:24,duration:1.3,ease:"power1.inOut",onUpdate:function(){c.textContent=Math.round(o.v)}},"<")
+    .from("#b2",{scaleX:0,duration:.35,ease:"power4.out"});
+}
+D.getElementById("otra").addEventListener("click",corre);
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ corre(); io.disconnect() } }) },{threshold:.5});
+  io.observe(D.getElementById("demo"));
+} else corre();
+})();
+</script>
+</body>
+</html>

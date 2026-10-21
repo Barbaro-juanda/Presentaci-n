@@ -3,53 +3,275 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SUSI S.A.S. — Prospectiva I · ESIC</title>
+<title>Presentaciones · Juan David Escobar</title>
 <style>
-  :root{--rojo:#D83624;--profundo:#B41212;--negro:#1A1A1A;--crema:#F7F3EC}
-  html,body{height:100%;margin:0;background:var(--crema);color:var(--negro);
-    font-family:"Avenir Next",Avenir,"Segoe UI","Helvetica Neue",Helvetica,sans-serif}
-  body{display:grid;place-items:center;padding:24px}
-  .riel{position:fixed;left:0;top:0;bottom:0;width:28px;background:repeating-linear-gradient(180deg,var(--rojo) 0 14px,var(--crema) 14px 28px)}
-  main{max-width:760px;width:100%}
-  .k{font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--rojo)}
-  h1{font-family:Didot,"Bodoni 72","Bodoni MT","Hoefler Text",Garamond,serif;font-weight:400;font-size:44px;letter-spacing:-.015em;line-height:1.05;margin:12px 0 8px}
-  p{opacity:.65;margin:0 0 34px;font-size:17px}
-  a.deck{display:grid;grid-template-columns:70px 1fr auto;gap:22px;align-items:center;text-decoration:none;color:inherit;
-    background:#fff;border:1px solid rgba(26,26,26,.14);padding:22px 26px;margin-bottom:14px}
-  a.deck:hover{border-color:var(--rojo)}
-  a.deck .n{font-family:Didot,"Bodoni 72","Bodoni MT",serif;font-size:44px;color:var(--rojo);line-height:1}
-  a.deck b{display:block;font-size:20px;font-weight:600}
-  a.deck span{display:block;font-size:14px;opacity:.6;margin-top:4px}
-  a.deck em{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rojo)}
+@font-face{font-family:"Inter";src:url(fonts/Inter-300-700.woff2) format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"Nunito";src:url(fonts/Nunito.woff2) format("woff2");font-weight:200 1000;font-display:swap}
+@font-face{font-family:"Space Mono";src:url(fonts/SpaceMono-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Space Mono";src:url(fonts/SpaceMono-700.woff2) format("woff2");font-weight:700;font-display:swap}
+
+/* El inicio es un marco neutro: el color lo ponen las portadas de cada presentación */
+:root{
+  --fondo:#0F0E0D; --fondo2:#171513; --papel:#F4EEE6; --tinta:#F4EEE6;
+  --suave:rgba(244,238,230,.66); --tenue:rgba(244,238,230,.5); --linea:rgba(244,238,230,.12);
+  --acento:#F2A541; --mono:"Space Mono",monospace; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{background:var(--fondo)}
+body{margin:0;font-family:"Inter",system-ui,sans-serif;color:var(--tinta);-webkit-font-smoothing:antialiased;
+  background:radial-gradient(1200px 600px at 85% -10%,rgba(242,165,65,.10),transparent 60%),var(--fondo);min-height:100vh}
+a{color:inherit}
+code{font:400 .9em var(--mono);color:var(--tinta)}
+.env{max-width:1320px;margin:0 auto;padding:0 32px}
+
+/* ── barra ── */
+header.barra{position:sticky;top:0;z-index:10;background:rgba(15,14,13,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+header.barra .env{display:flex;align-items:center;gap:12px;height:64px}
+.firma{display:flex;align-items:center;gap:12px;text-decoration:none}
+.firma i{width:34px;height:34px;border-radius:10px;background:var(--papel);color:var(--fondo);display:grid;place-items:center;
+  font:900 15px/1 "Nunito",sans-serif;font-style:normal;letter-spacing:-.02em}
+.firma span{font:700 11px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--suave)}
+.firma span b{display:block;color:var(--tinta);letter-spacing:.12em}
+header .sep{flex:1}
+.enl{font:700 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--suave);
+  padding:10px 14px;border:1px solid var(--linea);border-radius:999px;transition:color .2s,border-color .2s,background .2s;white-space:nowrap}
+.enl:hover{color:var(--tinta);border-color:rgba(244,238,230,.4)}
+.enl.pri{background:var(--papel);color:var(--fondo);border-color:var(--papel)}
+.enl.pri:hover{background:#fff}
+
+/* ── portada del inicio ── */
+.hero{padding:64px 0 28px}
+.kick{font:700 12px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:12px}
+.kick::before{content:"";width:32px;height:2px;background:currentColor;flex:none}
+h1{font:900 clamp(42px,6.4vw,92px)/.95 "Nunito",sans-serif;letter-spacing:-.035em;margin:18px 0 0}
+h1 em{font-style:normal;color:var(--acento)}
+.bajada{max-width:640px;font-size:18px;line-height:1.55;color:var(--suave);margin:20px 0 0}
+.bajada b{color:var(--tinta)}
+.cifras{display:flex;flex-wrap:wrap;gap:16px 44px;margin-top:34px;padding-top:24px;border-top:1px solid var(--linea)}
+.cifras div{font:400 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tenue)}
+.cifras b{display:block;font:900 38px/1 "Nunito",sans-serif;letter-spacing:-.02em;color:var(--tinta);margin-bottom:6px;text-transform:none}
+
+/* ── destacada ── */
+.dest{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:36px;align-items:center;margin:40px 0 18px;
+  padding:22px;border:1px solid var(--linea);border-radius:22px;background:var(--fondo2)}
+.dest .tapa{border-radius:14px}
+.dest h2{font:900 clamp(28px,3.2vw,44px)/1.02 "Nunito",sans-serif;letter-spacing:-.025em;margin:14px 0 12px}
+.dest p{color:var(--suave);font-size:16.5px;line-height:1.55;margin:0}
+.dest .acc{margin-top:22px}
+
+/* ── tapa: la diapositiva 1 de cada presentación ── */
+.tapa{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#222;text-decoration:none;
+  box-shadow:0 0 0 1px var(--linea),0 18px 40px -24px rgba(0,0,0,.9)}
+.tapa img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.tapa::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--c)}
+.tapa .abre{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,9,8,.45);opacity:0;transition:opacity .25s;
+  font:700 12px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#fff}
+.tapa .abre span{padding:12px 18px;border-radius:999px;background:var(--c);box-shadow:0 10px 30px -10px var(--c)}
+.tapa:hover img,.tapa:focus-visible img{transform:scale(1.04)}
+.tapa:hover .abre,.tapa:focus-visible .abre{opacity:1}
+.tapa:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+.tapa .n{position:absolute;right:10px;top:10px;font:700 10px/1 var(--mono);letter-spacing:.1em;color:#fff;
+  background:rgba(10,9,8,.72);padding:6px 8px;border-radius:6px}
+
+/* ── herramientas ── */
+.herr{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:46px 0 22px;scroll-margin-top:80px}
+.herr h3{font:900 26px/1 "Nunito",sans-serif;letter-spacing:-.02em;margin:0 18px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+.chip{font:700 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--suave);background:transparent;
+  border:1px solid var(--linea);border-radius:999px;padding:9px 13px;cursor:pointer;transition:all .2s}
+.chip:hover{color:var(--tinta);border-color:rgba(244,238,230,.4)}
+.chip[aria-pressed="true"]{background:var(--papel);color:var(--fondo);border-color:var(--papel)}
+.chip small{opacity:.6;margin-left:6px;font-size:inherit}
+.busca{position:relative}
+.busca input{width:260px;font:400 14px/1 "Inter",sans-serif;color:var(--tinta);background:var(--fondo2);border:1px solid var(--linea);
+  border-radius:999px;padding:11px 40px 11px 38px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.busca input:focus{border-color:var(--acento)}
+.busca svg{position:absolute;left:14px;top:50%;margin-top:-8px;width:16px;height:16px;stroke:var(--tenue);fill:none;stroke-width:2}
+.busca kbd{position:absolute;right:12px;top:50%;transform:translateY(-50%);font:400 10px/1 var(--mono);color:var(--tenue);border:1px solid var(--linea);border-radius:4px;padding:3px 6px}
+
+/* ── biblioteca ── */
+.rej{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:34px 26px;padding-bottom:20px}
+.card{display:flex;flex-direction:column;gap:14px}
+.cat{font:700 10.5px/1.3 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--c2)}
+.card h4{font:800 21px/1.18 "Inter",sans-serif;letter-spacing:-.015em;margin:6px 0 0}
+.card p{margin:6px 0 0;font-size:14.5px;line-height:1.5;color:var(--suave)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 0;font:400 11px/1.4 var(--mono);letter-spacing:.06em;color:var(--tenue)}
+.meta span{display:inline-flex;align-items:center}
+.meta span+span::before{content:"";width:3px;height:3px;border-radius:50%;background:currentColor;margin:0 10px;opacity:.7}
+.acc{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.bt{font:700 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:10px 14px;border-radius:999px;
+  border:1px solid var(--linea);color:var(--suave);transition:all .2s}
+.bt:hover{color:var(--tinta);border-color:rgba(244,238,230,.4)}
+.bt.pri{background:var(--c);border-color:var(--c);color:#fff}
+.bt.pri:hover{filter:brightness(1.12)}
+.vacio{display:none;padding:60px 0;text-align:center;color:var(--tenue);font:400 13px/1.5 var(--mono)}
+
+/* ── nueva y pie ── */
+.nueva{margin:56px 0 0;display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;padding:26px 28px;
+  border:1px dashed rgba(244,238,230,.24);border-radius:18px}
+.nueva .mas{width:56px;height:56px;border-radius:16px;border:1px solid var(--linea);display:grid;place-items:center;font:300 34px/1 "Inter",sans-serif;color:var(--acento)}
+.nueva h5{margin:0;font:800 19px/1.2 "Inter",sans-serif}
+.nueva p{margin:6px 0 0;color:var(--suave);font-size:14.5px;line-height:1.55}
+.nueva .bt{--c:var(--acento);color:var(--tinta)}
+footer{padding:40px 0 56px;color:var(--tenue);font:400 11px/1.6 var(--mono);letter-spacing:.06em}
+footer .env{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .env>div{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;width:100%;border-top:1px solid var(--linea);padding-top:22px}
+
+@media (max-width:900px){
+  .dest{grid-template-columns:1fr;gap:22px;padding:16px}
+  .busca{flex:1 1 100%} .busca input{width:100%}
+  .herr h3{flex:1 1 100%;margin:0 0 4px}
+  .chips{flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{white-space:nowrap;flex:none}
+  .nueva{grid-template-columns:1fr}
+  .enl.sec{display:none}
+}
+@media (max-width:560px){ .env{padding:0 16px} .rej{grid-template-columns:1fr} .firma span{display:none} .hero{padding-top:40px} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-  <div class="riel"></div>
-  <main>
-    <div class="k">SUSI S.A.S. · Prospectiva I · ESIC · Horizonte 2030</div>
-    <h1>Presentaciones del equipo</h1>
-    <p>Un solo archivo cada una; funcionan sin internet. Pulsa <b>P</b> para presentar y <b>?</b> para ver los atajos.</p>
-    <a class="deck" href="./SUSI-Prospectiva-2030.html"><div class="n">1</div><div><b>Análisis del entorno, incidencia y favorabilidad</b><span>Entrega 1 · Retos 1 y 4 · 14 slides · 10 minutos</span></div><em>Abrir →</em></a>
-    <a class="deck" href="./SUSI-MICMAC-2030.html"><div class="n">2</div><div><b>Análisis de impacto cruzado · MICMAC</b><span>Entrega 2 · Matriz relacional, cuatro planos y seis variables críticas · 14 slides · 10 minutos</span></div><em>Abrir →</em></a>
+<header class="barra"><div class="env">
+  <a class="firma" href="./"><i>JD</i><span><b>Juan David Escobar</b>Estudio de presentaciones</span></a>
+  <div class="sep"></div>
+  <a class="enl sec" href="#todas">Biblioteca</a>
+  <a class="enl pri" href="guia/">Cómo las hacemos</a>
+</div></header>
 
-    <a class="deck" href="./susi-2030/index.html"><div class="n">3</div><div><b>Informe de prospectiva estratégica · escenarios y recomendaciones</b><span>Entrega final · Tres escenarios a 2030, seis hipótesis y ocho recomendaciones · 21 diapositivas · 15 minutos</span></div><em>Abrir →</em></a>
+<main class="env">
+  <section class="hero">
+    <div class="kick">Portafolio · ESIC · Digital Business</div>
+    <h1>Todas mis<br>presentaciones, <em>en un solo lugar.</em></h1>
+    <p class="bajada">Cada una es un HTML autónomo con su propia identidad, guion, cronómetro y modo presentación. Ábrela, pulsa <b>P</b> y expón.</p>
+    <div class="cifras" id="cifras"></div>
+  </section>
 
-    <div class="k" style="margin-top:46px">Otra actividad · sin relación con SUSI</div>
-    <h1 style="font-size:30px;margin:10px 0 22px">Juan Valdez</h1>
-    <a class="deck" href="./JUAN-VALDEZ-4MIN.html"><div class="n" style="color:#762432">JV</div><div><b>JV Tracker · del grano a tu taza</b><span>Reto de 4 minutos · 6 bloques, un clic por persona</span></div><em style="color:#762432">Abrir →</em></a>
+  <section id="destacada"></section>
 
-    <div class="k" style="margin-top:46px">Otra actividad · sin relación con SUSI</div>
-    <h1 style="font-size:30px;margin:10px 0 22px">Nujeva</h1>
-    <a class="deck" href="./nujeva-4-buyers/index.html"><div class="n" style="color:#B4643C">4B</div><div><b>Buyer persona, mercado y arquitectura de consumidores</b><span>Los cuatro buyers · 12 diapositivas · un clic por diapositiva</span></div><em style="color:#B4643C">Abrir →</em></a>
+  <section>
+    <div class="herr" id="todas">
+      <h3>Biblioteca</h3>
+      <div class="chips" id="chips"></div>
+      <label class="busca"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="q" type="search" placeholder="Buscar…" aria-label="Buscar presentaciones"><kbd>/</kbd></label>
+    </div>
+    <div class="rej" id="rej"></div>
+    <div class="vacio" id="vacio">Nada coincide con esa búsqueda.</div>
+  </section>
 
-    <div class="k" style="margin-top:46px">Otra materia · transformación digital</div>
-    <h1 style="font-size:30px;margin:10px 0 22px">Chickenmart</h1>
-    <a class="deck" href="./chickenmart-pitch/index.html"><div class="n" style="color:#7D0608">CM</div><div><b>Chickenmart conectado · pitch ejecutivo final</b><span>Del peso recibido a la disponibilidad de venta · 24 diapositivas con 3 videos · 6 expositores</span></div><em style="color:#7D0608">Abrir →</em></a>
+  <section class="nueva">
+    <div class="mas">+</div>
+    <div><h5>¿Una presentación nueva?</h5>
+      <p>Cada una vive en su carpeta (<code>marca-tema/index.html</code>) y aparece aquí con una sola entrada en la lista <code>DECKS</code> de este archivo, más su portada en <code>inicio/portadas/</code>.</p></div>
+    <a class="bt" href="guia/#flujo">Ver el flujo →</a>
+  </section>
+</main>
 
-    <div class="k" style="margin-top:46px">Otra actividad · emprendimiento</div>
-    <h1 style="font-size:30px;margin:10px 0 22px">Rappi · Simón Borrero</h1>
-    <a class="deck" href="./rappi-simon-borrero/index.html"><div class="n" style="color:#C2361A">R</div><div><b>De Grability a Rappi: el problema era la espera</b><span>Mini presentación sobre la entrevista · 3 diapositivas · 4 minutos</span></div><em style="color:#C2361A">Abrir →</em></a>
+<footer><div class="env"><div><span>Juan David Escobar · ESIC Business &amp; Marketing School · Medellín</span><span id="pieTotal"></span></div></div></footer>
 
-  </main>
+<script>
+/* ══ LA LISTA · una entrada por presentación ═══════════════════════════════
+   id     → nombre de la portada: inicio/portadas/<id>.jpg (captura de la diapositiva 1, 1280×720)
+   c · c2 → color de la marca (barra y botón) · el mismo color legible sobre el fondo oscuro
+   pdf · guion → opcionales; si existen, aparecen como botones */
+var DECKS=[
+  {id:"rappi", ruta:"rappi-simon-borrero/", titulo:"De Grability a Rappi: el problema era la espera",
+   resumen:"Simón Borrero: el origen de Rappi, por qué importa la frecuencia de uso y qué lo mueve más allá del dinero.",
+   cat:"Emprendimiento", marca:"Rappi", fecha:"2026-10-20", dias:3, min:4,
+   c:"#E8401F", c2:"#FF8A70", pdf:"rappi-simon-borrero/Simon-Borrero-Rappi.pdf"},
+  {id:"chickenmart", ruta:"chickenmart-pitch/", titulo:"Chickenmart conectado · pitch ejecutivo final",
+   resumen:"Del peso recibido a la disponibilidad de venta: IoT, cloud, IA, agentes, gemelo digital y la decisión de inversión.",
+   cat:"Transformación digital", marca:"Chickenmart", fecha:"2026-10-09", dias:24, min:25, personas:6, videos:3,
+   c:"#9A0B0E", c2:"#FF8E92", guion:"chickenmart-pitch/guion.md"},
+  {id:"susi-2030", ruta:"susi-2030/", titulo:"SUSI 2030 · informe de prospectiva estratégica",
+   resumen:"Tres escenarios a 2030, seis hipótesis validadas con experta y ocho recomendaciones con hoja de ruta.",
+   cat:"Prospectiva I", marca:"SUSI", etapa:"Entrega final", fecha:"2026-10-06", dias:21, min:15, personas:3,
+   c:"#C7601E", c2:"#F0A23C", guion:"susi-2030/guion.md"},
+  {id:"nujeva", ruta:"nujeva-4-buyers/", titulo:"Nujeva · buyer persona, mercado y arquitectura de consumidores",
+   resumen:"Los cuatro buyers de Nujeva y cómo se ordena el mercado alrededor de ellos.",
+   cat:"Marketing", marca:"Nujeva", fecha:"2026-09-29", dias:12, min:10,
+   c:"#B4643C", c2:"#D99A6E", guion:"nujeva-4-buyers/speaker-notes.md"},
+  {id:"juan-valdez", ruta:"JUAN-VALDEZ-4MIN.html", titulo:"JV Tracker · del grano a tu taza",
+   resumen:"Reto de 4 minutos: IA y blockchain para recuperar el origen del café. Un clic por persona.",
+   cat:"Retos", marca:"Juan Valdez", fecha:"2026-09-23", dias:6, unidad:"bloques", min:4, personas:6,
+   c:"#8A2A3B", c2:"#E58FA0"},
+  {id:"susi-micmac", ruta:"SUSI-MICMAC-2030.html", titulo:"SUSI · análisis de impacto cruzado (MICMAC)",
+   resumen:"Matriz relacional 20 × 20, los cuatro planos y las seis variables críticas.",
+   cat:"Prospectiva I", marca:"SUSI", etapa:"Entrega 2", fecha:"2026-09-20", dias:14, min:10, personas:4,
+   c:"#A87A26", c2:"#E0B45C"},
+  {id:"susi-prospectiva", ruta:"SUSI-Prospectiva-2030.html", titulo:"SUSI · análisis del entorno, incidencia y favorabilidad",
+   resumen:"Porter, PESTEL, tendencias y las 20 variables en el plano de incidencia y favorabilidad.",
+   cat:"Prospectiva I", marca:"SUSI", etapa:"Entrega 1", fecha:"2026-09-06", dias:14, min:10, personas:3,
+   c:"#C8301F", c2:"#F27A68"}
+];
+
+(function(){
+"use strict";
+var D=document, MESES=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+function fecha(f){ var p=f.split("-"); return (+p[2])+" "+MESES[+p[1]-1]+" "+p[0] }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]}) }
+DECKS.sort(function(a,b){ return a.fecha<b.fecha?1:-1 });
+
+function meta(d){
+  var m=['<span>'+fecha(d.fecha)+'</span>','<span>'+d.dias+' '+(d.unidad||"diapositivas")+'</span>','<span>'+d.min+' min</span>'];
+  if(d.personas) m.push('<span>'+d.personas+' personas</span>');
+  if(d.videos) m.push('<span>'+d.videos+' videos</span>');
+  return '<div class="meta">'+m.join("")+'</div>';
+}
+function acciones(d){
+  var a='<a class="bt pri" href="'+d.ruta+'">Abrir</a>';
+  if(d.pdf) a+='<a class="bt" href="'+d.pdf+'" download>PDF</a>';
+  if(d.guion) a+='<a class="bt" href="'+d.guion+'">Guion</a>';
+  return '<div class="acc">'+a+'</div>';
+}
+function tapa(d,ya){
+  return '<a class="tapa" href="'+d.ruta+'" aria-label="Abrir '+esc(d.titulo)+'"><img src="inicio/portadas/'+d.id+'.jpg" alt="" '+(ya?'':'loading="lazy" ')+'decoding="async">'+
+    '<span class="n">'+d.dias+' '+(d.unidad?"bloques":"diap.")+'</span><span class="abre"><span>Abrir presentación →</span></span></a>';
+}
+function cat(d){ return '<div class="cat">'+esc(d.cat)+' · '+esc(d.marca)+(d.etapa?' · '+esc(d.etapa):'')+'</div>' }
+function estilo(d){ return 'style="--c:'+d.c+';--c2:'+d.c2+'"' }
+
+/* cifras */
+var tot=DECKS.reduce(function(s,d){return s+d.dias},0), mins=DECKS.reduce(function(s,d){return s+d.min},0), marcas={};
+DECKS.forEach(function(d){marcas[d.marca]=1});
+D.getElementById("cifras").innerHTML=
+  '<div><b>'+DECKS.length+'</b>presentaciones</div><div><b>'+tot+'</b>diapositivas</div>'+
+  '<div><b>'+Object.keys(marcas).length+'</b>marcas</div><div><b>'+Math.floor(mins/60)+' h '+(mins%60)+' min</b>de exposición</div>';
+D.getElementById("pieTotal").textContent="Última presentación: "+fecha(DECKS[0].fecha);
+
+/* destacada: la más reciente */
+var d0=DECKS[0];
+D.getElementById("destacada").innerHTML='<div class="dest" '+estilo(d0)+'>'+tapa(d0,true)+
+  '<div><div class="kick" style="color:var(--c2)">La más reciente</div><h2>'+esc(d0.titulo)+'</h2><p>'+esc(d0.resumen)+'</p>'+
+  '<div style="margin-top:18px">'+cat(d0)+'</div><div style="margin-top:8px">'+meta(d0)+'</div>'+acciones(d0)+'</div></div>';
+
+/* filtros por materia */
+var cats=["Todas"], cuenta={Todas:DECKS.length};
+DECKS.forEach(function(d){ if(!cuenta[d.cat]){cuenta[d.cat]=0;cats.push(d.cat)} cuenta[d.cat]++ });
+var activa="Todas", chips=D.getElementById("chips");
+chips.innerHTML=cats.map(function(c){return '<button class="chip" aria-pressed="'+(c==="Todas")+'" data-c="'+esc(c)+'">'+esc(c)+'<small>'+cuenta[c]+'</small></button>'}).join("");
+chips.addEventListener("click",function(e){ var b=e.target.closest(".chip"); if(!b) return; activa=b.dataset.c;
+  [].forEach.call(chips.children,function(x){x.setAttribute("aria-pressed",String(x===b))}); pinta() });
+
+var q=D.getElementById("q"), rej=D.getElementById("rej"), vacio=D.getElementById("vacio");
+function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"") }
+function pinta(){
+  var t=norm(q.value.trim()), ls=DECKS.filter(function(d){
+    if(activa!=="Todas"&&d.cat!==activa) return false;
+    return !t || norm([d.titulo,d.resumen,d.cat,d.marca,d.etapa||""].join(" ")).indexOf(t)>=0;
+  });
+  rej.innerHTML=ls.map(function(d){ return '<article class="card" '+estilo(d)+'>'+tapa(d)+
+    '<div>'+cat(d)+'<h4>'+esc(d.titulo)+'</h4><p>'+esc(d.resumen)+'</p></div>'+meta(d)+acciones(d)+'</article>' }).join("");
+  vacio.style.display=ls.length?"none":"block";
+}
+q.addEventListener("input",pinta);
+D.addEventListener("keydown",function(e){
+  if(e.key==="/"&&D.activeElement!==q){e.preventDefault();q.focus()}
+  else if(e.key==="Escape"&&D.activeElement===q){q.value="";pinta();q.blur()}
+});
+pinta();
+})();
+</script>
 </body>
 </html>
