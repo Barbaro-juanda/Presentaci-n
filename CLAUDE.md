@@ -29,7 +29,9 @@ Juan David escribe en español y todo se entrega en español.
 ## Técnica
 
 - **Lienzo y archivos:** fijo de 1920 × 1080, escalado a la ventana. HTML autónomo; fuentes `.woff2` y GSAP 3.12.5 locales, sin CDN. Las fuentes compartidas están en `fonts/` y `chickenmart-pitch/vendor/gsap.min.js`.
-- **Portal (el mismo en todas):**
+- **Portal (el mismo en todas, siempre):** aunque el pedido describa una navegación más simple, toda presentación nueva lleva este sistema. Referencias: `rappi-simon-borrero/index.html` y `laboratorio-ideas-1/index.html`.
+  - Las clases del portal llevan prefijo propio (`m-num`, `m-rot`, `r-btn`) para no chocar con las de las diapositivas.
+  - El `clearProps` de GSAP va solo sobre `#escenario` / `#stage`: si toca las copias ocultas de la cuadrícula, GSAP les desordena las palabras.
   - Barra superior con cronómetro, Cuadrícula (`O`), Notas (`N`), Atajos (`?`) y Presentar (`P`).
   - Panel de miniaturas a la izquierda.
   - Teclas: `T`/`R` cronómetro, `F` pantalla completa, `Esc`. Enlace directo `index.html#N`.
