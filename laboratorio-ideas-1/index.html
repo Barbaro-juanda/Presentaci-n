@@ -76,6 +76,10 @@ h1,h2,h3,h4,.titular{font-family:"Poppins",sans-serif}
 /* ── barra de progreso, contador y ayuda ── */
 #progreso{position:fixed;left:0;top:0;height:6px;width:100%;background:rgba(11,42,91,.15);z-index:20}
 #progreso i{display:block;height:100%;width:100%;background:var(--marino);transform-origin:left;transform:scaleX(0);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+/* número de página arriba a la derecha, como pide APA 7 */
+#folio{position:fixed;right:24px;top:20px;z-index:20;font:700 15px/1 "Inter",sans-serif;color:var(--marino);font-variant-numeric:tabular-nums}
+.marino-activa #folio{color:var(--blanco)}
+.marino .pendiente{color:var(--blanco);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
 #contador{position:fixed;right:22px;bottom:18px;z-index:20;font:700 15px/1 "Inter",sans-serif;letter-spacing:.08em;
   color:var(--marino);background:rgba(255,255,255,.85);padding:9px 13px;border-radius:999px;font-variant-numeric:tabular-nums}
 #contador b{font-weight:800}
@@ -308,7 +312,8 @@ html.vertical #ayuda{display:none}
   <div class="kicker a">Laboratorio de Ideas 1</div>
   <h1 class="titular"><span class="a">Mi historia,</span><span class="a acento">mi propósito</span></h1>
   <div class="sub a"><span>Caer</span><span>reaccionar</span><span>y crecer</span></div>
-  <p class="autor a"><b>Juan David Escobar Guiral</b><br>Laboratorio de Ideas 1 · ESIC Business &amp; Marketing School</p>
+  <!-- Datos de la portada en el orden de APA 7 (trabajo de estudiante): autor, institución, curso, profesor y fecha -->
+  <p class="autor a"><b>Juan David Escobar Guiral</b><br>Negocios Digitales y Administración, ESIC Business &amp; Marketing School<br>Laboratorio de Ideas 1<br><span class="pendiente">nombre del profesor</span><br><span class="pendiente">fecha de entrega</span></p>
   <p class="competencia a"><b>Competencia del módulo</b>Detecto oportunidades a través del análisis del entorno para formular una propuesta creativa alineada con mi proyecto de vida.</p>
 </section>
 
@@ -533,6 +538,7 @@ html.vertical #ayuda{display:none}
 
 </main>
 
+<div id="folio" aria-label="Página">1</div>
 <div id="contador"><b id="cAct">1</b> / <span id="cTot">9</span></div>
 <div id="ayuda">← → · espacio · clic para avanzar · F pantalla completa</div>
 
@@ -689,6 +695,7 @@ function ir(n){
   var antes=i; i=n;
   H.classList.toggle("marino-activa",!!MARINO[n]);
   D.getElementById("cAct").textContent=n+1;
+  D.getElementById("folio").textContent=n+1;
   D.querySelector("#progreso i").style.transform="scaleX("+((n+1)/N)+")";
   if(history.replaceState) history.replaceState(null,"","#"+(n+1));
   if(antes>=0) D.getElementById("ayuda").classList.add("oculta");
