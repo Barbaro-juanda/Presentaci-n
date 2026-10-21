@@ -205,3 +205,14 @@ personas (Santiago, Juan David, Carolina, Nataly, Orozco y María Camila Jiméne
 sello extruido que `susi-2030`, con la identidad de Chicken Mart (vino, crema, casi negro y
 blanco hueso). Detalle en `chickenmart-pitch/README.md` y guion completo en
 `chickenmart-pitch/guion.md`.
+
+---
+
+# Laboratorio de Ideas 1 · Mi historia, mi propósito
+
+Carpeta `laboratorio-ideas-1/`. Presentación individual de 9 diapositivas: portada, línea de tiempo
+interactiva en dos partes (momentos difíciles en naranja, de crecimiento en marino), hobbies, Ikigai
+interactivo y su conclusión, interés en el núcleo, código de ética con tarjetas que se voltean y cierre.
+Un solo `index.html`; GSAP sale de cdnjs y las fuentes (Poppins e Inter) de Google Fonts, así que
+necesita internet para las animaciones. Los marcadores `[PENDIENTE: …]` están en el objeto `IKIGAI`
+del script.
