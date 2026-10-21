@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mi historia, mi propósito · Revista</title>
+<style>
+/* Fuentes locales: Poppins (titulares), Inter (texto) y Times New Roman para la portada APA */
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-500.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-600.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-700.woff2) format("woff2");font-weight:700}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-800.woff2) format("woff2");font-weight:800}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-900.woff2) format("woff2");font-weight:900}
+@font-face{font-family:"Inter";src:url(../fonts/Inter-300-700.woff2) format("woff2");font-weight:300 700}
+
+:root{
+  --amarillo:#FDBA56; --amarillo2:#FFD999; --miel:#F6A43A; --marino:#0B2A5B; --marino2:#123A78;
+  --blanco:#FFFFFF; --crema:#FFF6E6; --caida:#C2410C; --suave:rgba(11,42,91,.78);
+}
+@page{size:8.5in 11in;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#6B6F78}
+body{font-family:"Inter",sans-serif;color:var(--marino);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pag{position:relative;width:8.5in;height:11in;overflow:hidden;background:var(--blanco);margin:24px auto;box-shadow:0 10px 40px rgba(0,0,0,.35);page-break-after:always;break-after:page}
+@media print{html{background:none}.pag{margin:0;box-shadow:none}}
+h1,h2,h3,h4{font-family:"Poppins",sans-serif}
+svg.i{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pend{font-style:italic;background:rgba(11,42,91,.08);border:1px dashed rgba(11,42,91,.45);border-radius:4px;padding:0 5px}
+.pend::before{content:"PENDIENTE · ";font-style:normal;font-weight:700;font-size:.78em;letter-spacing:.04em}
+
+/* ── encabezado de las páginas de revista (con el número de página arriba a la derecha, como pide APA) ── */
+.cab{position:absolute;left:.75in;right:.75in;top:.42in;display:flex;justify-content:space-between;align-items:center;
+  font:600 7.5pt/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--suave)}
+.cab b{font:800 9pt/1 "Poppins",sans-serif;letter-spacing:0;color:var(--marino)}
+.oscura .cab,.oscura .cab b{color:rgba(255,255,255,.75)}
+.cuerpo{position:absolute;left:.75in;right:.75in;top:.85in;bottom:.6in;display:flex;flex-direction:column}
+.seccion{font:700 8pt/1 "Inter",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--caida);display:flex;align-items:center;gap:8px}
+.seccion::before{content:"";width:26px;height:3px;border-radius:2px;background:currentColor}
+.titular{font:800 34pt/1.22 "Poppins",sans-serif;letter-spacing:-.02em;margin-top:8px}
+.titular em{font-style:normal;background:var(--marino);color:var(--blanco);padding:0 8px;border-radius:8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.entradilla{margin-top:10px;font:400 11.5pt/1.5 "Inter",sans-serif;color:var(--suave);max-width:5.6in}
+
+/* ════════ 1 · PORTADA APA 7 (trabajo de estudiante) ════════ */
+.apa{font-family:"Times New Roman","Liberation Serif",Times,serif;font-size:12pt;line-height:2;color:#000;background:#fff}
+.apa .num{position:absolute;right:1in;top:.5in;line-height:1}
+.apa .bloque{position:absolute;left:1in;right:1in;top:calc(1in + 3 * 24pt);text-align:center}
+.apa .bloque p{margin:0}
+.apa .tit{font-weight:700}
+.apa .vacia{height:24pt}
+.apa .pend{font-family:inherit;border-color:#999;background:#f2f2f2}
+
+/* ════════ 2 · PORTADA DE REVISTA ════════ */
+.cubierta{background:var(--amarillo)}
+.cubierta::before{content:"";position:absolute;inset:0;background:radial-gradient(5in 4in at 90% 8%,var(--amarillo2),transparent 60%),radial-gradient(5in 4in at 0% 100%,var(--miel),transparent 65%)}
+.cubierta .forma{position:absolute;border-radius:50%}
+.cubierta .cab{color:var(--marino)}
+.mancheta{position:absolute;left:.6in;right:.6in;top:.7in;font:900 76pt/.86 "Poppins",sans-serif;letter-spacing:-.045em;color:var(--marino)}
+.mancheta small{display:block;margin-top:10px;font:700 9pt/1.4 "Inter",sans-serif;letter-spacing:.2em;text-transform:uppercase;border-top:2px solid var(--marino);border-bottom:2px solid var(--marino);padding:6px 0;display:flex;justify-content:space-between}
+.portadilla{position:absolute;left:.6in;top:3.15in;width:4.3in}
+.portadilla h1{font:900 46pt/.95 "Poppins",sans-serif;letter-spacing:-.035em}
+.portadilla h1 span{display:block;color:var(--blanco);-webkit-text-stroke:0}
+.portadilla .lema{margin-top:14px;display:inline-block;font:700 15pt/1 "Poppins",sans-serif;background:var(--marino);color:var(--amarillo);padding:8px 14px;border-radius:999px}
+.dato-cub{position:absolute;right:.6in;top:3.45in;width:2.55in;height:2.55in;border-radius:50%;background:var(--marino);color:var(--blanco);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:0 0 0 12px rgba(11,42,91,.15)}
+.dato-cub b{font:900 44pt/1 "Poppins",sans-serif;color:var(--amarillo)}
+.dato-cub span{font:600 9pt/1.35 "Inter",sans-serif;letter-spacing:.06em;margin-top:4px}
+.dato-cub strong{display:block;font:800 17pt/1.1 "Poppins",sans-serif;margin-top:8px}
+.temas{position:absolute;left:.6in;right:.6in;bottom:1.15in;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.temas div{background:var(--blanco);border-radius:14px;padding:14px 16px;box-shadow:0 10px 24px -14px rgba(11,42,91,.5)}
+.temas small{font:700 7.5pt/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--caida)}
+.temas b{display:block;margin-top:6px;font:800 12.5pt/1.15 "Poppins",sans-serif}
+.temas span{display:block;margin-top:6px;font:400 8.5pt/1.4 "Inter",sans-serif;color:var(--suave)}
+.firma-cub{position:absolute;left:.6in;right:.6in;bottom:.5in;display:flex;justify-content:space-between;align-items:flex-end;font:500 8.5pt/1.45 "Inter",sans-serif}
+.firma-cub b{font:800 11pt/1.2 "Poppins",sans-serif}
+.firma-cub .comp{width:3.6in;text-align:right;color:var(--suave);font-size:7.8pt}
+.firma-cub .comp i{font-style:normal;font-weight:700;letter-spacing:.14em;text-transform:uppercase;display:block;color:var(--marino)}
+
+/* ════════ 3 · HITOS ════════ */
+.hitos-grid{margin-top:16px;display:grid;grid-template-columns:1fr 2.1in;gap:22px;flex:1;min-height:0}
+.linea{position:relative;padding-left:46px;display:flex;flex-direction:column;gap:17px}
+.linea::before{content:"";position:absolute;left:15px;top:6px;bottom:6px;width:4px;border-radius:2px;background:linear-gradient(var(--caida) 0 48%,var(--marino) 52% 100%)}
+.hito{position:relative}
+.hito .p{position:absolute;left:-46px;top:0;width:34px;height:34px;border-radius:50%;background:var(--marino);color:var(--amarillo);display:grid;place-items:center;border:4px solid var(--blanco);box-shadow:0 0 0 2px var(--marino)}
+.hito.d .p{background:var(--caida);color:var(--blanco);box-shadow:0 0 0 2px var(--caida)}
+.hito .p svg{width:15px;height:15px}
+.hito .e{font:800 14pt/1 "Poppins",sans-serif}
+.hito.d .e{color:var(--caida)}
+.hito .e small{font:700 7pt/1 "Inter",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-left:8px;vertical-align:middle}
+.hito .e .q{color:var(--blanco);background:var(--caida);padding:3px 6px;border-radius:99px}
+.hito h4{font:700 11.5pt/1.2 "Poppins",sans-serif;margin-top:3px}
+.hito p{font:400 10pt/1.5 "Inter",sans-serif;color:var(--suave);margin-top:3px}
+.lateral{display:flex;flex-direction:column;gap:16px}
+.ley{background:var(--crema);border-radius:12px;padding:12px 14px;font:600 8.5pt/1.2 "Inter",sans-serif;display:grid;gap:8px}
+.ley span{display:flex;align-items:center;gap:8px}
+.ley i{width:12px;height:12px;border-radius:50%;display:block}
+.cifra{background:var(--marino);color:var(--blanco);border-radius:14px;padding:16px}
+.cifra small{font:700 7.5pt/1.3 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--amarillo)}
+.cifra b{display:block;font:900 24pt/1 "Poppins",sans-serif;margin-top:6px}
+.cifra b+b{font-size:14.5pt;color:var(--amarillo);margin-top:6px}
+.cifra span{display:block;font:500 8.5pt/1.4 "Inter",sans-serif;opacity:.85;margin-top:4px}
+.cita{font:800 15pt/1.18 "Poppins",sans-serif;letter-spacing:-.01em;border-top:4px solid var(--marino);padding-top:12px}
+.cita em{font-style:normal;color:var(--caida)}
+
+/* ════════ 4 · HOBBIES ════════ */
+.dos{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.hobby{border-radius:18px;padding:22px 22px 24px;background:var(--crema);position:relative;overflow:hidden}
+.hobby .ic{width:58px;height:58px;border-radius:16px;background:var(--marino);color:var(--amarillo);display:grid;place-items:center}
+.hobby .ic svg{width:30px;height:30px}
+.hobby h3{margin-top:16px;font:800 30pt/1 "Poppins",sans-serif;letter-spacing:-.02em}
+.hobby .fl{display:inline-block;margin-top:10px;font:700 11pt/1.2 "Poppins",sans-serif;background:var(--amarillo);padding:6px 12px;border-radius:99px}
+.hobby p{margin-top:14px;font:400 12pt/1.6 "Inter",sans-serif;color:var(--suave)}
+.hobby ul{margin-top:12px;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.hobby li{font:600 8.5pt/1 "Inter",sans-serif;background:var(--blanco);border:1px solid rgba(11,42,91,.2);border-radius:99px;padding:6px 9px}
+.grande{margin-top:auto;font:800 30pt/1.12 "Poppins",sans-serif;letter-spacing:-.02em}
+.grande em{font-style:normal;color:var(--caida)}
+.grande small{display:block;margin-top:10px;font:600 8.5pt/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--suave)}
+.franja{margin-top:26px;background:var(--amarillo);border-radius:18px;padding:22px 26px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.franja b{font:900 40pt/1 "Poppins",sans-serif}
+.franja p{font:700 13.5pt/1.3 "Poppins",sans-serif}
+
+/* ════════ 5 · IKIGAI ════════ */
+.iki{margin-top:12px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px 18px;flex:1;min-height:0}
+.venn{grid-column:1/-1;justify-self:center;width:3.95in;height:auto;margin-bottom:4px}
+.venn .c{fill:var(--marino);fill-opacity:.09;stroke:var(--marino);stroke-width:2.5}
+.venn text{font-family:"Poppins",sans-serif;fill:var(--marino);text-anchor:middle;dominant-baseline:middle}
+.venn .tc{font-size:19px;font-weight:800}
+.venn .tz{font-size:15px;font-weight:700}
+.venn .tm{font-size:17px;font-weight:800;fill:var(--amarillo)}
+.caja{border-radius:12px;padding:10px 12px;background:var(--crema)}
+.caja h4{font:800 10pt/1.2 "Poppins",sans-serif}
+.caja h4 small{display:block;font:700 7pt/1.2 "Inter",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--caida);margin-bottom:2px}
+.caja ul{margin-top:5px;padding-left:14px;font:400 8.6pt/1.45 "Inter",sans-serif;color:var(--suave)}
+.inter{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.inter div{border:1.5px solid var(--marino);border-radius:12px;padding:9px 10px}
+.inter b{font:800 9.5pt/1 "Poppins",sans-serif}
+.inter small{display:block;font:700 6.5pt/1.2 "Inter",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--caida);margin-top:3px}
+.inter p{font:400 8.3pt/1.4 "Inter",sans-serif;color:var(--suave);margin-top:4px}
+.centro{grid-column:1/-1;background:var(--marino);color:var(--blanco);border-radius:14px;padding:14px 18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.centro small{font:700 7.5pt/1.2 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--amarillo);display:block}
+.centro b{font:900 18pt/1 "Poppins",sans-serif;color:var(--amarillo)}
+.centro p{font:700 11.5pt/1.35 "Poppins",sans-serif}
+
+/* ════════ 6 · NÚCLEO ════════ */
+.opcion{margin-top:18px;background:var(--crema);border-radius:12px;padding:12px 16px;font:500 10pt/1.45 "Inter",sans-serif}
+.opcion b{display:block;font:700 7.5pt/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--caida);margin-bottom:5px}
+.nucleo{margin-top:30px;display:grid;grid-template-columns:1fr 3.1in;gap:24px;align-items:center}
+.nucleo h3{font:800 23pt/1.12 "Poppins",sans-serif;letter-spacing:-.015em}
+.nucleo p{margin-top:12px;font:400 12pt/1.6 "Inter",sans-serif;color:var(--suave)}
+.triada{width:100%;height:auto}
+.porque{margin-top:auto;background:var(--marino);color:var(--blanco);border-radius:18px;padding:24px 28px;position:relative}
+.porque small{font:700 7.5pt/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--amarillo)}
+.porque p{margin-top:12px;font:600 14.5pt/1.48 "Poppins",sans-serif}
+.porque .comillas{position:absolute;right:22px;top:6px;font:900 70pt/1 "Poppins",sans-serif;color:var(--amarillo);opacity:.5}
+
+/* ════════ 7 · ÉTICA ════════ */
+.valores{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:18px;flex:1}
+.valor{border-radius:18px;padding:24px 22px;background:var(--crema);display:grid;grid-template-columns:62px 1fr;gap:16px;align-content:center;align-items:start}
+.valor .ic{width:62px;height:62px;border-radius:14px;background:var(--marino);color:var(--amarillo);display:grid;place-items:center}
+.valor .ic svg{width:26px;height:26px}
+.valor h4{font:800 18pt/1.1 "Poppins",sans-serif}
+.valor p{margin-top:8px;font:400 12pt/1.5 "Inter",sans-serif;color:var(--suave)}
+
+/* ════════ 8 · CONTRAPORTADA ════════ */
+.oscura{background:var(--marino);color:var(--blanco)}
+.oscura::before{content:"";position:absolute;inset:0;background:radial-gradient(5in 4in at 85% 0%,#1A4A93,transparent 60%),radial-gradient(4in 4in at 0% 100%,#06193A,transparent 65%)}
+.oscura .seccion{color:var(--amarillo)}
+.final{position:absolute;left:.75in;right:.75in;top:2.4in}
+.final blockquote{margin-top:16px;font:800 38pt/1.06 "Poppins",sans-serif;letter-spacing:-.03em}
+.final blockquote em{font-style:normal;color:var(--amarillo)}
+.final .gracias{margin-top:40px;display:flex;align-items:center;gap:18px}
+.final .gracias b{font:900 30pt/1 "Poppins",sans-serif;background:var(--amarillo);color:var(--marino);padding:8px 18px;border-radius:14px}
+.final .gracias span{font:500 10.5pt/1.45 "Inter",sans-serif;color:rgba(255,255,255,.85)}
+.final .gracias strong{display:block;color:var(--blanco)}
+.anillo{position:absolute;border-radius:50%;border:40px solid rgba(253,186,86,.16)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ 1 · PORTADA APA 7 (trabajo de estudiante) ═══════════════ -->
+<section class="pag apa">
+  <div class="num">1</div>
+  <div class="bloque">
+    <p class="tit">Mi historia, mi propósito: caer, reaccionar y crecer</p>
+    <div class="vacia"></div>
+    <p>Juan David Escobar Guiral</p>
+    <p>Negocios Digitales y Administración, ESIC Business &amp; Marketing School</p>
+    <p>Laboratorio de Ideas 1</p>
+    <p><span class="pend">nombre del profesor</span></p>
+    <p><span class="pend">fecha de entrega</span></p>
+  </div>
+</section>
+
+<!-- ═══════════════ 2 · PORTADA DE LA REVISTA ═══════════════ -->
+<section class="pag cubierta">
+  <div class="forma" style="width:3.4in;height:3.4in;right:-.9in;top:-1.1in;border:34px solid rgba(11,42,91,.10)"></div>
+  <div class="mancheta">PROPÓSITO<small><span>Edición 01 · Octubre 2026</span><span>Laboratorio de Ideas 1 · ESIC</span><span>p. 2</span></small></div>
+  <div class="portadilla">
+    <h1>Mi historia,<span>mi propósito</span></h1>
+    <div class="lema">Caer, reaccionar y crecer</div>
+  </div>
+  <div class="dato-cub"><b>32</b><span>CLIENTES EN MI SALÓN</span><strong>$1.000.000<br>al mes</strong><span style="opacity:.75">mi primer negocio, a los 17</span></div>
+  <div class="temas">
+    <div><small>p. 3 · Hitos</small><b>Lo que me tumbó y lo que me levantó</b><span>Seis momentos, de un hospital a los cuatro años a ESIC.</span></div>
+    <div><small>p. 5 · Ikigai</small><b>Salud, tecnología y personas</b><span>Dónde se cruzan lo que amo, lo que sé hacer y lo que el mundo necesita.</span></div>
+    <div><small>p. 7 · Ética</small><b>Mi brújula: lo que no negocio</b><span>Seis valores y de dónde salen.</span></div>
+  </div>
+  <div class="firma-cub">
+    <div><b>Juan David Escobar Guiral</b><br>ESIC Business &amp; Marketing School</div>
+    <div class="comp"><i>Competencia del módulo</i>Detecto oportunidades a través del análisis del entorno para formular una propuesta creativa alineada con mi proyecto de vida.</div>
+  </div>
+</section>
+
+<!-- ═══════════════ 3 · LOS HITOS DE MI VIDA ═══════════════ -->
+<section class="pag">
+  <div class="cab"><span>Laboratorio de Ideas 1 · Juan David Escobar Guiral</span><b>3</b></div>
+  <div class="cuerpo">
+    <div class="seccion">Los hitos de mi vida</div>
+    <h2 class="titular">Lo que me <em>tumbó</em> y lo que me <em>levantó</em></h2>
+    <div class="hitos-grid">
+      <div class="linea">
+        <div class="hito d"><span class="p"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></span>
+          <div class="e">4 años <small>momento difícil</small></div><h4>Neumonía</h4>
+          <p>Neumonía y varios meses hospitalizado. El hospital se volvió una especie de hogar y hoy es un espacio que disfruto.</p></div>
+        <div class="hito d"><span class="p"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></span>
+          <div class="e">14 años <small>momento difícil</small></div><h4>Un año difícil en casa</h4>
+          <p>Un año difícil en lo familiar. Me mudé a Sabaneta y cambié de colegio.</p></div>
+        <div class="hito d"><span class="p"><svg class="i" viewBox="0 0 24 24"><path d="M4 4l16 16"/><path d="M9 4h9v9"/></svg></span>
+          <div class="e">15-16 años <small class="q">punto de quiebre</small></div><h4>Perdí décimo</h4>
+          <p>Perdí décimo grado. Fue mi punto de quiebre: cambié mi círculo, me volví más responsable y maduré una mentalidad que era mediocre.</p></div>
+        <div class="hito"><span class="p"><svg class="i" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span>
+          <div class="e">17 años <small>crecimiento</small></div><h4>El podcast Distinto</h4>
+          <p>Descubrí el podcast Distinto. El primer episodio que escuché fue sobre creatividad con Carolina Alzate. Cambié mi idea de estudiar psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.</p></div>
+        <div class="hito"><span class="p"><svg class="i" viewBox="0 0 24 24"><path d="M4 9h16l-1.5 11h-13z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg></span>
+          <div class="e">17 años <small>crecimiento</small></div><h4>Mi primer negocio</h4>
+          <p>Mi primer negocio: vendía sándwiches, papas y jugos en el colegio. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó. Aprendí a distribuir mejor los ingresos.</p></div>
+        <div class="hito"><span class="p"><svg class="i" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></span>
+          <div class="e">Enero 2026 <small>crecimiento</small></div><h4>Entré a ESIC</h4>
+          <p>Entré a ESIC a estudiar Negocios Digitales y Administración. Desde el primer semestre consulto empresas reales con Solvers Lab.</p></div>
+      </div>
+      <aside class="lateral">
+        <div class="ley"><span><i style="background:var(--caida)"></i>Momento difícil</span><span><i style="background:var(--marino)"></i>Crecimiento</span></div>
+        <div class="cifra"><small>Mi primer negocio</small><b>32 clientes</b><b>$1.000.000/mes</b><span>Sándwiches, papas y jugos en el colegio, a los 17 años.</span></div>
+        <p class="cita">«Cada caída me enseñó algo que <em>hoy uso para construir.</em>»</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 4 · MIS HOBBIES ═══════════════ -->
+<section class="pag">
+  <div class="cab"><span>Laboratorio de Ideas 1 · Juan David Escobar Guiral</span><b>4</b></div>
+  <div class="cuerpo">
+    <div class="seccion">Mis hobbies</div>
+    <h2 class="titular">Lo que me <em>entrena</em><br>por fuera del aula</h2>
+    <div class="dos">
+      <article class="hobby">
+        <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M7 9V6a3 3 0 0 1 3-3h4a4 4 0 0 1 4 4v6a5 5 0 0 1-5 5H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2h3"/><path d="M8 18v3h8v-3"/></svg></div>
+        <h3>Boxeo</h3>
+        <span class="fl">→ Disciplina y manejo del estrés</span>
+        <p>Me ayuda a ser constante aunque no tenga ganas y a llegar con la cabeza despejada a estudiar o a trabajar en equipo, sin descargar la presión en los demás.</p>
+      </article>
+      <article class="hobby">
+        <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></div>
+        <h3>Podcasts</h3>
+        <span class="fl">→ Aprender de otros</span>
+        <p>Es mi forma de aprender por fuera del aula: escucho historias de emprendedores y creativos y llevo esas ideas a los trabajos de la U.</p>
+        <ul><li>Distinto</li><li>Tengo un Plan</li><li>El podcast de Adrià Solà</li><li>Lo que me sale en YouTube</li></ul>
+      </article>
+    </div>
+    <p class="grande">«Me ayuda a ser constante <em>aunque no tenga ganas.</em>»<small>Sobre el boxeo</small></p>
+    <div class="franja"><b>2</b><p>hobbies, dos aprendizajes: disciplina y manejo del estrés, y aprender de otros.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════ 5 · MI IKIGAI ═══════════════ -->
+<section class="pag">
+  <div class="cab"><span>Laboratorio de Ideas 1 · Juan David Escobar Guiral</span><b>5</b></div>
+  <div class="cuerpo">
+    <div class="seccion">Mi Ikigai</div>
+    <h2 class="titular">Donde se cruza <em>lo que soy</em></h2>
+    <div class="iki">
+      <svg class="venn" viewBox="0 0 640 640" aria-label="Diagrama de Ikigai">
+        <circle class="c" cx="320" cy="215" r="160"/><circle class="c" cx="215" cy="320" r="160"/>
+        <circle class="c" cx="425" cy="320" r="160"/><circle class="c" cx="320" cy="425" r="160"/>
+        <text class="tc" x="320" y="112">Lo que amo</text>
+        <text class="tc" x="132" y="308">En lo que</text><text class="tc" x="132" y="332">soy bueno</text>
+        <text class="tc" x="508" y="296">Lo que el</text><text class="tc" x="508" y="320">mundo</text><text class="tc" x="508" y="344">necesita</text>
+        <text class="tc" x="320" y="516">Por lo que me</text><text class="tc" x="320" y="540">pueden pagar</text>
+        <text class="tz" x="238" y="238">Pasión</text><text class="tz" x="402" y="238">Misión</text>
+        <text class="tz" x="402" y="402">Vocación</text><text class="tz" x="238" y="402">Profesión</text>
+        <circle cx="320" cy="320" r="46" fill="#0B2A5B"/><text class="tm" x="320" y="321">Ikigai</text>
+      </svg>
+      <div class="caja"><h4><small>Arriba</small>Lo que amo hacer</h4><ul><li>Boxeo</li><li>Crecimiento personal</li><li>Conversar con la gente y entender por qué actúa como actúa</li></ul></div>
+      <div class="caja"><h4><small>Izquierda</small>En lo que soy bueno</h4><ul><li>Terminar lo que empiezo, como cada libro que acabo</li><li><span class="pend">habilidades que reconocen los demás en mí</span></li><li><span class="pend">lo que hago con facilidad</span></li></ul></div>
+      <div class="caja"><h4><small>Derecha</small>Lo que necesita el mundo</h4><ul><li>Mejor acceso y experiencia en la salud</li><li>Salud y bienestar</li><li>Mejor movilidad en el Valle de Aburrá por el tráfico</li></ul></div>
+      <div class="caja"><h4><small>Abajo</small>Por lo que me pueden pagar</h4><ul><li>Diseño de páginas web con IA</li><li>Análisis de mercado y competencia</li><li>Emprender en salud y bienestar</li><li>Marketing y comportamiento del consumidor</li></ul></div>
+      <div class="inter">
+        <div><b>Pasión</b><small>Amo + soy bueno</small><p>Aprender y crecer de forma constante, entendiendo a las personas.</p></div>
+        <div><b>Misión</b><small>Amo + el mundo necesita</small><p>Mejorar el bienestar de las personas, sobre todo en salud.</p></div>
+        <div><b>Vocación</b><small>El mundo necesita + me pagan</small><p>Crear negocios en salud y bienestar que resuelvan necesidades reales.</p></div>
+        <div><b>Profesión</b><small>Soy bueno + me pagan</small><p>Análisis de mercado, comportamiento del consumidor y tecnología con IA.</p></div>
+      </div>
+      <div class="centro"><div><small>El centro</small><b>Mi Ikigai</b></div><p>Emprender en salud y bienestar, usando la tecnología y la comprensión del comportamiento humano para mejorar la vida de las personas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 6 · MI INTERÉS EN EL NÚCLEO ═══════════════ -->
+<section class="pag">
+  <div class="cab"><span>Laboratorio de Ideas 1 · Juan David Escobar Guiral</span><b>6</b></div>
+  <div class="cuerpo">
+    <div class="seccion">Mi interés en el núcleo</div>
+    <h2 class="titular">Lo que quiero <em>explorar</em></h2>
+    <div class="opcion"><b>Opción escogida</b>Un tema que me gusta y sobre el que quiero profundizar para identificar oportunidades.</div>
+    <div class="nucleo">
+      <div>
+        <h3>Salud, bienestar y deporte potenciados con tecnología e IA</h3>
+        <p>Explorar cómo herramientas digitales pueden ayudar a las personas a entrenar mejor, cuidarse y mantenerse saludables, por ejemplo en gimnasios, deportes como el boxeo o hábitos diarios.</p>
+      </div>
+      <svg class="triada" viewBox="0 0 300 280" aria-label="Deporte, salud y tecnología">
+        <g stroke="#0B2A5B" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"><line x1="150" y1="58" x2="62" y2="200"/><line x1="150" y1="58" x2="238" y2="200"/><line x1="62" y1="200" x2="238" y2="200"/></g>
+        <g font-family="Poppins" font-weight="800" font-size="15" fill="#0B2A5B" text-anchor="middle">
+          <circle cx="150" cy="58" r="44" fill="#0B2A5B"/><text x="150" y="122">Deporte</text>
+          <circle cx="62" cy="200" r="44" fill="#0B2A5B"/><text x="62" y="264">Salud</text>
+          <circle cx="238" cy="200" r="44" fill="#0B2A5B"/><text x="238" y="264">Tecnología · IA</text>
+          <rect x="112" y="140" width="76" height="40" rx="10" fill="#FDBA56"/><text x="150" y="165" font-size="13">Mi núcleo</text>
+        </g>
+        <g fill="none" stroke="#FDBA56" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <g transform="translate(132 40) scale(1.5)"><path d="M7 9V6a3 3 0 0 1 3-3h4a4 4 0 0 1 4 4v6a5 5 0 0 1-5 5H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2h3"/><path d="M8 18v3h8v-3"/></g>
+          <g transform="translate(44 182) scale(1.5)"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M8 12h2l1-2 2 4 1-2h2"/></g>
+          <g transform="translate(220 182) scale(1.5)"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></g>
+        </g>
+      </svg>
+    </div>
+    <div class="porque"><span class="comillas">”</span><small>Por qué me interesa</small>
+      <p>«El deporte, sobre todo el boxeo, me dio disciplina y me ayuda a manejar el estrés, y quiero que más personas vivan eso. Además, la salud siempre ha estado presente en mi vida desde niño, y creo que la tecnología y la IA pueden hacer que cuidarse sea más fácil y accesible.»</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════ 7 · MI CÓDIGO DE ÉTICA ═══════════════ -->
+<section class="pag">
+  <div class="cab"><span>Laboratorio de Ideas 1 · Juan David Escobar Guiral</span><b>7</b></div>
+  <div class="cuerpo">
+    <div class="seccion">Mi código de ética</div>
+    <h2 class="titular">Mi brújula: <em>lo que no negocio</em></h2>
+    <div class="valores">
+      <div class="valor"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><div><h4>Responsabilidad</h4><p>Cumplo lo que prometo. Perder décimo me enseñó que nadie va a responder por mí.</p></div></div>
+      <div class="valor"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M3 12h3l3-8 6 16 3-8h3"/></svg></div><div><h4>Disciplina</h4><p>Soy constante aunque no tenga ganas. El boxeo me lo recuerda en cada entrenamiento.</p></div></div>
+      <div class="valor"><div class="ic"><svg class="i" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14 14.3c.6-.2 1.3-.3 2-.3 3.3 0 6 2.7 6 6"/></svg></div><div><h4>Respeto</h4><p>Trato bien a todas las personas, sin importar quiénes sean.</p></div></div>
+      <div class="valor"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M3 20l6-12 4 7 3-4 5 9z"/></svg></div><div><h4>Esfuerzo propio</h4><p>Me gano las cosas con mi trabajo, sin atajos.</p></div></div>
+      <div class="valor"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></div><div><h4>Empatía</h4><p>Busco entender al otro antes de juzgarlo.</p></div></div>
+      <div class="valor"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M4 20l6-6 4 4 6-8"/><path d="M15 10h5v5"/></svg></div><div><h4>Superación</h4><p>Me levanto después de cada caída y aprendo de ella.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 8 · CONTRAPORTADA ═══════════════ -->
+<section class="pag oscura">
+  <div class="anillo" style="width:4in;height:4in;right:-1.2in;bottom:-1.3in"></div>
+  <div class="cab"><span>Laboratorio de Ideas 1 · Juan David Escobar Guiral</span><b>8</b></div>
+  <div class="final">
+    <div class="seccion">Mi propósito</div>
+    <blockquote>De caer a construir: mi propósito es <em>ayudar a las personas a vivir mejor.</em></blockquote>
+    <div class="gracias"><b>Gracias</b><span><strong>Juan David Escobar Guiral</strong>Laboratorio de Ideas 1 · ESIC Business &amp; Marketing School</span></div>
+  </div>
+</section>
+
+</body>
+</html>
