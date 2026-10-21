@@ -9,6 +9,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Fuentes también locales: si Google Fonts no carga (sin internet o red bloqueada), se usan estas */
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-700.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-800.woff2) format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Poppins";src:url(fonts/Poppins-900.woff2) format("woff2");font-weight:900;font-display:swap}
+@font-face{font-family:"Inter";src:url(../fonts/Inter-300-700.woff2) format("woff2");font-weight:300 700;font-display:swap}
 /* ════════════════════════════════════════════════════════════════════════
    PALETA · sale de la imagen de la competencia del módulo
    ════════════════════════════════════════════════════════════════════════ */
@@ -530,6 +537,8 @@ html.vertical #ayuda{display:none}
 <div id="ayuda">← → · espacio · clic para avanzar · F pantalla completa</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>/* respaldo: si cdnjs no responde, usa la copia de GSAP del repositorio */
+window.gsap||document.write('<script src="../chickenmart-pitch/vendor/gsap.min.js"><\/script>')</script>
 <script>
 /* ══════════════════════════════════════════════════════════════════════════
    CONTENIDO DEL IKIGAI · se muestra en el panel al tocar cada zona
