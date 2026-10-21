@@ -39,8 +39,43 @@ body{font-family:"Inter",system-ui,sans-serif;color:var(--marino);-webkit-font-s
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 h1,h2,h3,h4,.titular{font-family:"Poppins",sans-serif}
 
-/* ── escenario: 16:9 centrado; en celular vertical ocupa toda la pantalla ── */
-#escenario{position:fixed;left:50%;top:50%;width:calc(1920*var(--u));height:calc(1080*var(--u));
+/* ══ PORTAL · el mismo sistema de todas las presentaciones: barra, miniaturas y escenario ══ */
+:root{--chrome:#061633;--chrome2:#0A1F44;--borde:rgba(255,255,255,.13);--apagado:rgba(255,255,255,.55);--mono:"Inter",sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+#app{position:fixed;inset:0;display:grid;grid-template-columns:248px 1fr;grid-template-rows:56px 1fr;background:var(--chrome);
+  transition:grid-template-columns .3s var(--ease),grid-template-rows .3s var(--ease)}
+body.presentando #app,html.vertical #app{grid-template-columns:0 1fr;grid-template-rows:0 1fr}
+#barra{grid-column:1/-1;grid-row:1;display:flex;align-items:center;gap:12px;padding:0 16px;background:var(--chrome2);border-bottom:1px solid var(--borde);color:#fff;overflow:hidden;z-index:5}
+body.presentando #barra,html.vertical #barra{opacity:0;pointer-events:none}
+#barra .marca{display:flex;align-items:center;gap:12px;min-width:0;overflow:hidden}
+#barra .marca i{width:32px;height:32px;border-radius:9px;background:var(--amarillo);color:var(--marino);display:grid;place-items:center;font:800 13px/1 "Poppins",sans-serif;font-style:normal;flex:none}
+#barra .marca span{font:600 11px/1 "Inter",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--apagado);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#barra .sep{flex:1}
+.r-btn{font:600 11px/1 "Inter",sans-serif;letter-spacing:.13em;text-transform:uppercase;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.8);padding:9px 12px;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;border-radius:8px;transition:background .18s,color .18s,border-color .18s}
+.r-btn:hover{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.45)}
+.r-btn:focus-visible{outline:2px solid var(--amarillo);outline-offset:2px}
+.r-btn.activo{background:#fff;border-color:#fff;color:var(--marino)}
+.r-btn--pri{background:var(--amarillo);border-color:var(--amarillo);color:var(--marino)}
+.r-btn--pri:hover{background:#FFD38A;border-color:#FFD38A;color:var(--marino)}
+.r-btn kbd{font:inherit;font-size:9px;opacity:.65;border:1px solid currentColor;border-radius:3px;padding:0 4px;line-height:13px}
+#reloj{font:600 12.5px/1 "Inter",sans-serif;letter-spacing:.1em;color:var(--apagado);font-variant-numeric:tabular-nums;white-space:nowrap}
+#reloj.corre{color:#fff}
+@media (max-width:1180px){#barra .marca span{display:none}}
+@media (max-width:980px){.r-btn kbd{display:none}}
+#panel{grid-column:1;grid-row:2;background:#04102A;border-right:1px solid var(--borde);overflow-y:auto;overflow-x:hidden;padding:11px 0 34px;z-index:4}
+body.presentando #panel,html.vertical #panel{opacity:0;pointer-events:none}
+.mini{display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:start;padding:5px 12px 5px 6px;cursor:pointer}
+.mini .m-num{font:600 10px/1 "Inter",sans-serif;color:var(--apagado);text-align:right;padding-top:4px;font-variant-numeric:tabular-nums}
+.mini .marco,.rc-item .marco{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:4px;background:var(--amarillo)}
+.mini:hover .marco,.rc-item:hover .marco{border-color:rgba(255,255,255,.45)}
+.mini.actual .marco,.rc-item.actual .marco{border-color:var(--amarillo);box-shadow:0 0 0 2px rgba(253,186,86,.45)}
+.mini.actual .m-num{color:#fff;font-weight:800}
+.mini .m-rot{grid-column:2;margin-top:5px;font:700 8.5px/1.2 "Inter",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lienzo{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:top left;pointer-events:none;overflow:hidden;--u:1px}
+.lienzo .lam{visibility:visible}
+#vista{grid-column:2;grid-row:2;position:relative;overflow:hidden;background:#020B1E;cursor:pointer}
+/* ── escenario: 16:9 centrado en la vista; en celular vertical ocupa toda la pantalla ── */
+#escenario{position:absolute;left:50%;top:50%;width:calc(1920*var(--u));height:calc(1080*var(--u));
   transform:translate(-50%,-50%);overflow:hidden;background:var(--amarillo);box-shadow:0 30px 80px rgba(0,0,0,.45)}
 .lam{position:absolute;inset:0;visibility:hidden;padding:calc(96*var(--u)) calc(120*var(--u)) calc(110*var(--u));
   display:flex;flex-direction:column;overflow:hidden}
@@ -74,21 +109,44 @@ h1,h2,h3,h4,.titular{font-family:"Poppins",sans-serif}
 .pendiente::before{content:"PENDIENTE · ";font-style:normal;font-weight:700;font-size:.8em;letter-spacing:.06em}
 
 /* ── barra de progreso, contador y ayuda ── */
-#progreso{position:fixed;left:0;top:0;height:6px;width:100%;background:rgba(11,42,91,.15);z-index:20}
+#progreso{position:absolute;left:0;top:0;height:calc(8*var(--u));width:100%;background:rgba(11,42,91,.15);z-index:20}
 #progreso i{display:block;height:100%;width:100%;background:var(--marino);transform-origin:left;transform:scaleX(0);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 /* número de página arriba a la derecha, como pide APA 7 */
-#folio{position:fixed;right:24px;top:20px;z-index:20;font:700 15px/1 "Inter",sans-serif;color:var(--marino);font-variant-numeric:tabular-nums}
+#folio{position:absolute;right:calc(40*var(--u));top:calc(30*var(--u));z-index:20;font:700 calc(20*var(--u))/1 "Inter",sans-serif;color:var(--marino);font-variant-numeric:tabular-nums}
 .marino-activa #folio{color:var(--blanco)}
 .marino .pendiente{color:var(--blanco);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
-#contador{position:fixed;right:22px;bottom:18px;z-index:20;font:700 15px/1 "Inter",sans-serif;letter-spacing:.08em;
-  color:var(--marino);background:rgba(255,255,255,.85);padding:9px 13px;border-radius:999px;font-variant-numeric:tabular-nums}
+#contador{position:absolute;right:calc(36*var(--u));bottom:calc(30*var(--u));z-index:20;font:700 calc(19*var(--u))/1 "Inter",sans-serif;letter-spacing:.08em;
+  color:var(--marino);background:rgba(255,255,255,.85);padding:calc(11*var(--u)) calc(16*var(--u));border-radius:999px;font-variant-numeric:tabular-nums}
 #contador b{font-weight:800}
-#ayuda{position:fixed;left:22px;bottom:18px;z-index:20;font:500 13px/1.3 "Inter",sans-serif;color:var(--marino);
-  background:rgba(255,255,255,.85);padding:9px 13px;border-radius:999px;transition:opacity .6s}
+#ayuda{position:absolute;left:calc(36*var(--u));bottom:calc(30*var(--u));z-index:20;font:500 calc(17*var(--u))/1.3 "Inter",sans-serif;color:var(--marino);
+  background:rgba(255,255,255,.85);padding:calc(11*var(--u)) calc(16*var(--u));border-radius:999px;transition:opacity .6s}
 #ayuda.oculta{opacity:0;pointer-events:none}
 .marino-activa #contador,.marino-activa #ayuda{background:rgba(255,255,255,.12);color:var(--blanco)}
 .marino-activa #progreso{background:rgba(255,255,255,.15)}
 .marino-activa #progreso i{background:var(--amarillo)}
+body.presentando #ayuda{opacity:0}
+
+/* ── guion (N), cuadrícula (O) y atajos (?) ── */
+#notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(4,16,42,.97);border-top:calc(4*var(--u)) solid var(--amarillo);color:#fff;
+  padding:calc(28*var(--u)) calc(120*var(--u)) calc(34*var(--u));transform:translate3d(0,101%,0);transition:transform .32s var(--ease);cursor:auto;max-height:60%;overflow:auto}
+#notas.on{transform:none}
+#notas .cab{font:700 calc(17*var(--u))/1 "Inter",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--amarillo);margin-bottom:calc(14*var(--u))}
+#notas p{margin:0 0 calc(12*var(--u));font:300 calc(27*var(--u))/1.5 "Inter",sans-serif;color:rgba(255,255,255,.94);max-width:calc(1650*var(--u))}
+#notas p.relevo{color:var(--amarillo);font-weight:600}
+#rejilla{position:fixed;inset:0;z-index:60;background:var(--chrome);display:none;overflow-y:auto;padding:22px 30px 54px}
+#rejilla.on{display:block}
+#rejilla .rc{display:flex;align-items:center;justify-content:space-between;color:#fff;margin-bottom:18px}
+#rejilla .rc h3{font:800 25px/1 "Poppins",sans-serif;margin:0}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.rc-item{cursor:pointer}
+.rc-item .pie2{display:flex;justify-content:space-between;color:var(--apagado);font:600 10px/1 "Inter",sans-serif;margin-top:8px;letter-spacing:.12em;text-transform:uppercase}
+#atajos{position:fixed;inset:0;z-index:70;background:rgba(4,16,42,.98);display:none;place-content:center;justify-items:center;text-align:center;color:#fff}
+#atajos.on{display:grid}
+#atajos h3{font:800 38px/1 "Poppins",sans-serif;margin:0 0 24px}
+#atajos table{border-collapse:collapse;font:300 18px/1.4 "Inter",sans-serif}
+#atajos td{padding:8px 24px}
+#atajos td:first-child{text-align:right;color:var(--amarillo);font:600 13px/1 "Inter",sans-serif;letter-spacing:.1em}
+#atajos p{margin-top:24px;font-size:13.5px;color:var(--apagado);max-width:62ch;line-height:1.5}
 
 /* ════════════════════════════════════════════════════════════════════════
    1 · PORTADA
@@ -258,7 +316,7 @@ h1,h2,h3,h4,.titular{font-family:"Poppins",sans-serif}
 /* ════════════════════════════════════════════════════════════════════════
    CELULAR EN VERTICAL · cada lámina ocupa la pantalla y se recorre hacia abajo
    ════════════════════════════════════════════════════════════════════════ */
-html.vertical #escenario{width:100vw;height:100vh;height:100dvh;box-shadow:none}
+html.vertical #escenario{width:100%;height:100%;box-shadow:none}
 html.vertical .lam{padding:calc(70*var(--u)) calc(44*var(--u)) calc(110*var(--u));overflow-y:auto;justify-content:flex-start}
 html.vertical .titulo{font-size:calc(66*var(--u));line-height:1.22}
 html.vertical .l-portada .forma:nth-child(2){display:none}
@@ -299,21 +357,32 @@ html.vertical #ayuda{display:none}
 </head>
 <body>
 
-<div id="progreso"><i></i></div>
 
+<div id="app">
+  <header id="barra">
+    <div class="marca"><i>JD</i><span>Juan David Escobar Guiral · Laboratorio de Ideas 1 · Mi historia, mi propósito</span></div>
+    <div class="sep"></div>
+    <div id="reloj">00:00</div>
+    <button class="r-btn" id="bRejilla">Cuadrícula <kbd>O</kbd></button>
+    <button class="r-btn" id="bNotas">Notas <kbd>N</kbd></button>
+    <button class="r-btn" id="bAtajos">Atajos <kbd>?</kbd></button>
+    <button class="r-btn r-btn--pri" id="bPresentar">Presentar <kbd>P</kbd></button>
+  </header>
+  <aside id="panel" aria-label="Diapositivas"></aside>
+  <div id="vista">
 <main id="escenario">
 
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 1 · PORTADA
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam marino l-portada" aria-label="Portada">
+<section class="lam marino l-portada" aria-label="Portada" data-notas="Mi historia, mi propósito: caer, reaccionar y crecer.|Les voy a contar los momentos que me formaron, lo que me mueve, mi Ikigai, el tema que quiero explorar y los valores que no negocio.">
   <div class="forma" style="width:calc(620*var(--u));height:calc(620*var(--u));right:calc(-120*var(--u));top:calc(-160*var(--u));border:calc(70*var(--u)) solid rgba(253,186,86,.16)"></div>
   <div class="forma" style="width:calc(220*var(--u));height:calc(220*var(--u));right:calc(460*var(--u));top:calc(330*var(--u));background:rgba(253,186,86,.9)"></div>
   <div class="kicker a">Laboratorio de Ideas 1</div>
   <h1 class="titular"><span class="a">Mi historia,</span><span class="a acento">mi propósito</span></h1>
   <div class="sub a"><span>Caer</span><span>reaccionar</span><span>y crecer</span></div>
   <!-- Datos de la portada en el orden de APA 7 (trabajo de estudiante): autor, institución, curso, profesor y fecha -->
-  <p class="autor a"><b>Juan David Escobar Guiral</b><br>Negocios Digitales y Administración, ESIC Business &amp; Marketing School<br>Laboratorio de Ideas 1<br><span class="pendiente">nombre del profesor</span><br><span class="pendiente">fecha de entrega</span></p>
+  <p class="autor a"><b>Juan David Escobar Guiral</b><br>Negocios Digitales y Administración, ESIC Business &amp; Marketing School<br>Laboratorio de Ideas 1<br>Lina Marcela Gallego Moreno<br>22 de octubre de 2026</p>
   <p class="competencia a"><b>Competencia del módulo</b>Detecto oportunidades a través del análisis del entorno para formular una propuesta creativa alineada con mi proyecto de vida.</p>
 </section>
 
@@ -322,7 +391,7 @@ html.vertical #ayuda{display:none}
      Cada hito: data-tipo="dificil" (naranja) o sin tipo (crecimiento, marino).
      Toca el punto para abrir la tarjeta.
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Los hitos de mi vida, parte 1">
+<section class="lam" aria-label="Los hitos de mi vida, parte 1" data-notas="Empiezo por lo que me tumbó.|A los 4 años tuve neumonía y pasé varios meses hospitalizado. El hospital se volvió una especie de hogar y hoy es un espacio que disfruto.|A los 14 años vino un año difícil en lo familiar: me mudé a Sabaneta y cambié de colegio.|A los 15-16 perdí décimo. Fue mi punto de quiebre: cambié mi círculo, me volví más responsable y maduré una mentalidad que era mediocre.">
   <div class="cab-linea">
     <div><div class="kicker a">Los hitos de mi vida · 1 de 2</div>
       <h2 class="titulo a">Lo que me <em>tumbó</em></h2></div>
@@ -353,7 +422,7 @@ html.vertical #ayuda{display:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 3 · LOS HITOS DE MI VIDA (4 a 6) + dato + frase de cierre
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam l-crece" aria-label="Los hitos de mi vida, parte 2">
+<section class="lam l-crece" aria-label="Los hitos de mi vida, parte 2" data-notas="Y esto es lo que me levantó.|A los 17 descubrí el podcast Distinto; el primer episodio fue sobre creatividad con Carolina Alzate. Cambié psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.|Ese año monté mi primer negocio en el colegio: sándwiches, papas y jugos. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó; aprendí a distribuir mejor los ingresos.|En enero de 2026 entré a ESIC a estudiar Negocios Digitales y Administración, y desde el primer semestre consulto empresas reales con Solvers Lab.|Cada caída me enseñó algo que hoy uso para construir.">
   <div class="cab-linea">
     <div><div class="kicker a">Los hitos de mi vida · 2 de 2</div>
       <h2 class="titulo a">Lo que me <em>levantó</em></h2></div>
@@ -389,7 +458,7 @@ html.vertical #ayuda{display:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 4 · MIS HOBBIES
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mis hobbies">
+<section class="lam" aria-label="Mis hobbies" data-notas="Boxeo: disciplina y manejo del estrés. Me ayuda a ser constante aunque no tenga ganas y a llegar con la cabeza despejada a estudiar o a trabajar en equipo, sin descargar la presión en los demás.|Podcasts: aprender de otros. Distinto, Tengo un Plan, el podcast de Adrià Solà y lo que me sale en YouTube. Escucho historias de emprendedores y creativos y llevo esas ideas a los trabajos de la U.">
   <div class="kicker a">Mis hobbies</div>
   <h2 class="titulo a">Lo que me <em>entrena</em> por fuera del aula</h2>
   <div class="dos">
@@ -415,7 +484,7 @@ html.vertical #ayuda{display:none}
      DIAPOSITIVA 5 · MI IKIGAI (interactivo)
      El contenido de cada círculo e intersección está en el objeto IKIGAI del script.
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mi Ikigai">
+<section class="lam" aria-label="Mi Ikigai" data-notas="Mi Ikigai cruza cuatro preguntas.|Lo que amo: boxeo, crecimiento personal y conversar con la gente para entender por qué actúa como actúa.|En lo que soy bueno: terminar lo que empiezo, como cada libro que acabo.|Lo que necesita el mundo: mejor acceso y experiencia en la salud, salud y bienestar, y mejor movilidad en el Valle de Aburrá.|Por lo que me pueden pagar: diseño de páginas web con IA, análisis de mercado y competencia, emprender en salud y bienestar, y marketing y comportamiento del consumidor.|Toco cada intersección: pasión, misión, vocación y profesión.">
   <div class="kicker a">Mi Ikigai</div>
   <h2 class="titulo a">Donde se cruza <em>lo que soy</em></h2>
   <div class="iki">
@@ -446,7 +515,7 @@ html.vertical #ayuda{display:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 6 · MI IKIGAI · la conclusión
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam marino l-conclusion" aria-label="Mi Ikigai, conclusión">
+<section class="lam marino l-conclusion" aria-label="Mi Ikigai, conclusión" data-notas="En el centro está mi Ikigai: emprender en salud y bienestar, usando la tecnología y la comprensión del comportamiento humano para mejorar la vida de las personas.">
   <div class="kicker a">Mi Ikigai · el centro</div>
   <div class="conc">
     <svg class="venn" viewBox="0 0 640 640" aria-hidden="true">
@@ -468,7 +537,7 @@ html.vertical #ayuda{display:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 7 · MI INTERÉS EN EL NÚCLEO
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mi interés en el núcleo">
+<section class="lam" aria-label="Mi interés en el núcleo" data-notas="Escogí un tema que me gusta y sobre el que quiero profundizar para identificar oportunidades: salud, bienestar y deporte potenciados con tecnología e IA.|Quiero explorar cómo herramientas digitales pueden ayudar a las personas a entrenar mejor, cuidarse y mantenerse saludables, en gimnasios, en deportes como el boxeo o en hábitos diarios.|El boxeo me dio disciplina y me ayuda a manejar el estrés, y quiero que más personas vivan eso. La salud ha estado presente en mi vida desde niño, y la tecnología y la IA pueden hacer que cuidarse sea más fácil y accesible.">
   <div class="kicker a">Mi interés en el núcleo</div>
   <h2 class="titulo a">Lo que quiero <em>explorar</em></h2>
   <div class="nucleo">
@@ -495,7 +564,7 @@ html.vertical #ayuda{display:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 8 · MI CÓDIGO DE ÉTICA (tarjetas que se voltean)
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mi código de ética">
+<section class="lam" aria-label="Mi código de ética" data-notas="Mi brújula: lo que no negocio.|Responsabilidad: cumplo lo que prometo; perder décimo me enseñó que nadie va a responder por mí. Disciplina: soy constante aunque no tenga ganas.|Respeto: trato bien a todas las personas. Esfuerzo propio: me gano las cosas sin atajos.|Empatía: busco entender al otro antes de juzgarlo. Superación: me levanto después de cada caída y aprendo de ella.">
   <div class="kicker a">Mi código de ética</div>
   <h2 class="titulo a">Mi brújula: <em>lo que no negocio</em></h2>
   <div class="valores">
@@ -529,18 +598,43 @@ html.vertical #ayuda{display:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 9 · CIERRE
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam marino l-cierre" aria-label="Cierre">
+<section class="lam marino l-cierre" aria-label="Cierre" data-notas="De caer a construir: mi propósito es ayudar a las personas a vivir mejor.|Gracias.">
   <div class="forma" style="width:calc(520*var(--u));height:calc(520*var(--u));right:calc(-100*var(--u));bottom:calc(-140*var(--u));border:calc(60*var(--u)) solid rgba(253,186,86,.18)"></div>
   <div class="kicker a">Mi propósito</div>
   <blockquote style="margin-top:calc(30*var(--u))"><span class="w">De</span> <span class="w">caer</span> <span class="w">a</span> <span class="w">construir:</span> <span class="w">mi</span> <span class="w">propósito</span> <span class="w">es</span> <em class="w">ayudar</em> <em class="w">a</em> <em class="w">las</em> <em class="w">personas</em> <em class="w">a</em> <em class="w">vivir</em> <em class="w">mejor.</em></blockquote>
   <div class="gracias a"><b>Gracias</b><span><strong>Juan David Escobar Guiral</strong>Laboratorio de Ideas 1 · ESIC</span></div>
 </section>
 
-</main>
-
+<div id="progreso"><i></i></div>
 <div id="folio" aria-label="Página">1</div>
 <div id="contador"><b id="cAct">1</b> / <span id="cTot">9</span></div>
-<div id="ayuda">← → · espacio · clic para avanzar · F pantalla completa</div>
+<div id="ayuda">Clic o → para avanzar · P para presentar</div>
+<section id="notas" aria-hidden="true"><div class="cab" id="notasT"></div><div id="notasC"></div></section>
+</main>
+  </div>
+
+  <section id="rejilla" aria-hidden="true">
+    <div class="rc"><h3>Cuadrícula de diapositivas</h3><button class="r-btn" id="bCerrarRejilla">Cerrar <kbd>Esc</kbd></button></div>
+    <div class="rg" id="rg"></div>
+  </section>
+
+  <section id="atajos" aria-hidden="true"><div>
+    <h3>Atajos de teclado</h3>
+    <table><tbody>
+      <tr><td>→ ↓ espacio · clic</td><td>Avanzar</td></tr>
+      <tr><td>← ↑</td><td>Retroceder</td></tr>
+      <tr><td>Inicio · Fin</td><td>Primera y última diapositiva</td></tr>
+      <tr><td>P</td><td>Modo presentación</td></tr>
+      <tr><td>O</td><td>Cuadrícula</td></tr>
+      <tr><td>N</td><td>Guion de la diapositiva</td></tr>
+      <tr><td>T · R</td><td>Cronómetro: iniciar o pausar · reiniciar</td></tr>
+      <tr><td>F</td><td>Pantalla completa</td></tr>
+      <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
+    </tbody></table>
+    <p>Una diapositiva por clic. Tocar un hito, el Ikigai o una tarjeta no cambia de diapositiva. En el celular se avanza deslizando.</p>
+    <button class="r-btn r-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
+  </div></section>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>/* respaldo: si cdnjs no responde, usa la copia de GSAP del repositorio */
@@ -572,13 +666,17 @@ var MARINO={0:1,5:1,8:1};   /* láminas con fondo marino */
 D.getElementById("cTot").textContent=N;
 
 /* ── tamaño: 16:9 en pantallas anchas · pantalla completa en celular vertical ── */
+var vista=D.getElementById("vista");
 function medir(){
-  var W=innerWidth, Hh=innerHeight, vertical=Hh>W && W<820;
+  var vertical=innerHeight>innerWidth && innerWidth<820;
   H.classList.toggle("vertical",vertical);
+  var W=vertical?innerWidth:vista.clientWidth, Hh=vertical?innerHeight:vista.clientHeight;
   var u=vertical ? W/720 : Math.min(W/1920,Hh/1080);
   H.style.setProperty("--u",u+"px");
 }
 addEventListener("resize",medir); medir();
+/* la barra y el panel cambian de tamaño con transición: se vuelve a medir al terminar */
+D.getElementById("app").addEventListener("transitionend",function(e){ if(e.target.id==="app"){ medir(); reencaja() } });
 
 /* ── marcadores [PENDIENTE: …] → texto en itálica con fondo suave ── */
 function marcar(t){ return t.replace(/\[PENDIENTE:\s*([^\]]+)\]/g,'<span class="pendiente">$1</span>') }
@@ -598,6 +696,49 @@ zonas.forEach(function(z){
   z.addEventListener("click",function(e){ e.stopPropagation(); mostrar(z.dataset.iki) });
 });
 mostrar("inicio");
+
+/* ══ PORTAL · miniaturas, cuadrícula, guion, cronómetro ══ */
+var TIT=["Portada","Lo que me tumbó","Lo que me levantó","Mis hobbies","Mi Ikigai","El centro","Mi interés","Mi brújula","Cierre"];
+var panelM=D.getElementById("panel"), rg=D.getElementById("rg"), rejilla=D.getElementById("rejilla"), atajos=D.getElementById("atajos");
+var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D.getElementById("notasC"), minis=[], rcs=[];
+function lienzo(n){
+  var c=D.createElement("div"); c.className="lienzo";
+  var s=L[n].cloneNode(true); s.classList.add("on");
+  [].forEach.call(s.querySelectorAll(".hito"),function(h){ h.setAttribute("aria-expanded","true") });   /* tarjetas abiertas en la miniatura */
+  [].forEach.call(s.querySelectorAll("[id]"),function(e){ e.removeAttribute("id") });
+  c.appendChild(s); return c;
+}
+function reencaja(){
+  [].forEach.call(D.querySelectorAll(".marco"),function(m){ var c=m.querySelector(".lienzo"); if(c&&m.clientWidth) c.style.transform="scale("+(m.clientWidth/1920)+")" });
+}
+function dos(n){ return (n<9?"0":"")+(n+1) }
+L.forEach(function(s,n){
+  var w=D.createElement("div"); w.className="mini";
+  w.innerHTML='<div class="m-num">'+dos(n)+'</div><div><div class="marco"></div><div class="m-rot">'+TIT[n]+'</div></div>';
+  w.querySelector(".marco").appendChild(lienzo(n));
+  w.addEventListener("click",function(){ ir(n) });
+  panelM.appendChild(w); minis.push(w);
+  var r=D.createElement("div"); r.className="rc-item";
+  r.innerHTML='<div class="marco"></div><div class="pie2"><span>'+dos(n)+' · '+TIT[n]+'</span></div>';
+  r.querySelector(".marco").appendChild(lienzo(n));
+  r.addEventListener("click",function(){ cerrar(); ir(n) });
+  rg.appendChild(r); rcs.push(r);
+});
+addEventListener("resize",reencaja); reencaja();
+
+function guion(){
+  notasT.textContent="Guion · "+dos(i)+" de "+N+" · "+TIT[i];
+  notasC.innerHTML=L[i].dataset.notas.split("|").map(function(t){ return "<p>"+t+"</p>" }).join("");
+}
+function notasOn(v){ notas.classList.toggle("on",v); notas.setAttribute("aria-hidden",v?"false":"true"); D.getElementById("bNotas").classList.toggle("activo",v) }
+function abre(el,v){ el.classList.toggle("on",v); el.setAttribute("aria-hidden",v?"false":"true"); if(v) reencaja() }
+function cerrar(){ abre(rejilla,false); abre(atajos,false); notasOn(false) }
+
+/* cronómetro: cuenta el tiempo de la exposición (T inicia o pausa, R reinicia) */
+var reloj=D.getElementById("reloj"), t0=0, acum=0, corre=false, tic=null;
+function pinta(){ var x=Math.floor((acum+(corre?Date.now()-t0:0))/1000), m=Math.floor(x/60), r=x%60; reloj.textContent=(m<10?"0":"")+m+":"+(r<10?"0":"")+r; reloj.classList.toggle("corre",corre) }
+function cron(){ if(corre){ acum+=Date.now()-t0; corre=false; clearInterval(tic) } else { t0=Date.now(); corre=true; tic=setInterval(pinta,250) } pinta() }
+function reinicia(){ acum=0; t0=Date.now(); pinta() }
 
 /* ── hitos: toca el punto para abrir su tarjeta ── */
 [].forEach.call(D.querySelectorAll(".hito"),function(b){
@@ -658,15 +799,18 @@ function entrar(n){
       .from(q(".venn text"),{opacity:0,duration:.5,stagger:.03},.9)
       .from(q(".venn .centro, .venn .brillo"),{scale:0,transformOrigin:"50% 50%",duration:.6,ease:"back.out(2.6)"},1.2)
       .from(panel,{x:80,opacity:0,duration:.7},.6);
-    bucles.push(g.to(q(".venn .brillo"),{transformOrigin:"50% 50%",scale:1.25,opacity:.55,duration:1.6,yoyo:true,repeat:-1,ease:"sine.inOut"}));
+    /* el bucle arranca cuando termina la entrada, para no pelear con ella */
+    tl.call(function(){ bucles.push(g.to(q(".venn .brillo"),{transformOrigin:"50% 50%",scale:1.25,opacity:.55,duration:1.6,yoyo:true,repeat:-1,ease:"sine.inOut"})) });
   }
   if(n===5){                                   /* ikigai: conclusión */
     tl.from(q(".venn .circ"),{scale:0,transformOrigin:"50% 50%",opacity:0,duration:.8,stagger:.1,ease:"back.out(1.5)"},0)
       .from(q(".venn text"),{opacity:0,duration:.4},.6)
       .from(q(".venn .centro"),{scale:0,transformOrigin:"50% 50%",duration:.7,ease:"back.out(2.6)"},.8)
       .from(q(".venn .brillo"),{scale:0,transformOrigin:"50% 50%",opacity:0,duration:.8},1);
-    bucles.push(g.to(q(".venn .brillo"),{transformOrigin:"50% 50%",scale:1.35,opacity:.45,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut"}));
-    bucles.push(g.to(q(".venn .centro"),{transformOrigin:"50% 50%",scale:1.06,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut"}));
+    tl.call(function(){
+      bucles.push(g.to(q(".venn .brillo"),{transformOrigin:"50% 50%",scale:1.35,opacity:.45,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut"}));
+      bucles.push(g.to(q(".venn .centro"),{transformOrigin:"50% 50%",scale:1.06,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut"}));
+    });
   }
   if(n===6){                                   /* núcleo */
     tl.from(q(".nodo"),{scale:0,opacity:0,duration:.7,stagger:.18,ease:"back.out(2)"},.4)
@@ -689,7 +833,8 @@ function ir(n){
   n=Math.max(0,Math.min(N-1,n)); if(n===i) return;
   if(tl){ tl.progress(1).kill(); tl=null }
   bucles.forEach(function(b){ b.kill() }); bucles=[];
-  if(g) g.set(D.querySelectorAll(".lam *"),{clearProps:"transform,opacity,scale,rotate,x,y"});
+  /* solo en el escenario: las copias de la cuadrícula están ocultas y GSAP las desordenaría */
+  if(g) g.set(D.querySelectorAll("#escenario .lam *"),{clearProps:"transform,opacity,scale,rotate,x,y"});
   L.forEach(function(s,k){ s.classList.toggle("on",k===n) });
   if(L[n].scrollTop) L[n].scrollTop=0;
   var antes=i; i=n;
@@ -698,6 +843,10 @@ function ir(n){
   D.getElementById("folio").textContent=n+1;
   D.querySelector("#progreso i").style.transform="scaleX("+((n+1)/N)+")";
   if(history.replaceState) history.replaceState(null,"","#"+(n+1));
+  minis.forEach(function(m,k){ m.classList.toggle("actual",k===n) });
+  rcs.forEach(function(r,k){ r.classList.toggle("actual",k===n) });
+  if(minis[n]) minis[n].scrollIntoView({block:"nearest"});
+  guion();
   if(antes>=0) D.getElementById("ayuda").classList.add("oculta");
   if(n===4) mostrar("inicio");
   entrar(n);
@@ -712,9 +861,30 @@ function pantalla(){
 }
 
 /* ── teclado ── */
+function presentar(){
+  D.body.classList.toggle("presentando"); notasOn(false);
+  var en=D.fullscreenElement||D.webkitFullscreenElement, si=D.body.classList.contains("presentando");
+  if(si&&!en) pantalla(); if(!si&&en) pantalla();
+}
+D.getElementById("bRejilla").onclick=function(){ abre(rejilla,!rejilla.classList.contains("on")) };
+D.getElementById("bCerrarRejilla").onclick=function(){ abre(rejilla,false) };
+D.getElementById("bNotas").onclick=function(){ notasOn(!notas.classList.contains("on")) };
+D.getElementById("bAtajos").onclick=function(){ abre(atajos,true) };
+D.getElementById("bCerrarAtajos").onclick=function(){ abre(atajos,false) };
+D.getElementById("bPresentar").onclick=presentar;
+D.addEventListener("fullscreenchange",function(){ if(!D.fullscreenElement) D.body.classList.remove("presentando"); setTimeout(function(){ medir(); reencaja() },350) });
+
 D.addEventListener("keydown",function(e){
   if(e.metaKey||e.ctrlKey||e.altKey) return;
   var k=e.key;
+  if(k==="Escape"){ cerrar(); return }
+  if(rejilla.classList.contains("on")||atajos.classList.contains("on")) return;
+  if(k==="n"||k==="N"){ notasOn(!notas.classList.contains("on")); return }
+  if(k==="o"||k==="O"){ abre(rejilla,true); return }
+  if(k==="?"){ abre(atajos,true); return }
+  if(k==="t"||k==="T"){ cron(); return }
+  if(k==="r"||k==="R"){ reinicia(); return }
+  if(k==="p"||k==="P"){ presentar(); return }
   if(k==="ArrowRight"||k==="ArrowDown"||k===" "||k==="PageDown"||k==="Enter"){ e.preventDefault(); siguiente() }
   else if(k==="ArrowLeft"||k==="ArrowUp"||k==="PageUp"||k==="Backspace"){ e.preventDefault(); anterior() }
   else if(k==="Home") ir(0); else if(k==="End") ir(N-1);
@@ -722,8 +892,8 @@ D.addEventListener("keydown",function(e){
 });
 
 /* ── clic: avanza, salvo sobre algo interactivo (hitos, Ikigai, tarjetas) ── */
-D.getElementById("escenario").addEventListener("click",function(e){
-  if(e.target.closest("button,a,.interactivo,.panel")) return;
+vista.addEventListener("click",function(e){
+  if(e.target.closest("button,a,.interactivo,.panel,#notas")) return;
   if(H.classList.contains("vertical")) return;   /* en celular se navega deslizando */
   siguiente();
 });

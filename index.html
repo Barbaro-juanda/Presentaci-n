@@ -179,7 +179,7 @@ var DECKS=[
   {id:"laboratorio-ideas-1", ruta:"laboratorio-ideas-1/", titulo:"Mi historia, mi propósito",
    resumen:"Caer, reaccionar y crecer: mis hitos, mi Ikigai, mi interés en salud y tecnología y mi código de ética.",
    cat:"Laboratorio de Ideas 1", marca:"Proyecto de vida", fecha:"2026-10-21", dias:9,
-   c:"#2A5BB0", c2:"#FDBA56", pdf:"laboratorio-ideas-1/Mi-historia-mi-proposito-revista.pdf"},
+   c:"#2A5BB0", c2:"#FDBA56", pdf:"laboratorio-ideas-1/Mi-historia-mi-proposito-presentacion.pdf", revista:"laboratorio-ideas-1/Mi-historia-mi-proposito-revista.pdf"},
   {id:"rappi", ruta:"rappi-simon-borrero/", titulo:"De Grability a Rappi: el problema era la espera",
    resumen:"Simón Borrero: el origen de Rappi, por qué importa la frecuencia de uso y qué lo mueve más allá del dinero.",
    cat:"Emprendimiento", marca:"Rappi", fecha:"2026-10-20", dias:3, min:4,
@@ -227,6 +227,7 @@ function meta(d){
 function acciones(d){
   var a='<a class="bt pri" href="'+d.ruta+'">Abrir</a>';
   if(d.pdf) a+='<a class="bt" href="'+d.pdf+'" download>PDF</a>';
+  if(d.revista) a+='<a class="bt" href="'+d.revista+'" download>Revista</a>';
   if(d.guion) a+='<a class="bt" href="'+d.guion+'">Guion</a>';
   return '<div class="acc">'+a+'</div>';
 }
