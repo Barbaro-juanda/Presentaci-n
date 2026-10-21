@@ -182,19 +182,16 @@ body.presentando #ayuda{opacity:0}
   color:var(--amarillo);transition:box-shadow .3s}
 .hito.dificil .punto{background:var(--caida);box-shadow:0 0 0 calc(4*var(--u)) var(--caida);color:var(--blanco)}
 .hito .punto svg{width:46%;height:46%;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.hito:hover .punto,.hito[aria-expanded="true"] .punto{box-shadow:0 0 0 calc(4*var(--u)) var(--marino),0 0 0 calc(14*var(--u)) rgba(11,42,91,.18)}
-.hito.dificil:hover .punto,.hito.dificil[aria-expanded="true"] .punto{box-shadow:0 0 0 calc(4*var(--u)) var(--caida),0 0 0 calc(14*var(--u)) rgba(194,65,12,.22)}
+.hito .punto{box-shadow:0 0 0 calc(4*var(--u)) var(--marino),0 0 0 calc(14*var(--u)) rgba(11,42,91,.18)}
+.hito.dificil .punto{box-shadow:0 0 0 calc(4*var(--u)) var(--caida),0 0 0 calc(14*var(--u)) rgba(194,65,12,.22)}
 .hito .anillo{position:absolute;inset:calc(-14*var(--u));border-radius:50%;border:calc(3*var(--u)) solid currentColor;opacity:0}
 .hito .edad{margin-top:calc(26*var(--u));font:800 calc(52*var(--u))/1 "Poppins",sans-serif;letter-spacing:-.02em}
 .hito.dificil .edad{color:var(--caida)}
 .hito .nombre{margin-top:calc(10*var(--u));font:600 calc(28*var(--u))/1.25 "Inter",sans-serif}
 .hito .cartel{margin-top:calc(24*var(--u));width:100%;padding:calc(28*var(--u)) calc(30*var(--u));font:400 calc(27*var(--u))/1.45 "Inter",sans-serif;
-  color:var(--marino);clip-path:inset(0 0 100% 0 round calc(28*var(--u)));opacity:0;transition:clip-path .55s cubic-bezier(.2,.7,.2,1),opacity .3s}
-.hito[aria-expanded="true"] .cartel{clip-path:inset(0 0 0 0 round calc(28*var(--u)));opacity:1}
+  color:var(--marino)}
 .hito.dificil .cartel{border-top:calc(6*var(--u)) solid var(--caida)}
 .hito:not(.dificil) .cartel{border-top:calc(6*var(--u)) solid var(--marino)}
-.hito .toca{margin-top:calc(16*var(--u));font:600 calc(17*var(--u))/1 "Inter",sans-serif;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
-.hito[aria-expanded="true"] .toca{display:none}
 .quiebre{display:inline-block;margin-left:calc(8*var(--u));font:700 calc(14*var(--u))/1 "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;
   color:var(--blanco);background:var(--caida);padding:calc(6*var(--u)) calc(10*var(--u));border-radius:999px;vertical-align:middle}
 
@@ -228,29 +225,32 @@ body.presentando #ayuda{opacity:0}
 /* ════════════════════════════════════════════════════════════════════════
    5-6 · IKIGAI
    ════════════════════════════════════════════════════════════════════════ */
-.iki{display:grid;grid-template-columns:calc(780*var(--u)) 1fr;gap:calc(60*var(--u));align-items:center;flex:1;min-height:0;margin-top:calc(10*var(--u))}
+.iki{display:grid;grid-template-columns:calc(680*var(--u)) 1fr;gap:calc(60*var(--u));align-items:center;flex:1;min-height:0;margin-top:calc(10*var(--u))}
 .venn{width:100%;height:auto;max-height:calc(800*var(--u));overflow:visible}
-.venn .circ{fill:var(--marino);fill-opacity:.1;stroke:var(--marino);stroke-width:3;transition:fill-opacity .25s;cursor:pointer}
+.venn .circ{fill:var(--marino);fill-opacity:.1;stroke:var(--marino);stroke-width:3}
 .venn .circ.act{fill-opacity:.26}
-.venn .zona{fill:var(--blanco);fill-opacity:0;stroke:var(--marino);stroke-width:0;cursor:pointer;transition:fill-opacity .25s}
-.venn .zona:hover,.venn .zona.act{fill-opacity:.9;stroke-width:3}
-.venn .centro{fill:var(--marino);cursor:pointer}
+.venn .zona{fill:var(--blanco);fill-opacity:.9;stroke:var(--marino);stroke-width:2}
+.venn .centro{fill:var(--marino)}
 .venn .centro.act{fill:var(--marino2)}
 .venn .brillo{fill:url(#gBrillo);pointer-events:none}
 .venn text{font-family:"Poppins",sans-serif;fill:var(--marino);pointer-events:none;text-anchor:middle;dominant-baseline:middle}
 .venn .tc{font-size:20px;font-weight:800}
 .venn .tz{font-size:15.5px;font-weight:700}
 .venn .tm{font-size:17px;font-weight:800;fill:var(--amarillo)}
-.panel{padding:calc(44*var(--u)) calc(48*var(--u));min-height:calc(520*var(--u));display:flex;flex-direction:column}
-.panel .tipo{font:700 calc(18*var(--u))/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--caida)}
-.panel h3{margin-top:calc(14*var(--u));font:800 calc(50*var(--u))/1.05 "Poppins",sans-serif;letter-spacing:-.02em}
-.panel ul{margin-top:calc(26*var(--u));list-style:none;display:grid;gap:calc(16*var(--u))}
-.panel li{position:relative;padding-left:calc(34*var(--u));font:400 calc(26*var(--u))/1.42 "Inter",sans-serif;color:var(--tinta-suave)}
-.panel li::before{content:"";position:absolute;left:0;top:calc(13*var(--u));width:calc(14*var(--u));height:calc(14*var(--u));border-radius:50%;background:var(--amarillo);box-shadow:0 0 0 calc(3*var(--u)) var(--marino)}
-.panel .pista{margin-top:auto;padding-top:calc(24*var(--u));font:600 calc(17*var(--u))/1.3 "Inter",sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.55}
-.panel.destacado{background:var(--marino);color:var(--blanco)}
-.panel.destacado .tipo{color:var(--amarillo)}
-.panel.destacado li{color:rgba(255,255,255,.9)}
+/* tarjetas del Ikigai: una por círculo */
+.cajas-iki{display:grid;grid-template-columns:1fr 1fr;gap:calc(22*var(--u))}
+.caja{padding:calc(24*var(--u)) calc(28*var(--u));min-width:0}
+.caja .tipo{font:700 calc(15*var(--u))/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--caida)}
+.caja h3{margin-top:calc(8*var(--u));font:800 calc(29*var(--u))/1.1 "Poppins",sans-serif;letter-spacing:-.015em}
+.caja ul{margin-top:calc(12*var(--u));list-style:none;display:grid;gap:calc(7*var(--u))}
+.caja li{position:relative;padding-left:calc(24*var(--u));font:400 calc(21*var(--u))/1.38 "Inter",sans-serif;color:var(--tinta-suave)}
+.caja li::before{content:"";position:absolute;left:0;top:calc(10*var(--u));width:calc(10*var(--u));height:calc(10*var(--u));border-radius:50%;background:var(--amarillo);box-shadow:0 0 0 calc(2*var(--u)) var(--marino)}
+/* intersecciones, en la diapositiva del centro */
+.inters{margin-top:calc(34*var(--u));display:grid;grid-template-columns:1fr 1fr;gap:calc(16*var(--u))}
+.inters div{border:calc(2*var(--u)) solid rgba(255,255,255,.22);border-radius:calc(18*var(--u));padding:calc(16*var(--u)) calc(20*var(--u));background:rgba(255,255,255,.06)}
+.inters b{font:800 calc(26*var(--u))/1 "Poppins",sans-serif;color:var(--amarillo)}
+.inters small{margin-left:calc(10*var(--u));font:700 calc(13*var(--u))/1 "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.inters p{margin-top:calc(8*var(--u));font:400 calc(20*var(--u))/1.4 "Inter",sans-serif;color:rgba(255,255,255,.9)}
 .botones-iki{display:none}
 
 /* 6 · el centro como conclusión */
@@ -260,7 +260,7 @@ body.presentando #ayuda{opacity:0}
 .conc .venn .centro{fill:var(--amarillo)}
 .conc .venn .tm{fill:var(--marino)}
 .conc .venn text.tc{fill:rgba(255,255,255,.75);font-size:21px}
-.conc blockquote{font:800 calc(66*var(--u))/1.12 "Poppins",sans-serif;letter-spacing:-.025em}
+.conc blockquote{font:800 calc(52*var(--u))/1.12 "Poppins",sans-serif;letter-spacing:-.025em}
 .conc blockquote em{font-style:normal;color:var(--amarillo)}
 .conc .firma-iki{margin-top:calc(34*var(--u));font:600 calc(22*var(--u))/1.4 "Inter",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--amarillo)}
 
@@ -288,18 +288,10 @@ body.presentando #ayuda{opacity:0}
    8 · CÓDIGO DE ÉTICA · tarjetas que se voltean
    ════════════════════════════════════════════════════════════════════════ */
 .valores{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:calc(28*var(--u));margin-top:calc(44*var(--u));flex:1;min-height:0}
-.valor{display:block;width:100%;height:100%;padding:0;text-align:left;perspective:calc(1400*var(--u));min-height:0}
-.valor .giro{display:block;position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.3,.7,.2,1);transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
-.valor.volteada .giro{transform:rotateY(180deg)}
-.cara{position:absolute;inset:0;border-radius:calc(28*var(--u));backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  display:flex;flex-direction:column;justify-content:center;padding:calc(30*var(--u)) calc(38*var(--u))}
-.cara.frente{background:var(--blanco);box-shadow:0 calc(20*var(--u)) calc(40*var(--u)) calc(-24*var(--u)) rgba(11,42,91,.45);flex-direction:row;align-items:center;justify-content:flex-start;gap:calc(26*var(--u))}
-.cara.frente .ico{width:calc(96*var(--u));height:calc(96*var(--u))}
-.cara.frente h4{font:800 calc(38*var(--u))/1.05 "Poppins",sans-serif;letter-spacing:-.02em}
-.cara.frente small{display:block;margin-top:calc(8*var(--u));font:600 calc(15*var(--u))/1 "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;opacity:.5}
-.cara.dorso{background:var(--marino);color:var(--blanco);transform:rotateY(180deg)}
-.cara.dorso h4{font:800 calc(24*var(--u))/1 "Poppins",sans-serif;color:var(--amarillo);letter-spacing:.02em}
-.cara.dorso p{margin-top:calc(12*var(--u));font:500 calc(25*var(--u))/1.42 "Inter",sans-serif}
+.valor{display:grid;grid-template-columns:calc(96*var(--u)) 1fr;gap:calc(26*var(--u));align-items:center;padding:calc(28*var(--u)) calc(32*var(--u));min-height:0}
+.valor .ico{width:calc(96*var(--u));height:calc(96*var(--u))}
+.valor h4{font:800 calc(34*var(--u))/1.05 "Poppins",sans-serif;letter-spacing:-.02em}
+.valor p{margin-top:calc(8*var(--u));font:400 calc(22*var(--u))/1.42 "Inter",sans-serif;color:var(--tinta-suave)}
 
 /* ════════════════════════════════════════════════════════════════════════
    9 · CIERRE
@@ -332,20 +324,16 @@ html.vertical .hito{display:grid;grid-template-columns:calc(80*var(--u)) 1fr;col
 html.vertical .hito .punto{grid-row:1/4}
 html.vertical .hito .edad{margin-top:calc(4*var(--u))}
 html.vertical .hito .cartel{grid-column:2;font-size:calc(26*var(--u))}
-html.vertical .hito .toca{grid-column:2}
 html.vertical .hito .nombre{font-size:calc(26*var(--u))}
 html.vertical .dato{flex-wrap:wrap;margin-top:calc(26*var(--u))}
 html.vertical .frase{font-size:calc(36*var(--u))}
 html.vertical .dos,html.vertical .iki,html.vertical .nucleo,html.vertical .conc{grid-template-columns:1fr;flex:none}
 html.vertical .hobby p{font-size:calc(28*var(--u))}
-html.vertical .panel{min-height:0}
-html.vertical .panel li{font-size:calc(28*var(--u))}
+html.vertical .cajas-iki,html.vertical .inters{grid-template-columns:1fr}
+html.vertical .caja li{font-size:calc(25*var(--u))}
+html.vertical .valor p{font-size:calc(25*var(--u))}
 html.vertical .triada{max-width:calc(560*var(--u));margin:0 auto}
-html.vertical .valores{grid-template-columns:1fr 1fr;grid-auto-rows:calc(300*var(--u));flex:none}
-html.vertical .cara{padding:calc(24*var(--u))}
-html.vertical .cara.frente{flex-direction:column;align-items:flex-start;justify-content:center;gap:calc(16*var(--u))}
-html.vertical .cara.frente h4{font-size:calc(29*var(--u))}
-html.vertical .cara.dorso p{font-size:calc(23*var(--u))}
+html.vertical .valores{grid-template-columns:1fr;grid-auto-rows:auto;flex:none}
 html.vertical .conc blockquote{font-size:calc(54*var(--u))}
 html.vertical .conc .venn{max-width:calc(480*var(--u));margin:0 auto}
 html.vertical .l-cierre blockquote{font-size:calc(74*var(--u))}
@@ -398,24 +386,21 @@ html.vertical #ayuda{display:none}
     <div class="leyenda a"><span><i class="d"></i>Momento difícil</span><span><i class="c"></i>Crecimiento</span></div>
   </div>
   <div class="linea inicio">
-    <button class="hito dificil" aria-expanded="false">
+    <div class="hito dificil">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M8 12h2l1-2 2 4 1-2h2"/></svg></span>
       <span class="edad">4 años</span><span class="nombre">Neumonía</span>
       <span class="cartel tarjeta">Neumonía y varios meses hospitalizado. El hospital se volvió una especie de hogar y hoy es un espacio que disfruto.</span>
-      <span class="toca">Toca para abrir</span>
-    </button>
-    <button class="hito dificil" aria-expanded="false">
+    </div>
+    <div class="hito dificil">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M15 20v-5h-6v5"/></svg></span>
       <span class="edad">14 años</span><span class="nombre">Un año difícil en casa</span>
       <span class="cartel tarjeta">Un año difícil en lo familiar. Me mudé a Sabaneta y cambié de colegio.</span>
-      <span class="toca">Toca para abrir</span>
-    </button>
-    <button class="hito dificil" aria-expanded="false">
+    </div>
+    <div class="hito dificil">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M4 4l16 16"/><path d="M6 20h12"/><path d="M9 4h9v9"/></svg></span>
       <span class="edad">15-16 años</span><span class="nombre">Perdí décimo <span class="quiebre">punto de quiebre</span></span>
       <span class="cartel tarjeta">Perdí décimo grado. Fue mi punto de quiebre: cambié mi círculo, me volví más responsable y maduré una mentalidad que era mediocre.</span>
-      <span class="toca">Toca para abrir</span>
-    </button>
+    </div>
   </div>
 </section>
 
@@ -433,24 +418,21 @@ html.vertical #ayuda{display:none}
     </div>
   </div>
   <div class="linea">
-    <button class="hito" aria-expanded="false">
+    <div class="hito">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span>
       <span class="edad">17 años</span><span class="nombre">El podcast Distinto</span>
       <span class="cartel tarjeta">Descubrí el podcast Distinto. El primer episodio que escuché fue sobre creatividad con Carolina Alzate. Cambié mi idea de estudiar psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.</span>
-      <span class="toca">Toca para abrir</span>
-    </button>
-    <button class="hito" aria-expanded="false">
+    </div>
+    <div class="hito">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.5 11h-13z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg></span>
       <span class="edad">17 años</span><span class="nombre">Mi primer negocio</span>
       <span class="cartel tarjeta">Mi primer negocio: vendía sándwiches, papas y jugos en el colegio. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó. Aprendí a distribuir mejor los ingresos.</span>
-      <span class="toca">Toca para abrir</span>
-    </button>
-    <button class="hito" aria-expanded="false">
+    </div>
+    <div class="hito">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></span>
       <span class="edad">Enero 2026</span><span class="nombre">Entré a ESIC</span>
       <span class="cartel tarjeta">Entré a ESIC a estudiar Negocios Digitales y Administración. Desde el primer semestre consulto empresas reales con Solvers Lab.</span>
-      <span class="toca">Toca para abrir</span>
-    </button>
+    </div>
   </div>
   <p class="frase a">Cada caída me enseñó algo que <em>hoy uso para construir.</em></p>
 </section>
@@ -481,14 +463,14 @@ html.vertical #ayuda{display:none}
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     DIAPOSITIVA 5 · MI IKIGAI (interactivo)
+     DIAPOSITIVA 5 · MI IKIGAI (se arma solo, círculo por círculo)
      El contenido de cada círculo e intersección está en el objeto IKIGAI del script.
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mi Ikigai" data-notas="Mi Ikigai cruza cuatro preguntas.|Lo que amo: boxeo, crecimiento personal y conversar con la gente para entender por qué actúa como actúa.|En lo que soy bueno: terminar lo que empiezo, como cada libro que acabo.|Lo que necesita el mundo: mejor acceso y experiencia en la salud, salud y bienestar, y mejor movilidad en el Valle de Aburrá.|Por lo que me pueden pagar: diseño de páginas web con IA, análisis de mercado y competencia, emprender en salud y bienestar, y marketing y comportamiento del consumidor.|Toco cada intersección: pasión, misión, vocación y profesión.">
+<section class="lam" aria-label="Mi Ikigai" data-notas="Mi Ikigai cruza cuatro preguntas.|Lo que amo: boxeo, crecimiento personal y conversar con la gente para entender por qué actúa como actúa.|En lo que soy bueno: terminar lo que empiezo, como cada libro que acabo.|Lo que necesita el mundo: mejor acceso y experiencia en la salud, salud y bienestar, y mejor movilidad en el Valle de Aburrá.|Por lo que me pueden pagar: diseño de páginas web con IA, análisis de mercado y competencia, emprender en salud y bienestar, y marketing y comportamiento del consumidor.">
   <div class="kicker a">Mi Ikigai</div>
   <h2 class="titulo a">Donde se cruza <em>lo que soy</em></h2>
   <div class="iki">
-    <svg class="venn interactivo" viewBox="0 0 640 640" role="img" aria-label="Diagrama de Ikigai con cuatro círculos">
+    <svg class="venn" viewBox="0 0 640 640" role="img" aria-label="Diagrama de Ikigai con cuatro círculos">
       <defs><radialGradient id="gBrillo"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".55" stop-color="#FDBA56" stop-opacity=".55"/><stop offset="1" stop-color="#FDBA56" stop-opacity="0"/></radialGradient></defs>
       <circle class="circ" data-iki="amo"    cx="320" cy="215" r="160"/>
       <circle class="circ" data-iki="bueno"  cx="215" cy="320" r="160"/>
@@ -508,14 +490,14 @@ html.vertical #ayuda{display:none}
       <circle class="centro" data-iki="ikigai" cx="320" cy="320" r="46"/>
       <text class="tm" x="320" y="321">Ikigai</text>
     </svg>
-    <div class="panel tarjeta" id="panelIki" aria-live="polite"></div>
+    <div class="cajas-iki" id="cajasIki"></div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 6 · MI IKIGAI · la conclusión
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam marino l-conclusion" aria-label="Mi Ikigai, conclusión" data-notas="En el centro está mi Ikigai: emprender en salud y bienestar, usando la tecnología y la comprensión del comportamiento humano para mejorar la vida de las personas.">
+<section class="lam marino l-conclusion" aria-label="Mi Ikigai, conclusión" data-notas="En el centro está mi Ikigai: emprender en salud y bienestar, usando la tecnología y la comprensión del comportamiento humano para mejorar la vida de las personas.|Pasión: aprender y crecer de forma constante, entendiendo a las personas. Misión: mejorar el bienestar de las personas, sobre todo en salud.|Vocación: crear negocios en salud y bienestar que resuelvan necesidades reales. Profesión: análisis de mercado, comportamiento del consumidor y tecnología con IA.">
   <div class="kicker a">Mi Ikigai · el centro</div>
   <div class="conc">
     <svg class="venn" viewBox="0 0 640 640" aria-hidden="true">
@@ -529,7 +511,7 @@ html.vertical #ayuda{display:none}
     </svg>
     <div>
       <blockquote class="a">Emprender en <em>salud y bienestar</em>, usando la tecnología y la comprensión del comportamiento humano para <em>mejorar la vida de las personas.</em></blockquote>
-      <p class="firma-iki a">Mi Ikigai</p>
+      <div class="inters" id="intersIki"></div>
     </div>
   </div>
 </section>
@@ -568,30 +550,12 @@ html.vertical #ayuda{display:none}
   <div class="kicker a">Mi código de ética</div>
   <h2 class="titulo a">Mi brújula: <em>lo que no negocio</em></h2>
   <div class="valores">
-    <button class="valor" aria-pressed="false"><span class="giro">
-      <span class="cara frente"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span><span><h4>Responsabilidad</h4><small>Toca para voltear</small></span></span>
-      <span class="cara dorso"><h4>Responsabilidad</h4><p>Cumplo lo que prometo. Perder décimo me enseñó que nadie va a responder por mí.</p></span>
-    </span></button>
-    <button class="valor" aria-pressed="false"><span class="giro">
-      <span class="cara frente"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h3l3-8 6 16 3-8h3"/></svg></span><span><h4>Disciplina</h4><small>Toca para voltear</small></span></span>
-      <span class="cara dorso"><h4>Disciplina</h4><p>Soy constante aunque no tenga ganas. El boxeo me lo recuerda en cada entrenamiento.</p></span>
-    </span></button>
-    <button class="valor" aria-pressed="false"><span class="giro">
-      <span class="cara frente"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14 14.3c.6-.2 1.3-.3 2-.3 3.3 0 6 2.7 6 6"/></svg></span><span><h4>Respeto</h4><small>Toca para voltear</small></span></span>
-      <span class="cara dorso"><h4>Respeto</h4><p>Trato bien a todas las personas, sin importar quiénes sean.</p></span>
-    </span></button>
-    <button class="valor" aria-pressed="false"><span class="giro">
-      <span class="cara frente"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 20l6-12 4 7 3-4 5 9z"/><path d="M14 6l2-3 2 3"/></svg></span><span><h4>Esfuerzo propio</h4><small>Toca para voltear</small></span></span>
-      <span class="cara dorso"><h4>Esfuerzo propio</h4><p>Me gano las cosas con mi trabajo, sin atajos.</p></span>
-    </span></button>
-    <button class="valor" aria-pressed="false"><span class="giro">
-      <span class="cara frente"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></span><span><h4>Empatía</h4><small>Toca para voltear</small></span></span>
-      <span class="cara dorso"><h4>Empatía</h4><p>Busco entender al otro antes de juzgarlo.</p></span>
-    </span></button>
-    <button class="valor" aria-pressed="false"><span class="giro">
-      <span class="cara frente"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 20l6-6 4 4 6-8"/><path d="M15 10h5v5"/></svg></span><span><h4>Superación</h4><small>Toca para voltear</small></span></span>
-      <span class="cara dorso"><h4>Superación</h4><p>Me levanto después de cada caída y aprendo de ella.</p></span>
-    </span></button>
+    <div class="valor tarjeta"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span><div><h4>Responsabilidad</h4><p>Cumplo lo que prometo. Perder décimo me enseñó que nadie va a responder por mí.</p></div></div>
+    <div class="valor tarjeta"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h3l3-8 6 16 3-8h3"/></svg></span><div><h4>Disciplina</h4><p>Soy constante aunque no tenga ganas. El boxeo me lo recuerda en cada entrenamiento.</p></div></div>
+    <div class="valor tarjeta"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14 14.3c.6-.2 1.3-.3 2-.3 3.3 0 6 2.7 6 6"/></svg></span><div><h4>Respeto</h4><p>Trato bien a todas las personas, sin importar quiénes sean.</p></div></div>
+    <div class="valor tarjeta"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 20l6-12 4 7 3-4 5 9z"/><path d="M14 6l2-3 2 3"/></svg></span><div><h4>Esfuerzo propio</h4><p>Me gano las cosas con mi trabajo, sin atajos.</p></div></div>
+    <div class="valor tarjeta"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg></span><div><h4>Empatía</h4><p>Busco entender al otro antes de juzgarlo.</p></div></div>
+    <div class="valor tarjeta"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 20l6-6 4 4 6-8"/><path d="M15 10h5v5"/></svg></span><div><h4>Superación</h4><p>Me levanto después de cada caída y aprendo de ella.</p></div></div>
   </div>
 </section>
 
@@ -631,7 +595,7 @@ html.vertical #ayuda{display:none}
       <tr><td>F</td><td>Pantalla completa</td></tr>
       <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
     </tbody></table>
-    <p>Una diapositiva por clic. Tocar un hito, el Ikigai o una tarjeta no cambia de diapositiva. En el celular se avanza deslizando.</p>
+    <p>Una diapositiva por clic. En el celular se avanza deslizando.</p>
     <button class="r-btn r-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
   </div></section>
 </div>
@@ -681,21 +645,12 @@ D.getElementById("app").addEventListener("transitionend",function(e){ if(e.targe
 /* ── marcadores [PENDIENTE: …] → texto en itálica con fondo suave ── */
 function marcar(t){ return t.replace(/\[PENDIENTE:\s*([^\]]+)\]/g,'<span class="pendiente">$1</span>') }
 
-/* ── panel del Ikigai ── */
-var panel=D.getElementById("panelIki"), zonas=[].slice.call(D.querySelectorAll("[data-iki]"));
-function mostrar(k){
-  var d=IKIGAI[k]; if(!d) return;
-  panel.classList.toggle("destacado",!!d.destacado);
-  panel.innerHTML='<div class="tipo">'+d.tipo+'</div><h3>'+d.titulo+'</h3><ul>'+d.items.map(function(t){return "<li>"+marcar(t)+"</li>"}).join("")+'</ul>'+
-    '<div class="pista">'+(k==="inicio"?"Pasa el mouse o toca cada zona":"Toca otra zona para comparar")+'</div>';
-  zonas.forEach(function(z){ z.classList.toggle("act",z.dataset.iki===k) });
-  if(ANIMA) g.fromTo(panel.children,{y:14,opacity:0},{y:0,opacity:1,duration:.35,stagger:.05,ease:"power2.out"});
-}
-zonas.forEach(function(z){
-  z.addEventListener("mouseenter",function(){ mostrar(z.dataset.iki) });
-  z.addEventListener("click",function(e){ e.stopPropagation(); mostrar(z.dataset.iki) });
-});
-mostrar("inicio");
+/* ── Ikigai: las tarjetas de los círculos y de las intersecciones salen del objeto IKIGAI ── */
+function caja(d,cls){ return '<div class="'+cls+'"><div class="tipo">'+d.donde+'</div><h3>'+d.titulo+'</h3><ul>'+d.items.map(function(t){return "<li>"+marcar(t)+"</li>"}).join("")+'</ul></div>' }
+IKIGAI.amo.donde="Arriba"; IKIGAI.bueno.donde="Izquierda"; IKIGAI.mundo.donde="Derecha"; IKIGAI.pagan.donde="Abajo";
+D.getElementById("cajasIki").innerHTML=["amo","bueno","mundo","pagan"].map(function(k){ return caja(IKIGAI[k],"caja tarjeta") }).join("");
+D.getElementById("intersIki").innerHTML=["pasion","mision","vocacion","profesion"].map(function(k){ var d=IKIGAI[k];
+  return '<div><b>'+d.titulo+'</b><small>'+d.tipo+'</small><p>'+d.items[0]+'</p></div>' }).join("");
 
 /* ══ PORTAL · miniaturas, cuadrícula, guion, cronómetro ══ */
 var TIT=["Portada","Lo que me tumbó","Lo que me levantó","Mis hobbies","Mi Ikigai","El centro","Mi interés","Mi brújula","Cierre"];
@@ -704,7 +659,6 @@ var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D
 function lienzo(n){
   var c=D.createElement("div"); c.className="lienzo";
   var s=L[n].cloneNode(true); s.classList.add("on");
-  [].forEach.call(s.querySelectorAll(".hito"),function(h){ h.setAttribute("aria-expanded","true") });   /* tarjetas abiertas en la miniatura */
   [].forEach.call(s.querySelectorAll("[id]"),function(e){ e.removeAttribute("id") });
   c.appendChild(s); return c;
 }
@@ -740,21 +694,6 @@ function pinta(){ var x=Math.floor((acum+(corre?Date.now()-t0:0))/1000), m=Math.
 function cron(){ if(corre){ acum+=Date.now()-t0; corre=false; clearInterval(tic) } else { t0=Date.now(); corre=true; tic=setInterval(pinta,250) } pinta() }
 function reinicia(){ acum=0; t0=Date.now(); pinta() }
 
-/* ── hitos: toca el punto para abrir su tarjeta ── */
-[].forEach.call(D.querySelectorAll(".hito"),function(b){
-  b.addEventListener("click",function(e){
-    e.stopPropagation();
-    var abierto=b.getAttribute("aria-expanded")==="true";
-    b.setAttribute("aria-expanded",String(!abierto));
-    if(!abierto&&ANIMA) g.fromTo(b.querySelector(".anillo"),{scale:.7,opacity:.9},{scale:1.5,opacity:0,duration:.7,ease:"power2.out"});
-  });
-});
-
-/* ── valores: tarjetas que se voltean ── */
-[].forEach.call(D.querySelectorAll(".valor"),function(b){
-  b.addEventListener("click",function(e){ e.stopPropagation(); var v=b.classList.toggle("volteada"); b.setAttribute("aria-pressed",String(v)) });
-});
-
 /* ── números que cuentan (formato colombiano: 1.000.000) ── */
 var FMT=new Intl.NumberFormat("es-CO");
 function contar(root,t){
@@ -784,9 +723,11 @@ function entrar(n){
     var lin=s.querySelector(".linea");
     tl.fromTo(lin,{"--trazo":0},{"--trazo":1,duration:1.1,ease:"power2.inOut"},.3)
       .from(q(".hito .punto"),{scale:0,duration:.55,stagger:.2,ease:"back.out(2.4)"},.6)
-      .from(q(".hito .edad, .hito .nombre, .hito .toca"),{y:20,opacity:0,duration:.45,stagger:.06},.9);
+      .from(q(".hito .edad, .hito .nombre"),{y:20,opacity:0,duration:.45,stagger:.06},.9);
     if(n===2) contar(s,tl);
-    tl.add(function(){ var h=s.querySelector(".hito"); if(h&&h.getAttribute("aria-expanded")!=="true") h.click() },"+=.2");
+    /* cada tarjeta se despliega sola, una tras otra, con un pulso en su punto */
+    tl.fromTo(q(".hito .anillo"),{scale:.7,opacity:.9},{scale:1.6,opacity:0,duration:.8,stagger:.45,ease:"power2.out"},1.3)
+      .from(q(".hito .cartel"),{y:-26,opacity:0,scaleY:.6,transformOrigin:"50% 0%",duration:.6,stagger:.45,ease:"back.out(1.4)"},1.35);
   }
   if(n===3){                                   /* hobbies */
     tl.from(q(".hobby"),{x:function(k){return k?120:-120},opacity:0,duration:.8,stagger:.15},.3)
@@ -794,11 +735,16 @@ function entrar(n){
       .from(q(".hobby .flecha"),{x:-30,opacity:0,duration:.5,stagger:.15},.9);
     bucles.push(g.to(q(".marca-agua"),{rotate:8,duration:3,yoyo:true,repeat:-1,ease:"sine.inOut"}));
   }
-  if(n===4){                                   /* ikigai interactivo */
+  if(n===4){                                   /* ikigai: se arma solo */
     tl.from(q(".venn .circ"),{scale:0,transformOrigin:"50% 50%",opacity:0,duration:.8,stagger:.14,ease:"back.out(1.5)"},.2)
       .from(q(".venn text"),{opacity:0,duration:.5,stagger:.03},.9)
       .from(q(".venn .centro, .venn .brillo"),{scale:0,transformOrigin:"50% 50%",duration:.6,ease:"back.out(2.6)"},1.2)
-      .from(panel,{x:80,opacity:0,duration:.7},.6);
+      .from(q(".venn .zona"),{scale:0,transformOrigin:"50% 50%",duration:.45,stagger:.1,ease:"back.out(2.4)"},1.5);
+    /* cada círculo se ilumina mientras entra su tarjeta */
+    var circ=q(".venn .circ"), cj=q(".caja");
+    [0,1,2,3].forEach(function(k){
+      tl.to(circ[k],{fillOpacity:.32,duration:.3},2+k*.55).from(cj[k],{x:70,opacity:0,duration:.55},2+k*.55).to(circ[k],{fillOpacity:.1,duration:.5},2.5+k*.55);
+    });
     /* el bucle arranca cuando termina la entrada, para no pelear con ella */
     tl.call(function(){ bucles.push(g.to(q(".venn .brillo"),{transformOrigin:"50% 50%",scale:1.25,opacity:.55,duration:1.6,yoyo:true,repeat:-1,ease:"sine.inOut"})) });
   }
@@ -806,7 +752,8 @@ function entrar(n){
     tl.from(q(".venn .circ"),{scale:0,transformOrigin:"50% 50%",opacity:0,duration:.8,stagger:.1,ease:"back.out(1.5)"},0)
       .from(q(".venn text"),{opacity:0,duration:.4},.6)
       .from(q(".venn .centro"),{scale:0,transformOrigin:"50% 50%",duration:.7,ease:"back.out(2.6)"},.8)
-      .from(q(".venn .brillo"),{scale:0,transformOrigin:"50% 50%",opacity:0,duration:.8},1);
+      .from(q(".venn .brillo"),{scale:0,transformOrigin:"50% 50%",opacity:0,duration:.8},1)
+      .from(q(".inters > div"),{y:34,opacity:0,duration:.55,stagger:.14},1.4);
     tl.call(function(){
       bucles.push(g.to(q(".venn .brillo"),{transformOrigin:"50% 50%",scale:1.35,opacity:.45,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut"}));
       bucles.push(g.to(q(".venn .centro"),{transformOrigin:"50% 50%",scale:1.06,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut"}));
@@ -819,7 +766,7 @@ function entrar(n){
     bucles.push(g.to(q(".nodo .ico"),{y:-10,duration:1.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:.4}));
   }
   if(n===7){                                   /* código de ética */
-    tl.from(q(".valor"),{y:60,rotateX:-30,opacity:0,duration:.7,stagger:.09,ease:"back.out(1.4)"},.3)
+    tl.from(q(".valor"),{rotateY:-90,transformPerspective:1000,transformOrigin:"0% 50%",opacity:0,duration:.8,stagger:.12,ease:"back.out(1.3)"},.3)
       .from(q(".valor .ico"),{scale:0,duration:.45,stagger:.09,ease:"back.out(2.6)"},.7);
   }
   if(n===8){                                   /* cierre */
@@ -848,7 +795,6 @@ function ir(n){
   if(minis[n]) minis[n].scrollIntoView({block:"nearest"});
   guion();
   if(antes>=0) D.getElementById("ayuda").classList.add("oculta");
-  if(n===4) mostrar("inicio");
   entrar(n);
 }
 function siguiente(){ ir(i+1) } function anterior(){ ir(i-1) }
@@ -891,9 +837,9 @@ D.addEventListener("keydown",function(e){
   else if(k==="f"||k==="F") pantalla();
 });
 
-/* ── clic: avanza, salvo sobre algo interactivo (hitos, Ikigai, tarjetas) ── */
+/* ── clic: avanza (salvo sobre el guion o los botones) ── */
 vista.addEventListener("click",function(e){
-  if(e.target.closest("button,a,.interactivo,.panel,#notas")) return;
+  if(e.target.closest("button,a,#notas")) return;
   if(H.classList.contains("vertical")) return;   /* en celular se navega deslizando */
   siguiente();
 });
