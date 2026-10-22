@@ -103,10 +103,6 @@ body.presentando #panel,html.vertical #panel{opacity:0;pointer-events:none}
 .ico{display:grid;place-items:center;flex:none;border-radius:calc(22*var(--u));background:var(--marino);color:var(--amarillo)}
 .ico svg{width:56%;height:56%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* marcador de contenido por completar */
-.pendiente{display:inline;font-style:italic;background:rgba(11,42,91,.09);border:1.5px dashed rgba(11,42,91,.45);
-  border-radius:calc(8*var(--u));padding:calc(2*var(--u)) calc(10*var(--u));color:var(--marino)}
-.pendiente::before{content:"PENDIENTE · ";font-style:normal;font-weight:700;font-size:.8em;letter-spacing:.06em}
 
 /* ── barra de progreso, contador y ayuda ── */
 #progreso{position:absolute;left:0;top:0;height:calc(8*var(--u));width:100%;background:rgba(11,42,91,.15);z-index:20}
@@ -114,7 +110,6 @@ body.presentando #panel,html.vertical #panel{opacity:0;pointer-events:none}
 /* número de página arriba a la derecha, como pide APA 7 */
 #folio{position:absolute;right:calc(40*var(--u));top:calc(30*var(--u));z-index:20;font:700 calc(20*var(--u))/1 "Inter",sans-serif;color:var(--marino);font-variant-numeric:tabular-nums}
 .marino-activa #folio{color:var(--blanco)}
-.marino .pendiente{color:var(--blanco);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
 #contador{position:absolute;right:calc(36*var(--u));bottom:calc(30*var(--u));z-index:20;font:700 calc(19*var(--u))/1 "Inter",sans-serif;letter-spacing:.08em;
   color:var(--marino);background:rgba(255,255,255,.85);padding:calc(11*var(--u)) calc(16*var(--u));border-radius:999px;font-variant-numeric:tabular-nums}
 #contador b{font-weight:800}
@@ -225,7 +220,7 @@ body.presentando #ayuda{opacity:0}
 /* ════════════════════════════════════════════════════════════════════════
    5-6 · IKIGAI
    ════════════════════════════════════════════════════════════════════════ */
-.iki{display:grid;grid-template-columns:calc(680*var(--u)) 1fr;gap:calc(60*var(--u));align-items:center;flex:1;min-height:0;margin-top:calc(10*var(--u))}
+.iki{display:grid;grid-template-columns:calc(600*var(--u)) 1fr;gap:calc(60*var(--u));align-items:center;flex:1;min-height:0;margin-top:calc(10*var(--u))}
 .venn{width:100%;height:auto;max-height:calc(800*var(--u));overflow:visible}
 .venn .circ{fill:var(--marino);fill-opacity:.1;stroke:var(--marino);stroke-width:3}
 .venn .circ.act{fill-opacity:.26}
@@ -238,13 +233,19 @@ body.presentando #ayuda{opacity:0}
 .venn .tz{font-size:15.5px;font-weight:700}
 .venn .tm{font-size:17px;font-weight:800;fill:var(--amarillo)}
 /* tarjetas del Ikigai: una por círculo */
-.cajas-iki{display:grid;grid-template-columns:1fr 1fr;gap:calc(22*var(--u))}
+.cajas-iki{display:grid;grid-template-columns:1fr 1.3fr;gap:calc(22*var(--u))}
 .caja{padding:calc(24*var(--u)) calc(28*var(--u));min-width:0}
 .caja .tipo{font:700 calc(15*var(--u))/1 "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--caida)}
 .caja h3{margin-top:calc(8*var(--u));font:800 calc(29*var(--u))/1.1 "Poppins",sans-serif;letter-spacing:-.015em}
 .caja ul{margin-top:calc(12*var(--u));list-style:none;display:grid;gap:calc(7*var(--u))}
 .caja li{position:relative;padding-left:calc(24*var(--u));font:400 calc(21*var(--u))/1.38 "Inter",sans-serif;color:var(--tinta-suave)}
 .caja li::before{content:"";position:absolute;left:0;top:calc(10*var(--u));width:calc(10*var(--u));height:calc(10*var(--u));border-radius:50%;background:var(--amarillo);box-shadow:0 0 0 calc(2*var(--u)) var(--marino)}
+.caja .sub{margin-top:calc(12*var(--u));font:700 calc(15*var(--u))/1.2 "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--marino)}
+.caja.larga ul{margin-top:calc(6*var(--u));gap:calc(4*var(--u))}
+.caja.larga{padding-top:calc(20*var(--u));padding-bottom:calc(20*var(--u))}
+.caja.larga li{font-size:calc(18.5*var(--u));line-height:1.3}
+.cita-iki{margin-top:calc(10*var(--u));padding-left:calc(14*var(--u));border-left:calc(4*var(--u)) solid var(--amarillo);font:italic 400 calc(17*var(--u))/1.35 "Inter",sans-serif;color:var(--tinta-suave)}
+.cita-iki cite{display:block;margin-top:calc(4*var(--u));font:normal 700 calc(14*var(--u))/1 "Inter",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--marino)}
 /* intersecciones, en la diapositiva del centro */
 .inters{margin-top:calc(34*var(--u));display:grid;grid-template-columns:1fr 1fr;gap:calc(16*var(--u))}
 .inters div{border:calc(2*var(--u)) solid rgba(255,255,255,.22);border-radius:calc(18*var(--u));padding:calc(16*var(--u)) calc(20*var(--u));background:rgba(255,255,255,.06)}
@@ -466,7 +467,7 @@ html.vertical #ayuda{display:none}
      DIAPOSITIVA 5 · MI IKIGAI (se arma solo, círculo por círculo)
      El contenido de cada círculo e intersección está en el objeto IKIGAI del script.
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mi Ikigai" data-notas="Mi Ikigai cruza cuatro preguntas.|Lo que amo: boxeo, crecimiento personal y conversar con la gente para entender por qué actúa como actúa.|En lo que soy bueno: terminar lo que empiezo, como cada libro que acabo.|Lo que necesita el mundo: mejor acceso y experiencia en la salud, salud y bienestar, y mejor movilidad en el Valle de Aburrá.|Por lo que me pueden pagar: diseño de páginas web con IA, análisis de mercado y competencia, emprender en salud y bienestar, y marketing y comportamiento del consumidor.">
+<section class="lam" aria-label="Mi Ikigai" data-notas="Mi Ikigai cruza cuatro preguntas.|Lo que amo: boxeo, crecimiento personal y conversar con la gente para entender por qué actúa como actúa.|En lo que soy bueno: lo que reconocen los demás en mí es que soy resiliente, confiable y leal, diligente y responsable, y sencillo; y lo que hago con facilidad es encontrar soluciones y ampliar la perspectiva frente a un problema. Mi mejor amigo lo resume: «Sos una persona resiliente: a pesar de las circunstancias persistes y te volvés a levantar».|Lo que necesita el mundo: mejor acceso y experiencia en la salud, salud y bienestar, y mejor movilidad en el Valle de Aburrá.|Por lo que me pueden pagar: diseño de páginas web con IA, análisis de mercado y competencia, emprender en salud y bienestar, y marketing y comportamiento del consumidor.">
   <div class="kicker a">Mi Ikigai</div>
   <h2 class="titulo a">Donde se cruza <em>lo que soy</em></h2>
   <div class="iki">
@@ -606,12 +607,14 @@ window.gsap||document.write('<script src="../chickenmart-pitch/vendor/gsap.min.j
 <script>
 /* ══════════════════════════════════════════════════════════════════════════
    CONTENIDO DEL IKIGAI · se muestra en el panel al tocar cada zona
-   Los textos entre [PENDIENTE: ...] se ven marcados para reemplazarlos después.
    ══════════════════════════════════════════════════════════════════════════ */
 var IKIGAI={
   inicio:{tipo:"Explora el diagrama",titulo:"Toca un círculo o una intersección",items:["Cuatro preguntas: lo que amo, en lo que soy bueno, lo que el mundo necesita y por lo que me pueden pagar.","Donde se cruzan aparecen mi pasión, misión, vocación y profesión."]},
   amo:{tipo:"Círculo",titulo:"Lo que amo hacer",items:["Boxeo","Crecimiento personal","Conversar con la gente y entender por qué actúa como actúa"]},
-  bueno:{tipo:"Círculo",titulo:"En lo que soy bueno",items:["Terminar lo que empiezo, como cada libro que acabo","[PENDIENTE: habilidades que reconocen los demás en mí]","[PENDIENTE: lo que hago con facilidad]"]},
+  bueno:{tipo:"Círculo",titulo:"En lo que soy bueno",grupos:[
+    {sub:"Lo que reconocen los demás en mí",items:["Resiliente: me vuelvo a levantar a pesar de las circunstancias.","Confiable y leal con quien es leal conmigo.","Diligente y responsable con la universidad, mi familia, mis amigos y mis proyectos.","Sencillo: respeto mis raíces y convivo en cada entorno con humildad y alegría."]},
+    {sub:"Lo que hago con facilidad",items:["Encontrar soluciones y ampliar la perspectiva frente a un problema."]}],
+    cita:{texto:"Sos una persona resiliente: a pesar de las circunstancias persistes y te volvés a levantar.",autor:"Mi mejor amigo"}},
   mundo:{tipo:"Círculo",titulo:"Lo que necesita el mundo",items:["Mejor acceso y experiencia en la salud","Salud y bienestar","Mejor movilidad en el Valle de Aburrá por el tráfico"]},
   pagan:{tipo:"Círculo",titulo:"Por lo que me pueden pagar",items:["Diseño de páginas web con IA","Análisis de mercado y competencia","Emprender en salud y bienestar","Marketing y comportamiento del consumidor"]},
   pasion:{tipo:"Amo + soy bueno",titulo:"Pasión",items:["Aprender y crecer de forma constante, entendiendo a las personas."]},
@@ -642,11 +645,14 @@ addEventListener("resize",medir); medir();
 /* la barra y el panel cambian de tamaño con transición: se vuelve a medir al terminar */
 D.getElementById("app").addEventListener("transitionend",function(e){ if(e.target.id==="app"){ medir(); reencaja() } });
 
-/* ── marcadores [PENDIENTE: …] → texto en itálica con fondo suave ── */
-function marcar(t){ return t.replace(/\[PENDIENTE:\s*([^\]]+)\]/g,'<span class="pendiente">$1</span>') }
 
 /* ── Ikigai: las tarjetas de los círculos y de las intersecciones salen del objeto IKIGAI ── */
-function caja(d,cls){ return '<div class="'+cls+'"><div class="tipo">'+d.donde+'</div><h3>'+d.titulo+'</h3><ul>'+d.items.map(function(t){return "<li>"+marcar(t)+"</li>"}).join("")+'</ul></div>' }
+function lista(items){ return '<ul>'+items.map(function(t){return "<li>"+t+"</li>"}).join("")+'</ul>' }
+function caja(d,cls){
+  var cuerpo=d.grupos ? d.grupos.map(function(gr){ return '<div class="sub">'+gr.sub+'</div>'+lista(gr.items) }).join("") : lista(d.items);
+  if(d.cita) cuerpo+='<blockquote class="cita-iki">«'+d.cita.texto+'»<cite>— '+d.cita.autor+'</cite></blockquote>';
+  return '<div class="'+cls+(d.grupos?' larga':'')+'"><div class="tipo">'+d.donde+'</div><h3>'+d.titulo+'</h3>'+cuerpo+'</div>';
+}
 IKIGAI.amo.donde="Arriba"; IKIGAI.bueno.donde="Izquierda"; IKIGAI.mundo.donde="Derecha"; IKIGAI.pagan.donde="Abajo";
 D.getElementById("cajasIki").innerHTML=["amo","bueno","mundo","pagan"].map(function(k){ return caja(IKIGAI[k],"caja tarjeta") }).join("");
 D.getElementById("intersIki").innerHTML=["pasion","mision","vocacion","profesion"].map(function(k){ var d=IKIGAI[k];
