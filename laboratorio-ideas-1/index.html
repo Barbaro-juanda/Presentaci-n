@@ -190,6 +190,37 @@ body.presentando #ayuda{opacity:0}
 .quiebre{display:inline-block;margin-left:calc(8*var(--u));font:700 calc(14*var(--u))/1 "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;
   color:var(--blanco);background:var(--caida);padding:calc(6*var(--u)) calc(10*var(--u));border-radius:999px;vertical-align:middle}
 
+/* ── fotos y videos: marco de celular 9:16 o marco horizontal, con giro de foto pegada ── */
+.medio{margin:0;position:relative}
+.medio.falta{display:none}
+.medio .pantalla{overflow:hidden;background:var(--marino);border:calc(6*var(--u)) solid var(--blanco);box-shadow:0 calc(22*var(--u)) calc(40*var(--u)) calc(-18*var(--u)) rgba(11,42,91,.6)}
+.medio.celu .pantalla{aspect-ratio:9/16;border-radius:calc(26*var(--u))}
+.medio.horiz .pantalla{aspect-ratio:16/9;border-radius:calc(16*var(--u))}
+.medio video,.medio img{display:block;width:100%;height:100%;object-fit:cover}
+.medio figcaption{margin-top:calc(10*var(--u));font:700 calc(14*var(--u))/1.25 "Inter",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--marino);opacity:.85}
+.marino .medio figcaption{color:var(--amarillo);opacity:1}
+.giro-izq{transform:rotate(-2.5deg)} .giro-der{transform:rotate(2.5deg)}
+.cartel.con-media{display:flex;gap:calc(20*var(--u));align-items:flex-start}
+.cartel.con-media .txt{flex:1;min-width:0}
+.cartel.con-media .medio.celu{flex:none;width:calc(136*var(--u))}
+.cartel.con-media .medio.celu figcaption{font-size:calc(12*var(--u))}
+.cartel.con-media.apilada{flex-direction:column}
+.cartel.con-media.apilada .medio{width:calc(400*var(--u));align-self:center}
+/* línea de tiempo con 7 hitos: un poco más compacta y columnas a la medida de cada tarjeta */
+.linea.compacta{margin-top:calc(56*var(--u));gap:calc(36*var(--u))}
+.linea.compacta::before{top:calc(34*var(--u))}
+.linea.c4{grid-template-columns:1fr 1fr 1fr 1.65fr}
+.linea.c3{grid-template-columns:1.3fr 1.3fr .9fr}
+.linea.compacta .hito .punto{width:calc(72*var(--u));height:calc(72*var(--u));border-width:calc(7*var(--u))}
+.linea.compacta .hito .edad{margin-top:calc(18*var(--u));font-size:calc(42*var(--u))}
+.linea.compacta .hito .nombre{margin-top:calc(6*var(--u));font-size:calc(24*var(--u))}
+.linea.compacta .hito .cartel{margin-top:calc(16*var(--u));font-size:calc(21*var(--u));padding:calc(20*var(--u)) calc(22*var(--u))}
+.dato .num{font-size:calc(40*var(--u))}
+.l-crece .dato{gap:calc(16*var(--u));padding:calc(16*var(--u)) calc(24*var(--u))}
+.l-crece .cab-linea .titulo{white-space:nowrap}
+/* cierre con el video de la radio a la derecha */
+.l-cierre.con-radio blockquote{max-width:calc(1160*var(--u))}
+.l-cierre .medio.radio{position:absolute;right:calc(170*var(--u));top:calc(210*var(--u));width:calc(300*var(--u));z-index:2}
 /* lámina 3: dato y frase · la línea sube para dejar sitio a la frase */
 .l-crece .linea{margin-top:calc(56*var(--u))}
 .l-crece .hito .cartel{font-size:calc(24*var(--u))}
@@ -340,6 +371,13 @@ html.vertical .conc .venn{max-width:calc(480*var(--u));margin:0 auto}
 html.vertical .l-cierre blockquote{font-size:calc(74*var(--u))}
 html.vertical .l-cierre .gracias{flex-direction:column;align-items:flex-start}
 html.vertical #ayuda{display:none}
+html.vertical .lam{overflow-x:hidden;isolation:isolate;background:var(--amarillo)}
+html.vertical .lam.marino{background:var(--marino)}
+html.vertical .l-crece .cab-linea .titulo{white-space:normal}
+html.vertical .cartel.con-media .medio.celu{width:40%}
+html.vertical .cartel.con-media.apilada .medio{width:100%}
+html.vertical .l-cierre .medio.radio{position:static;width:45%;margin-top:calc(40*var(--u))}
+html.vertical .l-cierre.con-radio blockquote{max-width:none}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -376,17 +414,17 @@ html.vertical #ayuda{display:none}
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     DIAPOSITIVA 2 · LOS HITOS DE MI VIDA (1 a 3)
+     DIAPOSITIVA 2 · LOS HITOS DE MI VIDA (1 a 4)
      Cada hito: data-tipo="dificil" (naranja) o sin tipo (crecimiento, marino).
-     Toca el punto para abrir la tarjeta.
+     Las tarjetas se despliegan solas; las fotos y videos están en la carpeta media/.
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Los hitos de mi vida, parte 1" data-notas="Empiezo por lo que me tumbó.|A los 4 años tuve neumonía y pasé varios meses hospitalizado. El hospital se volvió una especie de hogar y hoy es un espacio que disfruto.|A los 14 años vino un año difícil en lo familiar: me mudé a Sabaneta y cambié de colegio.|A los 15-16 perdí décimo. Fue mi punto de quiebre: cambié mi círculo, me volví más responsable y maduré una mentalidad que era mediocre.">
+<section class="lam" aria-label="Los hitos de mi vida, parte 1" data-notas="Empiezo por lo que me tumbó.|A los 4 años tuve neumonía y pasé varios meses hospitalizado. El hospital se volvió una especie de hogar y hoy es un espacio que disfruto.|A los 14 años vino un año difícil en lo familiar: me mudé a Sabaneta y cambié de colegio.|A los 15-16 perdí décimo. Fue mi punto de quiebre: cambié mi círculo, me volví más responsable y maduré una mentalidad que era mediocre.|Y a los 17 descubrí el podcast Dinstinto; el primer episodio fue sobre creatividad con Carolina Alzate. Cambié psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.">
   <div class="cab-linea">
     <div><div class="kicker a">Los hitos de mi vida · 1 de 2</div>
       <h2 class="titulo a">Lo que me <em>tumbó</em></h2></div>
     <div class="leyenda a"><span><i class="d"></i>Momento difícil</span><span><i class="c"></i>Crecimiento</span></div>
   </div>
-  <div class="linea inicio">
+  <div class="linea inicio compacta c4">
     <div class="hito dificil">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M8 12h2l1-2 2 4 1-2h2"/></svg></span>
       <span class="edad">4 años</span><span class="nombre">Neumonía</span>
@@ -402,13 +440,18 @@ html.vertical #ayuda{display:none}
       <span class="edad">15-16 años</span><span class="nombre">Perdí décimo <span class="quiebre">punto de quiebre</span></span>
       <span class="cartel tarjeta">Perdí décimo grado. Fue mi punto de quiebre: cambié mi círculo, me volví más responsable y maduré una mentalidad que era mediocre.</span>
     </div>
+    <div class="hito">
+      <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span>
+      <span class="edad">17 años</span><span class="nombre">El podcast Dinstinto</span>
+      <div class="cartel tarjeta con-media apilada"><span class="txt">Descubrí el podcast Dinstinto. El primer episodio que escuché fue sobre creatividad con Carolina Alzate. Cambié mi idea de estudiar psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.</span><figure class="medio horiz giro-der"><div class="pantalla"><img src="media/dinstinto.png" alt="Miniatura del episodio «Los 7 secretos para ser más creativo» de Carolina Alzate en Dinstinto" loading="eager"></div><figcaption>El episodio que me cambió el rumbo</figcaption></figure></div>
+    </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     DIAPOSITIVA 3 · LOS HITOS DE MI VIDA (4 a 6) + dato + frase de cierre
+     DIAPOSITIVA 3 · LOS HITOS DE MI VIDA (5 a 7) + datos + frase de cierre
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam l-crece" aria-label="Los hitos de mi vida, parte 2" data-notas="Y esto es lo que me levantó.|A los 17 descubrí el podcast Distinto; el primer episodio fue sobre creatividad con Carolina Alzate. Cambié psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.|Ese año monté mi primer negocio en el colegio: sándwiches, papas y jugos. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó; aprendí a distribuir mejor los ingresos.|En enero de 2026 entré a ESIC a estudiar Negocios Digitales y Administración, y desde el primer semestre consulto empresas reales con Solvers Lab.|Cada caída me enseñó algo que hoy uso para construir.">
+<section class="lam l-crece" aria-label="Los hitos de mi vida, parte 2" data-notas="Y esto es lo que me levantó.|Ese año monté mi primer negocio en el colegio: sándwiches, papas y jugos. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó; aprendí a distribuir mejor los ingresos.|Después ganamos el Boot Camp: una beca por 1 año de $13.965.000.|En enero de 2026 entré a ESIC a estudiar Negocios Digitales y Administración, y desde el primer semestre consulto empresas reales con Solvers Lab.|Cada caída me enseñó algo que hoy uso para construir.">
   <div class="cab-linea">
     <div><div class="kicker a">Los hitos de mi vida · 2 de 2</div>
       <h2 class="titulo a">Lo que me <em>levantó</em></h2></div>
@@ -416,18 +459,20 @@ html.vertical #ayuda{display:none}
       <div><div class="num"><span data-cuenta="32">32</span></div><div class="et">clientes</div></div>
       <div class="sep"></div>
       <div><div class="num">$<span data-cuenta="1000000">1.000.000</span><small>/mes</small></div><div class="et">en el colegio</div></div>
+      <div class="sep"></div>
+      <div><div class="num">$<span data-cuenta="13965000">13.965.000</span></div><div class="et">beca Boot Camp</div></div>
     </div>
   </div>
-  <div class="linea">
-    <div class="hito">
-      <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span>
-      <span class="edad">17 años</span><span class="nombre">El podcast Distinto</span>
-      <span class="cartel tarjeta">Descubrí el podcast Distinto. El primer episodio que escuché fue sobre creatividad con Carolina Alzate. Cambié mi idea de estudiar psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.</span>
-    </div>
+  <div class="linea compacta c3">
     <div class="hito">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M4 9h16l-1.5 11h-13z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg></span>
       <span class="edad">17 años</span><span class="nombre">Mi primer negocio</span>
-      <span class="cartel tarjeta">Mi primer negocio: vendía sándwiches, papas y jugos en el colegio. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó. Aprendí a distribuir mejor los ingresos.</span>
+      <div class="cartel tarjeta con-media"><span class="txt">Mi primer negocio: vendía sándwiches, papas y jugos en el colegio. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó. Aprendí a distribuir mejor los ingresos.</span><figure class="medio celu giro-izq"><div class="pantalla"><video autoplay muted loop playsinline preload="metadata"><source src="media/sandwiches.mp4" type="video/mp4"><source src="media/sandwiches.webm" type="video/webm"></video></div><figcaption>Así promocionaba mis sándwiches</figcaption></figure></div>
+    </div>
+    <div class="hito">
+      <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8 20h8M10 17h4"/></svg></span>
+      <span class="edad">Boot Camp</span><span class="nombre">Ganadores del Boot Camp</span>
+      <div class="cartel tarjeta con-media"><span class="txt">Ganamos el Boot Camp: una beca por 1 año de $13.965.000.</span><figure class="medio celu giro-der"><div class="pantalla"><video autoplay muted loop playsinline preload="metadata"><source src="media/bootcamp.mp4" type="video/mp4"><source src="media/bootcamp.webm" type="video/webm"></video></div><figcaption>Ganadores del Boot Camp</figcaption></figure></div>
     </div>
     <div class="hito">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></span>
@@ -441,7 +486,7 @@ html.vertical #ayuda{display:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 4 · MIS HOBBIES
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mis hobbies" data-notas="Boxeo: disciplina y manejo del estrés. Me ayuda a ser constante aunque no tenga ganas y a llegar con la cabeza despejada a estudiar o a trabajar en equipo, sin descargar la presión en los demás.|Podcasts: aprender de otros. Distinto, Tengo un Plan, el podcast de Adrià Solà y lo que me sale en YouTube. Escucho historias de emprendedores y creativos y llevo esas ideas a los trabajos de la U.">
+<section class="lam" aria-label="Mis hobbies" data-notas="Boxeo: disciplina y manejo del estrés. Me ayuda a ser constante aunque no tenga ganas y a llegar con la cabeza despejada a estudiar o a trabajar en equipo, sin descargar la presión en los demás.|Podcasts: aprender de otros. Dinstinto, Tengo un Plan, el podcast de Adrià Solà y lo que me sale en YouTube. Escucho historias de emprendedores y creativos y llevo esas ideas a los trabajos de la U.">
   <div class="kicker a">Mis hobbies</div>
   <h2 class="titulo a">Lo que me <em>entrena</em> por fuera del aula</h2>
   <div class="dos">
@@ -457,7 +502,7 @@ html.vertical #ayuda{display:none}
       <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></div>
       <h3>Podcasts</h3>
       <span class="flecha">→ Aprender de otros</span>
-      <div class="detalle">Distinto · Tengo un Plan · el podcast de Adrià Solà · lo que me sale en YouTube</div>
+      <div class="detalle">Dinstinto · Tengo un Plan · el podcast de Adrià Solà · lo que me sale en YouTube</div>
       <p>Es mi forma de aprender por fuera del aula: escucho historias de emprendedores y creativos y llevo esas ideas a los trabajos de la U.</p>
     </article>
   </div>
@@ -563,10 +608,11 @@ html.vertical #ayuda{display:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 9 · CIERRE
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam marino l-cierre" aria-label="Cierre" data-notas="De caer a construir: mi propósito es ayudar a las personas a vivir mejor.|Gracias.">
+<section class="lam marino l-cierre con-radio" aria-label="Cierre" data-notas="De caer a construir: mi propósito es ayudar a las personas a vivir mejor.|Gracias.">
   <div class="forma" style="width:calc(520*var(--u));height:calc(520*var(--u));right:calc(-100*var(--u));bottom:calc(-140*var(--u));border:calc(60*var(--u)) solid rgba(253,186,86,.18)"></div>
   <div class="kicker a">Mi propósito</div>
   <blockquote style="margin-top:calc(30*var(--u))"><span class="w">De</span> <span class="w">caer</span> <span class="w">a</span> <span class="w">construir:</span> <span class="w">mi</span> <span class="w">propósito</span> <span class="w">es</span> <em class="w">ayudar</em> <em class="w">a</em> <em class="w">las</em> <em class="w">personas</em> <em class="w">a</em> <em class="w">vivir</em> <em class="w">mejor.</em></blockquote>
+  <figure class="medio celu giro-der radio"><div class="pantalla"><video autoplay muted loop playsinline preload="metadata"><source src="media/radio.mp4" type="video/mp4"><source src="media/radio.webm" type="video/webm"></video></div><figcaption>Universidad Católica Luis Amigó · Medellín</figcaption></figure>
   <div class="gracias a"><b>Gracias</b><span><strong>Juan David Escobar Guiral</strong>Laboratorio de Ideas 1 · ESIC</span></div>
 </section>
 
@@ -662,9 +708,27 @@ D.getElementById("intersIki").innerHTML=["pasion","mision","vocacion","profesion
 var TIT=["Portada","Lo que me tumbó","Lo que me levantó","Mis hobbies","Mi Ikigai","El centro","Mi interés","Mi brújula","Cierre"];
 var panelM=D.getElementById("panel"), rg=D.getElementById("rg"), rejilla=D.getElementById("rejilla"), atajos=D.getElementById("atajos");
 var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D.getElementById("notasC"), minis=[], rcs=[];
+/* si una foto o un video no carga, se oculta su marco y el diseño sigue igual */
+function vigilar(root){
+  [].forEach.call(root.querySelectorAll(".medio"),function(f){
+    var fal=function(){ f.classList.add("falta") }, im=f.querySelector("img"), v=f.querySelector("video");
+    if(im){ if(im.complete&&!im.naturalWidth) fal(); else im.addEventListener("error",fal) }
+    if(v){ var ss=v.querySelectorAll("source"); if(ss.length) ss[ss.length-1].addEventListener("error",fal); v.addEventListener("error",fal) }
+  });
+}
+vigilar(D);
+/* los videos solo corren en la diapositiva activa: así no se traba el proyector */
+function videos(n){
+  [].forEach.call(D.querySelectorAll("#escenario video"),function(v){
+    if(L[n].contains(v)){ try{ v.currentTime=0 }catch(e){} var pr=v.play(); if(pr&&pr.catch) pr.catch(function(){}) }
+    else v.pause();
+  });
+}
 function lienzo(n){
   var c=D.createElement("div"); c.className="lienzo";
   var s=L[n].cloneNode(true); s.classList.add("on");
+  [].forEach.call(s.querySelectorAll("video"),function(v){ v.remove() });   /* en las miniaturas, solo el marco */
+  vigilar(s);
   [].forEach.call(s.querySelectorAll("[id]"),function(e){ e.removeAttribute("id") });
   c.appendChild(s); return c;
 }
@@ -733,7 +797,8 @@ function entrar(n){
     if(n===2) contar(s,tl);
     /* cada tarjeta se despliega sola, una tras otra, con un pulso en su punto */
     tl.fromTo(q(".hito .anillo"),{scale:.7,opacity:.9},{scale:1.6,opacity:0,duration:.8,stagger:.45,ease:"power2.out"},1.3)
-      .from(q(".hito .cartel"),{y:-26,opacity:0,scaleY:.6,transformOrigin:"50% 0%",duration:.6,stagger:.45,ease:"back.out(1.4)"},1.35);
+      .from(q(".hito .cartel"),{y:-26,opacity:0,scaleY:.6,transformOrigin:"50% 0%",duration:.6,stagger:.45,ease:"back.out(1.4)"},1.35)
+      .from(q(".medio"),{x:60,y:30,scale:.82,opacity:0,duration:.8,stagger:.35,ease:"back.out(1.5)"},1.9);
   }
   if(n===3){                                   /* hobbies */
     tl.from(q(".hobby"),{x:function(k){return k?120:-120},opacity:0,duration:.8,stagger:.15},.3)
@@ -777,6 +842,7 @@ function entrar(n){
   }
   if(n===8){                                   /* cierre */
     tl.from(q("blockquote .w"),{y:70,opacity:0,rotate:3,duration:.6,stagger:.06},.2)
+      .from(q(".medio"),{x:140,y:40,scale:.8,opacity:0,duration:1,ease:"back.out(1.4)"},.5)
       .from(q(".forma"),{scale:0,opacity:0,duration:1.2,ease:"back.out(1.4)"},0);
   }
 }
@@ -800,6 +866,7 @@ function ir(n){
   rcs.forEach(function(r,k){ r.classList.toggle("actual",k===n) });
   if(minis[n]) minis[n].scrollIntoView({block:"nearest"});
   guion();
+  videos(n);
   if(antes>=0) D.getElementById("ayuda").classList.add("oculta");
   entrar(n);
 }
