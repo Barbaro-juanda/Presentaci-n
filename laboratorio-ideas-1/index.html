@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Mi historia, mi propósito · Juan David Escobar Guiral</title>
+<title>Bitácora individual · Juan David Escobar Guiral</title>
 <meta name="description" content="Laboratorio de Ideas 1 · ESIC Business & Marketing School">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,7 +113,7 @@ body.presentando #panel,html.vertical #panel{opacity:0;pointer-events:none}
 #contador{position:absolute;right:calc(36*var(--u));bottom:calc(30*var(--u));z-index:20;font:700 calc(19*var(--u))/1 "Inter",sans-serif;letter-spacing:.08em;
   color:var(--marino);background:rgba(255,255,255,.85);padding:calc(11*var(--u)) calc(16*var(--u));border-radius:999px;font-variant-numeric:tabular-nums}
 #contador b{font-weight:800}
-#ayuda{position:absolute;left:calc(36*var(--u));bottom:calc(30*var(--u));z-index:20;font:500 calc(17*var(--u))/1.3 "Inter",sans-serif;color:var(--marino);
+#ayuda{position:absolute;left:calc(36*var(--u));max-width:calc(380*var(--u));bottom:calc(30*var(--u));z-index:20;font:500 calc(17*var(--u))/1.3 "Inter",sans-serif;color:var(--marino);
   background:rgba(255,255,255,.85);padding:calc(11*var(--u)) calc(16*var(--u));border-radius:999px;transition:opacity .6s}
 #ayuda.oculta{opacity:0;pointer-events:none}
 .marino-activa #contador,.marino-activa #ayuda{background:rgba(255,255,255,.12);color:var(--blanco)}
@@ -190,6 +190,56 @@ body.presentando #ayuda{opacity:0}
 .quiebre{display:inline-block;margin-left:calc(8*var(--u));font:700 calc(14*var(--u))/1 "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;
   color:var(--blanco);background:var(--caida);padding:calc(6*var(--u)) calc(10*var(--u));border-radius:999px;vertical-align:middle}
 
+/* ── rótulo de sección: número grande al lado del nombre y el titular ── */
+.sec{display:flex;align-items:flex-end;gap:calc(26*var(--u))}
+.sec-n{font:900 calc(132*var(--u))/.78 "Poppins",sans-serif;letter-spacing:-.05em;color:var(--marino);flex:none}
+.marino .sec-n{color:var(--amarillo)}
+.sec-t{min-width:0}
+/* índice de secciones (01-06) */
+#indice{position:absolute;left:50%;bottom:calc(32*var(--u));transform:translateX(-50%);z-index:20;display:flex;gap:calc(6*var(--u));
+  background:rgba(255,255,255,.7);border-radius:999px;padding:calc(6*var(--u))}
+#indice span{display:flex;align-items:center;gap:calc(7*var(--u));font:600 calc(14*var(--u))/1 "Inter",sans-serif;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--marino);opacity:.55;padding:calc(7*var(--u)) calc(12*var(--u));border-radius:999px;transition:background .3s,opacity .3s,color .3s}
+#indice b{font-weight:800}
+#indice span.act{opacity:1;background:var(--marino);color:var(--amarillo)}
+.marino-activa #indice{background:rgba(255,255,255,.1)}
+.marino-activa #indice span{color:var(--blanco)}
+.marino-activa #indice span.act{background:var(--amarillo);color:var(--marino)}
+/* marcador de contenido por completar */
+.pendiente{display:inline;font-style:italic;background:rgba(11,42,91,.09);border:1.5px dashed rgba(11,42,91,.45);border-radius:calc(8*var(--u));padding:calc(2*var(--u)) calc(10*var(--u));color:var(--marino)}
+.pendiente::before{content:"PENDIENTE · ";font-style:normal;font-weight:700;font-size:.8em;letter-spacing:.06em}
+/* ══ SECCIÓN 01 · pretest ══ */
+.pre{margin-top:calc(46*var(--u));display:grid;grid-template-columns:calc(500*var(--u)) calc(500*var(--u)) 1fr;gap:calc(56*var(--u));align-items:center;flex:1;min-height:0}
+.anillo-pre{position:relative;width:100%;aspect-ratio:1}
+.anillo-pre svg{width:100%;height:100%;transform:rotate(-90deg)}
+.anillo-pre circle{fill:none;stroke-width:34}
+.pista-a{stroke:rgba(11,42,91,.14)}
+.arco-a{stroke:var(--marino);stroke-dasharray:100 100;stroke-linecap:round}
+.cifra-a{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cifra-a b{font:900 calc(96*var(--u))/1 "Poppins",sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.cifra-a small{margin-top:calc(8*var(--u));font:700 calc(16*var(--u))/1 "Inter",sans-serif;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.datos-pre{display:grid;gap:calc(18*var(--u))}
+.dp{padding:calc(20*var(--u)) calc(28*var(--u));display:flex;align-items:baseline;gap:calc(16*var(--u))}
+.dp b{font:900 calc(54*var(--u))/1 "Poppins",sans-serif;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dp b small{font-size:.45em;font-weight:700}
+.dp > span{font:600 calc(22*var(--u))/1.2 "Inter",sans-serif;color:var(--tinta-suave)}
+.nota-pre{font:500 calc(20*var(--u))/1.45 "Inter",sans-serif;color:var(--tinta-suave);border-left:calc(4*var(--u)) solid var(--marino);padding-left:calc(16*var(--u))}
+.foto-pre{width:100%}
+/* si aún no está la captura, se ve un recuadro de pendiente en vez de esconder el marco */
+.medio.foto-pre.falta{display:block}
+.foto-pre.falta img{display:none}
+.foto-pre.falta .pantalla{display:flex;align-items:center;justify-content:center;text-align:center;background:repeating-linear-gradient(-45deg,rgba(11,42,91,.06) 0 calc(14*var(--u)),rgba(11,42,91,.12) calc(14*var(--u)) calc(28*var(--u)));outline:calc(2*var(--u)) dashed rgba(11,42,91,.5);outline-offset:calc(-10*var(--u))}
+.foto-pre.falta .pantalla::before{content:"Contenido pendiente de Juan David · captura media/pretest.png";font:italic 600 calc(20*var(--u))/1.4 "Inter",sans-serif;color:var(--marino);padding:calc(30*var(--u))}
+.dos-pre{margin-top:calc(44*var(--u));display:grid;grid-template-columns:1fr 1fr;gap:calc(26*var(--u))}
+.fm{padding:calc(32*var(--u)) calc(36*var(--u));min-height:calc(190*var(--u))}
+.fm .tipo{font:700 calc(17*var(--u))/1.25 "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--caida)}
+.fm p{margin-top:calc(18*var(--u));font:400 calc(26*var(--u))/1.45 "Inter",sans-serif}
+.reflexion{margin-top:calc(34*var(--u));background:var(--marino);color:var(--blanco);border-radius:calc(28*var(--u));padding:calc(40*var(--u)) calc(48*var(--u))}
+.reflexion p{font:400 calc(27*var(--u))/1.5 "Inter",sans-serif}
+.reflexion ul{margin:calc(20*var(--u)) 0 calc(24*var(--u));list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:calc(10*var(--u)) calc(34*var(--u))}
+.reflexion li{position:relative;padding-left:calc(32*var(--u));font:500 calc(25*var(--u))/1.4 "Inter",sans-serif}
+.reflexion li::before{content:"";position:absolute;left:0;top:calc(11*var(--u));width:calc(14*var(--u));height:calc(14*var(--u));border-radius:50%;background:var(--amarillo)}
+.reflexion .meta{font:700 calc(30*var(--u))/1.35 "Poppins",sans-serif;color:var(--amarillo)}
 /* ── fotos y videos: marco de celular 9:16 o marco horizontal, con giro de foto pegada ── */
 .medio{margin:0;position:relative}
 .medio.falta{display:none}
@@ -371,6 +421,15 @@ html.vertical .conc .venn{max-width:calc(480*var(--u));margin:0 auto}
 html.vertical .l-cierre blockquote{font-size:calc(74*var(--u))}
 html.vertical .l-cierre .gracias{flex-direction:column;align-items:flex-start}
 html.vertical #ayuda{display:none}
+html.vertical #indice{bottom:calc(30*var(--u));left:calc(30*var(--u));transform:none}
+html.vertical #indice span{padding:calc(8*var(--u)) calc(10*var(--u));font-size:calc(18*var(--u))}
+html.vertical #indice span:not(.act){font-size:0;gap:0}
+html.vertical #indice span:not(.act) b{font-size:calc(18*var(--u))}
+html.vertical .pre,html.vertical .dos-pre{grid-template-columns:1fr;flex:none}
+html.vertical .anillo-pre{max-width:calc(460*var(--u));margin:0 auto}
+html.vertical .reflexion ul{grid-template-columns:1fr}
+html.vertical .sec-n{font-size:calc(100*var(--u))}
+html.vertical .sec{align-items:flex-start;flex-direction:column;gap:calc(10*var(--u))}
 html.vertical .lam{overflow-x:hidden;isolation:isolate;background:var(--amarillo)}
 html.vertical .lam.marino{background:var(--marino)}
 html.vertical .l-crece .cab-linea .titulo{white-space:normal}
@@ -387,7 +446,7 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 
 <div id="app">
   <header id="barra">
-    <div class="marca"><i>JD</i><span>Juan David Escobar Guiral · Laboratorio de Ideas 1 · Mi historia, mi propósito</span></div>
+    <div class="marca"><i>JD</i><span>Juan David Escobar Guiral · Laboratorio de Ideas 1 · Bitácora individual</span></div>
     <div class="sep"></div>
     <div id="reloj">00:00</div>
     <button class="r-btn" id="bRejilla">Cuadrícula <kbd>O</kbd></button>
@@ -402,15 +461,58 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 1 · PORTADA
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam marino l-portada" aria-label="Portada" data-notas="Mi historia, mi propósito: caer, reaccionar y crecer.|Les voy a contar los momentos que me formaron, lo que me mueve, mi Ikigai, el tema que quiero explorar y los valores que no negocio.">
+<section class="lam marino l-portada" aria-label="Portada" data-k="portada" data-sec="0" data-notas="Bitácora individual. Mi historia, mi propósito: caer, reaccionar y crecer.|Les voy a contar los momentos que me formaron, lo que me mueve, mi Ikigai, el tema que quiero explorar y los valores que no negocio.">
   <div class="forma" style="width:calc(620*var(--u));height:calc(620*var(--u));right:calc(-120*var(--u));top:calc(-160*var(--u));border:calc(70*var(--u)) solid rgba(253,186,86,.16)"></div>
   <div class="forma" style="width:calc(220*var(--u));height:calc(220*var(--u));right:calc(460*var(--u));top:calc(330*var(--u));background:rgba(253,186,86,.9)"></div>
   <div class="kicker a">Laboratorio de Ideas 1</div>
-  <h1 class="titular"><span class="a">Mi historia,</span><span class="a acento">mi propósito</span></h1>
-  <div class="sub a"><span>Caer</span><span>reaccionar</span><span>y crecer</span></div>
+  <h1 class="titular"><span class="a">Bitácora</span><span class="a acento">individual</span></h1>
+  <div class="sub a"><span>Mi historia, mi propósito: caer, reaccionar y crecer</span></div>
   <!-- Datos de la portada en el orden de APA 7 (trabajo de estudiante): autor, institución, curso, profesor y fecha -->
-  <p class="autor a"><b>Juan David Escobar Guiral</b><br>Negocios Digitales y Administración, ESIC Business &amp; Marketing School<br>Laboratorio de Ideas 1<br>Lina Marcela Gallego Moreno<br>22 de octubre de 2026</p>
-  <p class="competencia a"><b>Competencia del módulo</b>Detecto oportunidades a través del análisis del entorno para formular una propuesta creativa alineada con mi proyecto de vida.</p>
+  <p class="autor a"><b>Juan David Escobar Guiral</b> · Laboratorio de Ideas 1 · ESIC Business &amp; Marketing School<br>Negocios Digitales y Administración<br>Lina Marcela Gallego Moreno<br>22 de octubre de 2026</p>
+  <p class="competencia a"><b>Evidencia de la competencia</b>Identifico la relación entre mi ejercicio de detección de oportunidades y lo que me apasiona con ética.</p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SECCIÓN 01 · PRETEST INDIVIDUAL · A) resultado
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="lam" aria-label="Pretest individual, resultado" data-k="pretest" data-sec="1" data-notas="Abro con mi pretest individual: saqué 77,78%. Fueron 700 de 900 puntos, en 9 preguntas y 15 minutos con 50 segundos.|Es el autodiagnóstico inicial de la competencia; lo compararé con el Test de Salida en la semana 8.">
+  <div class="sec"><b class="sec-n">01</b><div class="sec-t"><div class="kicker a">Pretest individual</div>
+      <h2 class="titulo a">Mi punto de <em>partida</em></h2></div></div>
+  <div class="pre">
+    <div class="anillo-pre">
+      <svg viewBox="0 0 440 440" aria-hidden="true"><circle class="pista-a" cx="220" cy="220" r="190"/><circle class="arco-a" cx="220" cy="220" r="190" pathLength="100" style="stroke-dashoffset:22.22"/></svg>
+      <div class="cifra-a"><b><span data-pct="77.78">77,78</span>%</b><small>resultado del pretest</small></div>
+    </div>
+    <div class="datos-pre">
+      <div class="dp tarjeta"><b><span data-cuenta="700">700</span> <small>de 900</small></b><span>puntos</span></div>
+      <div class="dp tarjeta"><b><span data-cuenta="9">9</span></b><span>preguntas</span></div>
+      <div class="dp tarjeta"><b><span data-reloj="950">15:50</span> <small>min</small></b><span>de tiempo</span></div>
+      <p class="nota-pre">Autodiagnóstico inicial de la competencia. Lo compararé con el Test de Salida en la semana 8.</p>
+    </div>
+    <figure class="medio horiz giro-der foto-pre"><div class="pantalla"><img src="media/pretest.png" alt="Captura del resultado del pretest en la plataforma"></div><figcaption>Mi resultado en la plataforma</figcaption></figure>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SECCIÓN 01 · PRETEST INDIVIDUAL · B) reflexión y compromisos
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="lam" aria-label="Pretest individual, reflexión" data-k="reflexion" data-sec="1" data-notas="Saqué 77,78%. Es un buen punto de partida, pero no es mi techo.|Este resultado me muestra que ya tengo una base para detectar oportunidades, y también que tengo cosas por fortalecer.|Durante el núcleo me comprometo a observar mi entorno con más intención, preguntar y escuchar antes de proponer, cumplir cada entrega a tiempo aportándole a Caro y a Naty lo mejor de mí, y cuidar que cada idea sea honesta y ética.|Mi meta es llegar al Test de Salida con un resultado más alto y, sobre todo, con más criterio.">
+  <div class="kicker a">01 · Pretest individual · reflexión y compromisos</div>
+  <h2 class="titulo a">No es mi <em>techo</em></h2>
+  <div class="dos-pre">
+    <div class="fm tarjeta"><div class="tipo">Mis fortalezas — las voy a mantener y potenciar</div><p><span class="pendiente">fortalezas según el Excel</span></p></div>
+    <div class="fm tarjeta"><div class="tipo">Lo que voy a mejorar</div><p><span class="pendiente">áreas de mejora según el Excel</span></p></div>
+  </div>
+  <div class="reflexion">
+    <p>Saqué 77,78%. Es un buen punto de partida, pero no es mi techo. Este resultado me muestra que ya tengo una base para detectar oportunidades, y también que tengo cosas por fortalecer. Durante el núcleo me comprometo a:</p>
+    <ul>
+      <li>Observar mi entorno con más intención y anotar los problemas que vea en mi día a día.</li>
+      <li>Preguntar y escuchar a las personas antes de proponer una solución.</li>
+      <li>Cumplir cada entrega a tiempo y aportarle a Caro y a Naty lo mejor de mí.</li>
+      <li>Cuidar que cada idea que proponga sea honesta y ética.</li>
+    </ul>
+    <p class="meta">Mi meta es llegar al Test de Salida con un resultado más alto y, sobre todo, con más criterio.</p>
+  </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
@@ -418,10 +520,10 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
      Cada hito: data-tipo="dificil" (naranja) o sin tipo (crecimiento, marino).
      Las tarjetas se despliegan solas; las fotos y videos están en la carpeta media/.
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Los hitos de mi vida, parte 1" data-notas="Empiezo por lo que me tumbó.|A los 4 años tuve neumonía y pasé varios meses hospitalizado. El hospital se volvió una especie de hogar y hoy es un espacio que disfruto.|A los 14 años vino un año difícil en lo familiar: me mudé a Sabaneta y cambié de colegio.|A los 15-16 perdí décimo. Fue mi punto de quiebre: cambié mi círculo, me volví más responsable y maduré una mentalidad que era mediocre.|Y a los 17 descubrí el podcast Dinstinto; el primer episodio fue sobre creatividad con Carolina Alzate. Cambié psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.">
+<section class="lam" aria-label="Los hitos de mi vida, parte 1" data-k="hitos1" data-sec="2" data-notas="Empiezo por lo que me tumbó.|A los 4 años tuve neumonía y pasé varios meses hospitalizado. El hospital se volvió una especie de hogar y hoy es un espacio que disfruto.|A los 14 años vino un año difícil en lo familiar: me mudé a Sabaneta y cambié de colegio.|A los 15-16 perdí décimo. Fue mi punto de quiebre: cambié mi círculo, me volví más responsable y maduré una mentalidad que era mediocre.|Y a los 17 descubrí el podcast Dinstinto; el primer episodio fue sobre creatividad con Carolina Alzate. Cambié psicología por negocios: quería entender y ayudar a las personas, y los negocios juntan eso con la comunicación y la plata.">
   <div class="cab-linea">
-    <div><div class="kicker a">Los hitos de mi vida · 1 de 2</div>
-      <h2 class="titulo a">Lo que me <em>tumbó</em></h2></div>
+    <div class="sec"><b class="sec-n">02</b><div class="sec-t"><div class="kicker a">Los hitos de la historia de mi vida</div>
+      <h2 class="titulo a">Lo que me <em>tumbó</em></h2></div></div>
     <div class="leyenda a"><span><i class="d"></i>Momento difícil</span><span><i class="c"></i>Crecimiento</span></div>
   </div>
   <div class="linea inicio compacta c4">
@@ -451,9 +553,9 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 3 · LOS HITOS DE MI VIDA (5 a 7) + datos + frase de cierre
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam l-crece" aria-label="Los hitos de mi vida, parte 2" data-notas="Y esto es lo que me levantó.|Ese año monté mi primer negocio en el colegio: sándwiches, papas y jugos. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó; aprendí a distribuir mejor los ingresos.|Después ganamos el Boot Camp: una beca por 1 año de $13.965.000.|En enero de 2026 entré a ESIC a estudiar Negocios Digitales y Administración, y desde el primer semestre consulto empresas reales con Solvers Lab.|Cada caída me enseñó algo que hoy uso para construir.">
+<section class="lam l-crece" aria-label="Los hitos de mi vida, parte 2" data-k="hitos2" data-sec="2" data-notas="Y esto es lo que me levantó.|Ese año monté mi primer negocio en el colegio: sándwiches, papas y jugos. 32 clientes de mi salón y $1.000.000 al mes. A finales de once el voz a voz lo masificó y se cayó; aprendí a distribuir mejor los ingresos.|Después ganamos el Boot Camp: una beca por 1 año de $13.965.000.|En enero de 2026 entré a ESIC a estudiar Negocios Digitales y Administración, y desde el primer semestre consulto empresas reales con Solvers Lab.|Cada caída me enseñó algo que hoy uso para construir.">
   <div class="cab-linea">
-    <div><div class="kicker a">Los hitos de mi vida · 2 de 2</div>
+    <div><div class="kicker a">02 · Los hitos de la historia de mi vida · 2 de 2</div>
       <h2 class="titulo a">Lo que me <em>levantó</em></h2></div>
     <div class="dato tarjeta a">
       <div><div class="num"><span data-cuenta="32">32</span></div><div class="et">clientes</div></div>
@@ -486,9 +588,9 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 4 · MIS HOBBIES
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mis hobbies" data-notas="Boxeo: disciplina y manejo del estrés. Me ayuda a ser constante aunque no tenga ganas y a llegar con la cabeza despejada a estudiar o a trabajar en equipo, sin descargar la presión en los demás.|Podcasts: aprender de otros. Dinstinto, Tengo un Plan, el podcast de Adrià Solà y lo que me sale en YouTube. Escucho historias de emprendedores y creativos y llevo esas ideas a los trabajos de la U.">
-  <div class="kicker a">Mis hobbies</div>
-  <h2 class="titulo a">Lo que me <em>entrena</em> por fuera del aula</h2>
+<section class="lam" aria-label="Mis hobbies" data-k="hobbies" data-sec="3" data-notas="Boxeo: disciplina y manejo del estrés. Me ayuda a ser constante aunque no tenga ganas y a llegar con la cabeza despejada a estudiar o a trabajar en equipo, sin descargar la presión en los demás.|Podcasts: aprender de otros. Dinstinto, Tengo un Plan, el podcast de Adrià Solà y lo que me sale en YouTube. Escucho historias de emprendedores y creativos y llevo esas ideas a los trabajos de la U.">
+  <div class="sec"><b class="sec-n">03</b><div class="sec-t"><div class="kicker a">Mis hobbies</div>
+      <h2 class="titulo a">Lo que me <em>entrena</em> por fuera del aula</h2></div></div>
   <div class="dos">
     <article class="hobby tarjeta b">
       <div class="marca-agua"><svg viewBox="0 0 24 24"><path d="M7 9V6a3 3 0 0 1 3-3h4a4 4 0 0 1 4 4v6a5 5 0 0 1-5 5H9a4 4 0 0 1-4-4v-2a2 2 0 0 1 2-2h3"/><path d="M8 18v3h8v-3"/></svg></div>
@@ -512,9 +614,9 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
      DIAPOSITIVA 5 · MI IKIGAI (se arma solo, círculo por círculo)
      El contenido de cada círculo e intersección está en el objeto IKIGAI del script.
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mi Ikigai" data-notas="Mi Ikigai cruza cuatro preguntas.|Lo que amo: boxeo, crecimiento personal y conversar con la gente para entender por qué actúa como actúa.|En lo que soy bueno: lo que reconocen los demás en mí es que soy resiliente, confiable y leal, diligente y responsable, y sencillo; y lo que hago con facilidad es encontrar soluciones y ampliar la perspectiva frente a un problema. Mi mejor amigo lo resume: «Sos una persona resiliente: a pesar de las circunstancias persistes y te volvés a levantar».|Lo que necesita el mundo: mejor acceso y experiencia en la salud, salud y bienestar, y mejor movilidad en el Valle de Aburrá.|Por lo que me pueden pagar: diseño de páginas web con IA, análisis de mercado y competencia, emprender en salud y bienestar, y marketing y comportamiento del consumidor.">
-  <div class="kicker a">Mi Ikigai</div>
-  <h2 class="titulo a">Donde se cruza <em>lo que soy</em></h2>
+<section class="lam" aria-label="Mi Ikigai" data-k="ikigai" data-sec="4" data-notas="Mi Ikigai cruza cuatro preguntas.|Lo que amo: boxeo, crecimiento personal y conversar con la gente para entender por qué actúa como actúa.|En lo que soy bueno: lo que reconocen los demás en mí es que soy resiliente, confiable y leal, diligente y responsable, y sencillo; y lo que hago con facilidad es encontrar soluciones y ampliar la perspectiva frente a un problema. Mi mejor amigo lo resume: «Sos una persona resiliente: a pesar de las circunstancias persistes y te volvés a levantar».|Lo que necesita el mundo: mejor acceso y experiencia en la salud, salud y bienestar, y mejor movilidad en el Valle de Aburrá.|Por lo que me pueden pagar: diseño de páginas web con IA, análisis de mercado y competencia, emprender en salud y bienestar, y marketing y comportamiento del consumidor.">
+  <div class="sec"><b class="sec-n">04</b><div class="sec-t"><div class="kicker a">Mi Ikigai</div>
+      <h2 class="titulo a">Donde se cruza <em>lo que soy</em></h2></div></div>
   <div class="iki">
     <svg class="venn" viewBox="0 0 640 640" role="img" aria-label="Diagrama de Ikigai con cuatro círculos">
       <defs><radialGradient id="gBrillo"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".55" stop-color="#FDBA56" stop-opacity=".55"/><stop offset="1" stop-color="#FDBA56" stop-opacity="0"/></radialGradient></defs>
@@ -543,8 +645,8 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 6 · MI IKIGAI · la conclusión
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam marino l-conclusion" aria-label="Mi Ikigai, conclusión" data-notas="En el centro está mi Ikigai: emprender en salud y bienestar, usando la tecnología y la comprensión del comportamiento humano para mejorar la vida de las personas.|Pasión: aprender y crecer de forma constante, entendiendo a las personas. Misión: mejorar el bienestar de las personas, sobre todo en salud.|Vocación: crear negocios en salud y bienestar que resuelvan necesidades reales. Profesión: análisis de mercado, comportamiento del consumidor y tecnología con IA.">
-  <div class="kicker a">Mi Ikigai · el centro</div>
+<section class="lam marino l-conclusion" aria-label="Mi Ikigai, conclusión" data-k="centro" data-sec="4" data-notas="En el centro está mi Ikigai: emprender en salud y bienestar, usando la tecnología y la comprensión del comportamiento humano para mejorar la vida de las personas.|Pasión: aprender y crecer de forma constante, entendiendo a las personas. Misión: mejorar el bienestar de las personas, sobre todo en salud.|Vocación: crear negocios en salud y bienestar que resuelvan necesidades reales. Profesión: análisis de mercado, comportamiento del consumidor y tecnología con IA.">
+  <div class="kicker a">04 · Mi Ikigai · el centro</div>
   <div class="conc">
     <svg class="venn" viewBox="0 0 640 640" aria-hidden="true">
       <circle class="circ" cx="320" cy="215" r="160"/><circle class="circ" cx="215" cy="320" r="160"/>
@@ -565,9 +667,9 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 7 · MI INTERÉS EN EL NÚCLEO
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mi interés en el núcleo" data-notas="Escogí un tema que me gusta y sobre el que quiero profundizar para identificar oportunidades: salud, bienestar y deporte potenciados con tecnología e IA.|Quiero explorar cómo herramientas digitales pueden ayudar a las personas a entrenar mejor, cuidarse y mantenerse saludables, en gimnasios, en deportes como el boxeo o en hábitos diarios.|El boxeo me dio disciplina y me ayuda a manejar el estrés, y quiero que más personas vivan eso. La salud ha estado presente en mi vida desde niño, y la tecnología y la IA pueden hacer que cuidarse sea más fácil y accesible.">
-  <div class="kicker a">Mi interés en el núcleo</div>
-  <h2 class="titulo a">Lo que quiero <em>explorar</em></h2>
+<section class="lam" aria-label="Mi interés en el núcleo" data-k="nucleo" data-sec="5" data-notas="Escogí un tema que me gusta y sobre el que quiero profundizar para identificar oportunidades: salud, bienestar y deporte potenciados con tecnología e IA.|Quiero explorar cómo herramientas digitales pueden ayudar a las personas a entrenar mejor, cuidarse y mantenerse saludables, en gimnasios, en deportes como el boxeo o en hábitos diarios.|El boxeo me dio disciplina y me ayuda a manejar el estrés, y quiero que más personas vivan eso. La salud ha estado presente en mi vida desde niño, y la tecnología y la IA pueden hacer que cuidarse sea más fácil y accesible.">
+  <div class="sec"><b class="sec-n">05</b><div class="sec-t"><div class="kicker a">Mi interés en el núcleo</div>
+      <h2 class="titulo a">Lo que quiero <em>explorar</em></h2></div></div>
   <div class="nucleo">
     <div>
       <div class="opcion a"><b>Opción escogida</b>Un tema que me gusta y sobre el que quiero profundizar para identificar oportunidades.</div>
@@ -592,9 +694,9 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 8 · MI CÓDIGO DE ÉTICA (tarjetas que se voltean)
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Mi código de ética" data-notas="Mi brújula: lo que no negocio.|Responsabilidad: cumplo lo que prometo; perder décimo me enseñó que nadie va a responder por mí. Disciplina: soy constante aunque no tenga ganas.|Respeto: trato bien a todas las personas. Esfuerzo propio: me gano las cosas sin atajos.|Empatía: busco entender al otro antes de juzgarlo. Superación: me levanto después de cada caída y aprendo de ella.">
-  <div class="kicker a">Mi código de ética</div>
-  <h2 class="titulo a">Mi brújula: <em>lo que no negocio</em></h2>
+<section class="lam" aria-label="Mi código de ética" data-k="etica" data-sec="6" data-notas="Mi brújula: lo que no negocio.|Responsabilidad: cumplo lo que prometo; perder décimo me enseñó que nadie va a responder por mí. Disciplina: soy constante aunque no tenga ganas.|Respeto: trato bien a todas las personas. Esfuerzo propio: me gano las cosas sin atajos.|Empatía: busco entender al otro antes de juzgarlo. Superación: me levanto después de cada caída y aprendo de ella.">
+  <div class="sec"><b class="sec-n">06</b><div class="sec-t"><div class="kicker a">Mi código de ética</div>
+      <h2 class="titulo a">Mi brújula: <em>lo que no negocio</em></h2></div></div>
   <div class="valores">
     <div class="valor tarjeta"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span><div><h4>Responsabilidad</h4><p>Cumplo lo que prometo. Perder décimo me enseñó que nadie va a responder por mí.</p></div></div>
     <div class="valor tarjeta"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h3l3-8 6 16 3-8h3"/></svg></span><div><h4>Disciplina</h4><p>Soy constante aunque no tenga ganas. El boxeo me lo recuerda en cada entrenamiento.</p></div></div>
@@ -608,7 +710,7 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      DIAPOSITIVA 9 · CIERRE
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam marino l-cierre con-radio" aria-label="Cierre" data-notas="De caer a construir: mi propósito es ayudar a las personas a vivir mejor.|Gracias.">
+<section class="lam marino l-cierre con-radio" aria-label="Cierre" data-k="cierre" data-sec="0" data-notas="De caer a construir: mi propósito es ayudar a las personas a vivir mejor.|Gracias.">
   <div class="forma" style="width:calc(520*var(--u));height:calc(520*var(--u));right:calc(-100*var(--u));bottom:calc(-140*var(--u));border:calc(60*var(--u)) solid rgba(253,186,86,.18)"></div>
   <div class="kicker a">Mi propósito</div>
   <blockquote style="margin-top:calc(30*var(--u))"><span class="w">De</span> <span class="w">caer</span> <span class="w">a</span> <span class="w">construir:</span> <span class="w">mi</span> <span class="w">propósito</span> <span class="w">es</span> <em class="w">ayudar</em> <em class="w">a</em> <em class="w">las</em> <em class="w">personas</em> <em class="w">a</em> <em class="w">vivir</em> <em class="w">mejor.</em></blockquote>
@@ -618,7 +720,8 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 
 <div id="progreso"><i></i></div>
 <div id="folio" aria-label="Página">1</div>
-<div id="contador"><b id="cAct">1</b> / <span id="cTot">9</span></div>
+<nav id="indice" aria-label="Secciones"><span data-s="1"><b>01</b>Pretest</span><span data-s="2"><b>02</b>Hitos</span><span data-s="3"><b>03</b>Hobbies</span><span data-s="4"><b>04</b>Ikigai</span><span data-s="5"><b>05</b>Interés</span><span data-s="6"><b>06</b>Ética</span></nav>
+<div id="contador"><b id="cAct">1</b> / <span id="cTot">11</span></div>
 <div id="ayuda">Clic o → para avanzar · P para presentar</div>
 <section id="notas" aria-hidden="true"><div class="cab" id="notasT"></div><div id="notasC"></div></section>
 </main>
@@ -675,7 +778,6 @@ var IKIGAI={
 var D=document, H=D.documentElement, g=window.gsap;
 var QUIETO=matchMedia("(prefers-reduced-motion: reduce)").matches, ANIMA=!!g&&!QUIETO;
 var L=[].slice.call(D.querySelectorAll(".lam")), N=L.length, i=-1, tl=null, bucles=[];
-var MARINO={0:1,5:1,8:1};   /* láminas con fondo marino */
 D.getElementById("cTot").textContent=N;
 
 /* ── tamaño: 16:9 en pantallas anchas · pantalla completa en celular vertical ── */
@@ -705,7 +807,7 @@ D.getElementById("intersIki").innerHTML=["pasion","mision","vocacion","profesion
   return '<div><b>'+d.titulo+'</b><small>'+d.tipo+'</small><p>'+d.items[0]+'</p></div>' }).join("");
 
 /* ══ PORTAL · miniaturas, cuadrícula, guion, cronómetro ══ */
-var TIT=["Portada","Lo que me tumbó","Lo que me levantó","Mis hobbies","Mi Ikigai","El centro","Mi interés","Mi brújula","Cierre"];
+var TIT=["Portada","01 · Pretest","01 · Reflexión","02 · Lo que me tumbó","02 · Lo que me levantó","03 · Mis hobbies","04 · Mi Ikigai","04 · El centro","05 · Mi interés","06 · Mi brújula","Cierre"];
 var panelM=D.getElementById("panel"), rg=D.getElementById("rg"), rejilla=D.getElementById("rejilla"), atajos=D.getElementById("atajos");
 var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D.getElementById("notasC"), minis=[], rcs=[];
 /* si una foto o un video no carga, se oculta su marco y el diseño sigue igual */
@@ -779,34 +881,53 @@ function contar(root,t){
    Lo marcado con .a entra escalonado; lo demás tiene su movimiento propio.
    ══════════════════════════════════════════════════════════════════════════ */
 function entrar(n){
-  var s=L[n];
+  var s=L[n], k=s.dataset.k;
   if(!ANIMA){ contar(s,null); return }
   tl=g.timeline({defaults:{ease:"power3.out"}});
   tl.from(s.querySelectorAll(".a"),{y:44,opacity:0,duration:.7,stagger:.1},0);
   var q=function(sel){ return s.querySelectorAll(sel) };
+  if(s.querySelector(".sec-n")) tl.from(q(".sec-n"),{x:-50,scale:.6,opacity:0,transformOrigin:"0% 100%",duration:.8,ease:"back.out(1.8)"},0);
 
-  if(n===0){                                   /* portada */
+  if(k==="pretest"){                           /* anillo que se llena hasta 77,78 % y datos que cuentan */
+    var arco=s.querySelector(".arco-a"), pct=s.querySelector("[data-pct]"), o={v:0}, fin=+pct.dataset.pct;
+    tl.fromTo(arco,{strokeDashoffset:100},{strokeDashoffset:100-fin,duration:2.2,ease:"power2.inOut"},.4)
+      .to(o,{v:fin,duration:2.2,ease:"power2.inOut",onUpdate:function(){ pct.textContent=o.v.toFixed(2).replace(".",",") }},.4)
+      .from(q(".dp"),{x:80,opacity:0,duration:.6,stagger:.15},.6)
+      .from(q(".nota-pre"),{opacity:0,y:20,duration:.5},1.3)
+      .from(q(".medio"),{x:60,y:30,scale:.82,opacity:0,duration:.8,ease:"back.out(1.5)"},1);
+    contar(s,tl);
+    var rl=s.querySelector("[data-reloj]"), r={v:0}, seg=+rl.dataset.reloj;
+    tl.to(r,{v:seg,duration:1.6,ease:"power2.out",onUpdate:function(){ var x=Math.round(r.v); rl.textContent=Math.floor(x/60)+":"+(x%60<10?"0":"")+(x%60) }},.6);
+  }
+  if(k==="reflexion"){                         /* tarjetas y compromisos */
+    tl.from(q(".fm"),{y:50,opacity:0,duration:.6,stagger:.15,ease:"back.out(1.4)"},.3)
+      .from(q(".reflexion"),{y:60,opacity:0,duration:.7},.7)
+      .from(q(".reflexion li"),{x:-30,opacity:0,duration:.45,stagger:.12},1.1)
+      .from(q(".reflexion .meta"),{opacity:0,y:20,duration:.5},1.7);
+  }
+
+  if(k==="portada"){                           /* portada */
     tl.from(q(".forma"),{scale:0,opacity:0,duration:1.1,stagger:.15,ease:"back.out(1.6)"},0);
     bucles.push(g.to(q(".forma")[1],{y:-26,duration:2.6,yoyo:true,repeat:-1,ease:"sine.inOut"}));
   }
-  if(n===1||n===2){                            /* línea de tiempo */
+  if(k==="hitos1"||k==="hitos2"){              /* línea de tiempo */
     var lin=s.querySelector(".linea");
     tl.fromTo(lin,{"--trazo":0},{"--trazo":1,duration:1.1,ease:"power2.inOut"},.3)
       .from(q(".hito .punto"),{scale:0,duration:.55,stagger:.2,ease:"back.out(2.4)"},.6)
       .from(q(".hito .edad, .hito .nombre"),{y:20,opacity:0,duration:.45,stagger:.06},.9);
-    if(n===2) contar(s,tl);
+    if(k==="hitos2") contar(s,tl);
     /* cada tarjeta se despliega sola, una tras otra, con un pulso en su punto */
     tl.fromTo(q(".hito .anillo"),{scale:.7,opacity:.9},{scale:1.6,opacity:0,duration:.8,stagger:.45,ease:"power2.out"},1.3)
       .from(q(".hito .cartel"),{y:-26,opacity:0,scaleY:.6,transformOrigin:"50% 0%",duration:.6,stagger:.45,ease:"back.out(1.4)"},1.35)
       .from(q(".medio"),{x:60,y:30,scale:.82,opacity:0,duration:.8,stagger:.35,ease:"back.out(1.5)"},1.9);
   }
-  if(n===3){                                   /* hobbies */
+  if(k==="hobbies"){                           /* hobbies */
     tl.from(q(".hobby"),{x:function(k){return k?120:-120},opacity:0,duration:.8,stagger:.15},.3)
       .from(q(".hobby .ico"),{scale:0,rotate:-25,duration:.6,stagger:.15,ease:"back.out(2.4)"},.6)
       .from(q(".hobby .flecha"),{x:-30,opacity:0,duration:.5,stagger:.15},.9);
     bucles.push(g.to(q(".marca-agua"),{rotate:8,duration:3,yoyo:true,repeat:-1,ease:"sine.inOut"}));
   }
-  if(n===4){                                   /* ikigai: se arma solo */
+  if(k==="ikigai"){                            /* ikigai: se arma solo */
     tl.from(q(".venn .circ"),{scale:0,transformOrigin:"50% 50%",opacity:0,duration:.8,stagger:.14,ease:"back.out(1.5)"},.2)
       .from(q(".venn text"),{opacity:0,duration:.5,stagger:.03},.9)
       .from(q(".venn .centro, .venn .brillo"),{scale:0,transformOrigin:"50% 50%",duration:.6,ease:"back.out(2.6)"},1.2)
@@ -819,7 +940,7 @@ function entrar(n){
     /* el bucle arranca cuando termina la entrada, para no pelear con ella */
     tl.call(function(){ bucles.push(g.to(q(".venn .brillo"),{transformOrigin:"50% 50%",scale:1.25,opacity:.55,duration:1.6,yoyo:true,repeat:-1,ease:"sine.inOut"})) });
   }
-  if(n===5){                                   /* ikigai: conclusión */
+  if(k==="centro"){                            /* ikigai: conclusión */
     tl.from(q(".venn .circ"),{scale:0,transformOrigin:"50% 50%",opacity:0,duration:.8,stagger:.1,ease:"back.out(1.5)"},0)
       .from(q(".venn text"),{opacity:0,duration:.4},.6)
       .from(q(".venn .centro"),{scale:0,transformOrigin:"50% 50%",duration:.7,ease:"back.out(2.6)"},.8)
@@ -830,17 +951,17 @@ function entrar(n){
       bucles.push(g.to(q(".venn .centro"),{transformOrigin:"50% 50%",scale:1.06,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut"}));
     });
   }
-  if(n===6){                                   /* núcleo */
+  if(k==="nucleo"){                            /* núcleo */
     tl.from(q(".nodo"),{scale:0,opacity:0,duration:.7,stagger:.18,ease:"back.out(2)"},.4)
       .from(q(".triada line"),{opacity:0,duration:.6,stagger:.12},.9)
       .from(q(".nucleo-centro"),{scale:0,duration:.6,ease:"back.out(2.4)"},1.3);
     bucles.push(g.to(q(".nodo .ico"),{y:-10,duration:1.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:.4}));
   }
-  if(n===7){                                   /* código de ética */
+  if(k==="etica"){                             /* código de ética */
     tl.from(q(".valor"),{rotateY:-90,transformPerspective:1000,transformOrigin:"0% 50%",opacity:0,duration:.8,stagger:.12,ease:"back.out(1.3)"},.3)
       .from(q(".valor .ico"),{scale:0,duration:.45,stagger:.09,ease:"back.out(2.6)"},.7);
   }
-  if(n===8){                                   /* cierre */
+  if(k==="cierre"){                            /* cierre */
     tl.from(q("blockquote .w"),{y:70,opacity:0,rotate:3,duration:.6,stagger:.06},.2)
       .from(q(".medio"),{x:140,y:40,scale:.8,opacity:0,duration:1,ease:"back.out(1.4)"},.5)
       .from(q(".forma"),{scale:0,opacity:0,duration:1.2,ease:"back.out(1.4)"},0);
@@ -857,7 +978,8 @@ function ir(n){
   L.forEach(function(s,k){ s.classList.toggle("on",k===n) });
   if(L[n].scrollTop) L[n].scrollTop=0;
   var antes=i; i=n;
-  H.classList.toggle("marino-activa",!!MARINO[n]);
+  H.classList.toggle("marino-activa",L[n].classList.contains("marino"));
+  var sec=L[n].dataset.sec; [].forEach.call(D.querySelectorAll("#indice span"),function(x){ x.classList.toggle("act",x.dataset.s===sec) });
   D.getElementById("cAct").textContent=n+1;
   D.getElementById("folio").textContent=n+1;
   D.querySelector("#progreso i").style.transform="scaleX("+((n+1)/N)+")";
