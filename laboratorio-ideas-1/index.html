@@ -152,7 +152,7 @@ body.presentando #ayuda{opacity:0}
 .l-portada h1 .acento{color:var(--amarillo)}
 .l-portada .sub{font:600 calc(44*var(--u))/1.2 "Poppins",sans-serif;margin-top:calc(26*var(--u));display:flex;gap:calc(18*var(--u));flex-wrap:wrap}
 .l-portada .sub span{display:inline-flex;align-items:center;gap:calc(18*var(--u))}
-.l-portada .sub span+span::before{content:"";width:calc(14*var(--u));height:calc(14*var(--u));border-radius:50%;background:var(--amarillo)}
+.l-portada .sub span+span::before{content:"";width:calc(14*var(--u));height:calc(12*var(--u));border-radius:50%;background:var(--amarillo)}
 .l-portada .autor{margin-top:calc(56*var(--u));font:500 calc(26*var(--u))/1.5 "Inter",sans-serif;color:rgba(255,255,255,.86)}
 .l-portada .autor b{color:var(--blanco);font-weight:700}
 .l-portada .competencia{position:absolute;right:calc(120*var(--u));bottom:calc(110*var(--u));width:calc(560*var(--u));
@@ -205,9 +205,6 @@ body.presentando #ayuda{opacity:0}
 .marino-activa #indice{background:rgba(255,255,255,.1)}
 .marino-activa #indice span{color:var(--blanco)}
 .marino-activa #indice span.act{background:var(--amarillo);color:var(--marino)}
-/* marcador de contenido por completar */
-.pendiente{display:inline;font-style:italic;background:rgba(11,42,91,.09);border:1.5px dashed rgba(11,42,91,.45);border-radius:calc(8*var(--u));padding:calc(2*var(--u)) calc(10*var(--u));color:var(--marino)}
-.pendiente::before{content:"PENDIENTE · ";font-style:normal;font-weight:700;font-size:.8em;letter-spacing:.06em}
 /* ══ SECCIÓN 01 · pretest ══ */
 .pre{margin-top:calc(46*var(--u));display:grid;grid-template-columns:calc(560*var(--u)) calc(720*var(--u));justify-content:center;gap:calc(120*var(--u));align-items:center;flex:1;min-height:0}
 .anillo-pre{position:relative;width:100%;aspect-ratio:1}
@@ -224,16 +221,21 @@ body.presentando #ayuda{opacity:0}
 .dp b small{font-size:.45em;font-weight:700}
 .dp > span{font:600 calc(22*var(--u))/1.2 "Inter",sans-serif;color:var(--tinta-suave)}
 .nota-pre{font:500 calc(20*var(--u))/1.45 "Inter",sans-serif;color:var(--tinta-suave);border-left:calc(4*var(--u)) solid var(--marino);padding-left:calc(16*var(--u))}
-.dos-pre{margin-top:calc(44*var(--u));display:grid;grid-template-columns:1fr 1fr;gap:calc(26*var(--u))}
-.fm{padding:calc(32*var(--u)) calc(36*var(--u));min-height:calc(190*var(--u))}
+.dos-pre{margin-top:calc(30*var(--u));display:grid;grid-template-columns:1fr 1fr;gap:calc(26*var(--u))}
+.fm{padding:calc(24*var(--u)) calc(30*var(--u))}
 .fm .tipo{font:700 calc(17*var(--u))/1.25 "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--caida)}
-.fm p{margin-top:calc(18*var(--u));font:400 calc(26*var(--u))/1.45 "Inter",sans-serif}
-.reflexion{margin-top:calc(34*var(--u));background:var(--marino);color:var(--blanco);border-radius:calc(28*var(--u));padding:calc(40*var(--u)) calc(48*var(--u))}
-.reflexion p{font:400 calc(27*var(--u))/1.5 "Inter",sans-serif}
-.reflexion ul{margin:calc(20*var(--u)) 0 calc(24*var(--u));list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:calc(10*var(--u)) calc(34*var(--u))}
-.reflexion li{position:relative;padding-left:calc(32*var(--u));font:500 calc(25*var(--u))/1.4 "Inter",sans-serif}
-.reflexion li::before{content:"";position:absolute;left:0;top:calc(11*var(--u));width:calc(14*var(--u));height:calc(14*var(--u));border-radius:50%;background:var(--amarillo)}
-.reflexion .meta{font:700 calc(30*var(--u))/1.35 "Poppins",sans-serif;color:var(--amarillo)}
+.lista-fm{margin-top:calc(14*var(--u));list-style:none;display:grid;gap:calc(9*var(--u))}
+.lista-fm li{display:flex;align-items:baseline;gap:calc(12*var(--u));font:400 calc(22*var(--u))/1.38 "Inter",sans-serif}
+.lista-fm b{font-weight:700}
+.pts{flex:none;font:700 calc(13*var(--u))/1 "Inter",sans-serif;letter-spacing:.04em;padding:calc(5*var(--u)) calc(9*var(--u));border-radius:999px;background:var(--marino);color:var(--blanco);font-variant-numeric:tabular-nums;position:relative;top:calc(-2*var(--u))}
+.pts.media{background:transparent;color:var(--marino);box-shadow:inset 0 0 0 calc(2*var(--u)) var(--marino)}
+.pts.baja{background:var(--caida);color:var(--blanco)}
+.reflexion{margin-top:calc(22*var(--u));background:var(--marino);color:var(--blanco);border-radius:calc(28*var(--u));padding:calc(26*var(--u)) calc(40*var(--u))}
+.reflexion p{font:400 calc(24*var(--u))/1.45 "Inter",sans-serif}
+.reflexion ul{margin:calc(12*var(--u)) 0 calc(14*var(--u));list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:calc(8*var(--u)) calc(34*var(--u))}
+.reflexion li{position:relative;padding-left:calc(28*var(--u));font:500 calc(23*var(--u))/1.38 "Inter",sans-serif}
+.reflexion li::before{content:"";position:absolute;left:0;top:calc(9*var(--u));width:calc(12*var(--u));height:calc(14*var(--u));border-radius:50%;background:var(--amarillo)}
+.reflexion .meta{font:700 calc(27*var(--u))/1.3 "Poppins",sans-serif;color:var(--amarillo)}
 /* ── fotos y videos: marco de celular 9:16 o marco horizontal, con giro de foto pegada ── */
 .medio{margin:0;position:relative}
 .medio.falta{display:none}
@@ -492,20 +494,30 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <!-- ══════════════════════════════════════════════════════════════════════
      SECCIÓN 01 · PRETEST INDIVIDUAL · B) reflexión y compromisos
      ══════════════════════════════════════════════════════════════════════ -->
-<section class="lam" aria-label="Pretest individual, reflexión" data-k="reflexion" data-sec="1" data-notas="Saqué 77,78%. Es un buen punto de partida, pero no es mi techo.|Este resultado me muestra que ya tengo una base para detectar oportunidades, y también que tengo cosas por fortalecer.|Durante el núcleo me comprometo a observar mi entorno con más intención, preguntar y escuchar antes de proponer, cumplir cada entrega a tiempo aportándole a Caro y a Naty lo mejor de mí, y cuidar que cada idea sea honesta y ética.|Mi meta es llegar al Test de Salida con un resultado más alto y, sobre todo, con más criterio.">
+<section class="lam" aria-label="Pretest individual, reflexión" data-k="reflexion" data-sec="1" data-notas="Saqué 77,78%. Es un buen punto de partida, pero no es mi techo.|Mi fortaleza está en leer el entorno e investigar antes de decidir: en eso saqué 100 sobre 100. Mi mayor reto es justo la competencia de este núcleo: conectar las oportunidades que veo con lo que me apasiona, sin perder la ética; ahí saqué 50 sobre 100.|Durante el núcleo me comprometo a escoger ideas que me apasionen pensando a quién afectan, proponer al menos una idea no tradicional en cada reto, preguntar y escuchar para encontrar la causa de fondo, y planear cada entrega con una lista de chequeo, aportándole a Caro y a Naty lo mejor de mí.|Mi meta es llegar al Test de Salida con un resultado más alto y, sobre todo, con más criterio.">
   <div class="kicker a">01 · Pretest individual · reflexión y compromisos</div>
   <h2 class="titulo a">No es mi <em>techo</em></h2>
   <div class="dos-pre">
-    <div class="fm tarjeta"><div class="tipo">Mis fortalezas — las voy a mantener y potenciar</div><p><span class="pendiente">fortalezas según el Excel</span></p></div>
-    <div class="fm tarjeta"><div class="tipo">Lo que voy a mejorar</div><p><span class="pendiente">áreas de mejora según el Excel</span></p></div>
+    <div class="fm tarjeta"><div class="tipo">Mis fortalezas — las voy a mantener y potenciar</div><ul class="lista-fm">
+      <li><span class="pts">100/100</span><span><b>Leer el entorno antes de decidir:</b> reconozco los factores, personas y circunstancias que influyen en una decisión.</span></li>
+      <li><span class="pts">100/100</span><span><b>Investigar antes de resolver:</b> observo, recojo información, la analizo y saco conclusiones.</span></li>
+      <li><span class="pts">100/100</span><span><b>Pensar creativo y crítico, incluyendo a los demás:</b> busco soluciones donde todos se sientan parte.</span></li>
+    </ul></div>
+    <div class="fm tarjeta"><div class="tipo">Lo que voy a mejorar</div><ul class="lista-fm">
+      <li><span class="pts baja">50/100</span><span><b>Unir oportunidad, pasión y ética:</b> es justo la competencia de este núcleo.</span></li>
+      <li><span class="pts media">75/100</span><span><b>Arriesgarme a salir de lo tradicional.</b></span></li>
+      <li><span class="pts media">75/100</span><span><b>Ser más proactivo con mis propias iniciativas.</b></span></li>
+      <li><span class="pts media">75/100</span><span><b>Ver más allá de lo evidente y preguntar más.</b></span></li>
+      <li><span class="pts media">75/100</span><span><b>Planear antes de actuar.</b></span></li>
+    </ul></div>
   </div>
   <div class="reflexion">
-    <p>Saqué 77,78%. Es un buen punto de partida, pero no es mi techo. Este resultado me muestra que ya tengo una base para detectar oportunidades, y también que tengo cosas por fortalecer. Durante el núcleo me comprometo a:</p>
+    <p>Saqué 77,78%. Es un buen punto de partida, pero no es mi techo. Mi fortaleza está en leer el entorno e investigar antes de decidir. Mi mayor reto es justo la competencia de este núcleo: conectar las oportunidades que veo con lo que me apasiona, sin perder la ética. Durante el núcleo me comprometo a:</p>
     <ul>
-      <li>Observar mi entorno con más intención y anotar los problemas que vea en mi día a día.</li>
-      <li>Preguntar y escuchar a las personas antes de proponer una solución.</li>
-      <li>Cumplir cada entrega a tiempo y aportarle a Caro y a Naty lo mejor de mí.</li>
-      <li>Cuidar que cada idea que proponga sea honesta y ética.</li>
+      <li>Escoger ideas que me apasionen y pensar siempre a quién afectan, no solo cuánto dinero dejan.</li>
+      <li>Proponer al menos una idea que se salga de lo tradicional en cada reto.</li>
+      <li>Preguntar y escuchar a las personas para encontrar la causa de fondo de cada problema.</li>
+      <li>Planear cada entrega con una lista de chequeo y aportarle a Caro y a Naty lo mejor de mí.</li>
     </ul>
     <p class="meta">Mi meta es llegar al Test de Salida con un resultado más alto y, sobre todo, con más criterio.</p>
   </div>
@@ -896,6 +908,7 @@ function entrar(n){
   }
   if(k==="reflexion"){                         /* tarjetas y compromisos */
     tl.from(q(".fm"),{y:50,opacity:0,duration:.6,stagger:.15,ease:"back.out(1.4)"},.3)
+      .from(q(".lista-fm li"),{x:-20,opacity:0,duration:.4,stagger:.07},.6)
       .from(q(".reflexion"),{y:60,opacity:0,duration:.7},.7)
       .from(q(".reflexion li"),{x:-30,opacity:0,duration:.45,stagger:.12},1.1)
       .from(q(".reflexion .meta"),{opacity:0,y:20,duration:.5},1.7);
