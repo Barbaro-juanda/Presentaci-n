@@ -120,6 +120,21 @@ body.presentando #panel,html.vertical #panel{opacity:0;pointer-events:none}
 .marino-activa #progreso{background:rgba(255,255,255,.15)}
 .marino-activa #progreso i{background:var(--amarillo)}
 body.presentando #ayuda{opacity:0}
+/* mando inferior: anterior · número · siguiente · pantalla completa; se muestra al acercar el cursor abajo */
+#mando{position:absolute;left:50%;bottom:calc(24*var(--u));transform:translate(-50%,calc(30*var(--u)));z-index:25;display:flex;align-items:center;gap:calc(8*var(--u));
+  background:rgba(6,22,51,.92);padding:calc(8*var(--u));border-radius:999px;box-shadow:0 calc(14*var(--u)) calc(34*var(--u)) rgba(6,22,51,.35);
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+html.mando-on #mando{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+html.mando-on #indice{opacity:0;transition:opacity .2s}
+.m-btn{display:flex;align-items:center;gap:calc(8*var(--u));border:0;cursor:pointer;background:transparent;color:#fff;font:700 calc(17*var(--u))/1 "Inter",sans-serif;letter-spacing:.04em;
+  padding:calc(12*var(--u)) calc(20*var(--u));border-radius:999px;transition:background .2s,color .2s}
+.m-btn:hover,.m-btn:focus-visible{background:var(--amarillo);color:var(--marino);outline:none}
+.m-btn:disabled{opacity:.35;cursor:default;background:transparent;color:#fff}
+.m-btn svg{width:calc(20*var(--u));height:calc(20*var(--u));fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.m-pc{padding:calc(12*var(--u))}
+.m-num{font:700 calc(17*var(--u))/1 "Inter",sans-serif;color:rgba(255,255,255,.8);padding:0 calc(10*var(--u));font-variant-numeric:tabular-nums}
+.m-num b{color:var(--amarillo)}
+html.vertical #mando{display:none}
 
 /* ── guion (N), cuadrícula (O) y atajos (?) ── */
 #notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(4,16,42,.97);border-top:calc(4*var(--u)) solid var(--amarillo);color:#fff;
@@ -440,7 +455,7 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
-<body>
+<body class="presentando">
 
 
 <div id="app">
@@ -731,6 +746,12 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
 <nav id="indice" aria-label="Secciones"><span data-s="1"><b>01</b>Pretest</span><span data-s="2"><b>02</b>Hitos</span><span data-s="3"><b>03</b>Hobbies</span><span data-s="4"><b>04</b>Ikigai</span><span data-s="5"><b>05</b>Interés</span><span data-s="6"><b>06</b>Ética</span></nav>
 <div id="contador"><b id="cAct">1</b> / <span id="cTot">11</span></div>
 <div id="ayuda">Clic o → para avanzar · P para presentar</div>
+<div id="mando" aria-label="Navegación">
+  <button class="m-btn" id="mAnt" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Anterior</button>
+  <span class="m-num"><b id="mAct">1</b> / <span id="mTot">11</span></span>
+  <button class="m-btn" id="mSig" aria-label="Diapositiva siguiente">Siguiente<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <button class="m-btn m-pc" id="mPc" aria-label="Pantalla completa" title="Pantalla completa (F)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+</div>
 <section id="notas" aria-hidden="true"><div class="cab" id="notasT"></div><div id="notasC"></div></section>
 </main>
   </div>
@@ -746,14 +767,12 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
       <tr><td>→ ↓ espacio · clic</td><td>Avanzar</td></tr>
       <tr><td>← ↑</td><td>Retroceder</td></tr>
       <tr><td>Inicio · Fin</td><td>Primera y última diapositiva</td></tr>
-      <tr><td>P</td><td>Modo presentación</td></tr>
-      <tr><td>O</td><td>Cuadrícula</td></tr>
+      <tr><td>P · F</td><td>Pantalla completa</td></tr>
       <tr><td>N</td><td>Guion de la diapositiva</td></tr>
       <tr><td>T · R</td><td>Cronómetro: iniciar o pausar · reiniciar</td></tr>
-      <tr><td>F</td><td>Pantalla completa</td></tr>
       <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
     </tbody></table>
-    <p>Una diapositiva por clic. En el celular se avanza deslizando.</p>
+    <p>Una diapositiva por clic. Abajo, al pasar el cursor, están los botones para avanzar o retroceder. En el celular se avanza deslizando.</p>
     <button class="r-btn r-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
   </div></section>
 </div>
@@ -988,7 +1007,7 @@ function ir(n){
   var antes=i; i=n;
   H.classList.toggle("marino-activa",L[n].classList.contains("marino"));
   var sec=L[n].dataset.sec; [].forEach.call(D.querySelectorAll("#indice span"),function(x){ x.classList.toggle("act",x.dataset.s===sec) });
-  D.getElementById("cAct").textContent=n+1;
+  D.getElementById("cAct").textContent=n+1; mandoNum();
   D.getElementById("folio").textContent=n+1;
   D.querySelector("#progreso i").style.transform="scaleX("+((n+1)/N)+")";
   if(history.replaceState) history.replaceState(null,"","#"+(n+1));
@@ -1010,18 +1029,14 @@ function pantalla(){
 }
 
 /* ── teclado ── */
-function presentar(){
-  D.body.classList.toggle("presentando"); notasOn(false);
-  var en=D.fullscreenElement||D.webkitFullscreenElement, si=D.body.classList.contains("presentando");
-  if(si&&!en) pantalla(); if(!si&&en) pantalla();
-}
+function presentar(){ notasOn(false); pantalla() }   /* esta presentación vive siempre en modo presentar; P solo pone o quita la pantalla completa */
 D.getElementById("bRejilla").onclick=function(){ abre(rejilla,!rejilla.classList.contains("on")) };
 D.getElementById("bCerrarRejilla").onclick=function(){ abre(rejilla,false) };
 D.getElementById("bNotas").onclick=function(){ notasOn(!notas.classList.contains("on")) };
 D.getElementById("bAtajos").onclick=function(){ abre(atajos,true) };
 D.getElementById("bCerrarAtajos").onclick=function(){ abre(atajos,false) };
 D.getElementById("bPresentar").onclick=presentar;
-D.addEventListener("fullscreenchange",function(){ if(!D.fullscreenElement) D.body.classList.remove("presentando"); setTimeout(function(){ medir(); reencaja() },350) });
+D.addEventListener("fullscreenchange",function(){ setTimeout(function(){ medir(); reencaja() },350) });
 
 D.addEventListener("keydown",function(e){
   if(e.metaKey||e.ctrlKey||e.altKey) return;
@@ -1029,7 +1044,6 @@ D.addEventListener("keydown",function(e){
   if(k==="Escape"){ cerrar(); return }
   if(rejilla.classList.contains("on")||atajos.classList.contains("on")) return;
   if(k==="n"||k==="N"){ notasOn(!notas.classList.contains("on")); return }
-  if(k==="o"||k==="O"){ abre(rejilla,true); return }
   if(k==="?"){ abre(atajos,true); return }
   if(k==="t"||k==="T"){ cron(); return }
   if(k==="r"||k==="R"){ reinicia(); return }
@@ -1040,9 +1054,21 @@ D.addEventListener("keydown",function(e){
   else if(k==="f"||k==="F") pantalla();
 });
 
+/* ── mando inferior: aparece cuando el cursor baja a la franja de abajo ── */
+var mando=D.getElementById("mando"), mT=0;
+D.getElementById("mAnt").onclick=function(){ anterior() };
+D.getElementById("mSig").onclick=function(){ siguiente() };
+D.getElementById("mPc").onclick=function(){ pantalla() };
+D.addEventListener("mousemove",function(e){
+  var r=D.getElementById("escenario").getBoundingClientRect(), cerca=(e.clientY>r.bottom-Math.max(110,r.height*.16)&&e.clientY<r.bottom+40)||mando.contains(e.target);
+  H.classList.toggle("mando-on",cerca);
+});
+D.addEventListener("mouseleave",function(){ H.classList.remove("mando-on") });
+function mandoNum(){ D.getElementById("mAct").textContent=i+1; D.getElementById("mTot").textContent=N; D.getElementById("mAnt").disabled=i===0; D.getElementById("mSig").disabled=i===N-1 }
+
 /* ── clic: avanza (salvo sobre el guion o los botones) ── */
 vista.addEventListener("click",function(e){
-  if(e.target.closest("button,a,#notas")) return;
+  if(e.target.closest("button,a,#notas,#mando")) return;
   if(H.classList.contains("vertical")) return;   /* en celular se navega deslizando */
   siguiente();
 });
