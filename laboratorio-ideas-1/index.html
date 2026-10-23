@@ -256,6 +256,8 @@ body.presentando #ayuda{opacity:0}
 .cartel.con-media .medio.celu figcaption{font-size:calc(12*var(--u))}
 .cartel.con-media.apilada{flex-direction:column}
 .cartel.con-media.apilada .medio{width:calc(400*var(--u));align-self:center}
+.medio.foto .pantalla{aspect-ratio:3/4;border-radius:calc(16*var(--u))}
+.cartel.con-media.apilada .medio.foto{width:calc(210*var(--u))}
 /* línea de tiempo con 7 hitos: un poco más compacta y columnas a la medida de cada tarjeta */
 .linea.compacta{margin-top:calc(56*var(--u));gap:calc(36*var(--u))}
 .linea.compacta::before{top:calc(34*var(--u))}
@@ -435,6 +437,7 @@ html.vertical .lam.marino{background:var(--marino)}
 html.vertical .l-crece .cab-linea .titulo{white-space:normal}
 html.vertical .cartel.con-media .medio.celu{width:40%}
 html.vertical .cartel.con-media.apilada .medio{width:100%}
+html.vertical .cartel.con-media.apilada .medio.foto{width:60%}
 html.vertical .l-cierre .medio.radio{position:static;width:45%;margin-top:calc(40*var(--u))}
 html.vertical .l-cierre.con-radio blockquote{max-width:none}
 
@@ -535,7 +538,7 @@ html.vertical .l-cierre.con-radio blockquote{max-width:none}
     <div class="hito dificil">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M15 20v-5h-6v5"/></svg></span>
       <span class="edad">14 años</span><span class="nombre">Un año difícil en casa</span>
-      <span class="cartel tarjeta">Un año difícil en lo familiar. Me mudé a Sabaneta y cambié de colegio.</span>
+      <div class="cartel tarjeta con-media apilada"><span class="txt">Un año difícil en lo familiar. Me mudé a Sabaneta y cambié de colegio.</span><figure class="medio foto giro-izq"><div class="pantalla"><img src="media/14-anos.jpg" alt="Juan David a los 14 años con el uniforme del colegio" loading="eager"></div><figcaption>Yo a los 14 años</figcaption></figure></div>
     </div>
     <div class="hito dificil">
       <span class="punto"><span class="anillo"></span><svg viewBox="0 0 24 24"><path d="M4 4l16 16"/><path d="M6 20h12"/><path d="M9 4h9v9"/></svg></span>
