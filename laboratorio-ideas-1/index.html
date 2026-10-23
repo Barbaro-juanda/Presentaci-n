@@ -1010,7 +1010,6 @@ function ir(n){
   D.getElementById("cAct").textContent=n+1; mandoNum();
   D.getElementById("folio").textContent=n+1;
   D.querySelector("#progreso i").style.transform="scaleX("+((n+1)/N)+")";
-  if(history.replaceState) history.replaceState(null,"","#"+(n+1));
   minis.forEach(function(m,k){ m.classList.toggle("actual",k===n) });
   rcs.forEach(function(r,k){ r.classList.toggle("actual",k===n) });
   if(minis[n]) minis[n].scrollIntoView({block:"nearest"});
@@ -1081,8 +1080,10 @@ D.addEventListener("touchend",function(e){
   if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3&&Date.now()-t0<800){ dx<0?siguiente():anterior() }
 },{passive:true});
 
-/* ── arranque (admite enlace directo: index.html#5) ── */
-var h=parseInt((location.hash||"").slice(1),10);
+/* ── arranque ── */
+/* siempre arranca en la portada: se ignora un #N que haya quedado en el enlace (solo ?diapo=N abre otra, para revisar) */
+var h=parseInt((location.search.match(/[?&]diapo=(\d+)/)||[])[1],10);
+if(location.hash&&history.replaceState) history.replaceState(null,"",location.pathname+location.search);
 function arranca(){ ir(h>=1&&h<=N?h-1:0) }
 if(D.fonts&&D.fonts.ready) D.fonts.ready.then(arranca); else arranca();
 })();
