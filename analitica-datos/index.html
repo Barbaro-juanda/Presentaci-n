@@ -201,6 +201,97 @@ h1 .w,h2 .w{display:inline-block}
 .l3 .pie .ia{display:block;margin-top:6px;color:var(--tinta)}
 .l3 .pie .ia b{color:var(--c2t)}
 
+/* ══ portada ══ */
+.l-port{background:radial-gradient(1200px 760px at 92% -10%,rgba(124,92,250,.40),transparent 60%),
+  radial-gradient(1000px 640px at -8% 110%,rgba(224,69,123,.26),transparent 60%),var(--noche)}
+.l-port .halo,.l1 .halo{position:absolute;width:820px;height:820px;right:-180px;top:-260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(20,184,166,.20),transparent 62%)}
+.l-port .datos{position:absolute;inset:0;width:100%;height:100%}
+.l-port .cont{position:absolute;left:96px;right:96px;top:150px}
+.port-t{margin-top:30px;font:900 128px/.98 "Nunito",sans-serif;letter-spacing:-.035em;color:#fff}
+.port-t em{font-style:normal;color:var(--c4c)}
+.port-sub{margin:30px 0 0;font:500 34px/1.3 "Inter",sans-serif;color:rgba(255,255,255,.82);max-width:1300px}
+.port-ico{display:flex;gap:22px;margin-top:46px}
+.port-ico .pi{display:flex;align-items:center;gap:14px;padding:12px 22px 12px 12px;border-radius:999px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);font:700 22px/1 "Inter",sans-serif;color:#fff}
+.port-ico .pi span{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--c)}
+.port-ico .ico-s{width:32px;height:32px;color:var(--noche)}
+.equipo{position:absolute;left:96px;bottom:70px;width:900px}
+.equipo .et{display:block;font:700 16px/1 "Space Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--c1c);margin-bottom:16px}
+.equipo ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 40px}
+.equipo li{font:700 28px/1.2 "Nunito",sans-serif;color:#fff;display:flex;align-items:center;gap:14px}
+.equipo li::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--c);flex:none}
+.aviso{position:absolute;right:96px;bottom:70px;width:720px;display:flex;gap:20px;align-items:flex-start;padding:24px 28px;border-radius:24px;
+  background:rgba(255,255,255,.08);border:2px solid rgba(185,166,255,.55)}
+.aviso svg{width:40px;height:40px;flex:none;fill:none;stroke:var(--c2c);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.aviso p{margin:0;font:400 24px/1.4 "Inter",sans-serif;color:rgba(255,255,255,.92)}
+.aviso b{display:block;font:700 16px/1 "Space Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--c2c);margin-bottom:10px}
+
+/* ══ un tipo por diapositiva: el concepto a la izquierda, el caso de la cafetería a la derecha ══ */
+.l-tipo .pie{bottom:26px;font-size:14.5px}
+.l-tipo .pie a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.l-tipo .pie .ia{display:block;margin-top:6px;color:var(--tinta)}
+.l-tipo .pie .ia b{color:var(--c2t)}
+.l-tipo .forma{position:absolute;left:-220px;bottom:-300px;width:760px;height:760px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--c) 16%,transparent),transparent 65%)}
+.l-tipo .kick{color:var(--ct)}
+.izq{position:absolute;left:96px;top:146px;width:800px;display:flex;flex-direction:column;gap:34px}
+.nom{display:flex;align-items:center;gap:30px;margin-top:6px}
+.tile.big{width:132px;height:132px;border-radius:34px}
+.tile.big .ico-s{width:80px;height:80px}
+.nom h1{font:900 104px/1 "Nunito",sans-serif;letter-spacing:-.035em;color:var(--ct)}
+.bloque .et,.caso-c .et,.term .et{display:block;font:700 16px/1 "Space Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);margin-bottom:12px}
+.preg-g{font:900 72px/1.02 "Nunito",sans-serif;letter-spacing:-.03em;color:var(--tinta)}
+.def{margin:0;font:400 36px/1.32 "Inter",sans-serif;color:var(--tinta)}
+.terms{display:grid;gap:16px}
+.term{background:#fff;border-radius:22px;padding:20px 26px;border-left:8px solid var(--c);box-shadow:0 16px 36px -28px rgba(22,26,51,.5),0 0 0 1px var(--linea)}
+.term .et{color:var(--ct);margin-bottom:8px}
+.term p{margin:0;font:400 25px/1.38 "Inter",sans-serif;color:var(--tinta)}
+.term p b{font-weight:700}
+.caso-c{position:absolute;left:980px;right:96px;top:140px;bottom:104px;background:#fff;border-radius:34px;padding:34px 40px;display:flex;flex-direction:column;
+  box-shadow:0 30px 60px -36px rgba(22,26,51,.55),0 0 0 1px var(--linea)}
+.cab-c{display:flex;justify-content:space-between;align-items:center}
+.cab-c .et{margin:0;color:var(--tinta)}
+.cab-c .ficticio{font-size:15px;padding:9px 16px}
+.pasos-c{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;position:relative}
+.pasos-c li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;font:700 17px/1.1 "Inter",sans-serif;color:#9497AE;
+  background:#F1F0F7}
+.pasos-c li i{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;font:900 16px/1 "Nunito",sans-serif;font-style:normal;
+  background:#fff;color:#9497AE;box-shadow:inset 0 0 0 2px #D5D4E2}
+.pasos-c li.hecho{color:var(--ct);background:color-mix(in srgb,var(--c) 10%,#fff)}
+.pasos-c li.hecho i{background:var(--ct);color:#fff;box-shadow:none}
+.pasos-c li.ahora{color:#fff;background:var(--ct);box-shadow:0 10px 24px -12px var(--ct)}
+.pasos-c li.ahora i{background:#fff;color:var(--ct);box-shadow:none}
+.vis-c{position:relative;margin-top:26px;height:290px;border-radius:24px;background:color-mix(in srgb,var(--c) 9%,#fff);padding:34px 34px;
+  display:flex;flex-direction:column;justify-content:center;gap:22px}
+.vb{display:grid;grid-template-columns:200px 1fr 96px;align-items:center;gap:16px;font:700 25px/1 "Inter",sans-serif;color:var(--tinta)}
+.vb i{display:block;height:46px;border-radius:12px;background:var(--ct);width:calc(var(--w)*100%);transform-origin:left}
+.vb b{font:900 42px/1 "Nunito",sans-serif;color:var(--ct);text-align:right;font-variant-numeric:tabular-nums}
+.vb.apagada{opacity:.35}
+.vb.est i{background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--c) 28%,#fff) 0 10px,transparent 10px 20px);outline:3px dashed var(--ct);outline-offset:-3px}
+.vb small{display:block;font:700 13px/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--ct);margin-top:6px}
+.sello{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin-left:216px;background:var(--ct);color:#fff;border-radius:999px;padding:10px 20px 10px 14px;
+  font:800 22px/1 "Inter",sans-serif;box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 18%,#fff);transform-origin:15% 50%}
+.sello svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.checks li{display:flex;align-items:center;gap:16px;font:700 28px/1.2 "Inter",sans-serif;color:var(--tinta)}
+.checks svg{width:46px;height:46px;flex:none;border-radius:13px;background:var(--ct);fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;padding:7px}
+.checks svg path{stroke-dasharray:1;stroke-dashoffset:0}
+.txt-c{margin-top:28px;display:flex;flex-direction:column}
+.txt-c .et{color:var(--ct);margin-bottom:10px}
+.txt-c p{margin:0 0 22px;font:400 30px/1.36 "Inter",sans-serif;color:var(--tinta)}
+.txt-c p.hace{font-weight:700;margin:0}
+
+/* ══ resumen ══ */
+.l2 .fila{height:124px;margin-top:12px}
+.l2 .tabla{top:318px}
+.l2 .pie .ia{display:block;margin-top:6px;color:var(--tinta)}
+.l2 .pie .ia b{color:var(--c2t)}
+.l2 .pie{bottom:24px;font-size:14.5px}
+.l1 .cont{top:150px}
+.l1 h1{margin-top:28px}
+.l1 .pie b{color:var(--c4c);font-weight:700}
+
 /* ── guion, cuadrícula y atajos ── */
 #notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(11,13,28,.97);border-top:3px solid var(--c2);
   color:var(--hueso);padding:26px 96px 32px;transform:translate3d(0,101%,0);transition:transform .32s var(--ease);cursor:auto}
@@ -243,69 +334,93 @@ h1 .w,h2 .w{display:inline-block}
   <aside id="panel" aria-label="Diapositivas"></aside>
   <div id="vista"><div id="stage">
 
-  <!-- ══════════ 1 · ¿QUÉ ES LA ANALÍTICA DE DATOS? ══════════ -->
-  <section class="lam oscura l1" data-n="1" data-notas="Tiempo sugerido ~1:00 · Expositora (propuesta): Natalie Aristizábal|La analítica de datos es usar los datos de un negocio para decidir mejor. No se queda en mirar cifras: el objetivo es tomar una decisión.|Se puede organizar en cuatro preguntas, una detrás de otra: ¿Qué pasó? ¿Por qué pasó? ¿Qué podría pasar? ¿Qué deberíamos hacer?|Fíjense en el recorrido: vamos del pasado a la causa, de la causa al futuro y del futuro a la acción.|RELEVO → Carolina: cada una de estas preguntas tiene su propio tipo de analítica.">
-    <div class="halo"></div>
-    <svg class="datos" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><circle cx="703" cy="214" r="4.0" class="p0"/><circle cx="188" cy="900" r="5.0" class="p0"/><circle cx="788" cy="656" r="2.0" class="p4"/><circle cx="479" cy="98" r="2.0" class="p3"/><circle cx="896" cy="131" r="2.5" class="p0"/><circle cx="1168" cy="494" r="2.0" class="p4"/><circle cx="293" cy="288" r="5.0" class="p0"/><circle cx="1221" cy="659" r="4.0" class="p0"/><circle cx="492" cy="107" r="5.0" class="p1"/><circle cx="633" cy="489" r="2.5" class="p4"/><circle cx="281" cy="644" r="3.0" class="p4"/><circle cx="1711" cy="758" r="2.5" class="p0"/><circle cx="1231" cy="644" r="2.5" class="p2"/><circle cx="239" cy="620" r="2.0" class="p4"/><circle cx="162" cy="693" r="2.5" class="p3"/><circle cx="1433" cy="604" r="4.0" class="p2"/><circle cx="993" cy="659" r="4.0" class="p2"/><circle cx="653" cy="314" r="2.5" class="p1"/><circle cx="207" cy="648" r="3.0" class="p4"/><circle cx="1053" cy="956" r="3.0" class="p3"/><circle cx="629" cy="683" r="2.0" class="p0"/><circle cx="1088" cy="488" r="2.5" class="p2"/><circle cx="351" cy="560" r="4.0" class="p0"/><circle cx="1408" cy="139" r="5.0" class="p4"/><circle cx="1656" cy="956" r="3.0" class="p2"/><circle cx="1463" cy="418" r="5.0" class="p3"/><circle cx="1227" cy="876" r="4.0" class="p0"/><circle cx="1760" cy="155" r="3.0" class="p3"/><circle cx="1467" cy="740" r="2.0" class="p0"/><circle cx="1537" cy="778" r="3.0" class="p4"/><circle cx="1435" cy="901" r="4.0" class="p2"/><circle cx="1507" cy="455" r="3.0" class="p0"/><circle cx="985" cy="423" r="2.5" class="p4"/><circle cx="279" cy="565" r="2.0" class="p1"/><circle cx="1613" cy="354" r="2.5" class="p1"/><circle cx="854" cy="460" r="4.0" class="p0"/><circle cx="380" cy="519" r="4.0" class="p4"/><circle cx="609" cy="200" r="4.0" class="p4"/><circle cx="610" cy="783" r="4.0" class="p2"/><circle cx="1438" cy="449" r="2.5" class="p1"/><circle cx="209" cy="240" r="2.5" class="p1"/><circle cx="1388" cy="298" r="2.0" class="p3"/><circle cx="1742" cy="663" r="2.5" class="p2"/><circle cx="617" cy="64" r="2.5" class="p3"/><circle cx="1134" cy="438" r="5.0" class="p4"/><circle cx="692" cy="188" r="5.0" class="p4"/></svg>
-    <div class="cont">
-      <div class="kick">01 · ¿Qué es la analítica de datos?</div>
-      <h2><span class="w">Analítica</span> <span class="w">de</span> <span class="w">datos:</span> <span class="w">de</span> <span class="w">los</span> <span class="w">datos</span> <span class="w">a</span> <span class="w">la</span> <span class="w">decisión</span></h2>
-      <h1><span class="w">Usar</span> <span class="w">los</span> <span class="w">datos</span> <span class="w">de</span> <span class="w">un</span> <span class="w">negocio</span><br><span class="w">para</span> <em class="w">decidir</em> <em class="w">mejor.</em></h1>
-    </div>
-    <div class="preg">
-        <div class="q t1"><div class="q-cab"><b class="q-n">1</b><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="28" rx="4" pathLength="1"/><path class="bar" d="M14 29v-6" pathLength="1"/><path class="bar" d="M21 29V15" pathLength="1"/><path class="bar" d="M28 29v-9" pathLength="1"/><path class="bar" d="M35 29V12" pathLength="1"/><path d="M17 42h14" pathLength="1"/><path d="M24 35v7" pathLength="1"/></svg></div><div class="q-t">¿Qué pasó?</div></div>
-        <div class="q t2"><div class="q-cab"><b class="q-n">2</b><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="lupa"><circle cx="20" cy="20" r="12" pathLength="1"/><path d="M29 29l12 12" pathLength="1"/><path d="M14 19a6.5 6.5 0 0 1 6-6" pathLength="1"/></g></svg></div><div class="q-t">¿Por qué pasó?</div></div>
-        <div class="q t3"><div class="q-cab"><b class="q-n">3</b><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 6v36h36" pathLength="1"/><path d="M11 34l8-9 7 5 6-7" pathLength="1"/><path class="pun" d="M32 23l9-11" pathLength="1"/><path d="M35 11h6v6" pathLength="1"/></svg></div><div class="q-t">¿Qué podría pasar?</div></div>
-        <div class="q t4"><div class="q-cab"><b class="q-n">4</b><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="rueda"><circle cx="24" cy="24" r="12.5" pathLength="1"/><circle cx="24" cy="24" r="4" pathLength="1"/><path d="M28.0 24.0L43.0 24.0" pathLength="1"/><path d="M26.8 26.8L37.4 37.4" pathLength="1"/><path d="M24.0 28.0L24.0 43.0" pathLength="1"/><path d="M21.2 26.8L10.6 37.4" pathLength="1"/><path d="M20.0 24.0L5.0 24.0" pathLength="1"/><path d="M21.2 21.2L10.6 10.6" pathLength="1"/><path d="M24.0 20.0L24.0 5.0" pathLength="1"/><path d="M26.8 21.2L37.4 10.6" pathLength="1"/></g></svg></div><div class="q-t">¿Qué deberíamos hacer?</div></div>
-    </div>
-    <div class="cadena"><span class="c t1">Pasado</span><i class="fl">→</i><span class="c t2">Causa</span><i class="fl">→</i><span class="c t3">Futuro</span><i class="fl">→</i><span class="c t4">Acción</span></div>
-    <div class="pie">Equipo · Natalie Aristizábal · Carolina Salazar · Thomás Quintero · Juan David Escobar</div>
-  </section>
 
-  <!-- ══════════ 2 · LOS 4 TIPOS ══════════ -->
-  <section class="lam l2" data-n="2" data-notas="Tiempo sugerido ~2:00 · Expositores (propuesta): Carolina Salazar (descriptiva y diagnóstica) y Thomás Quintero (predictiva y prescriptiva)|Descriptiva responde ¿qué pasó? Resume los datos del pasado para ver resultados y comportamientos. Normalmente se ve en un tablero o dashboard: una pantalla con gráficos que resume los datos de un vistazo.|Diagnóstica responde ¿por qué pasó? Busca las causas de los resultados o de los problemas.|RELEVO → Thomás. Predictiva responde ¿qué podría pasar? Usa datos históricos, es decir, registros de lo que ya pasó, como ventas, visitas o precios; son la materia prima para entender y predecir. Con ellos se arma un modelo estadístico: una fórmula que busca patrones en los datos pasados para estimar lo que viene.|Prescriptiva responde ¿qué deberíamos hacer? Recomienda acciones para lograr mejores resultados según los objetivos.|RELEVO → Juan David: veamos los cuatro tipos en un solo caso.">
-    <div class="forma"></div>
+  <!-- ══════════ PORTADA ══════════ -->
+  <section class="lam oscura l-port" data-k="portada" data-notas="Tiempo sugerido ~0:30 · Expositora (propuesta): Natalie Aristizábal|Hola, somos Natalie, Carolina, Thomás y Juan David. Hoy les contamos los cuatro tipos de analítica de datos.|Para que sea fácil de seguir, vamos a usar un mismo caso de principio a fin: una cafetería. Es un ejemplo ilustrativo, no datos reales.|Un aviso antes de empezar: la información la recolectamos con ChatGPT y la presentación la hicimos con Claude Code.|RELEVO → Carolina: empecemos por la primera pregunta, ¿qué pasó?">
+    <div class="halo"></div>
+    <svg class="datos" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><circle cx="703" cy="214" r="4.0" class="p0"/><circle cx="188" cy="900" r="5.0" class="p0"/><circle cx="788" cy="656" r="2.0" class="p4"/><circle cx="479" cy="98" r="2.0" class="p3"/><circle cx="896" cy="131" r="2.5" class="p0"/><circle cx="1168" cy="494" r="2.0" class="p4"/><circle cx="293" cy="288" r="5.0" class="p0"/><circle cx="1221" cy="659" r="4.0" class="p0"/><circle cx="492" cy="107" r="5.0" class="p1"/><circle cx="633" cy="489" r="2.5" class="p4"/><circle cx="281" cy="644" r="3.0" class="p4"/><circle cx="1711" cy="758" r="2.5" class="p0"/><circle cx="1231" cy="644" r="2.5" class="p2"/><circle cx="239" cy="620" r="2.0" class="p4"/><circle cx="162" cy="693" r="2.5" class="p3"/><circle cx="1433" cy="604" r="4.0" class="p2"/><circle cx="993" cy="659" r="4.0" class="p2"/><circle cx="653" cy="314" r="2.5" class="p1"/><circle cx="207" cy="648" r="3.0" class="p4"/><circle cx="1053" cy="956" r="3.0" class="p3"/><circle cx="629" cy="683" r="2.0" class="p0"/><circle cx="1088" cy="488" r="2.5" class="p2"/><circle cx="351" cy="560" r="4.0" class="p0"/><circle cx="1408" cy="139" r="5.0" class="p4"/><circle cx="1656" cy="956" r="3.0" class="p2"/><circle cx="1463" cy="418" r="5.0" class="p3"/><circle cx="1227" cy="876" r="4.0" class="p0"/><circle cx="1760" cy="155" r="3.0" class="p3"/><circle cx="1467" cy="740" r="2.0" class="p0"/><circle cx="1537" cy="778" r="3.0" class="p4"/><circle cx="1435" cy="901" r="4.0" class="p2"/><circle cx="1507" cy="455" r="3.0" class="p0"/><circle cx="985" cy="423" r="2.5" class="p4"/><circle cx="279" cy="565" r="2.0" class="p1"/><circle cx="1613" cy="354" r="2.5" class="p1"/><circle cx="854" cy="460" r="4.0" class="p0"/><circle cx="380" cy="519" r="4.0" class="p4"/><circle cx="609" cy="964" r="2.5" class="p3"/><circle cx="1809" cy="623" r="3.0" class="p3"/><circle cx="774" cy="759" r="4.0" class="p1"/><circle cx="349" cy="144" r="2.5" class="p1"/><circle cx="515" cy="734" r="2.5" class="p0"/><circle cx="1033" cy="911" r="5.0" class="p1"/><circle cx="578" cy="348" r="2.0" class="p1"/><circle cx="898" cy="607" r="3.0" class="p4"/><circle cx="1199" cy="386" r="2.5" class="p4"/><circle cx="1304" cy="730" r="2.0" class="p3"/><circle cx="1823" cy="858" r="5.0" class="p3"/><circle cx="855" cy="468" r="4.0" class="p0"/><circle cx="1026" cy="709" r="4.0" class="p0"/></svg>
     <div class="cont">
-      <div class="kick">02 · Los 4 tipos</div>
-      <h1><span class="w">Cuatro</span> <span class="w">preguntas,</span> <em class="w">cuatro</em> <em class="w">tipos</em></h1>
+      <div class="kick">Los 4 tipos de analítica</div>
+      <h1 class="port-t"><span class="w">Analítica</span> <span class="w">de</span> <span class="w">datos:</span><br><span class="w">de</span> <span class="w">los</span> <span class="w">datos</span> <em class="w">a</em> <em class="w">la</em> <em class="w">decisión</em></h1>
+      <p class="port-sub">Los 4 tipos de analítica, contados con un mismo caso: una cafetería.</p>
+      <div class="port-ico"><div class="pi t1"><span><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="28" rx="4" pathLength="1"/><path class="bar" d="M14 29v-6" pathLength="1"/><path class="bar" d="M21 29V15" pathLength="1"/><path class="bar" d="M28 29v-9" pathLength="1"/><path class="bar" d="M35 29V12" pathLength="1"/><path d="M17 42h14" pathLength="1"/><path d="M24 35v7" pathLength="1"/></svg></span>Descriptiva</div><div class="pi t2"><span><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="lupa"><circle cx="20" cy="20" r="12" pathLength="1"/><path d="M29 29l12 12" pathLength="1"/><path d="M14 19a6.5 6.5 0 0 1 6-6" pathLength="1"/></g></svg></span>Diagnóstica</div><div class="pi t3"><span><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 6v36h36" pathLength="1"/><path d="M11 34l8-9 7 5 6-7" pathLength="1"/><path class="pun" d="M32 23l9-11" pathLength="1"/><path d="M35 11h6v6" pathLength="1"/></svg></span>Predictiva</div><div class="pi t4"><span><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="rueda"><circle cx="24" cy="24" r="12.5" pathLength="1"/><circle cx="24" cy="24" r="4" pathLength="1"/><path d="M28.0 24.0L43.0 24.0" pathLength="1"/><path d="M26.8 26.8L37.4 37.4" pathLength="1"/><path d="M24.0 28.0L24.0 43.0" pathLength="1"/><path d="M21.2 26.8L10.6 37.4" pathLength="1"/><path d="M20.0 24.0L5.0 24.0" pathLength="1"/><path d="M21.2 21.2L10.6 10.6" pathLength="1"/><path d="M24.0 20.0L24.0 5.0" pathLength="1"/><path d="M26.8 21.2L37.4 10.6" pathLength="1"/></g></svg></span>Prescriptiva</div></div>
     </div>
-    <div class="tabla">
-      <div class="cols"><span>Tipo</span><span>Pregunta</span><span>Qué hace</span></div>
-        <div class="fila t1"><div class="f-tipo"><span class="tile"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="28" rx="4" pathLength="1"/><path class="bar" d="M14 29v-6" pathLength="1"/><path class="bar" d="M21 29V15" pathLength="1"/><path class="bar" d="M28 29v-9" pathLength="1"/><path class="bar" d="M35 29V12" pathLength="1"/><path d="M17 42h14" pathLength="1"/><path d="M24 35v7" pathLength="1"/></svg></span><b>Descriptiva</b></div><div class="f-preg">¿Qué pasó?</div><div class="f-hace">Resume datos del pasado para ver resultados y comportamientos.</div></div>
-        <div class="fila t2"><div class="f-tipo"><span class="tile"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="lupa"><circle cx="20" cy="20" r="12" pathLength="1"/><path d="M29 29l12 12" pathLength="1"/><path d="M14 19a6.5 6.5 0 0 1 6-6" pathLength="1"/></g></svg></span><b>Diagnóstica</b></div><div class="f-preg">¿Por qué pasó?</div><div class="f-hace">Busca las causas de los resultados o problemas.</div></div>
-        <div class="fila t3"><div class="f-tipo"><span class="tile"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 6v36h36" pathLength="1"/><path d="M11 34l8-9 7 5 6-7" pathLength="1"/><path class="pun" d="M32 23l9-11" pathLength="1"/><path d="M35 11h6v6" pathLength="1"/></svg></span><b>Predictiva</b></div><div class="f-preg">¿Qué podría pasar?</div><div class="f-hace">Usa datos históricos y patrones para anticipar escenarios futuros.</div></div>
-        <div class="fila t4"><div class="f-tipo"><span class="tile"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="rueda"><circle cx="24" cy="24" r="12.5" pathLength="1"/><circle cx="24" cy="24" r="4" pathLength="1"/><path d="M28.0 24.0L43.0 24.0" pathLength="1"/><path d="M26.8 26.8L37.4 37.4" pathLength="1"/><path d="M24.0 28.0L24.0 43.0" pathLength="1"/><path d="M21.2 26.8L10.6 37.4" pathLength="1"/><path d="M20.0 24.0L5.0 24.0" pathLength="1"/><path d="M21.2 21.2L10.6 10.6" pathLength="1"/><path d="M24.0 20.0L24.0 5.0" pathLength="1"/><path d="M26.8 21.2L37.4 10.6" pathLength="1"/></g></svg></span><b>Prescriptiva</b></div><div class="f-preg">¿Qué deberíamos hacer?</div><div class="f-hace">Recomienda acciones para lograr mejores resultados según los objetivos.</div></div>
+    <div class="equipo"><span class="et">Equipo</span><ul><li class="t1">Natalie Aristizábal</li><li class="t2">Carolina Salazar</li><li class="t3">Thomás Quintero</li><li class="t4">Juan David Escobar</li></ul></div>
+    <div class="aviso"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg><p><b>Aviso</b>Recolectamos la información con ChatGPT y la presentación la hicimos con Claude Code.</p></div>
+  </section>
+  <!-- ══════════ TIPO 1 · DESCRIPTIVA ══════════ -->
+  <section class="lam l-tipo t1" data-k="tipo" data-notas="Tiempo sugerido ~1:00 · Expositora (propuesta): Carolina Salazar|La analítica descriptiva responde ¿qué pasó? Resume los datos del pasado para ver resultados y comportamientos.|Normalmente se ve en un tablero o dashboard: una pantalla con gráficos que resume los datos de un vistazo.|En la cafetería: vendió 100 cafés el lunes y 150 el martes. La descriptiva solo muestra cuántos cafés vendió.|RELEVO → (sigue Carolina) Ya sabemos qué pasó. Ahora, ¿por qué el martes vendió más?">
+    <div class="forma"></div>
+    <div class="izq">
+      <div class="kick">Tipo 1 de 4</div>
+      <div class="nom"><span class="tile big"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="28" rx="4" pathLength="1"/><path class="bar" d="M14 29v-6" pathLength="1"/><path class="bar" d="M21 29V15" pathLength="1"/><path class="bar" d="M28 29v-9" pathLength="1"/><path class="bar" d="M35 29V12" pathLength="1"/><path d="M17 42h14" pathLength="1"/><path d="M24 35v7" pathLength="1"/></svg></span><h1><span class="w">Descriptiva</span></h1></div>
+      <div class="bloque"><span class="et">Responde</span><div class="preg-g">¿Qué pasó?</div></div>
+      <div class="bloque"><span class="et">Qué hace</span><p class="def">Resume datos del pasado para ver resultados y comportamientos.</p></div>
+      <div class="terms"><div class="term"><span class="et">Término clave</span><p><b>Tablero (dashboard):</b> pantalla con gráficos que resume los datos de un vistazo.</p></div></div>
+    </div>
+    <div class="caso-c">
+      <div class="cab-c"><span class="et">Nuestro caso · la cafetería</span><span class="ficticio">✳ ejemplo ilustrativo</span></div>
+      <ol class="pasos-c"><li class="ahora t1"><i>1</i>Descriptiva</li><li class=" t2"><i>2</i>Diagnóstica</li><li class=" t3"><i>3</i>Predictiva</li><li class=" t4"><i>4</i>Prescriptiva</li></ol>
+      <div class="vis-c"><div class="vb "><span>Lunes</span><i style="--w:0.5"></i><b data-cuenta="100">100</b></div><div class="vb "><span>Martes</span><i style="--w:0.75"></i><b data-cuenta="150">150</b></div></div>
+      <div class="txt-c"><span class="et">Ejemplo</span><p>La cafetería vendió 100 cafés el lunes y 150 el martes.</p><span class="et">¿Qué hace?</span><p class="hace">Muestra cuántos cafés vendió.</p></div>
     </div>
     <div class="pie">Fuentes: CareerFoundry, «The 4 Types of Data Analysis» · KDnuggets, Thomas Maydon (Principa), 13 de julio de 2017</div>
   </section>
-
-  <!-- ══════════ 3 · UN CASO, LOS 4 TIPOS ══════════ -->
-  <section class="lam l3" data-n="3" data-notas="Tiempo sugerido ~2:00 · Expositor (propuesta): Juan David Escobar|Un mismo caso, una cafetería, contado con los cuatro tipos. Las cifras son un ejemplo ilustrativo, no datos reales.|Descriptiva: vendió 100 cafés el lunes y 150 el martes. Solo muestra cuántos vendió: ¿qué pasó?|Diagnóstica: vendió más el martes porque hizo una promoción de 2x1. Encuentra la razón del aumento: ¿por qué pasó?|Predictiva: estima que el próximo martes venderá 200 cafés, porque normalmente las ventas aumentan ese día. Estima las ventas futuras: ¿qué podría pasar?|Prescriptiva: decide preparar más café y contratar un empleado adicional para el próximo martes. Recomienda qué acciones tomar: ¿qué debería hacer?|CIERRE → Así pasamos de los datos a la decisión. La información la recolectamos con ChatGPT y la presentación la hicimos con Claude Code; las fuentes están al pie.">
+  <!-- ══════════ TIPO 2 · DIAGNÓSTICA ══════════ -->
+  <section class="lam l-tipo t2" data-k="tipo" data-notas="Tiempo sugerido ~1:00 · Expositora (propuesta): Carolina Salazar|La analítica diagnóstica responde ¿por qué pasó? Busca las causas de los resultados o de los problemas.|En la cafetería: vendió más cafés el martes porque hizo una promoción de 2x1. La diagnóstica encuentra la razón del aumento de ventas.|RELEVO → Thomás: si ya sabemos qué pasó y por qué, ¿qué podría pasar después?">
     <div class="forma"></div>
-    <div class="cont">
-      <div class="kick">03 · Un caso, los 4 tipos</div>
-      <div class="tit"><h1><span class="w">Ejemplo:</span> <span class="w">una</span> <em class="w">cafetería</em></h1><span class="ficticio">✳ ejemplo ilustrativo</span></div>
+    <div class="izq">
+      <div class="kick">Tipo 2 de 4</div>
+      <div class="nom"><span class="tile big"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="lupa"><circle cx="20" cy="20" r="12" pathLength="1"/><path d="M29 29l12 12" pathLength="1"/><path d="M14 19a6.5 6.5 0 0 1 6-6" pathLength="1"/></g></svg></span><h1><span class="w">Diagnóstica</span></h1></div>
+      <div class="bloque"><span class="et">Responde</span><div class="preg-g">¿Por qué pasó?</div></div>
+      <div class="bloque"><span class="et">Qué hace</span><p class="def">Busca las causas de los resultados o problemas.</p></div>
+      
     </div>
-    <div class="historia">
-        <article class="caso t1"><header><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="28" rx="4" pathLength="1"/><path class="bar" d="M14 29v-6" pathLength="1"/><path class="bar" d="M21 29V15" pathLength="1"/><path class="bar" d="M28 29v-9" pathLength="1"/><path class="bar" d="M35 29V12" pathLength="1"/><path d="M17 42h14" pathLength="1"/><path d="M24 35v7" pathLength="1"/></svg><div><span class="c-k">1 · DESCRIPTIVA</span><b>¿Qué pasó?</b></div></header>
-          <div class="vis"><div class="barras"><div class="b"><span>Lunes</span><i style="--w:.5"></i><b data-cuenta="100">100</b></div><div class="b"><span>Martes</span><i style="--w:.75"></i><b data-cuenta="150">150</b></div></div></div>
-          <div class="txt"><span class="et">Ejemplo</span><p>La cafetería vendió 100 cafés el lunes y 150 el martes.</p><span class="et">¿Qué hace?</span><p class="hace">Muestra cuántos cafés vendió.</p></div></article><span class="paso"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
-        <article class="caso t2"><header><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="lupa"><circle cx="20" cy="20" r="12" pathLength="1"/><path d="M29 29l12 12" pathLength="1"/><path d="M14 19a6.5 6.5 0 0 1 6-6" pathLength="1"/></g></svg><div><span class="c-k">2 · DIAGNÓSTICA</span><b>¿Por qué pasó?</b></div></header>
-          <div class="vis"><div class="barras"><div class="b apagada"><span>Lunes</span><i style="--w:.5"></i><b>100</b></div><div class="b"><span>Martes</span><i style="--w:.75"></i><b>150</b></div></div><div class="sello"><svg viewBox="0 0 24 24"><path d="M12 19V7M6 12l6-6 6 6"/></svg>Promoción 2x1</div></div>
-          <div class="txt"><span class="et">Ejemplo</span><p>La cafetería vendió más cafés el martes porque hizo una promoción de 2x1.</p><span class="et">¿Qué hace?</span><p class="hace">Encuentra la razón del aumento de ventas.</p></div></article><span class="paso"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
-        <article class="caso t3"><header><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 6v36h36" pathLength="1"/><path d="M11 34l8-9 7 5 6-7" pathLength="1"/><path class="pun" d="M32 23l9-11" pathLength="1"/><path d="M35 11h6v6" pathLength="1"/></svg><div><span class="c-k">3 · PREDICTIVA</span><b>¿Qué podría pasar?</b></div></header>
-          <div class="vis"><div class="barras"><div class="b"><span>Martes</span><i style="--w:.75"></i><b>150</b></div><div class="b est"><span>Próximo</span><i style="--w:1"></i><b data-cuenta="200">200</b></div></div></div>
-          <div class="txt"><span class="et">Ejemplo</span><p>La cafetería estima que el próximo martes venderá 200 cafés porque normalmente las ventas aumentan ese día.</p><span class="et">¿Qué hace?</span><p class="hace">Estima las ventas futuras.</p></div></article><span class="paso"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
-        <article class="caso t4"><header><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="rueda"><circle cx="24" cy="24" r="12.5" pathLength="1"/><circle cx="24" cy="24" r="4" pathLength="1"/><path d="M28.0 24.0L43.0 24.0" pathLength="1"/><path d="M26.8 26.8L37.4 37.4" pathLength="1"/><path d="M24.0 28.0L24.0 43.0" pathLength="1"/><path d="M21.2 26.8L10.6 37.4" pathLength="1"/><path d="M20.0 24.0L5.0 24.0" pathLength="1"/><path d="M21.2 21.2L10.6 10.6" pathLength="1"/><path d="M24.0 20.0L24.0 5.0" pathLength="1"/><path d="M26.8 21.2L37.4 10.6" pathLength="1"/></g></svg><div><span class="c-k">4 · PRESCRIPTIVA</span><b>¿Qué debería hacer?</b></div></header>
-          <div class="vis"><ul class="checks"><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg>Preparar más café</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg>Contratar un empleado adicional</li></ul></div>
-          <div class="txt"><span class="et">Ejemplo</span><p>La cafetería decide preparar más café y contratar un empleado adicional para el próximo martes.</p><span class="et">¿Qué hace?</span><p class="hace">Recomienda qué acciones tomar.</p></div></article>
+    <div class="caso-c">
+      <div class="cab-c"><span class="et">Nuestro caso · la cafetería</span><span class="ficticio">✳ ejemplo ilustrativo</span></div>
+      <ol class="pasos-c"><li class="hecho t1"><i>1</i>Descriptiva</li><li class="ahora t2"><i>2</i>Diagnóstica</li><li class=" t3"><i>3</i>Predictiva</li><li class=" t4"><i>4</i>Prescriptiva</li></ol>
+      <div class="vis-c"><div class="vb apagada"><span>Lunes</span><i style="--w:0.5"></i><b>100</b></div><div class="vb "><span>Martes</span><i style="--w:0.75"></i><b>150</b></div><div class="sello"><svg viewBox="0 0 24 24"><path d="M12 19V7M6 12l6-6 6 6"/></svg>Promoción 2x1</div></div>
+      <div class="txt-c"><span class="et">Ejemplo</span><p>La cafetería vendió más cafés el martes porque hizo una promoción de 2x1.</p><span class="et">¿Qué hace?</span><p class="hace">Encuentra la razón del aumento de ventas.</p></div>
     </div>
-    <div class="pie">Fuentes: CareerFoundry, «The 4 Types of Data Analysis» · <a href="https://careerfoundry.com/en/blog/data-analytics/different-types-of-data-analysis/" target="_blank" rel="noopener">careerfoundry.com/en/blog/data-analytics/different-types-of-data-analysis</a><br>
-      KDnuggets, Thomas Maydon (Principa), 13 de julio de 2017 · <a href="https://kdnuggets.com/2017/07/4-types-data-analytics.html" target="_blank" rel="noopener">kdnuggets.com/2017/07/4-types-data-analytics.html</a>
-      <span class="ia"><b>Nota:</b> recolectamos la información con ChatGPT y la presentación la hicimos con Claude Code.</span></div>
+    <div class="pie">Fuentes: CareerFoundry, «The 4 Types of Data Analysis» · KDnuggets, Thomas Maydon (Principa), 13 de julio de 2017</div>
   </section>
-
-  <div class="hud"><div class="marca"><i></i><span>Analítica de datos</span></div><div class="pag"><b id="pagN">01</b> / 03</div></div>
+  <!-- ══════════ TIPO 3 · PREDICTIVA ══════════ -->
+  <section class="lam l-tipo t3" data-k="tipo" data-notas="Tiempo sugerido ~1:00 · Expositor (propuesta): Thomás Quintero|La analítica predictiva responde ¿qué podría pasar? Usa datos históricos y patrones para anticipar escenarios futuros.|Datos históricos son registros de lo que ya pasó, como ventas, visitas o precios: la materia prima para entender y predecir. Con ellos se arma un modelo estadístico, una fórmula que busca patrones en los datos pasados para estimar lo que viene.|En la cafetería: estima que el próximo martes venderá 200 cafés, porque normalmente las ventas aumentan ese día. La predictiva estima las ventas futuras.|RELEVO → Juan David: con esa estimación, ¿qué debería hacer la cafetería?">
+    <div class="forma"></div>
+    <div class="izq">
+      <div class="kick">Tipo 3 de 4</div>
+      <div class="nom"><span class="tile big"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 6v36h36" pathLength="1"/><path d="M11 34l8-9 7 5 6-7" pathLength="1"/><path class="pun" d="M32 23l9-11" pathLength="1"/><path d="M35 11h6v6" pathLength="1"/></svg></span><h1><span class="w">Predictiva</span></h1></div>
+      <div class="bloque"><span class="et">Responde</span><div class="preg-g">¿Qué podría pasar?</div></div>
+      <div class="bloque"><span class="et">Qué hace</span><p class="def">Usa datos históricos y patrones para anticipar escenarios futuros.</p></div>
+      <div class="terms"><div class="term"><span class="et">Término clave</span><p><b>Datos históricos:</b> registros de lo que ya pasó (ventas, visitas, precios). Son la materia prima para entender y predecir.</p></div><div class="term"><span class="et">Término clave</span><p><b>Modelo estadístico:</b> fórmula que busca patrones en datos pasados para estimar lo que viene.</p></div></div>
+    </div>
+    <div class="caso-c">
+      <div class="cab-c"><span class="et">Nuestro caso · la cafetería</span><span class="ficticio">✳ ejemplo ilustrativo</span></div>
+      <ol class="pasos-c"><li class="hecho t1"><i>1</i>Descriptiva</li><li class="hecho t2"><i>2</i>Diagnóstica</li><li class="ahora t3"><i>3</i>Predictiva</li><li class=" t4"><i>4</i>Prescriptiva</li></ol>
+      <div class="vis-c"><div class="vb "><span>Martes</span><i style="--w:0.75"></i><b>150</b></div><div class="vb est"><span>Próximo martes<small>estimado</small></span><i style="--w:1"></i><b data-cuenta="200">200</b></div></div>
+      <div class="txt-c"><span class="et">Ejemplo</span><p>La cafetería estima que el próximo martes venderá 200 cafés porque normalmente las ventas aumentan ese día.</p><span class="et">¿Qué hace?</span><p class="hace">Estima las ventas futuras.</p></div>
+    </div>
+    <div class="pie">Fuentes: CareerFoundry, «The 4 Types of Data Analysis» · KDnuggets, Thomas Maydon (Principa), 13 de julio de 2017</div>
+  </section>
+  <!-- ══════════ TIPO 4 · PRESCRIPTIVA ══════════ -->
+  <section class="lam l-tipo t4" data-k="tipo" data-notas="Tiempo sugerido ~1:00 · Expositor (propuesta): Juan David Escobar|La analítica prescriptiva responde ¿qué deberíamos hacer? Recomienda acciones para lograr mejores resultados según los objetivos.|En la cafetería: decide preparar más café y contratar un empleado adicional para el próximo martes. La prescriptiva recomienda qué acciones tomar.|CIERRE → Así pasamos de los datos a la decisión: de contar los cafés vendidos a decidir cómo prepararse para el próximo martes. Las fuentes están al pie. Y recordamos: la información la recolectamos con ChatGPT y la presentación la hicimos con Claude Code. Gracias.">
+    <div class="forma"></div>
+    <div class="izq">
+      <div class="kick">Tipo 4 de 4</div>
+      <div class="nom"><span class="tile big"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="rueda"><circle cx="24" cy="24" r="12.5" pathLength="1"/><circle cx="24" cy="24" r="4" pathLength="1"/><path d="M28.0 24.0L43.0 24.0" pathLength="1"/><path d="M26.8 26.8L37.4 37.4" pathLength="1"/><path d="M24.0 28.0L24.0 43.0" pathLength="1"/><path d="M21.2 26.8L10.6 37.4" pathLength="1"/><path d="M20.0 24.0L5.0 24.0" pathLength="1"/><path d="M21.2 21.2L10.6 10.6" pathLength="1"/><path d="M24.0 20.0L24.0 5.0" pathLength="1"/><path d="M26.8 21.2L37.4 10.6" pathLength="1"/></g></svg></span><h1><span class="w">Prescriptiva</span></h1></div>
+      <div class="bloque"><span class="et">Responde</span><div class="preg-g">¿Qué deberíamos hacer?</div></div>
+      <div class="bloque"><span class="et">Qué hace</span><p class="def">Recomienda acciones para lograr mejores resultados según los objetivos.</p></div>
+      
+    </div>
+    <div class="caso-c">
+      <div class="cab-c"><span class="et">Nuestro caso · la cafetería</span><span class="ficticio">✳ ejemplo ilustrativo</span></div>
+      <ol class="pasos-c"><li class="hecho t1"><i>1</i>Descriptiva</li><li class="hecho t2"><i>2</i>Diagnóstica</li><li class="hecho t3"><i>3</i>Predictiva</li><li class="ahora t4"><i>4</i>Prescriptiva</li></ol>
+      <div class="vis-c"><div class="vb est apagada"><span>Próximo martes<small>estimado</small></span><i style="--w:1"></i><b>200</b></div><ul class="checks"><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg>Preparar más café</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg>Contratar un empleado adicional</li></ul></div>
+      <div class="txt-c"><span class="et">Ejemplo</span><p>La cafetería decide preparar más café y contratar un empleado adicional para el próximo martes.</p><span class="et">¿Qué hace?</span><p class="hace">Recomienda qué acciones tomar.</p></div>
+    </div>
+    <div class="pie">Fuentes: CareerFoundry, «The 4 Types of Data Analysis» · <a href="https://careerfoundry.com/en/blog/data-analytics/different-types-of-data-analysis/" target="_blank" rel="noopener">careerfoundry.com/en/blog/data-analytics/different-types-of-data-analysis</a><br>KDnuggets, Thomas Maydon (Principa), 13 de julio de 2017 · <a href="https://kdnuggets.com/2017/07/4-types-data-analytics.html" target="_blank" rel="noopener">kdnuggets.com/2017/07/4-types-data-analytics.html</a><span class="ia"><b>Aviso:</b> Recolectamos la información con ChatGPT y la presentación la hicimos con Claude Code.</span></div>
+  </section>
+  <div class="hud"><div class="marca"><i></i><span>Analítica de datos</span></div><div class="pag"><b id="pagN">01</b> / 05</div></div>
   <div id="ayudita">Clic o → para avanzar</div>
   <div id="prog"><i></i></div>
   <section id="notas" aria-hidden="true"><div class="cab" id="notasT"></div><div id="notasC"></div></section>
@@ -345,7 +460,7 @@ var stage=D.getElementById("stage"), L=[].slice.call(D.querySelectorAll(".lam"))
 var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D.getElementById("notasC");
 var panel=D.getElementById("panel"), rg=D.getElementById("rg"), vista=D.getElementById("vista");
 var rejilla=D.getElementById("rejilla"), atajos=D.getElementById("atajos"), ayudita=D.getElementById("ayudita"), minis=[], rcs=[];
-var TIT=["¿Qué es?","Los 4 tipos","Ejemplo: cafetería"], DUR=["~1:00","~2:00","~2:00"];
+var TIT=["Portada", "Descriptiva", "Diagnóstica", "Predictiva", "Prescriptiva"], DUR=["~0:30", "~1:15", "~1:15", "~1:15", "~1:15"];
 
 function escala(){
   var w=vista.clientWidth, h=vista.clientHeight, s=Math.min(w/1920,h/1080);
@@ -394,55 +509,74 @@ function cuenta(els,t,at){
 /* Coreografías: un clic = la escena completa (< 10 s), y luego un bucle ambiental suave */
 function entrar(n){
   if(!SUAVE) return;
-  var s=L[n], q=function(x){ return s.querySelectorAll(x) };
+  var s=L[n], k=s.dataset.k, q=function(x){ return s.querySelectorAll(x) };
   tl=g.timeline({defaults:{ease:"power3.out"}});
   tl.from(q(".kick"),{x:-40,opacity:0,duration:.5},0)
     .from(q("h1 .w"),{y:70,opacity:0,rotate:3,duration:.65,stagger:.05},.15);
-  if(n===0){
-    tl.from(q(".datos circle"),{scale:0,opacity:0,transformOrigin:"50% 50%",duration:.6,stagger:{each:.015,from:"random"}},0)
-      .from(q("h2 .w"),{y:30,opacity:0,duration:.45,stagger:.035},.1)
-      .from(q(".q"),{y:90,opacity:0,rotate:-2,duration:.7,stagger:.16,ease:"back.out(1.5)"},1.1)
-      .from(q(".q-n"),{scale:0,duration:.5,stagger:.16,ease:"back.out(2.6)"},1.35)
-      .from(q(".q .dib *"),{strokeDashoffset:1,duration:.9,stagger:.03,ease:"power2.inOut"},1.4)
-      .from(q(".cadena .c"),{y:24,opacity:0,duration:.45,stagger:.22},2.3)
-      .from(q(".cadena .fl"),{x:-24,opacity:0,duration:.35,stagger:.22},2.45)
-      .from(q(".pie"),{opacity:0,duration:.6},2.8);
+  /* íconos que se mueven solos después de entrar */
+  function ambiente(d){
+    bucles.push(g.to(q(".dib .bar"),{scaleY:.55,duration:.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.2,repeat:-1,yoyo:true},delay:d}));
+    bucles.push(g.to(q(".dib .lupa"),{rotate:-12,x:-2,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut",delay:d}));
+    bucles.push(g.to(q(".dib .pun"),{strokeDashoffset:-.6,duration:2,repeat:-1,ease:"none",delay:d}));
+    bucles.push(g.to(q(".dib .rueda"),{rotate:360,duration:14,repeat:-1,ease:"none",delay:d}));
+  }
+  function puntos(){
     [].forEach.call(q(".datos circle"),function(c){
       bucles.push(g.to(c,{y:g.utils.random(-40,40),x:g.utils.random(-30,30),duration:g.utils.random(4,8),yoyo:true,repeat:-1,ease:"sine.inOut",delay:1}));
     });
     bucles.push(g.to(q(".halo"),{x:-80,y:60,scale:1.12,duration:7,yoyo:true,repeat:-1,ease:"sine.inOut"}));
+  }
+  if(k==="portada"){
+    tl.from(q(".datos circle"),{scale:0,opacity:0,transformOrigin:"50% 50%",duration:.6,stagger:{each:.015,from:"random"}},0)
+      .from(q(".port-sub"),{y:30,opacity:0,duration:.6},1)
+      .from(q(".pi"),{y:40,opacity:0,scale:.8,duration:.55,stagger:.14,ease:"back.out(2)"},1.3)
+      .from(q(".pi .dib *"),{strokeDashoffset:1,duration:.8,stagger:.02,ease:"power2.inOut"},1.5)
+      .from(q(".equipo .et"),{opacity:0,duration:.4},2.1)
+      .from(q(".equipo li"),{x:-30,opacity:0,duration:.45,stagger:.12},2.2)
+      .from(q(".aviso"),{y:50,opacity:0,duration:.7,ease:"back.out(1.6)"},2.5);
+    puntos(); ambiente(3.2);
+    bucles.push(g.to(q(".pi"),{y:-6,duration:1.2,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.3,repeat:-1,yoyo:true},delay:3.2}));
+  } else if(k==="que"){
+    tl.from(q(".datos circle"),{scale:0,opacity:0,transformOrigin:"50% 50%",duration:.6,stagger:{each:.015,from:"random"}},0)
+      .from(q(".q"),{y:90,opacity:0,rotate:-2,duration:.7,stagger:.16,ease:"back.out(1.5)"},.9)
+      .from(q(".q-n"),{scale:0,duration:.5,stagger:.16,ease:"back.out(2.6)"},1.15)
+      .from(q(".q .dib *"),{strokeDashoffset:1,duration:.9,stagger:.03,ease:"power2.inOut"},1.2)
+      .from(q(".cadena .c"),{y:24,opacity:0,duration:.45,stagger:.22},2.1)
+      .from(q(".cadena .fl"),{x:-24,opacity:0,duration:.35,stagger:.22},2.25)
+      .from(q(".pie"),{opacity:0,y:16,duration:.6},2.8);
+    puntos(); ambiente(3.4);
     bucles.push(g.to(q(".q"),{y:-8,duration:1.1,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.35,repeat:-1,yoyo:true},delay:3.4}));
-  } else if(n===1){
+  } else if(k==="tipo"){
+    tl.from(q(".tile.big"),{scale:0,rotate:-30,duration:.7,ease:"back.out(2.2)"},.1)
+      .from(q(".tile.big .dib *"),{strokeDashoffset:1,duration:1,stagger:.03,ease:"power2.inOut"},.35)
+      .from(q(".izq .bloque"),{y:40,opacity:0,duration:.55,stagger:.2},.7)
+      .from(q(".term"),{x:-50,opacity:0,duration:.55,stagger:.18},1.2)
+      .from(q(".caso-c"),{x:120,opacity:0,duration:.8,ease:"power3.out"},.5)
+      .from(q(".cab-c > *"),{y:14,opacity:0,duration:.4,stagger:.1},1)
+      .from(q(".pasos-c li"),{y:20,opacity:0,duration:.4,stagger:.1},1.15)
+      .from(q(".pasos-c li.ahora"),{scale:.7,duration:.6,ease:"back.out(3)"},1.6)
+      .from(q(".vis-c"),{opacity:0,duration:.5},1.6)
+      .from(q(".vb i"),{scaleX:0,duration:1,stagger:.25,ease:"power2.out"},1.8)
+      .from(q(".vb small"),{opacity:0,duration:.4},2.6)
+      .from(q(".sello"),{scale:0,rotate:-14,duration:.6,ease:"back.out(2.6)"},2.5)
+      .from(q(".checks li"),{x:-30,opacity:0,duration:.45,stagger:.3},2.3)
+      .from(q(".checks path"),{strokeDashoffset:1,duration:.45,stagger:.3},2.5)
+      .from(q(".txt-c > *"),{y:18,opacity:0,duration:.45,stagger:.12},2.7)
+      .from(q(".pie"),{opacity:0,duration:.5},3.4);
+    cuenta(q("[data-cuenta]"),tl,1.8);
+    ambiente(3.6);
+    bucles.push(g.to(q(".pasos-c li.ahora"),{boxShadow:"0 0 0 8px rgba(255,255,255,0), 0 0 0 0 rgba(0,0,0,0)",scale:1.04,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
+    bucles.push(g.to(q(".vb.est i"),{opacity:.55,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
+    bucles.push(g.to(q(".sello"),{scale:1.06,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
+  } else {
     tl.from(q(".cols span"),{y:16,opacity:0,duration:.4,stagger:.08},.5)
       .from(q(".fila"),{x:-120,opacity:0,duration:.7,stagger:.22},.7)
-      .from(q(".tile"),{scale:0,rotate:-25,duration:.55,stagger:.22,ease:"back.out(2.4)"},.85)
+      .from(q(".fila .tile"),{scale:0,rotate:-25,duration:.55,stagger:.22,ease:"back.out(2.4)"},.85)
       .from(q(".fila .dib *"),{strokeDashoffset:1,duration:.9,stagger:.025,ease:"power2.inOut"},1)
       .from(q(".f-preg"),{x:-30,opacity:0,duration:.5,stagger:.22},1.05)
       .from(q(".f-hace"),{opacity:0,duration:.6,stagger:.22},1.2)
       .from(q(".pie"),{opacity:0,duration:.5},2.2);
-    bucles.push(g.to(q(".dib .bar"),{scaleY:.55,duration:.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.2,repeat:-1,yoyo:true},delay:2.8}));
-    bucles.push(g.to(q(".dib .lupa"),{rotate:-12,x:-2,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut",delay:2.8}));
-    bucles.push(g.to(q(".dib .pun"),{strokeDashoffset:-.6,duration:2,repeat:-1,ease:"none",delay:2.8}));
-    bucles.push(g.to(q(".dib .rueda"),{rotate:360,duration:14,repeat:-1,ease:"none",delay:2.8}));
-  } else {
-    tl.from(q(".ficticio"),{scale:.4,opacity:0,rotate:-8,duration:.55,ease:"back.out(2.2)"},.55);
-    [].forEach.call(q(".caso"),function(c,k){
-      var t0=.8+k*1.35, cq=function(x){ return c.querySelectorAll(x) };
-      tl.from(c,{y:80,opacity:0,duration:.6,ease:"back.out(1.4)"},t0)
-        .from(cq("header .dib *"),{strokeDashoffset:1,duration:.7,stagger:.03,ease:"power2.inOut"},t0+.2)
-        .from(cq(".b i"),{scaleX:0,duration:.8,stagger:.15,ease:"power2.out"},t0+.35)
-        .from(cq(".sello"),{scale:0,rotate:-12,duration:.6,ease:"back.out(2.6)"},t0+.7)
-        .from(cq(".checks li"),{x:-24,opacity:0,duration:.4,stagger:.25},t0+.35)
-        .from(cq(".checks path"),{strokeDashoffset:1,duration:.45,stagger:.25},t0+.55)
-        .from(cq(".txt > *"),{y:16,opacity:0,duration:.4,stagger:.07},t0+.3);
-      cuenta(cq("[data-cuenta]"),tl,t0+.35);
-      var p=s.querySelectorAll(".paso")[k];
-      if(p) tl.from(p,{x:-20,opacity:0,duration:.35},t0+1.05);
-    });
-    tl.from(q(".pie"),{opacity:0,duration:.6},6.1);
-    bucles.push(g.to(q(".paso svg"),{x:6,duration:.7,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.25,repeat:-1,yoyo:true},delay:6.5}));
-    bucles.push(g.to(q(".sello"),{scale:1.07,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:6.5}));
-    bucles.push(g.to(q(".b.est i"),{opacity:.55,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:6.5}));
+    ambiente(2.8);
   }
 }
 
