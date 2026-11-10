@@ -176,6 +176,10 @@ footer .env>div{display:flex;justify-content:space-between;gap:20px;flex-wrap:wr
    c · c2 → color de la marca (barra y botón) · el mismo color legible sobre el fondo oscuro
    pdf · guion → opcionales; si existen, aparecen como botones */
 var DECKS=[
+  {id:"analitica-datos", ruta:"analitica-datos/", titulo:"Analítica de datos: de los datos a la decisión",
+   resumen:"Los 4 tipos de analítica (descriptiva, diagnóstica, predictiva y prescriptiva) y un mismo caso, una cafetería, contado con los cuatro.",
+   cat:"Analítica de datos", marca:"Trabajo en equipo", fecha:"2026-11-10", dias:3, personas:4,
+   c:"#5634BF", c2:"#B9A6FF", pptx:"analitica-datos/Analitica-de-datos-4-tipos.pptx"},
   {id:"laboratorio-ideas-1", ruta:"laboratorio-ideas-1/", titulo:"Bitácora individual",
    resumen:"Mi historia, mi propósito: pretest, hitos, hobbies, Ikigai, interés en el núcleo y código de ética.",
    cat:"Laboratorio de Ideas 1", marca:"Proyecto de vida", fecha:"2026-10-22", dias:11,
@@ -228,6 +232,7 @@ function acciones(d){
   var a='<a class="bt pri" href="'+d.ruta+'">Abrir</a>';
   if(d.pdf) a+='<a class="bt" href="'+d.pdf+'" download>PDF</a>';
   if(d.revista) a+='<a class="bt" href="'+d.revista+'" download>Revista</a>';
+  if(d.pptx) a+='<a class="bt" href="'+d.pptx+'" download>PowerPoint</a>';
   if(d.guion) a+='<a class="bt" href="'+d.guion+'">Guion</a>';
   return '<div class="acc">'+a+'</div>';
 }

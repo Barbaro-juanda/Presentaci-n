@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analítica de datos · de los datos a la decisión</title>
+<style>
+@font-face{font-family:"Nunito";src:url(../fonts/Nunito.woff2) format("woff2");font-weight:200 1000;font-display:block}
+@font-face{font-family:"Inter";src:url(../fonts/Inter-300-700.woff2) format("woff2");font-weight:300 700;font-display:block}
+@font-face{font-family:"Space Mono";src:url(../fonts/SpaceMono-400.woff2) format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"Space Mono";src:url(../fonts/SpaceMono-700.woff2) format("woff2");font-weight:700;font-display:block}
+
+/* Paleta: base azul noche (seria y formal) + un color por tipo de analítica (dinámica).
+   Los tonos -t son las versiones oscuras para texto y bandas: ≥ 4,5:1 sobre blanco. */
+:root{
+  --noche:#12152B; --noche2:#1B1F3F;
+  --claro:#F5F4FA; --tinta:#161A33; --gris:#535777; --linea:rgba(22,26,51,.12);
+  --c1:#14B8A6; --c1t:#0B6F64; --c1c:#5EEAD4;   /* descriptiva · aguamarina */
+  --c2:#7C5CFA; --c2t:#5634BF; --c2c:#B9A6FF;   /* diagnóstica · violeta */
+  --c3:#E0457B; --c3t:#B0245A; --c3c:#FF8FB4;   /* predictiva · rosa */
+  --c4:#F2A33A; --c4t:#94580A; --c4c:#FFC46B;   /* prescriptiva · ámbar (la decisión) */
+}
+.t1{--c:var(--c1);--ct:var(--c1t);--cc:var(--c1c)}
+.t2{--c:var(--c2);--ct:var(--c2t);--cc:var(--c2c)}
+.t3{--c:var(--c3);--ct:var(--c3t);--cc:var(--c3c)}
+.t4{--c:var(--c4);--ct:var(--c4t);--cc:var(--c4c)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0B0D1C;overflow:hidden}
+body{font-family:"Inter",system-ui,sans-serif;color:var(--tinta);-webkit-font-smoothing:antialiased;font-feature-settings:"calt" 0}
+
+/* ── portal · el mismo de todas las presentaciones: barra, miniaturas y escenario ── */
+:root{--chrome:#0B0D1C;--chrome2:#12152B;--hueso:#F2F1FA;--borde:rgba(242,241,250,.13);--apagado:rgba(242,241,250,.55);
+  --mono:"Space Mono",monospace;--ease:cubic-bezier(.2,.7,.2,1)}
+#app{position:fixed;inset:0;display:grid;grid-template-columns:248px 1fr;grid-template-rows:56px 1fr;
+  background:var(--chrome);transition:grid-template-columns .3s var(--ease),grid-template-rows .3s var(--ease)}
+body.presentando #app{grid-template-columns:0 1fr;grid-template-rows:0 1fr}
+#barra{grid-column:1/-1;grid-row:1;display:flex;align-items:center;gap:15px;padding:0 17px;
+  background:var(--chrome2);border-bottom:1px solid var(--borde);color:var(--hueso);overflow:hidden;z-index:5}
+body.presentando #barra{opacity:0;pointer-events:none}
+#barra .marca{display:flex;align-items:center;gap:12px;min-width:0;overflow:hidden}
+#barra .marca i{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:conic-gradient(from 200deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c1))}
+#barra .marca i::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--chrome2)}
+#barra .marca span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--apagado);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#barra .sep{flex:1}
+.r-btn{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  background:rgba(242,241,250,.06);border:1px solid rgba(242,241,250,.18);color:rgba(242,241,250,.78);
+  border-radius:0;padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;
+  transition:background .18s,color .18s,border-color .18s}
+.r-btn:hover{background:rgba(242,241,250,.12);color:var(--hueso);border-color:rgba(242,241,250,.4)}
+.r-btn:focus-visible{outline:2px solid var(--c2c);outline-offset:2px}
+.r-btn.activo{background:var(--hueso);border-color:var(--hueso);color:var(--tinta)}
+.r-btn--pri{background:var(--c2t);border-color:var(--c2t);color:#fff}
+.r-btn--pri:hover{background:var(--c2);border-color:var(--c2)}
+.r-btn kbd{font-family:inherit;font-size:9px;opacity:.62;border:1px solid currentColor;padding:0 4px;line-height:13px}
+#reloj{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--apagado);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:1180px){#barra .marca span{display:none}}
+@media (max-width:980px){.r-btn kbd{display:none}}
+
+#panel{grid-column:1;grid-row:2;background:#080A16;border-right:1px solid var(--borde);
+  overflow-y:auto;overflow-x:hidden;padding:11px 0 34px;z-index:4}
+body.presentando #panel{opacity:0;pointer-events:none}
+.mini{display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:start;padding:5px 12px 5px 6px;cursor:pointer}
+.mini .m-num{font-family:var(--mono);font-size:10px;color:var(--apagado);text-align:right;padding-top:4px}
+.mini .marco,.rc-item .marco{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(242,241,250,.18);background:var(--claro)}
+.mini:hover .marco,.rc-item:hover .marco{border-color:rgba(242,241,250,.4)}
+.mini.actual .marco,.rc-item.actual .marco{border-color:var(--c2c);box-shadow:0 0 0 2px rgba(124,92,250,.45)}
+.mini.actual .m-num{color:var(--hueso);font-weight:700}
+.mini .m-rot{grid-column:2;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--apagado);margin-top:5px}
+.mini .m-rot b{display:block;font-weight:700;font-size:8.5px;letter-spacing:.14em;color:var(--hueso);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .m-rot span{display:block;margin-top:2px}
+.lienzo{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:top left;pointer-events:none;background:var(--claro);overflow:hidden}
+.lienzo .lam{visibility:visible}
+
+/* ── escenario 1920×1080 escalado a la vista ── */
+#vista{grid-column:2;grid-row:2;position:relative;overflow:hidden;background:#05060E;cursor:pointer}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:var(--claro);
+  overflow:hidden;box-shadow:0 22px 66px rgba(0,0,0,.66)}
+body.presentando #stage{box-shadow:none}
+.lam{position:absolute;inset:0;visibility:hidden;overflow:hidden;background:var(--claro)}
+.lam.on{visibility:visible}
+.lam.oscura{background:var(--noche);color:#fff}
+
+/* ── HUD ── */
+.hud{position:absolute;left:96px;right:96px;top:46px;display:flex;justify-content:space-between;align-items:center;
+  font:700 16px/1 "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);z-index:5}
+.hud .marca{display:flex;align-items:center;gap:14px}
+.hud .marca i{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;
+  background:conic-gradient(from 200deg,var(--c1),var(--c2),var(--c3),var(--c4),var(--c1))}
+.hud .marca i::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--claro)}
+.hud .pag b{color:var(--c2t)}
+.hud-oscuro .hud{color:rgba(255,255,255,.62)}
+.hud-oscuro .hud .marca i::after{background:var(--noche)}
+.hud-oscuro .hud .pag b{color:var(--c2c)}
+#prog{position:absolute;left:0;bottom:0;height:8px;width:100%;background:rgba(22,26,51,.08);z-index:6}
+#prog i{display:block;height:100%;width:33%;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4))}
+.hud-oscuro #prog{background:rgba(255,255,255,.08)}
+
+/* ── tipografía ── */
+.kick{font:700 18px/1 "Space Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--c2t);display:flex;align-items:center;gap:14px}
+.kick::before{content:"";width:46px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4))}
+.oscura .kick{color:var(--c1c)}
+h1,h2{margin:0;font-family:"Nunito",sans-serif}
+h1 .w,h2 .w{display:inline-block}
+.pie{position:absolute;left:96px;right:96px;bottom:34px;font:400 15px/1.45 "Space Mono",monospace;letter-spacing:.03em;color:var(--gris);z-index:5}
+.pie a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(83,87,119,.45)}
+.pie a:hover{color:var(--c2t)}
+
+/* íconos de trazo: se "dibujan" al entrar */
+.dib{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.dib *{stroke-dasharray:1;stroke-dashoffset:0}
+.dib .pun{stroke-dasharray:.16 .14}
+.dib .bar,.dib .lupa,.dib .rueda{transform-box:fill-box}
+.dib .bar{transform-origin:50% 100%}
+.dib .lupa{transform-origin:30% 30%}
+.dib .rueda{transform-origin:50% 50%}
+
+/* ══ 1 · ¿Qué es la analítica de datos? ══ */
+.l1{background:radial-gradient(1100px 700px at 88% -8%,rgba(124,92,250,.38),transparent 60%),
+  radial-gradient(900px 600px at -6% 108%,rgba(224,69,123,.26),transparent 60%),var(--noche)}
+.l1 .halo{position:absolute;width:820px;height:820px;right:-180px;top:-260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(20,184,166,.20),transparent 62%)}
+.l1 .datos{position:absolute;inset:0;width:100%;height:100%}
+.datos circle{fill:rgba(255,255,255,.16)}
+.datos .p1{fill:rgba(94,234,212,.42)} .datos .p2{fill:rgba(185,166,255,.42)} .datos .p3{fill:rgba(255,143,180,.38)} .datos .p4{fill:rgba(255,196,107,.38)}
+.l1 .cont{position:absolute;left:96px;right:96px;top:146px}
+.l1 h2{margin-top:26px;font:800 44px/1.1 "Nunito",sans-serif;color:rgba(255,255,255,.84);letter-spacing:-.01em}
+.l1 h1{margin-top:18px;font:900 96px/1 "Nunito",sans-serif;letter-spacing:-.03em;color:#fff;max-width:1650px}
+.l1 h1 em{font-style:normal;color:var(--c4c)}
+.preg{position:absolute;left:96px;right:96px;top:536px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.q{position:relative;height:292px;border-radius:28px;padding:28px 30px;display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);overflow:hidden}
+.q::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:var(--c)}
+.q-cab{display:flex;justify-content:space-between;align-items:center}
+.q-n{width:62px;height:62px;border-radius:50%;background:var(--c);color:var(--noche);display:grid;place-items:center;font:900 32px/1 "Nunito",sans-serif}
+.q .ico-s{width:58px;height:58px;color:var(--cc)}
+.q-t{font:900 46px/1.06 "Nunito",sans-serif;letter-spacing:-.02em;color:#fff}
+.cadena{position:absolute;left:96px;right:96px;top:858px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;
+  font:700 30px/1 "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;text-align:center}
+.cadena .c{color:var(--cc);position:relative}
+.cadena .fl{position:absolute;font-style:normal;color:rgba(255,255,255,.55);transform:translateX(-50%)}
+.cadena .fl:nth-of-type(1){left:calc(25% - 7px)} .cadena .fl:nth-of-type(2){left:calc(50%)} .cadena .fl:nth-of-type(3){left:calc(75% + 7px)}
+.l1 .pie{color:rgba(255,255,255,.62)}
+
+/* ══ 2 · Los 4 tipos ══ */
+.l2 .cont,.l3 .cont{position:absolute;left:96px;right:96px;top:146px}
+.l2 h1,.l3 h1{margin-top:22px;font:900 76px/1 "Nunito",sans-serif;letter-spacing:-.03em;color:var(--tinta)}
+.l2 h1 em,.l3 h1 em{font-style:normal;color:var(--c2t)}
+.l2 .forma,.l3 .forma{position:absolute;right:-160px;top:-200px;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,92,250,.13),transparent 65%)}
+.tabla{position:absolute;left:96px;right:96px;top:322px}
+.cols,.fila{display:grid;grid-template-columns:470px 470px 1fr;gap:36px;align-items:center}
+.cols{padding:0 36px 14px 36px;font:700 17px/1 "Space Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--gris)}
+.fila{position:relative;height:138px;margin-top:14px;padding:0 36px;background:#fff;border-radius:24px;overflow:hidden;
+  box-shadow:0 18px 40px -28px rgba(22,26,51,.45),0 0 0 1px var(--linea)}
+.fila::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--c)}
+.f-tipo{display:flex;align-items:center;gap:24px}
+.tile{width:86px;height:86px;border-radius:22px;display:grid;place-items:center;flex:none;
+  background:color-mix(in srgb,var(--c) 14%,#fff);color:var(--ct)}
+.tile .ico-s{width:52px;height:52px}
+.f-tipo b{font:900 42px/1 "Nunito",sans-serif;letter-spacing:-.02em;color:var(--ct)}
+.f-preg{font:900 38px/1.08 "Nunito",sans-serif;letter-spacing:-.015em;color:var(--tinta)}
+.f-hace{font:400 27px/1.34 "Inter",sans-serif;color:var(--tinta)}
+
+/* ══ 3 · Un caso, los 4 tipos ══ */
+.l3 .tit{display:flex;align-items:center;gap:30px;margin-top:22px}
+.l3 .tit h1{margin:0}
+.ficticio{font:700 18px/1 "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--c3t);
+  border:2px dashed var(--c3t);border-radius:999px;padding:12px 20px;white-space:nowrap}
+.historia{position:absolute;left:96px;right:96px;top:306px;display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr 44px 1fr;align-items:stretch}
+.caso{background:#fff;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 20px 44px -30px rgba(22,26,51,.5),0 0 0 1px var(--linea)}
+.caso header{background:var(--ct);color:#fff;display:flex;align-items:center;gap:16px;padding:20px 22px}
+.caso header .ico-s{width:52px;height:52px;flex:none;color:#fff}
+.caso header span{display:block;font:700 15px/1 "Space Mono",monospace;letter-spacing:.16em;opacity:.9}
+.caso header b{display:block;margin-top:8px;font:900 30px/1.02 "Nunito",sans-serif;letter-spacing:-.015em}
+.vis{position:relative;height:132px;margin:20px 22px 0;border-radius:18px;background:color-mix(in srgb,var(--c) 10%,#fff);padding:18px 18px}
+.barras{display:grid;gap:14px}
+.b{display:grid;grid-template-columns:92px 1fr 58px;align-items:center;gap:10px;font:600 18px/1 "Inter",sans-serif;color:var(--tinta)}
+.b i{display:block;height:26px;border-radius:8px;background:var(--ct);width:calc(var(--w)*100%);transform-origin:left}
+.b b{font:900 26px/1 "Nunito",sans-serif;color:var(--ct);text-align:right;font-variant-numeric:tabular-nums}
+.b.est i{background:repeating-linear-gradient(-45deg,color-mix(in srgb,var(--c) 30%,#fff) 0 8px,transparent 8px 16px);outline:2.5px dashed var(--ct);outline-offset:-2.5px}
+.b.apagada{opacity:.4}
+.t2 .vis{padding-top:14px}
+.t2 .barras{gap:10px}
+.sello{display:inline-flex;align-items:center;gap:8px;margin:12px 0 0 102px;background:var(--ct);color:#fff;border-radius:999px;padding:6px 14px 6px 10px;
+  font:800 17px/1 "Inter",sans-serif;box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 18%,#fff);transform-origin:20% 50%}
+.sello svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.checks{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:14px}
+.checks li{display:flex;align-items:center;gap:12px;font:700 20px/1.2 "Inter",sans-serif;color:var(--tinta)}
+.checks svg{width:34px;height:34px;flex:none;border-radius:10px;background:var(--ct);fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;padding:5px}
+.checks svg path{stroke-dasharray:1;stroke-dashoffset:0}
+.txt{padding:18px 24px 24px;display:flex;flex-direction:column;flex:1}
+.txt .et{font:700 14px/1 "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ct);margin-top:6px}
+.txt p{margin:8px 0 14px;font:400 25px/1.34 "Inter",sans-serif;color:var(--tinta)}
+.txt p.hace{font-weight:700;margin-bottom:0}
+.paso{display:grid;place-items:center;color:var(--gris)}
+.paso svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.l3 .pie{bottom:26px;font-size:14.5px}
+.l3 .pie .ia{display:block;margin-top:6px;color:var(--tinta)}
+.l3 .pie .ia b{color:var(--c2t)}
+
+/* ── guion, cuadrícula y atajos ── */
+#notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(11,13,28,.97);border-top:3px solid var(--c2);
+  color:var(--hueso);padding:26px 96px 32px;transform:translate3d(0,101%,0);transition:transform .32s var(--ease);cursor:auto}
+#notas.on{transform:none}
+#notas .cab{font:700 16px/1 "Space Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--c2c);margin-bottom:14px}
+#notas p{margin:0 0 10px;font-size:25px;line-height:1.45;font-weight:300;color:rgba(242,241,250,.94);max-width:1700px}
+#notas p:first-child{font-family:var(--mono);font-size:17px;letter-spacing:.06em;color:var(--c1c)}
+#ayudita{position:absolute;right:96px;top:84px;font:400 15px/1 "Space Mono",monospace;letter-spacing:.06em;color:rgba(255,255,255,.55);z-index:5;transition:opacity .5s}
+#ayudita.mudo{opacity:0}
+#rejilla{position:fixed;inset:0;z-index:60;background:var(--chrome);display:none;overflow-y:auto;padding:22px 30px 54px}
+#rejilla.on{display:block}
+#rejilla .rc{display:flex;align-items:center;justify-content:space-between;color:var(--hueso);margin-bottom:18px}
+#rejilla .rc h3{font:900 25px/1 "Nunito",sans-serif;margin:0}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.rc-item{cursor:pointer}
+.rc-item .pie2{display:flex;justify-content:space-between;color:var(--apagado);font:400 10px/1 "Space Mono",monospace;margin-top:8px;letter-spacing:.1em;text-transform:uppercase}
+#atajos{position:fixed;inset:0;z-index:70;background:rgba(11,13,28,.98);display:none;place-content:center;justify-items:center;text-align:center;color:var(--hueso)}
+#atajos.on{display:grid}
+#atajos h3{font:900 38px/1 "Nunito",sans-serif;margin:0 0 24px}
+#atajos table{border-collapse:collapse;font-size:18px;font-weight:300}
+#atajos td{padding:8px 24px}
+#atajos td:first-child{text-align:right;color:var(--c2c);font-family:var(--mono);font-size:12.5px;letter-spacing:.1em}
+#atajos p{margin-top:24px;font-size:13.5px;color:var(--apagado);max-width:62ch;line-height:1.5}
+/* Safari o ?plano: sin mezclas de color costosas */
+.plano .tile,.plano .vis{background:#F1EFF9}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header id="barra">
+    <div class="marca"><i></i><span>Analítica de datos · de los datos a la decisión · Natalie · Carolina · Thomás · Juan David</span></div>
+    <div class="sep"></div>
+    <div id="reloj">00:00</div>
+    <button class="r-btn" id="bRejilla">Cuadrícula <kbd>O</kbd></button>
+    <button class="r-btn" id="bNotas">Notas <kbd>N</kbd></button>
+    <button class="r-btn" id="bAtajos">Atajos <kbd>?</kbd></button>
+    <button class="r-btn r-btn--pri" id="bPresentar">Presentar <kbd>P</kbd></button>
+  </header>
+  <aside id="panel" aria-label="Diapositivas"></aside>
+  <div id="vista"><div id="stage">
+
+  <!-- ══════════ 1 · ¿QUÉ ES LA ANALÍTICA DE DATOS? ══════════ -->
+  <section class="lam oscura l1" data-n="1" data-notas="Tiempo sugerido ~1:00 · Expositora (propuesta): Natalie Aristizábal|La analítica de datos es usar los datos de un negocio para decidir mejor. No se queda en mirar cifras: el objetivo es tomar una decisión.|Se puede organizar en cuatro preguntas, una detrás de otra: ¿Qué pasó? ¿Por qué pasó? ¿Qué podría pasar? ¿Qué deberíamos hacer?|Fíjense en el recorrido: vamos del pasado a la causa, de la causa al futuro y del futuro a la acción.|RELEVO → Carolina: cada una de estas preguntas tiene su propio tipo de analítica.">
+    <div class="halo"></div>
+    <svg class="datos" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><circle cx="703" cy="214" r="4.0" class="p0"/><circle cx="188" cy="900" r="5.0" class="p0"/><circle cx="788" cy="656" r="2.0" class="p4"/><circle cx="479" cy="98" r="2.0" class="p3"/><circle cx="896" cy="131" r="2.5" class="p0"/><circle cx="1168" cy="494" r="2.0" class="p4"/><circle cx="293" cy="288" r="5.0" class="p0"/><circle cx="1221" cy="659" r="4.0" class="p0"/><circle cx="492" cy="107" r="5.0" class="p1"/><circle cx="633" cy="489" r="2.5" class="p4"/><circle cx="281" cy="644" r="3.0" class="p4"/><circle cx="1711" cy="758" r="2.5" class="p0"/><circle cx="1231" cy="644" r="2.5" class="p2"/><circle cx="239" cy="620" r="2.0" class="p4"/><circle cx="162" cy="693" r="2.5" class="p3"/><circle cx="1433" cy="604" r="4.0" class="p2"/><circle cx="993" cy="659" r="4.0" class="p2"/><circle cx="653" cy="314" r="2.5" class="p1"/><circle cx="207" cy="648" r="3.0" class="p4"/><circle cx="1053" cy="956" r="3.0" class="p3"/><circle cx="629" cy="683" r="2.0" class="p0"/><circle cx="1088" cy="488" r="2.5" class="p2"/><circle cx="351" cy="560" r="4.0" class="p0"/><circle cx="1408" cy="139" r="5.0" class="p4"/><circle cx="1656" cy="956" r="3.0" class="p2"/><circle cx="1463" cy="418" r="5.0" class="p3"/><circle cx="1227" cy="876" r="4.0" class="p0"/><circle cx="1760" cy="155" r="3.0" class="p3"/><circle cx="1467" cy="740" r="2.0" class="p0"/><circle cx="1537" cy="778" r="3.0" class="p4"/><circle cx="1435" cy="901" r="4.0" class="p2"/><circle cx="1507" cy="455" r="3.0" class="p0"/><circle cx="985" cy="423" r="2.5" class="p4"/><circle cx="279" cy="565" r="2.0" class="p1"/><circle cx="1613" cy="354" r="2.5" class="p1"/><circle cx="854" cy="460" r="4.0" class="p0"/><circle cx="380" cy="519" r="4.0" class="p4"/><circle cx="609" cy="200" r="4.0" class="p4"/><circle cx="610" cy="783" r="4.0" class="p2"/><circle cx="1438" cy="449" r="2.5" class="p1"/><circle cx="209" cy="240" r="2.5" class="p1"/><circle cx="1388" cy="298" r="2.0" class="p3"/><circle cx="1742" cy="663" r="2.5" class="p2"/><circle cx="617" cy="64" r="2.5" class="p3"/><circle cx="1134" cy="438" r="5.0" class="p4"/><circle cx="692" cy="188" r="5.0" class="p4"/></svg>
+    <div class="cont">
+      <div class="kick">01 · ¿Qué es la analítica de datos?</div>
+      <h2><span class="w">Analítica</span> <span class="w">de</span> <span class="w">datos:</span> <span class="w">de</span> <span class="w">los</span> <span class="w">datos</span> <span class="w">a</span> <span class="w">la</span> <span class="w">decisión</span></h2>
+      <h1><span class="w">Usar</span> <span class="w">los</span> <span class="w">datos</span> <span class="w">de</span> <span class="w">un</span> <span class="w">negocio</span><br><span class="w">para</span> <em class="w">decidir</em> <em class="w">mejor.</em></h1>
+    </div>
+    <div class="preg">
+        <div class="q t1"><div class="q-cab"><b class="q-n">1</b><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="28" rx="4" pathLength="1"/><path class="bar" d="M14 29v-6" pathLength="1"/><path class="bar" d="M21 29V15" pathLength="1"/><path class="bar" d="M28 29v-9" pathLength="1"/><path class="bar" d="M35 29V12" pathLength="1"/><path d="M17 42h14" pathLength="1"/><path d="M24 35v7" pathLength="1"/></svg></div><div class="q-t">¿Qué pasó?</div></div>
+        <div class="q t2"><div class="q-cab"><b class="q-n">2</b><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="lupa"><circle cx="20" cy="20" r="12" pathLength="1"/><path d="M29 29l12 12" pathLength="1"/><path d="M14 19a6.5 6.5 0 0 1 6-6" pathLength="1"/></g></svg></div><div class="q-t">¿Por qué pasó?</div></div>
+        <div class="q t3"><div class="q-cab"><b class="q-n">3</b><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 6v36h36" pathLength="1"/><path d="M11 34l8-9 7 5 6-7" pathLength="1"/><path class="pun" d="M32 23l9-11" pathLength="1"/><path d="M35 11h6v6" pathLength="1"/></svg></div><div class="q-t">¿Qué podría pasar?</div></div>
+        <div class="q t4"><div class="q-cab"><b class="q-n">4</b><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="rueda"><circle cx="24" cy="24" r="12.5" pathLength="1"/><circle cx="24" cy="24" r="4" pathLength="1"/><path d="M28.0 24.0L43.0 24.0" pathLength="1"/><path d="M26.8 26.8L37.4 37.4" pathLength="1"/><path d="M24.0 28.0L24.0 43.0" pathLength="1"/><path d="M21.2 26.8L10.6 37.4" pathLength="1"/><path d="M20.0 24.0L5.0 24.0" pathLength="1"/><path d="M21.2 21.2L10.6 10.6" pathLength="1"/><path d="M24.0 20.0L24.0 5.0" pathLength="1"/><path d="M26.8 21.2L37.4 10.6" pathLength="1"/></g></svg></div><div class="q-t">¿Qué deberíamos hacer?</div></div>
+    </div>
+    <div class="cadena"><span class="c t1">Pasado</span><i class="fl">→</i><span class="c t2">Causa</span><i class="fl">→</i><span class="c t3">Futuro</span><i class="fl">→</i><span class="c t4">Acción</span></div>
+    <div class="pie">Equipo · Natalie Aristizábal · Carolina Salazar · Thomás Quintero · Juan David Escobar</div>
+  </section>
+
+  <!-- ══════════ 2 · LOS 4 TIPOS ══════════ -->
+  <section class="lam l2" data-n="2" data-notas="Tiempo sugerido ~2:00 · Expositores (propuesta): Carolina Salazar (descriptiva y diagnóstica) y Thomás Quintero (predictiva y prescriptiva)|Descriptiva responde ¿qué pasó? Resume los datos del pasado para ver resultados y comportamientos. Normalmente se ve en un tablero o dashboard: una pantalla con gráficos que resume los datos de un vistazo.|Diagnóstica responde ¿por qué pasó? Busca las causas de los resultados o de los problemas.|RELEVO → Thomás. Predictiva responde ¿qué podría pasar? Usa datos históricos, es decir, registros de lo que ya pasó, como ventas, visitas o precios; son la materia prima para entender y predecir. Con ellos se arma un modelo estadístico: una fórmula que busca patrones en los datos pasados para estimar lo que viene.|Prescriptiva responde ¿qué deberíamos hacer? Recomienda acciones para lograr mejores resultados según los objetivos.|RELEVO → Juan David: veamos los cuatro tipos en un solo caso.">
+    <div class="forma"></div>
+    <div class="cont">
+      <div class="kick">02 · Los 4 tipos</div>
+      <h1><span class="w">Cuatro</span> <span class="w">preguntas,</span> <em class="w">cuatro</em> <em class="w">tipos</em></h1>
+    </div>
+    <div class="tabla">
+      <div class="cols"><span>Tipo</span><span>Pregunta</span><span>Qué hace</span></div>
+        <div class="fila t1"><div class="f-tipo"><span class="tile"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="28" rx="4" pathLength="1"/><path class="bar" d="M14 29v-6" pathLength="1"/><path class="bar" d="M21 29V15" pathLength="1"/><path class="bar" d="M28 29v-9" pathLength="1"/><path class="bar" d="M35 29V12" pathLength="1"/><path d="M17 42h14" pathLength="1"/><path d="M24 35v7" pathLength="1"/></svg></span><b>Descriptiva</b></div><div class="f-preg">¿Qué pasó?</div><div class="f-hace">Resume datos del pasado para ver resultados y comportamientos.</div></div>
+        <div class="fila t2"><div class="f-tipo"><span class="tile"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="lupa"><circle cx="20" cy="20" r="12" pathLength="1"/><path d="M29 29l12 12" pathLength="1"/><path d="M14 19a6.5 6.5 0 0 1 6-6" pathLength="1"/></g></svg></span><b>Diagnóstica</b></div><div class="f-preg">¿Por qué pasó?</div><div class="f-hace">Busca las causas de los resultados o problemas.</div></div>
+        <div class="fila t3"><div class="f-tipo"><span class="tile"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 6v36h36" pathLength="1"/><path d="M11 34l8-9 7 5 6-7" pathLength="1"/><path class="pun" d="M32 23l9-11" pathLength="1"/><path d="M35 11h6v6" pathLength="1"/></svg></span><b>Predictiva</b></div><div class="f-preg">¿Qué podría pasar?</div><div class="f-hace">Usa datos históricos y patrones para anticipar escenarios futuros.</div></div>
+        <div class="fila t4"><div class="f-tipo"><span class="tile"><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="rueda"><circle cx="24" cy="24" r="12.5" pathLength="1"/><circle cx="24" cy="24" r="4" pathLength="1"/><path d="M28.0 24.0L43.0 24.0" pathLength="1"/><path d="M26.8 26.8L37.4 37.4" pathLength="1"/><path d="M24.0 28.0L24.0 43.0" pathLength="1"/><path d="M21.2 26.8L10.6 37.4" pathLength="1"/><path d="M20.0 24.0L5.0 24.0" pathLength="1"/><path d="M21.2 21.2L10.6 10.6" pathLength="1"/><path d="M24.0 20.0L24.0 5.0" pathLength="1"/><path d="M26.8 21.2L37.4 10.6" pathLength="1"/></g></svg></span><b>Prescriptiva</b></div><div class="f-preg">¿Qué deberíamos hacer?</div><div class="f-hace">Recomienda acciones para lograr mejores resultados según los objetivos.</div></div>
+    </div>
+    <div class="pie">Fuentes: CareerFoundry, «The 4 Types of Data Analysis» · KDnuggets, Thomas Maydon (Principa), 13 de julio de 2017</div>
+  </section>
+
+  <!-- ══════════ 3 · UN CASO, LOS 4 TIPOS ══════════ -->
+  <section class="lam l3" data-n="3" data-notas="Tiempo sugerido ~2:00 · Expositor (propuesta): Juan David Escobar|Un mismo caso, una cafetería, contado con los cuatro tipos. Las cifras son un ejemplo ilustrativo, no datos reales.|Descriptiva: vendió 100 cafés el lunes y 150 el martes. Solo muestra cuántos vendió: ¿qué pasó?|Diagnóstica: vendió más el martes porque hizo una promoción de 2x1. Encuentra la razón del aumento: ¿por qué pasó?|Predictiva: estima que el próximo martes venderá 200 cafés, porque normalmente las ventas aumentan ese día. Estima las ventas futuras: ¿qué podría pasar?|Prescriptiva: decide preparar más café y contratar un empleado adicional para el próximo martes. Recomienda qué acciones tomar: ¿qué debería hacer?|CIERRE → Así pasamos de los datos a la decisión. La información la recolectamos con ChatGPT y la presentación la hicimos con Claude Code; las fuentes están al pie.">
+    <div class="forma"></div>
+    <div class="cont">
+      <div class="kick">03 · Un caso, los 4 tipos</div>
+      <div class="tit"><h1><span class="w">Ejemplo:</span> <span class="w">una</span> <em class="w">cafetería</em></h1><span class="ficticio">✳ ejemplo ilustrativo</span></div>
+    </div>
+    <div class="historia">
+        <article class="caso t1"><header><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="28" rx="4" pathLength="1"/><path class="bar" d="M14 29v-6" pathLength="1"/><path class="bar" d="M21 29V15" pathLength="1"/><path class="bar" d="M28 29v-9" pathLength="1"/><path class="bar" d="M35 29V12" pathLength="1"/><path d="M17 42h14" pathLength="1"/><path d="M24 35v7" pathLength="1"/></svg><div><span class="c-k">1 · DESCRIPTIVA</span><b>¿Qué pasó?</b></div></header>
+          <div class="vis"><div class="barras"><div class="b"><span>Lunes</span><i style="--w:.5"></i><b data-cuenta="100">100</b></div><div class="b"><span>Martes</span><i style="--w:.75"></i><b data-cuenta="150">150</b></div></div></div>
+          <div class="txt"><span class="et">Ejemplo</span><p>La cafetería vendió 100 cafés el lunes y 150 el martes.</p><span class="et">¿Qué hace?</span><p class="hace">Muestra cuántos cafés vendió.</p></div></article><span class="paso"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        <article class="caso t2"><header><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="lupa"><circle cx="20" cy="20" r="12" pathLength="1"/><path d="M29 29l12 12" pathLength="1"/><path d="M14 19a6.5 6.5 0 0 1 6-6" pathLength="1"/></g></svg><div><span class="c-k">2 · DIAGNÓSTICA</span><b>¿Por qué pasó?</b></div></header>
+          <div class="vis"><div class="barras"><div class="b apagada"><span>Lunes</span><i style="--w:.5"></i><b>100</b></div><div class="b"><span>Martes</span><i style="--w:.75"></i><b>150</b></div></div><div class="sello"><svg viewBox="0 0 24 24"><path d="M12 19V7M6 12l6-6 6 6"/></svg>Promoción 2x1</div></div>
+          <div class="txt"><span class="et">Ejemplo</span><p>La cafetería vendió más cafés el martes porque hizo una promoción de 2x1.</p><span class="et">¿Qué hace?</span><p class="hace">Encuentra la razón del aumento de ventas.</p></div></article><span class="paso"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        <article class="caso t3"><header><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 6v36h36" pathLength="1"/><path d="M11 34l8-9 7 5 6-7" pathLength="1"/><path class="pun" d="M32 23l9-11" pathLength="1"/><path d="M35 11h6v6" pathLength="1"/></svg><div><span class="c-k">3 · PREDICTIVA</span><b>¿Qué podría pasar?</b></div></header>
+          <div class="vis"><div class="barras"><div class="b"><span>Martes</span><i style="--w:.75"></i><b>150</b></div><div class="b est"><span>Próximo</span><i style="--w:1"></i><b data-cuenta="200">200</b></div></div></div>
+          <div class="txt"><span class="et">Ejemplo</span><p>La cafetería estima que el próximo martes venderá 200 cafés porque normalmente las ventas aumentan ese día.</p><span class="et">¿Qué hace?</span><p class="hace">Estima las ventas futuras.</p></div></article><span class="paso"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        <article class="caso t4"><header><svg class="ico-s dib" viewBox="0 0 48 48" aria-hidden="true"><g class="rueda"><circle cx="24" cy="24" r="12.5" pathLength="1"/><circle cx="24" cy="24" r="4" pathLength="1"/><path d="M28.0 24.0L43.0 24.0" pathLength="1"/><path d="M26.8 26.8L37.4 37.4" pathLength="1"/><path d="M24.0 28.0L24.0 43.0" pathLength="1"/><path d="M21.2 26.8L10.6 37.4" pathLength="1"/><path d="M20.0 24.0L5.0 24.0" pathLength="1"/><path d="M21.2 21.2L10.6 10.6" pathLength="1"/><path d="M24.0 20.0L24.0 5.0" pathLength="1"/><path d="M26.8 21.2L37.4 10.6" pathLength="1"/></g></svg><div><span class="c-k">4 · PRESCRIPTIVA</span><b>¿Qué debería hacer?</b></div></header>
+          <div class="vis"><ul class="checks"><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg>Preparar más café</li><li><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" pathLength="1"/></svg>Contratar un empleado adicional</li></ul></div>
+          <div class="txt"><span class="et">Ejemplo</span><p>La cafetería decide preparar más café y contratar un empleado adicional para el próximo martes.</p><span class="et">¿Qué hace?</span><p class="hace">Recomienda qué acciones tomar.</p></div></article>
+    </div>
+    <div class="pie">Fuentes: CareerFoundry, «The 4 Types of Data Analysis» · <a href="https://careerfoundry.com/en/blog/data-analytics/different-types-of-data-analysis/" target="_blank" rel="noopener">careerfoundry.com/en/blog/data-analytics/different-types-of-data-analysis</a><br>
+      KDnuggets, Thomas Maydon (Principa), 13 de julio de 2017 · <a href="https://kdnuggets.com/2017/07/4-types-data-analytics.html" target="_blank" rel="noopener">kdnuggets.com/2017/07/4-types-data-analytics.html</a>
+      <span class="ia"><b>Nota:</b> recolectamos la información con ChatGPT y la presentación la hicimos con Claude Code.</span></div>
+  </section>
+
+  <div class="hud"><div class="marca"><i></i><span>Analítica de datos</span></div><div class="pag"><b id="pagN">01</b> / 03</div></div>
+  <div id="ayudita">Clic o → para avanzar</div>
+  <div id="prog"><i></i></div>
+  <section id="notas" aria-hidden="true"><div class="cab" id="notasT"></div><div id="notasC"></div></section>
+  </div></div>
+
+  <section id="rejilla" aria-hidden="true">
+    <div class="rc"><h3>Cuadrícula de diapositivas</h3><button class="r-btn" id="bCerrarRejilla">Cerrar <kbd>Esc</kbd></button></div>
+    <div class="rg" id="rg"></div>
+  </section>
+
+  <section id="atajos" aria-hidden="true"><div>
+    <h3>Atajos de teclado</h3>
+    <table><tbody>
+      <tr><td>→ ↓ espacio · clic</td><td>Avanzar</td></tr>
+      <tr><td>← ↑</td><td>Retroceder</td></tr>
+      <tr><td>Inicio · Fin</td><td>Primera y última diapositiva</td></tr>
+      <tr><td>P</td><td>Modo presentación</td></tr>
+      <tr><td>O</td><td>Cuadrícula</td></tr>
+      <tr><td>N</td><td>Guion de quien expone</td></tr>
+      <tr><td>T · R</td><td>Cronómetro: iniciar o pausar · reiniciar</td></tr>
+      <tr><td>F</td><td>Pantalla completa</td></tr>
+      <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
+    </tbody></table>
+    <p>Un clic = una diapositiva completa: todo entra solo, con su animación.</p>
+    <button class="r-btn r-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
+  </div></section>
+</div>
+
+<script src="../chickenmart-pitch/vendor/gsap.min.js"></script>
+<script>
+(function(){
+"use strict";
+var D=document, H=D.documentElement, g=window.gsap, QUIETO=matchMedia("(prefers-reduced-motion: reduce)").matches, SUAVE=!!g&&!QUIETO;
+var SAFARI=/^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+if(SAFARI||/[?&]plano\b/.test(location.search)) H.classList.add("plano");
+var stage=D.getElementById("stage"), L=[].slice.call(D.querySelectorAll(".lam")), N=L.length, i=-1, tl=null, bucles=[];
+var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D.getElementById("notasC");
+var panel=D.getElementById("panel"), rg=D.getElementById("rg"), vista=D.getElementById("vista");
+var rejilla=D.getElementById("rejilla"), atajos=D.getElementById("atajos"), ayudita=D.getElementById("ayudita"), minis=[], rcs=[];
+var TIT=["¿Qué es?","Los 4 tipos","Ejemplo: cafetería"], DUR=["~1:00","~2:00","~2:00"];
+
+function escala(){
+  var w=vista.clientWidth, h=vista.clientHeight, s=Math.min(w/1920,h/1080);
+  stage.style.transform="translate(-50%,-50%) scale("+s+")";
+}
+addEventListener("resize",escala); escala();
+D.getElementById("app").addEventListener("transitionend",function(){ escala(); reencaja() });
+
+/* miniaturas: copia de cada lámina en su estado final, con HUD */
+function lienzo(n){
+  var c=D.createElement("div"); c.className="lienzo"+(L[n].classList.contains("oscura")?" hud-oscuro":"");
+  var s=L[n].cloneNode(true); s.classList.add("on"); c.appendChild(s);
+  c.appendChild(stage.querySelector(".hud").cloneNode(true));
+  c.querySelector(".pag b").textContent="0"+(n+1);
+  [].slice.call(c.querySelectorAll("[id]")).forEach(function(e){e.removeAttribute("id")});
+  return c;
+}
+L.forEach(function(s,n){
+  var w=D.createElement("div"); w.className="mini";
+  w.innerHTML='<div class="m-num">0'+(n+1)+'</div><div><div class="marco"></div><div class="m-rot"><b>'+TIT[n]+'</b><span>'+DUR[n]+'</span></div></div>';
+  w.querySelector(".marco").appendChild(lienzo(n));
+  w.addEventListener("click",function(){ ir(n) });
+  panel.appendChild(w); minis.push(w);
+  var r=D.createElement("div"); r.className="rc-item";
+  r.innerHTML='<div class="marco"></div><div class="pie2"><span>0'+(n+1)+' · '+TIT[n]+'</span><span>'+DUR[n]+'</span></div>';
+  r.querySelector(".marco").appendChild(lienzo(n));
+  r.addEventListener("click",function(){ cerrar(); ir(n) });
+  rg.appendChild(r); rcs.push(r);
+});
+function reencaja(){
+  [].slice.call(D.querySelectorAll(".marco")).forEach(function(m){ var c=m.querySelector(".lienzo"); if(c&&m.clientWidth) c.style.transform="scale("+(m.clientWidth/1920)+")" });
+}
+addEventListener("resize",reencaja); reencaja();
+
+function guion(){
+  var s=L[i]; notasT.textContent="Guion · "+(i+1)+" de "+N+" · "+TIT[i];
+  notasC.innerHTML=s.dataset.notas.split("|").map(function(p){return "<p>"+p+"</p>"}).join("");
+}
+
+/* contadores: 0 → valor */
+function cuenta(els,t,at){
+  [].forEach.call(els,function(e){ var o={v:0}, fin=+e.dataset.cuenta;
+    t.to(o,{v:fin,duration:1.1,ease:"power2.out",onUpdate:function(){ e.textContent=Math.round(o.v) }},at) });
+}
+
+/* Coreografías: un clic = la escena completa (< 10 s), y luego un bucle ambiental suave */
+function entrar(n){
+  if(!SUAVE) return;
+  var s=L[n], q=function(x){ return s.querySelectorAll(x) };
+  tl=g.timeline({defaults:{ease:"power3.out"}});
+  tl.from(q(".kick"),{x:-40,opacity:0,duration:.5},0)
+    .from(q("h1 .w"),{y:70,opacity:0,rotate:3,duration:.65,stagger:.05},.15);
+  if(n===0){
+    tl.from(q(".datos circle"),{scale:0,opacity:0,transformOrigin:"50% 50%",duration:.6,stagger:{each:.015,from:"random"}},0)
+      .from(q("h2 .w"),{y:30,opacity:0,duration:.45,stagger:.035},.1)
+      .from(q(".q"),{y:90,opacity:0,rotate:-2,duration:.7,stagger:.16,ease:"back.out(1.5)"},1.1)
+      .from(q(".q-n"),{scale:0,duration:.5,stagger:.16,ease:"back.out(2.6)"},1.35)
+      .from(q(".q .dib *"),{strokeDashoffset:1,duration:.9,stagger:.03,ease:"power2.inOut"},1.4)
+      .from(q(".cadena .c"),{y:24,opacity:0,duration:.45,stagger:.22},2.3)
+      .from(q(".cadena .fl"),{x:-24,opacity:0,duration:.35,stagger:.22},2.45)
+      .from(q(".pie"),{opacity:0,duration:.6},2.8);
+    [].forEach.call(q(".datos circle"),function(c){
+      bucles.push(g.to(c,{y:g.utils.random(-40,40),x:g.utils.random(-30,30),duration:g.utils.random(4,8),yoyo:true,repeat:-1,ease:"sine.inOut",delay:1}));
+    });
+    bucles.push(g.to(q(".halo"),{x:-80,y:60,scale:1.12,duration:7,yoyo:true,repeat:-1,ease:"sine.inOut"}));
+    bucles.push(g.to(q(".q"),{y:-8,duration:1.1,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.35,repeat:-1,yoyo:true},delay:3.4}));
+  } else if(n===1){
+    tl.from(q(".cols span"),{y:16,opacity:0,duration:.4,stagger:.08},.5)
+      .from(q(".fila"),{x:-120,opacity:0,duration:.7,stagger:.22},.7)
+      .from(q(".tile"),{scale:0,rotate:-25,duration:.55,stagger:.22,ease:"back.out(2.4)"},.85)
+      .from(q(".fila .dib *"),{strokeDashoffset:1,duration:.9,stagger:.025,ease:"power2.inOut"},1)
+      .from(q(".f-preg"),{x:-30,opacity:0,duration:.5,stagger:.22},1.05)
+      .from(q(".f-hace"),{opacity:0,duration:.6,stagger:.22},1.2)
+      .from(q(".pie"),{opacity:0,duration:.5},2.2);
+    bucles.push(g.to(q(".dib .bar"),{scaleY:.55,duration:.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.2,repeat:-1,yoyo:true},delay:2.8}));
+    bucles.push(g.to(q(".dib .lupa"),{rotate:-12,x:-2,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut",delay:2.8}));
+    bucles.push(g.to(q(".dib .pun"),{strokeDashoffset:-.6,duration:2,repeat:-1,ease:"none",delay:2.8}));
+    bucles.push(g.to(q(".dib .rueda"),{rotate:360,duration:14,repeat:-1,ease:"none",delay:2.8}));
+  } else {
+    tl.from(q(".ficticio"),{scale:.4,opacity:0,rotate:-8,duration:.55,ease:"back.out(2.2)"},.55);
+    [].forEach.call(q(".caso"),function(c,k){
+      var t0=.8+k*1.35, cq=function(x){ return c.querySelectorAll(x) };
+      tl.from(c,{y:80,opacity:0,duration:.6,ease:"back.out(1.4)"},t0)
+        .from(cq("header .dib *"),{strokeDashoffset:1,duration:.7,stagger:.03,ease:"power2.inOut"},t0+.2)
+        .from(cq(".b i"),{scaleX:0,duration:.8,stagger:.15,ease:"power2.out"},t0+.35)
+        .from(cq(".sello"),{scale:0,rotate:-12,duration:.6,ease:"back.out(2.6)"},t0+.7)
+        .from(cq(".checks li"),{x:-24,opacity:0,duration:.4,stagger:.25},t0+.35)
+        .from(cq(".checks path"),{strokeDashoffset:1,duration:.45,stagger:.25},t0+.55)
+        .from(cq(".txt > *"),{y:16,opacity:0,duration:.4,stagger:.07},t0+.3);
+      cuenta(cq("[data-cuenta]"),tl,t0+.35);
+      var p=s.querySelectorAll(".paso")[k];
+      if(p) tl.from(p,{x:-20,opacity:0,duration:.35},t0+1.05);
+    });
+    tl.from(q(".pie"),{opacity:0,duration:.6},6.1);
+    bucles.push(g.to(q(".paso svg"),{x:6,duration:.7,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.25,repeat:-1,yoyo:true},delay:6.5}));
+    bucles.push(g.to(q(".sello"),{scale:1.07,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:6.5}));
+    bucles.push(g.to(q(".b.est i"),{opacity:.55,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:6.5}));
+  }
+}
+
+function ir(n){
+  n=Math.max(0,Math.min(N-1,n)); if(n===i) return;
+  if(tl){tl.progress(1).kill(); tl=null}
+  bucles.forEach(function(b){b.kill()}); bucles=[];
+  /* solo en el escenario: las copias de la cuadrícula no se tocan */
+  if(g) g.set(stage.querySelectorAll(".lam *"),{clearProps:"transform,opacity,strokeDashoffset"});
+  L.forEach(function(s,k){s.classList.toggle("on",k===n)});
+  stage.classList.toggle("hud-oscuro",L[n].classList.contains("oscura"));
+  var vuelta=i; i=n;
+  D.getElementById("pagN").textContent="0"+(n+1);
+  var bar=D.querySelector("#prog i");
+  if(SUAVE) g.to(bar,{width:((n+1)/N*100)+"%",duration:.6,ease:"power2.out"}); else bar.style.width=((n+1)/N*100)+"%";
+  minis.forEach(function(m,k){m.classList.toggle("actual",k===n)});
+  rcs.forEach(function(r,k){r.classList.toggle("actual",k===n)});
+  if(minis[n]) minis[n].scrollIntoView({block:"nearest"});
+  if(vuelta>=0) ayudita.classList.add("mudo");
+  guion(); entrar(n);
+}
+
+/* cronómetro (sin límite fijo: el tiempo de la exposición no está definido) */
+var reloj=D.getElementById("reloj"), t0=0, acum=0, corre=false, tic=null;
+function pinta(){
+  var s=Math.floor((acum+(corre?Date.now()-t0:0))/1000), m=Math.floor(s/60), r=s%60;
+  reloj.textContent=(m<10?"0":"")+m+":"+(r<10?"0":"")+r;
+}
+function cron(){ if(corre){acum+=Date.now()-t0;corre=false;clearInterval(tic)} else {t0=Date.now();corre=true;tic=setInterval(pinta,250)} pinta() }
+function reinicia(){ acum=0; t0=Date.now(); pinta() }
+
+function pantalla(){
+  var el=H, en=D.fullscreenElement||D.webkitFullscreenElement;
+  if(en){(D.exitFullscreen||D.webkitExitFullscreen).call(D)} else if(el.requestFullscreen||el.webkitRequestFullscreen){(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}
+}
+function presentar(){
+  D.body.classList.toggle("presentando"); notasOn(false);
+  var en=D.fullscreenElement||D.webkitFullscreenElement;
+  if(D.body.classList.contains("presentando")&&!en) pantalla();
+  if(!D.body.classList.contains("presentando")&&en) pantalla();
+}
+function notasOn(v){ notas.classList.toggle("on",v); notas.setAttribute("aria-hidden",v?"false":"true"); D.getElementById("bNotas").classList.toggle("activo",v) }
+function abre(el,v){ el.classList.toggle("on",v); el.setAttribute("aria-hidden",v?"false":"true"); if(v) reencaja() }
+function cerrar(){ abre(rejilla,false); abre(atajos,false); notasOn(false) }
+D.getElementById("bRejilla").onclick=function(){ abre(rejilla,!rejilla.classList.contains("on")) };
+D.getElementById("bCerrarRejilla").onclick=function(){ abre(rejilla,false) };
+D.getElementById("bNotas").onclick=function(){ notasOn(!notas.classList.contains("on")) };
+D.getElementById("bAtajos").onclick=function(){ abre(atajos,true) };
+D.getElementById("bCerrarAtajos").onclick=function(){ abre(atajos,false) };
+D.getElementById("bPresentar").onclick=presentar;
+D.addEventListener("fullscreenchange",function(){ if(!(D.fullscreenElement||D.webkitFullscreenElement)) D.body.classList.remove("presentando"); setTimeout(escala,350) });
+
+D.addEventListener("keydown",function(e){
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
+  var k=e.key;
+  if(k==="Escape"){ cerrar(); return }
+  if(rejilla.classList.contains("on")||atajos.classList.contains("on")) return;
+  if(k==="ArrowRight"||k==="ArrowDown"||k===" "||k==="PageDown"){e.preventDefault();ir(i+1)}
+  else if(k==="ArrowLeft"||k==="ArrowUp"||k==="PageUp"){e.preventDefault();ir(i-1)}
+  else if(k==="Home") ir(0); else if(k==="End") ir(N-1);
+  else if(k==="n"||k==="N") notasOn(!notas.classList.contains("on"));
+  else if(k==="o"||k==="O") abre(rejilla,true);
+  else if(k==="?") abre(atajos,true);
+  else if(k==="t"||k==="T") cron(); else if(k==="r"||k==="R") reinicia();
+  else if(k==="f"||k==="F") pantalla();
+  else if(k==="p"||k==="P") presentar();
+});
+/* clic avanza; los enlaces de las fuentes y el guion no */
+vista.addEventListener("click",function(e){ if(e.target.closest("#notas,a")) return; ir(i<N-1?i+1:0) });
+
+/* enlace directo index.html#N; la dirección no se reescribe al avanzar, así que el enlace normal siempre abre en la 1 */
+var h=parseInt((location.hash||"").slice(1),10);
+function arranca(){ ir(h>=1&&h<=N?h-1:0) }
+if(D.fonts&&D.fonts.ready) D.fonts.ready.then(arranca); else arranca();
+})();
+</script>
+</body>
+</html>
