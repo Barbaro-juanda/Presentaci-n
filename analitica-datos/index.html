@@ -110,7 +110,7 @@ h1 .w,h2 .w{display:inline-block}
 
 /* íconos de trazo: se "dibujan" al entrar */
 .dib{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
-.dib *{stroke-dasharray:1;stroke-dashoffset:0}
+.dib *{stroke-dasharray:1}
 .dib .pun{stroke-dasharray:.16 .14}
 .dib .bar,.dib .lupa,.dib .rueda{transform-box:fill-box}
 .dib .bar{transform-origin:50% 100%}
@@ -191,7 +191,7 @@ h1 .w,h2 .w{display:inline-block}
 .checks{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:14px}
 .checks li{display:flex;align-items:center;gap:12px;font:700 20px/1.2 "Inter",sans-serif;color:var(--tinta)}
 .checks svg{width:34px;height:34px;flex:none;border-radius:10px;background:var(--ct);fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;padding:5px}
-.checks svg path{stroke-dasharray:1;stroke-dashoffset:0}
+.checks svg path{stroke-dasharray:1}
 .txt{padding:18px 24px 24px;display:flex;flex-direction:column;flex:1}
 .txt .et{font:700 14px/1 "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ct);margin-top:6px}
 .txt p{margin:8px 0 14px;font:400 25px/1.34 "Inter",sans-serif;color:var(--tinta)}
@@ -277,7 +277,7 @@ h1 .w,h2 .w{display:inline-block}
 .checks{list-style:none;margin:0;padding:0;display:grid;gap:16px}
 .checks li{display:flex;align-items:center;gap:16px;font:700 28px/1.2 "Inter",sans-serif;color:var(--tinta)}
 .checks svg{width:46px;height:46px;flex:none;border-radius:13px;background:var(--ct);fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;padding:7px}
-.checks svg path{stroke-dasharray:1;stroke-dashoffset:0}
+.checks svg path{stroke-dasharray:1}
 .txt-c{margin-top:28px;display:flex;flex-direction:column}
 .txt-c .et{color:var(--ct);margin-bottom:10px}
 .txt-c p{margin:0 0 22px;font:400 30px/1.36 "Inter",sans-serif;color:var(--tinta)}
@@ -402,6 +402,16 @@ h1 .w,h2 .w{display:inline-block}
 .v3 .pasos-c li,.v4 .pasos-c li{padding:8px 12px}
 .v4 .m1{right:auto;left:50%;margin-left:-210px;top:-250px}
 
+
+/* ══ bucles de ambiente (solo transform y opacity) ══ */
+.vb i{position:relative;overflow:hidden}
+.vb i::after{content:"";position:absolute;top:0;bottom:0;left:0;width:38%;background:linear-gradient(90deg,transparent,rgba(255,236,205,.45),transparent);animation:brillo 3.4s linear infinite}
+.vb.est i::after{display:none}
+@keyframes brillo{from{transform:translateX(-130%)}to{transform:translateX(330%)}}
+.mesa::after,.mesa-g::after{content:"";position:absolute;left:0;top:0;bottom:0;width:30%;background:linear-gradient(90deg,transparent,rgba(255,225,180,.12),transparent);animation:luz 9s ease-in-out infinite}
+@keyframes luz{0%{transform:translateX(-100%)}100%{transform:translateX(420%)}}
+.mesa,.mesa-g{overflow:hidden}
+
 /* ── guion, cuadrícula y atajos ── */
 #notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(26,16,11,.97);border-top:3px solid var(--acc);
   color:var(--hueso);padding:26px 96px 32px;transform:translate3d(0,101%,0);transition:transform .32s var(--ease);cursor:auto}
@@ -466,6 +476,9 @@ h1 .w,h2 .w{display:inline-block}
   <ellipse cx="220" cy="150" rx="150" ry="24" fill="#EAD7BF"/>
   <ellipse class="cafe" cx="220" cy="152" rx="134" ry="19" fill="#4A2C1D"/>
   <path class="arte" d="M220 166 C188 153 194 137 208 141 C214 143 218 147 220 150 C222 147 226 143 232 141 C246 137 252 153 220 166 Z" fill="#E7C9A0"/>
+ </g>
+ <g class="chispas" fill="#F0B565">
+  <path d="M30 40l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/><path d="M400 20l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><path d="M425 150l3.5 8 8 3.5-8 3.5-3.5 8-3.5-8-8-3.5 8-3.5z"/><path d="M12 190l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
  </g>
  <g class="vapor" fill="none" stroke="#FFF8EE" stroke-width="9" stroke-linecap="round" opacity=".7">
   <path d="M168 118 C146 90 190 66 168 34 C152 8 184 -12 172 -44" pathLength="1"/>
@@ -555,7 +568,7 @@ h1 .w,h2 .w{display:inline-block}
     <div class="mesa"></div>
     <div class="pie">Fuentes: CareerFoundry, «The 4 Types of Data Analysis» · <a href="https://careerfoundry.com/en/blog/data-analytics/different-types-of-data-analysis/" target="_blank" rel="noopener">careerfoundry.com/en/blog/data-analytics/different-types-of-data-analysis</a><br>KDnuggets, Thomas Maydon (Principa), 13 de julio de 2017 · <a href="https://kdnuggets.com/2017/07/4-types-data-analytics.html" target="_blank" rel="noopener">kdnuggets.com/2017/07/4-types-data-analytics.html</a><span class="ia"><b>Aviso:</b> Recolectamos la información con ChatGPT y la presentación la hicimos con Claude Code.</span></div>
   </section>
-  <div class="hud"><div class="marca"><svg class="cup-s" viewBox="0 0 48 48" aria-hidden="true"><path class="liq" d="M10 21h26c0 9-4 16-13 16S10 30 10 21Z" fill="currentColor"/><path d="M7 18h32c0 11-5 20-16 20S7 29 7 18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M39 21c6-1 7 8 0 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M11 43h24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span>Analítica de datos</span></div><div class="pag"><b id="pagN">01</b> / 05</div></div>
+  <div class="hud"><div class="marca"><svg class="cup-s" viewBox="0 0 48 48" aria-hidden="true"><path class="liq" d="M10 21h26c0 9-4 16-13 16S10 30 10 21Z" fill="currentColor"/><path d="M7 18h32c0 11-5 20-16 20S7 29 7 18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M39 21c6-1 7 8 0 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M11 43h24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path class="vap" d="M17 13c-2.5-3 2.5-4 0-7M24 13c-2.5-3 2.5-4 0-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Analítica de datos</span></div><div class="pag"><b id="pagN">01</b> / 05</div></div>
   <div id="ayudita">Clic o → para avanzar</div>
   <div id="prog"><i></i></div>
   <section id="notas" aria-hidden="true"><div class="cab" id="notasT"></div><div id="notasC"></div></section>
@@ -651,19 +664,23 @@ function entrar(n){
   function ambiente(d){
     bucles.push(g.to(q(".dib .bar"),{scaleY:.55,duration:.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.2,repeat:-1,yoyo:true},delay:d}));
     bucles.push(g.to(q(".dib .lupa"),{rotate:-12,x:-2,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut",delay:d}));
-    bucles.push(g.to(q(".dib .pun"),{strokeDashoffset:-.6,duration:2,repeat:-1,ease:"none",delay:d}));
+    bucles.push(g.fromTo(q(".dib .pun"),{attr:{"stroke-dashoffset":0}},{attr:{"stroke-dashoffset":-.6},duration:2,repeat:-1,ease:"none",delay:d}));
     bucles.push(g.to(q(".dib .rueda"),{rotate:360,duration:14,repeat:-1,ease:"none",delay:d}));
   }
   function granos(){
-    [].forEach.call(q(".grano"),function(c){
-      bucles.push(g.to(c,{y:g.utils.random(-34,34),x:g.utils.random(-26,26),rotation:g.utils.random(-40,40),duration:g.utils.random(4,8),yoyo:true,repeat:-1,ease:"sine.inOut",delay:1,transformOrigin:"50% 50%"}));
+    [].forEach.call(q(".grano"),function(c,i){
+      if(i%3===0){   /* lluvia de granos: caen, giran y vuelven a empezar */
+        bucles.push(g.fromTo(c,{y:-260,rotation:0},{y:1300,rotation:g.utils.random(-300,300),duration:g.utils.random(9,16),repeat:-1,ease:"none",delay:g.utils.random(0,8),transformOrigin:"50% 50%"}));
+      } else {
+        bucles.push(g.to(c,{y:g.utils.random(-34,34),x:g.utils.random(-26,26),rotation:g.utils.random(-40,40),duration:g.utils.random(4,8),yoyo:true,repeat:-1,ease:"sine.inOut",delay:1,transformOrigin:"50% 50%"}));
+      }
     });
   }
   /* vapor que sube de las tazas */
   function vapor(sel,d){
     [].forEach.call(q(sel),function(p,i){
       g.set(p,{strokeDasharray:"0.42 0.58"});
-      bucles.push(g.fromTo(p,{strokeDashoffset:0.2},{strokeDashoffset:-0.8,duration:2.6+i*.4,repeat:-1,ease:"none",delay:d+i*.3}));
+      bucles.push(g.fromTo(p,{attr:{"stroke-dashoffset":0.2}},{attr:{"stroke-dashoffset":-0.8},duration:2.6+i*.4,repeat:-1,ease:"none",delay:d+i*.3}));
     });
   }
   if(k==="portada"){
@@ -677,7 +694,7 @@ function entrar(n){
       .from(q(".vapor path"),{opacity:0,y:20,duration:.9,stagger:.2},2.1)
       .from(q(".port-sub"),{y:30,opacity:0,duration:.6},1)
       .from(q(".pi"),{y:40,opacity:0,scale:.8,duration:.55,stagger:.14,ease:"back.out(2)"},1.3)
-      .from(q(".pi .dib *"),{strokeDashoffset:1,duration:.8,stagger:.02,ease:"power2.inOut"},1.5)
+      .fromTo(q(".pi .dib *"),{attr:{"stroke-dashoffset":1}},{attr:{"stroke-dashoffset":0},duration:.8,stagger:.02,ease:"power2.inOut"},1.5)
       .from(q(".equipo .et"),{opacity:0,duration:.4},2.1)
       .from(q(".equipo li"),{x:-30,opacity:0,duration:.45,stagger:.12},2.2)
       .from(q(".aviso"),{y:50,opacity:0,duration:.7,ease:"back.out(1.6)"},2.5);
@@ -685,12 +702,21 @@ function entrar(n){
     bucles.push(g.to(q(".taza"),{y:-5,duration:1.6,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3}));
     bucles.push(g.to(q(".halo"),{x:-80,y:60,scale:1.12,duration:7,yoyo:true,repeat:-1,ease:"sine.inOut"}));
     bucles.push(g.to(q(".pi"),{y:-6,duration:1.2,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.3,repeat:-1,yoyo:true},delay:3.2}));
+    /* más movimiento en bucle: destellos, latido del arte latte, ondas del café, platillo y aviso */
+    bucles.push(g.fromTo(q(".chispas path"),{scale:.2,opacity:0,transformOrigin:"50% 50%"},{scale:1,opacity:1,duration:1.1,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.45,repeat:-1,yoyo:true},delay:3}));
+    bucles.push(g.to(q(".arte"),{scale:1.14,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",transformOrigin:"50% 50%",delay:3}));
+    bucles.push(g.to(q(".cafe"),{scaleX:.97,scaleY:1.12,duration:1.8,yoyo:true,repeat:-1,ease:"sine.inOut",transformOrigin:"50% 50%",delay:3}));
+    bucles.push(g.to(q(".platillo"),{scaleX:1.015,duration:2.4,yoyo:true,repeat:-1,ease:"sine.inOut",transformOrigin:"50% 50%",delay:3}));
+    bucles.push(g.to(q(".sombra"),{scaleX:.94,opacity:.2,duration:1.6,yoyo:true,repeat:-1,ease:"sine.inOut",transformOrigin:"50% 50%",delay:3}));
+    bucles.push(g.to(q(".aviso"),{scale:1.018,duration:1.6,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.4}));
+    bucles.push(g.to(q(".port-t em"),{y:-5,duration:1.4,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.15,repeat:-1,yoyo:true},delay:3.2}));
+    bucles.push(g.to(q(".equipo li"),{x:6,duration:1.3,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.25,repeat:-1,yoyo:true},delay:3.6}));
   } else {
     tl.from(q(".mesa"),{y:110,duration:.7,ease:"power3.out"},0)
       .from(q(".mancha"),{scale:.4,opacity:0,duration:.9,stagger:.15,ease:"back.out(1.4)"},0)
       .from(q(".grano"),{scale:0,opacity:0,transformOrigin:"50% 50%",duration:.5,stagger:{each:.03,from:"random"}},.2)
       .from(q(".tile.big"),{scale:0,rotate:-30,duration:.7,ease:"back.out(2.2)"},.1)
-      .from(q(".tile.big .dib *"),{strokeDashoffset:1,duration:1,stagger:.03,ease:"power2.inOut"},.35)
+      .fromTo(q(".tile.big .dib *"),{attr:{"stroke-dashoffset":1}},{attr:{"stroke-dashoffset":0},duration:1,stagger:.03,ease:"power2.inOut"},.35)
       .from(q(".izq .bloque"),s.classList.contains("v2")?{x:60,opacity:0,duration:.55,stagger:.2}:s.classList.contains("v4")?{scale:.85,opacity:0,duration:.6,stagger:.2,ease:"back.out(1.6)"}:{y:40,opacity:0,duration:.55,stagger:.2},.7)
       .from(q(".term"),{x:-50,opacity:0,duration:.55,stagger:.18},1.2)
       .from(q(".caso-c"),s.classList.contains("v2")?{x:-140,opacity:0,duration:.8,ease:"power3.out"}:s.classList.contains("v3")?{y:150,opacity:0,duration:.8,ease:"power3.out"}:s.classList.contains("v4")?{y:90,scale:.9,opacity:0,duration:.9,ease:"back.out(1.4)"}:{x:120,opacity:0,duration:.8,ease:"power3.out"},.5)
@@ -703,7 +729,7 @@ function entrar(n){
       .from(q(".vb small"),{opacity:0,duration:.4},2.6)
       .from(q(".sello"),{scale:0,rotate:-14,duration:.6,ease:"back.out(2.6)"},2.5)
       .from(q(".checks li"),{x:-30,opacity:0,duration:.45,stagger:.3},2.3)
-      .from(q(".checks path"),{strokeDashoffset:1,duration:.45,stagger:.3},2.5)
+      .fromTo(q(".checks path"),{attr:{"stroke-dashoffset":1}},{attr:{"stroke-dashoffset":0},duration:.45,stagger:.3},2.5)
       .from(q(".txt-c > *"),{y:18,opacity:0,duration:.45,stagger:.12},2.7)
       .from(q(".pie"),{opacity:0,duration:.5},3.4);
     cuenta(q("[data-cuenta]"),tl,1.8);
@@ -711,16 +737,28 @@ function entrar(n){
     bucles.push(g.to(q(".pasos-c li.ahora"),{scale:1.04,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
     bucles.push(g.to(q(".mancha"),{scale:1.05,duration:4,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:.8}));
     bucles.push(g.to(q(".vb.est i"),{opacity:.6,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
-    bucles.push(g.to(q(".sello"),{scale:1.06,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
+    bucles.push(g.to(q(".sello"),{scale:1.06,rotate:-3,duration:.9,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
+    /* más movimiento en bucle: tazas que brindan, íconos que respiran, números y checks que laten */
+    bucles.push(g.to(q(".pasos-c li.hecho .cup-s"),{rotate:-14,duration:.6,yoyo:true,repeat:-1,repeatDelay:1.4,ease:"sine.inOut",transformOrigin:"50% 90%",stagger:.35,delay:3.8}));
+    bucles.push(g.to(q(".pasos-c li.pend .cup-s"),{y:-3,duration:1.1,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:.3,delay:3.6}));
+    bucles.push(g.to(q(".tile.big"),{scale:1.06,rotate:3,duration:1.8,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
+    bucles.push(g.to(q(".nom h1"),{y:-5,duration:2.2,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
+    bucles.push(g.to(q(".vb b"),{scale:1.08,duration:.8,yoyo:true,repeat:-1,repeatDelay:1.2,ease:"sine.inOut",transformOrigin:"100% 50%",stagger:.4,delay:4}));
+    bucles.push(g.to(q(".checks svg"),{scale:1.18,duration:.5,yoyo:true,repeat:-1,repeatDelay:1.6,ease:"sine.inOut",stagger:.6,delay:4}));
+    bucles.push(g.to(q(".ficticio"),{rotate:2,scale:1.04,duration:1.6,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.6}));
+    bucles.push(g.to(q(".term"),{x:5,duration:1.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:.5,delay:3.8}));
+    bucles.push(g.to(q(".caso-c"),{y:-5,duration:2.6,yoyo:true,repeat:-1,ease:"sine.inOut",delay:3.8}));
   }
 }
 
+/* la tacita del encabezado echa vapor siempre */
+if(SUAVE){ [].forEach.call(D.querySelectorAll("#stage .hud .vap"),function(p){ p.setAttribute("pathLength","1"); g.set(p,{strokeDasharray:"0.45 0.55"}); g.fromTo(p,{attr:{"stroke-dashoffset":0.3}},{attr:{"stroke-dashoffset":-.7},duration:1.8,repeat:-1,ease:"none"}) }) }
 function ir(n){
   n=Math.max(0,Math.min(N-1,n)); if(n===i) return;
   if(tl){tl.progress(1).kill(); tl=null}
   bucles.forEach(function(b){b.kill()}); bucles=[];
   /* solo en el escenario: las copias de la cuadrícula no se tocan */
-  if(g) g.set(stage.querySelectorAll(".lam *"),{clearProps:"transform,opacity,strokeDashoffset"});
+  if(g) g.set(stage.querySelectorAll(".lam *"),{clearProps:"transform,opacity,strokeDashoffset"}); [].forEach.call(stage.querySelectorAll(".lam .dib *, .lam .checks path"),function(e){ e.removeAttribute("stroke-dashoffset") });
   L.forEach(function(s,k){s.classList.toggle("on",k===n)});
   stage.classList.toggle("hud-oscuro",L[n].classList.contains("oscura"));
   var vuelta=i; i=n;
