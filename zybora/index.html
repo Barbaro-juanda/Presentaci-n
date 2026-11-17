@@ -134,8 +134,8 @@ p{margin:0}
 /* 9 · solución */
 .menu{margin-top:32px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;width:1060px}
 .pbtn{display:flex;align-items:center;gap:20px;text-align:left;background:#FFF9F3;border:0;border-radius:30px;padding:20px 26px;cursor:pointer;color:var(--tinta);
-  box-shadow:0 22px 44px -32px rgba(58,10,18,.6),0 0 0 1px rgba(58,10,18,.08);transition:transform .25s,box-shadow .25s}
-.pbtn:hover{transform:translateY(-4px);box-shadow:0 26px 50px -28px rgba(58,10,18,.7),0 0 0 3px var(--acc)}
+  box-shadow:0 22px 44px -32px rgba(58,10,18,.6),0 0 0 1px rgba(58,10,18,.08);transition:box-shadow .25s}
+.pbtn:hover{box-shadow:0 26px 50px -28px rgba(58,10,18,.7),0 0 0 3px var(--acc)}
 .pbtn i{width:46px;height:66px;border-radius:16px;flex:none;box-shadow:inset -8px 0 0 rgba(58,10,18,.12)}
 .pbtn b{display:block;font:600 31px/1.1 var(--disp);font-variation-settings:"SOFT" 100,"WONK" 1}
 .pbtn small{display:block;font:500 23px/1.25 var(--body);color:var(--gris);margin-top:4px}
@@ -249,6 +249,17 @@ html.plano .glass::after{display:none}
 .st.s1,.st.s6{color:#B4284A}
 .l-pest .card,.l-w .card{min-height:250px;padding:30px 38px}
 .l-pest .grid3,.l-w .grid4{margin-top:30px}
+
+.pbtn i{width:104px;height:104px;border-radius:26px;background:linear-gradient(160deg,#FFF3E0,#FADBD3)!important;display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 0 0 2px rgba(180,71,30,.15)!important}
+.pbtn i img{max-width:88%;max-height:88%;object-fit:contain;filter:drop-shadow(0 6px 6px rgba(58,10,18,.3))}
+.pbtn .mk{display:block;font:700 17px/1.2 var(--mono,monospace);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--acct);margin-top:6px}
+.pbtn b{font-size:34px}
+.pbtn{padding:20px 26px}
+
+.prod{transform-style:preserve-3d}
+.ps{position:absolute;left:0;top:0;width:100%;height:100%;background-size:contain;background-position:center;background-repeat:no-repeat;backface-visibility:visible;-webkit-backface-visibility:visible}
+html.plano .ps:not(.fr){display:none}
+html.plano .prod{transform-style:flat}
 
 /* ── portal · el mismo de todas las presentaciones: barra, miniaturas y escenario ── */
 :root{--chrome:#1A100B;--chrome2:#24160F;--hueso:#F7ECDD;--borde:rgba(247,236,221,.13);--apagado:rgba(247,236,221,.55);
@@ -495,19 +506,18 @@ h1 .w,h2 .w{display:inline-block}
   </section>
 
   <!-- ══════════ 9 · LA SOLUCIÓN ══════════ -->
-  <section class="lam oscura l-sol" data-k="solucion" data-notas="Tiempo sugerido ~2:00|Momento de mostrar la solución. Hagan clic en cada producto de la lista y vean cómo cae a la bandeja de la máquina.|Expliquen que el surtido es una idea inicial y se ajustará con entrevistas y encuestas.|RELEVO → Cerremos con la idea principal.">
+  <section class="lam oscura l-sol" data-k="solucion" data-notas="Tiempo sugerido ~2:00|Momento de mostrar la solución. Hagan clic en cada producto de la lista (desodorante, protector solar, gel hidratante, sérum y limpiador) y vean cómo cae a la bandeja de la máquina.|Expliquen que el surtido es una idea inicial y se ajustará con entrevistas y encuestas.|RELEVO → Cerremos con la idea principal.">
     <p class="eyebrow">Nuestra solución</p>
     <h2 class="zt"><span class="w">Mini</span> <span class="w">vending</span> <em class="w">de</em> <em class="w">emergencia</em></h2>
     <p class="sub">Haz clic en un producto y míralo caer en la bandeja.</p>
     <div class="menu" id="menu">
-      <button class="pbtn" data-i="0"><i style="--c:#F2A7BC"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Limpiador facial</b><small>Después del gimnasio</small></span></button>
-      <button class="pbtn" data-i="1"><i style="--c:#D9A5F5"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Tónico</b><small>Antes de una cita</small></span></button>
-      <button class="pbtn" data-i="2"><i style="--c:#F7C873"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Sérum</b><small>Skincare en formato mini</small></span></button>
-      <button class="pbtn" data-i="3"><i style="--c:#FADBD3"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Hidratante</b><small>Se quedó en casa</small></span></button>
-      <button class="pbtn" data-i="4"><i style="--c:#C9622F"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Protector solar</b><small>Entre clases</small></span></button>
-      <button class="pbtn" data-i="5"><i style="--c:#E8793F"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Desodorante</b><small>La emergencia más común</small></span></button>
+      <button class="pbtn" data-i="0"><i><img src="media/desodorante.webp" alt="Desodorante" draggable="false"></i><span><b>Desodorante</b><small>La emergencia más común</small><em class="mk">Rexona Powder Dry</em></span></button>
+      <button class="pbtn" data-i="1"><i><img src="media/protector.webp" alt="Protector solar" draggable="false"></i><span><b>Protector solar</b><small>Entre clases</small><em class="mk">La Roche-Posay Anthelios</em></span></button>
+      <button class="pbtn" data-i="2"><i><img src="media/hidratante.webp" alt="Gel hidratante facial" draggable="false"></i><span><b>Gel hidratante facial</b><small>Se quedó en casa</small><em class="mk">Neutrogena Hydro Boost</em></span></button>
+      <button class="pbtn" data-i="3"><i><img src="media/serum.webp" alt="Sérum facial" draggable="false"></i><span><b>Sérum facial</b><small>Skincare en formato mini</small><em class="mk">La Roche-Posay Effaclar</em></span></button>
+      <button class="pbtn" data-i="4"><i><img src="media/limpiador.webp" alt="Limpiador facial" draggable="false"></i><span><b>Limpiador facial</b><small>Después del gimnasio</small><em class="mk">CeraVe Gel Limpiador Espumoso</em></span></button>
     </div>
-    <p class="foot"><b>Nota</b>Surtido ilustrativo; se definirá con entrevistas y encuestas</p>
+    <p class="foot"><b>Nota</b>Surtido ilustrativo con productos de referencia; se definirá con entrevistas y encuestas</p>
   </section>
 
   <!-- ══════════ 10 · CIERRE ══════════ -->
@@ -657,20 +667,37 @@ plane({w:254,h:220,x:-29,y:-280,z:0,rx:-90,bg:"#FFF1E4",cls:"h3d"});
 plane({w:254,h:200,x:-29,y:-70,z:-5,rx:90,bg:"#FFFFFF",cls:"both h3d"});
 plane({w:254,h:200,x:-29,y:150,z:-5,rx:90,bg:"#FFFFFF",cls:"both h3d"});
 var P=[
-  {c:"#F2A7BC",w:62,h:112,x:-109,b:-70},{c:"#D9A5F5",w:58,h:98,x:-29,b:-70},{c:"#F7C873",w:50,h:86,x:51,b:-70},
-  {c:"#FADBD3",w:70,h:72,x:-109,b:150},{c:"#C9622F",w:60,h:112,x:-29,b:150},{c:"#E8793F",w:54,h:100,x:51,b:150}
+  {img:"desodorante",w:60,h:150,d:46,x:-106,b:-70},{img:"protector",w:65,h:150,d:30,x:-42,b:-70},{img:"serum",w:44,h:145,d:40,x:20,b:-70},
+  {img:"hidratante",w:134,h:90,d:72,x:-4,b:150},{img:"limpiador",w:68,h:166,d:38,x:-110,b:150}
 ];
-P.forEach(function(p){ p.y=p.b-p.h/2; p.z=-30; p.el=plane({w:p.w,h:p.h,x:p.x,y:p.y,z:p.z,bg:"linear-gradient(90deg,"+p.c+" 0,"+p.c+" 55%,rgba(58,10,18,.18))",cls:"bot both"}); p.busy=false; });
+var SL=14;
+/* producto 3D: la foto recortada se extruye en capas con profundidad, con caras más oscuras hacia atrás */
+function slices(el,p){
+  for(var k=0;k<SL;k++){
+    var t=k/(SL-1), s=D.createElement("div");
+    s.className="ps"+(k===SL-1?" fr":"");
+    s.style.backgroundImage="url(media/"+p.img+".webp)";
+    s.style.transform="translateZ("+((t-.5)*p.d).toFixed(2)+"px) scale("+(.92+.08*t).toFixed(3)+")";
+    if(k<SL-1) s.style.filter="brightness("+(.38+.4*t).toFixed(2)+")";
+    el.appendChild(s);
+  }
+}
+function pose(p,ry){ return "translate3d("+p.x+"px,"+p.y+"px,"+p.z+"px) rotateY("+ry+"deg)" }
+P.forEach(function(p,i){
+  p.y=p.b-p.h/2; p.z=-30;
+  plane({w:p.w*1.5,h:p.d*1.6,x:p.x,y:p.b+1,z:p.z,rx:90,bg:"radial-gradient(ellipse at 50% 50%,rgba(58,10,18,.5),rgba(58,10,18,0) 68%)",cls:"both h3d"});
+  p.el=plane({w:p.w,h:p.h,x:p.x,y:p.y,z:p.z,cls:"prod both"}); slices(p.el,p); p.busy=false;
+  if(!QUIETO&&!PLANO) p.el.animate([{transform:pose(p,-20)},{transform:pose(p,20)}],{duration:4200+i*700,delay:-i*900,direction:"alternate",iterations:Infinity,easing:"ease-in-out"});
+});
 plane({w:254,h:440,x:-29,y:-60,z:FZ-4,cls:"glass both"});
 var trayY=232;
 function drop(i){
   var p=P[i]; if(!p||p.busy) return; p.busy=true;
   var g2=p.el.cloneNode(true); cab.appendChild(g2);
   var endX=-29+(p.x+29)*0.35;
-  var from="translate3d("+p.x+"px,"+p.y+"px,"+p.z+"px) rotateZ(0deg)";
-  var to="translate3d("+endX+"px,"+(trayY-p.h/2+34)+"px,70px) rotateZ("+(i%2?-10:10)+"deg)";
-  var a=g2.animate([{transform:from},{transform:to}],{duration:QUIETO?10:1000,easing:"cubic-bezier(.55,.05,.85,.5)",fill:"forwards"});
-  p.el.animate([{opacity:1},{opacity:.1,offset:.08},{opacity:.1,offset:.88},{opacity:1}],{duration:QUIETO?10:3400});
+  var to="translate3d("+endX+"px,"+(trayY-p.h/2+34)+"px,70px) rotateZ("+(i%2?-12:12)+"deg) rotateX(-10deg) rotateY(540deg)";
+  var a=g2.animate([{transform:pose(p,0)},{transform:to}],{duration:QUIETO?10:1100,easing:"cubic-bezier(.55,.05,.85,.5)",fill:"forwards"});
+  p.el.animate([{visibility:"hidden"},{visibility:"hidden"}],{duration:QUIETO?10:3400});
   a.onfinish=function(){
     var f=g2.animate([{opacity:1},{opacity:0}],{duration:500,delay:1500,fill:"forwards"});
     f.onfinish=function(){ g2.remove(); p.busy=false };
@@ -709,7 +736,7 @@ function entrar(n){
   if(q(".ichip").length){ tl.from(q(".ichip:not(.st)"),{scale:0,rotate:-40,duration:.5,stagger:.08,ease:"back.out(2.6)"},1.1); B(g.to(q(".ichip:not(.st)"),{y:-4,duration:1.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.25,repeat:-1,yoyo:true},delay:3.2})) }
   if(q(".ghost").length){ tl.from(q(".ghost"),{scale:.5,opacity:0,rotate:-20,duration:1,stagger:.1},.9); B(g.to(q(".ghost"),{rotation:7,duration:5,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:.5,delay:2})) }
   if(q(".gl").length){ tl.from(q(".gl"),{y:40,opacity:0,duration:.9,stagger:.1},1) }
-  if(q(".pbtn svg").length){ B(g.to(q(".pbtn svg"),{rotation:8,transformOrigin:"50% 80%",duration:1.3,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.2,repeat:-1,yoyo:true},delay:2.4})) }
+  if(q(".pbtn i img").length){ B(g.to(q(".pbtn i img"),{rotation:8,transformOrigin:"50% 80%",duration:1.3,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.2,repeat:-1,yoyo:true},delay:2.4})) }
   if(q(".st").length){ tl.from(q(".st"),{y:90,scale:0,rotate:-60,duration:.7,stagger:.1,ease:"back.out(2)"},1.8); B(g.to(q(".st"),{y:-14,rotation:"+=6",duration:2.2,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.3,repeat:-1,yoyo:true},delay:3.2})) }
   B(g.to(q(".blob"),{x:-60,y:40,scale:1.08,duration:9,yoyo:true,repeat:-1,ease:"sine.inOut"}));
   if(k==="portada"){
