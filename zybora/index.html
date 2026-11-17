@@ -669,11 +669,11 @@ plane({w:254,h:440,x:-29,y:-60,z:-110,bg:INNER,cls:"h3d"});
 plane({w:220,h:440,x:-156,y:-60,z:0,ry:90,bg:"#F6DCC9",cls:"h3d"});
 plane({w:220,h:440,x:98,y:-60,z:0,ry:-90,bg:"#F0CFBA",cls:"h3d"});
 plane({w:254,h:220,x:-29,y:-280,z:0,rx:-90,bg:"#FFF1E4",cls:"h3d"});
-plane({w:254,h:200,x:-29,y:-70,z:-5,rx:90,bg:"#FFFFFF",cls:"both h3d"});
-plane({w:254,h:200,x:-29,y:150,z:-5,rx:90,bg:"#FFFFFF",cls:"both h3d"});
+plane({w:254,h:150,x:-29,y:-70,z:-35,rx:90,bg:"#FFFFFF",cls:"both h3d"});
+plane({w:254,h:150,x:-29,y:150,z:-35,rx:90,bg:"#FFFFFF",cls:"both h3d"});
 var P=[
-  {img:"desodorante",w:60,h:150,d:46,x:-106,b:-70},{img:"protector",w:65,h:150,d:30,x:-42,b:-70},{img:"serum",w:44,h:145,d:40,x:20,b:-70},
-  {img:"hidratante",w:134,h:90,d:72,x:-4,b:150},{img:"limpiador",w:68,h:166,d:38,x:-110,b:150}
+  {img:"desodorante",w:60,h:150,d:46,x:-106,b:-70},{img:"protector",w:65,h:150,d:30,x:-42,b:-70},{img:"hidratante",w:134,h:90,d:72,x:-4,b:150},
+  {img:"serum",w:44,h:145,d:40,x:20,b:-70},{img:"limpiador",w:68,h:166,d:38,x:-110,b:150}
 ];
 var SL=14;
 /* producto 3D: la foto recortada se extruye en capas con profundidad, con caras más oscuras hacia atrás */
@@ -695,14 +695,37 @@ P.forEach(function(p,i){
   if(!QUIETO&&!PLANO) p.el.animate([{transform:pose(p,-20)},{transform:pose(p,20)}],{duration:4200+i*700,delay:-i*900,direction:"alternate",iterations:Infinity,easing:"ease-in-out"});
 });
 plane({w:254,h:440,x:-29,y:-60,z:FZ-4,cls:"glass both"});
-var trayY=232;
+function tf(x,y,z,rx,ry,rz){ return "translate3d("+x.toFixed(1)+"px,"+y.toFixed(1)+"px,"+z.toFixed(1)+"px) rotateY("+ry.toFixed(1)+"deg) rotateX("+rx.toFixed(1)+"deg) rotateZ("+rz.toFixed(1)+"deg)" }
+function lerp(a,b,s){ return a+(b-a)*s }
+/* caída con física: empuja, sale del estante, cae con gravedad, rebota dos veces y se asienta */
 function drop(i){
   var p=P[i]; if(!p||p.busy) return; p.busy=true;
   var g2=p.el.cloneNode(true); cab.appendChild(g2);
-  var endX=-29+(p.x+29)*0.35;
-  var to="translate3d("+endX+"px,"+(trayY-p.h/2+34)+"px,70px) rotateZ("+(i%2?-12:12)+"deg) rotateX(-10deg) rotateY(540deg)";
-  var a=g2.animate([{transform:pose(p,0)},{transform:to}],{duration:QUIETO?10:1100,easing:"cubic-bezier(.55,.05,.85,.5)",fill:"forwards"});
-  p.el.animate([{visibility:"hidden"},{visibility:"hidden"}],{duration:QUIETO?10:3400});
+  var sg=i%2?-1:1, endX=-29+(p.x+29)*0.35, yEnd=266-p.h/2, zf=40+p.d/2+2, G=2500, F=[];
+  var add=function(t,x,y,z,rx,ry,rz){ F.push({t:t,f:tf(x,y,z,rx,ry,rz)}) };
+  var fin=[endX,yEnd,70,0,sg*14,sg*7];
+  if(QUIETO){ add(0,p.x,p.y,p.z,0,0,0); add(10,fin[0],fin[1],fin[2],fin[3],fin[4],fin[5]) }
+  else {
+    add(0,p.x,p.y,p.z,0,0,0);
+    add(110,p.x,p.y-3,p.z+10,2,0,-sg*2.5);
+    add(220,p.x,p.y,p.z+22,-3,0,sg*2.5);
+    add(330,p.x,p.y-1,zf-10,-6,0,-sg*1.5);
+    add(420,p.x,p.y,zf,-9,0,0);
+    var D=yEnd-p.y, T=Math.sqrt(2*D/G)*1000, n=Math.max(8,Math.round(T/40)), k, u, s;
+    for(k=1;k<=n;k++){ u=k/n; var tt=u*T/1000, e=u*u*(3-2*u);
+      add(420+u*T, lerp(p.x,endX,e), p.y+.5*G*tt*tt, lerp(zf,70,u), -9-24*Math.pow(u,1.4), sg*12*u, sg*14*u) }
+    var t0=420+T, v=G*T/1000, e1=.32, e2=.14;
+    var d1=2*e1*v/G*1000, h1=v*v*e1*e1/(2*G);
+    for(k=1;k<=10;k++){ s=k/10; add(t0+s*d1, endX, yEnd-4*h1*s*(1-s), 70, lerp(-33,-12,s), sg*lerp(12,14,s), sg*lerp(14,9,s)) }
+    var t1=t0+d1, d2=2*e2*e1*v/G*1000, h2=v*v*e1*e1*e2*e2/(2*G);
+    for(k=1;k<=8;k++){ s=k/8; add(t1+s*d2, endX, yEnd-4*h2*s*(1-s), 70, lerp(-12,-3,s), sg*lerp(14,14,s), sg*lerp(9,6,s)) }
+    var t2=t1+d2;
+    add(t2+120,endX,yEnd,70,1.5,sg*14,sg*7.5);
+    add(t2+260,fin[0],fin[1],fin[2],fin[3],fin[4],fin[5]);
+  }
+  var total=F[F.length-1].t;
+  var a=g2.animate(F.map(function(o){ return {transform:o.f,offset:o.t/total} }),{duration:total,easing:"linear",fill:"forwards"});
+  p.el.animate([{visibility:"hidden"},{visibility:"hidden"}],{duration:total+1900});
   a.onfinish=function(){
     var f=g2.animate([{opacity:1},{opacity:0}],{duration:500,delay:1500,fill:"forwards"});
     f.onfinish=function(){ g2.remove(); p.busy=false };
