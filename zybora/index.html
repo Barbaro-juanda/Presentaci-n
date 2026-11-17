@@ -194,6 +194,62 @@ html.plano .pl.h3d{display:none}
 html.plano .glass::after{display:none}
 @media (prefers-reduced-motion:reduce){.float,.scr b,.nfc,.glass::after,.rot-txt .giro{animation:none}}
 
+/* ── iconos ── */
+.ic{width:1em;height:1em;display:block}
+.ichip{display:grid;place-items:center;border-radius:50%;background:#fff;color:var(--acct);box-shadow:0 12px 24px -14px rgba(58,10,18,.65),inset 0 0 0 3px rgba(180,71,30,.16);flex:none}
+.ichip svg{width:56%;height:56%}
+.ichip.sm{width:56px;height:56px}.ichip.lg{width:96px;height:96px}
+.trow{display:flex;align-items:center;gap:16px}
+.ghost{position:absolute;right:-24px;bottom:-30px;width:230px;height:230px;opacity:.13;color:var(--tinta);stroke-width:1.4;pointer-events:none;z-index:0}
+.card>*,.col>*{position:relative;z-index:1}
+.card>.ghost,.col>.ghost{position:absolute;z-index:0}
+.core .core-ic{position:absolute;right:44px;top:50%;margin-top:-48px;background:rgba(255,255,255,.16);color:#FFD9C2;box-shadow:inset 0 0 0 3px rgba(255,217,194,.4)}
+.core{padding-right:190px}
+.col .col-ic{position:absolute;right:30px;top:30px;z-index:2}
+.col .head{padding-right:104px}
+.avatar svg{width:58%;height:58%;stroke:#fff}
+.badge svg{width:60%;height:60%}
+.gl{position:absolute;right:20px;bottom:-34px;font:italic 400 170px/1 var(--disp);font-variation-settings:"SOFT" 100,"WONK" 1;opacity:.12;color:var(--tinta);pointer-events:none;z-index:0}
+.card li.i{padding-left:46px}
+.card li.i::before{display:none}
+.li-ic{position:absolute;left:0;top:.12em;width:32px;height:32px}
+.li-ic.ok{color:#2F8A57}.li-ic.no{color:#B4471E}
+.pbtn i{background:none!important;box-shadow:none!important;width:58px;height:78px}
+.pbtn i svg{width:100%;height:100%;filter:drop-shadow(0 8px 8px rgba(0,0,0,.3))}
+.stat .st-ic{background:rgba(255,255,255,.16);color:#FFE5D4;box-shadow:inset 0 0 0 3px rgba(255,229,212,.35);margin-bottom:14px}
+.stickers{position:absolute;left:110px;top:790px;display:flex;gap:26px;z-index:2}
+.stickers .st{width:108px;height:108px;box-shadow:0 18px 30px -16px rgba(58,10,18,.7)}
+.st.s1{--bg:#FADBD3;transform:rotate(-8deg)}.st.s2{--bg:#FFD2B8;color:#B4471E;transform:rotate(6deg)}.st.s3{--bg:#EBD2FB;color:#8A3FB8;transform:rotate(-4deg)}
+.st.s4{--bg:#FFF3E0;color:#2F7A52;transform:rotate(8deg)}.st.s5{--bg:#F2B3C7;color:#8F1D2C;transform:rotate(-6deg)}.st.s6{--bg:#fff;transform:rotate(5deg)}
+.stickers .st svg{width:54%;height:54%;stroke-width:1.7}
+.stickers .st{width:120px;height:120px}
+.stickers{top:770px}
+
+/* ── más presencia ── */
+.ichip{background:linear-gradient(145deg,#F08A4B,#B4284A);color:#fff;box-shadow:0 14px 26px -12px rgba(120,20,40,.7),inset 0 0 0 3px rgba(255,255,255,.28)}
+.ichip.sm{width:72px;height:72px}.ichip.lg{width:120px;height:120px}
+.ichip svg{width:54%;height:54%;stroke-width:1.9}
+.core .core-ic{margin-top:-60px;background:rgba(255,255,255,.2);color:#fff}
+.col .col-ic{right:28px;top:26px}.col .head{padding-right:140px}
+.stat .st-ic{background:rgba(255,255,255,.2)}
+.stickers .st{background:var(--bg)!important}
+.avatar{width:116px;height:116px}
+.badge{width:88px;height:88px;background:linear-gradient(145deg,#F08A4B,#B4284A);color:#fff;box-shadow:0 12px 22px -12px rgba(120,20,40,.7),inset 0 0 0 3px rgba(255,255,255,.28)}
+.card:has(.badge) .head{gap:20px}
+.card:has(.badge) h3{font-size:38px}
+.ghost{width:300px;height:300px;right:-30px;bottom:-50px;opacity:.15}
+.l-pers .card,.l-exp .card{min-height:460px;padding:38px 38px}.l-pers .card li,.l-exp .card li{font-size:29px}
+.l-pers .card .quien h3,.l-exp .card .quien h3{font-size:38px}
+.l-pest .card,.l-w .card{min-height:290px;padding:34px 38px}.l-pest .card p,.l-w .card p{font-size:29px}
+.l-fact .card{min-height:430px;padding:40px 44px}.l-fact .card li{font-size:30px}
+.l-fact .card .ichip{margin-bottom:6px}
+.pbtn i{width:70px;height:94px}.pbtn{padding:26px 30px}.pbtn b{font-size:36px}.pbtn small{font-size:25px}
+.l-sol .menu{gap:26px}
+
+.st.s1,.st.s6{color:#B4284A}
+.l-pest .card,.l-w .card{min-height:250px;padding:30px 38px}
+.l-pest .grid3,.l-w .grid4{margin-top:30px}
+
 /* ── portal · el mismo de todas las presentaciones: barra, miniaturas y escenario ── */
 :root{--chrome:#1A100B;--chrome2:#24160F;--hueso:#F7ECDD;--borde:rgba(247,236,221,.13);--apagado:rgba(247,236,221,.55);
   --mono:"Space Mono",monospace;--ease:cubic-bezier(.2,.7,.2,1)}
@@ -336,7 +392,7 @@ h1 .w,h2 .w{display:inline-block}
       <p class="lead2">Análisis del problema y del entorno</p>
       <p class="equipo"><b>Carolina Salazar Duque</b> · <b>Nataly Aristizábal Ocampo</b> · <b>Thomas Quintero Gallego</b> · <b>Juan David Escobar Guiral</b> · <b>Lina Marcela Gallego Moreno</b></p>
     </div>
-    <div class="lugar">Medellín, Colombia</div>
+    <div class="stickers"><span class="ichip st s1"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9.5 15a2.8 2.8 0 0 0 2.5 2"/></svg></span><span class="ichip st s2"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span><span class="ichip st s3"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 6.3L20.5 11.5l-6.3 2.2L12 20l-2.2-6.3L3.5 11.5l6.3-2.2z"/></svg></span><span class="ichip st s4"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14z"/><path d="M5 19l8-8"/></svg></span><span class="ichip st s5"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></span><span class="ichip st s6"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 10v.5M15 10v.5M8.5 14c1 2.2 6 2.2 7 0"/></svg></span></div><div class="lugar">Medellín, Colombia</div>
   </section>
 
   <!-- ══════════ 2 · ÁRBOL DEL PROBLEMA ══════════ -->
@@ -345,16 +401,16 @@ h1 .w,h2 .w{display:inline-block}
     <h2 class="zt"><span class="w">Árbol</span> <span class="w">del</span> <em class="w">problema</em></h2>
     <div class="tree">
       <div class="row row4 efectos">
-        <div class="card c-rosa"><p class="tag">Efecto 1</p><p>Incomodidad y menor bienestar fuera de casa</p></div>
-        <div class="card c-rosa"><p class="tag">Efecto 2</p><p>Pérdida de tiempo buscando los productos en otro lugar</p></div>
-        <div class="card c-rosa"><p class="tag">Efecto 3</p><p>Menos seguridad y confianza en clase, trabajo o entrenamiento</p></div>
-        <div class="card c-rosa"><p class="tag">Efecto 4</p><p>Gastos imprevistos al comprar con urgencia y más caro</p></div>
+        <div class="card c-rosa"><div class="trow"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 10v.5M15 10v.5M8.5 16c1-2 6-2 7 0"/></svg></span><p class="tag">Efecto 1</p></div><p>Incomodidad y menor bienestar fuera de casa</p></div>
+        <div class="card c-rosa"><div class="trow"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><p class="tag">Efecto 2</p></div><p>Pérdida de tiempo buscando los productos en otro lugar</p></div>
+        <div class="card c-rosa"><div class="trow"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></span><p class="tag">Efecto 3</p></div><p>Menos seguridad y confianza en clase, trabajo o entrenamiento</p></div>
+        <div class="card c-rosa"><div class="trow"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11M14.8 9c-.5-1-1.600-1.500-2.800-1.500-1.600 0-2.700.8-2.700 2s1 1.700 2.700 2.100 2.700.9 2.700 2.100-1.100 2-2.700 2c-1.300 0-2.400-.6-2.900-1.600"/></svg></span><p class="tag">Efecto 4</p></div><p>Gastos imprevistos al comprar con urgencia y más caro</p></div>
       </div>
-      <div class="core"><p class="tag">Problema central</p><h3>Las personas no encuentran productos de cuidado personal en universidades, centros comerciales y gimnasios cuando los necesitan</h3></div>
+      <div class="core"><span class="ichip lg core-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9.500 16.500h-19z"/><path d="M12 10v5M12 18v.1"/></svg></span><p class="tag">Problema central</p><h3>Las personas no encuentran productos de cuidado personal en universidades, centros comerciales y gimnasios cuando los necesitan</h3></div>
       <div class="row row3 causas">
-        <div class="card c-crema"><p class="tag">Causa 1</p><p>Estos lugares no tienen puntos de venta de cuidado personal</p></div>
-        <div class="card c-crema"><p class="tag">Causa 2</p><p>Tiendas y droguerías lejos o con horarios limitados</p></div>
-        <div class="card c-crema"><p class="tag">Causa 3</p><p>Rutinas largas y cambios de actividad hacen olvidar los productos</p></div>
+        <div class="card c-crema"><div class="trow"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l1-5h14l1 5M4 9v11h16V9M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/><path d="M10 20v-5h4v5"/></svg></span><p class="tag">Causa 1</p></div><p>Estos lugares no tienen puntos de venta de cuidado personal</p></div>
+        <div class="card c-crema"><div class="trow"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><p class="tag">Causa 2</p></div><p>Tiendas y droguerías lejos o con horarios limitados</p></div>
+        <div class="card c-crema"><div class="trow"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M8 3v4M16 3v4M9 14h2M13 14h2"/></svg></span><p class="tag">Causa 3</p></div><p>Rutinas largas y cambios de actividad hacen olvidar los productos</p></div>
       </div>
     </div>
     <p class="foot"><b>Lectura</b>Las causas (abajo) producen el problema; el problema produce los efectos (arriba)</p>
@@ -365,9 +421,9 @@ h1 .w,h2 .w{display:inline-block}
     <p class="eyebrow">Resumen del análisis</p>
     <h2 class="zt"><span class="w">El</span> <span class="w">problema</span> <span class="w">en</span> <em class="w">tres</em> <em class="w">partes</em></h2>
     <div class="cols">
-      <div class="col c-rosa"><div class="head"><p class="num">1</p><h3>¿Qué pasa y dónde?</h3></div><p class="big"><span data-cuenta="3900" data-fmt="1">3.900</span></p><p class="cap">habitantes por cada máquina expendedora en Colombia. En Japón son 25.</p><p class="txt">Falta acceso a cuidado personal en universidades, centros comerciales y gimnasios de Medellín y el Valle de Aburrá.</p></div>
-      <div class="col c-lila"><div class="head"><p class="num">2</p><h3>¿A quiénes afecta y por qué?</h3></div><p class="big"><span data-cuenta="80">80</span><small>%</small></p><p class="cap">de los usuarios son mujeres de 15 a 39 años.</p><p class="txt">Por qué: faltan puntos de venta, las tiendas quedan lejos y el ritmo diario hace olvidar los productos.</p></div>
-      <div class="col c-coral"><div class="head"><p class="num">3</p><h3>¿Qué pasa si sigue?</h3></div><p class="big"><span data-cuenta="38.46" data-dec="2">38,46</span><small>%</small></p><p class="cap">de los consumidores se molesta por pagar sobreprecios en una urgencia.</p><p class="txt">También hay estrés, tiempo perdido y gastos imprevistos.</p></div>
+      <div class="col c-rosa"><span class="ichip lg col-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.500"/><rect x="8" y="6" width="8" height="9" rx="1.500"/><path d="M9 18h6"/></svg></span><svg class="ic ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.500"/><rect x="8" y="6" width="8" height="9" rx="1.500"/><path d="M9 18h6"/></svg><div class="head"><p class="num">1</p><h3>¿Qué pasa y dónde?</h3></div><p class="big"><span data-cuenta="3900" data-fmt="1">3.900</span></p><p class="cap">habitantes por cada máquina expendedora en Colombia. En Japón son 25.</p><p class="txt">Falta acceso a cuidado personal en universidades, centros comerciales y gimnasios de Medellín y el Valle de Aburrá.</p></div>
+      <div class="col c-lila"><span class="ichip lg col-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6"/><circle cx="17" cy="9" r="2.500"/><path d="M16.500 14c3 0 4.500 2 4.500 5"/></svg></span><svg class="ic ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6"/><circle cx="17" cy="9" r="2.500"/><path d="M16.500 14c3 0 4.500 2 4.500 5"/></svg><div class="head"><p class="num">2</p><h3>¿A quiénes afecta y por qué?</h3></div><p class="big"><span data-cuenta="80">80</span><small>%</small></p><p class="cap">de los usuarios son mujeres de 15 a 39 años.</p><p class="txt">Por qué: faltan puntos de venta, las tiendas quedan lejos y el ritmo diario hace olvidar los productos.</p></div>
+      <div class="col c-coral"><span class="ichip lg col-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.500" cy="8.500" r="1.500"/></svg></span><svg class="ic ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.500" cy="8.500" r="1.500"/></svg><div class="head"><p class="num">3</p><h3>¿Qué pasa si sigue?</h3></div><p class="big"><span data-cuenta="38.46" data-dec="2">38,46</span><small>%</small></p><p class="cap">de los consumidores se molesta por pagar sobreprecios en una urgencia.</p><p class="txt">También hay estrés, tiempo perdido y gastos imprevistos.</p></div>
     </div>
     <p class="foot"><b>Fuentes</b>Barón Rozo et al., 2017 · Andrade Clerque, 2019 · Aristizabal et al., 2026</p>
   </section>
@@ -377,9 +433,9 @@ h1 .w,h2 .w{display:inline-block}
     <p class="eyebrow">Entrevistas · Trabajo de campo</p>
     <h2 class="zt"><span class="w">Personas</span> <em class="w">naturales</em></h2>
     <div class="grid3">
-      <div class="card c-rosa"><div class="quien"><div class="avatar">L</div><div><h3>Laura Escobar</h3><p class="rol">Estudiante universitaria</p></div></div><ul><li>Olvida sus artículos de higiene con frecuencia</li><li>Perdió tiempo de clase buscando una droguería</li><li>Usaría un dispensador 2 o 3 veces por semana</li></ul></div>
-      <div class="card c-lila"><div class="quien"><div class="avatar">M</div><div><h3>María Camila Jiménez</h3><p class="rol">Emergencias de aseo</p></div></div><ul><li>Olvidar el desodorante le resultó muy estresante</li><li>Tuvo que ir en vehículo hasta una farmacia lejana</li></ul></div>
-      <div class="card c-coral"><div class="quien"><div class="avatar">L</div><div><h3>Luis Valencia</h3><p class="rol">Hábitos de compra</p></div></div><ul><li>Sin desodorante, improvisó con limón</li><li>La urgencia lleva a soluciones poco adecuadas</li></ul></div>
+      <div class="card c-rosa"><svg class="ic ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.500v4.500c0 1.500 3 3 6 3s6-1.500 6-3v-4.500M22 9v6"/></svg><div class="quien"><div class="avatar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.500v4.500c0 1.500 3 3 6 3s6-1.500 6-3v-4.500M22 9v6"/></svg></div><div><h3>Laura Escobar</h3><p class="rol">Estudiante universitaria</p></div></div><ul><li>Olvida sus artículos de higiene con frecuencia</li><li>Perdió tiempo de clase buscando una droguería</li><li>Usaría un dispensador 2 o 3 veces por semana</li></ul></div>
+      <div class="card c-lila"><svg class="ic ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9.5 15a2.8 2.8 0 0 0 2.5 2"/></svg><div class="quien"><div class="avatar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9.5 15a2.8 2.8 0 0 0 2.5 2"/></svg></div><div><h3>María Camila Jiménez</h3><p class="rol">Emergencias de aseo</p></div></div><ul><li>Olvidar el desodorante le resultó muy estresante</li><li>Tuvo que ir en vehículo hasta una farmacia lejana</li></ul></div>
+      <div class="card c-coral"><svg class="ic ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="13" rx="8" ry="6" transform="rotate(-30 12 13)"/><path d="M17 6l2-2.500M8 9.500c1-1 2-1.500 3-1.500"/></svg><div class="quien"><div class="avatar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="13" rx="8" ry="6" transform="rotate(-30 12 13)"/><path d="M17 6l2-2.500M8 9.500c1-1 2-1.500 3-1.500"/></svg></div><div><h3>Luis Valencia</h3><p class="rol">Hábitos de compra</p></div></div><ul><li>Sin desodorante, improvisó con limón</li><li>La urgencia lleva a soluciones poco adecuadas</li></ul></div>
     </div>
     <p class="foot"><b>Fuente</b>Entrevistas del Proyecto Mini Vending, 2026</p>
   </section>
@@ -389,8 +445,8 @@ h1 .w,h2 .w{display:inline-block}
     <p class="eyebrow">Entrevistas · Expertos</p>
     <h2 class="zt"><span class="w">Dos</span> <span class="w">expertos</span> <em class="w">del</em> <em class="w">sector</em></h2>
     <div class="grid2">
-      <div class="card c-lila"><div class="quien"><div class="avatar">J</div><div><h3>Juan Sebastián Rodríguez</h3><p class="rol">Tecnología, pagos digitales y ubicación</p></div></div><ul><li>Sin conectividad hay pérdidas por roturas de stock</li><li>Recomienda sensores IoT</li><li>Reaprovisionamiento dinámico y predictivo</li></ul></div>
-      <div class="card c-coral"><div class="quien"><div class="avatar">Á</div><div><h3>Ángela Ballesta</h3><p class="rol">Operaciones de vending</p></div></div><ul><li>Habló de modelo financiero, costos y surtido</li><li>La devaluación encarece la importación de máquinas</li><li>Energía continua y riesgo de vandalismo</li><li>Un buen surtido inicial asegura la rotación</li></ul></div>
+      <div class="card c-lila"><svg class="ic ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9a13 13 0 0 1 18 0M6 12.500a8.500 8.500 0 0 1 12 0M9 16a4 4 0 0 1 6 0"/><circle cx="12" cy="19" r="1"/></svg><div class="quien"><div class="avatar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M9 3v4M15 3v4M9 17v4M15 17v4"/></svg></div><div><h3>Juan Sebastián Rodríguez</h3><p class="rol">Tecnología, pagos digitales y ubicación</p></div></div><ul><li>Sin conectividad hay pérdidas por roturas de stock</li><li>Recomienda sensores IoT</li><li>Reaprovisionamiento dinámico y predictivo</li></ul></div>
+      <div class="card c-coral"><svg class="ic ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V11M10 20V4M16 20v-7M22 20H2"/></svg><div class="quien"><div class="avatar"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V11M10 20V4M16 20v-7M22 20H2"/></svg></div><div><h3>Ángela Ballesta</h3><p class="rol">Operaciones de vending</p></div></div><ul><li>Habló de modelo financiero, costos y surtido</li><li>La devaluación encarece la importación de máquinas</li><li>Energía continua y riesgo de vandalismo</li><li>Un buen surtido inicial asegura la rotación</li></ul></div>
     </div>
     <p class="foot"><b>Fuentes</b>Rodríguez, 2026 · Experto en operaciones de vending, 2026</p>
   </section>
@@ -400,12 +456,12 @@ h1 .w,h2 .w{display:inline-block}
     <p class="eyebrow">Análisis del entorno</p>
     <h2 class="zt"><span class="w">Análisis</span> <em class="w">PESTEL</em></h2>
     <div class="grid3">
-      <div class="card c-lila"><div class="head"><p class="badge">P</p><h3>Político</h3></div><p>Permisos de ubicación en centros comerciales y universidades.</p></div>
-      <div class="card c-coral"><div class="head"><p class="badge">E</p><h3>Económico</h3></div><p>Jóvenes que buscan precios bajos; el dólar encarece las máquinas.</p></div>
-      <div class="card c-rosa"><div class="head"><p class="badge">S</p><h3>Sociocultural</h3></div><p>9 de cada 10 colombianos usan skincare; las redes impulsan la tendencia.</p></div>
-      <div class="card c-crema"><div class="head"><p class="badge">T</p><h3>Tecnológico</h3></div><p>Pantalla táctil, pagos digitales e inventario en tiempo real.</p></div>
-      <div class="card c-lila"><div class="head"><p class="badge">E</p><h3>Ecológico</h3></div><p>Empaques pequeños, más plástico: oportunidad con envases reciclables.</p></div>
-      <div class="card c-coral"><div class="head"><p class="badge">L</p><h3>Legal</h3></div><p>Notificación Sanitaria INVIMA, Cámara de Comercio y DIAN.</p></div>
+      <div class="card c-lila"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6zM5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></svg></p><h3>Político</h3><span class="gl">P</span></div><p>Permisos de ubicación en centros comerciales y universidades.</p></div>
+      <div class="card c-coral"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11M14.8 9c-.5-1-1.600-1.500-2.800-1.500-1.600 0-2.700.8-2.700 2s1 1.700 2.700 2.100 2.700.9 2.700 2.100-1.100 2-2.700 2c-1.300 0-2.400-.6-2.900-1.600"/></svg></p><h3>Económico</h3><span class="gl">E</span></div><p>Jóvenes que buscan precios bajos; el dólar encarece las máquinas.</p></div>
+      <div class="card c-rosa"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6"/><circle cx="17" cy="9" r="2.500"/><path d="M16.500 14c3 0 4.500 2 4.500 5"/></svg></p><h3>Sociocultural</h3><span class="gl">S</span></div><p>9 de cada 10 colombianos usan skincare; las redes impulsan la tendencia.</p></div>
+      <div class="card c-crema"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M9 3v4M15 3v4M9 17v4M15 17v4"/></svg></p><h3>Tecnológico</h3><span class="gl">T</span></div><p>Pantalla táctil, pagos digitales e inventario en tiempo real.</p></div>
+      <div class="card c-lila"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14z"/><path d="M5 19l8-8"/></svg></p><h3>Ecológico</h3><span class="gl">E</span></div><p>Empaques pequeños, más plástico: oportunidad con envases reciclables.</p></div>
+      <div class="card c-coral"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 20h12M5 8h14M5 8l-3 7a3 3 0 0 0 6 0zM19 8l-3 7a3 3 0 0 0 6 0z"/></svg></p><h3>Legal</h3><span class="gl">L</span></div><p>Notificación Sanitaria INVIMA, Cámara de Comercio y DIAN.</p></div>
     </div>
     <p class="foot"><b>Figura 1</b>Análisis PESTEL · Aristizabal et al., 2026</p>
   </section>
@@ -416,8 +472,8 @@ h1 .w,h2 .w{display:inline-block}
     <h2 class="zt"><span class="w">Factores</span> <em class="w">del</em> <em class="w">entorno</em></h2>
     <div class="balanza"><svg viewBox="0 0 340 150" aria-hidden="true"><path d="M170 70l-34 70h68z" fill="#B4471E"/><g class="viga"><rect x="20" y="62" width="300" height="10" rx="5" fill="#3A0A12"/><circle cx="36" cy="72" r="16" fill="#E8793F"/><circle cx="304" cy="72" r="16" fill="#8A3FB8"/></g></svg></div>
     <div class="grid2">
-      <div class="card c-coral"><p class="tag">Favorecen</p><ul><li>9 de cada 10 colombianos usan cuidado facial y las redes impulsan el consumo joven</li><li>Pantallas táctiles y pagos sin contacto con datáfono o billeteras</li><li>Sensores IoT que muestran el inventario en vivo</li></ul></div>
-      <div class="card c-lila"><p class="tag" style="color:#6A2A92">Dificultan</p><ul><li>Notificación Sanitaria INVIMA obligatoria para todo el catálogo</li><li>Permisos y arrendamientos con universidades y centros comerciales</li><li>Devaluación, energía continua y vandalismo</li><li>Acertar con el surtido inicial</li></ul></div>
+      <div class="card c-coral"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></span><p class="tag">Favorecen</p><ul><li class="i"><svg class="li-ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7.500 12.500l3 3 6-6.500"/></svg>9 de cada 10 colombianos usan cuidado facial y las redes impulsan el consumo joven</li><li class="i"><svg class="li-ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7.500 12.500l3 3 6-6.500"/></svg>Pantallas táctiles y pagos sin contacto con datáfono o billeteras</li><li class="i"><svg class="li-ic ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7.500 12.500l3 3 6-6.500"/></svg>Sensores IoT que muestran el inventario en vivo</li></ul></div>
+      <div class="card c-lila"><span class="ichip sm"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9.500 16.500h-19z"/><path d="M12 10v5M12 18v.1"/></svg></span><p class="tag" style="color:#6A2A92">Dificultan</p><ul><li class="i"><svg class="li-ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9.500 16.500h-19z"/><path d="M12 10v5M12 18v.1"/></svg>Notificación Sanitaria INVIMA obligatoria para todo el catálogo</li><li class="i"><svg class="li-ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9.500 16.500h-19z"/><path d="M12 10v5M12 18v.1"/></svg>Permisos y arrendamientos con universidades y centros comerciales</li><li class="i"><svg class="li-ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9.500 16.500h-19z"/><path d="M12 10v5M12 18v.1"/></svg>Devaluación, energía continua y vandalismo</li><li class="i"><svg class="li-ic no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l9.500 16.500h-19z"/><path d="M12 10v5M12 18v.1"/></svg>Acertar con el surtido inicial</li></ul></div>
     </div>
     <p class="foot"><b>Fuentes</b>Aristizabal et al., 2026 · Barón Rozo et al., 2017 · Ramírez, 2018</p>
   </section>
@@ -427,13 +483,13 @@ h1 .w,h2 .w{display:inline-block}
     <p class="eyebrow">Método 5W2H</p>
     <h2 class="zt"><span class="w">La</span> <span class="w">idea</span> <span class="w">en</span> <em class="w">siete</em> <em class="w">preguntas</em></h2>
     <div class="grid4">
-      <div class="card c-rosa"><div class="head"><p class="badge">1</p><h3>Qué</h3></div><p>Mini máquinas de emergencia con skincare y cuidado personal.</p></div>
-      <div class="card c-lila"><div class="head"><p class="badge">2</p><h3>Por qué</h3></div><p>Lo necesitan con urgencia y no tienen dónde ir.</p></div>
-      <div class="card c-coral"><div class="head"><p class="badge">3</p><h3>Quién</h3></div><p>Estudiantes y jóvenes en centros comerciales y universidades.</p></div>
-      <div class="card c-crema"><div class="head"><p class="badge">4</p><h3>Cuándo</h3></div><p>En clase, una cita, una entrevista o una salida.</p></div>
-      <div class="card c-rosa"><div class="head"><p class="badge">5</p><h3>Dónde</h3></div><p>Centros comerciales y universidades; luego gimnasios y aeropuertos.</p></div>
-      <div class="card c-lila"><div class="head"><p class="badge">6</p><h3>Cómo</h3></div><p>Productos con INVIMA, acuerdos de espacio y varios medios de pago.</p></div>
-      <div class="card c-vino"><div class="head"><p class="badge">7</p><h3>Cuánto</h3></div><p>Costos de máquinas, energía y surtido: por definir en el modelo financiero.</p></div>
+      <div class="card c-rosa"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.500c1 1 1 2 1 3.500h6c0-1.500 0-2.500 1-3.500A6 6 0 0 0 12 3z"/></svg></p><h3>Qué</h3><span class="gl">1</span></div><p>Mini máquinas de emergencia con skincare y cuidado personal.</p></div>
+      <div class="card c-lila"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.500 9.500a2.500 2.500 0 1 1 3.500 2.300c-.7.400-1 1-1 1.700M12 17v.1"/></svg></p><h3>Por qué</h3><span class="gl">2</span></div><p>Lo necesitan con urgencia y no tienen dónde ir.</p></div>
+      <div class="card c-coral"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6"/><circle cx="17" cy="9" r="2.500"/><path d="M16.500 14c3 0 4.500 2 4.500 5"/></svg></p><h3>Quién</h3><span class="gl">3</span></div><p>Estudiantes y jóvenes en centros comerciales y universidades.</p></div>
+      <div class="card c-crema"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></p><h3>Cuándo</h3><span class="gl">4</span></div><p>En clase, una cita, una entrevista o una salida.</p></div>
+      <div class="card c-rosa"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></p><h3>Dónde</h3><span class="gl">5</span></div><p>Centros comerciales y universidades; luego gimnasios y aeropuertos.</p></div>
+      <div class="card c-lila"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></p><h3>Cómo</h3><span class="gl">6</span></div><p>Productos con INVIMA, acuerdos de espacio y varios medios de pago.</p></div>
+      <div class="card c-vino"><div class="head"><p class="badge"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11M14.8 9c-.5-1-1.600-1.500-2.800-1.500-1.600 0-2.700.8-2.700 2s1 1.700 2.700 2.100 2.700.9 2.700 2.100-1.100 2-2.700 2c-1.300 0-2.400-.6-2.900-1.600"/></svg></p><h3>Cuánto</h3><span class="gl">7</span></div><p>Costos de máquinas, energía y surtido: por definir en el modelo financiero.</p></div>
     </div>
     <p class="foot"><b>Figura 2</b>5W2H · What, Why, Who, When, Where, How, How much</p>
   </section>
@@ -444,12 +500,12 @@ h1 .w,h2 .w{display:inline-block}
     <h2 class="zt"><span class="w">Mini</span> <span class="w">vending</span> <em class="w">de</em> <em class="w">emergencia</em></h2>
     <p class="sub">Haz clic en un producto y míralo caer en la bandeja.</p>
     <div class="menu" id="menu">
-      <button class="pbtn" data-i="0"><i style="background:#F2A7BC"></i><span><b>Limpiador facial</b><small>Después del gimnasio</small></span></button>
-      <button class="pbtn" data-i="1"><i style="background:#D9A5F5"></i><span><b>Tónico</b><small>Antes de una cita</small></span></button>
-      <button class="pbtn" data-i="2"><i style="background:#F7C873"></i><span><b>Sérum</b><small>Skincare en formato mini</small></span></button>
-      <button class="pbtn" data-i="3"><i style="background:#FADBD3"></i><span><b>Hidratante</b><small>Se quedó en casa</small></span></button>
-      <button class="pbtn" data-i="4"><i style="background:#C9622F"></i><span><b>Protector solar</b><small>Entre clases</small></span></button>
-      <button class="pbtn" data-i="5"><i style="background:#E8793F"></i><span><b>Desodorante</b><small>La emergencia más común</small></span></button>
+      <button class="pbtn" data-i="0"><i style="--c:#F2A7BC"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Limpiador facial</b><small>Después del gimnasio</small></span></button>
+      <button class="pbtn" data-i="1"><i style="--c:#D9A5F5"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Tónico</b><small>Antes de una cita</small></span></button>
+      <button class="pbtn" data-i="2"><i style="--c:#F7C873"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Sérum</b><small>Skincare en formato mini</small></span></button>
+      <button class="pbtn" data-i="3"><i style="--c:#FADBD3"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Hidratante</b><small>Se quedó en casa</small></span></button>
+      <button class="pbtn" data-i="4"><i style="--c:#C9622F"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Protector solar</b><small>Entre clases</small></span></button>
+      <button class="pbtn" data-i="5"><i style="--c:#E8793F"><svg viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="11" rx="3.500" fill="#3A0A12" opacity=".85"/><rect x="3" y="12" width="34" height="42" rx="10" style="fill:var(--c)"/><rect x="9" y="25" width="22" height="15" rx="4" fill="#fff" opacity=".78"/><path d="M9 18v22" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" transform="translate(2 0)"/></svg></i><span><b>Desodorante</b><small>La emergencia más común</small></span></button>
     </div>
     <p class="foot"><b>Nota</b>Surtido ilustrativo; se definirá con entrevistas y encuestas</p>
   </section>
@@ -463,9 +519,9 @@ h1 .w,h2 .w{display:inline-block}
       <h2 class="zt"><span class="w">Vale</span> <span class="w">la</span> <span class="w">pena</span> <span class="w">resolver</span> <em class="w">este</em> <em class="w">problema</em></h2>
       <p class="lead3">Mini máquinas con marcas certificadas por el INVIMA, justo donde está el flujo de personas: una respuesta inmediata, confiable y accesible, 24/7.</p>
       <div class="stats">
-        <div class="stat"><p class="big"><span data-cuenta="40">40</span></p><p>búsquedas estructuradas</p></div>
-        <div class="stat"><p class="big"><span data-cuenta="10">10</span></p><p>entrevistas, 2 con expertos</p></div>
-        <div class="stat"><p class="big"><span data-cuenta="50">50</span></p><p>encuestas de aceptación</p></div>
+        <div class="stat"><span class="ichip lg st-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.500"/><path d="M20 20l-4.200-4.200"/></svg></span><p class="big"><span data-cuenta="40">40</span></p><p>búsquedas estructuradas</p></div>
+        <div class="stat"><span class="ichip lg st-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><p class="big"><span data-cuenta="10">10</span></p><p>entrevistas, 2 con expertos</p></div>
+        <div class="stat"><span class="ichip lg st-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg></span><p class="big"><span data-cuenta="50">50</span></p><p>encuestas de aceptación</p></div>
       </div>
     </div>
     <p class="foot" style="right:110px"><b>Fuentes</b>Barón Rozo et al., 2017 · Andrade Clerque, 2019 · Arévalo Ascanio et al., 2018 · Ramírez, 2018</p>
@@ -650,6 +706,11 @@ function entrar(n){
   var cab_=function(at){ tl.from(q(".eyebrow"),{x:-40,opacity:0,duration:.5},at).from(q(".zt .w"),{y:80,opacity:0,rotate:2,duration:.8,stagger:.07,ease:"back.out(1.3)"},at+.1) };
   var flota=function(sel,d,amp){ B(g.to(q(sel),{y:-(amp||8),duration:2.2,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.3,repeat:-1,yoyo:true},delay:d||3})) };
   var pop=function(sel,at,st){ tl.from(q(sel),{scale:0,rotate:-40,duration:.5,stagger:st||.12,ease:"back.out(2.6)"},at) };
+  if(q(".ichip").length){ tl.from(q(".ichip:not(.st)"),{scale:0,rotate:-40,duration:.5,stagger:.08,ease:"back.out(2.6)"},1.1); B(g.to(q(".ichip:not(.st)"),{y:-4,duration:1.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.25,repeat:-1,yoyo:true},delay:3.2})) }
+  if(q(".ghost").length){ tl.from(q(".ghost"),{scale:.5,opacity:0,rotate:-20,duration:1,stagger:.1},.9); B(g.to(q(".ghost"),{rotation:7,duration:5,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:.5,delay:2})) }
+  if(q(".gl").length){ tl.from(q(".gl"),{y:40,opacity:0,duration:.9,stagger:.1},1) }
+  if(q(".pbtn svg").length){ B(g.to(q(".pbtn svg"),{rotation:8,transformOrigin:"50% 80%",duration:1.3,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.2,repeat:-1,yoyo:true},delay:2.4})) }
+  if(q(".st").length){ tl.from(q(".st"),{y:90,scale:0,rotate:-60,duration:.7,stagger:.1,ease:"back.out(2)"},1.8); B(g.to(q(".st"),{y:-14,rotation:"+=6",duration:2.2,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.3,repeat:-1,yoyo:true},delay:3.2})) }
   B(g.to(q(".blob"),{x:-60,y:40,scale:1.08,duration:9,yoyo:true,repeat:-1,ease:"sine.inOut"}));
   if(k==="portada"){
     tl.from(q(".blob"),{scale:.4,opacity:0,duration:1.6,stagger:.2},0)
