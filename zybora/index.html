@@ -726,11 +726,11 @@ function drop(i){
   var total=F[F.length-1].t;
   var a=g2.animate(F.map(function(o){ return {transform:o.f,offset:o.t/total} }),{duration:total,easing:"linear",fill:"forwards"});
   /* en cuanto el producto sale del estante, otro avanza desde el fondo y ocupa su lugar */
-  var gone=QUIETO?10:640, enter=QUIETO?10:950;
+  var gone=QUIETO?10:600, enter=QUIETO?10:1150;
   p.el.animate([{visibility:"hidden"},{visibility:"hidden"}],{duration:gone});
-  p.el.animate([{transform:"translate3d("+p.x+"px,"+p.y+"px,"+(p.z-62)+"px) rotateY(0deg) scale(.9)"}],{duration:enter,delay:gone,fill:"backwards",easing:"cubic-bezier(.2,.8,.3,1)"});
+  p.el.animate([{transform:"translate3d("+p.x+"px,"+p.y+"px,"+Math.max(p.z-62,-106+p.d/2)+"px) rotateY(0deg) scale(.66)"}],{duration:enter,delay:gone,fill:"backwards",easing:"cubic-bezier(.3,.55,.3,1)"});
   /* el nuevo producto aparece con un fundido (capa por capa) mientras avanza, sin corte brusco */
-  if(!QUIETO) [].forEach.call(p.el.querySelectorAll(".ps"),function(sl){ sl.animate([{opacity:0},{opacity:1}],{duration:enter*.8,delay:gone,fill:"backwards",easing:"ease-out"}) });
+  if(!QUIETO) [].forEach.call(p.el.querySelectorAll(".ps"),function(sl){ sl.animate([{opacity:0},{opacity:1}],{duration:enter*.5,delay:gone,fill:"backwards",easing:"ease-out"}) });
   setTimeout(function(){ p.busy=false },gone+enter);
   a.onfinish=function(){
     var f=g2.animate([{opacity:1},{opacity:0}],{duration:500,delay:1500,fill:"forwards"});
