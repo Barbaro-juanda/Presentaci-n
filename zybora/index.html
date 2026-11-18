@@ -669,8 +669,8 @@ plane({w:254,h:440,x:-29,y:-60,z:-110,bg:INNER,cls:"h3d"});
 plane({w:220,h:440,x:-156,y:-60,z:0,ry:90,bg:"#F6DCC9",cls:"h3d"});
 plane({w:220,h:440,x:98,y:-60,z:0,ry:-90,bg:"#F0CFBA",cls:"h3d"});
 plane({w:254,h:220,x:-29,y:-280,z:0,rx:-90,bg:"#FFF1E4",cls:"h3d"});
-plane({w:254,h:150,x:-29,y:-70,z:-35,rx:90,bg:"#FFFFFF",cls:"both h3d"});
-plane({w:254,h:150,x:-29,y:150,z:-35,rx:90,bg:"#FFFFFF",cls:"both h3d"});
+plane({w:254,h:170,x:-29,y:-70,z:-25,rx:90,bg:"#FFFFFF",cls:"both h3d"});
+plane({w:254,h:170,x:-29,y:150,z:-25,rx:90,bg:"#FFFFFF",cls:"both h3d"});
 var P=[
   {img:"desodorante",w:60,h:150,d:46,x:-106,b:-70},{img:"protector",w:65,h:150,d:30,x:-42,b:-70},{img:"hidratante",w:134,h:90,d:72,x:-4,b:150},
   {img:"serum",w:44,h:145,d:40,x:20,b:-70},{img:"limpiador",w:68,h:166,d:38,x:-110,b:150}
@@ -689,7 +689,7 @@ function slices(el,p){
 }
 function pose(p,ry){ return "translate3d("+p.x+"px,"+p.y+"px,"+p.z+"px) rotateY("+ry+"deg)" }
 P.forEach(function(p,i){
-  p.y=p.b-p.h/2; p.z=-30;
+  p.y=p.b-p.h/2; p.z=-4;
   plane({w:p.w*1.5,h:p.d*1.6,x:p.x,y:p.b+1,z:p.z,rx:90,bg:"radial-gradient(ellipse at 50% 50%,rgba(58,10,18,.5),rgba(58,10,18,0) 68%)",cls:"both h3d"});
   p.el=plane({w:p.w,h:p.h,x:p.x,y:p.y,z:p.z,cls:"prod both"}); slices(p.el,p); p.busy=false;
   if(!QUIETO&&!PLANO) p.el.animate([{transform:pose(p,-20)},{transform:pose(p,20)}],{duration:4200+i*700,delay:-i*900,direction:"alternate",iterations:Infinity,easing:"ease-in-out"});
@@ -728,7 +728,7 @@ function drop(i){
   /* en cuanto el producto sale del estante, otro avanza desde el fondo y ocupa su lugar */
   var gone=QUIETO?10:600, enter=QUIETO?10:1150;
   p.el.animate([{visibility:"hidden"},{visibility:"hidden"}],{duration:gone});
-  p.el.animate([{transform:"translate3d("+p.x+"px,"+p.y+"px,"+Math.max(p.z-62,-106+p.d/2)+"px) rotateY(0deg) scale(.66)"}],{duration:enter,delay:gone,fill:"backwards",easing:"cubic-bezier(.3,.55,.3,1)"});
+  p.el.animate([{transform:"translate3d("+p.x+"px,"+(p.y+.17*p.h)+"px,"+(-106+p.d/2)+"px) rotateY(0deg) scale(.66)"}],{duration:enter,delay:gone,fill:"backwards",easing:"cubic-bezier(.3,.55,.3,1)"});
   /* el nuevo producto aparece con un fundido (capa por capa) mientras avanza, sin corte brusco */
   if(!QUIETO) [].forEach.call(p.el.querySelectorAll(".ps"),function(sl){ sl.animate([{opacity:0},{opacity:1}],{duration:enter*.5,delay:gone,fill:"backwards",easing:"ease-out"}) });
   setTimeout(function(){ p.busy=false },gone+enter);
@@ -741,9 +741,26 @@ function dropRandom(){ var free=P.map(function(_,k){return k}).filter(function(k
 if(!QUIETO) setInterval(function(){ if(!D.hidden) dropRandom() },4500);
 var M=[{x:1520,y:590,s:1.3,a:-25},{x:1700,y:650,s:.62,a:40},{x:1710,y:650,s:.62,a:80},{x:1710,y:650,s:.62,a:120},{x:1710,y:650,s:.62,a:160},{x:1710,y:650,s:.62,a:200},{x:1710,y:650,s:.62,a:240},{x:1710,y:650,s:.62,a:280},{x:1490,y:590,s:1.22,a:340},{x:1580,y:600,s:1.2,a:400}];
 var baseAng=0,userOff=0;
+var firstM=true;
 function setMachine(n){
-  var m=M[n]; mw.style.transform="translate("+m.x+"px,"+m.y+"px) scale("+m.s+")";
-  baseAng=PLANO?0:m.a; userOff=0; cab.style.transform="rotateY("+baseAng+"deg)";
+  var m=M[n];
+  baseAng=PLANO?0:m.a; userOff=0;
+  if(firstM&&!QUIETO){
+    /* entrada inicial: la máquina sale de la esquina inferior derecha, girando mientras sube */
+    firstM=false;
+    mw.style.transition="none"; cab.style.transition="none";
+    mw.style.transform="translate(2420px,1460px) scale("+(m.s*1.15)+")";
+    cab.style.transform="rotateY("+(baseAng+(PLANO?0:95))+"deg)";
+    void mw.offsetWidth;
+    mw.style.transition="transform 2.4s cubic-bezier(.12,.78,.22,1)"; cab.style.transition="transform 2.4s cubic-bezier(.12,.78,.22,1)";
+    mw.style.transform="translate("+m.x+"px,"+m.y+"px) scale("+m.s+")";
+    cab.style.transform="rotateY("+baseAng+"deg)";
+    setTimeout(function(){ mw.style.transition=""; cab.style.transition="" },2500);
+    return;
+  }
+  firstM=false;
+  mw.style.transform="translate("+m.x+"px,"+m.y+"px) scale("+m.s+")";
+  cab.style.transform="rotateY("+baseAng+"deg)";
 }
 var dragging=false,lastX=0,moved=0;
 hit.addEventListener("click",function(e){ e.stopPropagation() });
