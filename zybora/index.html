@@ -725,10 +725,14 @@ function drop(i){
   }
   var total=F[F.length-1].t;
   var a=g2.animate(F.map(function(o){ return {transform:o.f,offset:o.t/total} }),{duration:total,easing:"linear",fill:"forwards"});
-  p.el.animate([{visibility:"hidden"},{visibility:"hidden"}],{duration:total+1900});
+  /* en cuanto el producto sale del estante, otro avanza desde el fondo y ocupa su lugar */
+  var gone=QUIETO?10:640, enter=QUIETO?10:800;
+  p.el.animate([{visibility:"hidden"},{visibility:"hidden"}],{duration:gone});
+  p.el.animate([{transform:"translate3d("+p.x+"px,"+p.y+"px,"+(p.z-62)+"px) rotateY(0deg) scale(.9)"}],{duration:enter,delay:gone,fill:"backwards",easing:"cubic-bezier(.2,.8,.3,1)"});
+  setTimeout(function(){ p.busy=false },gone+enter);
   a.onfinish=function(){
     var f=g2.animate([{opacity:1},{opacity:0}],{duration:500,delay:1500,fill:"forwards"});
-    f.onfinish=function(){ g2.remove(); p.busy=false };
+    f.onfinish=function(){ g2.remove() };
   };
 }
 function dropRandom(){ var free=P.map(function(_,k){return k}).filter(function(k){return !P[k].busy}); if(free.length) drop(free[Math.floor(Math.random()*free.length)]) }
