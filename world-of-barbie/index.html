@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>World of Barbie · Defensa oral</title>
+<style>
+/* ── portal · el mismo de todas las presentaciones: barra, miniaturas y escenario ── */
+:root{--chrome:#1A100B;--chrome2:#24160F;--hueso:#F7ECDD;--borde:rgba(247,236,221,.13);--apagado:rgba(247,236,221,.55);
+  --mono:"Space Mono",monospace;--ease:cubic-bezier(.2,.7,.2,1)}
+#app{position:fixed;inset:0;display:grid;grid-template-columns:248px 1fr;grid-template-rows:56px 1fr;
+  background:var(--chrome);transition:grid-template-columns .3s var(--ease),grid-template-rows .3s var(--ease)}
+body.presentando #app{grid-template-columns:0 1fr;grid-template-rows:0 1fr}
+#barra{grid-column:1/-1;grid-row:1;display:flex;align-items:center;gap:15px;padding:0 17px;
+  background:var(--chrome2);border-bottom:1px solid var(--borde);color:var(--hueso);overflow:hidden;z-index:5}
+body.presentando #barra{opacity:0;pointer-events:none}
+#barra .marca{display:flex;align-items:center;gap:12px;min-width:0;overflow:hidden}
+#barra .marca i{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--accc),var(--acct))}
+#barra .marca i::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--chrome2)}
+#barra .marca span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--apagado);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#barra .sep{flex:1}
+.r-btn{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  background:rgba(247,236,221,.06);border:1px solid rgba(247,236,221,.18);color:rgba(247,236,221,.78);
+  border-radius:0;padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;
+  transition:background .18s,color .18s,border-color .18s}
+.r-btn:hover{background:rgba(247,236,221,.12);color:var(--hueso);border-color:rgba(247,236,221,.4)}
+.r-btn:focus-visible{outline:2px solid var(--accc);outline-offset:2px}
+.r-btn.activo{background:var(--hueso);border-color:var(--hueso);color:var(--tinta)}
+.r-btn--pri{background:var(--acct);border-color:var(--acct);color:#fff}
+.r-btn--pri:hover{background:var(--acc);border-color:var(--acc)}
+.r-btn kbd{font-family:inherit;font-size:9px;opacity:.62;border:1px solid currentColor;padding:0 4px;line-height:13px}
+#reloj{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--apagado);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:1180px){#barra .marca span{display:none}}
+@media (max-width:980px){.r-btn kbd{display:none}}
+
+#panel{grid-column:1;grid-row:2;background:#140B07;border-right:1px solid var(--borde);
+  overflow-y:auto;overflow-x:hidden;padding:11px 0 34px;z-index:4}
+body.presentando #panel{opacity:0;pointer-events:none}
+.mini{display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:start;padding:5px 12px 5px 6px;cursor:pointer}
+.mini .m-num{font-family:var(--mono);font-size:10px;color:var(--apagado);text-align:right;padding-top:4px}
+.mini .marco,.rc-item .marco{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(247,236,221,.18);background:var(--claro)}
+.mini:hover .marco,.rc-item:hover .marco{border-color:rgba(247,236,221,.4)}
+.mini.actual .marco,.rc-item.actual .marco{border-color:var(--accc);box-shadow:0 0 0 2px rgba(201,138,61,.5)}
+.mini.actual .m-num{color:var(--hueso);font-weight:700}
+.mini .m-rot{grid-column:2;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--apagado);margin-top:5px}
+.mini .m-rot b{display:block;font-weight:700;font-size:8.5px;letter-spacing:.14em;color:var(--hueso);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .m-rot span{display:block;margin-top:2px}
+.lienzo{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:top left;pointer-events:none;background:var(--claro);overflow:hidden}
+.lienzo .lam{visibility:visible}
+
+/* ── escenario 1920×1080 escalado a la vista ── */
+#vista{grid-column:2;grid-row:2;position:relative;overflow:hidden;background:#0F0805;cursor:pointer}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:var(--claro);
+  overflow:hidden;box-shadow:0 22px 66px rgba(0,0,0,.66)}
+body.presentando #stage{box-shadow:none}
+.lam{position:absolute;inset:0;visibility:hidden;overflow:hidden;background:var(--claro)}
+.lam.on{visibility:visible}
+.lam.oscura{background:var(--noche);color:#fff}
+
+/* ── HUD ── */
+.hud{position:absolute;left:96px;right:96px;top:46px;display:flex;justify-content:space-between;align-items:center;
+  font:700 16px/1 "Space Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--gris);z-index:5}
+.hud .marca{display:flex;align-items:center;gap:14px}
+.hud .marca i{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--accc),var(--acct))}
+.hud .marca i::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--claro)}
+.hud .pag b{color:var(--acct)}
+.hud-oscuro .hud{color:rgba(255,255,255,.62)}
+.hud-oscuro .hud .marca i::after{background:var(--noche)}
+.hud-oscuro .hud .pag b{color:var(--accc)}
+#prog{position:absolute;left:0;bottom:0;height:8px;width:100%;background:rgba(22,26,51,.08);z-index:6}
+#prog i{display:block;height:100%;width:33%;background:linear-gradient(90deg,#4A2C1D,#8F5410,#C98A3D,#F0B565)}
+.hud-oscuro #prog{background:rgba(255,255,255,.08)}
+
+/* ── tipografía ── */
+.kick{font:700 18px/1 "Space Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--acct);display:flex;align-items:center;gap:14px}
+.kick::before{content:"";width:46px;height:4px;border-radius:2px;background:linear-gradient(90deg,#4A2C1D,#8F5410,#C98A3D,#F0B565)}
+.oscura .kick{color:var(--accc)}
+h1,h2{margin:0;font-family:"Nunito",sans-serif}
+h1 .w,h2 .w{display:inline-block}
+.pie{position:absolute;left:96px;right:96px;bottom:34px;font:400 15px/1.45 "Space Mono",monospace;letter-spacing:.03em;color:var(--gris);z-index:5}
+.pie a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(83,87,119,.45)}
+.pie a:hover{color:var(--acct)}
+
+/* íconos de trazo: se "dibujan" al entrar */
+.dib{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.dib *{stroke-dasharray:1}
+.dib .pun{stroke-dasharray:.16 .14}
+.dib .bar,.dib .lupa,.dib .rueda{transform-box:fill-box}
+.dib .bar{transform-origin:50% 100%}
+.dib .lupa{transform-origin:30% 30%}
+.dib .rueda{transform-origin:50% 50%}
+
+/* ── guion, cuadrícula y atajos ── */
+#notas{position:absolute;left:0;right:0;bottom:0;z-index:30;background:rgba(26,16,11,.97);border-top:3px solid var(--acc);
+  color:var(--hueso);padding:26px 96px 32px;transform:translate3d(0,101%,0);transition:transform .32s var(--ease);cursor:auto}
+#notas.on{transform:none}
+#notas .cab{font:700 16px/1 "Space Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--accc);margin-bottom:14px}
+#notas p{margin:0 0 10px;font-size:25px;line-height:1.45;font-weight:300;color:rgba(247,236,221,.94);max-width:1700px}
+#notas p:first-child{font-family:var(--mono);font-size:17px;letter-spacing:.06em;color:var(--accc)}
+#ayudita{position:absolute;right:96px;top:84px;font:400 15px/1 "Space Mono",monospace;letter-spacing:.06em;color:rgba(255,255,255,.55);z-index:5;transition:opacity .5s}
+#ayudita.mudo{opacity:0}
+#rejilla{position:fixed;inset:0;z-index:60;background:var(--chrome);display:none;overflow-y:auto;padding:22px 30px 54px}
+#rejilla.on{display:block}
+#rejilla .rc{display:flex;align-items:center;justify-content:space-between;color:var(--hueso);margin-bottom:18px}
+#rejilla .rc h3{font:900 25px/1 "Nunito",sans-serif;margin:0}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.rc-item{cursor:pointer}
+.rc-item .pie2{display:flex;justify-content:space-between;color:var(--apagado);font:400 10px/1 "Space Mono",monospace;margin-top:8px;letter-spacing:.1em;text-transform:uppercase}
+#atajos{position:fixed;inset:0;z-index:70;background:rgba(26,16,11,.98);display:none;place-content:center;justify-items:center;text-align:center;color:var(--hueso)}
+#atajos.on{display:grid}
+#atajos h3{font:900 38px/1 "Nunito",sans-serif;margin:0 0 24px}
+#atajos table{border-collapse:collapse;font-size:18px;font-weight:300}
+#atajos td{padding:8px 24px}
+#atajos td:first-child{text-align:right;color:var(--accc);font-family:var(--mono);font-size:12.5px;letter-spacing:.1em}
+#atajos p{margin-top:24px;font-size:13.5px;color:var(--apagado);max-width:62ch;line-height:1.5}
+/* Safari o ?plano: sin mezclas de color costosas */
+.plano .tile,.plano .vis{background:#F1EFF9}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ═══ World of Barbie · estilo Barbie: rosa fucsia, celeste, amarillo, tipografía Pacifico (girly) ═══ */
+@font-face{font-family:"Pacifico";src:url(../fonts/Pacifico.woff2) format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"Fredoka";src:url(../fonts/Fredoka.woff2) format("woff2");font-weight:300 700;font-display:block}
+@font-face{font-family:"Nunito";src:url(../fonts/Nunito.woff2) format("woff2");font-weight:200 1000;font-display:block}
+@font-face{font-family:"Space Mono";src:url(../fonts/SpaceMono-400.woff2) format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"Space Mono";src:url(../fonts/SpaceMono-700.woff2) format("woff2");font-weight:700;font-display:block}
+:root{
+  --tinta:#4A0A33; --gris:#8A3A6A; --rosa:#E0218A; --rosa2:#FF5CAD; --fucsia:#D4147F; --fucsiat:#B0125F; --burbuja:#FFC1E3; --suave:#FFD1E8; --claro:#FFF0F8;
+  --cielo:#BFE9FA; --sol:#FFC93C; --acct:#B0125F; --accc:#FF9BCB;
+  --chrome:#2A0A1D; --chrome2:#3A0E28; --hueso:#FFE9F4; --borde:rgba(255,233,244,.15); --apagado:rgba(255,233,244,.6);
+  --mono:"Space Mono",monospace; --ease:cubic-bezier(.2,.7,.2,1);
+}
+html,body{background:#2A0A1D}
+body{font-family:"Nunito",system-ui,sans-serif;color:var(--tinta)}
+#barra .marca .logo{width:26px;height:26px;color:var(--rosa2);flex:none}
+.hud .marca .logo{width:26px;height:26px;color:var(--fucsia)}
+.hud-acento .hud .marca .logo{color:#fff}
+.hud .pag b{color:var(--fucsia)}
+.hud-acento .hud{color:rgba(255,255,255,.88)} .hud-acento .hud .pag b{color:#fff}
+#prog{background:rgba(212,20,127,.12)} #prog i{background:linear-gradient(90deg,#FF5CAD,#D4147F,#FFC93C)}
+.hud-acento #prog{background:rgba(255,255,255,.25)}
+.mini.actual .marco{outline-color:var(--rosa2)}
+.r-btn--pri{background:var(--fucsia);border-color:var(--fucsia)} .r-btn--pri:hover{background:var(--rosa2);border-color:var(--rosa2)}
+#panel{background:#1F0715}
+#ayudita{display:none}
+
+/* ── lámina ── */
+.lam{padding:116px 110px 110px;display:block;font-size:28px}
+.lam.claro{background:radial-gradient(900px 600px at 100% 0,rgba(255,193,227,.8),transparent 60%),radial-gradient(800px 600px at 0 100%,rgba(191,233,250,.7),transparent 60%),#FFF0F8}
+.lam.sky{background:radial-gradient(900px 600px at 0 0,rgba(255,255,255,.8),transparent 60%),radial-gradient(800px 600px at 100% 100%,rgba(255,193,227,.55),transparent 60%),#BFE9FA}
+.lam.hot{color:#fff;background:radial-gradient(900px 700px at 85% 20%,rgba(255,201,60,.35),transparent 55%),radial-gradient(900px 700px at 0 100%,rgba(255,193,227,.4),transparent 60%),linear-gradient(135deg,#FF4FA3 0%,#D4147F 58%,#B00D69 100%)}
+.cont{position:relative;z-index:3}
+.deco{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.fl{position:absolute;color:var(--rosa2);opacity:.38;display:block}
+.sky .fl{color:var(--fucsia);opacity:.22} .hot .fl{color:#fff;opacity:.32}
+.fl .ic{width:100%;height:100%;display:block}
+.ghost{position:absolute;right:-70px;bottom:-90px;width:420px;height:420px;z-index:1;color:var(--rosa2);opacity:.12;pointer-events:none}
+.ghost .ic{width:100%;height:100%}
+.trio{position:absolute;right:110px;top:72px;z-index:4;display:flex;gap:18px}
+.ichip{display:grid;place-items:center;border-radius:50%;flex:none;color:#fff;background:linear-gradient(145deg,#FF7CBD,#D4147F);box-shadow:0 12px 0 -4px rgba(176,18,95,.28),inset 0 0 0 4px rgba(255,255,255,.35)}
+.ichip .ic{width:56%;height:56%;display:block}
+.ichip.xs{width:46px;height:46px} .ichip.sm{width:62px;height:62px} .ichip.lg{width:96px;height:96px}
+.sky .ichip{background:linear-gradient(145deg,#FF7CBD,#D4147F)}
+
+/* ── títulos ── */
+.tagrow{display:flex}
+.tag{background:var(--fucsia);color:#fff;font:800 24px/1 "Nunito";letter-spacing:.12em;text-transform:uppercase;padding:12px 30px;border-radius:999px;box-shadow:0 8px 0 -2px rgba(176,18,95,.3)}
+.hot .tag{background:var(--sol);color:#4A0A33}
+h1,h2,h3{margin:0}
+h2{font:400 68px/1.28 "Pacifico",cursive;color:var(--fucsia);margin:22px 0 28px;max-width:1500px;text-shadow:0 4px 0 rgba(255,255,255,.7)}
+.sky h2{text-shadow:0 4px 0 rgba(255,255,255,.9)}
+h1{font:400 190px/1.12 "Pacifico",cursive;color:#fff;margin:26px 0 0;text-shadow:0 10px 0 rgba(176,18,95,.55)}
+h1 .w,h2 .w{display:inline-block}
+h3{font:600 42px/1.12 "Fredoka",sans-serif;color:var(--tinta)}
+.hc{display:flex;align-items:center;gap:16px;margin:0 0 14px}
+.hc span{flex:1}
+p{margin:0}
+
+/* ── componentes ── */
+.row{display:flex;gap:30px}
+.card{flex:1;background:#fff;border-radius:40px;padding:34px 40px;box-sizing:border-box;border:4px solid #fff;box-shadow:0 14px 0 -2px rgba(212,20,127,.16),0 28px 40px -26px rgba(176,18,95,.5)}
+.card p{font-size:31px;line-height:1.36}
+.card ul{margin:0;padding-left:32px;font-size:29px;line-height:1.34}
+.card li{margin-bottom:12px}
+.card li::marker{color:var(--rosa2)}
+.card.p{background:#FFD1E8;border-color:#FFE6F2} .card.b{background:#CDEEFC;border-color:#E6F7FF} .card.y{background:#FFEFB0;border-color:#FFF8D8}
+.sky .card.b{background:#fff} .card.cream{background:#FFF0F8}
+.card.hotc{background:linear-gradient(135deg,#FF4FA3,#D4147F);color:#fff;border-color:#FF8FC7}
+.card.hotc h3{color:#fff} .card.hotc .ichip{background:linear-gradient(145deg,#FFE27A,#FFC93C);color:#B0125F}
+.big{font:600 64px/1.05 "Fredoka",sans-serif;color:var(--fucsia);margin:0 0 8px}
+.card.hotc .big{color:#FFE27A}
+.metric{font-weight:800;margin-top:14px;color:var(--fucsiat)}
+.card.hotc .metric{color:#FFE27A}
+.lead{font-size:38px;line-height:1.3;margin:34px 0 0;font-weight:800}
+.hot .lead{color:#fff}
+.em{color:var(--fucsia)} .hot .em{color:#FFE27A}
+.note{font-size:26px;line-height:1.35;margin:16px 0 0;color:var(--gris)}
+.dot{width:76px;height:76px;border-radius:50%;background:linear-gradient(145deg,#FF7CBD,#D4147F);display:grid;place-items:center;margin-bottom:16px;box-shadow:0 8px 0 -2px rgba(176,18,95,.3),inset 0 0 0 4px rgba(255,255,255,.35)}
+.dot p{font:600 42px/1 "Fredoka";color:#fff}
+.chip{border-radius:999px;padding:9px 28px;font-weight:800;font-size:24px;text-align:center;flex:none}
+.chip p{font-size:24px;font-weight:800}
+.chip.ok{background:#8ED8F8;color:#07344B} .chip.mid{background:#FFC93C;color:#4A0A33} .chip.no{background:#D4147F;color:#fff}
+.line{display:flex;align-items:center;justify-content:space-between;gap:32px;background:#fff;border-radius:999px 999px 999px 999px;padding:15px 38px;margin-bottom:14px;border:4px solid #FFE6F2;box-shadow:0 8px 0 -2px rgba(212,20,127,.14)}
+.line p{font-size:31px;line-height:1.3}
+.heads{display:flex;gap:28px;padding:0 28px 0 28px;margin-bottom:10px}
+.heads p{font-size:24px;font-weight:800;color:var(--fucsia);text-transform:uppercase;letter-spacing:.16em}
+.sense{display:flex;align-items:center;gap:28px;background:#fff;border-radius:999px;padding:12px 34px 12px 14px;margin-bottom:12px;border:4px solid #FFE6F2;box-shadow:0 8px 0 -2px rgba(212,20,127,.14)}
+.sense .who{width:230px;display:flex;align-items:center;gap:12px;border-radius:999px;background:linear-gradient(135deg,#FF4FA3,#D4147F);padding:7px 20px 7px 8px}
+.sense .who .ichip{background:#fff;color:var(--fucsia);box-shadow:none}
+.sense .who p{font-size:28px;font-weight:800;color:#fff}
+.sense .what,.sense .why{flex:1} .sense p{font-size:28px;line-height:1.28}
+.sense.dim .who{background:#C98AAE}
+.step{flex:1;border-radius:34px;padding:28px 24px;box-sizing:border-box;text-align:center;background:#fff;border:4px solid #FFE6F2;box-shadow:0 10px 0 -2px rgba(212,20,127,.14)}
+.step p{font-size:31px;font-weight:800;line-height:1.2}
+.step.on{background:linear-gradient(135deg,#FF4FA3,#D4147F);color:#fff;border-color:#FF8FC7}
+.foot{position:absolute;left:110px;right:110px;bottom:38px;font:700 23px/1.3 "Nunito";color:var(--gris);z-index:5;margin:0}
+.hot .foot{color:#FFE3F2}
+.autora{margin:36px 0 6px;font-weight:900;font-size:36px;color:#FFE27A}
+.curso{font-size:26px;color:#FFE3F2}
+
+/* fotos */
+.pic{position:absolute;margin:0;z-index:2;background:#fff;padding:14px 14px 0;border-radius:40px;box-shadow:0 22px 0 -6px rgba(176,18,95,.4),0 40px 60px -30px rgba(0,0,0,.45);transform:rotate(3deg)}
+.pic img{display:block;width:100%;height:auto;border-radius:28px}
+.pic figcaption{font:700 21px/1.3 "Nunito";color:var(--gris);padding:12px 8px 14px}
+.big-pic{right:110px;top:112px;width:780px}
+.gal{flex:none;width:390px} .gal img{display:block;width:390px;height:344px;object-fit:cover;border-radius:30px;border:6px solid #fff;box-shadow:0 14px 0 -2px rgba(212,20,127,.2),0 24px 30px -22px rgba(176,18,95,.6)} .gal p{margin-top:14px;font-size:26px;font-weight:800;line-height:1.25;text-align:center}
+.gallery{gap:28px}
+.rolimg{flex:none;width:420px;height:306px;object-fit:cover;border-radius:30px;border:6px solid #fff;box-shadow:0 14px 0 -2px rgba(212,20,127,.2),0 24px 30px -22px rgba(176,18,95,.6)}
+
+/* portada y cierre */
+.s-cover .cont{width:1000px}
+.s-cover h1{font-size:150px;line-height:1.15} .s-cover .card{width:1000px;flex:none;margin-top:30px;padding:22px 34px;display:block}
+.s-cover .card p:first-child{font-weight:800;font-size:24px;color:var(--fucsia)}
+.s-cover .lead{width:900px;margin-top:18px}
+.s-gracias .cont,.s-valoracion .cont{padding-top:130px}
+.s-valoracion h1,.s-gracias h1{font-size:200px}
+.s-valoracion .tagrow,.s-gracias .tagrow{margin-top:0}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<div id="app">
+  <header id="barra">
+    <div class="marca"><i></i><span>World of Barbie · Defensa oral · Anyelit Sharit Daza</span></div>
+    <div class="sep"></div>
+    <div id="reloj">00:00</div>
+    <button class="r-btn" id="bRejilla">Cuadrícula <kbd>O</kbd></button>
+    <button class="r-btn" id="bNotas">Notas <kbd>N</kbd></button>
+    <button class="r-btn" id="bAtajos">Atajos <kbd>?</kbd></button>
+    <button class="r-btn r-btn--pri" id="bPresentar">Presentar <kbd>P</kbd></button>
+  </header>
+  <aside id="panel" aria-label="Diapositivas"></aside>
+  <div id="vista"><div id="stage">
+
+<section class="lam hot s-cover" data-k="cover" data-notas="CÓMO EMPEZAR (25 segundos): «Buenas. Soy Anyelit Daza. Empiezo con una pregunta: ¿por qué elegí World of Barbie y no otra experiencia de Barbie? Porque en un solo recorrido junta casa, camper, carreras y museo, y la visitaron más de 250.000 personas. Es una atracción donde el visitante entra a la casa de Barbie, la recorre y juega en ella.»|PREGUNTA PROBABLE: ¿Por qué elegiste World of Barbie y no las otras experiencias de Barbie? RESPUESTA: Porque en un solo recorrido junta casa, camper, carreras y museo, y la visitaron más de 250.000 personas. Malibu DreamHouse, por ejemplo, fue para 4 huéspedes. Es una decisión mía de análisis; Malibu, el Café y la Suite los usé solo como contexto.">
+<div class="deco"><span class="fl" style="left:40px;top:160px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span></div>
+<div class="cont">
+
+<div class="tagrow"><p class="tag">Defensa oral · Universo inmersivo de marca</p></div>
+<h1><span class="w">World</span> <span class="w">of</span><br><span class="w">Barbie</span></h1>
+<p class="lead" style="width:900px;color:#FFFFFF">El universo de marca que se recorre y se juega.</p>
+<p class="autora">Anyelit Sharit Daza</p>
+<p class="curso">Medios de Comunicación Digital · Prof. Ángela Ballesta · ESIC</p>
+<div class="card" ><p style="font-weight:800;font-size:24px;color:#D4147F">PREGUNTA PARA EMPEZAR</p><p style="font-size:34px;font-weight:700;line-height:1.25;color:#d4147f">¿Te imaginas vivir un día en el mundo de Barbie?</p></div>
+</div><figure class="pic big-pic"><img src="img/cover.webp" alt="Sala de la Dreamhouse en World of Barbie, con sofás, chimenea y vista a la playa"><figcaption>Foto: World of Barbie Jakarta, sitio oficial. © Mattel.</figcaption></figure>
+</section>
+<section class="lam claro s-marca" data-k="marca" data-notas="EN SIMPLE: Barbie tiene varias experiencias en el mundo real. Yo analizo solo una: World of Barbie. Las otras tres son contexto para comparar.|PREGUNTAS PROBABLES: 1) ¿Por qué no analizaste Malibu DreamHouse? Fue solo para 4 huéspedes y dos noches; World of Barbie la visitaron más de 250.000 personas y tiene mucho más para analizar. 2) ¿De quién es Barbie? De Mattel, empresa de muñecas y licencias de entretenimiento. Debutó el 9 de marzo de 1959. 3) ¿Quién hizo World of Barbie? Kilburn Live, con Mattel e IMG. 4) ¿Por qué «no documentado»? Porque no encontré cifras de cuánta gente fue al Café ni a la Suite. No invento el dato.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><rect x="40" y="6" width="20" height="16" rx="3"/><rect x="44" y="24" width="12" height="10" rx="2"/><rect x="20" y="36" width="60" height="56" rx="14"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 1 · La marca</p></div>
+<h2><span class="w">Un</span> <span class="w">universo,</span> <span class="w">cuatro</span> <span class="w">experiencias</span></h2>
+<div class="row">
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><span>Malibu DreamHouse</span></h3><p>Casa de Barbie en Airbnb, con Ken de anfitrión. Dos noches en julio de 2023.</p><p class="metric">4 huéspedes</p></div>
+<div class="card hotc"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><span>World of Barbie</span></h3><p>Atracción que viaja: casa, camper, carreras y museo.</p><p class="metric">+250.000 visitantes</p></div>
+<div class="card b"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 50 C36 28 10 24 8 38 C6 56 30 68 50 50 Z"/><path d="M50 50 C64 28 90 24 92 38 C94 56 70 68 50 50 Z"/><circle cx="50" cy="50" r="9"/><path d="M44 58 L30 90 L44 84 L50 62 Z"/><path d="M56 58 L70 90 L56 84 L50 62 Z"/></svg></i><span>Malibu Barbie Café</span></h3><p>Restaurante temporal en Nueva York y Chicago, hasta septiembre de 2023.</p><p class="metric">Alcance: no documentado</p></div>
+<div class="card y"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></i><span>Barbie Suite · Hilton Bogotá</span></h3><p>Suite temática en el piso 13, desde el 10 de julio de 2023.</p><p class="metric">Alcance: no documentado</p></div>
+</div>
+<p class="lead">Elegí <span class="em">World of Barbie</span> porque junta casa, camper, carreras y museo en un solo recorrido.</p>
+
+</div><p class="foot">Fuentes: Airbnb (2023); Resident (2023); Block Club Chicago (2023); Hilton (2023). Criterio de elección: decisión de la autora.</p>
+</section>
+<section class="lam claro s-experiencia" data-k="experiencia" data-notas="EN SIMPLE: la misma atracción viajó a tres ciudades y cambió de tamaño según el lugar.|PREGUNTAS PROBABLES: 1) ¿Cuánta gente fue? Más de 100.000 en Toronto y más de 250.000 entre Toronto y Los Ángeles. Esas cifras las dan los organizadores, no un estudio independiente. 2) ¿Cuánto cuesta? Desde US$34,50 adultos y US$25,50 niños de 1 a 12 años; hay descuentos para estudiantes, mayores de 65, militares y servicios de emergencia (Chieffi, 2023). 3) ¿Cómo la movían de ciudad? Las mismas zonas viajan y se adaptan al lugar. La camper no tiene motor, así que se desarma y se arma otra vez en cada ciudad (Guzman, 2023). 4) ¿Quién la hizo? Kilburn Live (empresa de entretenimiento en vivo), con Mattel (dueña de Barbie) e IMG.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M46 94 L54 94 L54 52 C54 44 48 44 46 52 Z"/><path d="M50 46 C36 28 14 30 6 42 C24 36 38 40 50 46 Z"/><path d="M50 46 C64 28 86 30 94 42 C76 36 62 40 50 46 Z"/><path d="M50 46 C44 28 56 12 70 10 C60 20 56 30 50 46 Z"/><path d="M50 46 C56 28 44 12 30 10 C40 20 44 30 50 46 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 1 · La experiencia</p></div>
+<h2><span class="w">Tres</span> <span class="w">ciudades,</span> <span class="w">un</span> <span class="w">mismo</span> <span class="w">mundo</span></h2>
+<div class="row">
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><span>Toronto · 2022</span></h3><p class="big">30.000 pies²</p><p>Square One, Mississauga. Debut mundial. Más de 100.000 visitantes.</p></div>
+<div class="card b"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 50 C36 28 10 24 8 38 C6 56 30 68 50 50 Z"/><path d="M50 50 C64 28 90 24 92 38 C94 56 70 68 50 50 Z"/><circle cx="50" cy="50" r="9"/><path d="M44 58 L30 90 L44 84 L50 62 Z"/><path d="M56 58 L70 90 L56 84 L50 62 Z"/></svg></i><span>Santa Monica · 2023</span></h3><p class="big">20.000 pies²</p><p>Santa Monica Place, en dos pisos. Debut en EE. UU. el 14 de abril de 2023.</p></div>
+<div class="card y"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></i><span>Frisco, Texas · 2023</span></h3><p class="big">25.000 pies²</p><p>Stonebriar Centre. Abrió el 17 de noviembre de 2023.</p></div>
+</div>
+<div class="row" style="margin-top:28px">
+<div class="card hotc"><p><b>Producción:</b> Kilburn Live, con Mattel e IMG.</p></div>
+<div class="card hotc"><p><b>Entradas:</b> desde US$34,50 adultos y US$25,50 niños de 1 a 12 años.</p></div>
+</div>
+<p class="note">pies² = pies cuadrados. 20.000 pies² son unos 1.860 metros cuadrados.</p>
+
+</div><p class="foot">Fuentes: Kilburn Live y Mattel (2022); Irick y Navarro (2023); Resident (2023); Chieffi (2023).</p>
+</section>
+<section class="lam sky s-objetivos" data-k="objetivos" data-notas="EN SIMPLE: un objetivo es lo que la marca quería lograr. Aquí había dos declarados y uno que es mi lectura.|PREGUNTAS PROBABLES: 1) ¿Por qué dices «mi lectura»? Porque los organizadores no publicaron una meta medible. Lo que dicen es llevar los juegos a escala real y que las jóvenes sientan que pueden ser lo que quieran; el tercero es mi análisis. 2) ¿Por qué importa la caída de ventas? Es contexto: Barbie venía de un año con menos ventas (Brophy, 2023). No digo que la atracción lo causara ni lo arreglara. 3) ¿Quiénes fueron realmente? Hay relatos de familias, turistas, madres e hijas y adultos disfrazados (Hall, 2023; Bianco y Leopo, 2023). No hay estadística oficial del perfil.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path fill-rule="evenodd" d="M50 6 A32 32 0 1 0 50 70 A32 32 0 1 0 50 6 Z M50 16 A22 22 0 1 1 50 60 A22 22 0 1 1 50 16 Z"/><rect x="43" y="72" width="14" height="24" rx="6"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M10 74 L18 40 L34 58 L50 24 L66 58 L82 40 L90 74 Z"/><circle cx="18" cy="32" r="5"/><circle cx="50" cy="16" r="5"/><circle cx="82" cy="32" r="5"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 1 · Objetivos y públicos</p></div>
+<h2><span class="w">Qué</span> <span class="w">buscaba</span> <span class="w">y</span> <span class="w">a</span> <span class="w">quién</span> <span class="w">le</span> <span class="w">habla</span></h2>
+<div class="row">
+<div class="card"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 50 C36 28 10 24 8 38 C6 56 30 68 50 50 Z"/><path d="M50 50 C64 28 90 24 92 38 C94 56 70 68 50 50 Z"/><circle cx="50" cy="50" r="9"/><path d="M44 58 L30 90 L44 84 L50 62 Z"/><path d="M56 58 L70 90 L56 84 L50 62 Z"/></svg></i><span>Objetivos</span></h3>
+<ul><li>Llevar los juegos de Barbie a tamaño real, para todas las edades.</li><li>Dejar en las más jóvenes la idea de que pueden ser lo que quieran.</li><li><b>Mi lectura:</b> hacer tangible el universo de marca para que se viva y se comparta.</li></ul></div>
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></i><span>Públicos</span></h3>
+<ul><li>Niños de 1 a 12 años, con tarifa propia.</li><li>Adultos nostálgicos, con noches 21+.</li><li>Familias, amigas y turistas de otras ciudades y países.</li></ul></div>
+</div>
+<p class="lead">Contexto: las ventas de Barbie habían bajado de unos US$1.680 millones (2021) a US$1.490 millones (2022).</p>
+<p class="note">No hay metas con cifras publicadas. «Ventas brutas» es todo lo vendido, antes de restar costos.</p>
+
+</div><p class="foot">Fuentes: Kidscreen (2022); Stoddard (2022); Chieffi (2023); Irick y Navarro (2023); Brophy (2023).</p>
+</section>
+<section class="lam claro s-recorrido" data-k="recorrido" data-notas="EN SIMPLE: el visitante no mira desde afuera; camina dentro de las salas como si fuera una casa de Barbie gigante.|PREGUNTAS PROBABLES: 1) ¿Cómo sabes el orden? Los pasos 1 a 3 vienen de Bianco y Leopo (2023); el resto lo agrupé por sala con El Universo y Resident (2023). Por eso digo que el orden puede variar. 2) ¿Cuántas áreas hay? 17 en una visita a Santa Monica en mayo de 2023, de 45 a 60 minutos (Hewitt, 2023). 3) ¿Hay realidad virtual? No hay realidad virtual ni aumentada documentada. La tecnología solo apoya: cohete con control de misión y estudio de TV. 4) ¿Por qué el museo va en medio? Va entre salas inmersivas, también en rosa y fucsia de piso a techo.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 30 C50 22 58 18 58 12 C58 6 42 6 42 14" fill="none" stroke-width="6" stroke-linecap="round"/><path d="M50 30 L92 74 C96 78 94 84 88 84 H12 C6 84 4 78 8 74 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M38 6 L50 18 L62 6 L66 40 L86 94 L14 94 L34 40 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 2 · El recorrido</p></div>
+<h2><span class="w">Entrar</span> <span class="w">a</span> <span class="w">la</span> <span class="w">casa</span> <span class="w">de</span> <span class="w">Barbie</span> <span class="w">en</span> <span class="w">8</span> <span class="w">pasos</span></h2>
+<div class="row" style="margin-bottom:28px">
+<div class="card p"><div class="dot"><p>1</p></div><p><b>Sala de Barbie</b> con muebles playeros</p></div>
+<div class="card b"><div class="dot"><p>2</p></div><p><b>Dream Closet</b>, el clóset de vestidos</p></div>
+<div class="card y"><div class="dot"><p>3</p></div><p><b>Tobogán</b> a una piscina de pelotas rosa</p></div>
+<div class="card p"><div class="dot"><p>4</p></div><p><b>Dreamhouse:</b> cocina, patio y piscina</p></div>
+</div>
+<div class="row">
+<div class="card b"><div class="dot"><p>5</p></div><p><b>Camper y cohete</b> con control de misión</p></div>
+<div class="card y"><div class="dot"><p>6</p></div><p><b>Carreras:</b> laboratorio, música y TV</p></div>
+<div class="card p"><div class="dot"><p>7</p></div><p><b>Pasarela</b> y cajas de muñeca gigantes</p></div>
+<div class="card b"><div class="dot"><p>8</p></div><p><b>Museo</b> de 1959 a hoy</p></div>
+</div>
+<p class="lead">En total son <span class="em">17 áreas</span> que se recorren en 45 a 60 minutos.</p>
+
+</div><p class="foot">Fuentes: Bianco y Leopo (2023); Resident (2023); El Universo (2023); Hewitt (2023). El orden puede cambiar según el día.</p>
+</section>
+<section class="lam claro s-inmersion" data-k="inmersion" data-notas="EN SIMPLE: «inmersiva» significa que entras, te quedas y participas, en vez de solo mirar. Son las tres pruebas de mi trabajo.|PREGUNTAS PROBABLES: 1) ¿Por qué participación «alta»? Porque el visitante actúa: presenta noticias, hace de DJ, se sienta al volante de la camper, se desliza al foso de pelotas. 2) ¿Por qué comparas con las otras tres? Para mostrar que World of Barbie une alta participación con gran alcance: más de 250.000 visitantes frente a 4 huéspedes. 3) ¿De dónde sale la definición? De Pine y Gilmore (1998) y Brakus et al. (2009): una experiencia de marca involucra a la persona de forma personal y memorable. Las tres pruebas son criterio del núcleo. 4) ¿La valoración es un dato? No, es mi punto de vista con esas fuentes.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><rect x="34" y="6" width="32" height="50" rx="16"/><path d="M22 40 C22 70 78 70 78 40" fill="none" stroke-width="7" stroke-linecap="round"/><rect x="46" y="64" width="8" height="22"/><rect x="30" y="86" width="40" height="8" rx="4"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 2 · Inmersión</p></div>
+<h2><span class="w">Entrar,</span> <span class="w">quedarse</span> <span class="w">y</span> <span class="w">participar</span></h2>
+<div class="row">
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M42 38 L42 20 L58 6 L58 38 Z"/><rect x="38" y="42" width="24" height="12" rx="2"/><rect x="36" y="58" width="28" height="34" rx="4"/></svg></i><span>Entrar</span></h3><p class="big">Sí</p><p>Espacios a escala real: una casa que se camina.</p></div>
+<div class="card b"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><span>Permanecer</span></h3><p class="big">45–60 min</p><p>Para recorrer las 17 áreas.</p></div>
+<div class="card y"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><span>Participar</span></h3><p class="big">Alta</p><p>Ser DJ, presentadora o astronauta, y personalizar una Barbie.</p></div>
+</div>
+<p class="lead">Inmersiva: el público no solo mira el mensaje, <span class="em">lo vive</span>.</p>
+<div class="row" style="margin-top:28px">
+<div class="card cream"><p><b>Comparación:</b> Malibu DreamHouse también es de participación alta, pero guiada y para 4 personas. El Café y la Suite, participación baja.</p></div>
+</div>
+
+</div><p class="foot">Fuentes: Pine y Gilmore (1998); Brakus et al. (2009); Resident (2023); Hewitt (2023). Valoración: punto de vista de la autora.</p>
+</section>
+<section class="lam claro s-tipo" data-k="tipo" data-notas="EN SIMPLE: el tipo de inmersión responde a «¿cómo me meto en la experiencia?». En World of Barbie es por el espacio (entro a una casa a tamaño real) y por la acción (hago cosas con el cuerpo y actúo papeles).|GUION (15 segundos): «Es una inmersión de espacio y acción. De espacio, porque el visitante camina una casa de Barbie a tamaño real. De acción, porque se desliza por el tobogán, se sienta al volante de la camper y hace de DJ, presentadora o astronauta. No usa realidad virtual ni deja cambiar la historia.»|PREGUNTAS PROBABLES: 1) ¿Qué es una inmersión «de espacio»? Que el lugar te rodea: todo es rosa y fucsia de piso a techo y las salas son a escala real. 2) ¿Qué es una inmersión «de acción»? Que no solo miras: participas con el cuerpo, como en el tobogán, la camper o el estudio de TV. 3) ¿Por qué no es de tecnología? No hay realidad virtual ni aumentada documentada; solo apoyos como el cohete con control de misión y el estudio de TV. 4) ¿Por qué no es de cocreación? Porque el visitante interpreta papeles ya escritos por la marca y solo elige accesorios y ropa; hay extras de pago para diseñar un atuendo o peinado. 5) ¿Quién clasificó esto? Es mi lectura como autora; las acciones vienen de Bianco y Leopo (2023), Resident (2023) y El Universo (2023).">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 140 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path fill-rule="evenodd" d="M16 24 H98 C114 24 128 38 128 58 V72 H12 V30 A6 6 0 0 1 16 24 Z M26 34 H56 V54 H26 Z M64 34 H92 V54 H64 Z"/><circle cx="38" cy="76" r="14"/><circle cx="98" cy="76" r="14"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C68 20 72 44 66 70 L34 70 C28 44 32 20 50 4 Z"/><path d="M34 70 L16 88 L34 84 Z"/><path d="M66 70 L84 88 L66 84 Z"/><path d="M42 74 L58 74 L50 94 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 2 · Tipo de inmersión</p></div>
+<h2><span class="w">Inmersión</span> <span class="w">de</span> <span class="w">espacio</span> <span class="w">y</span> <span class="w">acción</span></h2>
+<div class="row">
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><span>De espacio</span></h3>
+<ul><li>Dreamhouse a tamaño real: cocina, patio y piscina.</li><li>Dream Closet, el clóset de vestidos.</li><li>Sala de Barbie con muebles playeros.</li></ul></div>
+<div class="card b"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><span>De acción</span></h3>
+<ul><li>Deslizarse por el tobogán a la piscina de pelotas.</li><li>Sentarse al volante de la camper.</li><li>Caminar la alfombra rosa y posar en cajas gigantes.</li></ul></div>
+<div class="card y"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><span>De roles</span></h3>
+<ul><li>Hacer de DJ en la cabina de música.</li><li>Presentar noticias en el estudio de TV.</li><li>Hablar con control de misión en el cohete.</li></ul></div>
+</div>
+<div class="row" style="margin-top:28px">
+<div class="card hotc"><p><b>No es</b> de tecnología (no hay realidad virtual ni aumentada) <b>ni</b> de cocreación (los papeles ya vienen escritos).</p></div>
+</div>
+
+</div><p class="foot">Fuentes: Bianco y Leopo (2023); Resident (2023); El Universo (2023); Kilburn Live y Mattel (2022). Clasificación: lectura de la autora.</p>
+</section>
+<section class="lam claro s-galeria" data-k="galeria" data-notas="EN SIMPLE: estas fotos ayudan a ver cómo es por dentro. Son de la edición de Yakarta (Indonesia), no de Toronto, Santa Monica ni Frisco, que son las de mi trabajo. Las zonas son parecidas.|GUION (10 segundos): «Estas fotos son de la edición de Yakarta, pero muestran zonas parecidas: la sala de la Dreamhouse, el cohete, el estudio de música y el set de TV.»|PREGUNTAS PROBABLES: 1) ¿Por qué fotos de Yakarta si analizas otras ciudades? Porque son las fotos oficiales a las que tuve acceso; muestran zonas que también se describen en Santa Monica y Frisco, pero no son de esas ciudades. Lo aclaro en la diapositiva. 2) ¿De quién son las fotos? Del sitio oficial de World of Barbie Jakarta, con derechos de Mattel. Las uso solo como apoyo visual y con crédito. 3) ¿Cómo se pronuncia Yakarta? Igual que en español: Yakarta (Jakarta en inglés).">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path fill-rule="evenodd" d="M20 30 L32 30 L38 20 L62 20 L68 30 L80 30 A8 8 0 0 1 88 38 L88 76 A8 8 0 0 1 80 84 L20 84 A8 8 0 0 1 12 76 L12 38 A8 8 0 0 1 20 30 Z M50 40 A18 18 0 1 0 50 76 A18 18 0 1 0 50 40 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 50 C36 28 10 24 8 38 C6 56 30 68 50 50 Z"/><path d="M50 50 C64 28 90 24 92 38 C94 56 70 68 50 50 Z"/><circle cx="50" cy="50" r="9"/><path d="M44 58 L30 90 L44 84 L50 62 Z"/><path d="M56 58 L70 90 L56 84 L50 62 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 2 · Zonas</p></div>
+<h2><span class="w">Así</span> <span class="w">se</span> <span class="w">ve</span> <span class="w">por</span> <span class="w">dentro</span></h2>
+<div class="row gallery">
+<div class="gal"><img src="img/sala.webp" alt="Sala de la Dreamhouse con sofás y vista a la playa"><p >Sala de la Dreamhouse</p></div>
+<div class="gal"><img src="img/cohete-pantalla.webp" alt="Cohete con asientos rosados y pantalla de control con la Tierra"><p >Cohete con pantalla de control</p></div>
+<div class="gal"><img src="img/estudio.webp" alt="Visitante cantando en el estudio de música"><p >Estudio de música</p></div>
+<div class="gal"><img src="img/tv.webp" alt="Letrero de The Barbie Show en el set de TV"><p >Set de TV: The Barbie Show</p></div>
+</div>
+<p class="lead">Son fotos de la edición de Yakarta, con zonas parecidas a las de mi trabajo.</p>
+
+</div><p class="foot">Fotos: World of Barbie Jakarta, sitio oficial (worldofbarbiejakarta.com). © Mattel. Barbie es marca de Mattel.</p>
+</section>
+<section class="lam claro s-sentidos" data-k="sentidos" data-notas="EN SIMPLE: miré qué sentidos activa la atracción y para qué lo hace. Los dos grises son los que casi no aparecen.|PREGUNTAS PROBABLES: 1) ¿Por qué no hay olor? No encontré ninguna fuente que lo describa. No lo afirmo ni lo niego. 2) ¿El gusto? Solo en eventos: cócteles, barra de bocadillos y palomitas (Irick y Navarro, 2023). 3) ¿Quién decidió el «para qué»? Es lectura mía a partir de las fuentes; la marca no publicó esa intención. 4) ¿Qué prueba lo de las 500 fotos? Una visitante cuenta que en unos 45 minutos ella y sus amigas tomaron más de 500 (Hewitt, 2023). Es un caso, no un promedio.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M36 10 L84 2 L84 62 A14 11 0 1 1 76 52 L76 18 L44 24 L44 72 A14 11 0 1 1 36 62 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 2 · Sentidos</p></div>
+<h2><span class="w">Qué</span> <span class="w">sentidos</span> <span class="w">se</span> <span class="w">usan</span></h2>
+<div class="heads"><p style="width:170px">Sentido</p><p style="flex:1">Qué hay</p><p style="flex:1">Para qué</p></div>
+<div class="sense"><div class="who"><i class="ichip xs"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path fill-rule="evenodd" d="M20 30 L32 30 L38 20 L62 20 L68 30 L80 30 A8 8 0 0 1 88 38 L88 76 A8 8 0 0 1 80 84 L20 84 A8 8 0 0 1 12 76 L12 38 A8 8 0 0 1 20 30 Z M50 40 A18 18 0 1 0 50 76 A18 18 0 1 0 50 40 Z"/></svg></i><p>Vista</p></div><div class="what"><p>Rosa y fucsia de piso a techo. En una visita se tomaron +500 fotos.</p></div><div class="why"><p>Reconocer la marca y crear escenas para fotos.</p></div></div>
+<div class="sense"><div class="who"><i class="ichip xs"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M36 10 L84 2 L84 62 A14 11 0 1 1 76 52 L76 18 L44 24 L44 72 A14 11 0 1 1 36 62 Z"/></svg></i><p>Oído</p></div><div class="what"><p>Música pop, kit de DJ y karaoke.</p></div><div class="why"><p>Crear fiesta e invitar a participar.</p></div></div>
+<div class="sense"><div class="who"><i class="ichip xs"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><p>Tacto</p></div><div class="what"><p>Tobogán, pelotas y volante de la camper.</p></div><div class="why"><p>Pasar de mirar a jugar.</p></div></div>
+<div class="sense dim"><div class="who"><i class="ichip xs"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><p>Gusto</p></div><div class="what"><p>Solo en eventos: cócteles y snacks.</p></div><div class="why"><p>Invitar a adultos con noches 21+.</p></div></div>
+<div class="sense dim"><div class="who"><i class="ichip xs"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><p>Olfato</p></div><div class="what"><p>No documentado.</p></div><div class="why"><p>Sin intención documentada.</p></div></div>
+<p class="lead" style="margin-top:20px">Es inmersión de <span class="em">espacio y acción</span>, no de sabores ni olores.</p>
+
+</div><p class="foot">Fuentes: Bianco y Leopo (2023); Resident (2023); Hewitt (2023); Irick y Navarro (2023). La columna «Para qué» es lectura de la autora.</p>
+</section>
+<section class="lam sky s-rol" data-k="rol" data-notas="EN SIMPLE: «protagonista» es quien vive la historia en primera persona. «Cocreador» sería quien la cambia o la inventa. Aquí el visitante la vive, pero no la cambia.|LA HISTORIA: el juego de Barbie se agranda y el visitante entra a los espacios de la muñeca (Kidscreen, 2022). El hilo central son las carreras y el potencial ilimitado (Stoddard, 2022).|PREGUNTAS PROBABLES: 1) ¿Por qué no es cocreador? Porque no modifica las salas ni el relato; solo interpreta papeles ya escritos. Elegir accesorios o pagar por un atuendo es poca personalización. 2) ¿Y por qué no solo explorador? Porque no solo mira: participa con el cuerpo (DJ, TV, camper). 3) ¿La escala es de algún autor? No, la ubicación del rol es mi análisis.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><rect x="34" y="6" width="32" height="50" rx="16"/><path d="M22 40 C22 70 78 70 78 40" fill="none" stroke-width="7" stroke-linecap="round"/><rect x="46" y="64" width="8" height="22"/><rect x="30" y="86" width="40" height="8" rx="4"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 2 · Narrativa y rol</p></div>
+<h2><span class="w">«Puedes</span> <span class="w">ser</span> <span class="w">lo</span> <span class="w">que</span> <span class="w">quieras»</span></h2>
+<div class="row" style="align-items:center;margin-bottom:36px">
+<div class="step"><p>Espectador</p></div>
+<div class="step"><p>Explorador</p></div>
+<div class="step on" style="flex:1.6;padding:44px 24px"><p style="font-size:34px">Participante-protagonista</p></div>
+<div class="step"><p>Cocreador</p></div>
+</div>
+<div class="row">
+<div class="card"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 50 C36 28 10 24 8 38 C6 56 30 68 50 50 Z"/><path d="M50 50 C64 28 90 24 92 38 C94 56 70 68 50 50 Z"/><circle cx="50" cy="50" r="9"/><path d="M44 58 L30 90 L44 84 L50 62 Z"/><path d="M56 58 L70 90 L56 84 L50 62 Z"/></svg></i><span>Qué sí hace</span></h3><p>Actúa: presenta noticias, hace de DJ, de astronauta o de científica.</p></div>
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></i><span>Qué no hace</span></h3><p>No cambia la historia: los papeles los escribió la marca. Solo elige accesorios y ropa, y hay extras de pago.</p></div>
+<img class="rolimg" src="img/estudio-rol.webp" alt="Una visitante canta en el estudio de música de World of Barbie">
+</div>
+<p class="note">Foto: estudio de música, World of Barbie Jakarta (sitio oficial). © Mattel.</p>
+
+</div><p class="foot">Fuentes: Stoddard (2022); Kidscreen (2022); Resident (2023); Bianco y Leopo (2023); Chieffi (2023). Ubicación del rol: análisis propio.</p>
+</section>
+<section class="lam claro s-relato" data-k="relato" data-notas="EN SIMPLE: la atracción no cuenta la película, cuenta la historia de la marca.|PREGUNTAS PROBABLES: 1) ¿Cómo sabes que cuenta la historia de la marca? Por el museo, que va de la muñeca de 1959 a las versiones diversas de hoy (El Universo, 2023), y por las salas de carreras, que llevan el lema a la práctica (Resident, 2023). 2) ¿Qué es la inclusión aquí? Muñecas de distintas razas, religiones y capacidades (Spectrum News 1, 2023); en el museo hay líneas con sillas de ruedas y vitiligo (Bianco y Leopo, 2023). 3) ¿La frase «Tú la vives en primera persona» es un dato? Es mi lectura como autora. 4) ¿La identidad es igual en todas las ciudades? Los elementos constantes son el rosa, la Dreamhouse, la camper y las carreras; las mismas zonas viajan de Toronto a Santa Monica y Frisco (Resident, 2023).">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path fill-rule="evenodd" d="M20 30 L32 30 L38 20 L62 20 L68 30 L80 30 A8 8 0 0 1 88 38 L88 76 A8 8 0 0 1 80 84 L20 84 A8 8 0 0 1 12 76 L12 38 A8 8 0 0 1 20 30 Z M50 40 A18 18 0 1 0 50 76 A18 18 0 1 0 50 40 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 50 C36 28 10 24 8 38 C6 56 30 68 50 50 Z"/><path d="M50 50 C64 28 90 24 92 38 C94 56 70 68 50 50 Z"/><circle cx="50" cy="50" r="9"/><path d="M44 58 L30 90 L44 84 L50 62 Z"/><path d="M56 58 L70 90 L56 84 L50 62 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 2 · Relato de la marca</p></div>
+<h2><span class="w">Cuenta</span> <span class="w">la</span> <span class="w">historia</span> <span class="w">de</span> <span class="w">Barbie</span></h2>
+<div class="row">
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></i><span>Origen</span></h3><p>La muñeca debutó el 9 de marzo de 1959. El museo muestra su historia hasta hoy.</p></div>
+<div class="card b"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M42 38 L42 20 L58 6 L58 38 Z"/><rect x="38" y="42" width="24" height="12" rx="2"/><rect x="36" y="58" width="28" height="34" rx="4"/></svg></i><span>Carreras</span></h3><p>Salas de ciencia, astronauta, música y TV: el lema «puedes ser lo que quieras» hecho acción.</p></div>
+<div class="card y"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><span>Inclusión</span></h3><p>Muñecas de distintos cuerpos, colores de piel y capacidades, con sillas de ruedas y vitiligo.</p></div>
+</div>
+<p class="lead">Mi lectura: no repite la película; cuenta la marca de principio a fin y <span class="em">tú la vives en primera persona</span>.</p>
+<p class="note">La tecnología solo apoya: cohete con control de misión y estudio de TV. No hay realidad virtual ni aumentada.</p>
+
+</div><p class="foot">Fuentes: Irick y Navarro (2023); Stoddard (2022); Resident (2023); Spectrum News 1 (2023); Bianco y Leopo (2023).</p>
+</section>
+<section class="lam claro s-comunicacion" data-k="comunicacion" data-notas="EN SIMPLE: miré cómo se avisó la atracción, qué pasó mientras estaba abierta y qué pasó después.|MEDIOS USADOS: comunicados de los organizadores, web oficial, la plataforma Fever (venta de entradas) y cobertura de televisión y prensa local. No hay medios pagados documentados.|PREGUNTAS PROBABLES: 1) ¿Qué es «medio ganado»? Prensa que habla de la atracción sin que la marca pague por ello, como NBC Los Angeles, LAist y AFP. 2) ¿Hay métricas de redes? No hay datos verificables. Solo sé de forma cualitativa que una visitante la descubrió por TikTok y que influencers fueron a las noches Sips After Sunset (Hewitt, 2023; Irick y Navarro, 2023). 3) ¿Por qué se ampliaron las fechas? Los organizadores la ampliaron más de una vez por la demanda (Resident, 2023). Santa Monica siguió abierta hasta septiembre de 2023.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path fill-rule="evenodd" d="M20 30 L32 30 L38 20 L62 20 L68 30 L80 30 A8 8 0 0 1 88 38 L88 76 A8 8 0 0 1 80 84 L20 84 A8 8 0 0 1 12 76 L12 38 A8 8 0 0 1 20 30 Z M50 40 A18 18 0 1 0 50 76 A18 18 0 1 0 50 40 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 3 · Comunicación</p></div>
+<h2><span class="w">Antes,</span> <span class="w">durante</span> <span class="w">y</span> <span class="w">después</span></h2>
+<div class="row">
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M42 38 L42 20 L58 6 L58 38 Z"/><rect x="38" y="42" width="24" height="12" rx="2"/><rect x="36" y="58" width="28" height="34" rx="4"/></svg></i><span>Antes</span></h3>
+<ul><li>May 2022: anuncio y entradas de Toronto.</li><li>2 mar 2023: se anuncia Santa Monica.</li><li>8 mar: salen las entradas.</li><li>14 abr: debut en EE. UU.</li></ul></div>
+<div class="card b"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><span>Durante</span></h3>
+<ul><li>Pink Carpet Night: alfombra rosa y música en vivo.</li><li>Movie Days: películas de Barbie los domingos.</li><li>Sips After Sunset: noche 21+ con DJ e influencers.</li><li>Extras de pago: atuendo y peinado.</li></ul></div>
+<div class="card y"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><span>Después</span></h3>
+<ul><li>Cobertura de TV y prensa: NBC Los Angeles, LAist, AFP.</li><li>Visitantes que posan y comparten: +500 fotos en una visita.</li><li>Fechas ampliadas y apertura en Frisco.</li><li>Medios pagados: no documentados.</li></ul></div>
+</div>
+<p class="lead">Los visitantes también <span class="em">cuentan la historia</span>: llegan de rosa, posan y comparten.</p>
+
+</div><p class="foot">Fuentes: Kidscreen (2022); ABC7 (2023); Irick y Navarro (2023); Resident (2023); Hewitt (2023); Bianco y Leopo (2023).</p>
+</section>
+<section class="lam sky s-cumplido" data-k="cumplido" data-notas="EN SIMPLE: comparé lo que se anunció en 2022 con lo que se describe en Santa Monica y Frisco. Las salas anunciadas reaparecen.|PREGUNTAS PROBABLES: 1) ¿Por qué «con matiz para adultos»? Hay noches 21+ y la producción dice que no es solo para niñas, pero una visitante la ve pensada sobre todo para niños (Hewitt, 2023). 2) ¿De dónde sale lo prometido? De Stoddard (2022). 3) ¿Cómo comprobaste lo entregado? Con las descripciones de Resident (2023), Guzman (2023), Irick y Navarro (2023) y Bianco y Leopo (2023), no con una visita propia.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 3 · Promesa y realidad</p></div>
+<h2><span class="w">Lo</span> <span class="w">prometido</span> <span class="w">y</span> <span class="w">lo</span> <span class="w">entregado</span></h2>
+<div class="line"><p>Dreamhouse a escala real</p><div class="chip ok"><p>Cumplido</p></div></div>
+<div class="line"><p>Camper con hamaca y compartimentos ocultos</p><div class="chip ok"><p>Cumplido</p></div></div>
+<div class="line"><p>Cajas de muñeca gigantes y estudio de TV</p><div class="chip ok"><p>Cumplido</p></div></div>
+<div class="line"><p>Centro espacial con control de misión</p><div class="chip ok"><p>Cumplido</p></div></div>
+<div class="line"><p>Exhibición sobre la historia de Barbie</p><div class="chip ok"><p>Cumplido</p></div></div>
+<div class="line"><p>Que las jóvenes se sientan capaces y los adultos se reinventen</p><div class="chip mid"><p>Cumplido, con matiz para adultos</p></div></div>
+
+</div><p class="foot">Fuentes: Stoddard (2022); Resident (2023); Guzman (2023); Irick y Navarro (2023); Bianco y Leopo (2023); Hewitt (2023).</p>
+</section>
+<section class="lam claro s-indicadores" data-k="indicadores" data-notas="EN SIMPLE: contar visitantes es fácil; probar que eso movió las ventas o cambió lo que la gente piensa de Barbie es difícil.|POR QUÉ NO SE PUEDE MEDIR EL EFECTO: la película se estrenó el 21 de julio de 2023 con la atracción ya abierta. Las dos actuaron a la vez y ninguna fuente separa el efecto de cada una.|PREGUNTAS PROBABLES: 1) ¿Las cifras son confiables? Son de los organizadores; por eso lo aclaro. La de «decenas de miles» en Los Ángeles es de la agencia AFP. 2) ¿Subieron las ventas de Barbie? No puedo afirmarlo; no hay estudio. Solo sé que habían bajado de unos US$1.680 millones en 2021 a unos US$1.490 millones en 2022 (Brophy, 2023). 3) ¿Qué datos faltarían? Encuestas a visitantes, asistencia por ciudad y las métricas de redes de las marcas.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><circle cx="50" cy="50" r="20"/><g stroke-width="7" stroke-linecap="round"><path d="M50 8 V20 M50 80 V92 M8 50 H20 M80 50 H92 M20 20 L28 28 M72 72 L80 80 M80 20 L72 28 M28 72 L20 80"/></g></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><rect x="12" y="38" width="76" height="52" rx="10"/><path d="M32 40 C32 8 68 8 68 40 L60 40 C60 22 40 22 40 40 Z"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 4 · Resultados</p></div>
+<h2><span class="w">Mucha</span> <span class="w">gente</span> <span class="w">no</span> <span class="w">es</span> <span class="w">lo</span> <span class="w">mismo</span> <span class="w">que</span> <span class="w">impacto</span></h2>
+<div class="row">
+<div class="card b"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><span>Lo que sí se documenta</span></h3>
+<ul><li>+100.000 visitantes en Toronto.</li><li>+250.000 entre Toronto y Los Ángeles (organizadores).</li><li>«Decenas de miles» en Los Ángeles en julio (AFP).</li><li>Fechas ampliadas y nueva sede en Frisco.</li></ul></div>
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i><span>Lo que no se puede afirmar</span></h3>
+<ul><li>Si subieron las ventas o la imagen de Barbie: película y atracción actuaron a la vez.</li><li>Si cambió la idea «puedes ser lo que quieras»: no hay encuesta.</li><li>Las métricas de redes: son de las marcas.</li><li>Asistencia por ciudad en Santa Monica.</li></ul></div>
+</div>
+<p class="lead">Hay <span class="em">mucha asistencia</span>; el efecto en la marca no está medido.</p>
+
+</div><p class="foot">Fuentes: Irick y Navarro (2023); Resident (2023); AFP (2023); Bianco y Leopo (2023). La película se estrenó el 21 de julio de 2023.</p>
+</section>
+<section class="lam claro s-logro" data-k="logro" data-notas="EN SIMPLE: tomé los objetivos del Apartado 1 y miré qué evidencia hay para cada uno.|PREGUNTAS PROBABLES: 1) ¿Por qué «indicios» y no «cumplido» en el mensaje? Solo hay testimonios aislados: una niña de 10 años dice que puede jugar a ser Barbie y una visitante valora la diversidad (Bianco y Leopo, 2023). Sin encuestas no puedo decir que se logró. 2) ¿Por qué «no puede afirmarse» lo de ventas? Porque la película se estrenó con la atracción ya abierta y no hay estudio que separe los dos efectos. 3) ¿Entonces fue un éxito? En alcance y continuidad, sí. En cambiar la imagen de Barbie, no se sabe.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M10 74 L18 40 L34 58 L50 24 L66 58 L82 40 L90 74 Z"/><circle cx="18" cy="32" r="5"/><circle cx="50" cy="16" r="5"/><circle cx="82" cy="32" r="5"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 4 · Objetivos</p></div>
+<h2><span class="w">¿Se</span> <span class="w">cumplieron</span> <span class="w">los</span> <span class="w">objetivos?</span></h2>
+<div class="line"><div><p><b>Llevar el mundo de Barbie a escala real</b></p><p style="font-size:24px">+250.000 visitantes, según los organizadores</p></div><div class="chip ok"><p>Cumplido</p></div></div>
+<div class="line"><div><p><b>Inspirar a las más jóvenes a ser lo que quieran</b></p><p style="font-size:24px">Solo testimonios sueltos; no hay encuestas</p></div><div class="chip mid"><p>Indicios, no medido</p></div></div>
+<div class="line"><div><p><b>Mantener la gira</b></p><p style="font-size:24px">Fechas ampliadas y apertura en Frisco</p></div><div class="chip ok"><p>Cumplido</p></div></div>
+<div class="line"><div><p><b>Efecto en ventas o imagen de marca</b></p><p style="font-size:24px">Ninguna fuente separa el efecto de la atracción del de la película</p></div><div class="chip no"><p>No puede afirmarse</p></div></div>
+<p class="lead">Se cumple en <span class="em">alcance y continuidad</span>; el mensaje no está medido.</p>
+
+</div><p class="foot">Fuentes: Resident (2023); Bianco y Leopo (2023); Kidscreen (2022); Stoddard (2022).</p>
+</section>
+<section class="lam sky s-tension" data-k="tension" data-notas="EN SIMPLE: la pregunta es a quién le habla la atracción. Mi respuesta: sobre todo a niños, pero con cosas pensadas también para adultos.|PREGUNTAS PROBABLES: 1) ¿Cómo sabes que es sobre todo para niños? Una visitante cuenta que los asientos bajos y los accesorios pequeños están pensados para ellos (Hewitt, 2023), y existe la tarifa de niños de 1 a 12 años (Chieffi, 2023). 2) ¿Y los adultos? Hay noches 21+ llamadas Sips After Sunset y Pink Carpet Night (Irick y Navarro, 2023), y una productora de Kilburn Live dijo que no es solo para niñas (RetailWire, 2023). 3) ¿Quién va realmente? No hay datos oficiales del perfil de los visitantes. Lo que digo viene de videos y reseñas que revisé: hombres, muchas mujeres y muchos niños. Es observación mía, no estadística.">
+<div class="trio"><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><rect x="12" y="38" width="76" height="52" rx="10"/><path d="M32 40 C32 8 68 8 68 40 L60 40 C60 22 40 22 40 40 Z"/></svg></i><i class="ichip lg"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></i></div><div class="deco"><span class="fl" style="left:40px;top:160px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span></div><span class="ghost"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M42 38 L42 20 L58 6 L58 38 Z"/><rect x="38" y="42" width="24" height="12" rx="2"/><rect x="36" y="58" width="28" height="34" rx="4"/></svg></span>
+<div class="cont">
+<div class="tagrow"><p class="tag">Apartado 4 · Para quién es</p></div>
+<h2><span class="w">¿Es</span> <span class="w">para</span> <span class="w">niños</span> <span class="w">o</span> <span class="w">para</span> <span class="w">adultos?</span></h2>
+<div class="row">
+<div class="card p"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 50 C36 28 10 24 8 38 C6 56 30 68 50 50 Z"/><path d="M50 50 C64 28 90 24 92 38 C94 56 70 68 50 50 Z"/><circle cx="50" cy="50" r="9"/><path d="M44 58 L30 90 L44 84 L50 62 Z"/><path d="M56 58 L70 90 L56 84 L50 62 Z"/></svg></i><span>Mirada: niños</span></h3><ul><li>Asientos bajos y accesorios pequeños.</li><li>Tarifa propia para niños de 1 a 12 años.</li><li>Salas de carreras para que las jóvenes se imaginen en cada papel.</li></ul></div>
+<div class="card y"><h3 class="hc"><i class="ichip sm"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M8 78 L8 28 L30 52 L50 18 L70 52 L92 28 L92 78 Z"/><rect x="8" y="82" width="84" height="10" rx="4"/></svg></i><span>Mirada: adultos</span></h3><ul><li>Noches 21+ con DJ y cócteles.</li><li>La producción dice que no es solo para niñas.</li><li>Madres e hijas, amigas y adultos disfrazados.</li></ul></div>
+</div>
+<p class="lead">Está pensada <span class="em">sobre todo para niños</span>, y los adultos también la disfrutan.</p>
+
+</div><p class="foot">Fuentes: Hewitt (2023); Chieffi (2023); Irick y Navarro (2023); RetailWire (2023); Bianco y Leopo (2023).</p>
+</section>
+<section class="lam hot s-valoracion" data-k="valoracion" data-notas="CIERRE (30 segundos): «Mi conclusión: World of Barbie cuenta la historia completa de la marca, desde 1959 hasta hoy, y el visitante la vive en primera persona. Funciona muy bien como experiencia, pero su impacto real en la marca no se puede afirmar porque faltan datos.»|PREGUNTAS PROBABLES: 1) ¿Qué mejorarías? Medir desde el inicio: encuestas a visitantes, cuántos repiten y qué dicen en redes. Y mantener la diversidad del museo. 2) ¿Recomendarías hacerla de nuevo? Sí, por ser modular y fácil de llevar a otras ciudades, pero con una forma de medir resultados. 3) ¿Si no sabes si sirvió, por qué es buena? Es buena como experiencia: coherente, participativa y con mucha gente. Lo que no sé es si cambió ventas o imagen; son dos cosas distintas. 4) ¿Qué fue lo más difícil? Separar el efecto de la atracción del de la película: no hay estudio que los separe. 5) Uso de IA: está declarado en el trabajo escrito (Claude, para organizar información y depurar redacción). El análisis, la valoración y el discurso son tuyos.">
+<div class="deco"><span class="fl" style="left:40px;top:160px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span></div>
+<div class="cont"><div class="tagrow"><p class="tag">World of Barbie</p></div><h1><span class="w">¡Gracias!</span></h1><p class="lead" style="font-size:44px">¿Preguntas?</p><p class="autora">Anyelit Sharit Daza</p></div>
+</section>
+<section class="lam hot s-gracias" data-k="gracias" data-notas="Antes de cerrar, respira y deja que pregunten. Si no sabes algo, di con tranquilidad: «Eso no está en las fuentes que revisé». Es una respuesta válida, porque tu trabajo marca claramente qué no se puede afirmar.">
+<div class="deco"><span class="fl" style="left:40px;top:160px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:1830px;top:110px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:30px;top:640px;width:58px;height:58px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span><span class="fl" style="left:1850px;top:560px;width:72px;height:72px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 6 L61 38 L95 38 L67 58 L78 92 L50 71 L22 92 L33 58 L5 38 L39 38 Z"/></svg></span><span class="fl" style="left:60px;top:950px;width:86px;height:86px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg></span><span class="fl" style="left:1790px;top:930px;width:44px;height:44px"><svg class="ic" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor" stroke-width="0" aria-hidden="true"><path d="M50 4 C54 32 68 46 96 50 C68 54 54 68 50 96 C46 68 32 54 4 50 C32 46 46 32 50 4 Z"/></svg></span></div>
+<div class="cont">
+
+<div class="tagrow"><p class="tag">World of Barbie</p></div>
+<h1><span class="w">¡Gracias!</span></h1>
+<p class="lead" style="font-size:44px">¿Preguntas?</p>
+<p class="autora">Anyelit Sharit Daza</p>
+</div><figure class="pic big-pic"><img src="img/cohete.webp" alt="Cohete de World of Barbie: asientos rosados y pantalla de control con la Tierra"><figcaption>Foto: World of Barbie Jakarta, sitio oficial. © Mattel.</figcaption></figure>
+</section>
+
+  <div class="hud"><div class="marca"><svg class="logo" viewBox="0 0 100 100" fill="currentColor"><path d="M50 88 C20 62 8 44 8 30 C8 18 17 10 28 10 C37 10 45 15 50 23 C55 15 63 10 72 10 C83 10 92 18 92 30 C92 44 80 62 50 88 Z"/></svg><span>World of Barbie</span></div><div class="pag"><b id="pagN">01</b> / 18</div></div>
+  
+  <div id="prog"><i></i></div>
+  <section id="notas" aria-hidden="true"><div class="cab" id="notasT"></div><div id="notasC"></div></section>
+  </div></div>
+
+  <section id="rejilla" aria-hidden="true">
+    <div class="rc"><h3>Cuadrícula de diapositivas</h3><button class="r-btn" id="bCerrarRejilla">Cerrar <kbd>Esc</kbd></button></div>
+    <div class="rg" id="rg"></div>
+  </section>
+
+  <section id="atajos" aria-hidden="true"><div>
+    <h3>Atajos de teclado</h3>
+    <table><tbody>
+      <tr><td>→ ↓ espacio · clic</td><td>Avanzar</td></tr>
+      <tr><td>← ↑</td><td>Retroceder</td></tr>
+      <tr><td>Inicio · Fin</td><td>Primera y última diapositiva</td></tr>
+      <tr><td>P</td><td>Modo presentación</td></tr>
+      <tr><td>O</td><td>Cuadrícula</td></tr>
+      <tr><td>N</td><td>Guion de quien expone</td></tr>
+      <tr><td>T · R</td><td>Cronómetro: iniciar o pausar · reiniciar</td></tr>
+      <tr><td>F</td><td>Pantalla completa</td></tr>
+      <tr><td>Esc</td><td>Cerrar lo que esté abierto</td></tr>
+    </tbody></table>
+    <p>Un clic = una diapositiva completa: todo entra solo, con su animación.</p>
+    <button class="r-btn r-btn--pri" id="bCerrarAtajos" style="margin-top:28px">Entendido</button>
+  </div></section>
+</div>
+
+<script src="../chickenmart-pitch/vendor/gsap.min.js"></script>
+<script>
+(function(){
+"use strict";
+var D=document, H=D.documentElement, g=window.gsap, QUIETO=matchMedia("(prefers-reduced-motion: reduce)").matches, SUAVE=!!g&&!QUIETO;
+var SAFARI=/^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+if(SAFARI||/[?&]plano\b/.test(location.search)) H.classList.add("plano");
+var stage=D.getElementById("stage"), L=[].slice.call(D.querySelectorAll(".lam")), N=L.length, i=-1, tl=null, bucles=[];
+var notas=D.getElementById("notas"), notasT=D.getElementById("notasT"), notasC=D.getElementById("notasC");
+var panel=D.getElementById("panel"), rg=D.getElementById("rg"), vista=D.getElementById("vista");
+var rejilla=D.getElementById("rejilla"), atajos=D.getElementById("atajos"), minis=[], rcs=[];
+var TIT=["Portada", "La marca", "La experiencia", "Objetivos y públicos", "El recorrido", "Inmersión", "Tipo de inmersión", "Zonas", "Sentidos", "Narrativa y rol", "Relato de la marca", "Comunicación", "Promesa y realidad", "Resultados", "Objetivos", "Para quién es", "Cierre", "Gracias"], DUR=["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+
+function escala(){
+  var w=vista.clientWidth, h=vista.clientHeight, s=Math.min(w/1920,h/1080);
+  stage.style.transform="translate(-50%,-50%) scale("+s+")";
+}
+addEventListener("resize",escala); escala();
+D.getElementById("app").addEventListener("transitionend",function(){ escala(); reencaja() });
+
+/* miniaturas: copia de cada lámina en su estado final, con HUD */
+function lienzo(n){
+  var c=D.createElement("div"); c.className="lienzo"+(L[n].classList.contains("hot")?" hud-acento":"");
+  var s=L[n].cloneNode(true); s.classList.add("on"); c.appendChild(s);
+  c.appendChild(stage.querySelector(".hud").cloneNode(true));
+  c.querySelector(".pag b").textContent=(n<9?"0":"")+(n+1);
+  [].slice.call(c.querySelectorAll("[id]")).forEach(function(e){e.removeAttribute("id")});
+  return c;
+}
+L.forEach(function(s,n){
+  var w=D.createElement("div"); w.className="mini";
+  w.innerHTML='<div class="m-num">'+(n<9?"0":"")+(n+1)+'</div><div><div class="marco"></div><div class="m-rot"><b>'+TIT[n]+'</b><span>'+DUR[n]+'</span></div></div>';
+  w.querySelector(".marco").appendChild(lienzo(n));
+  w.addEventListener("click",function(){ ir(n) });
+  panel.appendChild(w); minis.push(w);
+  var r=D.createElement("div"); r.className="rc-item";
+  r.innerHTML='<div class="marco"></div><div class="pie2"><span>'+(n<9?"0":"")+(n+1)+' · '+TIT[n]+'</span><span>'+DUR[n]+'</span></div>';
+  r.querySelector(".marco").appendChild(lienzo(n));
+  r.addEventListener("click",function(){ cerrar(); ir(n) });
+  rg.appendChild(r); rcs.push(r);
+});
+function reencaja(){
+  [].slice.call(D.querySelectorAll(".marco")).forEach(function(m){ var c=m.querySelector(".lienzo"); if(c&&m.clientWidth) c.style.transform="scale("+(m.clientWidth/1920)+")" });
+}
+addEventListener("resize",reencaja); reencaja();
+
+function guion(){
+  var s=L[i]; notasT.textContent="Guion · "+(i+1)+" de "+N+" · "+TIT[i];
+  notasC.innerHTML=s.dataset.notas.split("|").map(function(p){return "<p>"+p+"</p>"}).join("");
+}
+
+
+/* Coreografías: un clic = la escena completa (< 10 s), y luego un bucle ambiental suave */
+function entrar(n){
+  if(!SUAVE) return;
+  var s=L[n], q=function(x){ return s.querySelectorAll(x) };
+  tl=g.timeline({defaults:{ease:"power3.out"}});
+  var B=function(t){ bucles.push(t); return t };
+  tl.from(q(".tag"),{x:-60,opacity:0,duration:.55},0)
+    .from(q("h1 .w, h2 .w"),{y:90,opacity:0,rotate:4,scale:.9,duration:.85,stagger:.07,ease:"back.out(1.6)"},.1)
+    .from(q(".pic"),{y:120,opacity:0,rotate:-4,scale:.85,duration:1,ease:"back.out(1.3)"},.5)
+    .from(q(".trio .ichip"),{scale:0,rotate:-60,duration:.6,stagger:.12,ease:"back.out(2.4)"},.5)
+    .from(q(".card, .line, .sense, .step, .gal, .heads"),{y:80,opacity:0,duration:.6,stagger:.09,ease:"back.out(1.3)"},.7)
+    .from(q(".hc .ichip, .who .ichip, .dot"),{scale:0,rotate:-45,duration:.5,stagger:.06,ease:"back.out(2.6)"},1)
+    .from(q(".rolimg"),{x:80,opacity:0,rotate:4,duration:.8},1)
+    .from(q(".chip"),{scale:.6,opacity:0,duration:.45,stagger:.08,ease:"back.out(2)"},1.3)
+    .from(q(".lead, .note, .autora, .curso"),{y:30,opacity:0,duration:.6,stagger:.12},1.6)
+    .from(q(".foot"),{opacity:0,duration:.5},2.2)
+    .from(q(".ghost"),{scale:.5,opacity:0,duration:1},1);
+  B(g.to(q(".fl"),{y:-26,rotation:"+=25",duration:3.2,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.35,repeat:-1,yoyo:true}}));
+  B(g.to(q(".trio .ichip"),{y:-10,duration:1.8,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.3,repeat:-1,yoyo:true},delay:1.6}));
+  B(g.to(q(".card, .line, .step"),{y:-6,duration:2.4,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.25,repeat:-1,yoyo:true},delay:3}));
+  B(g.to(q(".hc .ichip, .dot"),{scale:1.1,rotate:8,duration:1.2,yoyo:true,repeat:-1,ease:"sine.inOut",stagger:{each:.2,repeat:-1,yoyo:true},delay:2.4}));
+  B(g.to(q(".ghost"),{rotation:10,scale:1.06,duration:5,yoyo:true,repeat:-1,ease:"sine.inOut"}));
+  B(g.to(q(".pic"),{y:-10,rotation:1.2,duration:3.2,yoyo:true,repeat:-1,ease:"sine.inOut",delay:1.4}));
+}
+
+function ir(n){
+  n=Math.max(0,Math.min(N-1,n)); if(n===i) return;
+  if(tl){tl.progress(1).kill(); tl=null}
+  bucles.forEach(function(b){b.kill()}); bucles=[];
+  /* solo en el escenario: las copias de la cuadrícula no se tocan */
+  if(g) g.set(stage.querySelectorAll(".lam *"),{clearProps:"transform,opacity,strokeDashoffset"}); [].forEach.call(stage.querySelectorAll(".lam .dib *, .lam .checks path"),function(e){ e.removeAttribute("stroke-dashoffset") });
+  L.forEach(function(s,k){s.classList.toggle("on",k===n)});
+  stage.classList.toggle("hud-acento",L[n].classList.contains("hot"));
+  var vuelta=i; i=n;
+  D.getElementById("pagN").textContent=(n<9?"0":"")+(n+1);
+  var bar=D.querySelector("#prog i");
+  if(SUAVE) g.to(bar,{width:((n+1)/N*100)+"%",duration:.6,ease:"power2.out"}); else bar.style.width=((n+1)/N*100)+"%";
+  minis.forEach(function(m,k){m.classList.toggle("actual",k===n)});
+  rcs.forEach(function(r,k){r.classList.toggle("actual",k===n)});
+  if(minis[n]) minis[n].scrollIntoView({block:"nearest"});
+    guion(); entrar(n);
+}
+
+/* cronómetro (sin límite fijo: el tiempo de la exposición no está definido) */
+var reloj=D.getElementById("reloj"), t0=0, acum=0, corre=false, tic=null;
+function pinta(){
+  var s=Math.floor((acum+(corre?Date.now()-t0:0))/1000), m=Math.floor(s/60), r=s%60;
+  reloj.textContent=(m<10?"0":"")+m+":"+(r<10?"0":"")+r;
+}
+function cron(){ if(corre){acum+=Date.now()-t0;corre=false;clearInterval(tic)} else {t0=Date.now();corre=true;tic=setInterval(pinta,250)} pinta() }
+function reinicia(){ acum=0; t0=Date.now(); pinta() }
+
+function pantalla(){
+  var el=H, en=D.fullscreenElement||D.webkitFullscreenElement;
+  if(en){(D.exitFullscreen||D.webkitExitFullscreen).call(D)} else if(el.requestFullscreen||el.webkitRequestFullscreen){(el.requestFullscreen||el.webkitRequestFullscreen).call(el)}
+}
+function presentar(){
+  D.body.classList.toggle("presentando"); notasOn(false);
+  var en=D.fullscreenElement||D.webkitFullscreenElement;
+  if(D.body.classList.contains("presentando")&&!en) pantalla();
+  if(!D.body.classList.contains("presentando")&&en) pantalla();
+}
+function notasOn(v){ notas.classList.toggle("on",v); notas.setAttribute("aria-hidden",v?"false":"true"); D.getElementById("bNotas").classList.toggle("activo",v) }
+function abre(el,v){ el.classList.toggle("on",v); el.setAttribute("aria-hidden",v?"false":"true"); if(v) reencaja() }
+function cerrar(){ abre(rejilla,false); abre(atajos,false); notasOn(false) }
+D.getElementById("bRejilla").onclick=function(){ abre(rejilla,!rejilla.classList.contains("on")) };
+D.getElementById("bCerrarRejilla").onclick=function(){ abre(rejilla,false) };
+D.getElementById("bNotas").onclick=function(){ notasOn(!notas.classList.contains("on")) };
+D.getElementById("bAtajos").onclick=function(){ abre(atajos,true) };
+D.getElementById("bCerrarAtajos").onclick=function(){ abre(atajos,false) };
+D.getElementById("bPresentar").onclick=presentar;
+D.addEventListener("fullscreenchange",function(){ if(!(D.fullscreenElement||D.webkitFullscreenElement)) D.body.classList.remove("presentando"); setTimeout(escala,350) });
+
+D.addEventListener("keydown",function(e){
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
+  var k=e.key;
+  if(k==="Escape"){ cerrar(); return }
+  if(rejilla.classList.contains("on")||atajos.classList.contains("on")) return;
+  if(k==="ArrowRight"||k==="ArrowDown"||k===" "||k==="PageDown"){e.preventDefault();ir(i+1)}
+  else if(k==="ArrowLeft"||k==="ArrowUp"||k==="PageUp"){e.preventDefault();ir(i-1)}
+  else if(k==="Home") ir(0); else if(k==="End") ir(N-1);
+  else if(k==="n"||k==="N") notasOn(!notas.classList.contains("on"));
+  else if(k==="o"||k==="O") abre(rejilla,true);
+  else if(k==="?") abre(atajos,true);
+  else if(k==="t"||k==="T") cron(); else if(k==="r"||k==="R") reinicia();
+  else if(k==="f"||k==="F") pantalla();
+  else if(k==="p"||k==="P") presentar();
+});
+/* clic avanza; los enlaces de las fuentes y el guion no */
+vista.addEventListener("click",function(e){ if(e.target.closest("#notas,a")) return; ir(i<N-1?i+1:0) });
+
+/* enlace directo index.html#N; la dirección no se reescribe al avanzar, así que el enlace normal siempre abre en la 1 */
+var h=parseInt((location.hash||"").slice(1),10);
+function arranca(){ ir(h>=1&&h<=N?h-1:0) }
+if(D.fonts&&D.fonts.ready) D.fonts.ready.then(arranca); else arranca();
+})();
+</script>
+</body>
+</html>
